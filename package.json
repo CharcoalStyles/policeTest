@@ -1,0 +1,49 @@
+{
+  "name": "psc-role-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "yarn lint:js"
+  },
+  "dependencies": {
+    "@nuxt/content": "^1.11.1",
+    "collect.js": "^4.28.6",
+    "core-js": "^3.6.5",
+    "fuzzy-search": "^3.2.1",
+    "nuxt": "^2.14.12",
+    "panzoom": "Timo-Weike/panzoom",
+    "portal-vue": "^2.1.7",
+    "vue-debounce": "^2.5.8",
+    "vue-multiselect": "^2.1.6",
+    "vue-panzoom": "^1.1.3",
+    "vue-pinch-zoom": "^1.0.1",
+    "vue-pluralize": "^0.0.2",
+    "vue-scrollto": "^2.20.0",
+    "vue-simple-range-slider": "^0.1.10",
+    "vue-slider-component": "^3.2.11",
+    "vuex-persistedstate": "^4.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "@trevoreyre/autocomplete-vue": "^2.2.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "v-tooltip": "^2.1.2",
+    "vue-autosuggest": "^2.2.0",
+    "vue-clamp": "^0.3.1",
+    "vue-click-outside": "^1.1.0",
+    "vue-popperjs": "^2.3.0"
+  }
+}
