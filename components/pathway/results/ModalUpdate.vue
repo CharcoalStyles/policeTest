@@ -38,7 +38,7 @@ export default {
     }
   },
   methods: {
-    returnToQuestionFlow () {
+    returnToQuestionFlow() {
       // Log action to GA
       this.$ga.event({
         eventCategory: 'Pathway Results',

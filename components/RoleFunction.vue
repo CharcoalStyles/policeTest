@@ -19,7 +19,9 @@
       </div>
       <table class="border-collapse w-full">
         <tr class="text-2xl">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
+          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">
+            Salary
+          </th>
           <th
             v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
             :key="familyRole.name"

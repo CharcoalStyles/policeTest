@@ -72,7 +72,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       value: '',
       focussed: false
@@ -83,16 +83,16 @@ export default {
       'getRoleByCode',
       'answers'
     ]),
-    currentValue () {
+    currentValue() {
       return this.$store.state.pathway.answers[this.step.id]?.value
     },
-    defaultValue () {
+    defaultValue() {
       return this.currentValue ? this.getRoleByCode(this.currentValue).name : ''
     },
-    isDisabled () {
+    isDisabled() {
       return Boolean(this.currentValue)
     },
-    currentRole () {
+    currentRole() {
       if (this.answers.hasOwnProperty('current-gov-role')) {
         return this.getRoleByCode(this.answers['current-gov-role'].value)
       }
@@ -104,7 +104,7 @@ export default {
     /**
      * Ensure the same role cannot be selected for current and goal
     **/
-    filteredRoles () {
+    filteredRoles() {
       return this.$collect(this.$store.state.roles)
         .filter(role => {
           if (this.currentRole) {
@@ -121,36 +121,36 @@ export default {
     }
   },
   methods: {
-    updateValue (e) {
+    updateValue(e) {
       this.value = e.target.value
     },
-    search (input) {
+    search(input) {
       this.value = input
       const fuzzy = new FuzzySearch(this.filteredRoles, ['name'], {
         sort: true
       })
       return fuzzy.search(input)
     },
-    getResultValue (result) {
+    getResultValue(result) {
       return result.name
     },
-    selectRole (role) {
+    selectRole(role) {
       this.$store.dispatch('saveQuestionAnswer', {
         id: this.step.id,
         value: role.id
       })
     },
-    clearRole () {
+    clearRole() {
       this.$refs.autocomplete.value = ''
       this.$store.dispatch('saveQuestionAnswer', {
         id: this.step.id,
         value: ''
       })
     },
-    isRoleSelected (role) {
+    isRoleSelected(role) {
       return this.currentValue === role.id
     },
-    toggleFocus () {
+    toggleFocus() {
       this.focussed = !this.focussed
     }
   }

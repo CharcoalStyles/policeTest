@@ -1,6 +1,6 @@
 export default {
   methods: {
-    isStepDisabled (step) {
+    isStepDisabled(step) {
       // Only apply on question steps
       if (step.type === 'question' && step.schema.field.required === true) {
         // Does the step exist in answers
@@ -8,7 +8,7 @@ export default {
       }
       return false
     },
-    isChildStepDisabled (step) {
+    isChildStepDisabled(step) {
       if (step.schema.field.type === 'skill') {
         return !this.$store.state.pathway.answers.skills?.[step.id]?.value
       } else {

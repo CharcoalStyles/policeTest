@@ -42,32 +42,32 @@ export default {
     /**
      * Current child step based in url param id
      */
-    currentChildStep () {
+    currentChildStep() {
       return this.getChildStepById(this.$route.params.step, this.$route.params.id)
     },
 
     /**
      * Current step index based on id
      */
-    currentChildStepIndex () {
+    currentChildStepIndex() {
       return this.getChildStepIndex(this.$route.params.step, this.$route.params.id)
     },
 
     /**
      * Check if this child step is the first
      */
-    isFirstChildStep () {
+    isFirstChildStep() {
       return this.currentChildStepIndex === 0
     },
 
     /**
      * Check if this child step is the last
      */
-    isLastChildStep () {
+    isLastChildStep() {
       return this.currentChildStepIndex === this.currentStep.steps.length - 1
     }
   },
-  created () {
+  created() {
     // 404 if the step id is invalid
     if (!this.currentStep || !this.currentChildStep) {
       return this.$nuxt.error({ statusCode: 404, message: 'Step not found' })
@@ -77,7 +77,7 @@ export default {
     /**
      * Redirect to last step
      */
-    goToPreviousStep () {
+    goToPreviousStep() {
       // Redirect to previous parent step
       if (this.isFirstChildStep) {
         this.$router.push(`/pathway/${this.currentStep.id}`)
@@ -91,7 +91,7 @@ export default {
     /**
      * Redirect to next step
      */
-    goToNextStep () {
+    goToNextStep() {
       // Redirect to next parent step
       if (this.isLastChildStep) {
         const nextStep = this.getNextStepByCurrentIndex(this.currentStepIndex)

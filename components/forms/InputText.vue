@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    update (event) {
+    update(event) {
       this.$emit('input', event.target.value)
     }
   }

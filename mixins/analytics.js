@@ -7,7 +7,7 @@ export default {
     ])
   },
   methods: {
-    logAnswersToGoogleAnalytics () {
+    logAnswersToGoogleAnalytics() {
       // Question flow: Current NSW govt employee or not
       this.$ga.event({
         eventCategory: 'Pathway Answers',

@@ -9,7 +9,6 @@ const papa = require('papaparse')
 // Establish csv filename
 const filename = process.argv.slice(2).length ? process.argv.slice(2)[0] : 'resources.csv'
 
-
 // Import roles csv and rename headers
 const rolesCsvData = papa.parse(fs.readFileSync(filename, 'utf8'), {
   header: true,
@@ -18,7 +17,6 @@ const rolesCsvData = papa.parse(fs.readFileSync(filename, 'utf8'), {
     return h.replace(/\s/g, '_').toLowerCase()
   }
 })
-
 
 // Init empty roles
 const resources = []
@@ -49,9 +47,8 @@ rolesCsvData.data.forEach(row => {
   })
 })
 
-
 // Write to json file on disk
 fs.writeFileSync('resources.json', JSON.stringify(resources))
 
 console.log(`Imported ${resources.length} upskilling resources successfully`)
-console.log(`Saved to: resources.json`)
+console.log('Saved to: resources.json')

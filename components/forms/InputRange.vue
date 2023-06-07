@@ -37,7 +37,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       range: [0, 100]
     }
@@ -45,12 +45,12 @@ export default {
   watch: {
     value: {
       immediate: true,
-      handler (value) {
+      handler(value) {
         this.range = value
       }
     }
   },
-  created () {
+  created() {
     this.railStyle = {
       backgroundColor: '#A0A4AE'
     }
@@ -63,7 +63,7 @@ export default {
     }
   },
   methods: {
-    updateValue () {
+    updateValue() {
       // Force maximum range as component doesn't allow it
       if (this.range[0] > 180000) {
         this.range[0] = 180000

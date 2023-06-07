@@ -25,13 +25,13 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       modal: false
     }
   },
   computed: {
-    iconImage () {
+    iconImage() {
       return `/icons/upskill-${this.resource.format}.svg`
     }
   }

@@ -25,12 +25,12 @@ export default {
   computed: {
     answer: {
       // Look for answer in store and load it
-      get () {
+      get() {
         const capabilities = this.$store.state.pathway.answers.capabilities
         return this.step.id in capabilities ? capabilities[this.step.id].value : ''
       },
       // It isn't found so load default from schema
-      set (value) {
+      set(value) {
         this.$store.dispatch('saveCapabilityAnswer', {
           id: this.step.id,
           value

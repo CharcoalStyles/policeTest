@@ -74,7 +74,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       selectedSkill: false,
       selectedCapability: false,
@@ -86,13 +86,13 @@ export default {
     }
   },
   computed: {
-    skills () {
+    skills() {
       return this.$store.state.skills
     },
-    capabilities () {
+    capabilities() {
       return this.$store.state.capabilities
     },
-    skillsMatrix () {
+    skillsMatrix() {
       // Start with skills from current role
       const skillCodes = this.$collect(this.currentRole.skills.focus).pluck('code').all()
 
@@ -132,7 +132,7 @@ export default {
 
       return [...currentSkillsOnly, ...overlappingSkills, ...targetSkillsOnly]
     },
-    capabilitiesMatrix () {
+    capabilitiesMatrix() {
       // Start with skills from current role
       const capabilityCodes = this.$collect(this.currentRole.capabilities.focus).pluck('code').all()
 
@@ -174,7 +174,7 @@ export default {
     }
   },
   methods: {
-    showSkillModal (modal) {
+    showSkillModal(modal) {
       this.selectedSkill = this.getSkillByCode(modal.skill)
       // Track in GA
       this.$ga.event({
@@ -186,7 +186,7 @@ export default {
       this.modals.skill = true
     },
 
-    showCapabilityModal (modal) {
+    showCapabilityModal(modal) {
       this.selectedCapability = this.getCapabilityByCode(modal.skill)
       this.$ga.event({
         eventCategory: 'Capability',
@@ -197,11 +197,11 @@ export default {
       this.modals.capability = true
     },
 
-    getSkillByCode (code) {
+    getSkillByCode(code) {
       return this.$collect(this.skills).where('code', code).first()
     },
 
-    isSkillRequiredByRole (role, skillCode) {
+    isSkillRequiredByRole(role, skillCode) {
       const skillRequired = this.$collect(role.skills.focus).where('code', skillCode).first()
 
       if (!skillRequired) {
@@ -217,11 +217,11 @@ export default {
       }
     },
 
-    getCapabilityByCode (code) {
+    getCapabilityByCode(code) {
       return this.$collect(this.capabilities).where('subcode', code).first()
     },
 
-    isCapabilityRequiredByRole (role, capabilityCode) {
+    isCapabilityRequiredByRole(role, capabilityCode) {
       const capabilityRequired = this.$collect(role.capabilities.focus).where('code', capabilityCode).first()
 
       if (!capabilityRequired) {

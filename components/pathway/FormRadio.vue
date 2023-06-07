@@ -29,11 +29,11 @@ export default {
   computed: {
     answer: {
       // Look for answer in store and load it
-      get () {
+      get() {
         return this.$store.state.pathway.answers[this.step.id]?.value
       },
       // It isn't found so load default from schema
-      set (value) {
+      set(value) {
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value

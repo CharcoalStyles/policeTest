@@ -32,20 +32,20 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       selected: []
     }
   },
   computed: {
-    id () {
+    id() {
       return `${this.name}_${this.modelValue}`
     }
   },
   watch: {
     value: {
       immediate: true,
-      handler (value) {
+      handler(value) {
         this.selected = value
       }
     }

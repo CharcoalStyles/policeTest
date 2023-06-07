@@ -51,16 +51,16 @@ export default {
     }
   },
   computed: {
-    emptyMessage () {
+    emptyMessage() {
       if (this.instructions) {
         return this.targetRole ? `This ${this.type} is not required` : 'Not currently known'
       }
       return ''
     },
-    valueName () {
+    valueName() {
       return this.type === 'skill' ? 'skills' : 'capabilities'
     },
-    journeyType () {
+    journeyType() {
       if (!this.instructions || !this.item || !this.targetRole) {
         return false
       }
@@ -95,7 +95,7 @@ export default {
     }
   },
   methods: {
-    capitaliseFirstLetter (string) {
+    capitaliseFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
     }
   }

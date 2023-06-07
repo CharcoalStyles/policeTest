@@ -46,10 +46,10 @@ export default {
     }
   },
   computed: {
-    clickableClasses () {
+    clickableClasses() {
       return this.clickable ? 'border-white hover:border-black cursor-pointer' : null
     },
-    zoomToClass () {
+    zoomToClass() {
       return this.zoomable ? `role-${this.role.id}` : null
     }
   }

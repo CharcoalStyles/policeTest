@@ -13,25 +13,25 @@ export default {
     /**
      * Current step based in url param id
      */
-    currentStep () {
+    currentStep() {
       return this.getStepById(this.$route.params.step)
     },
     /**
      * Current step based on id
      */
-    currentStepIndex () {
+    currentStepIndex() {
       return this.getStepIndex(this.currentStep.id)
     },
     /**
      * Check if this step is the first
      */
-    isFirstStep () {
+    isFirstStep() {
       return this.currentStepIndex === 0
     },
     /**
      * Check if this step is the last
      */
-    isLastStep () {
+    isLastStep() {
       return this.currentStepIndex === this.filteredSteps.length - 1
     }
   }

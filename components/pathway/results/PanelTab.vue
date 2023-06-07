@@ -17,7 +17,7 @@ export default {
     }
   },
   computed: {
-    isSelected () {
+    isSelected() {
       return this.selected === this.name ? 'border-nsw-brand-primary-blue' : 'border-white'
     }
   }

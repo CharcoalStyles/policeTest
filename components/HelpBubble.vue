@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    tooltipOptions () {
+    tooltipOptions() {
       return {
         placement: 'bottom',
         modifiers: { offset: { offset: '0,5px' } }

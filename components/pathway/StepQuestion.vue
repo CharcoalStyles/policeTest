@@ -69,13 +69,13 @@ export default {
     }
   },
   computed: {
-    clampText () {
+    clampText() {
       return this.expanded ? 'Read less' : 'Read more'
     },
-    componentName () {
+    componentName() {
       return `form-${this.step.schema.field.type}`
     },
-    widthStyle () {
+    widthStyle() {
       switch (this.step.schema.field.type) {
         case 'skill':
         case 'capability':
@@ -87,7 +87,7 @@ export default {
           break
       }
     },
-    showExplorerPanel () {
+    showExplorerPanel() {
       return ['current-gov-role', 'current-outside-role'].includes(this.step.id)
     }
   }

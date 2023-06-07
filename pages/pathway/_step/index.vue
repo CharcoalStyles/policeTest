@@ -37,7 +37,7 @@ export default {
       'getHumanReadableAnswerValue'
     ])
   },
-  created () {
+  created() {
     // 404 if the step id is invalid
     if (!this.currentStep) {
       return this.$nuxt.error({ statusCode: 404, message: 'Step not found' })
@@ -47,7 +47,7 @@ export default {
     /**
      * Redirect to previous step
      */
-    goToPreviousStep () {
+    goToPreviousStep() {
       // No more steps
       if (this.isFirstStep) {
         return
@@ -68,7 +68,7 @@ export default {
     /**
      * Redirect to next step
      */
-    goToNextStep () {
+    goToNextStep() {
       // No more steps
       if (this.isLastStep) {
         // Mark the questions as complete for middleware

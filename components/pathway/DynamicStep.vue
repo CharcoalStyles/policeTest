@@ -20,12 +20,12 @@ export default {
     }
   },
   computed: {
-    componentName () {
+    componentName() {
       return `step-${this.step.type}`
     }
   },
   methods: {
-    updated (data) {
+    updated(data) {
       this.$emit('input', data)
     }
   }

@@ -46,7 +46,7 @@ export default {
     }
   },
   computed: {
-    pillColour () {
+    pillColour() {
       return this.type === 'current' ? 'blue' : 'green'
     }
   }

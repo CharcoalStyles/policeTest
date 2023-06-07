@@ -119,16 +119,16 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       skills
     }
   },
   computed: {
-    getSimilarRolesByGrade () {
+    getSimilarRolesByGrade() {
       return this.$collect(this.roles).where('grade', this.role.grade).all()
     },
-    getSimilarRolesBySkills () {
+    getSimilarRolesBySkills() {
       return this.$collect(this.roles)
         .where('id', '!==', this.role.id)
         .where('gradeId', '>=', this.role.gradeId)
@@ -141,7 +141,7 @@ export default {
     }
   },
   methods: {
-    getSkillsCodeArray (role) {
+    getSkillsCodeArray(role) {
       if (role.skills.focus) {
         return role.skills.focus.map(skill => {
           return skill.code
@@ -149,7 +149,7 @@ export default {
       }
       return []
     },
-    getSkillName (code) {
+    getSkillName(code) {
       const skill = this.$collect(this.skills).where('code', code).first()
       return skill.name
     }

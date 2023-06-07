@@ -123,7 +123,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       skills,
       tabs: {
@@ -132,22 +132,22 @@ export default {
     }
   },
   computed: {
-    assessedCapabilities () {
+    assessedCapabilities() {
       return this.$store.state.pathway.answers.capabilities
     },
-    selectedLevel () {
+    selectedLevel() {
       if (!this.tabs.level) {
         return false
       }
       return this.selectedCapability.levels.find(level => level.level === this.tabs.level)
     },
-    accessedLevel () {
+    accessedLevel() {
       return this.selectedCapability.subcode in this.assessedCapabilities ? this.assessedCapabilities[this.selectedCapability.subcode].value : false
     },
-    currentRoleLevel () {
+    currentRoleLevel() {
       return this.$collect(this.currentRole.capabilities.focus).where('code', this.selectedCapability.subcode).first()
     },
-    targetRoleLevel () {
+    targetRoleLevel() {
       if (!this.targetRole) {
         return false
       }
@@ -157,12 +157,12 @@ export default {
   watch: {
     selectedCapability: {
       immediate: true,
-      handler (newSkill) {
+      handler(newSkill) {
         this.tabs.level = newSkill.levels?.[0].level ?? 0
       }
     }
   },
-  mounted () {
+  mounted() {
     this.$ga.event({
       eventCategory: 'Pathway Results',
       eventAction: 'Capability Modal Opened',

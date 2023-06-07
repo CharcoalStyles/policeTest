@@ -33,22 +33,22 @@ export default {
     }
   },
   computed: {
-    tooltipOptions () {
+    tooltipOptions() {
       return {
         placement: 'bottom',
         modifiers: { offset: { offset: '0,5px' } }
       }
     },
-    baseSize () {
+    baseSize() {
       return this.size === 'md' ? 'text-base' : 'text-sm'
     },
-    iconSize () {
+    iconSize() {
       return this.size === 'md' ? 'h-4' : 'h-3'
     },
-    badgeCursor () {
+    badgeCursor() {
       return this.tooltip ? 'hover:cursor-pointer' : 'hover:cursor-default'
     },
-    badgeColour () {
+    badgeColour() {
       switch (this.colour) {
         case 'blue':
           return 'bg-role-pill-blue'

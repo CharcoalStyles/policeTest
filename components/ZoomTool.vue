@@ -22,16 +22,16 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       help: true
     }
   },
   methods: {
-    zoomIn () {
+    zoomIn() {
       this.$emit('zoom', 1.25)
     },
-    zoomOut () {
+    zoomOut() {
       this.$emit('zoom', 0.8)
     }
   }

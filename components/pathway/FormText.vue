@@ -19,10 +19,10 @@ export default {
   },
   computed: {
     answer: {
-      get () {
+      get() {
         return this.$store.state.pathway.answers?.[this.step.id]?.value ?? ''
       },
-      set (value) {
+      set(value) {
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value

@@ -23,6 +23,7 @@ module.exports = {
     'arrow-parens': 'off',
     'vue/no-unused-components': 'warn',
     'nuxt/no-globals-in-created': 'off',
-    'no-prototype-builtins': 'off'
+    'no-prototype-builtins': 'off',
+    'space-before-function-paren': ['error', 'never']
   }
 }

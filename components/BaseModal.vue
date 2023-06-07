@@ -70,7 +70,7 @@ export default {
   },
 
   computed: {
-    maxWidthClass () {
+    maxWidthClass() {
       return {
         sm: 'sm:max-w-sm',
         md: 'sm:max-w-md',
@@ -80,17 +80,17 @@ export default {
         '3xl': 'sm:max-w-3xl'
       }[this.maxWidth]
     },
-    scrollableContainerClass () {
+    scrollableContainerClass() {
       return this.scrollable ? 'h-modal-accessible lg:h-modal-accessible-lg' : 'max-h-modal-accessible lg:max-h-modal-accessible-lg'
     },
-    scrollableBodyClass () {
+    scrollableBodyClass() {
       return this.scrollable ? 'overflow-y-scroll' : 'overflow-y-scroll lg:overflow-auto'
     }
   },
   watch: {
     show: {
       immediate: true,
-      handler (value) {
+      handler(value) {
         if (value) {
           document.body.style.overflow = 'hidden'
           this.focusModal()
@@ -100,7 +100,7 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     const closeOnEscape = (e) => {
       if (e.key === 'Escape' && this.show) {
         this.close()
@@ -111,11 +111,11 @@ export default {
       document.removeEventListener('keydown', closeOnEscape)
     })
   },
-  mounted () {
+  mounted() {
     this.focusModal()
   },
   methods: {
-    focusModal () {
+    focusModal() {
       setTimeout(() => {
         const modal = document.getElementById('dialog')
         if (modal) {
@@ -123,7 +123,7 @@ export default {
         }
       }, 100)
     },
-    close () {
+    close() {
       if (this.closeable) {
         this.$emit('close')
       }

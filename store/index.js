@@ -108,28 +108,28 @@ const getters = {
 }
 
 const mutations = {
-  SET_ANSWER (state, payload) {
+  SET_ANSWER(state, payload) {
     Vue.set(state.pathway.answers, payload.id, {
       ...state.pathway.answers[payload.id],
       ...payload
     })
   },
 
-  SET_SKILL_ANSWER (state, payload) {
+  SET_SKILL_ANSWER(state, payload) {
     Vue.set(state.pathway.answers.skills, payload.id, {
       ...state.pathway.answers.skills[payload.id],
       ...payload
     })
   },
 
-  SET_CAPABILITY_ANSWER (state, payload) {
+  SET_CAPABILITY_ANSWER(state, payload) {
     Vue.set(state.pathway.answers.capabilities, payload.id, {
       ...state.pathway.answers.capabilities[payload.id],
       ...payload
     })
   },
 
-  ADD_SKILL_ASSESSMENT (state, payload) {
+  ADD_SKILL_ASSESSMENT(state, payload) {
     const skillStepIndex = state.pathway.steps.findIndex(step => step.id === 'skills')
 
     // Reset in case any have already been set
@@ -166,7 +166,7 @@ const mutations = {
     state.pathway.steps[skillStepIndex].steps = skillSteps
   },
 
-  ADD_CAPABILITY_ASSESSMENT (state, payload) {
+  ADD_CAPABILITY_ASSESSMENT(state, payload) {
     const capabilitiesStepIndex = state.pathway.steps.findIndex(step => step.id === 'capabilities')
 
     // Reset in case any have already been set
@@ -203,23 +203,23 @@ const mutations = {
     state.pathway.steps[capabilitiesStepIndex].steps = capabilitySteps
   },
 
-  CLEAR_SKILL_ASSESSMENT (state, payload) {
+  CLEAR_SKILL_ASSESSMENT(state, payload) {
     const skillStepIndex = state.pathway.steps.findIndex(step => step.id === 'skills')
     state.pathway.steps[skillStepIndex].steps = []
   },
 
-  CLEAR_CAPABILITY_ASSESSMENT (state, payload) {
+  CLEAR_CAPABILITY_ASSESSMENT(state, payload) {
     const capabilitiesStepIndex = state.pathway.steps.findIndex(step => step.id === 'capabilities')
     state.pathway.steps[capabilitiesStepIndex].steps = []
   },
 
-  SET_QUESTIONS_COMPLETE (state) {
+  SET_QUESTIONS_COMPLETE(state) {
     state.pathway.completed = true
   }
 }
 
 const actions = {
-  saveQuestionAnswer ({ commit, state }, payload) {
+  saveQuestionAnswer({ commit, state }, payload) {
     // Save answer to store
     commit('SET_ANSWER', payload)
 
@@ -234,13 +234,13 @@ const actions = {
       }
     }
   },
-  saveSkillAnswer ({ commit }, payload) {
+  saveSkillAnswer({ commit }, payload) {
     commit('SET_SKILL_ANSWER', payload)
   },
-  saveCapabilityAnswer ({ commit }, payload) {
+  saveCapabilityAnswer({ commit }, payload) {
     commit('SET_CAPABILITY_ANSWER', payload)
   },
-  markQuestionsComplete ({ commit }, payload) {
+  markQuestionsComplete({ commit }, payload) {
     commit('SET_QUESTIONS_COMPLETE')
   }
 }

@@ -40,18 +40,18 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       expanded: false
     }
   },
   computed: {
-    selected () {
+    selected() {
       return this.value === this.option.level
     }
   },
   methods: {
-    selectOption (option) {
+    selectOption(option) {
       this.$emit('input', option)
     }
   }

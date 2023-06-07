@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    isRoleSelected () {
+    isRoleSelected() {
       return this.targetRole && this.role.id === this.targetRole.id
     }
   }

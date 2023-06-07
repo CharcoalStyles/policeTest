@@ -21,7 +21,7 @@ export default {
     }
   },
   computed: {
-    colourClasses () {
+    colourClasses() {
       switch (this.action) {
         case 'secondary':
           return 'bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue'
@@ -34,7 +34,7 @@ export default {
           break
       }
     },
-    sizeClasses () {
+    sizeClasses() {
       return this.size === 'highlight' ? 'bg-nsw-brand-primary-highlight' : 'h-10 md:h-12 px-6 md:px-8 text-sm md:text-base'
     }
   }

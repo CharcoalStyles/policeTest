@@ -26,7 +26,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       skills,
       values: []
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     // Group the skills by subcategory
-    groupedSkills () {
+    groupedSkills() {
       return this.$collect(this.skills)
         .groupBy('subcategory')
         .keys()
@@ -50,15 +50,15 @@ export default {
     }
   },
   watch: {
-    value () {
+    value() {
       this.values = this.value
     }
   },
-  mounted () {
+  mounted() {
     this.values = this.value
   },
   methods: {
-    checkSkillExists (code) {
+    checkSkillExists(code) {
       return this.checkedSkills.includes(code)
     }
   }

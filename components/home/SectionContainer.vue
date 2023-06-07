@@ -33,7 +33,7 @@ export default {
     }
   },
   computed: {
-    columns () {
+    columns() {
       if (this.cols) {
         return this.cols === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
       }

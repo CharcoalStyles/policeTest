@@ -32,10 +32,10 @@ export default {
     }
   },
   computed: {
-    errorTitle () {
+    errorTitle() {
       return this.error.title ? this.error.title : `${this.error.statusCode} error`
     },
-    errorLink () {
+    errorLink() {
       return this.error.link ? this.error.link : false
     }
   }

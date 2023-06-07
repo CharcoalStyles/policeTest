@@ -231,7 +231,7 @@ export default {
     NextStepPanel,
     HelpBubble
   },
-  data () {
+  data() {
     return {
       resources,
       targetRole: false,
@@ -246,7 +246,7 @@ export default {
       'answers',
       'getHumanReadableAnswerValue'
     ]),
-    upskilling () {
+    upskilling() {
       // Get all the default resources
       const defaultResources = this.$collect(this.resources).where('default', true).all()
 
@@ -268,27 +268,27 @@ export default {
         ...defaultResources
       ]
     },
-    roles () {
+    roles() {
       return this.$store.state.roles
     },
-    currentRole () {
+    currentRole() {
       if (this.answers.hasOwnProperty('current-gov-role')) {
         return this.$store.getters.getRoleByCode(this.answers['current-gov-role'].value)
       }
       return this.$store.getters.getRoleByCode(this.answers['current-outside-role'].value)
     },
-    goalRole () {
+    goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
         return this.$collect(this.roles).where('id', this.answers['goal-role'].value).first()
       }
       return false
     }
   },
-  mounted () {
+  mounted() {
     this.logAnswersToGoogleAnalytics()
   },
   methods: {
-    printPage () {
+    printPage() {
       // Track in GA
       this.$ga.event({
         eventCategory: 'Pathway Results',
@@ -298,7 +298,7 @@ export default {
       window.print()
     },
 
-    openUpskillResource (resource) {
+    openUpskillResource(resource) {
       // Track in GA
       this.$ga.event({
         eventCategory: 'Pathway Results',
@@ -312,16 +312,16 @@ export default {
       win.focus()
     },
 
-    getQuestionAnswer (stepId) {
+    getQuestionAnswer(stepId) {
       return this.$store.getters.getHumanReadableAnswerValue(stepId)
     },
 
-    selectTargetRole (role) {
+    selectTargetRole(role) {
       this.targetRole = role
       this.$scrollTo('#comparison')
     },
 
-    familyRoles (currentRole) {
+    familyRoles(currentRole) {
       return this.$collect(this.roles)
         .filter(role => {
           return (
@@ -341,7 +341,7 @@ export default {
         .all()
     },
 
-    isRoleSharingSkills (firstRole, secondRole) {
+    isRoleSharingSkills(firstRole, secondRole) {
       // Pluck out the skill codes for comparison
       const currentSkills = this.$collect(firstRole.skills.focus).pluck('code').all()
       const comparisonSkills = this.$collect(secondRole.skills.focus).pluck('code').all()
@@ -352,7 +352,7 @@ export default {
         .count() > 1
     },
 
-    skillRoles (currentRole) {
+    skillRoles(currentRole) {
       return this.$collect(this.roles)
         // Filter roles and only return those that share at least 2 skills
         .filter(role => this.isRoleSharingSkills(role, currentRole))
@@ -368,7 +368,7 @@ export default {
         .all()
     },
 
-    outboundLinkClick (url) {
+    outboundLinkClick(url) {
       this.$ga.event({
         eventCategory: 'Outbound Link',
         eventAction: 'Click',
@@ -376,7 +376,7 @@ export default {
       })
     },
 
-    logAnswersToGoogleAnalytics () {
+    logAnswersToGoogleAnalytics() {
       // Question flow: Current NSW govt employee or not
       this.$ga.event({
         eventCategory: 'Pathway Answers',

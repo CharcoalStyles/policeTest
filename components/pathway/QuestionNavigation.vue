@@ -34,13 +34,13 @@ export default {
     ...mapGetters([
       'flattenedSteps'
     ]),
-    totalStepsNumber () {
+    totalStepsNumber() {
       return this.flattenedSteps.length
     },
-    currentStepNumber () {
+    currentStepNumber() {
       return this.flattenedSteps.findIndex(step => step === this.stepKey)
     },
-    currentProgress () {
+    currentProgress() {
       return Math.ceil(this.currentStepNumber / this.totalStepsNumber * 100)
     }
   }

@@ -7,13 +7,13 @@ import roles from '@/data/roles.json'
 
 export default {
   layout: 'blank',
-  data () {
+  data() {
     return {
       roles
     }
   },
   computed: {
-    filteredRoles () {
+    filteredRoles() {
       return this.roles.map(role => ({
         ...role,
         salary: this.parseSalaryRange(role.salary),
@@ -22,14 +22,14 @@ export default {
     }
   },
   methods: {
-    parseSalaryRange (string) {
+    parseSalaryRange(string) {
       const salary = string.replace('$', '').replace('k', '').split('-')
       return {
         min: parseInt(salary[0] * 1000),
         max: parseInt(salary[1] * 1000)
       }
     },
-    parseDemand (demand) {
+    parseDemand(demand) {
       return demand === 'High'
     }
   }

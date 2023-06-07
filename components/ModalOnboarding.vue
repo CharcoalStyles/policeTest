@@ -43,7 +43,7 @@ export default {
       default: '2xl'
     }
   },
-  data () {
+  data() {
     return {
       panels: [
         {
@@ -66,30 +66,30 @@ export default {
     }
   },
   computed: {
-    nextButtonText () {
+    nextButtonText() {
       return this.isLastPanel ? 'Explore roles' : 'Next'
     },
-    currentPanel () {
+    currentPanel() {
       return this.panels[this.panel]
     },
-    panelImage () {
+    panelImage() {
       return `/onboarding-${this.panel}.svg`
     },
-    isFirstPanel () {
+    isFirstPanel() {
       return this.panel === 0
     },
-    isLastPanel () {
+    isLastPanel() {
       return this.panel === 2
     }
   },
   methods: {
-    pagePanelNext () {
+    pagePanelNext() {
       this.panel++
     },
-    pagePanelPrevious () {
+    pagePanelPrevious() {
       this.panel--
     },
-    nextButtonAction () {
+    nextButtonAction() {
       this.isLastPanel ? this.$emit('close') : this.pagePanelNext()
     }
   }

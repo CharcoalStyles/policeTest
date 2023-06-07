@@ -1,4 +1,4 @@
-export default function ({ redirect, store, error }) {
+export default function({ redirect, store, error }) {
   if (!store.state.pathway.completed) {
     error({
       statusCode: 500,

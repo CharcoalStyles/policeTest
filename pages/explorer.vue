@@ -172,7 +172,7 @@ export default {
     InputSkills,
     ModalOnboarding
   },
-  data () {
+  data() {
     return {
       roles,
       loading: false,
@@ -204,7 +204,7 @@ export default {
     /**
      * Filter roles based on filtering form values
      */
-    filteredRoles () {
+    filteredRoles() {
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
@@ -219,14 +219,14 @@ export default {
     /**
      * Count total number of filtered roles
      */
-    filteredRolesTotal () {
+    filteredRolesTotal() {
       return this.filteredRoles.count()
     },
 
     /**
      * Filter roles by function group
      */
-    filteredRolesByFunction () {
+    filteredRolesByFunction() {
       return this.filteredRoles
         .groupBy('familyFunction')
         .keys()
@@ -241,7 +241,7 @@ export default {
         .all()
     }
   },
-  mounted () {
+  mounted() {
     // Initialise pan zoom library
     const element = document.querySelector('.zoomable')
 
@@ -266,7 +266,7 @@ export default {
     })
   },
   methods: {
-    resetSlideout () {
+    resetSlideout() {
       this.slideout = false
       if (this.previousRoleId) {
         const previousRoleDom = document.getElementsByClassName(`role-${this.previousRoleId}`)[0]
@@ -276,11 +276,11 @@ export default {
       }
       this.previousRoleId = false
     },
-    resetExplorerMap () {
+    resetExplorerMap() {
       this.panZoom.moveTo(0, 0)
       this.panZoom.zoomAbs(0, 0, 0.1)
     },
-    resetAllFilters () {
+    resetAllFilters() {
       this.resetExplorerMap()
       this.filter = {
         keyword: '',
@@ -291,25 +291,25 @@ export default {
       }
     },
 
-    resetSkillsFilter () {
+    resetSkillsFilter() {
       this.filter.skills = []
     },
 
     /**
      * Update keyword value on debounce
      */
-    updateKeyword (value) {
+    updateKeyword(value) {
       this.filter.keyword = value
     },
 
     /**
      * Update zoom level
      */
-    updateZoom (zoom) {
+    updateZoom(zoom) {
       this.panZoom.smoothZoom(20, 20, zoom)
     },
 
-    demoExplorerAnimation () {
+    demoExplorerAnimation() {
       this.modals.onboarding = false
       this.panZoom.smoothZoom(20, 20, 0.1)
     },
@@ -317,14 +317,14 @@ export default {
     /**
      * Add/remove interest from filter
      */
-    toggleInterest (interest) {
+    toggleInterest(interest) {
       this.filter.interests = this.filter.interests.includes(interest) ? this.filter.interests.filter(i => i !== interest) : [...this.filter.interests, interest]
     },
 
     /**
      * Load role and open modal
      */
-    viewRole (role) {
+    viewRole(role) {
       this.loading = true
       setTimeout(() => {
         this.loading = false

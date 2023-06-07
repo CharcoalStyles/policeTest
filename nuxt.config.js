@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: 'Build and manage a digital career in NSW Government based on interests, capabilities, goals and past experiences.' }
     ],
     script: [
-      { src: "https://onegov.nsw.gov.au/quickfeed/js/quickfeed.min.js" }
+      { src: 'https://onegov.nsw.gov.au/quickfeed/js/quickfeed.min.js' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

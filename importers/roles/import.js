@@ -13,7 +13,7 @@ const ROLE_GRADES = [
   '9-10',
   '11-12',
   'PSSE Band 1',
-  'PSSE Band 2',
+  'PSSE Band 2'
 ]
 
 // Establish csv filename
@@ -27,7 +27,7 @@ const rolesCsvData = papa.parse(fs.readFileSync(filename, 'utf8'), {
   skipEmptyLines: true,
   transformHeader: (h) => {
     return h.replace(/\s/g, '_').toLowerCase()
-  },
+  }
 })
 
 // Init empty roles
@@ -52,7 +52,7 @@ const codeLevelParser = (item) => {
   cleanedItem.forEach((skill) => {
     array.push({
       code: skill.replace(/[^a-zA-Z]+/g, ''),
-      level: skill.replace(/\D/g, ''),
+      level: skill.replace(/\D/g, '')
     })
   })
 
@@ -96,14 +96,14 @@ rolesCsvData.data.forEach((row) => {
     manager: parseManager(row.manager), // parse as bool
     salary: {
       min: parseSalary(row.salary_min),
-      max: parseSalary(row.salary_max),
+      max: parseSalary(row.salary_max)
     },
     skills: {
-      focus: codeLevelParser(row.sfia_skills_focus), // parse as array
+      focus: codeLevelParser(row.sfia_skills_focus) // parse as array
     },
     capabilities: {
-      focus: codeLevelParser(row.nswg_capabilities_focus), // parse as array
-    },
+      focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array
+    }
   })
 })
 
