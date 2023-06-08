@@ -151,23 +151,26 @@ const mutations = {
     role.skills.focus.forEach((skill) => {
       const currentSkill = state.skills.find((s) => s.code === skill.code)
 
-      const childStep = {
-        id: currentSkill.code,
-        title: currentSkill.name,
-        type: 'question',
-        schema: {
-          section: 'Assess your current SFIA skill level',
-          help: currentSkill.description,
-          field: {
-            type: 'skill',
-            required: true,
-            options: currentSkill.levels
-          },
-          value: null
+      if (currentSkill) {
+        const childStep = {
+          id: currentSkill.code,
+          title: currentSkill.name,
+          type: 'question',
+          schema: {
+            section: 'Assess your current SFIA skill level',
+            help: currentSkill.description,
+            field: {
+              type: 'skill',
+              required: true,
+              options: currentSkill.levels
+            },
+            value: null
+          }
         }
+        skillSteps.push(childStep)
+      } else {
+        console.warn(`No Skill found for: ${skill.code}`)
       }
-
-      skillSteps.push(childStep)
     })
 
     // Add generated skill steps as child questions
