@@ -24,18 +24,18 @@ const state = () => ({
 
 const getters = {
   // Filter steps based on conditions and answers
-  filteredSteps: state => {
-    return state.pathway.steps.filter(step => {
+  filteredSteps: (state) => {
+    return state.pathway.steps.filter((step) => {
       return checkConditions(step.conditions, state.pathway.answers)
     })
   },
   flattenedSteps: (state, getters) => {
     const stepKeys = []
     // Combine steps and child steps into simple aray
-    getters.filteredSteps.forEach(parentStep => {
+    getters.filteredSteps.forEach((parentStep) => {
       stepKeys.push(parentStep.id)
       if (parentStep.steps) {
-        parentStep.steps.forEach(childStep => {
+        parentStep.steps.forEach((childStep) => {
           stepKeys.push(`${parentStep.id}-${childStep.id}`)
         })
       }
@@ -46,10 +46,10 @@ const getters = {
     return getters.flattenedSteps.length
   },
   getStepById: (state, getters) => (stepId) => {
-    return getters.filteredSteps.find(step => step.id === stepId)
+    return getters.filteredSteps.find((step) => step.id === stepId)
   },
   getStepIndex: (state, getters) => (stepId) => {
-    return getters.filteredSteps.findIndex(step => step.id === stepId)
+    return getters.filteredSteps.findIndex((step) => step.id === stepId)
   },
   getNextStepByCurrentIndex: (state, getters) => (index) => {
     return getters.filteredSteps[index + 1]
@@ -58,10 +58,14 @@ const getters = {
     return getters.filteredSteps[index - 1]
   },
   getChildStepById: (state, getters) => (stepId, childStepId) => {
-    return getters.getStepById(stepId).steps.find(step => step.id === childStepId)
+    return getters
+      .getStepById(stepId)
+      .steps.find((step) => step.id === childStepId)
   },
   getChildStepIndex: (state, getters) => (stepId, childStepId) => {
-    return getters.getStepById(stepId).steps.findIndex(step => step.id === childStepId)
+    return getters
+      .getStepById(stepId)
+      .steps.findIndex((step) => step.id === childStepId)
   },
   getNextChildStepByCurrentIndex: (state, getters) => (stepId, index) => {
     return getters.getStepById(stepId).steps[index + 1]
@@ -70,7 +74,7 @@ const getters = {
     return getters.getStepById(stepId).steps[index - 1]
   },
   getRoleByCode: (state, getters) => (roleCode) => {
-    return state.roles.find(role => role.id === roleCode)
+    return state.roles.find((role) => role.id === roleCode)
   },
   answers: (state) => {
     return state.pathway.answers
@@ -97,7 +101,9 @@ const getters = {
         break
 
       case 'radio':
-        return collect(step.schema.field.options).where('value', answer.value).first().title
+        return collect(step.schema.field.options)
+          .where('value', answer.value)
+          .first().title
         break
 
       default:
@@ -130,18 +136,20 @@ const mutations = {
   },
 
   ADD_SKILL_ASSESSMENT(state, payload) {
-    const skillStepIndex = state.pathway.steps.findIndex(step => step.id === 'skills')
+    const skillStepIndex = state.pathway.steps.findIndex(
+      (step) => step.id === 'skills'
+    )
 
     // Reset in case any have already been set
     state.pathway.steps[skillStepIndex].steps = []
 
     // Add new
-    const role = state.roles.find(role => role.id === payload.value)
+    const role = state.roles.find((role) => role.id === payload.value)
     const skillSteps = []
 
     // Generate dynamic skill child steps
-    role.skills.focus.forEach(skill => {
-      const currentSkill = state.skills.find(s => s.code === skill.code)
+    role.skills.focus.forEach((skill) => {
+      const currentSkill = state.skills.find((s) => s.code === skill.code)
 
       const childStep = {
         id: currentSkill.code,
@@ -167,18 +175,22 @@ const mutations = {
   },
 
   ADD_CAPABILITY_ASSESSMENT(state, payload) {
-    const capabilitiesStepIndex = state.pathway.steps.findIndex(step => step.id === 'capabilities')
+    const capabilitiesStepIndex = state.pathway.steps.findIndex(
+      (step) => step.id === 'capabilities'
+    )
 
     // Reset in case any have already been set
     state.pathway.steps[capabilitiesStepIndex].steps = []
 
     // Add new
-    const role = state.roles.find(role => role.id === payload.value)
+    const role = state.roles.find((role) => role.id === payload.value)
     const capabilitySteps = []
 
     // Generate dynamic capability steps
-    role.capabilities.focus.forEach(capability => {
-      const currentCapability = state.capabilities.find(c => c.subcode === capability.code)
+    role.capabilities.focus.forEach((capability) => {
+      const currentCapability = state.capabilities.find(
+        (c) => c.subcode === capability.code
+      )
 
       const childStep = {
         id: currentCapability.subcode,
@@ -204,12 +216,16 @@ const mutations = {
   },
 
   CLEAR_SKILL_ASSESSMENT(state, payload) {
-    const skillStepIndex = state.pathway.steps.findIndex(step => step.id === 'skills')
+    const skillStepIndex = state.pathway.steps.findIndex(
+      (step) => step.id === 'skills'
+    )
     state.pathway.steps[skillStepIndex].steps = []
   },
 
   CLEAR_CAPABILITY_ASSESSMENT(state, payload) {
-    const capabilitiesStepIndex = state.pathway.steps.findIndex(step => step.id === 'capabilities')
+    const capabilitiesStepIndex = state.pathway.steps.findIndex(
+      (step) => step.id === 'capabilities'
+    )
     state.pathway.steps[capabilitiesStepIndex].steps = []
   },
 
@@ -245,9 +261,4 @@ const actions = {
   }
 }
 
-export {
-  state,
-  getters,
-  mutations,
-  actions
-}
+export { state, getters, mutations, actions }
