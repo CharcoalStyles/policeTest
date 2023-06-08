@@ -1,0 +1,12 @@
+{
+  // "volar.format.enable": false,
+  // "volar.validation.template": false,
+  // "editor.formatOnSave": true,
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.singleAttributePerLine": true,
+  "prettier.useTabs": true,
+  "prettier.vueIndentScriptAndStyle": false
+}

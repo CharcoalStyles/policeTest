@@ -24,6 +24,22 @@ module.exports = {
     'vue/no-unused-components': 'warn',
     'nuxt/no-globals-in-created': 'off',
     'no-prototype-builtins': 'off',
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    'vue/html-self-closing': 'off',
+    'vue/html-closing-bracket-newline': [
+      'error',
+      {
+        singleline: 'never',
+        multiline: 'always'
+      }
+    ],
+    'vue/singleline-html-element-content-newline': [
+      'error',
+      {
+        ignoreWhenNoAttributes: true,
+        ignoreWhenEmpty: true,
+        ignores: ['h1', 'h2', 'option', 'label', 'span']
+      }
+    ]
   }
 }

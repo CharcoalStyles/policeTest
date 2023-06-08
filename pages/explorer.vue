@@ -1,10 +1,12 @@
 <template>
   <div class="font-sans flex-grow flex h-screen">
-    <aside class="relative z-0 bg-nsw-grey-100 flex flex-col flex-shrink-0 nsw-forms max-h-screen w-screen lg:w-aside lg:border-r lg:border-nsw-grey-200">
-      <div class="bg-nsw-brand-secondary-blue px-4 h-10 w-full flex-shrink-0 flex items-center">
-        <h1 class="font-bold text-lg text-white">
-          Role Explorer
-        </h1>
+    <aside
+      class="relative z-0 bg-nsw-grey-100 flex flex-col flex-shrink-0 nsw-forms max-h-screen w-screen lg:w-aside lg:border-r lg:border-nsw-grey-200"
+    >
+      <div
+        class="bg-nsw-brand-secondary-blue px-4 h-10 w-full flex-shrink-0 flex items-center"
+      >
+        <h1 class="font-bold text-lg text-white">Role Explorer</h1>
       </div>
       <div class="relative flex-grow flex flex-col overflow-hidden">
         <div class="flex-grow flex flex-col overflow-hidden">
@@ -12,10 +14,11 @@
             <div class="bg-white shadow-lg">
               <div class="px-4 pt-4">
                 <div class="flex items-center justify-between leading-none">
-                  <h2 class="font-bold text-xl">
-                    Discover roles
-                  </h2>
-                  <button class="text-sm underline font-bold text-nsw-blue-800" @click="resetAllFilters">
+                  <h2 class="font-bold text-xl">Discover roles</h2>
+                  <button
+                    class="text-sm underline font-bold text-nsw-blue-800"
+                    @click="resetAllFilters"
+                  >
                     Reset
                   </button>
                 </div>
@@ -23,7 +26,7 @@
               <div class="p-4">
                 <div class="grid gap-x-6 gap-y-3 md:gap-y-6 grid-cols-2">
                   <div class="col-span-2 flex flex-col">
-                    <label class="font-bold mb-2" for="keywords">Search by keyword</label>
+                    <label class="font-bold mb-2">Search by keyword</label>
                     <input
                       id="keywords"
                       v-debounce:300ms.fireonempty="updateKeyword"
@@ -31,41 +34,52 @@
                       class="nsw-form-input"
                       placeholder="Enter a keyword"
                       :value="filter.keyword"
-                    >
+                    />
                   </div>
                   <div class="flex flex-col">
                     <label class="font-bold mb-1">Salary</label>
                     <div class="text-sm mb-3 text-gray-700">
-                      ${{ filter.salary[0] / 1000 }}k - ${{ filter.salary[1] / 1000 }}k
+                      ${{ filter.salary[0] / 1000 }}k - ${{
+                        filter.salary[1] / 1000
+                      }}k
                     </div>
                     <div class="w-full flex justify-center">
                       <div class="w-11/12">
-                        <input-range v-model="filter.salary" :min="options.salary.min" :max="options.salary.max" />
+                        <input-range
+                          v-model="filter.salary"
+                          :min="options.salary.min"
+                          :max="options.salary.max"
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="flex flex-col">
                     <label class="font-bold mb-2">Skills</label>
-                    <div class="p-3 rounded nsw-form-select cursor-pointer" @click="modals.skills = true">
+                    <div
+                      class="p-3 rounded nsw-form-select cursor-pointer"
+                      @click="modals.skills = true"
+                    >
                       {{ filter.skills.length }} selected
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="px-4 py-4 flex items-center justify-between bg-gray-100 border-gray-300 border-b">
+              <div
+                class="px-4 py-4 flex items-center justify-between bg-gray-100 border-gray-300 border-b"
+              >
                 <div class="font-bold text-lg">
                   {{ filteredRolesTotal }} results
                 </div>
                 <div class="flex items-center">
                   <label class="mr-3" for="sort">Sort by:</label>
                   <div class="inline-block relative">
-                    <select id="sort" v-model="filter.sortBy" class="nsw-form-select">
-                      <option value="manager">
-                        Manager roles
-                      </option>
-                      <option value="gradeId">
-                        Salary
-                      </option>
+                    <select
+                      id="sort"
+                      v-model="filter.sortBy"
+                      class="nsw-form-select"
+                    >
+                      <option value="manager">Manager roles</option>
+                      <option value="gradeId">Salary</option>
                     </select>
                   </div>
                 </div>
@@ -73,7 +87,11 @@
             </div>
           </div>
           <div class="p-4 flex-grow overflow-y-scroll">
-            <div v-for="(group, index) in filteredRolesByFunction" :key="index" class="mb-10">
+            <div
+              v-for="(group, index) in filteredRolesByFunction"
+              :key="index"
+              class="mb-10"
+            >
               <h3 class="font-bold text-lg mb-4">
                 {{ group.name }}
               </h3>
@@ -89,7 +107,13 @@
           </div>
         </div>
         <transition name="role">
-          <role-slideout v-if="slideout" :roles="roles" :role="selectedRole" @back="resetSlideout()" @selected="viewRole" />
+          <role-slideout
+            v-if="slideout"
+            :roles="roles"
+            :role="selectedRole"
+            @back="resetSlideout()"
+            @selected="viewRole"
+          />
         </transition>
       </div>
     </aside>
@@ -99,10 +123,16 @@
         <nsw-beta-banner />
       </div>
       <div class="relative flex-grow">
-        <zoom-tool class="not-zoomable fixed top-0 right-0 m-8 z-10" @zoom="updateZoom" />
+        <zoom-tool
+          class="not-zoomable fixed top-0 right-0 m-8 z-10"
+          @zoom="updateZoom"
+        />
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
           <div class="block zoomable">
-            <div class="families inline-flex flex-wrap p-20" :class="{ 'pointer-events-none' : panning }">
+            <div
+              class="families inline-flex flex-wrap p-20"
+              :class="{ 'pointer-events-none': panning }"
+            >
               <role-function
                 v-for="(roleFunction, index) in filteredRolesByFunction"
                 :key="roleFunction.name"
@@ -116,13 +146,20 @@
           </div>
         </div>
       </div>
-      <div class="p-4 bg-nsw-grey-100 border-t border-nsw-grey-200 flex justify-between">
-        <div class="cursor-pointer flex items-center" @click="$router.push('/pathway')">
-          <img src="/icons/pathway.svg" alt="Clipboard icon" class="h-8 ml-1 mr-3">
+      <div
+        class="p-4 bg-nsw-grey-100 border-t border-nsw-grey-200 flex justify-between"
+      >
+        <div
+          class="cursor-pointer flex items-center"
+          @click="$router.push('/pathway')"
+        >
+          <img
+            src="/icons/pathway.svg"
+            alt="Clipboard icon"
+            class="h-8 ml-1 mr-3"
+          />
           <div class="flex flex-col">
-            <div class="font-bold">
-              Get a personalised career plan
-            </div>
+            <span class="font-bold">Get a personalised career plan</span>
           </div>
         </div>
         <nsw-button size="sm" @click.native="$router.push('/pathway')">
@@ -131,10 +168,19 @@
       </div>
     </main>
 
-    <skills-selector :show="modals.skills" max-width="xl" @close="modals.skills = false" @reset="resetSkillsFilter">
+    <skills-selector
+      :show="modals.skills"
+      max-width="xl"
+      @close="modals.skills = false"
+      @reset="resetSkillsFilter"
+    >
       <input-skills v-model="filter.skills" :roles="roles" />
     </skills-selector>
-    <modal-onboarding :show="modals.onboarding" max-width="xl" @close="demoExplorerAnimation" />
+    <modal-onboarding
+      :show="modals.onboarding"
+      max-width="xl"
+      @close="demoExplorerAnimation"
+    />
 
     <page-loading :loading="loading" />
   </div>
@@ -188,14 +234,14 @@ export default {
       options: {
         salary: {
           min: 70000,
-          max: 275000
+          max: 346000
         }
       },
       filter: {
         keyword: '',
         skills: [],
         interests: [],
-        salary: [70000, 275000],
+        salary: [70000, 346000],
         sortBy: 'gradeId'
       }
     }
@@ -211,8 +257,12 @@ export default {
       return collect(fuzzy.search(this.filter.keyword))
         .where('salary.min', '>=', this.filter.salary[0])
         .where('salary.max', '<=', this.filter.salary[1])
-        .filter(role => {
-          return this.filter.skills.length && role.skills.focus ? collect(role.skills.focus).whereIn('code', this.filter.skills).count() : true
+        .filter((role) => {
+          return this.filter.skills.length && role.skills.focus
+            ? collect(role.skills.focus)
+              .whereIn('code', this.filter.skills)
+              .count()
+            : true
         })
     },
 
@@ -230,14 +280,14 @@ export default {
       return this.filteredRoles
         .groupBy('familyFunction')
         .keys()
-        .map(key => ({
+        .map((key) => ({
           name: key,
           roles: this.filteredRoles
             .where('familyFunction', key)
             .sortByDesc(this.filter.sortBy)
             .all()
         }))
-        .sortByDesc(group => group.roles.length)
+        .sortByDesc((group) => group.roles.length)
         .all()
     }
   },
@@ -261,7 +311,7 @@ export default {
       this.panning = false
     })
 
-    this.panZoom.on('transform', e => {
+    this.panZoom.on('transform', (e) => {
       this.zoom = e.getTransform().scale
     })
   },
@@ -269,7 +319,9 @@ export default {
     resetSlideout() {
       this.slideout = false
       if (this.previousRoleId) {
-        const previousRoleDom = document.getElementsByClassName(`role-${this.previousRoleId}`)[0]
+        const previousRoleDom = document.getElementsByClassName(
+          `role-${this.previousRoleId}`
+        )[0]
         previousRoleDom.classList.add('border-nsw-grey-200')
         previousRoleDom.classList.add('border-white')
         previousRoleDom.classList.remove('border-black')
@@ -286,7 +338,7 @@ export default {
         keyword: '',
         skills: [],
         interests: [],
-        salary: [70000, 275000],
+        salary: [70000, 346000],
         sortBy: 'gradeId'
       }
     },
@@ -318,7 +370,9 @@ export default {
      * Add/remove interest from filter
      */
     toggleInterest(interest) {
-      this.filter.interests = this.filter.interests.includes(interest) ? this.filter.interests.filter(i => i !== interest) : [...this.filter.interests, interest]
+      this.filter.interests = this.filter.interests.includes(interest)
+        ? this.filter.interests.filter((i) => i !== interest)
+        : [...this.filter.interests, interest]
     },
 
     /**
@@ -349,7 +403,9 @@ export default {
           roleDom.classList.add('border-black')
           // Restore the styling of the previous role
           if (this.previousRoleId) {
-            const previousRoleDom = document.getElementsByClassName(`role-${this.previousRoleId}`)[0]
+            const previousRoleDom = document.getElementsByClassName(
+              `role-${this.previousRoleId}`
+            )[0]
             previousRoleDom.classList.add('border-nsw-grey-200')
             previousRoleDom.classList.add('border-white')
             previousRoleDom.classList.remove('border-black')
@@ -386,14 +442,17 @@ export default {
 </script>
 
 <style>
-  .role-enter-active {
-    transition: all .3s ease;
-  }
-  .role-leave-active {
-    transition: all .3s ease-in-out;
-  }
-  .role-enter, .role-leave-to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
+.role-enter-active {
+  transition: all 0.3s ease;
+}
+
+.role-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.role-enter,
+.role-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
 </style>
