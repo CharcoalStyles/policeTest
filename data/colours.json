@@ -1,32 +1,7 @@
 [
   {
-    "function": "Delivery & Operation",
+    "function": "Procurement and Contract Management",
     "light": "#EBF8FF",
     "dark": "#BEE3F8"
-  },
-  {
-    "function": "Development and Implementation",
-    "light": "#FFF5F5",
-    "dark": "#FED7D7"
-  },
-  {
-    "function": "Change and Transformation",
-    "light": "#FFFAF0",
-    "dark": "#FEEBC8"
-  },
-  {
-    "function": "Strategy and Architecture",
-    "light": "#F0FFF4",
-    "dark": "#C6F6D5"
-  },
-  {
-    "function": "Skill and Quality",
-    "light": "#FFF5F7",
-    "dark": "#FED7E2"
-  },
-  {
-    "function": "Relationships and Engagement",
-    "light": "#E6FFFA",
-    "dark": "#B2F5EA"
   }
 ]

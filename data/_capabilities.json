@@ -45,7 +45,7 @@
       {
         "level": 4,
         "name": "Advanced",
-        "easyDescription": "This is a strength of mine ",
+        "easyDescription": "This is a strength of mine",
         "attributes": [
           "Remain composed and calm and act constructively in highly pressured and unpredictable environments",
           "Give frank, honest advice in response to strong contrary views",
@@ -57,7 +57,7 @@
       {
         "level": 5,
         "name": "Highly Advanced",
-        "easyDescription": "I’ve been recognised by others for this and can help teach others\n",
+        "easyDescription": "I’ve been recognised by others for this and can help teach others",
         "attributes": [
           "Create a culture that encourages and supports openness, persistence and genuine debate around critical issues",
           "Provide clear exposition and argument for agreed positions while remaining open to valid suggestions for change",
@@ -334,7 +334,8 @@
           "Contribute to and promote information sharing across the organisation",
           "Manage complex communications that involve understanding and responding to multiple and divergent viewpoints",
           "Explore creative ways to engage diverse audiences and communicate information",
-          "Adjust style and approach to optimise outcomes"
+          "Adjust style and approach to optimise outcomes",
+          "Write fluently and persuasively in plain English and in a range of styles and formats"
         ]
       },
       {
@@ -538,7 +539,8 @@
           "Recognise diverse perspectives and the need for compromise in negotiating mutually agreed outcomes",
           "Influence others with a fair and considered approach and sound arguments",
           "Show sensitivity and understanding in resolving conflicts and differences",
-          "Manage challenging relationships with internal and external stakeholders"
+          "Manage challenging relationships with internal and external stakeholders",
+          "Anticipate and minimise conflict"
         ]
       },
       {
@@ -1098,7 +1100,8 @@
           "Identify and evaluate risks associated with the project and develop mitigation strategies",
           "Identify and consult stakeholders to inform the project strategy",
           "Communicate the project’s objectives and its expected benefits",
-          "Monitor the completion of project milestones against goals and take necessary action"
+          "Monitor the completion of project milestones against goals and take necessary action",
+          "Evaluate progress and identify improvements to inform future projects"
         ]
       },
       {
@@ -1149,7 +1152,8 @@
           "Recognise good performance, and give support and regular constructive feedback linked to development needs",
           "Identify appropriate learning opportunities for team members",
           "Create opportunities for all team members to contribute",
-          "Act as a role model for inclusive behaviours and practices"
+          "Act as a role model for inclusive behaviours and practices",
+          "Recognise performance issues that need to be addressed and seek appropriate advice"
         ]
       },
       {
@@ -1163,7 +1167,8 @@
           "Identify and act on opportunities to provide coaching and mentoring",
           "Recognise performance issues that need to be addressed and work towards resolving issues",
           "Effectively support and manage team members who are working flexibly and in various locations",
-          "Create a safe environment where team members’ diverse backgrounds and cultures are considered and respected"
+          "Create a safe environment where team members’ diverse backgrounds and cultures are considered and respected",
+          "Consider feedback on own management style and reflect on potential areas to improve"
         ]
       },
       {

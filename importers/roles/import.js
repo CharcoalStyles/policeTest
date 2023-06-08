@@ -6,12 +6,21 @@ const papa = require('papaparse')
  * Note: Import defaults to roles.csv if argument not supplied
  */
 
+// const ROLE_GRADES = [
+//   '3-4',
+//   '5-6',
+//   '7-8',
+//   '9-10',
+//   '11-12',
+//   'PSSE Band 1',
+//   'PSSE Band 2',
+// ]
 const ROLE_GRADES = [
-  '3-4',
-  '5-6',
-  '7-8',
-  '9-10',
-  '11-12',
+  'Clerk Grade 3/4',
+  'Clerk Grade 5/6',
+  'Clerk Grade 7/8',
+  'Clerk Grade 9/10',
+  'Clerk Grade 11/12',
   'PSSE Band 1',
   'PSSE Band 2'
 ]
@@ -47,6 +56,9 @@ const gradeIdParser = (grade) => {
  */
 const codeLevelParser = (item) => {
   const array = []
+  if (!item) {
+    return array
+  }
   const cleanedItem = item.replace(/\s/g, '').split(',')
 
   cleanedItem.forEach((skill) => {
