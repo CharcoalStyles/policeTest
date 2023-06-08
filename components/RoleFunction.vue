@@ -7,25 +7,25 @@
         :style="getBgColour('light')"
       >
         <div class="rounded-full text-family bg-white py-12 px-32">
-          {{ roleFunction.roles.length }} roles
+          {{ familyRole.roles.length }} roles
         </div>
       </div>
     </transition>
     <div class="inline-block" :style="getBgColour('light')">
       <div class="px-12 py-8 flex justify-center">
         <h2 class="font-bold text-family px-64 py-16 z-20">
-          {{ roleFunction.name }}
+          {{ familyRole.name }}
         </h2>
       </div>
       <table class="border-collapse w-full">
         <tr class="text-2xl">
           <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
           <th
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="px-12 py-8 whitespace-no-wrap h-20 text-left"
           >
-            {{ familyRole.name }}
+            {{ item.name }}
           </th>
         </tr>
         <tr>
@@ -38,8 +38,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -49,7 +49,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['B2'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['B2'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -70,8 +70,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -81,7 +81,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['B1'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['B1'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -101,8 +101,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -113,7 +113,7 @@
             >
               <role-panel
                 v-for="role in rolesInGrade(
-                  familyRole.roles,
+                  item.roles,
                   gradeMap['11-12']
                 )"
                 :key="role.id"
@@ -136,8 +136,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -147,7 +147,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['9-10'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['9-10'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -167,8 +167,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -178,7 +178,7 @@
               :style="getBgColour('light')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['7-8'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['7-8'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -199,8 +199,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -210,7 +210,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['5-6'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['5-6'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -230,8 +230,8 @@
             </div>
           </td>
           <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
+            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            :key="item.name"
             class="border-r-2 border-white"
           >
             <transition-group
@@ -241,7 +241,7 @@
               :style="getBgColour('light')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, gradeMap['3-4'])"
+                v-for="role in rolesInGrade(item.roles, gradeMap['3-4'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -278,7 +278,7 @@ export default {
       type: Number,
       required: true
     },
-    roleFunction: {
+    familyRole: {
       type: Object,
       required: true
     }
@@ -323,9 +323,20 @@ export default {
         }))
       return result
     },
+    groupRolesByRoleFunction(roles) {
+      const result = this.$collect(this.roles)
+        .where('familyRole', this.familyRole.name)
+        .groupBy('roleFunction')
+        .keys()
+        .map((key) => ({
+          name: key,
+          roles: this.$collect(roles).where('roleFunction', key).all()
+        }))
+      return result
+    },
     getBgColour(type) {
       const colour = this.$collect(this.colours)
-        .where('function', this.roleFunction.name)
+        .where('function', this.familyRole.name)
         .first()
       return `background-color: ${colour[type]}`
     },

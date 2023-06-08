@@ -88,7 +88,7 @@
           </div>
           <div class="p-4 flex-grow overflow-y-scroll">
             <div
-              v-for="(group, index) in filteredRolesByFunction"
+              v-for="(group, index) in filteredRolesByFamilyRole"
               :key="index"
               class="mb-10"
             >
@@ -134,9 +134,9 @@
               :class="{ 'pointer-events-none': panning }"
             >
               <role-function
-                v-for="(roleFunction, index) in filteredRolesByFunction"
-                :key="roleFunction.name"
-                :role-function="roleFunction"
+                v-for="(group, index) in filteredRolesByFamilyRole"
+                :key="group.name"
+                :family-role="group"
                 :roles="roles"
                 :index="index"
                 :zoom="zoom"
@@ -289,6 +289,26 @@ export default {
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
+    },
+
+    /**
+     * Filter roles by function group
+     */
+    filteredRolesByFamilyRole() {
+      const results = this.filteredRoles
+        .groupBy('familyRole')
+        .keys()
+        .map((key) => ({
+          name: key,
+          roles: this.filteredRoles
+            .where('familyRole', key)
+            .sortByDesc(this.filter.sortBy)
+            .all()
+        }))
+        .sortByDesc((group) => group.roles.length)
+        .all()
+      console.log(results)
+      return results
     }
   },
   mounted() {
