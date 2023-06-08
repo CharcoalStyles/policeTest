@@ -19,9 +19,7 @@
       </div>
       <table class="border-collapse w-full">
         <tr class="text-2xl">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">
-            Salary
-          </th>
+          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
           <th
             v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
             :key="familyRole.name"
@@ -36,7 +34,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $192k - $274k
+              {{ salaryMap['B2'] }}
             </div>
           </td>
           <td
@@ -51,38 +49,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, 'PSSE Band 1')"
-                :key="role.id"
-                :role="role"
-                class="mr-8"
-                clickable
-                zoomable
-                @click.native="$emit('selected', role)"
-              />
-            </transition-group>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
-          >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $142k - $164k
-            </div>
-          </td>
-          <td
-            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="familyRole.name"
-            class="border-r-2 border-white"
-          >
-            <transition-group
-              name="list"
-              tag="div"
-              class="p-8 whitespace-no-wrap h-56 flex items-center"
-              :style="getBgColour('light')"
-            >
-              <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, '11-12')"
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['B2'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -99,7 +66,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $122k - $135k
+              {{ salaryMap['B1'] }}
             </div>
           </td>
           <td
@@ -114,7 +81,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, '9-10')"
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['B1'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -130,7 +97,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $107k - $119k
+              {{ salaryMap['11-12'] }}
             </div>
           </td>
           <td
@@ -145,7 +112,10 @@
               :style="getBgColour('light')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, '7-8')"
+                v-for="role in rolesInGrade(
+                  familyRole.roles,
+                  gradeMap['11-12']
+                )"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -162,7 +132,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $94k - $104k
+              {{ salaryMap['9-10'] }}
             </div>
           </td>
           <td
@@ -177,7 +147,7 @@
               :style="getBgColour('dark')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, '5-6')"
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['9-10'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -193,7 +163,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
-              $80k - $87k
+              {{ salaryMap['7-8'] }}
             </div>
           </td>
           <td
@@ -208,7 +178,70 @@
               :style="getBgColour('light')"
             >
               <role-panel
-                v-for="role in rolesInGrade(familyRole.roles, '3-4')"
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['7-8'])"
+                :key="role.id"
+                :role="role"
+                class="mr-8"
+                clickable
+                zoomable
+                @click.native="$emit('selected', role)"
+              />
+            </transition-group>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            :style="getBgColour('dark')"
+          >
+            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+              {{ salaryMap['5-6'] }}
+            </div>
+          </td>
+          <td
+            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
+            :key="familyRole.name"
+            class="border-r-2 border-white"
+          >
+            <transition-group
+              name="list"
+              tag="div"
+              class="p-8 whitespace-no-wrap h-56 flex items-center"
+              :style="getBgColour('dark')"
+            >
+              <role-panel
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['5-6'])"
+                :key="role.id"
+                :role="role"
+                class="mr-8"
+                clickable
+                zoomable
+                @click.native="$emit('selected', role)"
+              />
+            </transition-group>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+          >
+            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+              {{ salaryMap['3-4'] }}
+            </div>
+          </td>
+          <td
+            v-for="familyRole in groupRolesByFamilyRole(roleFunction.roles)"
+            :key="familyRole.name"
+            class="border-r-2 border-white"
+          >
+            <transition-group
+              name="list"
+              tag="div"
+              class="p-8 whitespace-no-wrap h-56 flex items-center"
+              :style="getBgColour('light')"
+            >
+              <role-panel
+                v-for="role in rolesInGrade(familyRole.roles, gradeMap['3-4'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -252,7 +285,25 @@ export default {
   },
   data() {
     return {
-      colours
+      colours,
+      gradeMap: {
+        '3-4': 'Clerk Grade 3/4',
+        '5-6': 'Clerk Grade 5/6',
+        '7-8': 'Clerk Grade 7/8',
+        '9-10': 'Clerk Grade 9/10',
+        '11-12': 'Clerk Grade 11/12',
+        B1: 'PSSE Band 1',
+        B2: 'PSSE Band 2'
+      },
+      salaryMap: {
+        '3-4': '$76k - $83k',
+        '5-6': '$90k - $99k',
+        '7-8': '$102k - $113k',
+        '9-10': '$116k - $128k',
+        '11-12': '$134k - $155k',
+        B1: '$193k - $275k',
+        B2: '$275k - $346'
+      }
     }
   },
   computed: {
@@ -262,7 +313,7 @@ export default {
   },
   methods: {
     groupRolesByFamilyRole(roles) {
-      return this.$collect(this.roles)
+      const result = this.$collect(this.roles)
         .where('familyFunction', this.roleFunction.name)
         .groupBy('familyRole')
         .keys()
@@ -270,6 +321,7 @@ export default {
           name: key,
           roles: this.$collect(roles).where('familyRole', key).all()
         }))
+      return result
     },
     getBgColour(type) {
       const colour = this.$collect(this.colours)
