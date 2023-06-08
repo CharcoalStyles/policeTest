@@ -38,7 +38,7 @@ module.exports = {
       {
         ignoreWhenNoAttributes: true,
         ignoreWhenEmpty: true,
-        ignores: ['h1', 'h2', 'option', 'label', 'span']
+        ignores: ['h1', 'h2', 'option', 'label', 'span', 'th', 'td']
       }
     ]
   }
