@@ -247,6 +247,7 @@ export default {
       'getHumanReadableAnswerValue'
     ]),
     upskilling() {
+      // TODO: Confirm that there are no default resources, then all logic pertaining to default resources within this method can be removed.
       // Get all the default resources
       const defaultResources = this.$collect(this.resources).where('default', true).all()
 
