@@ -31,7 +31,8 @@ module.exports = {
           'secondary-blue': '#2E5299',
           'tertiary-blue': '#0085B3',
           'psc-green': '#00857C',
-          'psc-purple': '#3E2C56'
+          'psc-purple': '#3E2C56',
+          'grey-primary': '#22272B'
         },
         'nsw-grey': {
           100: '#F4F4F7', // Light10
