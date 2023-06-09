@@ -62,6 +62,9 @@ module.exports = {
         aside: '450px',
         'modal-accessible': 'calc(100vw - 0.75rem)'
       },
+      padding: {
+        0.5: '0.125rem'
+      },
       height: {
         0.5: '0.125rem',
         radio: '1.4rem',
