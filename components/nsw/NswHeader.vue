@@ -5,10 +5,8 @@
         <p class="text-white text-sm">A NSW Government website</p>
       </div>
     </div>
-    <div class="bg-white">
-      <header
-        class="border-b border-nsw-grey-400 p-4 md:p-6 flex items-center justify-start xl:container"
-      >
+    <div class="bg-white border-b border-nsw-grey-200">
+      <header class="p-4 md:p-6 flex items-center justify-start xl:container">
         <nuxt-link to="/" class="mr-6">
           <img
             src="/logo.svg"

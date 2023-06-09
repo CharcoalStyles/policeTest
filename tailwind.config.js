@@ -62,6 +62,7 @@ module.exports = {
         'modal-accessible': 'calc(100vw - 0.75rem)'
       },
       height: {
+        0.5: '0.125rem',
         radio: '1.4rem',
         modal: '80vh',
         third: '50vh',
