@@ -110,10 +110,7 @@ rolesCsvData.data.forEach((row) => {
       min: parseSalary(row.salary_min),
       max: parseSalary(row.salary_max)
     },
-    // skills: {
-    //   focus: codeLevelParser(row.procurement_occupation_specific_focus_capabilities) // parse as array
-    // },
-    specificCapabilities: {
+    skills: {
       focus: codeLevelParser(row.procurement_occupation_specific_focus_capabilities) // parse as array
     },
     capabilities: {
