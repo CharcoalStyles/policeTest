@@ -29,7 +29,7 @@ resourcesCsvData.data.forEach((row, index) => {
     title: row.title,
     description: row.description, // NEW
     url: row.learning_resource_url,
-    skills: row.skills, // NEW
+    skills: row.skills.split(','), // NEW
     roleFunctions: [], // Not included in the CSV
     author: row.author,
     level: '', // Not indluded in the CSV
