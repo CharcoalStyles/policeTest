@@ -51,7 +51,7 @@ const gradeIdParser = (grade) => {
 }
 
 /**
- * Parse the combinaed skill/capability and level
+ * Parse the combinaed core & specific and level
  * @param {string} item
  */
 const codeLevelParser = (item) => {
@@ -61,10 +61,10 @@ const codeLevelParser = (item) => {
   }
   const cleanedItem = item.replace(/\s/g, '').split(',')
 
-  cleanedItem.forEach((skill) => {
+  cleanedItem.forEach((item) => {
     array.push({
-      code: skill.replace(/[^a-zA-Z]+/g, ''),
-      level: skill.replace(/\D/g, '')
+      code: item.replace(/[^a-zA-Z]+/g, ''),
+      level: item.replace(/\D/g, '')
     })
   })
 
@@ -110,11 +110,14 @@ rolesCsvData.data.forEach((row) => {
       min: parseSalary(row.salary_min),
       max: parseSalary(row.salary_max)
     },
-    skills: {
-      focus: codeLevelParser(row.sfia_skills_focus) // parse as array
+    // skills: {
+    //   focus: codeLevelParser(row.procurement_occupation_specific_focus_capabilities) // parse as array
+    // },
+    specificCapabilities: {
+      focus: codeLevelParser(row.procurement_occupation_specific_focus_capabilities) // parse as array
     },
     capabilities: {
-      focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array
+      focus: codeLevelParser(row.core_capabilities) // parse as array
     }
   })
 })

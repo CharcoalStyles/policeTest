@@ -14,7 +14,36 @@
       "max": 345550
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "5"
+        },
+        {
+          "code": "SURE",
+          "level": "5"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "5"
+        },
+        {
+          "code": "SURE",
+          "level": "5"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -60,7 +89,44 @@
       "max": 274700
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -106,7 +172,44 @@
       "max": 274700
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "5"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -152,7 +255,44 @@
       "max": 274700
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "5"
+        },
+        {
+          "code": "CONM",
+          "level": "4"
+        },
+        {
+          "code": "COLA",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "5"
+        },
+        {
+          "code": "CONM",
+          "level": "4"
+        },
+        {
+          "code": "COLA",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -206,7 +346,28 @@
       "max": 274700
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -252,6 +413,9 @@
       "max": 274700
     },
     "skills": {
+      "focus": []
+    },
+    "specificCapabilities": {
       "focus": []
     },
     "capabilities": {
@@ -306,7 +470,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "LEAN",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "LEAN",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -348,7 +541,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "LEAN",
+          "level": "5"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "LEAN",
+          "level": "5"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -394,7 +616,52 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STPR",
+          "level": "4"
+        },
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -436,7 +703,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "COSM",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        },
+        {
+          "code": "COSM",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -478,7 +774,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "4"
+        },
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -520,7 +845,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        },
+        {
+          "code": "CONM",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "SURE",
+          "level": "4"
+        },
+        {
+          "code": "CONM",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -570,7 +924,36 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STSO",
+          "level": "4"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -624,7 +1007,44 @@
       "max": 155400
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "CONE",
+          "level": "4"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -674,7 +1094,36 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "COSM",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "COSM",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -720,7 +1169,36 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -762,7 +1240,36 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -800,7 +1307,36 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "STRP",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "LEAN",
+          "level": "4"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "STRP",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "LEAN",
+          "level": "4"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -858,7 +1394,44 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "SURE",
+          "level": "3"
+        },
+        {
+          "code": "CONM",
+          "level": "3"
+        },
+        {
+          "code": "COLA",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "3"
+        },
+        {
+          "code": "SURE",
+          "level": "3"
+        },
+        {
+          "code": "CONM",
+          "level": "3"
+        },
+        {
+          "code": "COLA",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -904,7 +1477,36 @@
       "max": 128000
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -950,7 +1552,28 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -992,7 +1615,28 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "LEAN",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "LEAN",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1034,7 +1678,28 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "LEAN",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "LEAN",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1084,7 +1749,36 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "COSM",
+          "level": "3"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "3"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "COSM",
+          "level": "3"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1126,7 +1820,36 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1164,7 +1887,36 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        },
+        {
+          "code": "PRRI",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1202,7 +1954,36 @@
       "max": 112800
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "SURE",
+          "level": "2"
+        },
+        {
+          "code": "CONM",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PRRI",
+          "level": "2"
+        },
+        {
+          "code": "SURE",
+          "level": "2"
+        },
+        {
+          "code": "CONM",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1244,7 +2025,36 @@
       "max": 98900
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "1"
+        },
+        {
+          "code": "PRRI",
+          "level": "1"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "1"
+        },
+        {
+          "code": "PRRI",
+          "level": "1"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1286,7 +2096,36 @@
       "max": 98900
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "1"
+        },
+        {
+          "code": "PRRI",
+          "level": "1"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "2"
+        },
+        {
+          "code": "STSO",
+          "level": "1"
+        },
+        {
+          "code": "PRRI",
+          "level": "1"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1334,6 +2173,9 @@
     "skills": {
       "focus": []
     },
+    "specificCapabilities": {
+      "focus": []
+    },
     "capabilities": {
       "focus": [
         {
@@ -1378,7 +2220,28 @@
       "max": 98900
     },
     "skills": {
-      "focus": []
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "1"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        }
+      ]
+    },
+    "specificCapabilities": {
+      "focus": [
+        {
+          "code": "PANA",
+          "level": "1"
+        },
+        {
+          "code": "STSO",
+          "level": "2"
+        }
+      ]
     },
     "capabilities": {
       "focus": [
@@ -1420,6 +2283,9 @@
       "max": 83200
     },
     "skills": {
+      "focus": []
+    },
+    "specificCapabilities": {
       "focus": []
     },
     "capabilities": {
