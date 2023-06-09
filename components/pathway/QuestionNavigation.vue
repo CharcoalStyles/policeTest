@@ -1,7 +1,7 @@
 <template>
   <div class="fixed bottom-0 w-full bg-white">
-    <div class="h-1 bg-nsw-grey-100 block">
-      <div class="h-1 bg-nsw-brand-primary-blue transition-all duration-300 ease-in-out" :style="{ width: `${currentProgress}%` }" />
+    <div class="h-0.5 bg-nsw-grey-100 block">
+      <div class="h-0.5 bg-nsw-brand-primary-blue-2 transition-all duration-300 ease-in-out" :style="{ width: `${currentProgress}%` }" />
     </div>
     <div class="h-20 md:h-24 flex items-center justify-center xl:container">
       <div class="font-bold">

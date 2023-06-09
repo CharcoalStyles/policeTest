@@ -26,6 +26,7 @@ module.exports = {
         },
         'nsw-brand': {
           'primary-blue': '#002664',
+          'primary-blue-2': '#146CFD',
           'primary-highlight': '#D7153A',
           'secondary-blue': '#2E5299',
           'tertiary-blue': '#0085B3',
@@ -92,7 +93,5 @@ module.exports = {
       backgroundColor: ['group-focus']
     }
   },
-  plugins: [
-    require('./tailwind-plugins/nsw-typography')
-  ]
+  plugins: [require('./tailwind-plugins/nsw-typography')]
 }
