@@ -48,7 +48,7 @@ capabilitiesCsvData.data.forEach((row) => {
     return false
   }
   capabilities.push({
-    code: row.code,
+    code: row.category_code,
     category: row.category,
     subcode: row.subcategory_code,
     subcategory: row.subcategory,
