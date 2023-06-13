@@ -7,21 +7,21 @@
         :style="getBgColour('light')"
       >
         <div class="rounded-full text-family bg-white py-12 px-32">
-          {{ familyRole.roles.length }} roles
+          {{ roleFunction.roles.length }} roles
         </div>
       </div>
     </transition>
     <div class="inline-block" :style="getBgColour('light')">
       <div class="px-12 py-8 flex justify-center">
         <h2 class="font-bold text-family px-64 py-16 z-20">
-          {{ familyRole.name }}
+          {{ roleFunction.name }}
         </h2>
       </div>
       <table class="border-collapse w-full">
         <tr class="text-2xl">
           <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
           <th
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="px-12 py-8 whitespace-no-wrap h-20 text-left"
           >
@@ -38,7 +38,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -70,7 +70,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -101,7 +101,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -136,7 +136,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -167,7 +167,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -199,7 +199,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -230,7 +230,7 @@
             </div>
           </td>
           <td
-            v-for="item in groupRolesByRoleFunction(familyRole.roles)"
+            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
             class="border-r-2 border-white"
           >
@@ -278,7 +278,7 @@ export default {
       type: Number,
       required: true
     },
-    familyRole: {
+    roleFunction: {
       type: Object,
       required: true
     }
@@ -323,20 +323,20 @@ export default {
         }))
       return result
     },
-    groupRolesByRoleFunction(roles) {
-      const result = this.$collect(this.roles)
-        .where('familyRole', this.familyRole.name)
-        .groupBy('roleFunction')
-        .keys()
-        .map((key) => ({
-          name: key,
-          roles: this.$collect(roles).where('roleFunction', key).all()
-        }))
-      return result
-    },
+    // groupRolesByRoleFunction(roles) {
+    //   const result = this.$collect(this.roles)
+    //     .where('familyRole', this.familyRole.name)
+    //     .groupBy('roleFunction')
+    //     .keys()
+    //     .map((key) => ({
+    //       name: key,
+    //       roles: this.$collect(roles).where('roleFunction', key).all()
+    //     }))
+    //   return result
+    // },
     getBgColour(type) {
       const colour = this.$collect(this.colours)
-        .where('function', this.familyRole.name)
+        .where('function', this.roleFunction.name)
         .first()
       return `background-color: ${colour[type]}`
     },

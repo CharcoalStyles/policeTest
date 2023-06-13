@@ -88,7 +88,7 @@
           </div>
           <div class="p-4 flex-grow overflow-y-scroll">
             <div
-              v-for="(group, index) in filteredRolesByFamilyRole"
+              v-for="(group, index) in filteredRolesByFunction"
               :key="index"
               class="mb-10"
             >
@@ -134,9 +134,9 @@
               :class="{ 'pointer-events-none': panning }"
             >
               <role-function
-                v-for="(group, index) in filteredRolesByFamilyRole"
+                v-for="(group, index) in filteredRolesByFunction"
                 :key="group.name"
-                :family-role="group"
+                :role-function="group"
                 :roles="roles"
                 :index="index"
                 :zoom="zoom"

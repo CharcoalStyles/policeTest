@@ -1,32 +1,7 @@
 [
   {
-    "function": "Procurement Advice",
+    "function": "Procurement and Contract Management",
     "light": "#EBF8FF",
-    "dark": "#BEE3F8",
-    "name": "blue"
-  },
-  {
-    "function": "Contract Management",
-    "light": "#FFF5F5",
-    "dark": "#FED7D7",
-    "name": "red"
-  },
-  {
-    "function": "Procurement Services",
-    "light": "#FFFAF0",
-    "dark": "#FEEBC8",
-    "name": "yellow"
-  },
-  {
-    "function": "Procurement Analysis",
-    "light": "#F0FFF4",
-    "dark": "#C6F6D5",
-    "name": "green"
-  },
-  {
-    "function": "Procurement Executive",
-    "light": "#E6FFFA",
-    "dark": "#B2F5EA",
-    "name": "mint"
+    "dark": "#BEE3F8"
   }
 ]
