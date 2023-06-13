@@ -7,8 +7,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Know the role of procurement in the organisation as a core business partnership.",
           "Effectively deal with basic procurement queries from users and stakeholders",
@@ -19,8 +19,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Recognise the procurement role and responsibility across the organisation and act as a business partner when undertaking procurement activities.",
           "Engage confidently with senior stakeholders on procurement matters.",
@@ -31,8 +31,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Contribute to the strategic direction of the procurement function and implement this at a local level.",
           "Assess key stakeholders and develop strategies to gain buy-in and support for procurement programs/initiatives.",
@@ -45,8 +45,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Influence the strategic vision and direction of the procurement function and support its effective implementation across all areas of the business.",
           "Incorporate business insights and objectives into the development of the procurement strategies.",
@@ -59,8 +59,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish the vision and direction of the procurement function to meet the business need and implement this across the organisation.",
           "Incorporate business insights and objectives into the development of the procurement function.",
@@ -81,8 +81,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Know the role of procurement in the organisation as a core business partnership.",
           "Effectively deal with basic procurement queries from users and stakeholders",
@@ -93,8 +93,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Recognise the procurement role and responsibility across the organisation and act as a business partner when undertaking procurement activities.",
           "Engage confidently with senior stakeholders on procurement matters.",
@@ -105,8 +105,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Contribute to the strategic direction of the procurement function and implement this at a local level.",
           "Assess key stakeholders and develop strategies to gain buy-in and support for procurement programs/initiatives.",
@@ -119,8 +119,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Influence the strategic vision and direction of the procurement function and support its effective implementation across all areas of the business.",
           "Incorporate business insights and objectives into the development of the procurement strategies.",
@@ -133,8 +133,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish the vision and direction of the procurement function to meet the business need and implement this across the organisation.",
           "Incorporate business insights and objectives into the development of the procurement function.",
@@ -155,8 +155,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Know the role of procurement in the organisation as a core business partnership.",
           "Effectively deal with basic procurement queries from users and stakeholders",
@@ -167,8 +167,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Recognise the procurement role and responsibility across the organisation and act as a business partner when undertaking procurement activities.",
           "Engage confidently with senior stakeholders on procurement matters.",
@@ -179,8 +179,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Contribute to the strategic direction of the procurement function and implement this at a local level.",
           "Assess key stakeholders and develop strategies to gain buy-in and support for procurement programs/initiatives.",
@@ -193,8 +193,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Influence the strategic vision and direction of the procurement function and support its effective implementation across all areas of the business.",
           "Incorporate business insights and objectives into the development of the procurement strategies.",
@@ -207,8 +207,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish the vision and direction of the procurement function to meet the business need and implement this across the organisation.",
           "Incorporate business insights and objectives into the development of the procurement function.",
@@ -229,8 +229,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Know the role of procurement in the organisation as a core business partnership.",
           "Effectively deal with basic procurement queries from users and stakeholders",
@@ -241,8 +241,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Recognise the procurement role and responsibility across the organisation and act as a business partner when undertaking procurement activities.",
           "Engage confidently with senior stakeholders on procurement matters.",
@@ -253,8 +253,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Contribute to the strategic direction of the procurement function and implement this at a local level.",
           "Assess key stakeholders and develop strategies to gain buy-in and support for procurement programs/initiatives.",
@@ -267,8 +267,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Influence the strategic vision and direction of the procurement function and support its effective implementation across all areas of the business.",
           "Incorporate business insights and objectives into the development of the procurement strategies.",
@@ -281,8 +281,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish the vision and direction of the procurement function to meet the business need and implement this across the organisation.",
           "Incorporate business insights and objectives into the development of the procurement function.",
@@ -303,8 +303,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Know the role of procurement in the organisation as a core business partnership.",
           "Effectively deal with basic procurement queries from users and stakeholders",
@@ -315,8 +315,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Recognise the procurement role and responsibility across the organisation and act as a business partner when undertaking procurement activities.",
           "Engage confidently with senior stakeholders on procurement matters.",
@@ -327,8 +327,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Contribute to the strategic direction of the procurement function and implement this at a local level.",
           "Assess key stakeholders and develop strategies to gain buy-in and support for procurement programs/initiatives.",
@@ -341,8 +341,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Influence the strategic vision and direction of the procurement function and support its effective implementation across all areas of the business.",
           "Incorporate business insights and objectives into the development of the procurement strategies.",
@@ -355,8 +355,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish the vision and direction of the procurement function to meet the business need and implement this across the organisation.",
           "Incorporate business insights and objectives into the development of the procurement function.",
@@ -377,8 +377,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Interpret business needs and specifications.",
           "Undertake basic supply market and demand analysis.",
@@ -391,8 +391,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Engage with stakeholders to determine business needs and requirements to inform procurement decisions.",
           "Thoroughly research the key risks, people, market, supplier and timing issues for categories.",
@@ -405,8 +405,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Effectively engage stakeholders and develop procurement strategies based on sound knowledge of business needs and supply markets.",
           "Identify a number of different supply markets from which a category can be sourced and assess the optimal approach.",
@@ -419,8 +419,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of procurement strategies in consultation with business partners.",
           "Interpret markets and their dynamics to inform procurement decisions for complex categories or large projects.",
@@ -433,8 +433,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Create ambitious and wide ranging procurement strategies based on supply market and category analysis together with an indepth knowledge of organisational demand, needs and requirements.",
           "Effectively evaluate, shape, influence and develop supply markets to meet the current and future needs of the organisation.",
@@ -455,8 +455,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Interpret business needs and specifications.",
           "Undertake basic supply market and demand analysis.",
@@ -469,8 +469,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Engage with stakeholders to determine business needs and requirements to inform procurement decisions.",
           "Thoroughly research the key risks, people, market, supplier and timing issues for categories.",
@@ -483,8 +483,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Effectively engage stakeholders and develop procurement strategies based on sound knowledge of business needs and supply markets.",
           "Identify a number of different supply markets from which a category can be sourced and assess the optimal approach.",
@@ -497,8 +497,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of procurement strategies in consultation with business partners.",
           "Interpret markets and their dynamics to inform procurement decisions for complex categories or large projects.",
@@ -511,8 +511,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Create ambitious and wide ranging procurement strategies based on supply market and category analysis together with an indepth knowledge of organisational demand, needs and requirements.",
           "Effectively evaluate, shape, influence and develop supply markets to meet the current and future needs of the organisation.",
@@ -533,8 +533,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Interpret business needs and specifications.",
           "Undertake basic supply market and demand analysis.",
@@ -547,8 +547,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Engage with stakeholders to determine business needs and requirements to inform procurement decisions.",
           "Thoroughly research the key risks, people, market, supplier and timing issues for categories.",
@@ -561,8 +561,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Effectively engage stakeholders and develop procurement strategies based on sound knowledge of business needs and supply markets.",
           "Identify a number of different supply markets from which a category can be sourced and assess the optimal approach.",
@@ -575,8 +575,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of procurement strategies in consultation with business partners.",
           "Interpret markets and their dynamics to inform procurement decisions for complex categories or large projects.",
@@ -589,8 +589,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Create ambitious and wide ranging procurement strategies based on supply market and category analysis together with an indepth knowledge of organisational demand, needs and requirements.",
           "Effectively evaluate, shape, influence and develop supply markets to meet the current and future needs of the organisation.",
@@ -611,8 +611,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Interpret business needs and specifications.",
           "Undertake basic supply market and demand analysis.",
@@ -625,8 +625,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Engage with stakeholders to determine business needs and requirements to inform procurement decisions.",
           "Thoroughly research the key risks, people, market, supplier and timing issues for categories.",
@@ -639,8 +639,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Effectively engage stakeholders and develop procurement strategies based on sound knowledge of business needs and supply markets.",
           "Identify a number of different supply markets from which a category can be sourced and assess the optimal approach.",
@@ -653,8 +653,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of procurement strategies in consultation with business partners.",
           "Interpret markets and their dynamics to inform procurement decisions for complex categories or large projects.",
@@ -667,8 +667,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Create ambitious and wide ranging procurement strategies based on supply market and category analysis together with an indepth knowledge of organisational demand, needs and requirements.",
           "Effectively evaluate, shape, influence and develop supply markets to meet the current and future needs of the organisation.",
@@ -689,8 +689,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Interpret business needs and specifications.",
           "Undertake basic supply market and demand analysis.",
@@ -703,8 +703,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Engage with stakeholders to determine business needs and requirements to inform procurement decisions.",
           "Thoroughly research the key risks, people, market, supplier and timing issues for categories.",
@@ -717,8 +717,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Effectively engage stakeholders and develop procurement strategies based on sound knowledge of business needs and supply markets.",
           "Identify a number of different supply markets from which a category can be sourced and assess the optimal approach.",
@@ -731,8 +731,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of procurement strategies in consultation with business partners.",
           "Interpret markets and their dynamics to inform procurement decisions for complex categories or large projects.",
@@ -745,8 +745,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Create ambitious and wide ranging procurement strategies based on supply market and category analysis together with an indepth knowledge of organisational demand, needs and requirements.",
           "Effectively evaluate, shape, influence and develop supply markets to meet the current and future needs of the organisation.",
@@ -767,8 +767,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Procure a range of straightforward goods/services.",
           "Effectively engage with internal and external stakeholders on routine procurement matters.",
@@ -781,8 +781,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Procure a wide range of complex goods/services.",
           "Consult with internal stakeholders to determine procurement business needs and changes in demand and manage stakeholder expectations.",
@@ -795,8 +795,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Manage categories or large areas of expenditure.",
           "Engage supply markets and internal stakeholders positively to achieve effective communication and conditioning.",
@@ -809,8 +809,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead sourcing activities and management of large, complex categories or projects and often facilitate expert reference group.",
           "Lead supplier event days and other internal/external communication forums aimed at developing and engaging with the supply base to improve performance.",
@@ -823,8 +823,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Coach and support category managers and procurement professionals in determining the key drivers and sourcing attributes of all procurement categories.",
           "Consult widely through the organisation on the strategic direction of business units and how the procurement function can contribute as a strategic business partner.",
@@ -845,8 +845,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Procure a range of straightforward goods/services.",
           "Effectively engage with internal and external stakeholders on routine procurement matters.",
@@ -859,8 +859,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Procure a wide range of complex goods/services.",
           "Consult with internal stakeholders to determine procurement business needs and changes in demand and manage stakeholder expectations.",
@@ -873,8 +873,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Manage categories or large areas of expenditure.",
           "Engage supply markets and internal stakeholders positively to achieve effective communication and conditioning.",
@@ -887,8 +887,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead sourcing activities and management of large, complex categories or projects and often facilitate expert reference group.",
           "Lead supplier event days and other internal/external communication forums aimed at developing and engaging with the supply base to improve performance.",
@@ -901,8 +901,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Coach and support category managers and procurement professionals in determining the key drivers and sourcing attributes of all procurement categories.",
           "Consult widely through the organisation on the strategic direction of business units and how the procurement function can contribute as a strategic business partner.",
@@ -923,8 +923,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Procure a range of straightforward goods/services.",
           "Effectively engage with internal and external stakeholders on routine procurement matters.",
@@ -937,8 +937,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Procure a wide range of complex goods/services.",
           "Consult with internal stakeholders to determine procurement business needs and changes in demand and manage stakeholder expectations.",
@@ -951,8 +951,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Manage categories or large areas of expenditure.",
           "Engage supply markets and internal stakeholders positively to achieve effective communication and conditioning.",
@@ -965,8 +965,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead sourcing activities and management of large, complex categories or projects and often facilitate expert reference group.",
           "Lead supplier event days and other internal/external communication forums aimed at developing and engaging with the supply base to improve performance.",
@@ -979,8 +979,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Coach and support category managers and procurement professionals in determining the key drivers and sourcing attributes of all procurement categories.",
           "Consult widely through the organisation on the strategic direction of business units and how the procurement function can contribute as a strategic business partner.",
@@ -1001,8 +1001,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Procure a range of straightforward goods/services.",
           "Effectively engage with internal and external stakeholders on routine procurement matters.",
@@ -1015,8 +1015,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Procure a wide range of complex goods/services.",
           "Consult with internal stakeholders to determine procurement business needs and changes in demand and manage stakeholder expectations.",
@@ -1029,8 +1029,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Manage categories or large areas of expenditure.",
           "Engage supply markets and internal stakeholders positively to achieve effective communication and conditioning.",
@@ -1043,8 +1043,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead sourcing activities and management of large, complex categories or projects and often facilitate expert reference group.",
           "Lead supplier event days and other internal/external communication forums aimed at developing and engaging with the supply base to improve performance.",
@@ -1057,8 +1057,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Coach and support category managers and procurement professionals in determining the key drivers and sourcing attributes of all procurement categories.",
           "Consult widely through the organisation on the strategic direction of business units and how the procurement function can contribute as a strategic business partner.",
@@ -1079,8 +1079,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Procure a range of straightforward goods/services.",
           "Effectively engage with internal and external stakeholders on routine procurement matters.",
@@ -1093,8 +1093,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Procure a wide range of complex goods/services.",
           "Consult with internal stakeholders to determine procurement business needs and changes in demand and manage stakeholder expectations.",
@@ -1107,8 +1107,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Manage categories or large areas of expenditure.",
           "Engage supply markets and internal stakeholders positively to achieve effective communication and conditioning.",
@@ -1121,8 +1121,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead sourcing activities and management of large, complex categories or projects and often facilitate expert reference group.",
           "Lead supplier event days and other internal/external communication forums aimed at developing and engaging with the supply base to improve performance.",
@@ -1135,8 +1135,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Coach and support category managers and procurement professionals in determining the key drivers and sourcing attributes of all procurement categories.",
           "Consult widely through the organisation on the strategic direction of business units and how the procurement function can contribute as a strategic business partner.",
@@ -1157,8 +1157,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Complete and follow a template commercial negotiation plan in preparation for low level procurement negotiations.",
           "Respond to and deal with issues for straightforward procurement negotiations.",
@@ -1168,8 +1168,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Work with business areas to identify where improvement and negotiation is required in procurement activities and develop basic commercial negotiation plans to suit.",
           "Recognise procurement negotiation issues and options and make informed assessment of negotiation arguments.",
@@ -1179,8 +1179,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Partner with business areas to prepare and plan the procurement negotiation strategy based on sound knowledge, research and structure.",
           "Thoroughly research the key people, market, supplier, timing and risks for each procurement negotiation and set appropriate targets.",
@@ -1190,8 +1190,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust negotiation plans with business partners for complex procurement negotiations and coach other procurement staff in how to approach negotiations.",
           "Gather and apply leading edge procurement negotiation thinking and practice across the organisation.",
@@ -1201,8 +1201,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead business stakeholders in the development of toolkits and frameworks aimed at supporting all areas in undertaking effective procurement negotiations.",
           "Effectively influence the executive team and other internal and external stakeholders to use best practice procurement negotiation principles.",
@@ -1221,8 +1221,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Complete and follow a template commercial negotiation plan in preparation for low level procurement negotiations.",
           "Respond to and deal with issues for straightforward procurement negotiations.",
@@ -1232,8 +1232,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Work with business areas to identify where improvement and negotiation is required in procurement activities and develop basic commercial negotiation plans to suit.",
           "Recognise procurement negotiation issues and options and make informed assessment of negotiation arguments.",
@@ -1243,8 +1243,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Partner with business areas to prepare and plan the procurement negotiation strategy based on sound knowledge, research and structure.",
           "Thoroughly research the key people, market, supplier, timing and risks for each procurement negotiation and set appropriate targets.",
@@ -1254,8 +1254,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust negotiation plans with business partners for complex procurement negotiations and coach other procurement staff in how to approach negotiations.",
           "Gather and apply leading edge procurement negotiation thinking and practice across the organisation.",
@@ -1265,8 +1265,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead business stakeholders in the development of toolkits and frameworks aimed at supporting all areas in undertaking effective procurement negotiations.",
           "Effectively influence the executive team and other internal and external stakeholders to use best practice procurement negotiation principles.",
@@ -1285,8 +1285,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Complete and follow a template commercial negotiation plan in preparation for low level procurement negotiations.",
           "Respond to and deal with issues for straightforward procurement negotiations.",
@@ -1296,8 +1296,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Work with business areas to identify where improvement and negotiation is required in procurement activities and develop basic commercial negotiation plans to suit.",
           "Recognise procurement negotiation issues and options and make informed assessment of negotiation arguments.",
@@ -1307,8 +1307,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Partner with business areas to prepare and plan the procurement negotiation strategy based on sound knowledge, research and structure.",
           "Thoroughly research the key people, market, supplier, timing and risks for each procurement negotiation and set appropriate targets.",
@@ -1318,8 +1318,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust negotiation plans with business partners for complex procurement negotiations and coach other procurement staff in how to approach negotiations.",
           "Gather and apply leading edge procurement negotiation thinking and practice across the organisation.",
@@ -1329,8 +1329,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead business stakeholders in the development of toolkits and frameworks aimed at supporting all areas in undertaking effective procurement negotiations.",
           "Effectively influence the executive team and other internal and external stakeholders to use best practice procurement negotiation principles.",
@@ -1349,8 +1349,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Complete and follow a template commercial negotiation plan in preparation for low level procurement negotiations.",
           "Respond to and deal with issues for straightforward procurement negotiations.",
@@ -1360,8 +1360,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Work with business areas to identify where improvement and negotiation is required in procurement activities and develop basic commercial negotiation plans to suit.",
           "Recognise procurement negotiation issues and options and make informed assessment of negotiation arguments.",
@@ -1371,8 +1371,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Partner with business areas to prepare and plan the procurement negotiation strategy based on sound knowledge, research and structure.",
           "Thoroughly research the key people, market, supplier, timing and risks for each procurement negotiation and set appropriate targets.",
@@ -1382,8 +1382,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust negotiation plans with business partners for complex procurement negotiations and coach other procurement staff in how to approach negotiations.",
           "Gather and apply leading edge procurement negotiation thinking and practice across the organisation.",
@@ -1393,8 +1393,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead business stakeholders in the development of toolkits and frameworks aimed at supporting all areas in undertaking effective procurement negotiations.",
           "Effectively influence the executive team and other internal and external stakeholders to use best practice procurement negotiation principles.",
@@ -1413,8 +1413,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Complete and follow a template commercial negotiation plan in preparation for low level procurement negotiations.",
           "Respond to and deal with issues for straightforward procurement negotiations.",
@@ -1424,8 +1424,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Work with business areas to identify where improvement and negotiation is required in procurement activities and develop basic commercial negotiation plans to suit.",
           "Recognise procurement negotiation issues and options and make informed assessment of negotiation arguments.",
@@ -1435,8 +1435,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Partner with business areas to prepare and plan the procurement negotiation strategy based on sound knowledge, research and structure.",
           "Thoroughly research the key people, market, supplier, timing and risks for each procurement negotiation and set appropriate targets.",
@@ -1446,8 +1446,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust negotiation plans with business partners for complex procurement negotiations and coach other procurement staff in how to approach negotiations.",
           "Gather and apply leading edge procurement negotiation thinking and practice across the organisation.",
@@ -1457,8 +1457,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead business stakeholders in the development of toolkits and frameworks aimed at supporting all areas in undertaking effective procurement negotiations.",
           "Effectively influence the executive team and other internal and external stakeholders to use best practice procurement negotiation principles.",
@@ -1477,8 +1477,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Use basic techniques and tools to identify key risks.",
           "Identify risks as required through procurement policy/procedures.",
@@ -1488,8 +1488,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Identify and evaluate key risks at a contractual level for straightforward arrangements and seek input from other functions as appropriate (e.g. finance, legal etc.).",
           "Input to risk logs and opportunity assessment reports as outlined in the organisational procurement practices.",
@@ -1499,8 +1499,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop risk mitigation strategies for complex procurement arrangements.",
           "Proactively keep abreast of risk management processes and effectively use systems and practices to input to project risk logs and opportunity assessment activities within own team.",
@@ -1510,8 +1510,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of risk management tools and techniques to identify and prioritise risks to service delivery.",
           "Work closely with business areas to identify and manage commercial, contractual, operational, financial, reputational, ethical and supply chain risks emanating from procurement activity and supply base arrangements.",
@@ -1522,8 +1522,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Partner with key business stakeholders to develop an organisation wide procurement risk management strategy and consistent, sustainable approach to the identification and assessment of risks and opportunities.",
           "Develop policies, procedures, systems and appropriate review mechanisms for all procurement related risks (Political, Health and Safety, Financial, Commercial, Contractual, Social, Economic, Environmental) to ensure procurement. risks are effectively managed",
@@ -1541,8 +1541,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Use basic techniques and tools to identify key risks.",
           "Identify risks as required through procurement policy/procedures.",
@@ -1552,8 +1552,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Identify and evaluate key risks at a contractual level for straightforward arrangements and seek input from other functions as appropriate (e.g. finance, legal etc.).",
           "Input to risk logs and opportunity assessment reports as outlined in the organisational procurement practices.",
@@ -1563,8 +1563,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop risk mitigation strategies for complex procurement arrangements.",
           "Proactively keep abreast of risk management processes and effectively use systems and practices to input to project risk logs and opportunity assessment activities within own team.",
@@ -1574,8 +1574,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of risk management tools and techniques to identify and prioritise risks to service delivery.",
           "Work closely with business areas to identify and manage commercial, contractual, operational, financial, reputational, ethical and supply chain risks emanating from procurement activity and supply base arrangements.",
@@ -1586,8 +1586,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Partner with key business stakeholders to develop an organisation wide procurement risk management strategy and consistent, sustainable approach to the identification and assessment of risks and opportunities.",
           "Develop policies, procedures, systems and appropriate review mechanisms for all procurement related risks (Political, Health and Safety, Financial, Commercial, Contractual, Social, Economic, Environmental) to ensure procurement. risks are effectively managed",
@@ -1605,8 +1605,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Use basic techniques and tools to identify key risks.",
           "Identify risks as required through procurement policy/procedures.",
@@ -1616,8 +1616,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Identify and evaluate key risks at a contractual level for straightforward arrangements and seek input from other functions as appropriate (e.g. finance, legal etc.).",
           "Input to risk logs and opportunity assessment reports as outlined in the organisational procurement practices.",
@@ -1627,8 +1627,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop risk mitigation strategies for complex procurement arrangements.",
           "Proactively keep abreast of risk management processes and effectively use systems and practices to input to project risk logs and opportunity assessment activities within own team.",
@@ -1638,8 +1638,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of risk management tools and techniques to identify and prioritise risks to service delivery.",
           "Work closely with business areas to identify and manage commercial, contractual, operational, financial, reputational, ethical and supply chain risks emanating from procurement activity and supply base arrangements.",
@@ -1650,8 +1650,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Partner with key business stakeholders to develop an organisation wide procurement risk management strategy and consistent, sustainable approach to the identification and assessment of risks and opportunities.",
           "Develop policies, procedures, systems and appropriate review mechanisms for all procurement related risks (Political, Health and Safety, Financial, Commercial, Contractual, Social, Economic, Environmental) to ensure procurement. risks are effectively managed",
@@ -1669,8 +1669,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Use basic techniques and tools to identify key risks.",
           "Identify risks as required through procurement policy/procedures.",
@@ -1680,8 +1680,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Identify and evaluate key risks at a contractual level for straightforward arrangements and seek input from other functions as appropriate (e.g. finance, legal etc.).",
           "Input to risk logs and opportunity assessment reports as outlined in the organisational procurement practices.",
@@ -1691,8 +1691,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop risk mitigation strategies for complex procurement arrangements.",
           "Proactively keep abreast of risk management processes and effectively use systems and practices to input to project risk logs and opportunity assessment activities within own team.",
@@ -1702,8 +1702,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of risk management tools and techniques to identify and prioritise risks to service delivery.",
           "Work closely with business areas to identify and manage commercial, contractual, operational, financial, reputational, ethical and supply chain risks emanating from procurement activity and supply base arrangements.",
@@ -1714,8 +1714,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Partner with key business stakeholders to develop an organisation wide procurement risk management strategy and consistent, sustainable approach to the identification and assessment of risks and opportunities.",
           "Develop policies, procedures, systems and appropriate review mechanisms for all procurement related risks (Political, Health and Safety, Financial, Commercial, Contractual, Social, Economic, Environmental) to ensure procurement. risks are effectively managed",
@@ -1733,8 +1733,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Use basic techniques and tools to identify key risks.",
           "Identify risks as required through procurement policy/procedures.",
@@ -1744,8 +1744,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Identify and evaluate key risks at a contractual level for straightforward arrangements and seek input from other functions as appropriate (e.g. finance, legal etc.).",
           "Input to risk logs and opportunity assessment reports as outlined in the organisational procurement practices.",
@@ -1755,8 +1755,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop risk mitigation strategies for complex procurement arrangements.",
           "Proactively keep abreast of risk management processes and effectively use systems and practices to input to project risk logs and opportunity assessment activities within own team.",
@@ -1766,8 +1766,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Lead the development of risk management tools and techniques to identify and prioritise risks to service delivery.",
           "Work closely with business areas to identify and manage commercial, contractual, operational, financial, reputational, ethical and supply chain risks emanating from procurement activity and supply base arrangements.",
@@ -1778,8 +1778,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Partner with key business stakeholders to develop an organisation wide procurement risk management strategy and consistent, sustainable approach to the identification and assessment of risks and opportunities.",
           "Develop policies, procedures, systems and appropriate review mechanisms for all procurement related risks (Political, Health and Safety, Financial, Commercial, Contractual, Social, Economic, Environmental) to ensure procurement. risks are effectively managed",
@@ -1797,8 +1797,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Comply with policies, processes and frameworks during the contract administration and management lifecycle.",
           "Deal effectively with suppliers at a transactional level.",
@@ -1807,8 +1807,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Understand supplier segmentation and determine the appropriate type of supplier relationship needed from straightforward areas of expenditure.",
           "Develop appropriate supplier relationships for lower value or lower risk goods and services.",
@@ -1818,8 +1818,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Use supply positioning to determine the appropriate supplier relationship needed for all categories of expenditure and coach other staff on the application of supplier relationship management (SRM) principles.",
           "Develop sound working relationships with strategic suppliers at an operational level.",
@@ -1829,8 +1829,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Consult throughout the organisation to support the development of strategic and high risk contracts and supplier relationships.",
           "Establish strong supplier relationships with strategic suppliers at a strategic level.",
@@ -1843,8 +1843,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead or direct the development of contract management, supplier performance and relationship management policies and processes across the organisation.",
           "Establish long term key supplier relationships at CEO level.",
@@ -1863,8 +1863,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Comply with policies, processes and frameworks during the contract administration and management lifecycle.",
           "Deal effectively with suppliers at a transactional level.",
@@ -1873,8 +1873,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Understand supplier segmentation and determine the appropriate type of supplier relationship needed from straightforward areas of expenditure.",
           "Develop appropriate supplier relationships for lower value or lower risk goods and services.",
@@ -1884,8 +1884,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Use supply positioning to determine the appropriate supplier relationship needed for all categories of expenditure and coach other staff on the application of supplier relationship management (SRM) principles.",
           "Develop sound working relationships with strategic suppliers at an operational level.",
@@ -1895,8 +1895,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Consult throughout the organisation to support the development of strategic and high risk contracts and supplier relationships.",
           "Establish strong supplier relationships with strategic suppliers at a strategic level.",
@@ -1909,8 +1909,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead or direct the development of contract management, supplier performance and relationship management policies and processes across the organisation.",
           "Establish long term key supplier relationships at CEO level.",
@@ -1929,8 +1929,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Comply with policies, processes and frameworks during the contract administration and management lifecycle.",
           "Deal effectively with suppliers at a transactional level.",
@@ -1939,8 +1939,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Understand supplier segmentation and determine the appropriate type of supplier relationship needed from straightforward areas of expenditure.",
           "Develop appropriate supplier relationships for lower value or lower risk goods and services.",
@@ -1950,8 +1950,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Use supply positioning to determine the appropriate supplier relationship needed for all categories of expenditure and coach other staff on the application of supplier relationship management (SRM) principles.",
           "Develop sound working relationships with strategic suppliers at an operational level.",
@@ -1961,8 +1961,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Consult throughout the organisation to support the development of strategic and high risk contracts and supplier relationships.",
           "Establish strong supplier relationships with strategic suppliers at a strategic level.",
@@ -1975,8 +1975,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead or direct the development of contract management, supplier performance and relationship management policies and processes across the organisation.",
           "Establish long term key supplier relationships at CEO level.",
@@ -1995,8 +1995,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Comply with policies, processes and frameworks during the contract administration and management lifecycle.",
           "Deal effectively with suppliers at a transactional level.",
@@ -2005,8 +2005,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Understand supplier segmentation and determine the appropriate type of supplier relationship needed from straightforward areas of expenditure.",
           "Develop appropriate supplier relationships for lower value or lower risk goods and services.",
@@ -2016,8 +2016,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Use supply positioning to determine the appropriate supplier relationship needed for all categories of expenditure and coach other staff on the application of supplier relationship management (SRM) principles.",
           "Develop sound working relationships with strategic suppliers at an operational level.",
@@ -2027,8 +2027,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Consult throughout the organisation to support the development of strategic and high risk contracts and supplier relationships.",
           "Establish strong supplier relationships with strategic suppliers at a strategic level.",
@@ -2041,8 +2041,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead or direct the development of contract management, supplier performance and relationship management policies and processes across the organisation.",
           "Establish long term key supplier relationships at CEO level.",
@@ -2061,8 +2061,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Comply with policies, processes and frameworks during the contract administration and management lifecycle.",
           "Deal effectively with suppliers at a transactional level.",
@@ -2071,8 +2071,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Understand supplier segmentation and determine the appropriate type of supplier relationship needed from straightforward areas of expenditure.",
           "Develop appropriate supplier relationships for lower value or lower risk goods and services.",
@@ -2082,8 +2082,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Use supply positioning to determine the appropriate supplier relationship needed for all categories of expenditure and coach other staff on the application of supplier relationship management (SRM) principles.",
           "Develop sound working relationships with strategic suppliers at an operational level.",
@@ -2093,8 +2093,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Consult throughout the organisation to support the development of strategic and high risk contracts and supplier relationships.",
           "Establish strong supplier relationships with strategic suppliers at a strategic level.",
@@ -2107,8 +2107,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Lead or direct the development of contract management, supplier performance and relationship management policies and processes across the organisation.",
           "Establish long term key supplier relationships at CEO level.",
@@ -2127,8 +2127,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Follow all required processes in administering straightforward contracts.",
           "Update contract registers and utilise systems to record and manage supplier performance and feedback.",
@@ -2141,8 +2141,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Systematically follow contract management and administration guidelines on key contracts.",
           "Record contract documentation and performance outcomes.",
@@ -2155,8 +2155,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Utilise tools and systems to analyse and interpret a wide variety of supplier and performance related information to drive better outcomes through the relationship.",
           "Ensure the contracted services are delivered in accordance with the intent of the contract, risks are identified and performance effectively managed.",
@@ -2168,8 +2168,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Establish mechanisms to ensure contracts are effectively governed both within and outside of the procurement function.",
           "Manage and adjust complex and strategic contracts to meet the intent of the business need and continue to add value.",
@@ -2181,8 +2181,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish and maintain effective frameworks (such as Contract Lifecycle Management systems) and structures to manage all organisational supply arrangements.",
           "Ensure all contracts are effectively reviewed and managed to drive better outcomes.",
@@ -2203,8 +2203,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Follow all required processes in administering straightforward contracts.",
           "Update contract registers and utilise systems to record and manage supplier performance and feedback.",
@@ -2217,8 +2217,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Systematically follow contract management and administration guidelines on key contracts.",
           "Record contract documentation and performance outcomes.",
@@ -2231,8 +2231,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Utilise tools and systems to analyse and interpret a wide variety of supplier and performance related information to drive better outcomes through the relationship.",
           "Ensure the contracted services are delivered in accordance with the intent of the contract, risks are identified and performance effectively managed.",
@@ -2244,8 +2244,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Establish mechanisms to ensure contracts are effectively governed both within and outside of the procurement function.",
           "Manage and adjust complex and strategic contracts to meet the intent of the business need and continue to add value.",
@@ -2257,8 +2257,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish and maintain effective frameworks (such as Contract Lifecycle Management systems) and structures to manage all organisational supply arrangements.",
           "Ensure all contracts are effectively reviewed and managed to drive better outcomes.",
@@ -2279,8 +2279,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Follow all required processes in administering straightforward contracts.",
           "Update contract registers and utilise systems to record and manage supplier performance and feedback.",
@@ -2293,8 +2293,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Systematically follow contract management and administration guidelines on key contracts.",
           "Record contract documentation and performance outcomes.",
@@ -2307,8 +2307,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Utilise tools and systems to analyse and interpret a wide variety of supplier and performance related information to drive better outcomes through the relationship.",
           "Ensure the contracted services are delivered in accordance with the intent of the contract, risks are identified and performance effectively managed.",
@@ -2320,8 +2320,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Establish mechanisms to ensure contracts are effectively governed both within and outside of the procurement function.",
           "Manage and adjust complex and strategic contracts to meet the intent of the business need and continue to add value.",
@@ -2333,8 +2333,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish and maintain effective frameworks (such as Contract Lifecycle Management systems) and structures to manage all organisational supply arrangements.",
           "Ensure all contracts are effectively reviewed and managed to drive better outcomes.",
@@ -2355,8 +2355,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Follow all required processes in administering straightforward contracts.",
           "Update contract registers and utilise systems to record and manage supplier performance and feedback.",
@@ -2369,8 +2369,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Systematically follow contract management and administration guidelines on key contracts.",
           "Record contract documentation and performance outcomes.",
@@ -2383,8 +2383,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Utilise tools and systems to analyse and interpret a wide variety of supplier and performance related information to drive better outcomes through the relationship.",
           "Ensure the contracted services are delivered in accordance with the intent of the contract, risks are identified and performance effectively managed.",
@@ -2396,8 +2396,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Establish mechanisms to ensure contracts are effectively governed both within and outside of the procurement function.",
           "Manage and adjust complex and strategic contracts to meet the intent of the business need and continue to add value.",
@@ -2409,8 +2409,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish and maintain effective frameworks (such as Contract Lifecycle Management systems) and structures to manage all organisational supply arrangements.",
           "Ensure all contracts are effectively reviewed and managed to drive better outcomes.",
@@ -2431,8 +2431,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Follow all required processes in administering straightforward contracts.",
           "Update contract registers and utilise systems to record and manage supplier performance and feedback.",
@@ -2445,8 +2445,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Systematically follow contract management and administration guidelines on key contracts.",
           "Record contract documentation and performance outcomes.",
@@ -2459,8 +2459,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Utilise tools and systems to analyse and interpret a wide variety of supplier and performance related information to drive better outcomes through the relationship.",
           "Ensure the contracted services are delivered in accordance with the intent of the contract, risks are identified and performance effectively managed.",
@@ -2472,8 +2472,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Establish mechanisms to ensure contracts are effectively governed both within and outside of the procurement function.",
           "Manage and adjust complex and strategic contracts to meet the intent of the business need and continue to add value.",
@@ -2485,8 +2485,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Establish and maintain effective frameworks (such as Contract Lifecycle Management systems) and structures to manage all organisational supply arrangements.",
           "Ensure all contracts are effectively reviewed and managed to drive better outcomes.",
@@ -2507,8 +2507,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake procurement activities in accordance with documented practices (covering relevant legislation).",
           "Address codes of practice within the scope of routine procurement/contract management activity undertaken, seeking advice on probity issues as required.",
@@ -2519,8 +2519,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Ensure procurement policies and practices (incorporating relevant legislation) are applied by all users at a local level.",
           "Address codes of practices for complex  procurement sourcing activity undertaken, seeking advice on probity issues as required.",
@@ -2533,8 +2533,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Ensure that all relevant legislative requirements are incorporated into procurement related activities.",
           "Model behaviour on the code of conduct and ensure procurement practices address all legislative requirements and organisational corporate social responsibility (CSR) guidelines and requirements.",
@@ -2545,8 +2545,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Interpret and effectively apply the intent of the government procurement framework and all related polices and legislation.",
           "Regularly review and interpret legislative requirements to ensure procurement/contract management policies and practices comply with the intent of the legislation.",
@@ -2559,8 +2559,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Regularly review and interpret legislative requirements to ensure procurement policies and practices comply with the intent of the legislation.",
           "Work actively with public sector policy and legislative stakeholders in the development of frameworks and policies for probity in procurement to reflect best practice.",
@@ -2581,8 +2581,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake procurement activities in accordance with documented practices (covering relevant legislation).",
           "Address codes of practice within the scope of routine procurement/contract management activity undertaken, seeking advice on probity issues as required.",
@@ -2593,8 +2593,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Ensure procurement policies and practices (incorporating relevant legislation) are applied by all users at a local level.",
           "Address codes of practices for complex  procurement sourcing activity undertaken, seeking advice on probity issues as required.",
@@ -2607,8 +2607,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Ensure that all relevant legislative requirements are incorporated into procurement related activities.",
           "Model behaviour on the code of conduct and ensure procurement practices address all legislative requirements and organisational corporate social responsibility (CSR) guidelines and requirements.",
@@ -2619,8 +2619,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Interpret and effectively apply the intent of the government procurement framework and all related polices and legislation.",
           "Regularly review and interpret legislative requirements to ensure procurement/contract management policies and practices comply with the intent of the legislation.",
@@ -2633,8 +2633,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Regularly review and interpret legislative requirements to ensure procurement policies and practices comply with the intent of the legislation.",
           "Work actively with public sector policy and legislative stakeholders in the development of frameworks and policies for probity in procurement to reflect best practice.",
@@ -2655,8 +2655,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake procurement activities in accordance with documented practices (covering relevant legislation).",
           "Address codes of practice within the scope of routine procurement/contract management activity undertaken, seeking advice on probity issues as required.",
@@ -2667,8 +2667,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Ensure procurement policies and practices (incorporating relevant legislation) are applied by all users at a local level.",
           "Address codes of practices for complex  procurement sourcing activity undertaken, seeking advice on probity issues as required.",
@@ -2681,8 +2681,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Ensure that all relevant legislative requirements are incorporated into procurement related activities.",
           "Model behaviour on the code of conduct and ensure procurement practices address all legislative requirements and organisational corporate social responsibility (CSR) guidelines and requirements.",
@@ -2693,8 +2693,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Interpret and effectively apply the intent of the government procurement framework and all related polices and legislation.",
           "Regularly review and interpret legislative requirements to ensure procurement/contract management policies and practices comply with the intent of the legislation.",
@@ -2707,8 +2707,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Regularly review and interpret legislative requirements to ensure procurement policies and practices comply with the intent of the legislation.",
           "Work actively with public sector policy and legislative stakeholders in the development of frameworks and policies for probity in procurement to reflect best practice.",
@@ -2729,8 +2729,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake procurement activities in accordance with documented practices (covering relevant legislation).",
           "Address codes of practice within the scope of routine procurement/contract management activity undertaken, seeking advice on probity issues as required.",
@@ -2741,8 +2741,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Ensure procurement policies and practices (incorporating relevant legislation) are applied by all users at a local level.",
           "Address codes of practices for complex  procurement sourcing activity undertaken, seeking advice on probity issues as required.",
@@ -2755,8 +2755,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Ensure that all relevant legislative requirements are incorporated into procurement related activities.",
           "Model behaviour on the code of conduct and ensure procurement practices address all legislative requirements and organisational corporate social responsibility (CSR) guidelines and requirements.",
@@ -2767,8 +2767,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Interpret and effectively apply the intent of the government procurement framework and all related polices and legislation.",
           "Regularly review and interpret legislative requirements to ensure procurement/contract management policies and practices comply with the intent of the legislation.",
@@ -2781,8 +2781,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Regularly review and interpret legislative requirements to ensure procurement policies and practices comply with the intent of the legislation.",
           "Work actively with public sector policy and legislative stakeholders in the development of frameworks and policies for probity in procurement to reflect best practice.",
@@ -2803,8 +2803,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake procurement activities in accordance with documented practices (covering relevant legislation).",
           "Address codes of practice within the scope of routine procurement/contract management activity undertaken, seeking advice on probity issues as required.",
@@ -2815,8 +2815,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Ensure procurement policies and practices (incorporating relevant legislation) are applied by all users at a local level.",
           "Address codes of practices for complex  procurement sourcing activity undertaken, seeking advice on probity issues as required.",
@@ -2829,8 +2829,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Ensure that all relevant legislative requirements are incorporated into procurement related activities.",
           "Model behaviour on the code of conduct and ensure procurement practices address all legislative requirements and organisational corporate social responsibility (CSR) guidelines and requirements.",
@@ -2841,8 +2841,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Interpret and effectively apply the intent of the government procurement framework and all related polices and legislation.",
           "Regularly review and interpret legislative requirements to ensure procurement/contract management policies and practices comply with the intent of the legislation.",
@@ -2855,8 +2855,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Regularly review and interpret legislative requirements to ensure procurement policies and practices comply with the intent of the legislation.",
           "Work actively with public sector policy and legislative stakeholders in the development of frameworks and policies for probity in procurement to reflect best practice.",
@@ -2877,8 +2877,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Seek advice from senior procurement staff on any contractual issues.",
           "Interpret basic contract terms and conditions and their contextual meaning.",
@@ -2887,8 +2887,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Seek advice on the interpretation of variations to contract terms and conditions if challenged by suppliers.",
           "Interpret contract terms and conditions and how they should be applied to straightforward contracts.",
@@ -2899,8 +2899,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Interpret all contract terms and conditions, using a working knowledge of contract law and seeking advice for specialised terms/conditions or dispute resolution as needed.",
           "Interpret and apply laws and legislation as they relate to procurement activity.",
@@ -2912,8 +2912,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Approve complex contracts, applying expertise in contract law and seeking high level legal advice when needed.",
           "Interpret and apply statutory and common law obligations that must be incorporated into relevant contracts.",
@@ -2925,8 +2925,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Interpret the intent of all contract conditions and often mediate disputes.",
           "Interpret and apply statutory and common law obligations and ensure these are effectively embedded across all procurement contracts.",
@@ -2947,8 +2947,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Seek advice from senior procurement staff on any contractual issues.",
           "Interpret basic contract terms and conditions and their contextual meaning.",
@@ -2957,8 +2957,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Seek advice on the interpretation of variations to contract terms and conditions if challenged by suppliers.",
           "Interpret contract terms and conditions and how they should be applied to straightforward contracts.",
@@ -2969,8 +2969,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Interpret all contract terms and conditions, using a working knowledge of contract law and seeking advice for specialised terms/conditions or dispute resolution as needed.",
           "Interpret and apply laws and legislation as they relate to procurement activity.",
@@ -2982,8 +2982,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Approve complex contracts, applying expertise in contract law and seeking high level legal advice when needed.",
           "Interpret and apply statutory and common law obligations that must be incorporated into relevant contracts.",
@@ -2995,8 +2995,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Interpret the intent of all contract conditions and often mediate disputes.",
           "Interpret and apply statutory and common law obligations and ensure these are effectively embedded across all procurement contracts.",
@@ -3017,8 +3017,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Seek advice from senior procurement staff on any contractual issues.",
           "Interpret basic contract terms and conditions and their contextual meaning.",
@@ -3027,8 +3027,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Seek advice on the interpretation of variations to contract terms and conditions if challenged by suppliers.",
           "Interpret contract terms and conditions and how they should be applied to straightforward contracts.",
@@ -3039,8 +3039,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Interpret all contract terms and conditions, using a working knowledge of contract law and seeking advice for specialised terms/conditions or dispute resolution as needed.",
           "Interpret and apply laws and legislation as they relate to procurement activity.",
@@ -3052,8 +3052,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Approve complex contracts, applying expertise in contract law and seeking high level legal advice when needed.",
           "Interpret and apply statutory and common law obligations that must be incorporated into relevant contracts.",
@@ -3065,8 +3065,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Interpret the intent of all contract conditions and often mediate disputes.",
           "Interpret and apply statutory and common law obligations and ensure these are effectively embedded across all procurement contracts.",
@@ -3087,8 +3087,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Seek advice from senior procurement staff on any contractual issues.",
           "Interpret basic contract terms and conditions and their contextual meaning.",
@@ -3097,8 +3097,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Seek advice on the interpretation of variations to contract terms and conditions if challenged by suppliers.",
           "Interpret contract terms and conditions and how they should be applied to straightforward contracts.",
@@ -3109,8 +3109,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Interpret all contract terms and conditions, using a working knowledge of contract law and seeking advice for specialised terms/conditions or dispute resolution as needed.",
           "Interpret and apply laws and legislation as they relate to procurement activity.",
@@ -3122,8 +3122,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Approve complex contracts, applying expertise in contract law and seeking high level legal advice when needed.",
           "Interpret and apply statutory and common law obligations that must be incorporated into relevant contracts.",
@@ -3135,8 +3135,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Interpret the intent of all contract conditions and often mediate disputes.",
           "Interpret and apply statutory and common law obligations and ensure these are effectively embedded across all procurement contracts.",
@@ -3157,8 +3157,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Seek advice from senior procurement staff on any contractual issues.",
           "Interpret basic contract terms and conditions and their contextual meaning.",
@@ -3167,8 +3167,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Seek advice on the interpretation of variations to contract terms and conditions if challenged by suppliers.",
           "Interpret contract terms and conditions and how they should be applied to straightforward contracts.",
@@ -3179,8 +3179,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Interpret all contract terms and conditions, using a working knowledge of contract law and seeking advice for specialised terms/conditions or dispute resolution as needed.",
           "Interpret and apply laws and legislation as they relate to procurement activity.",
@@ -3192,8 +3192,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Approve complex contracts, applying expertise in contract law and seeking high level legal advice when needed.",
           "Interpret and apply statutory and common law obligations that must be incorporated into relevant contracts.",
@@ -3205,8 +3205,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Interpret the intent of all contract conditions and often mediate disputes.",
           "Interpret and apply statutory and common law obligations and ensure these are effectively embedded across all procurement contracts.",
@@ -3227,8 +3227,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake analysis of submitted supplier pricing.",
           "Differentiate between price and cost in decision making at a minimal level.",
@@ -3238,8 +3238,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Use standard templates to assess Total Cost of Ownership (TCO) for basic supply arrangements. ",
           "Differentiate between price and overall cost in decision making.",
@@ -3249,8 +3249,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop simple TCO models for straightforward supply arrangements.",
           "Differentiate between price and overall cost as part of the overall value assessment of supply arrangements.",
@@ -3263,8 +3263,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust TCO models for complex supply arrangements and create templates and guidance for cost modelling.",
           "Identify price as a part of overall cost which is part of the overall value and expertly apply this principle in assessing the value of supply arrangements.",
@@ -3277,8 +3277,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Work with financial experts and other business areas  to develop guidelines and templates for assessing and measuring TCO costs.",
           "Provide clear guidelines and tools to all areas of the organisation on assessing overall value of supply arrangements to ensure decisions are not simply price focussed.",
@@ -3299,8 +3299,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake analysis of submitted supplier pricing.",
           "Differentiate between price and cost in decision making at a minimal level.",
@@ -3310,8 +3310,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Use standard templates to assess Total Cost of Ownership (TCO) for basic supply arrangements. ",
           "Differentiate between price and overall cost in decision making.",
@@ -3321,8 +3321,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop simple TCO models for straightforward supply arrangements.",
           "Differentiate between price and overall cost as part of the overall value assessment of supply arrangements.",
@@ -3335,8 +3335,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust TCO models for complex supply arrangements and create templates and guidance for cost modelling.",
           "Identify price as a part of overall cost which is part of the overall value and expertly apply this principle in assessing the value of supply arrangements.",
@@ -3349,8 +3349,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Work with financial experts and other business areas  to develop guidelines and templates for assessing and measuring TCO costs.",
           "Provide clear guidelines and tools to all areas of the organisation on assessing overall value of supply arrangements to ensure decisions are not simply price focussed.",
@@ -3371,8 +3371,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake analysis of submitted supplier pricing.",
           "Differentiate between price and cost in decision making at a minimal level.",
@@ -3382,8 +3382,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Use standard templates to assess Total Cost of Ownership (TCO) for basic supply arrangements. ",
           "Differentiate between price and overall cost in decision making.",
@@ -3393,8 +3393,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop simple TCO models for straightforward supply arrangements.",
           "Differentiate between price and overall cost as part of the overall value assessment of supply arrangements.",
@@ -3407,8 +3407,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust TCO models for complex supply arrangements and create templates and guidance for cost modelling.",
           "Identify price as a part of overall cost which is part of the overall value and expertly apply this principle in assessing the value of supply arrangements.",
@@ -3421,8 +3421,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Work with financial experts and other business areas  to develop guidelines and templates for assessing and measuring TCO costs.",
           "Provide clear guidelines and tools to all areas of the organisation on assessing overall value of supply arrangements to ensure decisions are not simply price focussed.",
@@ -3443,8 +3443,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake analysis of submitted supplier pricing.",
           "Differentiate between price and cost in decision making at a minimal level.",
@@ -3454,8 +3454,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Use standard templates to assess Total Cost of Ownership (TCO) for basic supply arrangements. ",
           "Differentiate between price and overall cost in decision making.",
@@ -3465,8 +3465,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop simple TCO models for straightforward supply arrangements.",
           "Differentiate between price and overall cost as part of the overall value assessment of supply arrangements.",
@@ -3479,8 +3479,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust TCO models for complex supply arrangements and create templates and guidance for cost modelling.",
           "Identify price as a part of overall cost which is part of the overall value and expertly apply this principle in assessing the value of supply arrangements.",
@@ -3493,8 +3493,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Work with financial experts and other business areas  to develop guidelines and templates for assessing and measuring TCO costs.",
           "Provide clear guidelines and tools to all areas of the organisation on assessing overall value of supply arrangements to ensure decisions are not simply price focussed.",
@@ -3515,8 +3515,8 @@
     "levels": [
       {
         "level": 1,
-        "name": "Level 1",
-        "easyDescription": "Tactical - Undertakes key procurement activities for straightforward goods and services.",
+        "name": "1",
+        "easyDescription": "Tactical",
         "attributes": [
           "Undertake analysis of submitted supplier pricing.",
           "Differentiate between price and cost in decision making at a minimal level.",
@@ -3526,8 +3526,8 @@
       },
       {
         "level": 2,
-        "name": "Level 2",
-        "easyDescription": "Operational - Undertakes procurement activities for a wide range of goods and services. Provides advice and guidance to key stakeholders on the performance of procurement procedures and processes.",
+        "name": "2",
+        "easyDescription": "Operational",
         "attributes": [
           "Use standard templates to assess Total Cost of Ownership (TCO) for basic supply arrangements. ",
           "Differentiate between price and overall cost in decision making.",
@@ -3537,8 +3537,8 @@
       },
       {
         "level": 3,
-        "name": "Level 3",
-        "easyDescription": "Managerial - Manages strategic procurement activities for complex goods and services. Develops, improves and fulfils organisational and functional objectives in procurement and contracting.",
+        "name": "3",
+        "easyDescription": "Managerial",
         "attributes": [
           "Develop simple TCO models for straightforward supply arrangements.",
           "Differentiate between price and overall cost as part of the overall value assessment of supply arrangements.",
@@ -3551,8 +3551,8 @@
       },
       {
         "level": 4,
-        "name": "Level 4",
-        "easyDescription": "Professional - Formulates direction and advice, manages change, and leads and influences stakeholders in procurement and contracting.",
+        "name": "4",
+        "easyDescription": "Professional",
         "attributes": [
           "Develop robust TCO models for complex supply arrangements and create templates and guidance for cost modelling.",
           "Identify price as a part of overall cost which is part of the overall value and expertly apply this principle in assessing the value of supply arrangements.",
@@ -3565,8 +3565,8 @@
       },
       {
         "level": 5,
-        "name": "Level 5",
-        "easyDescription": "Advanced professional - Leads procurement teams within an organisation. Influences the organisation to adopt leading-edge procurement strategies and establish best practice. Influences supply markets with innovative sourcing solutions.",
+        "name": "5",
+        "easyDescription": "Advanced Professional",
         "attributes": [
           "Work with financial experts and other business areas  to develop guidelines and templates for assessing and measuring TCO costs.",
           "Provide clear guidelines and tools to all areas of the organisation on assessing overall value of supply arrangements to ensure decisions are not simply price focussed.",
