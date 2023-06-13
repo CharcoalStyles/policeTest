@@ -114,7 +114,7 @@ rolesCsvData.data.forEach((row) => {
       focus: codeLevelParser(row.procurement_occupation_specific_focus_capabilities) // parse as array
     },
     capabilities: {
-      focus: codeLevelParser(row.core_capabilities) // parse as array
+      focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array
     }
   })
 })
