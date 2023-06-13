@@ -1,13 +1,29 @@
 [
   {
     "id": 1,
-    "title": "Applied Procurement and Contracting",
-    "description": "Learn how the Aboriginal Procurement Policy supports NSW Government's commitment to growing NSW’s First Economy. On completion, you will be able to: apply the requirements for Aboriginal participation strategies, understand contract target arrangements, define addressable spend, and implement reporting requirements.",
+    "title": "Aboriginal Procurement Policy Training for Buyers",
+    "description": "Learn how the Aboriginal Procurement Policy supports NSW Government's commitment to growing NSW’s First Economy and what you are required to do under the policy.",
     "url": "https://info.buy.nsw.gov.au/training/aboriginal-procurement-policy-for-buyers",
-    "skills": [
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "MASE:1",
+      "VADI:1",
+      "COEF:1",
+      "COTO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1",
+      "FINA:1",
+      "TECH:1",
+      " TECH:2",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "LEAN:1",
       "LEAN:2"
@@ -15,19 +31,34 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.83"
   },
   {
     "id": 2,
     "title": "GIPA Act 2009 - Contract Disclosure Requirements",
-    "description": "Learn what information you need to disclose under the Government Information (Public Access) Act 2009 as a public sector employee. On completion, you should be able to: identify contracts you must disclose, define the classes of contracts and the information to release, determine disclosure time frames, know where to publish information, and locate relevant legislation, regulations, policy and guidelines.",
+    "description": "Learn what information you need to disclose under the Government Information (Public Access) Act 2009 as a public sector employee. ",
     "url": "https://info.buy.nsw.gov.au/training/contract-disclosure-requirements",
-    "skills": [
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "MASE:1",
+      "COEF:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1",
+      "MARE:1",
+      "FINA:1",
+      "TECH:1",
+      "TECH:2",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "LEAN:1",
       "LEAN:2"
@@ -35,19 +66,25 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.5"
   },
   {
     "id": 3,
     "title": "Modern Slavery in Procurement",
-    "description": "Learn how to identify and address modern slavery in the procurement supply chain. On completion, you will be able to: explain what modern slavery is, identify your agency's and your own responsibility for combatting modern slavery, identify and manage modern slavery risks during the procurement cycle, and respond to suspected or actual instances of modern slavery.",
+    "description": "Learn how to identify and address modern slavery in the procurement supply chain. ",
     "url": "https://info.buy.nsw.gov.au/training/modern-slavery-in-procurement",
-    "skills": [
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "MASE:1",
+      "VADI:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "LEAN:1",
       "LEAN:2"
@@ -55,19 +92,25 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.17"
   },
   {
     "id": 4,
     "title": "Enforceable Procurement Provisions",
-    "description": "Enforceable procurement provisions are legal requirements under Australia’s international procurement agreements. Learn who must comply with the Direction, what thresholds apply and the required market approach.",
+    "description": "Learn how to comply with Enforceable Procurement Provisions, including what thresholds apply and the required market approach.",
     "url": "https://info.buy.nsw.gov.au/training/enforceable-procurement-provisions",
-    "skills": [
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "MASE:1",
+      "VADI:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "LEAN:1",
       "LEAN:2"
@@ -75,92 +118,118 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.83"
   },
   {
     "id": 5,
     "title": "Procurement Analytics",
-    "description": "Learn how to access and analyse procurement data to improve business objectives and outcomes. On completion, you will be able to: understand the analytics framework and importance of visual data, use Spend Cube Online to access and export data to answer questions on government spend, and use Power BI to analyse and present data in easy to understand formats.",
+    "description": "Learn how to access and analyse procurement data to improve business objectives and outcomes. ",
     "url": "https://info.buy.nsw.gov.au/training/spend-cube-online",
-    "skills": [
+    "coreCapabilities": [
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
       "PRAN:1",
-      "PRAN:2",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "PANA:2",
       "COSM:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "1.17"
   },
   {
     "id": 6,
     "title": "NSW eTendering for Buyers",
-    "description": "Learn how to create and publish a request for tender, download tenderbox content, and publish contract award notices. On completion, you'll be able to: create a request for tender (RFT), publish an RFT, use the selective RFT process to leverage supplies on prequalification schemes, access and download tenderbox content, and publish contract award notices.",
+    "description": "Learn how to create and publish a request for tender, download tenderbox content, and publish contract award notices. ",
     "url": "https://info.buy.nsw.gov.au/training/etendering-training-for-buyers",
-    "skills": [
+    "coreCapabilities": [
+      "DERE:1",
+      "PLAN:1",
       "PRAN:1",
-      "PRAN:2",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "STSO:1",
       "LEAN:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Course",
+    "format": "Instructor-led training;eLearning;Video and audio;Publications",
     "cost": "0",
     "duration": "5"
   },
   {
     "id": 7,
     "title": "Governance - Procurement Foundations",
-    "description": "Learn how procurement is governed in NSW Government, including approved procurement arrangements and accreditation. On completion, you will be able to: understand how procurement in the NSW public sector is governed, understand how your agency’s accreditation status impacts its procurement, identify approved procurement arrangements that you must use, identify procurements that are exempt from using approved procurement arrangements, and understand what records you must keep. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn how procurement is governed in NSW Government, including approved procurement arrangements and accreditation. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
-      "PRAN:1",
+    "coreCapabilities": [
+      "ACWI:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.25"
   },
   {
     "id": 8,
     "title": "NSW Government’s Procurement Objectives - Procurement Foundations",
-    "description": "Learn about NSW Government’s five procurement objectives for guiding procurement decisions. On completion, you will be able to: define value for money, identify how you can promote fair and open competition, identify how you can help NSW to be the easiest state to do business, understand how being innovative in your procurement can deliver better outcomes, and understand how sustainable procurement can deliver outcomes that support society, the economy and the environment. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn about NSW Government’s five procurement objectives for guiding procurement decisions. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "VADI:1",
+      "DERE:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PANA:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.25"
   },
   {
     "id": 9,
     "title": "Procurement Legislation and Policies - Procurement Foundations",
-    "description": "Learn about your obligations under a range of legislation and policies relating to procurement. On completion, you will be able to: identify your obligations under key legislation and policies related to procurement, and understand how the NSW Government's Procurement Policy Framework can be used as a single source of guidance on government objectives, requirements and rules for procurement. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn about your obligations under a range of legislation and policies relating to procurement. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "DERE:1",
+      "PLAN:1",
+      "DEAC:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PRRI:1",
       "LEAN:1"
@@ -168,19 +237,25 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.17"
   },
   {
     "id": 10,
     "title": "Planning Your Procurement - Procurement Foundations",
-    "description": "Learn how to plan your low value, low risk procurement in line with best practice. On completion, you will be able to: identify the stages of best practice procurement methodology, analyse the business need and engage your stakeholders, analyse and engage the market, and finalise your procurement strategy. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn how to plan your low value, low risk procurement in line with best practice. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "WOCO:1",
+      "PLAN:1",
+      "THAN:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PANA:1",
       "PRRI:1"
@@ -188,19 +263,26 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.17"
   },
   {
     "id": 11,
     "title": "Sourcing - Procurement Foundations",
-    "description": "Learn how to source low value, low risk goods and services in line with best practice. On completion, you will be able to: understand you must be authorised to approach the market, understand and select the most appropriate type of market approach, develop an evaluation plan and determine your evaluation criteria, understand the role and responsibilities of the evaluation team, declare conflicts of interest, prepare your documentation and issue the RFX using a procurement system, understand how to run the tender process, understand how to evaluate tender responses and select the successful supplier, and understand how to negotiate and award the contract. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn how to source low value, low risk goods and services in line with best practice. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "VADI:1",
+      "COEF:1",
+      "DERE:1",
+      "THAN:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "STSO:1",
       "PRRI:1",
@@ -209,19 +291,27 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.33"
   },
   {
     "id": 12,
     "title": "Implementing and Managing the Arrangement - Procurement Foundations",
-    "description": "Learn about implementing and managing your arrangement, including paying suppliers and your reporting obligations. On completion, you will be able to: understand how to pay suppliers, understand your reporting and contract disclosure obligations, and foster a positive relationship with the supplier to ensure delivery of procurement outcomes. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn about implementing and managing your arrangement, including paying suppliers and your reporting obligations.",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "MASE:1",
+      "COEF:1",
+      "COTO:1",
+      "WOCO:1",
+      "DERE:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PRRI:1",
       "CONM:1"
@@ -229,56 +319,71 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.17"
   },
   {
     "id": 13,
     "title": "Probity in Procurement - Procurement Foundations",
-    "description": "Learn about your obligation to uphold the principles of probity in procurement. On completion, you will be able to: identify and apply probity principles to your procurement, and understand the role of probity advisers and auditors and when you might need to engage them. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn about your obligation to uphold the principles of probity in procurement. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "DEAC:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
-      "PRRI:1"
+      "PRRI:1",
+      "CONM:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.17"
   },
   {
     "id": 14,
     "title": "Preventing Corruption in Procurement - Procurement Foundations",
-    "description": "Learn about your obligation to prevent corruption in procurement. On completion, you will be able to: understand the impacts of corrupt conduct, adefine corrupt conduct, identify procurement outcomes that can result from corrupt conduct, identify corruption risks in procurement, understand your obligations in preventing corruption in procurement, including managing conflicts of interest and offers of gifts and benefits, and know how to report corrupt conduct. This course is part of the Procurement Foundations training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn about your obligation to prevent corruption in procurement. ",
     "url": "https://buy.nsw.gov.au/training/procurement_foundations",
-    "skills": [
+    "coreCapabilities": [
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "DEAC:1",
       "PRAN:1",
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PRRI:1"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.25"
   },
   {
     "id": 15,
     "title": "Applied Procurement and Contracting",
-    "description": "This 2-day course covers the complete lifecycle of a low-medium risk/value procurement from initial planning activities through to closing it out. It is for NSW Government employees who regularly undertake or manage low-medium risk/value procurement and contracting activities. On completion, you will be able to: apply NSW Government regulatory and policy framework to a procurement activity, plan a procurement, approach the market, conduct a procurement, manage a contract, and apply appropriate probity to a procurement. This course builds on the Procurement Foundations training and is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "This 2-day course covers the complete lifecycle of a low-medium risk/value procurement from initial planning activities through to closing it out. It is for NSW Government employees who regularly undertake or manage low-medium risk/value procurement and contracting activities. ",
     "url": "https://info.buy.nsw.gov.au/training/applied-procurement-and-contracting",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:2",
-      "PRAN:3",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:2",
       "PANA:1",
       "PANA:2",
@@ -299,71 +404,104 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Course",
+    "format": "Instructor-led training",
     "cost": "1350",
     "duration": "14"
   },
   {
     "id": 16,
     "title": "Commercial Negotiation - Procurement Skills Booster",
-    "description": "Learn to plan, conduct and analyse the outcomes of commercial negotiations to achieve business objectives. On completion, you will be able to: identify benefits and common types of negotiation in government procurement, identify negotiation styles, ploys and tactics, identify key stages of negotiation, plan, conduct and conclude negotiations, and respond to and deal with negotiation issues. This course is part of the Procurement Skills Booster training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn to plan, conduct and analyse the outcomes of commercial negotiations to achieve business objectives. ",
     "url": "https://info.buy.nsw.gov.au/training/procurement-skills-booster",
-    "skills": [
-      "PRAN:3",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "CONE:1",
       "CONE:2"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.5"
   },
   {
     "id": 17,
     "title": "Contract Management - Procurement Skills Booster",
-    "description": "Learn to effectively manage contracts to ensure goods and services are delivered as agreed. On completion, you will be able to: plan to manage a contract, start up a contract, build and manage effective working relationships with suppliers and stakeholders, monitor and manage contract performance, administer contracts, and close a contract. This course is part of the Procurement Skills Booster training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn to effectively manage contracts to ensure goods and services are delivered as agreed. ",
     "url": "https://info.buy.nsw.gov.au/training/procurement-skills-booster",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "DEAC:1",
       "PRAN:3",
-      "PRAN:4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "CONM:1",
       "CONM:2"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "1"
   },
   {
     "id": 18,
     "title": "Procurement Risk Management - Procurement Skills Booster",
-    "description": "Learn to effectively identify, assess and mitigate procurement risks. On completion, you will be ab le to: identify requirements for risk management in procurement, communicate and consult with key stakeholders about risk, identify, analyse and evaluate key risks, develop and implement risk treatments, and monitor and review risks. This course is part of the Procurement Skills Booster training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn to effectively identify, assess and mitigate procurement risks. ",
     "url": "https://info.buy.nsw.gov.au/training/procurement-skills-booster",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
       "PRAN:3",
-      "PRAN:4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "PRRI:1",
       "PRRI:2"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.5"
   },
   {
     "id": 19,
     "title": "Managing Foreign Exchange Risk - Procurement Skills Booster",
-    "description": "Learn to effectively manage foreign exchange (FX) risk when buying goods and services. On completion, you will be able to: comply with your obligations for managing FX risk, identify and report FX risk in procurement activities, understand the concept of FX risk mitigation through hedging, and manage FX risk with the assistance of NSW TCorp. This course is part of the Procurement Skills Booster training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn to effectively manage foreign exchange (FX) risk when buying goods and services. ",
     "url": "https://info.buy.nsw.gov.au/training/procurement-skills-booster",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "DEAC:1",
       "PRAN:3",
-      "PRAN:4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "PRRI:1",
       "PRRI:2",
       "COSM:1",
@@ -372,35 +510,45 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.33"
   },
   {
     "id": 20,
     "title": "Supplier Relationship Management - Procurement Skills Booster",
-    "description": "Learn to establish constructive and innovative strategic relationships based on driving value through appropriate long term relationships. On completion, you will be able to: segment suppliers and determine the appropriate type of relationship needed, develop appropriate supplier relationships, assess impacts on suppliers and work to eliminate areas of unnecessary costs, and track and monitor benefits through supplier relationships. This course is part of the Procurement Skills Booster training, which is part of the recommended training pathway for NSW public sector procurement professionals.",
+    "description": "Learn to establish constructive and innovative strategic relationships based on driving value through appropriate long term relationships. ",
     "url": "https://info.buy.nsw.gov.au/training/procurement-skills-booster",
-    "skills": [
-      "PRAN:3",
+    "coreCapabilities": [
+      "MASE:1",
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "SURE:1",
       "SURE:2"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "eLearning",
     "cost": "0",
     "duration": "0.5"
   },
   {
     "id": 21,
     "title": "PSP50616 Diploma of Procurement & Contracting",
-    "description": "Develop the skills and knowledge required to lead strategic and complex procurements, provide specialist advice, manage procurement and contracting functions, or to develop agency policies, processes and procurement capability. On completion you should be able to: On completion, you should be able to: develop organisational procurement plans, strategically analyse agency procurement spend by category\r\ndirect and manage continuous improvement and change in the procurement function, develop opportunities for coordinated procurement within and across agencies, manage strategic procurement negotiations, manage strategic procurement risk, and strategically direct the management of contracts across an agency. The course is delivered over 9 days (3 x 3 consecutive days). Assessment encompasses in-class group work and work-based tasks completed outside of the class sessions. This course is part of the recommended training pathway for NSW public sector procurement professionals. Participants who successfully complete the course will be awarded a nationally recognised qualification and may be eligible to apply for exemption from some CIPS Advanced Diploma in Procurement and Supply modules.",
+    "description": "This is a nationally recognised qualification for developing the skills and knowledge required to manage large-scale, complex goods and services procurement and contracting activities in the public sector. You will look at planning, sourcing and managing medium-high value/risk procurement activities. This includes evaluating offers, negotiating and performance managing complex contracts.",
     "url": "https://info.buy.nsw.gov.au/training/diploma-of-procurement-and-contracting",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:3",
-      "PRAN4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "STPR:2",
       "PANA:2",
       "PANA:3",
@@ -413,23 +561,25 @@
       "LEAN:2",
       "COLA:2",
       "COSM:2",
-      "COSM3"
+      "COSM:3"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Course",
+    "format": "Qualifications",
     "cost": "5900",
     "duration": "63"
   },
   {
     "id": 22,
     "title": "PSP60616 Advanced Diploma of Procurement and Contracting",
-    "description": "Develop the skills and knowledge required to manage large-scale, complex goods and services procurement and contracting activities in the public sector. You will look at planning, sourcing and managing medium-high value/risk procurement activities. This includes evaluating offers, negotiating and performance managing complex contracts. On completion you should be able to: establish a governance framework for a complex procurement, develop a complex procurement plan, manage risk in a procurement, manage a complex procurement activity, evaluate a complex procurement, negotiate successful procurement outcomes, manage a complex contract, and manage contractor performance. The course is delivered over 9 days (3 x 3 consecutive days). Assessment encompasses in-class group work and work-based tasks completed outside of the class sessions. This course is part of the recommended training pathway for NSW public sector procurement professionals. Participants who successfully complete the course will be awarded a nationally recognised qualification and may be eligible to apply for exemption from some CIPS Diploma in Procurement and Supply modules.",
+    "description": "This is a nationally recognised qualification that develops the skills and knowledge required to lead strategic and complex procurements, provide specialist advice, manage procurement and contracting functions, or to develop agency policies, processes and procurement capability. ",
     "url": "https://info.buy.nsw.gov.au/training/advanced-diploma-of-procurement-and-contracting",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:3",
-      "PRAN4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "STPR:3",
       "PANA:3",
       "PANA:4",
@@ -439,23 +589,25 @@
       "SURE:3",
       "CONM:3",
       "LEAN:3",
-      "LEAN4",
-      "COSM3"
+      "LEAN:4",
+      "COSM:3"
     ],
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Course",
+    "format": "Qualifications",
     "cost": "6265",
     "duration": "63"
   },
   {
     "id": 23,
     "title": "CIPS Level 4 Diploma in Procurement and Supply",
-    "description": "You will learn about making procurement and supply happen within an organisation, and you will be equipped with an essential range of knowledge and tools that you can apply immediately in your workplace. Learn how to apply practical, theoretical and technical knowledge, gain a clear understanding of procurement and supply and develop the ability to address complex, non-routine problems. On completion, you will be able to analyse, interpret and evaluate relevant information and ideas and have an informed awareness of differing perspectives and approaches within the profession. You will also be able to review the effectiveness and appropriateness of methods, actions and results. This qualification is at the same level as the first year of an undergraduate degree course. It’s suitable for those in operational roles or those \r\nmanaging or supervising the procurement and supply function who want to develop their career and work towards MCIPS Chartered Procurement and Supply Professional. Modules include Scope and Influence of Procurement and Supply, Defining the Business Need, Commercial Contracting, Ethical and Responsible Sourcing, Commercial Negotiation, Supplier Relationships, Whole Life Asset Management, and Procurement and Supply in Practice.",
+    "description": "Learn how to apply practical, theoretical and technical knowledge, gain a clear understanding of procurement and supply and develop the ability to address complex, non-routine problems. This qualification is at the same level as the first year of an undergraduate degree course. It’s suitable for those in operational roles or those managing or supervising the procurement and supply function who want to develop their career and work towards MCIPS Chartered Procurement and Supply Professional. ",
     "url": "https://www.cips.org/qualifications/diploma-in-procurement-supply",
-    "skills": [
-      "PRAN:3",
+    "coreCapabilities": [
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:2",
       "STPR:3",
       "PANA:2",
@@ -479,17 +631,19 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Course",
+    "format": "Qualifications",
     "cost": "1600",
     "duration": "600"
   },
   {
     "id": 24,
     "title": "CIPS Level 5 Advanced Diploma in Procurement and Supply",
-    "description": "This course provides senior buyers, contract and supply chain managers with the expertise to improve organisational procurement and to fulfil organisational objectives. It gives you the knowledge base to reduce cost, improve quality and timescales, manage the supply chain and deal with legal issues. Building on the practical knowledge and understanding gained at CIPS Level 4 Diploma in Procurement and Supply you will develop a higher level of practical, theoretical and technical knowledge and understanding of procurement and supply. Your learning will focus on how to deal with key aspects of risk in supply chains and mitigation of those risks; processing and evaluating contracts and the impact of legal implications when contracts are breached. On completion of this qualification you can expect to improve your overall organisational procurement and supply performance to fulfil your organisational objectives. This course is designed for individuals working at or aspiring to the Managerial and Professional levels of the CIPS Global Standard for Procurement and Supply. It is designed for the more experienced members of the profession who are expected to develop, improve and fulfill functional business objectives and also formulate direction. To enrol in this course, you must first have achieved the CIPS Level 4 Diploma in Procurement and Supply. Core modules include Managing Teams and Individuals, Advanced Contract & Financial Management, Managing Supply Chain Risk, Managing Contractual Risk, and Managing Ethical Procurement and Supply. Elective modules include Category Management, Advanced Negotiation, Achieving Competitive Advantage Through the Supply Chain, Project and Change Management, Operations Management, and Logistics Management.",
+    "description": "This course provides senior buyers, contract and supply chain managers with the expertise to improve organisational procurement and to fulfil organisational objectives. It gives you the knowledge base to reduce cost, improve quality and timescales, manage the supply chain and deal with legal issues. To enrol in this course, you must first have achieved the CIPS Level 4 Diploma in Procurement and Supply. ",
     "url": "https://www.cips.org/qualifications/advanced-diploma-in-procurement-supply",
-    "skills": [
-      "PRAN:4",
+    "coreCapabilities": [
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "STPR:3",
       "PANA:3",
       "STSO:3",
@@ -504,17 +658,19 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Course",
+    "format": "Qualifications",
     "cost": "1600",
     "duration": "600"
   },
   {
     "id": 25,
     "title": "CIPS Level 6 Professional Diploma in Procurement and Supply",
-    "description": "This is the final level of CIPS qualifications for those working towards MCIPS Chartered Procurement and Supply Professional. Building on the knowledge and skills learned at the CIPS Level 5 Advanced Diploma in Procurement and Supply, you will be able to demonstrate strategic knowledge and leadership skills and find solutions to complex problems. It is designed to develop transferable workplace skills such as excellent \r\ncommunication and the ability to work in and lead a team. Employers have identified that the ability to think strategically and lead and influence policy and thinking are essential for progression. You will gain an understanding of different perspectives and theories and will be able to critically analyse, interpret and evaluate complex information, concepts and ideas. To enrol in this course, you must first have achieved the CIPS Level 5 Advanced Diploma in Procurement and Supply. Core modules include Strategic Ethical Leadership, Global Commercial Strategy, Global Strategic Supply Chain Management, and Future Strategic \r\nChallenges for the Profession. Elective modules include Strategic Programme Leadership, Commercial Data Management, Innovation in Procurement and Supply, Supply Network Design, and Global Logistics Strategy.",
+    "description": "This is the final level of CIPS qualifications for those working towards MCIPS Chartered Procurement and Supply Professional. You will demonstrate strategic knowledge and leadership skills and find solutions to complex problems. It is designed to develop transferable workplace skills such as excellent communication and the ability to work in and lead a team. To enrol in this course, you must first have achieved the CIPS Level 5 Advanced Diploma in Procurement and Supply. ",
     "url": "https://www.cips.org/qualifications/professional-diploma-in-procurement-supply",
-    "skills": [
-      "PRAN:5",
+    "coreCapabilities": [
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
       "STPR:4",
       "STPR:5",
       "PANA:4",
@@ -530,7 +686,7 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Course",
+    "format": "Qualifications",
     "cost": "1600",
     "duration": "600"
   },
@@ -539,8 +695,10 @@
     "title": "Study Resources: CIPS Level 4 Diploma in Procurement and Supply",
     "description": "A series of webinar study resources for those studying towards the CIPS Level 4 Diploma in Procurement and Supply. Modules include Scope and Influence of Procurement and Supply, Defining the Business Need, Commercial Contracting, Ethical and Responsible Sourcing, Commercial Negotiation, Supplier Relationships, Whole Life Asset Management, and Procurement and Supply in Practice.",
     "url": "https://training.buy.nsw.gov.au/?C=1103018",
-    "skills": [
-      "PRAN:3",
+    "coreCapabilities": [
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:2",
       "STPR:3",
       "PANA:2",
@@ -564,7 +722,7 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Online",
+    "format": "Qualifications;Video and audio",
     "cost": "0",
     "duration": "878"
   },
@@ -573,8 +731,10 @@
     "title": "Study Resources: CIPS Level 5 Advanced Diploma in Procurement and Supply",
     "description": "A series of webinar study resources for those studying towards the CIPS Level 5 Advanced Diploma in Procurement and Supply. Modules include Scope and Influence of Procurement and Supply, Defining the Business Need, Commercial Contracting, Ethical and Responsible Sourcing, Commercial Negotiation, Supplier Relationships, Whole Life Asset Management, and Procurement and Supply in Practice. Modules include Managing Teams and Individuals, Advanced Contract & Financial Management, Managing Supply Chain Risk, Managing Contractual Risk, Managing Ethical Procurement and Supply, Category Management, Advanced Negotiation, Achieving Competitive Advantage Through the Supply Chain, Project and Change Management, Operations Management, and Logistics Management.",
     "url": "https://training.buy.nsw.gov.au/?C=1119165",
-    "skills": [
-      "PRAN:4",
+    "coreCapabilities": [
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "STPR:3",
       "PANA:3",
       "STSO:3",
@@ -589,7 +749,7 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Online",
+    "format": "Qualifications;Video and audio",
     "cost": "0",
     "duration": "1244"
   },
@@ -598,8 +758,10 @@
     "title": "Study Resources: CIPS Level 6 Professional Diploma in Procurement and Supply",
     "description": "A series of webinar study resources for those studying towards the CIPS Level 4 Diploma in Procurement and Supply. Modules include Scope and Influence of Procurement and Supply, Defining the Business Need, Commercial Contracting, Ethical and Responsible Sourcing, Commercial Negotiation, Supplier Relationships, Whole Life Asset Management, and Procurement and Supply in Practice. Modules include Strategic Ethical Leadership, Global Commercial Strategy, Global Strategic Supply Chain Management, Future Strategic Challenges for the Profession, Strategic Programme Leadership, Commercial Data Management, Innovation in Procurement and Supply, Supply Network Design, and Global Logistics Strategy.",
     "url": "https://training.buy.nsw.gov.au?C=1309962",
-    "skills": [
-      "PRAN:5",
+    "coreCapabilities": [
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
       "STPR:4",
       "STPR:5",
       "PANA:4",
@@ -615,19 +777,21 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Online",
+    "format": "Qualifications;Video and audio",
     "cost": "0",
     "duration": "993"
   },
   {
     "id": 29,
     "title": "Join the NSW Community of Procurement Professionals (ComPrac)",
-    "description": "The community is for procurement professionals working in the NSW public sector, and other eligible buyers. The community comes together to: learn about new or changing legislation, policy and procedures, share lessons learned and best practice, hear what’s happening in other agencies, jurisdictions and industry jointly solve problems, innovate and create new ideas by seeking advice and leveraging the collective knowledge and expertise of members, connect members with channels of support. In addition to sharing information and building knowledge and awareness, participants are encouraged to apply their learnings in their workplace.",
+    "description": "The community is for procurement professionals working in the NSW public sector, and other eligible buyers. The community comes together to learn about new or changing legislation, policy and procedures, share lessons learned and best practice, hear what’s happening in other agencies, jurisdictions and industry jointly solve problems, innovate and create new ideas by seeking advice and leveraging the collective knowledge and expertise of members, connect members with channels of support. In addition to sharing information and building knowledge and awareness, participants are encouraged to apply their learnings in their workplace.",
     "url": "https://info.buy.nsw.gov.au/training/community-of-practice",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:3",
       "PRAN:4",
-      "PRAN:5",
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "STPR:2",
       "STPR:3",
@@ -668,16 +832,79 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Events;Through others",
     "cost": "0",
     "duration": "20"
   },
   {
     "id": 30,
+    "title": "Resource Hub: Procurement Professionals ComPrac",
+    "description": "Access the repository of content for members of the Community of Procurement Professionals, including recordings of past events, slide decks, and other materials.",
+    "url": "https://training.buy.nsw.gov.au/?C=927807",
+    "coreCapabilities": [
+      "PRAN:3",
+      "PRAN:4",
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
+      "STPR:1",
+      "STPR:2",
+      "STPR:3",
+      "STPR:4",
+      "PANA:1",
+      "PANA:2",
+      "PANA:3",
+      "PANA:4",
+      "CONE:1",
+      "CONE:2",
+      "CONE:3",
+      "CONE:4",
+      "PRRI:1",
+      "PRRI:2",
+      "PRRI:3",
+      "PRRI:4",
+      "SURE:1",
+      "SURE:2",
+      "SURE:3",
+      "SURE:4",
+      "CONM:1",
+      "CONM:2",
+      "CONM:3",
+      "CONM:4",
+      "LEAN:1",
+      "LEAN:2",
+      "LEAN:3",
+      "LEAN:4",
+      "COLA:1",
+      "COLA:2",
+      "COLA:3",
+      "COLA:4",
+      "COSM:1",
+      "COSM:2",
+      "COSM:3",
+      "COSM:4"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Government",
+    "level": "",
+    "format": "Events;Video and audio;Publications",
+    "cost": "0",
+    "duration": "30"
+  },
+  {
+    "id": 31,
     "title": "Resource Hub: Negotiation",
     "description": "Resources, tools, webinars and podcasts to support your development in influencing and negotiation.",
     "url": "https://training.buy.nsw.gov.au/?C=1342830",
-    "skills": [
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "CONE:1",
       "CONE:2",
       "CONE:3",
@@ -686,16 +913,21 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Video and audio;Publications",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 31,
+    "id": 32,
     "title": "Resource Hub: Risk Management",
     "description": "Resources, tools, webinars and podcasts to support your development in procurement risk management.",
     "url": "https://training.buy.nsw.gov.au?C=1755683",
-    "skills": [
+    "coreCapabilities": [
+      "WOCO:1",
+      "PLAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "PRRI:1",
       "PRRI:2",
       "PRRI:3",
@@ -704,16 +936,24 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Video and audio;Publications",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 32,
+    "id": 33,
     "title": "Resource Hub: Supplier Relationship Management ",
     "description": "Resources, tools, webinars and podcasts to support your development in supplier relationship management (SRM).",
     "url": "https://training.buy.nsw.gov.au/?C=1313545",
-    "skills": [
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "SURE:1",
       "SURE:2",
       "SURE:3",
@@ -722,16 +962,25 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Video and audio;Publications",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 33,
+    "id": 34,
     "title": "Resource Hub: Contract Management",
     "description": "Resources, tools, webinars and podcasts to support your development in contract management.",
     "url": "https://training.buy.nsw.gov.au/?C=1326134",
-    "skills": [
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "CONM:1",
       "CONM:2",
       "CONM:3",
@@ -740,18 +989,49 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Video and audio;Publications",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 34,
+    "id": 35,
+    "title": "Resource Hub: Procurement Analytics",
+    "description": "Resources, tools, webinars and podcasts to support your development in procurement analytics.",
+    "url": "https://training.buy.nsw.gov.au/?C=2032914",
+    "coreCapabilities": [
+      "ACWI:2",
+      "VADI:1",
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "PRAN:1:PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:1",
+      "PANA:2",
+      "PANA:3",
+      "PANA:4;COSM:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Government",
+    "level": "",
+    "format": "Video and audio;Publications",
+    "cost": "0",
+    "duration": "10"
+  },
+  {
+    "id": 36,
     "title": "70:20:10 Foundational Professional Development",
     "description": "Ways you can develop your foundational procurement capabilities under the 70:20:10 model. Includes learning from others and work-based experiences.",
     "url": "https://info.buy.nsw.gov.au/training/foundational-professional-development",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:1",
-      "PRAN:2",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "PANA:1",
       "CONE:1",
@@ -765,17 +1045,19 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "On the job;Through others",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 35,
+    "id": 37,
     "title": "70:20:10 Intermediate Professional Development",
     "description": "Ways you can develop your intermediate procurement capabilities under the 70:20:10 model. Includes learning from others and work-based experiences.",
     "url": "https://info.buy.nsw.gov.au/training/intermediate-professional-development",
-    "skills": [
-      "PRAN:3",
+    "coreCapabilities": [
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
       "STPR:2",
       "PANA:2",
       "CONE:2",
@@ -789,17 +1071,19 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "On the job;Through others",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 36,
+    "id": 38,
     "title": "70:20:10 Advanced Professional Development",
     "description": "Ways you can develop your advanced procurement capabilities under the 70:20:10 model. Includes learning from others and work-based experiences.",
     "url": "https://info.buy.nsw.gov.au/training/advanced-professional-development",
-    "skills": [
-      "PRAN:4",
+    "coreCapabilities": [
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "STPR:3",
       "PANA:3",
       "CONE:3",
@@ -813,298 +1097,23 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "On the job;Through others",
     "cost": "0",
     "duration": "10"
   },
   {
-    "id": 37,
-    "title": "What is Corruption?",
-    "description": "The NSW ICAC works to expose, investigate and prevent public sector corruption in the state of NSW. This short video explains what corrupt conduct is through real-life examples applicable to the jurisdiction of the NSW ICAC. If you suspect corruption is taking place at a NSW government agency, our FAQs can help you better understand what it means to report corruption to the NSW ICAC.",
-    "url": "https://www.youtube.com/watch?v=GOLoWdcnK_o",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.08"
-  },
-  {
-    "id": 38,
-    "title": "How to Recognise the Signs of Corruption",
-    "description": "There are red flags that can help uncover corruption. While purchasing goods and services are everyday tasks in the public sector, these activities can be vulnerable to exploitation for private benefit by NSW public officials, suppliers and cybercriminals. This video by the NSW Independent Commission Against Corruption (ICAC), NSW, Australia, provides examples of red flags commonly associated with corrupt procurement activities within public authorities. A single red flag can indicate serious corruption, but it could also highlight poor practice that is not corrupt, something that legitimately arises from an unusual circumstance, or an honest mistake. If you see a red flag, it is important that you raise it with your manager. If it cannot be clearly explained, then you are encouraged to report it internally and/or to make a report to the ICAC. ",
-    "url": "https://www.youtube.com/watch?v=c833XAx8HEs",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.07"
-  },
-  {
     "id": 39,
-    "title": "Corruption Pitfalls: Gifts, Hospitality and Bribes",
-    "description": "This short video by the NSW Independent Commission Against Corruption (ICAC), NSW, Australia, aims to raise awareness among public officials of the pitfalls when offered gifts and hospitality from external parties such as suppliers, applicants or customers. A gift can be anything of value; tickets, accommodation, food, or discounts on goods and services. While some gifts and hospitality are token in nature and do not entail much risk – for example, a modest thank you gift presented to a speaker at a conference – others may be intended to secure favourable treatment or cultivate a relationship with a government employee. These “gifts-of-influence” are often the subject of complaints made to the ICAC.",
-    "url": "https://www.youtube.com/watch?v=zjeYNw0vSoQ",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.08"
-  },
-  {
-    "id": 40,
-    "title": "How to Report Corrupt Conduct",
-    "description": "Many successful investigations into corruption start with complaints or allegations that are provided by members of the public or public officials to the NSW Independent Commission Against Corruption (ICAC), NSW, Australia. The ICAC takes every complaint seriously and carefully assesses the information it receives. All information is treated securely and in confidence. Anyone can make a complaint to the ICAC. This short video provides an overview of: how you can make a complaint, including anonymously, important things to consider and include when making a complaint, action the ICAC can take once it assesses your complaint. Corruption is everyone’s problem and you can help the ICAC to combat corruption by promptly reporting your concerns.",
-    "url": "https://www.youtube.com/watch?v=mv9anlOZtZk",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.08"
-  },
-  {
-    "id": 41,
-    "title": "What is a Conflict of Interest?",
-    "description": "This video by the NSW ICAC provides a concise definition of conflict of interest as it pertains to the public service in the state of NSW. A conflict of interest exists when a reasonable person perceives that a public official’s personal interests are favoured over their public duties. Unfortunately, conflicts of interest for public officials are an unavoidable aspect of public service and are often insufficiently understood and mismanaged. If you see or suspect a conflict of interest involving any NSW public officials, it is important to speak up about it. The ICAC has a range of resources available to better understand this basic standard of corruption prevention. Download the ICAC's Managing conflicts of interest in the NSW pubic sector publication for further information on dealing with conflicts of interest.",
-    "url": "https://www.youtube.com/watch?v=-AhmA8z6lIc",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.07"
-  },
-  {
-    "id": 42,
-    "title": "Supplier Due Diligence: A Guide for NSW Public Sector Agencies",
-    "description": "In June 2020, the NSW Independent Commission Against Corruption (NSW ICAC), Australia, released a guide to help public sector agencies design and implement checks on potential and existing suppliers with which they decide to engage. This short video provides an overview of the guide titled, Supplier due diligence: a guide for NSW public sector agencies. The NSW ICAC has a suite of publications that can help agencies improve their corruption prevention strategies. More information: www.icac.nsw.gov.au.",
-    "url": "https://www.youtube.com/watch?v=HMK6qHKn2cY",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.05"
-  },
-  {
-    "id": 43,
-    "title": "Reporting Corruption to the NSW ICAC (Publication)",
-    "description": "Learn how to report corrupt conduct to the NSW ICAC, including what corruption is, why reporting corruption is important, what matters the ICAC can consider, who can provide information to the ICAC and how.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.5"
-  },
-  {
-    "id": 44,
-    "title": "Probity in Procurement:\r\nTips from a Professional (Publication)",
-    "description": "Top tips on probity in procurement from an experienced probity adviser.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRRI:1",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.5"
-  },
-  {
-    "id": 45,
-    "title": "Corruption Risks in Procurement: The Management Challenge (Publication)",
-    "description": "Learn about ways to control corruption in procurement, including strengthening procurement structures, the process of procurement, and the people factor. This report includes case studies of real investigations to illustrate weaknesses related to structures, processes and people that allowed corruption in procurement to occur.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "1"
-  },
-  {
-    "id": 46,
-    "title": "Corruption Risks in Procurement: Recommendations to Government (Publication)",
-    "description": "This report makes recommendations aimed at establishing clear leadership, a clear structure, a simplified regulatory environment and effective assistance to operational agencies in NSW.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "2"
-  },
-  {
-    "id": 47,
-    "title": "Corruption Risks in Procurement: Suppliers' Perception of Corruption (Publication)",
-    "description": "This research paper provides a picture of the extent of corruption from the perspective of suppliers to NSW state and local government.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "1.5"
-  },
-  {
-    "id": 48,
-    "title": "Managing Conflicts of Interest in the NSW Public Sector (Publication)",
-    "description": "The NSW ICAC's guidance in relation to conflicts of interest. It explains how to identify, disclose and manage a conflict of interest and sets out a broad control framework for public sector agencies to consider.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "STSO:1",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "1.5"
-  },
-  {
-    "id": 49,
-    "title": "Direct Negotiations: Guidelines for Managing Risks (Publication)",
-    "description": "Learn how to deal with direct negotiations, including what direct negotiations are, corruption risks, whether to undertake direct negotiations and how to undertake direct\r\nnegotiations.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "STSO:1",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "2"
-  },
-  {
-    "id": 50,
-    "title": "Dealing with Incumbent Providers in Procurement (Publication)",
-    "description": "Learn how to deal with incumbent providers in procurement, including why incumbency is sometimes an issue, probity considerations, mitigating the risks and helping to ensure integrity.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "1",
-      "PRRI:1",
-      "PRRI:2",
-      "SURE:1",
-      "CONM:1",
-      "CONM:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "0.5"
-  },
-  {
-    "id": 51,
-    "title": "Supplier Due Diligence: A Guide for NSW Public Sector Agencies (Publication)",
-    "description": "Guidance on undertaking supplier due diligence in the public sector, including why supplier due diligence is important, understanding risk and red flags, practical issues whenperforming due diligence, and due diligence checks.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
-      "PANA:1",
-      "STSO:1",
-      "PRRI:1",
-      "PRRI:2",
-      "LEAN:1"
-    ],
-    "roleFunctions": [],
-    "author": "NSW Independent Commission Against Corruption",
-    "level": "",
-    "format": "Online",
-    "cost": "0",
-    "duration": "2"
-  },
-  {
-    "id": 52,
     "title": "Sign up for Procurement Alerts",
     "description": "Sign up to email updates on changes to contracts, schemes, policies and more. This service is for buyers and procurement professionals at NSW Government and approved buyer organisations.",
     "url": "https://info.buy.nsw.gov.au/news/subscription",
-    "skills": [
+    "coreCapabilities": [
       "PRAN:1",
       "PRAN:2",
       "PRAN:3",
       "PRAN:4",
-      "PRAN:5",
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
       "STPR:1",
       "STPR:2",
       "STPR:3",
@@ -1145,38 +1154,359 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Online",
+    "format": "Publications",
     "cost": "0",
     "duration": "0.1"
   },
   {
-    "id": 53,
-    "title": "Probity in Procurement (Workshop)",
-    "description": "This practical workshop is delievered by the NSW ICAC. It is designed for NSW public sector and local government staff and managers involved in low-level, uncomplicated purchasing and basic procurement activities. It raises awareness of corruption and probity principles.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/free-workshops/probity-in-procurement",
-    "skills": [
-      "PRAN:1",
-      "PRAN:2",
+    "id": 40,
+    "title": "What is Corruption?",
+    "description": "This short video by the NSW ICAC explains what corrupt conduct is through real-life examples applicable to the jurisdiction of the NSW ICAC.",
+    "url": "https://www.youtube.com/watch?v=GOLoWdcnK_o",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
       "PRRI:1",
-      "PRRI:2",
-      "LEAN:1",
-      "LEAN:2"
+      "LEAN:1"
     ],
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Course",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.08"
+  },
+  {
+    "id": 41,
+    "title": "How to Recognise the Signs of Corruption",
+    "description": "This video by the NSW ICAC provides examples of red flags commonly associated with corrupt procurement activities within public authorities. ",
+    "url": "https://www.youtube.com/watch?v=c833XAx8HEs",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.07"
+  },
+  {
+    "id": 42,
+    "title": "Corruption Pitfalls: Gifts, Hospitality and Bribes",
+    "description": "This short video by the NSW ICAC aims to raise awareness among public officials of the pitfalls when offered gifts and hospitality from external parties such as suppliers, applicants or customers.",
+    "url": "https://www.youtube.com/watch?v=zjeYNw0vSoQ",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.08"
+  },
+  {
+    "id": 43,
+    "title": "How to Report Corrupt Conduct",
+    "description": "Many successful investigations into corruption start with complaints or allegations that are provided by members of the public or public officials to the NSW ICAC. This short video provides an overview of how you can make a complaint, and the action the ICAC can take once it assesses your complaint.",
+    "url": "https://www.youtube.com/watch?v=mv9anlOZtZk",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.08"
+  },
+  {
+    "id": 44,
+    "title": "What is a Conflict of Interest?",
+    "description": "This video by the NSW ICAC provides a concise definition of conflict of interest as it pertains to the public service in the state of NSW. ",
+    "url": "https://www.youtube.com/watch?v=-AhmA8z6lIc",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.07"
+  },
+  {
+    "id": 45,
+    "title": "Supplier Due Diligence: A Guide for NSW Public Sector Agencies",
+    "description": "In June 2020, the NSW ICAC released a guide to help public sector agencies design and implement checks on potential and existing suppliers with which they decide to engage. This short video provides an overview of the guide titled, Supplier due diligence: a guide for NSW public sector agencies. ",
+    "url": "https://www.youtube.com/watch?v=HMK6qHKn2cY",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "STSO:1",
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.05"
+  },
+  {
+    "id": 46,
+    "title": "Reporting Corruption to the NSW ICAC (Publication)",
+    "description": "Learn how to report corrupt conduct to the NSW ICAC, including what corruption is, why reporting corruption is important, what matters the ICAC can consider, who can provide information to the ICAC and how.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "0.5"
+  },
+  {
+    "id": 47,
+    "title": "Probity in Procurement:\nTips from a Professional (Publication)",
+    "description": "Top tips on probity in procurement from an experienced probity adviser.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "0.5"
+  },
+  {
+    "id": 48,
+    "title": "Corruption Risks in Procurement: The Management Challenge (Publication)",
+    "description": "Learn about ways to control corruption in procurement, including strengthening procurement structures, the process of procurement, and the people factor. This report includes case studies of real investigations to illustrate weaknesses related to structures, processes and people that allowed corruption in procurement to occur.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "1"
+  },
+  {
+    "id": 49,
+    "title": "Corruption Risks in Procurement: Recommendations to Government (Publication)",
+    "description": "This report makes recommendations aimed at establishing clear leadership, a clear structure, a simplified regulatory environment and effective assistance to operational agencies in NSW.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
     "cost": "0",
     "duration": "2"
   },
   {
+    "id": 50,
+    "title": "Corruption Risks in Procurement: Suppliers' Perception of Corruption (Publication)",
+    "description": "This research paper provides a picture of the extent of corruption from the perspective of suppliers to NSW state and local government.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "1.5"
+  },
+  {
+    "id": 51,
+    "title": "Managing Conflicts of Interest in the NSW Public Sector (Publication)",
+    "description": "The NSW ICAC's guidance in relation to conflicts of interest. It explains how to identify, disclose and manage a conflict of interest and sets out a broad control framework for public sector agencies to consider.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "STSO:1",
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "1.5"
+  },
+  {
+    "id": 52,
+    "title": "Direct Negotiations: Guidelines for Managing Risks (Publication)",
+    "description": "Learn how to deal with direct negotiations, including what direct negotiations are, corruption risks, whether to undertake direct negotiations and how to undertake direct negotiations.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "STSO:1",
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "2"
+  },
+  {
+    "id": 53,
+    "title": "Dealing with Incumbent Providers in Procurement (Publication)",
+    "description": "Learn how to deal with incumbent providers in procurement, including why incumbency is sometimes an issue, probity considerations, mitigating the risks and helping to ensure integrity.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "PRRI:2",
+      "SURE:1",
+      "CONM:1",
+      "CONM:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "0.5"
+  },
+  {
     "id": 54,
-    "title": "Corruption Prevention in Procurement (Workshop)",
-    "description": "This practical workshop is delievered by the NSW ICAC. It is designed for NSW public sector staff with procurement duties, contract management roles or responsibility for overseeing these functions. It focuses on helping participants understand what corrupt conduct is, relevant corruption risks and how applying basic probity and risk management principles can assist them in achieving good outcomes while preventing corruption. The training is offered in-person as either a half-day or full-day workshop or online depending on the organisation’s needs and other considerations. While appropriate activity scenarios and case examples will be selected to cater to the specific needs of the participants, NSW ICAC are unable to offer a fully-customised workshop except in special circumstances.",
-    "url": "https://www.icac.nsw.gov.au/education-and-events/free-workshops/cp-in-procurement-and-contract-management",
-    "skills": [
-      "PRAN:2",
-      "PRAN:3",
+    "title": "Supplier Due Diligence: A Guide for NSW Public Sector Agencies (Publication)",
+    "description": "Guidance on undertaking supplier due diligence in the public sector, including why supplier due diligence is important, understanding risk and red flags, practical issues whenperforming due diligence, and due diligence checks.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:1",
+      "STSO:1",
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "2"
+  },
+  {
+    "id": 55,
+    "title": "Probity in Procurement (Workshop)",
+    "description": "This practical workshop is delievered by the NSW ICAC. It is designed for NSW public sector and local government staff and managers involved in low-level, uncomplicated purchasing and basic procurement activities. It raises awareness of corruption and probity principles.",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/free-workshops/probity-in-procurement",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
       "PRRI:1",
       "PRRI:2",
       "LEAN:1",
@@ -1185,18 +1515,46 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Course",
+    "format": "Instructor-led training",
+    "cost": "0",
+    "duration": "2"
+  },
+  {
+    "id": 56,
+    "title": "Corruption Prevention in Procurement (Workshop)",
+    "description": "This practical workshop is delievered by the NSW ICAC. It is designed for NSW public sector staff with procurement duties, contract management roles or responsibility for overseeing these functions. It focuses on helping participants understand what corrupt conduct is, relevant corruption risks and how applying basic probity and risk management principles can assist them in achieving good outcomes while preventing corruption. ",
+    "url": "https://www.icac.nsw.gov.au/education-and-events/free-workshops/cp-in-procurement-and-contract-management",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:2",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "PRRI:1",
+      "PRRI:2",
+      "LEAN:1",
+      "LEAN:2"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Independent Commission Against Corruption",
+    "level": "",
+    "format": "Instructor-led training",
     "cost": "0",
     "duration": "3.5"
   },
   {
-    "id": 55,
+    "id": 57,
     "title": "Corruption Prevention for Managers (Workshop)",
-    "description": "This practical workshop is delievered by the NSW ICAC. It is for NSW public sector staff and aims to help managers prevent corrupt conduct in their organisation by developing an understanding of what corruption is, why people engage in it and the weaknesses in operational arrangements that can be conducive to corruption. The training is offered in-person as either a half-day or full-day workshop or online depending on the organisation’s needs and other considerations. While appropriate activity scenarios and case examples will be selected to cater to the specific needs of the participants, NSW ICAC are unable to offer a fully-customised workshop except in special circumstances.",
+    "description": "This practical workshop is delievered by the NSW ICAC. It is for NSW public sector staff and aims to help managers prevent corrupt conduct in their organisation by developing an understanding of what corruption is, why people engage in it and the weaknesses in operational arrangements that can be conducive to corruption.",
     "url": "https://www.icac.nsw.gov.au/education-and-events/workshops/corruption-prevention-for-managers/corruption-prevention-for-managers",
-    "skills": [
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
       "PRAN:3",
-      "PRAN:4",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
       "PRRI:2",
       "PRRI:3",
       "LEAN:2",
@@ -1205,17 +1563,21 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Course",
+    "format": "Instructor-led training",
     "cost": "0",
     "duration": "3.5"
   },
   {
-    "id": 56,
+    "id": 58,
     "title": "Strategic Approaches to Corruption Prevention for Senior Executive Service (Workshop)",
-    "description": "This practical workshop is delievered by the NSW ICAC. A workshop for NSW public service senior executives (PSES) and equivalent high-level managers who have operational responsibility for work areas with significant risk for corruption. It focuses on making the organisational changes needed to leverage the control inherent in well-designed and managed operational arrangements. This workshop is offered as either a standard full-day in-person workshop or a standard 5-hour online program. It can also be customised to the specific needs of individual agencies. ",
+    "description": "This practical workshop is delievered by the NSW ICAC. A workshop for NSW public service senior executives (PSES) and equivalent high-level managers who have operational responsibility for work areas with significant risk for corruption. It focuses on making the organisational changes needed to leverage the control inherent in well-designed and managed operational arrangements. ",
     "url": "https://www.icac.nsw.gov.au/education-and-events/free-workshops/strategic-approaches",
-    "skills": [
-      "PRAN:5",
+    "coreCapabilities": [
+      "ACWI:1",
+      "DEAC:1",
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
       "STPR:5",
       "PRRI:4",
       "PRRI:5",
@@ -1225,8 +1587,1937 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Course",
+    "format": "Instructor-led training",
     "cost": "0",
     "duration": "5"
+  },
+  {
+    "id": 59,
+    "title": "Category Management",
+    "description": "Category Management is a strategic approach that organises resources to focus on specific areas of spend within an organisation. The aim is to develop and implement strategic approaches that deliver long term added value. Could category management benefit you and your organisation? During this course you will have the opportunity to apply the models discussed, and a key ‘take away’ will be an action plan that applies to you and your organisation. By utilising and applying a range of tools and techniques you will begin the foundation to develop a category management strategy for your organisation. You’ll also learn how to build enhanced alignment with stakeholders and create long-term strategies for managing category spend effectively and efficiently. ",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "PANA:3",
+      "STSO:3"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 60,
+    "title": "Contract Management",
+    "description": "This two-day course will explore advanced contract management approaches, helping you to identify what will work best in your organisation. It will examine how to proactively mitigate against potential risks via the contract and explore ways of increasing supplier performance through the inclusion of robust performance measures.  You'll start by learning how to segment your suppliers in order to identify what type of contractual relationship you want to establish with your suppliers. This will help you to create the right contract governance structure. You'll explore the key terms and conditions which you may find in a contract and how these are used to ensure that what you expected from the contract is realised and any risks are mitigated. This includes how you can make variations to the contract and deal with any claims from suppliers.",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "CONM:3 "
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 61,
+    "title": "Strategic Sourcing and Tendering",
+    "description": "This interactive training course will provide you with the knowledge and skills to develop and improve your sourcing strategy throughout the procurement cycle. Using the procurement cycle as the structure for the course, we will explore stakeholder engagement at each stage of the cycle. You will learn how to develop effective specifications in the sourcing process. We will explain techniques for market analysis. You will learn how to develop and apply appropriate selection and award criteria to evaluate supplier proposals. The course does not cover tactical level aspects, such  as how to produce tendering documentation. The key 'take away' is the capability to develop an appropriate sourcing plan for categories of spend within your organisation.",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "STSO:3"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 62,
+    "title": "Risk and Resilience in the Supply Chain",
+    "description": "This course focuses on how leaders in procurement and supply can assess and mitigate the main performance risks that stem from the supply chain and that impact on the organisation or its customers. It also provides an understanding of the need to develop and implement appropriate risk appraisal and management strategies. ou’ll learn how to lead on the development of strategic approaches to mitigate the impact of the supply chain on the reputation of your organisation and contribute to the use of risk pathways by the organisation. You’ll also learn how to lead on the development of plans to mitigate the impact of market volatility on the organisation, that are aligned with the organisation’s risk approach, including consideration of enterprise risk approaches. This course uses a real-life case study to explore the impact of risk and prior to the course, delegates will be provided with appropriate pre-reading and preparation work to help them get the best out of the tutor lead learning sessions.",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:3",
+      "PRAN:4",
+      "PRAN:5"
+    ],
+    "specificCapabilities": [
+      "STPR:3",
+      "STPR:4",
+      "PANA:3",
+      "STSO:3",
+      "PRRI:3",
+      "PRRI:4",
+      "CONM:3",
+      "CONM:4",
+      "LEAN:3"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 63,
+    "title": "Masterclass in Negotiation",
+    "description": "Building on the foundation tools and skills covered in our Effective Negotiation course, this course will provide you the advanced skills required to get the best possible outcomes when negotiating with internal and external stakeholders. This interactive two-day training course will move you from having knowledge of effective negotiation to being an advanced commercial negotiator. We will explore the techniques and tools used by the best negotiators, using an interactive exercise on persuasion and influence. You will discover the behavioural aspects of negotiation such as emotional intelligence. A team event will allow you to delve into game theory. You will have the opportunity to test your knowledge by developing your strategic negotiation plan throughout the two days, with validation from your experienced course tutor. ",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "STPR:2",
+      "CONE:2",
+      "CONE:3"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 64,
+    "title": "Supplier Relationship Management",
+    "description": "This half-day course provides an insight into the importance of effective supplier relationship management (SRM), as an approach for engaging with suppliers on a level that reflects the priorities of the organisation. It will explore different types of relationships, the attributes that contribute to an effective relationship and outline the importance of supplier development to the organisation. This content of this course complements the Contract Management course, where this topic is also explored in a wider context. This course will explore the importance of establishing and maintaining collaborative relationships and the benefits that this will bring to all parties, as well as the importance of continually developing suppliers, to realise benefits. ",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "SURE:2"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "600",
+    "duration": "4"
+  },
+  {
+    "id": 65,
+    "title": "Procurement Fundamentals",
+    "description": "This interactive two day training course considers fundamental elements of the procurement process, together with basic tools and techniques used within procurement and supply. It provides a robust grounding in procurement basics and is designed for those in a junior procurement/supply chain role or those new to the discipline. ",
+    "url": "https://www.cips.org/searchresults?&N=3465729194+3848942349&Nrpp=12&suppressResults=true&searchType=guided&type=search",
+    "coreCapabilities": [
+      "DERE:1",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:1",
+      "STSO:1",
+      "SURE:1"
+    ],
+    "roleFunctions": [],
+    "author": "Chartered Institute of Procurement and Supply",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1300",
+    "duration": "14"
+  },
+  {
+    "id": 66,
+    "title": "Should cost modelling",
+    "description": "This module looks at key principles involved in understanding the make-up of margins and how suppliers price products. What are the price drivers other than cost, the product lifecycle and the process for developing a should cost model. ",
+    "url": "https://arcblue.com/learning-development/",
+    "coreCapabilities": [
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "COSM:2"
+    ],
+    "roleFunctions": [],
+    "author": "ArcBlue",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "0.25"
+  },
+  {
+    "id": 67,
+    "title": "Finance for Procurement",
+    "description": "This workshop helps buyers understand and interpret financial data on suppliers and to analyse prices and costs. Extensive use is made of practical exercises to provide procurement practitioners with the tools and confidence to use financial information, prices and costs to develop successful procurement stratigies and assist negotiations with suppliers. ",
+    "url": "https://arcblue.com/learning-development/",
+    "coreCapabilities": [
+      "DERE:1",
+      "PLAN:1"
+    ],
+    "specificCapabilities": [
+      "COSM:3"
+    ],
+    "roleFunctions": [],
+    "author": "ArcBlue",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "7"
+  },
+  {
+    "id": 68,
+    "title": "Sourcing Essentials",
+    "description": "This interactive program is designed to introduce essential elements of sourcing and recognising procurement as a process. Students will be taken through the key steps and activities. Students will learn to plan, work collaboratively and come up with good coherant strategies.",
+    "url": "https://arcblue.com/learning-development/",
+    "coreCapabilities": [
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1"
+    ],
+    "specificCapabilities": [
+      "STSO:2"
+    ],
+    "roleFunctions": [],
+    "author": "ArcBlue",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "7"
+  },
+  {
+    "id": 69,
+    "title": "Effective Procurement Leadership",
+    "description": "Leadership is not always innate, but it is something that can be learned. This workshop explores the different aspects, models and styles of leadership, with a specific focus on leadership issues within the procurement function. The workshop gets participants to complete their own self-analysis of their leadership style and considers how leadership plays a pivotal role within any organisation, and specifically within the procurement function itself. ",
+    "url": "https://arcblue.com/learning-development/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1"
+    ],
+    "specificCapabilities": [
+      "STPR:2"
+    ],
+    "roleFunctions": [],
+    "author": "ArcBlue",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "7"
+  },
+  {
+    "id": 70,
+    "title": "Supplier Relationship Management",
+    "description": "This one-day workshop focuses upon designing, mobilising and managing structured improvement programs for strategic suppliers and contracts. Attendance will build capability in managing strategic suppliers and contracts, and designing and managing effective improvement programs. ",
+    "url": "https://academyofprocurement.com/intermediate-course/supplier-relationship-management/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "SURE:3"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "9"
+  },
+  {
+    "id": 71,
+    "title": "Masterclass Supplier Relationship Management",
+    "description": "A practical two-day workshop consisting of nine sessions involving exercises, case studies, presentations and trainer facilitated discussions. Each of the sessions will be led by an experienced facilitator and will feature the key principles and practical methods which may be used in the supplier relationship process, together with practical case study sessions to maximise the transfer from the workshop to the workplace. Attendance will enhance the capability of attendees to design and manage a portfolio of supplier relationships. ",
+    "url": "https://academyofprocurement.com/advanced-course/master-class-supplier-relationship-management/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1"
+    ],
+    "specificCapabilities": [
+      "SURE:4"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "14"
+  },
+  {
+    "id": 72,
+    "title": "Masterclass Contract Management",
+    "description": "A practical two-day workshop consisting of nine session involving exercises, case studies, presentations and trainer-facilitated discussions. Each of the sessions will be led by an experienced facilitator and will feature the key principles and practical methods which may be used in the procurement process, together with practical case study sessions to maximise the transfer from the workshop to the workplace. Attendance will equip delegates with the tools, techniques and methods that category managers can deploy at the various stages of the category management process",
+    "url": "https://academyofprocurement.com/advanced-course/master-class-category-management/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "DEAC:1"
+    ],
+    "specificCapabilities": [
+      "CONM:4"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "16"
+  },
+  {
+    "id": 73,
+    "title": "Legal Aspects of Establishing and Managing Contracts",
+    "description": "The workshop will benefit those who undertake contract management or establish contracts with suppliers as part of their duties – in particular people who are new to contract management or sourcing, or those who require a ‘refresher’. Attendance will help raise awareness of the legal framework for establishing and managing contracts and the principles and issues raised by poor or nonperformance. ",
+    "url": "https://academyofprocurement.com/intermediate-course/legal-aspects-of-establishing-and-managing-contracts/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "COLA:3"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "9"
+  },
+  {
+    "id": 74,
+    "title": "Masterclass Contract Law",
+    "description": "This intensive workshop explores the legal issues and managerial choices associated with commercial contracting. The workshop will address risk, legal framework, options and choices for each of contract formation, contract terms, contract breach and contract termination. Attendance will improve the ability of attendees to consider the risk controls in their contracting system and the organisational issues raised. ",
+    "url": "https://academyofprocurement.com/advanced-course/master-class-contract-law/",
+    "coreCapabilities": [
+      "COEF:1",
+      "PLAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "COLA:4"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "14"
+  },
+  {
+    "id": 75,
+    "title": "Driving Strategic Sourcing Initiatives and Tender Evaluation",
+    "description": "The workshop will benefit experienced sourcing practitioners, particularly those involved in complex, high value and/or high risk sourcing activities, who wish to develop their existing capability in managing sourcing projects. Attendance will help develop existing capability in the sourcing process, and in the tools and techniques that may be used to achieve value for money outcomes that meet the customer’s needs.",
+    "url": "https://academyofprocurement.com/advanced-course/driving-strategic-sourcing-initiatives-and-tender-evaluation/",
+    "coreCapabilities": [
+      "DIRE:1",
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "STSO:3"
+    ],
+    "roleFunctions": [],
+    "author": "Academy of Procurement",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "Contact supplier for pricing",
+    "duration": "9"
+  },
+  {
+    "id": 76,
+    "title": "Introduction to Contract Management",
+    "description": "Contracts are the lifeblood of most businesses in the private and public sector. Yet many people sign them without really knowing what they mean or having an understanding of what elements the contract must have to be considered a proper and valid contract. Understanding common terms used, the structure and being able to prepare good contracts are core skills for everyone involved in procuring good and services from business owners and project managers to admin staff.",
+    "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/introduction-to-contract-management",
+    "coreCapabilities": [
+      "WOCO:1",
+      "INAN:1"
+    ],
+    "specificCapabilities": [
+      "CONM:2"
+    ],
+    "roleFunctions": [],
+    "author": "Transformed",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "199",
+    "duration": "3"
+  },
+  {
+    "id": 77,
+    "title": "Introduction to Contract Law",
+    "description": "The business implications of a poorly formed contract can be significant in procurement, as in any other business function. Contractual mistakes can end up costing thousands or even millions of dollars, not to mention valuable supplier relationships. As someone who creates, manages, reviews or enters into commercial contracts, mitigating these risks is a daily priority.",
+    "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/introduction-to-contract-law-1",
+    "coreCapabilities": [
+      "DERE:1"
+    ],
+    "specificCapabilities": [
+      "COLA:2"
+    ],
+    "roleFunctions": [],
+    "author": "Transformed",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "199",
+    "duration": "6"
+  },
+  {
+    "id": 78,
+    "title": "Engaging with and Influencing Stakeholders",
+    "description": "Effective stakeholder engagement is critical to the success of projects and contracts. Influencing stakeholders, engaging with stakeholders and understanding and managing stakeholders expectations are critical skills needed in the modern workplace.",
+    "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/engaging-with-and-influencing-stakeholders",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "CONE:2"
+    ],
+    "roleFunctions": [],
+    "author": "Transformed",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "199",
+    "duration": "4"
+  },
+  {
+    "id": 79,
+    "title": "Category Management",
+    "description": "Category management is a strategic approach to procurement, where an organisation segments its spending to focus on specific areas (e.g. travel, office management, HR etc). The goal is to create efficiencies in procurement and ensure a long-term, sustainable solution for both the buyer and the seller. You’ll explore the core concepts of Category Management and the best practice methods used to drive maximum value for the business. We’ll show you the essentials of procurement profiling, spend analysis, and supply chain analysis so you can build an understanding of your category markets and how to leverage them. Learn the basics of developing and implementing a category management plan.",
+    "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/Category-management",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "PLAN:1"
+    ],
+    "specificCapabilities": [
+      "PANA:2",
+      "STSO:2"
+    ],
+    "roleFunctions": [],
+    "author": "Transformed",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "199",
+    "duration": "5"
+  },
+  {
+    "id": 80,
+    "title": "Managing supplier relationships",
+    "description": "Do you have the skills to build stronger, longer lasting supplier relationships? Do you know the key to establishing a good level of trust between you and suppliers? Are you good at vendor management? \nIn this 100% online course, we’ll show you how to develop strong relationships with suppliers. Learn the proven methods to work through common challenges and issues of managing supplier performance. Delve into key concepts, including business ethics and trust, that affect business relationships. Gain the practical knowledge that will make you an instrumental asset to your team.",
+    "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/managing-supplier-relationships",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1"
+    ],
+    "specificCapabilities": [
+      "SURE:2"
+    ],
+    "roleFunctions": [],
+    "author": "Transformed",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "199",
+    "duration": "6"
+  },
+  {
+    "id": 81,
+    "title": "Category Management",
+    "description": "Category management involves applying sophisticated procurement processes to a range of goods and services. This workshop introduces different approaches to category management. You will evaluate approaches to develop category management, including the skills required for implementation. You will also apply tools and techniques to map categories of different types of expenditure.",
+    "url": "https://www.academyglobal.com/portfolio-item/category-management/",
+    "coreCapabilities": [
+      "WOCO:1",
+      "PLAN:1",
+      "PRAN:3",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
+      "PANA:3",
+      "PANA:4",
+      "STSO:3",
+      "STSO:4"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1350",
+    "duration": "14"
+  },
+  {
+    "id": 82,
+    "title": "Negotiation for procurement",
+    "description": "This course recognises the importance of effective negotiation in undertaking procurement and contract management activities with key stakeholders and the difficulty presented by opposing or competing priorities in negotiation situations. The program is designed to provide procurement professionals with the knowledge, skills, and strategies necessary to effectively negotiate in the context of procurement. You will learn practical negotiation and influencing techniques and apply these skills through a series of sourcing and contract management case studies, role plays and self-reflection. The program will provide you with a greater understanding of what it takes to engage in negotiations and increase your confidence in achieving desired outcomes and improved relationships with stakeholders.",
+    "url": "https://www.academyglobal.com/portfolio-item/negotiation-for-procurement/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:2",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "CONE:2",
+      "CONE:3"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "850",
+    "duration": "7"
+  },
+  {
+    "id": 83,
+    "title": "Cost modelling in procurement",
+    "description": "This course provides a fundamental understanding of cost modelling in procurement, an essential skill for public sector procurement professionals. Also known as should-cost analysis, this process analyses and estimates the costs associated with procuring goods or services. This course covers various cost modelling techniques, tools, and best practices used in procurement to effectively analyse costs and make informed procurement decisions. Participants will learn how to develop accurate cost models that can be used in supplier evaluations to optimise procurement outcomes. This course provides procurement professionals with the necessary knowledge and skills to effectively develop, validate, and use cost models in procurement decision-making processes. Through interactive discussions, case studies, and practical exercises, participants will gain a solid understanding of cost modelling techniques and best practices.",
+    "url": "https://www.academyglobal.com/portfolio-item/cost-modelling-in-procurement/",
+    "coreCapabilities": [
+      "PRAN:3",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
+      "COSM:3",
+      "COSM:4"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "550",
+    "duration": "4"
+  },
+  {
+    "id": 84,
+    "title": "Legal and Policy Environment in New South Wales Public Sector Procurement ",
+    "description": "This one-day course aims to provide participants with an in-depth understanding of the legal and policy environment governing public sector procurement in New South Wales (NSW). Participants will learn about the key laws, regulations, guidelines, and best practices that apply to public procurement in NSW, as well as strategies for ensuring compliance and promoting transparency and efficiency.",
+    "url": "https://www.academyglobal.com/portfolio-item/legal-and-policy-environment-in-public-sector-procurement/",
+    "coreCapabilities": [
+      "PRAN:2",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "LEAN:2",
+      "LEAN:3",
+      "COLA:1"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "850",
+    "duration": "7"
+  },
+  {
+    "id": 85,
+    "title": "Strategic Procurement Leadership",
+    "description": "This two-day course aims to equip current and emerging leaders in procurement with the knowledge, skills, and strategies necessary to lead procurement teams effectively and drive value for their organisations. The course covers the key elements of strategic procurement leadership, including procurement strategy development, supplier relationship management, and effective communication with stakeholders. Participants will learn through interactive sessions, public-sector case studies, and group exercises.",
+    "url": "https://www.academyglobal.com/portfolio-item/strategic-procurement-leadership/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "PRAN:3",
+      "PRAN:4"
+    ],
+    "specificCapabilities": [
+      "STPR:2",
+      "STRP:3",
+      "STPR:4"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1350",
+    "duration": "14"
+  },
+  {
+    "id": 86,
+    "title": "Procurement Analysis in the Public Sector",
+    "description": "This one-day course aims to provide participants with an understanding of procurement analysis methodologies and best practices specifically in the public sector. Participants will learn how to conduct procurement analysis to optimise procurement processes, make informed decisions, and ensure transparency and compliance in public procurement.",
+    "url": "https://www.academyglobal.com/portfolio-item/procurement-analysis-in-the-public-sector/",
+    "coreCapabilities": [
+      "PRAN:2",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "PANA:2",
+      "PANA:3"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "850",
+    "duration": "7"
+  },
+  {
+    "id": 87,
+    "title": "Supplier Relationship Management in the Public Sector ",
+    "description": "This one-day course aims to provide participants with an understanding of supplier relationship management (SRM) best practices and strategies specifically in the public sector. Participants will learn how to develop and maintain effective supplier relationships to improve procurement\nperformance, drive innovation, and reduce risks. It also addresses the probity-related issues that can arise in public sector SRM.",
+    "url": "https://www.academyglobal.com/portfolio-item/supplier-relationship-management-in-the-public-sector/",
+    "coreCapabilities": [
+      "COEF:2",
+      "WOCO:1",
+      "INAN:1",
+      "PLAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:2",
+      "SURE:2",
+      "SURE:3"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "850",
+    "duration": "7"
+  },
+  {
+    "id": 88,
+    "title": "Contract Management Essentials",
+    "description": "Benefit from a deeper understanding of the roles and responsibilities associated with managing contracts on behalf of government. This program will build your confidence in applying best practice contract management principles and practices. You will develop the skills to manage key contract deliverables, and manage supplier relationships to best demonstrate value for money and adherence to probity. Recognise common issues in managing performance and develop the skill to resolve disputes.",
+    "url": "https://www.academyglobal.com/portfolio-item/contract-management-essentials/",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "PLAN:1",
+      "PRAN:2",
+      "PRAN:3"
+    ],
+    "specificCapabilities": [
+      "CONM:2",
+      "CONM:3",
+      "LEAN:2",
+      "COLA:2",
+      "COLA:3"
+    ],
+    "roleFunctions": [],
+    "author": "AcademyGlobal",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "850",
+    "duration": "7"
+  },
+  {
+    "id": 89,
+    "title": "Supply Chain Foundations",
+    "description": "What is supply chain management (SCM)? It's the system that connects and integrates the links of sourcing, procurement, conversion, and logistics management. In this course, professor Eddie Davila provides a detailed overview of all of the links in the typical supply chain. He explains what is involved in purchasing inventory and setting up supplier relationships, what you need to consider when deciding how to manufacture and design your product, and, lastly, how to address the logistics of distribution and delivery. Plus, get a glimpse into the world of the supply chain manager by discussing some of the hottest issues in SCM today: how to go global, the role of ethics and sustainability, and how SCM can help with disaster relief.",
+    "url": "https://www.linkedin.com/learning/supply-chain-foundations/supply-chain-for-business-professionals?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:1",
+      "STSO:1"
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.55"
+  },
+  {
+    "id": 90,
+    "title": "Implementing supply chain management",
+    "description": "Supply chain management is the system that connects and integrates the links of sourcing, procurement, conversion, and logistics management. By understanding how to manage this complex system—and ensure that key business functions are properly integrated—you can increase profits and reduce costs and risks. In this course, instructor Daniel Stanton steps through how to implement supply chain management in your company. Daniel goes over the different supply chain processes that must be managed in an integrated way: plan, source, make, deliver, return, and enable. He uses this process view to describe the key challenges that supply chain managers need to address, the notable trends that are forcing supply chains to evolve, and a five-step process for helping your company implement supply chain management effectively.",
+    "url": "https://www.linkedin.com/learning/implementing-supply-chain-management/why-supply-chain-management-matters-22190132?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:2",
+      "STSO:2"
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.38"
+  },
+  {
+    "id": 91,
+    "title": "Digital transformations in supply chains",
+    "description": "No two businesses are exactly the same, but they all have two things in common. Every business depends on supply chains and technology—and you need both in order to succeed. The hard part is, you can’t keep up with technology unless you transform your supply chains, too. In this course, instructor Daniel Stanton offers a big-picture view of supply chain management and teaches you how to overcome important challenges and harness technology to create innovative solutions. Learn about supply chain challenges and why new technologies are important for solving them. Find out how to continuously improve your supply chain by making it faster, cheaper, and better, utilizing tools related to cybersecurity, AI, blockchain, cloud computing, simulation, automated delivery, quantum computing, robotics, and more. By the end of this course, you’ll be ready to incorporate these tools into a roadmap that’s measurable, team-based, and positioned for effective digital transformation.",
+    "url": "https://www.linkedin.com/learning/digital-transformation-in-supply-chains/digital-transformation-of-supply-chains?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PANA:2",
+      "STSO:2"
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.35"
+  },
+  {
+    "id": 92,
+    "title": "Sustainability as an Innovation Opportunity",
+    "description": "Sustainability is quickly becoming a must-have in business—a technical skill set that employees, managers, and executives need to gain deeper understanding and build capacity to grow. It’s a way of thinking about how you use, value, and respect a world of shared but finite natural resources that we all depend on to create the products and services we use. In this course, LinkedIn Changemaker and UNEP Champion of the Earth Leyla Acaroglu gives you an overview of why sustainability matters to business as an opportunity to innovate and grow. Learn about sustainability and the circular economy with examples of how it impacts business decisions and daily life, including waste, product lifecycle, supply chains, and procurement, to name a few. Explore the emerging world of circular redesign and what it means to operationalize it for a business. Leyla gives you practical tips to take action, motivate others, and inspire sustainable innovation in product development and business design.",
+    "url": "https://www.linkedin.com/learning/sustainability-as-an-innovation-opportunity/how-the-economy-is-transforming?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "PLAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "STPR:2 "
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.92"
+  },
+  {
+    "id": 93,
+    "title": "Supply Chain Fundamentals: Risk and Resilience",
+    "description": "Supply chain resilience is an incredibly important factor for every company. It can reduce risks to shareholder value and provide companies with a competitive advantage. In this course, professor Richard Wilding shows how you can build supply chain resilience by learning about the external sources of risk and disruption, the internal risks, and the relationship between the elements of the complexity triangle, which create uncertainty. He also explains how to build a supply chain strategy, and build products and services that promote a resilient supply chain, and how agility and flexibility can help you respond to risks and minimize disruptions. Other important topics covered include relationships, culture, transparency, and risk monitoring. In the latter half of the course, Richard takes a look at international risk management standards; how to identify, analyze, and evaluate risks; and how to monitor and review risks.",
+    "url": "https://www.linkedin.com/learning/supply-chain-fundamentals-risk-and-resilience/why-supply-chain-risk-management-matters?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "PRRI:2"
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.47"
+  },
+  {
+    "id": 94,
+    "title": "Complex Negotiation Tips",
+    "description": "Sometimes foundational skills aren’t enough to manage complex negotiations. There are too many moving parts to broker, too much at stake for a straightforward compromise. Dr. Carolyn Goerner has taught negotiation for 25 years and coached hundreds of people through challenging deliberations. In this course, she combines practical experience with the latest research on managing the most difficult negotiations. Explore best practices in managing multiple negotiation partners, building and maintaining relationships, planning for complicated situations, and developing your professional demeanor. Plus, learn how gender impacts the negotiation process and how you can correct power imbalances on the bargaining table.",
+    "url": "https://www.linkedin.com/learning/complex-negotiation-tips/what-makes-a-negotiation-complex?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "COEF:1",
+      "WOCO:1",
+      "INAN:1",
+      "DERE:1",
+      "PLAN:1",
+      "THAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "CONE:2"
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.08"
+  },
+  {
+    "id": 95,
+    "title": "Developing resiliance",
+    "description": "In the face of change and uncertainty, learn how to build your resilience and cultivate mental agility. Resilience and grit will help you to cope with change and create productive shifts in thinking and perseverance.",
+    "url": "https://www.linkedin.com/learning/paths/developing-resilience-22034720?u=76883122",
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "MASE:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "3.15"
+  },
+  {
+    "id": 96,
+    "title": "Intergrity in the APS (Podcast series)",
+    "description": "Integrity can be defined in many ways. It's about accountability, honesty, and doing the right thing. It’s a learnable skill demonstrated through words, deeds, and behaviours. It's also core to building a high-performing, professional public service that delivers quality outcomes for all Australians. The Australian Public Service Commission (APSC) and IPAA ACT have produced a four-part Integrity in the APS podcast series. It explores the meaning of integrity and the pro-integrity culture and framework that the Australian Public Service (APS) has built to engender trust, professionalism and accountability across the service. Series host, Rina Bruinsma, First Assistant Commissioner at the APSC, leads the discussions with an exceptional line-up of guests to explore integrity in the APS from four very different, yet interwoven perspectives. ",
+    "url": "https://www.act.ipaa.org.au/integrityseries",
+    "coreCapabilities": [
+      "DIRE:1",
+      "DIRE:2",
+      "ACWI:1",
+      "ACWI:2",
+      "ACWI:3",
+      "MASE:1",
+      "INAN:1",
+      "THAN:1",
+      "DEAC:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Australian Public Service Commission",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.43"
+  },
+  {
+    "id": 97,
+    "title": "Diversity, equity, inclusion and belonging for leaders and managers",
+    "description": "Discover ways to effectively lead diversity efforts in your organization. After completing this learning path, leaders and managers will be able to demonstrate behaviors and take specific actions to foster diversity, equity, inclusion and belonging in their organizations and on their teams.",
+    "url": "https://www.linkedin.com/learning/paths/diversity-equity-inclusion-and-belonging-for-leaders-and-managers?u=76883122",
+    "coreCapabilities": [
+      "DIRE:1",
+      "ACWI:1",
+      "ACWI:2",
+      "MASE:1",
+      "VADI:1",
+      "VADI:2",
+      "VADI:3",
+      "VADI:4",
+      "MAAN:1",
+      "MAAN:2",
+      "MAAN:3",
+      "INDI:1",
+      "INDI:2",
+      "INDI:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "7"
+  },
+  {
+    "id": 98,
+    "title": "Leading yourself",
+    "description": "Before you can effectively lead others, you need to lead yourself. In this course, learn how to manage your mindset, behaviors, and workplace relationships to help you stand out in your organization and in your industry as a leader. Whether you're on the management track or you're an individual contributor, authors and leadership experts Lisa Earle McLeod and Elizabeth Lotardo can help you take charge of your own learning. They explain when and where you need to be leading yourself, as well as how to track your goals, take charge of your own development, and even give yourself a performance review. Plus, learn tips for motivating yourself, leading your peers, and managing your boss.",
+    "url": "https://www.linkedin.com/learning/leading-yourself",
+    "coreCapabilities": [
+      "MASE:1",
+      "MASE:2",
+      "MASE:3",
+      "DEAC:1",
+      "DEAC:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.85"
+  },
+  {
+    "id": 99,
+    "title": "How to manage your attention and priorities",
+    "description": "Do you sometimes have trouble focusing on what you most want to accomplish? In this audio-only course from How to Be Awesome at Your Job, Neen James shares some best practices for directing your attention toward meaningful priorities. She shows you how to schedule a 15-minute appointment with yourself every day to determine your three priorities for that day. Next, Neen encourages you to determine which three actionable items are truly non-negotiables for the day. She steps through how to determine the amount of attention that each task in front of you needs or deserves, and how to improve your attention by “listening with your eyes.” Neen walks you through identifying and eliminating your distractions and concludes by highlighting some extra methods you can use when you’re dealing with technological distractions.",
+    "url": "https://www.linkedin.com/learning/how-to-manage-your-attention-and-your-priorities",
+    "coreCapabilities": [
+      "MASE:1",
+      "MASE:2",
+      "DEAC:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.35"
+  },
+  {
+    "id": 100,
+    "title": "Communication foundations",
+    "description": "Learn how to communicate more effectively. Your communication skills affect your career prospects, the value you bring to your company, and the likelihood of your promotion. This course helps you communicate better in a variety of professional situations, including meetings, email messages, pitches, and presentations. Instructors Tatiana Kolovou and Brenda Bailey-Hughes introduce the four building blocks of communication—people, message, context, and listening—and show how they apply in different circumstances. Through the use of vignettes and applied tools, the course shows how to build this core competency and communicate in a way that effectively and professionally conveys your message.",
+    "url": "https://www.linkedin.com/learning/communication-foundations-2",
+    "coreCapabilities": [
+      "MASE:1",
+      "COEF:1",
+      "COEF:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.28"
+  },
+  {
+    "id": 101,
+    "title": "Preparing for successful communication ",
+    "description": "For even the most seasoned professionals, mastering the finer points of communication can be a challenge. How do you establish your credentials without bragging? How can you organize complex ideas so they're easy to follow and remember? How can you think on your feet and respond to unfair or unkind remarks? The good news is, crystal clear, concise communication is a skill anyone can learn. In this course, Sam Horn shares innovative strategies for communicating with confidence, whether you're presenting at a conference, speaking up at a meeting, seeking funding, or making a request of a boss, board, client, or colleague. Learn immediately useful tips that can help you personalize content, craft business stories that are interesting and actionable, connect with audiences of five or five hundred, and exude a powerful executive presence that commands attention and respect whenever you speak.",
+    "url": "https://www.linkedin.com/learning/preparing-for-successful-communication",
+    "coreCapabilities": [
+      "COEF:1",
+      "COEF:2",
+      "COEF:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.05"
+  },
+  {
+    "id": 102,
+    "title": "Mastering communications as a leader",
+    "description": "Leaders aren’t born, they’re trained. Leaders develop their abilities to motivate and inspire others to positive action. Regardless of where you are in your career, boosting your communications skills will take you where you want to go, faster. In this course, Emmy-winning former CNN correspondent Gina London explains the power of communicating with purpose and impact. She illustrates that communication is not a soft skill—it’s a critical skill and one you need as a leader. Join Gina to learn how to: embrace the possibility of change to excel; develop executive presence; structure your communications for impact; use body language; play your voice like an instrument; and more.",
+    "url": "https://www.linkedin.com/learning/mastering-communications-as-a-leader",
+    "coreCapabilities": [
+      "COEF:1",
+      "COEF:2",
+      "COEF:3",
+      "MAAN:1",
+      "MAAN:2",
+      "INDI:1",
+      "INDI:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.27"
+  },
+  {
+    "id": 103,
+    "title": "Develop you customer service skills ",
+    "description": "Maintain customer focus by developing a service mindset while also managing customer expectations and problems. Learn skills for building relationships by listening to your customer's concerns. Expand your perspective from one of customer service to one of creating a positive customer experience.",
+    "url": "https://www.linkedin.com/learning/paths/develop-your-customer-service-skills?u=76883122",
+    "coreCapabilities": [
+      "COTO:1",
+      "COTO:2",
+      "MAAN:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "4.32"
+  },
+  {
+    "id": 104,
+    "title": "The 10 Pillars of Customer Experience",
+    "description": "Customer experience is a team sport! When everyone understands customer experience and the key pillars that support it, powerful enthusiasm, alignment, and collaboration tend to follow. In this course, Brad Cleveland explains what customer experience is and shows you 10 key pillars that, together, create a positive customer experience. ",
+    "url": "https://www.linkedin.com/learning/the-10-pillars-of-customer-experience",
+    "coreCapabilities": [
+      "COEF:1",
+      "COTO:1",
+      "COTO:2",
+      "MAAN:1",
+      "MAAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.63"
+  },
+  {
+    "id": 105,
+    "title": "Customer Experience Leadership",
+    "description": "A profound shift is underway from functional-driven products, services, and support to a more comprehensive customer experience strategy. Customer experience (CX) is a holistic approach to the customer lifecycle, from before the sale, to the experience the customer has with your products or services, to their experience when needing support, to loyalty and lifetime value. In this course, globally-known customer strategy and management expert Brad Cleveland shows you how to establish, maintain, and continue to improve upon customer experience. ",
+    "url": "https://www.linkedin.com/learning/customer-experience-leadership",
+    "coreCapabilities": [
+      "COTO:1",
+      "COTO:2",
+      "COTO:3",
+      "PLAN:1",
+      "MAAN:1",
+      "MAAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.8"
+  },
+  {
+    "id": 106,
+    "title": "Building Trust and Collaborating with Others",
+    "description": "Learn how to develop and maintain collaborative, constructive, and cooperative working relationships. Identify opportunities to connect teams, departments, units, and organizations. Discover how to interact with others and give them confidence in the intentions of you and your organization.",
+    "url": "https://www.linkedin.com/learning/paths/building-trust-and-collaborating-with-others-2?u=76883122",
+    "coreCapabilities": [
+      "WOCO:1",
+      "WOCO:2",
+      "WOCO:3",
+      "MAAN:1",
+      "MAAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "6"
+  },
+  {
+    "id": 107,
+    "title": "Business Collaboration in the Modern Workplace",
+    "description": "The modern workplace is an exciting place. The digital revolution has provided new tools and ways of working that are spreading quickly throughout all industries. In this course, Phil Gold shows how technology and a proactive, collaborative culture can actually result in better business communication than ever before. Learn how to make the most of a suite of communication tools, from video conferencing to cloud productivity software; explore best practices to collaborate in the digital workplace; and get tips to incorporate new technology into your existing organization.",
+    "url": "https://www.linkedin.com/learning/business-collaboration-in-the-modern-workplace",
+    "coreCapabilities": [
+      "WOCO:1",
+      "WOCO:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.55"
+  },
+  {
+    "id": 108,
+    "title": "Essentials of Team Collaboration",
+    "description": "The best teams don't wait for someone to tell them what to do. Instead, they work together to set themselves up for success. In this course, learn how teams can collaborate more effectively. Discover how to ask key questions, clarify expectations, and ensure everyone is kept in sync. Find out how a team can refine its purpose, use one another’s preferred communication modes, and solicit and incorporate feedback, helping members collaborate proactively—with or without managerial oversight.",
+    "url": "https://www.linkedin.com/learning/essentials-of-team-collaboration",
+    "coreCapabilities": [
+      "WOCO:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.53"
+  },
+  {
+    "id": 109,
+    "title": "Influencing others",
+    "description": "Ever had trouble persuading someone to do something, even if it was in their best interest? Sometimes people don't budge, but thankfully you have more than rewards and penalties at your disposal. Join John Ullmen, PhD, as he explains how to influence others when you're at the \"pivot point of influence,\" by applying 18 scientifically confirmed methods. Whether you're influencing at work or at home, you can learn what the best influencers do before they influence, and see how to choose the best steps for your situation, and have people want to be influenced by you.",
+    "url": "https://www.linkedin.com/learning/influencing-others",
+    "coreCapabilities": [
+      "INAN:1",
+      "INAN:2",
+      "INAN:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.68"
+  },
+  {
+    "id": 110,
+    "title": "Negotaition foundations",
+    "description": "When it comes to negotiation, shifting your mindset from \"a battle to be won\" to \"a problem-solving conversation\" can improve your results dramatically. In this course, leadership coach, negotiation expert, and author Lisa Gates demonstrates the core skills of interest-based negotiation to get win-win outcomes every time. Learn a step-by-step strategy for negotiating everyday workplace issues, from asking for a raise or promotion to pitching ideas and resolving conflict. ",
+    "url": "https://www.linkedin.com/learning/negotiation-foundations",
+    "coreCapabilities": [
+      "INAN:1",
+      "INAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.08"
+  },
+  {
+    "id": 111,
+    "title": "Practicle influencing techniques",
+    "description": "Influencing is happening in every meeting you have. Other people are influencing you, and you are influencing them. It's a vital life skill. In this course, instructor Chris Croft brings an engineer's mind to the subject. Chris presents a six-step process that you can follow in any influencing situation, with techniques that you can use at each stage, depending on the type of person you would like to influence. He explains how you can use this process to prepare for meetings and get the best from every relationship, whether at work or at home, with customers, bosses, suppliers, friends, or relatives. Chris goes over the ethics of influencing, as well. Understanding the psychology of influencing helps you to build better relationships and get better outcomes with everyone you meet.",
+    "url": "https://www.linkedin.com/learning/practical-influencing-techniques",
+    "coreCapabilities": [
+      "INAN:1",
+      "INAN:2",
+      "INAN:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "3"
+  },
+  {
+    "id": 112,
+    "title": "Delivering results effectively",
+    "description": "As a professional, your job is to deliver results: to identify what needs to be accomplished and get it done. It's what separates high potentials and high performers from the rest. In this course, leadership expert Dave Crenshaw shares a simple formula for delivering results—setting up systems and habits that reinforce your goals and adding personal accountability to reinforce your efforts. He explains how to tap into your underlying motivation, which makes it easier to keep on track. He also provides real-life examples that show you the process in action and inspire you to do the same. While delivering results may be simple, it is often the hardest part of anyone's job. Learn how to tame your disorganization, frustration, and any other blockers in your way and get to work.",
+    "url": "https://www.linkedin.com/learning/delivering-results-effectively",
+    "coreCapabilities": [
+      "DERE:1",
+      "DERE:2",
+      "DERE:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.9"
+  },
+  {
+    "id": 113,
+    "title": "Building accountability and becoming results orientated",
+    "description": "Learn how to accomplish objectives, exceed your goals, and be more proactive. Discover strategies for taking on greater responsibilities and fulfilling your obligations. Explore ways to establish challenging goals, remain persistent, act decisively, and effectively manage your time and resources.",
+    "url": "https://www.linkedin.com/learning/paths/building-accountability-and-becoming-results-oriented?u=76883122",
+    "coreCapabilities": [
+      "DERE:1",
+      "DERE:2",
+      "DERE:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "3.32"
+  },
+  {
+    "id": 114,
+    "title": "Managing for results",
+    "description": "A key part of your job as a manager is to deliver results. How do you zero in on this effectively? What specifics do you need to know? In this course, management expert Kevin Eikenberry goes over the manager's role, sharing expert tips for getting great results from both individual employees and your overall team. Kevin addresses the value of commitment over compliance. He shares how to communicate results in the context of your team's purpose, and help direct reports make the link between organizational goals and their work. Plus, he steps through how to set clear goals and metrics and tackle the predictable blocks that might get in your way: micromanaging, losing track of the big picture, and more.",
+    "url": "https://www.linkedin.com/learning/managing-for-results-4",
+    "coreCapabilities": [
+      "DERE:1",
+      "DERE:2",
+      "MAAN:1",
+      "INDI:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.6"
+  },
+  {
+    "id": 115,
+    "title": "Setting Business Unit Goals",
+    "description": "Effective goal setting requires leaders to translate high-level corporate goals down to the business unit, and then break them down even further into team and individual goals. That way, employees can understand how their performance connects to company strategy, financial results, and incentives. In this course, leadership consultant Mike Figliuolo outlines how to set different types of business goals: quantitative, qualitative, commit, and stretch goals. In addition to linking goals to strategy, he emphasizes the importance of setting achievable goals, communicating them clearly, and providing resources so goals can be accomplished. Last, he provides guidance on managing goal performance and adjusting goals as business needs and resources change.",
+    "url": "https://www.linkedin.com/learning/setting-business-unit-goals",
+    "coreCapabilities": [
+      "PLAN:1",
+      "PLAN:2",
+      "PLAN:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.8"
+  },
+  {
+    "id": 116,
+    "title": "How to Set Goals When Everything Feels Like a Priority",
+    "description": "Sometimes it can feel like you’re working on everyone's else's to-do list instead of your own. How can you make space for accomplishing the goals that are important to you? Join best-selling business author and consultant Dorie Clark as she shares practical advice on how to prioritize effectively so that you can get meaningful things done. Dorie shares techniques that you can leverage to get clarity on what to prioritize, as well as how to take action when you find yourself unsure of your next steps. She explores well-known frameworks, including the Eisenhower matrix and the Pareto principle, that can help you become more effective. Along the way, she shares how to find the motivation to get yourself going, maintain your momentum, and make it all the way to your goal.",
+    "url": "https://www.linkedin.com/learning/how-to-set-goals-when-everything-feels-like-a-priority",
+    "coreCapabilities": [
+      "PLAN:1",
+      "PLAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.25"
+  },
+  {
+    "id": 117,
+    "title": "Secrets of Effective Prioritization",
+    "description": "You probably have too much to do. Despite that, your friends, family, and coworkers still ask you to do more. Although you spend your day conquering your list of things to do, you find yourself struggling to make time for the projects that matter the most to you. In this course, Sam Bennett—best-selling author, successful entrepreneur, and expert in creativity and productivity—shows you how to make that time by learning the secrets of effective prioritization. Sam walks you through how to figure out what’s really an emergency and what can wait. She emphasizes concrete ways to put yourself first, including how to say that terrible, essential word, “No.” By the end of this course, you will understand how to protect your most important tasks and avoid getting overwhelmed.",
+    "url": "https://www.linkedin.com/learning/secrets-of-effective-prioritization",
+    "coreCapabilities": [
+      "PLAN:1",
+      "PLAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.55"
+  },
+  {
+    "id": 118,
+    "title": "Powerful Prioritization with the 80/20 Rule",
+    "description": "In this audio-only course adapted from the How to Be Awesome at Your Job podcast, Pete Mockaitis talks with business consultant Perry Marshall about the 80/20 rule, also known as the Pareto principle, and how you can use it to achieve massive results in your work and life. As Perry explains, while most people know the basics of the 80/20 rule—that 80% of an outcome comes from 20% of causes—few know that within that initial 20% lies another 80/20 breakdown, and another within that, and on and on. By applying the 80/20 rule exponentially, you can, according to Perry, prioritize your time more effectively by identifying the most impactful tasks.",
+    "url": "https://www.linkedin.com/learning/powerful-prioritization-with-the-80-20-rule",
+    "coreCapabilities": [
+      "PLAN:1",
+      "PLAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.47"
+  },
+  {
+    "id": 119,
+    "title": "Problem solving techniques",
+    "description": "You can't solve a problem unless you can get to the cause—and sometimes there's more than one. In this course, learn techniques for identifying the root cause of a problem, generating options, and selecting the best solution. Chris Croft takes you through several methods for identifying what's actually causing a problem, including looking at the whole system when a problem is actually a symptom of a larger issue. He also explains how to generate potential solutions using mind maps and decision trees, how to boost your creativity to help you come up with more insightful options, and how to use both logic and your intuition to select the right solution to your problem.",
+    "url": "https://www.linkedin.com/learning/problem-solving-techniques",
+    "coreCapabilities": [
+      "THAN:1",
+      "THAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.23"
+  },
+  {
+    "id": 120,
+    "title": "Critical Thinking and problem solving",
+    "description": "As a leader, your team and organization rely on you to have good judgement and make the right decision with the information you have. Good decisions are the product of strong critical thinking skills and thoughtful problem solving. And like all skills, you can learn, practice, and get better at them. In this course, Dr. Eric Zackrison helps you do just that. He shows how to critically assess the source of information and how to determine the right approach to take. Eric also demonstrates strategies for approaching both simple and complex problems, and details taking your team through the entire life cycle of a challenging decision. He also imparts an understanding of common traps people fall into when solving problems, both individually and as a team. ",
+    "url": "https://www.linkedin.com/learning/critical-thinking-and-problem-solving/improve-your-problem-solving-skills?autoplay=true&u=76883122",
+    "coreCapabilities": [
+      "THAN:1",
+      "THAN:2",
+      "THAN:3",
+      "INDI:1",
+      "OPBU:1",
+      "MARE:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.75"
+  },
+  {
+    "id": 121,
+    "title": "Holding Yourself Accountable",
+    "description": "Being accountable is more than just being responsible for something—it's also, ultimately being answerable for your actions. To hold yourself accountable, you must find the motivation to do difficult things. You need to amplify the urgency of your mission, know why it matters, and understand how taking responsibility helps you become the kind of person you want to be. In this course, personal branding expert Dorie Clark helps you adopt the accountability mindset. Dorie outlines specific, practical steps you can take to implement accountability.",
+    "url": "https://www.linkedin.com/learning/holding-yourself-accountable",
+    "coreCapabilities": [
+      "DEAC:1",
+      "DEAC:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.58"
+  },
+  {
+    "id": 122,
+    "title": "Demonstrating Accountability as a Leader",
+    "description": "Leadership accountability is at the heart of any organization’s ability to achieve optimal performance. At a time when we continue to experience accelerated change, increased complexities, growing pressures, and competing priorities, leaders set the tone in their companies and establish the culture by how they treat others and by how they live their values. Yet many organizations miss opportunities to demonstrate leadership accountability. In this course, learn about what leadership accountability is, why it matters to organizations, and what actions leaders should take to practice accountability. Instructor Dr. Shirley Davis describes strategies for taking ownership as a leader, making effective decisions, and demonstrating accountability in the way you communicate with others.",
+    "url": "https://www.linkedin.com/learning/demonstrating-accountability-as-a-leader",
+    "coreCapabilities": [
+      "DEAC:1",
+      "DEAC:2",
+      "DEAC:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.25"
+  },
+  {
+    "id": 123,
+    "title": "Holding Your Team Accountable",
+    "description": "Explore ways to create a workplace culture of accountability that encourages trust, motivates high standards, and establishes credibility for leaders. Instructor Daisy Lovelace discusses the value of accountability in high-performing teams, and she outlines the consequences that can result when team members don't feel a sense of accountability. Daisy also offers insight into positive ways to make team members feel responsible with actionable techniques that promote accountability whether the team is virtual, in-person, or co-located.",
+    "url": "https://www.linkedin.com/learning/holding-your-team-accountable",
+    "coreCapabilities": [
+      "DEAC:1",
+      "DEAC:2",
+      "MAAN:1",
+      "INDI:1",
+      "MARE:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.85"
+  },
+  {
+    "id": 124,
+    "title": "Inspirational Leadership Skills: Practical Motivational Leadership",
+    "description": "As a manager, you have the power to make or break your employees' experience at work. This course was designed to show you how to sharpen your leadership skills, define a vision for your team, and ultimately transcend from a manager to an inspirational leader. Instructor Chris Croft has spent 20+ years teaching leadership skills to professionals of all stripes. Here, he draws from his experiences as he shares over two dozen practical steps you can take to inspire and motivate your team. Get practical strategies for delegating and motivating, communication, dealing with difficult people, and planning the future of your business. Along the way, Chris shares examples from multiple industries that illustrate how these concepts function in the real world.",
+    "url": "https://www.linkedin.com/learning/inspirational-leadership-skills-practical-motivational-leadership",
+    "coreCapabilities": [
+      "MAAN:1",
+      "INDE:1",
+      "INDE:2",
+      "INDI:3",
+      "OPBU:1",
+      "MARE:1"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "3.03"
+  },
+  {
+    "id": 125,
+    "title": "How to lead and inspire change",
+    "description": "It can be a daunting task to try to initiate positive change in your organization, especially without a plan. Gain a sense of confidence and direction through this course designed for leaders who need to guide a team through organizational change. Internationally renowned speaker and coach Amber Vanderburg teaches you skills to establish relationships, collaborate with others, and initiate, implement, and sustain lasting change. She shares tips for how to inspire others while still conveying a sense of urgency, and provides a framework for how to move through the stages of progress. Join Amber as she shares how to manage and normalize change to create lasting change in your organization.",
+    "url": "https://www.linkedin.com/learning/how-to-lead-and-inspire-change",
+    "coreCapabilities": [
+      "MAAN:1",
+      "INDI:1",
+      "INDI:2",
+      "OPBU:1",
+      "MARE:1",
+      "MARE:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.88"
+  },
+  {
+    "id": 126,
+    "title": "Change Management Foundations",
+    "description": "The need to manage change successfully is more common and more important for a leader’s career than ever, and a specific roadmap for managing change is essential. In this course, instructor Scott Mautz gives you a playbook—a powerful, step-by-step approach to managing change, drawing from and building on key elements of change management models in practice today. Scott begins with a brief introduction to the field of change management and dives into the truths of leading change. He discusses how to conduct a change readiness assessment, then goes into the specific change management phases that follow. Scott details key steps and considerations of each phase, as well as what barriers to expect and overcome. ",
+    "url": "https://www.linkedin.com/learning/change-management-foundations-10041380",
+    "coreCapabilities": [
+      "MARE:1",
+      "MARE:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "0.77"
+  },
+  {
+    "id": 127,
+    "title": "Managing Organizational Change for Managers",
+    "description": "Employees want to know what their manager thinks about change. In fact, people are more likely to listen and follow a direct manager than anyone else in the organization. That's why change really does start with you. This course is for managers and leaders that need to move a team of people through organizational change. Learn the official definition of change management and get clear about your role in the process. Discover strategies to remove the discomfort of change, communicate change to different groups, reinforce skills, leverage performance management, and sustain planned change.",
+    "url": "https://www.linkedin.com/learning/managing-organizational-change-for-managers",
+    "coreCapabilities": [
+      "MARE:1",
+      "MARE:2",
+      "MARE:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "1.37"
+  },
+  {
+    "id": 128,
+    "title": "Handling Workplace Change as an Employee",
+    "description": "Workplace change is hard. In this course, Chris Croft explains why we struggle with change, and shares many practical techniques that can help you manage—and even thrive—in a world of constant change. Chris begins the course with general overview of change, explaining why most of us dislike it and how to prepare for the changes you'll inevitably encounter throughout your life. Next, he outlines five common types of workplace change—restructuring, layoffs, new initiatives, starting a new role in a team, and getting off to a good start with a new boss—and provides strategies for dealing with each. ",
+    "url": "https://www.linkedin.com/learning/handling-workplace-change-as-an-employee",
+    "coreCapabilities": [
+      "MARE:1",
+      "MARE:2",
+      "MARE:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "LinkedIn Learning",
+    "level": "",
+    "format": "Video and audio",
+    "cost": "0",
+    "duration": "2.03"
+  },
+  {
+    "id": 129,
+    "title": "Contract Management Essentials",
+    "description": "You will leave this course with the foundational knowledge and skills for the key aspects of contemporary contract management. You will explore legal concerns, contract management planning, managing disputes and risk management.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=AGLCMG1",
+    "coreCapabilities": [
+      "OPBU:2",
+      " OPBU:3",
+      "PRAN:2:PRAN:3"
+    ],
+    "specificCapabilities": [
+      "CONM:1"
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 130,
+    "title": "Getting to Good Governance",
+    "description": "ou will leave this course with an in-depth understanding of the decision-making process. You will also learn to establish governance structures in various settings. You will finish this course knowing you can understand what governance is and what it means for professionals, put in place the systems, processes and standards required to make good decisions in an organisation, establish processes that protect the quality and integrity of decisions, define roles and responsibilities, expectations and standards for documentation and record keeping, and establish processes that enable the efficient making of decisions.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=ETHACT3",
+    "coreCapabilities": [
+      "ACWI:2",
+      "ACWI:3",
+      "COEF:2",
+      "COEF:3",
+      "DERE:2",
+      "DERE:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 131,
+    "title": "Policy Fundamentals - One Day Program",
+    "description": "You will leave this course with the skills to tailor your advice to the audience so you can deliver persuasive policy messages. You will learn how to identify when to use, combine and stagger key policy instruments including volunteerism, economic and legislative instruments, self-, quasi- and co-regulation. The course will explore the NSW public sector framework for engagement and participation (FEP). And shows you how to set up a deliberation working group. You’ll also learn how to better evaluate the effectiveness of your policy.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=ETHPOL3",
+    "coreCapabilities": [
+      "THAN:1",
+      "THAN:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 132,
+    "title": "Policy Development: The Basics",
+    "description": "You will learn the key concepts and the use of policy vocabulary to help build confidence in policy communication and analysis. You will also learn how to communicate policy research, findings and ideas inside and outside the public sector. You will finish the course knowing you can undertake basic policy data collection, categorize policy problems into basic tasks and activities, use vocabulary appropriate to both professional and stakeholder audiences, and categorize policy problems into basic tasks and activities.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=TSRPOL3",
+    "coreCapabilities": [
+      "THAN:1",
+      "THAN:2",
+      "MARE:1",
+      "MARE:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 133,
+    "title": "Policy Implementation",
+    "description": "You will leave this course with the skills to plan for successful policy implementation. You will learn best practice for interacting and engaging with stakeholders. You will also learn how to use SMART – Specific, Measurable, Achievable, Relevant and Time-bound – metrics in your implementation. ",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=ETHPOL4",
+    "coreCapabilities": [
+      "THAN:2",
+      "THAN:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 134,
+    "title": "Advanced Policy Development",
+    "description": "Whether you are an experienced policy formulator or putting together advanced policy analysis, this course will build on your existing knowledge and experience to give you a fulsome understanding of the intricacies of policy development. In this comprehensive two day course, you will explore case studies from real public sector examples, and policy concerns specific to working in the NSW Government environment.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=TSRPOL1",
+    "coreCapabilities": [
+      "DERE:3",
+      "DERE:4",
+      "MARE:3",
+      "MARE:4"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1590",
+    "duration": "14"
+  },
+  {
+    "id": 135,
+    "title": "Policy Booster",
+    "description": "Are you a policy specialist keen to keep your skills and knowledge up to date and current with the latest in thinking, skills, and tools for policy development? Would your work benefit from a deeper understanding of the intricacies and challenges of the modern policy environment? If you are an experienced and confident policy officer keen to specialise in your field, don’t miss this course.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=TSRPOL2",
+    "coreCapabilities": [
+      "THAN:3",
+      "THAN:4",
+      "THAN:5",
+      "MARE:3",
+      "MARE:4",
+      "MARE:5"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 136,
+    "title": "Evidence-based Policy",
+    "description": "You will leave this course with the skills to precisely define policy problems. You will learn how to employ evidence to overcome perception gaps including qualitive and quantitative research. You will explore the DIRDC-related policy scenario to link research and evidence analysis to guide policy decision-making, implementation and evaluation.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=ETHPOL6",
+    "coreCapabilities": [
+      "THAN:2",
+      "THAN:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 137,
+    "title": "Getting Started in Project Management",
+    "description": "You will leave this course with the skills and knowledge of basic project management principles, practices, tools and techniques across the full project life cycle. You will explore how to scope a project, project scheduling and planning, risk identification, monitoring and control, and stakeholder engagement. You will discuss a past, current, or future project you have been working on, and develop a customisable toolkit to take back to your work.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=HVDPRO1",
+    "coreCapabilities": [
+      "DERE:1",
+      "DERE:2",
+      "PLAN:1",
+      "PLAN:2",
+      "PRMA:1",
+      "PRMA:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 138,
+    "title": "Project Management Fundamentals",
+    "description": "This course will give you a solid foundation and methodology for managing projects.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=AGLPMG1",
+    "coreCapabilities": [
+      "DERE:1",
+      "DERE:2",
+      "PLAN:1",
+      "PLAN:2",
+      "PRMA:1",
+      "PRMA:2"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "950",
+    "duration": "7"
+  },
+  {
+    "id": 139,
+    "title": "Applied Project Management",
+    "description": "You will leave this course with the skills to lead successful projects through strong communication, organisational and team leadership skills. In this two day workshop you will explore more advanced project management tools and techniques and gain a deeper understanding of strategic project management and project governance. You will also learn how to manage changes to the project scope, project planning and control, stakeholder communication, and how to develop an effective project team to achieve your project’s outcomes.",
+    "url": "https://www.nsw.ipaa.org.au/Web/Events/Event-Display.aspx?EventKey=AGLPMG2",
+    "coreCapabilities": [
+      "DERE:2",
+      "DERE:3",
+      "PLAN:2",
+      "PLAN:3",
+      "PRMA:2",
+      "PRMA:3"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "Institute of Public Administration Australia (NSW Division)",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "1590",
+    "duration": "14"
+  },
+  {
+    "id": 140,
+    "title": "Recordkeeping and You: Supervisors and Managers",
+    "description": "This online module assists all supervisors and managers in the organisation to understand their recordkeeping responsibilities when working for the NSW government.",
+    "url": "http://elearning.records.nsw.gov.au/2021%20Recordkeeping%20and%20you%20supervisors/index.html",
+    "coreCapabilities": [
+      "ACWI:1",
+      "ACWI:2",
+      "DEAC:1",
+      "DEAC:2",
+      "TECH:1",
+      "TECH:2",
+      "TECH:3",
+      "PRAN:1",
+      "PRAN:2",
+      "INDI:1"
+    ],
+    "specificCapabilities": [
+      "LEAN:1",
+      "LEAN2"
+    ],
+    "roleFunctions": [],
+    "author": "State Records NSW",
+    "level": "",
+    "format": "eLearning",
+    "cost": "0",
+    "duration": "0.33"
+  },
+  {
+    "id": 141,
+    "title": "Recordkeeping and You",
+    "description": "This online module assists all staff in the organisation to understand their broad responsibilities for making and managing records when working for the NSW government.",
+    "url": "http://elearning.records.nsw.gov.au/2021%20Recordkeeping%20and%20you/index.html",
+    "coreCapabilities": [
+      "ACWI:1",
+      "ACWI:2",
+      "DEAC:1",
+      "DEAC:2",
+      "TECH:1",
+      "TECH:2",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "State Records NSW",
+    "level": "",
+    "format": "eLearning",
+    "cost": "0",
+    "duration": "0.33"
+  },
+  {
+    "id": 142,
+    "title": "Your Responsibilities for Managing Email",
+    "description": "This online module assists all staff in the organisation to understand their broad responsibilities for managing email, particularly email messages that need to be saved and kept as records. It is designed to be used in conjunction with an organisation’s specific policies, procedures and business rules on email management.",
+    "url": "http://elearning.records.nsw.gov.au/2021%20Your%20responsibilities%20for%20managing%20email/index.html",
+    "coreCapabilities": [
+      "ACWI:1",
+      "ACWI:2",
+      "DEAC:1",
+      "DEAC:2",
+      "TECH:1",
+      "TECH:2",
+      "PRAN:1",
+      "PRAN:2"
+    ],
+    "specificCapabilities": [
+      "LEAN:1"
+    ],
+    "roleFunctions": [],
+    "author": "State Records NSW",
+    "level": "",
+    "format": "eLearning",
+    "cost": "0",
+    "duration": "0.33"
+  },
+  {
+    "id": 143,
+    "title": "Learning and development opportunities for people managers",
+    "description": "The NSW PSC offer a range of learning and development opportunities that have been developed for anyone who manages people in NSW Government, including the People Manager Fundamentals eLearning modules, guides, masterclasses and group mentoring opportunties. ",
+    "url": "https://www.psc.nsw.gov.au/workforce-management/people-manager-hub/learning-and-development-opportunities-for-people-managers",
+    "coreCapabilities": [
+      "MAAN:1",
+      "MAAN:2",
+      "MAAN:3",
+      "MAAN:4",
+      "INDI:1",
+      "INDI:2",
+      "INDI:3",
+      "INDI:4",
+      "OPBU:1",
+      "OPBU:2",
+      "OPBU:3",
+      "OPBU:4",
+      "MARE:1",
+      "MARE:2",
+      "MARE:3",
+      "MARE:4"
+    ],
+    "specificCapabilities": [
+      ""
+    ],
+    "roleFunctions": [],
+    "author": "NSW Public Service Commission",
+    "level": "",
+    "format": "eLearning;Through others;instructor-led training;Publications",
+    "cost": "0",
+    "duration": "12"
+  },
+  {
+    "id": 144,
+    "title": "Senior Executive Fundamentals",
+    "description": "For newly appointed senior leaders, the Senior Executive Fundamentals site provides key information to help you survive and thrive as a senior leader in the NSW public sector.",
+    "url": "https://sef.psc.nsw.gov.au/",
+    "coreCapabilities": [
+      "MAAN:4",
+      "MAAN:5",
+      "INDI:4",
+      "INDI:5",
+      "OPBU:4",
+      "OPBU:5",
+      "MARE:4",
+      "MARE:4"
+    ],
+    "specificCapabilities": [
+      "STPR:3",
+      "STPR:4",
+      "STPR:5"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Public Service Commission",
+    "level": "",
+    "format": "Publications",
+    "cost": "0",
+    "duration": "10"
+  },
+  {
+    "id": 145,
+    "title": "NSW PSC Leadership Academy",
+    "description": "The Leadership Academy delivers trusted leadership development programs that transform the individual and their teams to deliver benefits for the people of NSW.",
+    "url": "https://www.psc.nsw.gov.au/workforce-management/nsw-leadership-academy",
+    "coreCapabilities": [
+      "MAAN:1",
+      "MAAN:2",
+      "MAAN:3",
+      "MAAN:4",
+      "MAAN:5",
+      "INDI:1",
+      "INDI:2",
+      "INDI:3",
+      "INDI:4",
+      "INDI:5",
+      "OPBU:1",
+      "OPBU:2",
+      "OPBU:3",
+      "OPBU:4",
+      "OPBU:5",
+      "MARE:1",
+      "MARE:2",
+      "MARE:3",
+      "MARE:4",
+      "MARE:5"
+    ],
+    "specificCapabilities": [
+      "STPR:3"
+    ],
+    "roleFunctions": [],
+    "author": "NSW Public Service Commission",
+    "level": "",
+    "format": "Instructor-led training",
+    "cost": "0",
+    "duration": "30"
   }
 ]

@@ -29,7 +29,9 @@ resourcesCsvData.data.forEach((row, index) => {
     title: row.title,
     description: row.description, // NEW
     url: row.learning_resource_url,
-    skills: row.skills.split(','), // NEW
+    // skills: row.skills.split(','), // NEW
+    coreCapabilities: row.nsw_public_sector_capability_framework.split(','),
+    specificCapabilities: row.procurement_professionals_capability_set.split(','),
     roleFunctions: [], // Not included in the CSV
     author: row.author,
     level: '', // Not indluded in the CSV
