@@ -4,7 +4,7 @@
       <div class="popper">
         {{ tooltip }}
       </div>
-      <div slot="reference" class="px-3 py-0.5 inline-flex items-center rounded-full whitespace-no-wrap focus:outline-none" :class="[baseSize, badgeColour, badgeCursor]">
+      <div slot="reference" class="text-nsw-grey-800 px-3 py-0.5 inline-flex items-center rounded-full whitespace-no-wrap focus:outline-none" :class="[baseSize, badgeColour, badgeCursor]">
         <slot /> <img v-if="tooltip" src="/icons/help.svg" alt="Help icon" class="ml-2" :class="iconSize">
       </div>
     </popper>
@@ -59,7 +59,9 @@ export default {
         case 'orange':
           return 'bg-orange-200'
           break
-
+        case 'gray':
+          return 'bg-nsw-grey-100'
+          break
         default:
           return 'bg-gray-200'
           break

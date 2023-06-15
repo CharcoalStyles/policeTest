@@ -130,22 +130,17 @@
         </table>
       </div>
       <div class="pt-16 print-break">
-        <div class="mb-10">
+        <div class="mb-16">
           <h3 class="mb-3 text-3xl font-bold">
-            Upskilling resources
+            {{ upskilling.length || 0 }} upskilling resources
           </h3>
           <p class="md:w-2/3">
             These resources have been curated as a starting point to assist your career progression.
           </p>
         </div>
-        <div class="md:w-10/12">
-          <div class="mb-6 font-bold">
-            Based on your <button class="font-bold text-nsw-brand-secondary-blue" @click="$scrollTo('#target')">
-              target role
-            </button>
-          </div>
+        <div class="md:w-12/12">
           <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-            <upskilling-resource v-for="(resource, index) in upskilling" :key="index" :resource="resource" @click.native="openUpskillResource(resource)" />
+            <upskilling-resource v-for="(resource, index) in upskilling" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
           </div>
         </div>
       </div>
@@ -247,26 +242,55 @@ export default {
       'getHumanReadableAnswerValue'
     ]),
     upskilling() {
-      // TODO: Confirm that there are no default resources, then all logic pertaining to default resources within this method can be removed.
-      // Get all the default resources
+      if (!this.targetRole) {
+        return []
+      }
       const defaultResources = this.$collect(this.resources).where('default', true).all()
 
-      // Establish role function
-      const roleFunction = this.targetRole ? this.targetRole.roleFunction : ''
+      const targetRoleSkills = this.targetRole.skills.focus
+      const currentRoleSkills = this.currentRole.skills.focus
 
-      // const defaultResources = this.$collect(this.resources).where('default', true).all()
       const matchingResources = this.$collect(this.resources)
         .filter(resource => {
-          return resource.roleFunctions.includes(roleFunction)
+          let keep = false
+          targetRoleSkills.forEach(skill => {
+            const resourceSkills = this.$collect(resource.skills).where('code', skill.code).all()
+            resourceSkills.forEach(resourceSkill => {
+              const currentRoleSkill = this.$collect(currentRoleSkills).where('code', skill.code).first()
+              // They don't have that skill, return the resource
+              if (!currentRoleSkill) {
+                keep = true
+              // They have that skill, does it reach the required level
+              } else if (currentRoleSkill && resourceSkill.level > currentRoleSkill.level) {
+                keep = true
+              }
+            })
+          })
+          return keep
         })
         .filter(resource => {
           return !defaultResources.includes(resource)
         })
         .all()
-
+      return [...matchingResources, ...defaultResources]
+    },
+    targetRoleCapabilities() {
+      if (!this.targetRole) {
+        return []
+      }
+      const targetRoleCapabilities = this.$collect(
+        this.targetRole.capabilities.focus
+      )
+        .unique('code')
+        .map((item) => item.code)
+        .all()
+      const targetRoleSkills = this.$collect(this.targetRole.skills.focus)
+        .unique('code')
+        .map((item) => item.code)
+        .all()
       return [
-        ...matchingResources,
-        ...defaultResources
+        ...targetRoleCapabilities,
+        ...targetRoleSkills
       ]
     },
     roles() {
