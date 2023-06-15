@@ -9,7 +9,7 @@
           {{ step.title }}
         </h1>
       </div>
-      <v-clamp tag="p" autoresize :max-lines="3" class="mb-8">
+      <v-clamp v-if="step.schema.help" tag="p" autoresize :max-lines="3" class="mb-8">
         {{ step.schema.help }}
         <template #after="{ clamped, toggle, expanded }">
           <button v-if="clamped" class="text-nsw-brand-primary-blue underline ml-2" @click="toggle">
