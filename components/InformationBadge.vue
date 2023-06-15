@@ -4,7 +4,7 @@
       <div class="popper">
         {{ tooltip }}
       </div>
-      <div slot="reference" class="text-nsw-grey-800 px-3 py-0.5 inline-flex items-center rounded-full whitespace-no-wrap focus:outline-none" :class="[baseSize, badgeColour, badgeCursor]">
+      <div slot="reference" class="px-3 py-0.5 inline-flex items-center rounded-full whitespace-no-wrap focus:outline-none" :class="[baseSize, badgeColour, badgeCursor, badgeBorder, textColor]">
         <slot /> <img v-if="tooltip" src="/icons/help.svg" alt="Help icon" class="ml-2" :class="iconSize">
       </div>
     </popper>
@@ -48,8 +48,24 @@ export default {
     badgeCursor() {
       return this.tooltip ? 'hover:cursor-pointer' : 'hover:cursor-default'
     },
+    badgeBorder() {
+      return this.colour === 'blue-outline' ? 'border border-nsw-brand-primary-blue' : ''
+    },
+    textColor() {
+      switch (this.colour) {
+        case 'blue-outline':
+          return 'text-nsw-brand-primary-blue'
+          break
+        default:
+          return 'text-nsw-grey-800'
+          break
+      }
+    },
     badgeColour() {
       switch (this.colour) {
+        case 'blue-outline':
+          return 'bg-white'
+          break
         case 'blue':
           return 'bg-role-pill-blue'
           break

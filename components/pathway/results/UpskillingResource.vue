@@ -67,8 +67,16 @@
           </template>
         </v-clamp>
       </div>
-      <div class="w-full">
-        <img src="/icons/link.svg" alt="Link icon" class="w-6 mt-8" />
+      <div class="w-full flex mt-8 items-center justify-between">
+        <img src="/icons/link.svg" alt="Link icon" class="w-6" />
+        <div v-if="resource.default">
+          <information-badge
+            size="xs"
+            colour="blue-outline"
+          >
+            Recommended
+          </information-badge>
+        </div>
       </div>
     </div>
   </div>
