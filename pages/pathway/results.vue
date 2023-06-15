@@ -130,16 +130,24 @@
         </table>
       </div>
       <div class="pt-16 print-break">
-        <div class="mb-16">
+        <div class="mb-6">
           <h3 class="mb-3 text-3xl font-bold">
-            {{ upskilling.count || 0 }} upskilling resources
+            {{ filteredResources.count || 0 }} upskilling resources
           </h3>
           <p class="md:w-2/3">
             These resources have been curated as a starting point to assist your career progression.
           </p>
         </div>
+        <div class="">
+          <label class="font-bold" for="filterSkills">Type of content</label>
+          <div class="table mt-1">
+            <select id="filterSkills" v-model="filterFormatValue" class="nsw-form-select">
+              <option v-for="option in filterFormatOptions" :key="option" :value="option">{{ option }}</option>
+            </select>
+          </div>
+        </div>
         <div class="md:w-12/12">
-          <div v-for="(group, propertyName, groupIndex) in upskilling.groups" :key="groupIndex">
+          <div v-for="(group, propertyName, groupIndex) in filteredResources.groups" :key="groupIndex">
             <h3 class="mb-6 mt-16 text-xl font-bold">
               {{ propertyName }}
             </h3>
@@ -238,7 +246,8 @@ export default {
       modals: {
         update: false,
         beta: true
-      }
+      },
+      filterFormatValue: 'All'
     }
   },
   computed: {
@@ -246,7 +255,18 @@ export default {
       'answers',
       'getHumanReadableAnswerValue'
     ]),
-    upskilling() {
+    filterFormatOptions() {
+      if (this.allResources.length > 0) {
+        const formats = this.$collect(
+          this.allResources.map(resource => resource.format[0])
+        ).unique().all()
+        formats.unshift('All')
+        return formats
+      }
+      return ['All']
+    },
+    allResources() {
+      // TODO: Include core capabilities
       if (!this.targetRole) {
         return []
       }
@@ -278,11 +298,18 @@ export default {
         })
         .all()
 
-      // Group Resources by Format
-      const allResources = [...matchingResources, ...defaultResources]
+      return [...matchingResources, ...defaultResources]
+    },
+    filteredResources() {
       const groupedResources = {}
+      const filteredResources = this.allResources.filter(resource => {
+        if (!this.filterFormatValue || this.filterFormatValue === 'All' || resource.format[0] === this.filterFormatValue) {
+          return true
+        }
+        return false
+      })
 
-      allResources.forEach((resource) => {
+      filteredResources.forEach((resource) => {
         const format = resource.format[0]
         if (!groupedResources.hasOwnProperty(format)) {
           groupedResources[format] = []
@@ -291,7 +318,7 @@ export default {
       })
       return {
         groups: groupedResources,
-        count: allResources.length || 0
+        count: filteredResources.length || 0
       }
     },
     targetRoleCapabilities() {
