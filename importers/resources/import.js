@@ -45,6 +45,10 @@ const parseFormat = format => {
   return format.replace('-', '').split(';')
 }
 
+const parseDefault = recommended => {
+  return recommended === '1'
+}
+
 // Init empty resources
 const resources = []
 
@@ -62,7 +66,7 @@ resourcesCsvData.data.forEach((row, index) => {
     level: '', // Not indluded in the CSV
     // format: row.format,
     format: parseFormat(row.format),
-    default: undefined, // Not included in the CSV
+    default: parseDefault(row.recommended), // Not included in the CSV
     cost: row.cost, // NEW
     duration: row.duration, // NEW
     skills: codeLevelParser(row.procurement_professionals_capability_set), // parse as array

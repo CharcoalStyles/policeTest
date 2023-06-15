@@ -31,7 +31,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.83",
     "skills": [
@@ -150,7 +153,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -256,7 +262,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.17",
     "skills": [
@@ -326,7 +335,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.83",
     "skills": [
@@ -393,7 +405,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.17",
     "skills": [
@@ -447,7 +462,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Instructor-led training;eLearning;Video and audio;Publications",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "5",
     "skills": [
@@ -501,7 +519,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.25",
     "skills": [
@@ -568,7 +589,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.25",
     "skills": [
@@ -625,7 +649,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.17",
     "skills": [
@@ -691,7 +718,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.17",
     "skills": [
@@ -763,7 +793,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.33",
     "skills": [
@@ -843,7 +876,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.17",
     "skills": [
@@ -921,7 +957,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.17",
     "skills": [
@@ -990,7 +1029,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.25",
     "skills": [
@@ -1064,7 +1106,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": true,
     "cost": "1350",
     "duration": "14",
     "skills": [
@@ -1164,7 +1209,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -1227,7 +1275,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "1",
     "skills": [
@@ -1302,7 +1353,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -1378,7 +1432,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.33",
     "skills": [
@@ -1455,7 +1512,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -1526,7 +1586,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Qualifications",
+    "format": [
+      "Qualifications"
+    ],
+    "default": true,
     "cost": "5900",
     "duration": "63",
     "skills": [
@@ -1619,7 +1682,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Qualifications",
+    "format": [
+      "Qualifications"
+    ],
+    "default": true,
     "cost": "6265",
     "duration": "63",
     "skills": [
@@ -1711,7 +1777,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications",
+    "format": [
+      "Qualifications"
+    ],
+    "default": false,
     "cost": "1600",
     "duration": "600",
     "skills": [
@@ -1822,7 +1891,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications",
+    "format": [
+      "Qualifications"
+    ],
+    "default": false,
     "cost": "1600",
     "duration": "600",
     "skills": [
@@ -1898,7 +1970,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications",
+    "format": [
+      "Qualifications"
+    ],
+    "default": false,
     "cost": "1600",
     "duration": "600",
     "skills": [
@@ -1986,7 +2061,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications;Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "878",
     "skills": [
@@ -2097,7 +2175,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications;Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1244",
     "skills": [
@@ -2173,7 +2254,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Qualifications;Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "993",
     "skills": [
@@ -2280,7 +2364,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Events;Through others",
+    "format": [
+      "Events"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "20",
     "skills": [
@@ -2495,7 +2582,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Events;Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "30",
     "skills": [
@@ -2681,7 +2771,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -2748,7 +2841,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -2806,7 +2902,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -2877,7 +2976,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -2954,7 +3056,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Video and audio;Publications",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -3037,7 +3142,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "On the job;Through others",
+    "format": [
+      "On the job"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -3111,7 +3219,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "On the job;Through others",
+    "format": [
+      "On the job"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -3181,7 +3292,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "On the job;Through others",
+    "format": [
+      "On the job"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -3282,7 +3396,10 @@
     "roleFunctions": [],
     "author": "NSW Government",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": true,
     "cost": "0",
     "duration": "0.1",
     "skills": [
@@ -3471,7 +3588,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.08",
     "skills": [
@@ -3516,7 +3636,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.07",
     "skills": [
@@ -3561,7 +3684,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.08",
     "skills": [
@@ -3606,7 +3732,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.08",
     "skills": [
@@ -3651,7 +3780,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.07",
     "skills": [
@@ -3697,7 +3829,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.05",
     "skills": [
@@ -3746,7 +3881,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -3776,7 +3914,7 @@
   },
   {
     "id": 47,
-    "title": "Probity in Procurement:\nTips from a Professional (Publication)",
+    "title": "Probity in Procurement:\r\nTips from a Professional (Publication)",
     "description": "Top tips on probity in procurement from an experienced probity adviser.",
     "url": "https://www.icac.nsw.gov.au/education-and-events/education-and-events-publications",
     "coreCapabilities": [
@@ -3791,7 +3929,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -3838,7 +3979,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1",
     "skills": [
@@ -3893,7 +4037,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "2",
     "skills": [
@@ -3948,7 +4095,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.5",
     "skills": [
@@ -4004,7 +4154,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.5",
     "skills": [
@@ -4064,7 +4217,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "2",
     "skills": [
@@ -4126,7 +4282,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.5",
     "skills": [
@@ -4195,7 +4354,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "2",
     "skills": [
@@ -4259,7 +4421,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "2",
     "skills": [
@@ -4319,7 +4484,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3.5",
     "skills": [
@@ -4379,7 +4547,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3.5",
     "skills": [
@@ -4439,7 +4610,10 @@
     "roleFunctions": [],
     "author": "NSW Independent Commission Against Corruption",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "5",
     "skills": [
@@ -4498,7 +4672,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4551,7 +4728,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4596,7 +4776,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4652,7 +4835,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4744,7 +4930,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4802,7 +4991,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "600",
     "duration": "4",
     "skills": [
@@ -4852,7 +5044,10 @@
     "roleFunctions": [],
     "author": "Chartered Institute of Procurement and Supply",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1300",
     "duration": "14",
     "skills": [
@@ -4900,7 +5095,10 @@
     "roleFunctions": [],
     "author": "ArcBlue",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "0.25",
     "skills": [
@@ -4939,7 +5137,10 @@
     "roleFunctions": [],
     "author": "ArcBlue",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "7",
     "skills": [
@@ -4975,7 +5176,10 @@
     "roleFunctions": [],
     "author": "ArcBlue",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "7",
     "skills": [
@@ -5018,7 +5222,10 @@
     "roleFunctions": [],
     "author": "ArcBlue",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "7",
     "skills": [
@@ -5072,7 +5279,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "9",
     "skills": [
@@ -5123,7 +5333,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "14",
     "skills": [
@@ -5178,7 +5391,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "16",
     "skills": [
@@ -5232,7 +5448,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "9",
     "skills": [
@@ -5280,7 +5499,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "14",
     "skills": [
@@ -5323,7 +5545,10 @@
     "roleFunctions": [],
     "author": "Academy of Procurement",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "Contact supplier for pricing",
     "duration": "9",
     "skills": [
@@ -5374,7 +5599,10 @@
     "roleFunctions": [],
     "author": "Transformed",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "199",
     "duration": "3",
     "skills": [
@@ -5408,7 +5636,10 @@
     "roleFunctions": [],
     "author": "Transformed",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "199",
     "duration": "6",
     "skills": [
@@ -5441,7 +5672,10 @@
     "roleFunctions": [],
     "author": "Transformed",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "199",
     "duration": "4",
     "skills": [
@@ -5486,7 +5720,10 @@
     "roleFunctions": [],
     "author": "Transformed",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "199",
     "duration": "5",
     "skills": [
@@ -5517,7 +5754,7 @@
   {
     "id": 80,
     "title": "Managing supplier relationships",
-    "description": "Do you have the skills to build stronger, longer lasting supplier relationships? Do you know the key to establishing a good level of trust between you and suppliers? Are you good at vendor management? \nIn this 100% online course, we’ll show you how to develop strong relationships with suppliers. Learn the proven methods to work through common challenges and issues of managing supplier performance. Delve into key concepts, including business ethics and trust, that affect business relationships. Gain the practical knowledge that will make you an instrumental asset to your team.",
+    "description": "Do you have the skills to build stronger, longer lasting supplier relationships? Do you know the key to establishing a good level of trust between you and suppliers? Are you good at vendor management? \r\nIn this 100% online course, we’ll show you how to develop strong relationships with suppliers. Learn the proven methods to work through common challenges and issues of managing supplier performance. Delve into key concepts, including business ethics and trust, that affect business relationships. Gain the practical knowledge that will make you an instrumental asset to your team.",
     "url": "https://transformed-pty-ltd-short-courses.thinkific.com/courses/managing-supplier-relationships",
     "coreCapabilities": [
       "COEF:1",
@@ -5532,7 +5769,10 @@
     "roleFunctions": [],
     "author": "Transformed",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "199",
     "duration": "6",
     "skills": [
@@ -5584,7 +5824,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1350",
     "duration": "14",
     "skills": [
@@ -5645,7 +5888,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "850",
     "duration": "7",
     "skills": [
@@ -5705,7 +5951,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "550",
     "duration": "4",
     "skills": [
@@ -5746,7 +5995,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "850",
     "duration": "7",
     "skills": [
@@ -5797,7 +6049,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1350",
     "duration": "14",
     "skills": [
@@ -5865,7 +6120,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "850",
     "duration": "7",
     "skills": [
@@ -5892,7 +6150,7 @@
   {
     "id": 87,
     "title": "Supplier Relationship Management in the Public Sector ",
-    "description": "This one-day course aims to provide participants with an understanding of supplier relationship management (SRM) best practices and strategies specifically in the public sector. Participants will learn how to develop and maintain effective supplier relationships to improve procurement\nperformance, drive innovation, and reduce risks. It also addresses the probity-related issues that can arise in public sector SRM.",
+    "description": "This one-day course aims to provide participants with an understanding of supplier relationship management (SRM) best practices and strategies specifically in the public sector. Participants will learn how to develop and maintain effective supplier relationships to improve procurement\r\nperformance, drive innovation, and reduce risks. It also addresses the probity-related issues that can arise in public sector SRM.",
     "url": "https://www.academyglobal.com/portfolio-item/supplier-relationship-management-in-the-public-sector/",
     "coreCapabilities": [
       "COEF:2",
@@ -5909,7 +6167,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "850",
     "duration": "7",
     "skills": [
@@ -5972,7 +6233,10 @@
     "roleFunctions": [],
     "author": "AcademyGlobal",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "850",
     "duration": "7",
     "skills": [
@@ -6043,7 +6307,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.55",
     "skills": [
@@ -6099,7 +6366,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.38",
     "skills": [
@@ -6159,7 +6429,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.35",
     "skills": [
@@ -6216,7 +6489,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.92",
     "skills": [
@@ -6263,7 +6539,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.47",
     "skills": [
@@ -6319,7 +6598,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.08",
     "skills": [
@@ -6375,7 +6657,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3.15",
     "skills": [],
@@ -6416,7 +6701,10 @@
     "roleFunctions": [],
     "author": "Australian Public Service Commission",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.43",
     "skills": [],
@@ -6486,7 +6774,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "7",
     "skills": [],
@@ -6567,7 +6858,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.85",
     "skills": [],
@@ -6610,7 +6904,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.35",
     "skills": [],
@@ -6645,7 +6942,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.28",
     "skills": [],
@@ -6680,7 +6980,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.05",
     "skills": [],
@@ -6719,7 +7022,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.27",
     "skills": [],
@@ -6770,7 +7076,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "4.32",
     "skills": [],
@@ -6807,7 +7116,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.63",
     "skills": [],
@@ -6853,7 +7165,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.8",
     "skills": [],
@@ -6902,7 +7217,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "6",
     "skills": [],
@@ -6944,7 +7262,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.55",
     "skills": [],
@@ -6973,7 +7294,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.53",
     "skills": [],
@@ -7000,7 +7324,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.68",
     "skills": [],
@@ -7034,7 +7361,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.08",
     "skills": [],
@@ -7065,7 +7395,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3",
     "skills": [],
@@ -7100,7 +7433,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.9",
     "skills": [],
@@ -7135,7 +7471,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3.32",
     "skills": [],
@@ -7171,7 +7510,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.6",
     "skills": [],
@@ -7210,7 +7552,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.8",
     "skills": [],
@@ -7244,7 +7589,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.25",
     "skills": [],
@@ -7274,7 +7622,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.55",
     "skills": [],
@@ -7304,7 +7655,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.47",
     "skills": [],
@@ -7334,7 +7688,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.23",
     "skills": [],
@@ -7368,7 +7725,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.75",
     "skills": [],
@@ -7414,7 +7774,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.58",
     "skills": [],
@@ -7445,7 +7808,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.25",
     "skills": [],
@@ -7482,7 +7848,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.85",
     "skills": [],
@@ -7528,7 +7897,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "3.03",
     "skills": [],
@@ -7578,7 +7950,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.88",
     "skills": [],
@@ -7624,7 +7999,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.77",
     "skills": [],
@@ -7655,7 +8033,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "1.37",
     "skills": [],
@@ -7690,7 +8071,10 @@
     "roleFunctions": [],
     "author": "LinkedIn Learning",
     "level": "",
-    "format": "Video and audio",
+    "format": [
+      "Video and audio"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "2.03",
     "skills": [],
@@ -7725,7 +8109,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [
@@ -7768,7 +8155,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -7814,7 +8204,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -7846,7 +8239,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -7884,7 +8280,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -7916,7 +8315,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1590",
     "duration": "14",
     "skills": [],
@@ -7958,7 +8360,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -8004,7 +8409,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -8038,7 +8446,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -8088,7 +8499,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "950",
     "duration": "7",
     "skills": [],
@@ -8138,7 +8552,10 @@
     "roleFunctions": [],
     "author": "Institute of Public Administration Australia (NSW Division)",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "1590",
     "duration": "14",
     "skills": [],
@@ -8193,7 +8610,10 @@
     "roleFunctions": [],
     "author": "State Records NSW",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.33",
     "skills": [
@@ -8270,7 +8690,10 @@
     "roleFunctions": [],
     "author": "State Records NSW",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.33",
     "skills": [
@@ -8335,7 +8758,10 @@
     "roleFunctions": [],
     "author": "State Records NSW",
     "level": "",
-    "format": "eLearning",
+    "format": [
+      "eLearning"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "0.33",
     "skills": [
@@ -8408,7 +8834,10 @@
     "roleFunctions": [],
     "author": "NSW Public Service Commission",
     "level": "",
-    "format": "eLearning;Through others;instructor-led training;Publications",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "12",
     "skills": [],
@@ -8502,7 +8931,10 @@
     "roleFunctions": [],
     "author": "NSW Public Service Commission",
     "level": "",
-    "format": "Publications",
+    "format": [
+      "Publications"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "10",
     "skills": [
@@ -8587,7 +9019,10 @@
     "roleFunctions": [],
     "author": "NSW Public Service Commission",
     "level": "",
-    "format": "Instructor-led training",
+    "format": [
+      "Instructorled training"
+    ],
+    "default": false,
     "cost": "0",
     "duration": "30",
     "skills": [
