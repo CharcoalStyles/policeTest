@@ -119,9 +119,6 @@
     </aside>
 
     <main class="hidden lg:flex flex-col flex-grow">
-      <div class="bg-white">
-        <nsw-beta-banner />
-      </div>
       <div class="relative flex-grow">
         <zoom-tool
           class="not-zoomable fixed top-0 right-0 m-8 z-10"
@@ -197,7 +194,6 @@ import RoleFunction from '@/components/RoleFunction'
 import ZoomTool from '@/components/ZoomTool'
 import RoleSlideout from '@/components/RoleSlideout'
 import PageLoading from '@/components/PageLoading'
-import NswBetaBanner from '@/components/nsw/NswBetaBanner'
 import NswButton from '@/components/nsw/NswButton'
 import SkillsSelector from '@/components/SkillsSelector'
 import ModalOnboarding from '@/components/ModalOnboarding'
@@ -212,7 +208,6 @@ export default {
     ZoomTool,
     RoleSlideout,
     PageLoading,
-    NswBetaBanner,
     NswButton,
     SkillsSelector,
     InputSkills,

@@ -18,17 +18,12 @@
         <p class="font-bold text-nsw-brand-primary-blue text-lg">Treasury</p>
       </header>
     </div>
-    <nsw-beta-banner v-if="betaBanner" />
   </div>
 </template>
 
 <script>
-import NswBetaBanner from '@/components/nsw/NswBetaBanner'
 
 export default {
-  components: {
-    NswBetaBanner
-  },
   props: {
     betaBanner: {
       type: Boolean,
