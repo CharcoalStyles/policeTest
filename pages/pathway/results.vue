@@ -132,15 +132,20 @@
       <div class="pt-16 print-break">
         <div class="mb-16">
           <h3 class="mb-3 text-3xl font-bold">
-            {{ upskilling.length || 0 }} upskilling resources
+            {{ upskilling.count || 0 }} upskilling resources
           </h3>
           <p class="md:w-2/3">
             These resources have been curated as a starting point to assist your career progression.
           </p>
         </div>
         <div class="md:w-12/12">
-          <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-            <upskilling-resource v-for="(resource, index) in upskilling" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
+          <div v-for="(group, propertyName, groupIndex) in upskilling.groups" :key="groupIndex">
+            <h3 class="mb-6 mt-16 text-xl font-bold">
+              {{ propertyName }}
+            </h3>
+            <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
+              <upskilling-resource v-for="(resource, index) in group" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
+            </div>
           </div>
         </div>
       </div>
@@ -272,7 +277,22 @@ export default {
           return !defaultResources.includes(resource)
         })
         .all()
-      return [...matchingResources, ...defaultResources]
+
+      // Group Resources by Format
+      const allResources = [...matchingResources, ...defaultResources]
+      const groupedResources = {}
+
+      allResources.forEach((resource) => {
+        const format = resource.format[0]
+        if (!groupedResources.hasOwnProperty(format)) {
+          groupedResources[format] = []
+        }
+        groupedResources[format].push(resource)
+      })
+      return {
+        groups: groupedResources,
+        count: allResources.length || 0
+      }
     },
     targetRoleCapabilities() {
       if (!this.targetRole) {
