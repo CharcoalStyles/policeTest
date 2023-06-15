@@ -137,7 +137,7 @@ export default {
       return `${new Intl.NumberFormat('en-US').format(duration)} hrs`
     },
     formats() {
-      return this.resource.format.replaceAll(';', ', ')
+      return this.resource.format.toString()
     }
   }
 }
