@@ -33,7 +33,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['B2'] }}
             </div>
           </td>
@@ -65,7 +65,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['B1'] }}
             </div>
           </td>
@@ -96,7 +96,7 @@
           <td
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['11-12'] }}
             </div>
           </td>
@@ -131,7 +131,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['9-10'] }}
             </div>
           </td>
@@ -162,7 +162,7 @@
           <td
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['7-8'] }}
             </div>
           </td>
@@ -194,7 +194,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['5-6'] }}
             </div>
           </td>
@@ -225,7 +225,7 @@
           <td
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
-            <div class="py-3 px-5 rounded-md font-semi-bold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ salaryMap['3-4'] }}
             </div>
           </td>
