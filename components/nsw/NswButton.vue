@@ -26,6 +26,9 @@ export default {
         case 'secondary':
           return 'bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue'
           break
+        case 'secondary-outline':
+          return 'hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue'
+          break
         case 'highlight':
           return 'bg-nsw-brand-primary-highlight text-white focus:bg-nsw-brand-tertiary-blue'
           break

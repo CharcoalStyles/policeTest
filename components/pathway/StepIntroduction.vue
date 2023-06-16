@@ -3,10 +3,10 @@
     <div class="lg:w-1/2">
       <div class="mb-12 md:mb-20">
         <h2 class="btn-blue font-bold text-nsw-brand-primary-blue mb-3">
-          Digital Career Pathways tool
+          Procurement Career Pathways tool
         </h2>
         <h1 class="text-4xl font-bold leading-snug">
-          Get a personalised career recommendation and plan
+          Get a personalised career recommendation and plan.
         </h1>
       </div>
       <div class="mb-12">
@@ -16,8 +16,8 @@
         <ul class="ml-4 list-outside list-disc leading-loose lg:w-5/6">
           <li>We’ll ask a few questions</li>
           <li>We’ll show you what roles you could move into</li>
-          <li>We’ll help you understand what skills and capabilities you need to improve</li>
-          <li>We’ll recommend upskilling resources</li>
+          <li>We’ll help you understand what skills you need to improve</li>
+          <li>We’ll surface upskilling resources</li>
         </ul>
       </div>
       <div class="mb-12">
@@ -25,8 +25,9 @@
           Who is this best suited for?
         </h3>
         <ul class="ml-4 list-outside list-disc leading-loose lg:w-5/6">
+          <li>People looking to develop their skills and capabilities</li>
           <li>People looking for the next step in their career</li>
-          <li>People looking to work in a NSW Government digital role</li>
+          <li>People looking to work in a NSW Government procurement role</li>
         </ul>
       </div>
       <div class="mb-12 lg:mb-0">
@@ -48,9 +49,9 @@
           Use the Role Explorer tool
         </div>
         <p class="mb-12">
-          See all the various roles, levels and how they’re connected across NSW Government.
+          See all the various roles, levels and how they’re connected across NSW Governement.
         </p>
-        <nsw-button action="secondary" @click.native="$router.push('/explorer')">
+        <nsw-button action="secondary-outline" @click.native="$router.push('/explorer')">
           Browse roles
         </nsw-button>
       </div>
