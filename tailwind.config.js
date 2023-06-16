@@ -38,6 +38,7 @@ module.exports = {
           'grey-primary': '#22272B'
         },
         'nsw-grey': {
+          50: '#F2F2F2',
           100: '#F4F4F7', // Light10
           200: '#E4E4E6', // Light20
           400: '#A0A5AE', // Light40
