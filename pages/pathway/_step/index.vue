@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen pb-32">
+  <div class="pb-32">
     <dynamic-step :step="currentStep" />
     <navigation-actions>
       <template #left>
