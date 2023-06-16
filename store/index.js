@@ -157,7 +157,7 @@ const mutations = {
           title: currentSkill.name,
           type: 'question',
           schema: {
-            section: 'Assess your current SFIA skill level',
+            section: 'Assess your current PRPR skill level',
             help: currentSkill.description,
             field: {
               type: 'skill',
@@ -200,7 +200,7 @@ const mutations = {
         title: currentCapability.subcategory,
         type: 'question',
         schema: {
-          section: 'Assess your current capability level',
+          section: 'Select your current level of capability',
           help: currentCapability.description,
           field: {
             type: 'capability',

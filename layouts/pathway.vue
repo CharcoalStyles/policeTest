@@ -3,7 +3,7 @@
     <nsw-header />
     <div class="flex-grow">
       <div class="xl:container">
-        <div class="p-4 md:py-12 md:px-6">
+        <div class="p-4 md:py-16 md:px-6">
           <Nuxt />
         </div>
       </div>

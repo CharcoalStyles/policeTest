@@ -1,9 +1,9 @@
 <template>
   <div>
-    <input-expandable v-for="option in step.schema.field.options" :key="option.id" :description="option.easyDescription">
+    <input-expandable v-for="option in step.schema.field.options" :key="option.id" :description="option.easyDescription" :attributes="option.attributes">
       <div class="nsw-form-radio">
         <input :id="option.level" v-model="answer" :name="option.level" :value="option.level" class="nsw-form-radio__input" type="radio">
-        <label class="nsw-form-radio__label mt-0 mb-3 font-bold text-lg leading-4" :for="option.level">{{ option.name }}</label>
+        <label class="nsw-form-radio__label mt-0 mb-0 font-bold text-lg leading-4" :for="option.level">{{ option.name }}</label>
       </div>
     </input-expandable>
   </div>

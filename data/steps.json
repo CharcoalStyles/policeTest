@@ -152,338 +152,34 @@
     }
   },
   {
-    "id": "goal-timeframe",
-    "title": "When do you want to be in that role?",
-    "type": "question",
-    "conditions": [
-      {
-        "id": "goal",
-        "value": "yes"
-      }
-    ],
-    "schema": {
-      "section": "Your most recent role",
-      "help": "If you have a specific timeframe, let's explore your options with that timeframe in mind.",
-      "field": {
-        "type": "radio",
-        "required": false,
-        "options": [
-          {
-            "title": "0 - 6 months",
-            "value": "0_to_6_months"
-          },
-          {
-            "title": "6 - 12 months",
-            "value": "6_to_12_months"
-          },
-          {
-            "title": "1 - 2 years",
-            "value": "1_to_2_years"
-          },
-          {
-            "title": "2 years +",
-            "value": "2_years_plus"
-          },
-          {
-            "title": "Not sure",
-            "value": "not_sure"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "next-timeframe",
-    "title": "Do you have a rough idea of when you'd like to move into your next role?",
-    "type": "question",
-    "conditions": [
-      {
-        "id": "your-goal",
-        "value": "no"
-      }
-    ],
-    "schema": {
-      "section": "Your timeframe",
-      "help": "If you have a specific timeframe, let's explore your options with that timeframe in mind.",
-      "field": {
-        "type": "radio",
-        "required": false,
-        "options": [
-          {
-            "title": "0 - 6 months",
-            "value": "0_to_6_months"
-          },
-          {
-            "title": "6 - 12 months",
-            "value": "6_to_12_months"
-          },
-          {
-            "title": "1 - 2 years",
-            "value": "1_to_2_years"
-          },
-          {
-            "title": "2 years +",
-            "value": "2_years_plus"
-          },
-          {
-            "title": "Not sure",
-            "value": "not_sure"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "skills",
-    "title": "Let's assess your skills",
+    "title": "Let's assess your current skills.",
     "type": "interstitial",
+    "icon": "checklist",
     "conditions": false,
     "schema": {
-      "section": "Self-assessment",
-      "description": "In this section, you'll assess yourself on the skills required for your current role."
+      "section": "Self assessment",
+      "description": "In this section, you'll assess yourself on the skills required for your current role. If you are not currently in a procurement role you will assess some entry level skills."
     },
     "steps": []
   },
   {
     "id": "capabilities",
-    "title": "Let's assess your capabilities",
+    "title": "Let's assess your capabilities.",
     "type": "interstitial",
+    "icon": "checklist",
     "conditions": false,
     "schema": {
-      "section": "Self-assessment",
-      "description": "In this section, you'll assess yourself on the capabilities required for your current role. If you are not currently in a digital role you will assess some general capabilities."
+      "section": "Self assessment",
+      "description": "In this section, you'll assess yourself on the capabilities required for your current role. If you are not currently in a procurement role you will assess some general capabilities."
     },
     "steps": []
   },
   {
-    "id": "preferences",
-    "title": "Tell us your preferences and interests",
-    "type": "interstitial",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "description": "In this section, we'll ask you about your interests and preferences to be taken into consideration in your career pathway."
-    }
-  },
-  {
-    "id": "additional-skills",
-    "title": "What other skills do you have outside your role?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Additional skills and capabilities",
-      "help": "Understanding if you have other transferable skills and capabilities outside of your current role will be recorded in your career pathway plan.",
-      "field": {
-        "type": "text",
-        "required": false
-      }
-    }
-  },
-  {
-    "id": "qualifications",
-    "title": "Do you have any qualifications that may be relevant?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "help": "Your qualifications will be recorded in your career pathway plan.",
-      "field": {
-        "type": "text",
-        "required": false
-      }
-    }
-  },
-  {
-    "id": "disciplines",
-    "title": "What discipline areas of digital are you interested in?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "help": "Understanding what discipline areas of digital are you interested in will be recorded in your career pathway plan.",
-      "field": {
-        "type": "checkbox",
-        "required": true,
-        "options": [
-          {
-            "title": "Creative Design",
-            "value": 0
-          },
-          {
-            "title": "Public Relations and Stakeholder Management",
-            "value": 1
-          },
-          {
-            "title": "IT Business Management",
-            "value": 2
-          },
-          {
-            "title": "Service Delivery",
-            "value": 3
-          },
-          {
-            "title": "Business Change",
-            "value": 4
-          },
-          {
-            "title": "Solutions Implementation",
-            "value": 5
-          },
-          {
-            "title": "Solutions Development",
-            "value": 6
-          },
-          {
-            "title": "Security",
-            "value": 7
-          },
-          {
-            "title": "Risk",
-            "value": 8
-          },
-          {
-            "title": "Design",
-            "value": 9
-          },
-          {
-            "title": "Project",
-            "value": 10
-          },
-          {
-            "title": "Research",
-            "value": 11
-          },
-          {
-            "title": "Evaluation",
-            "value": 12
-          },
-          {
-            "title": "Program Delivery",
-            "value": 13
-          }
-        ],
-        "value": []
-      }
-    }
-  },
-  {
-    "id": "management",
-    "title": "Are you more interested in being an individual contributor or a manager?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "help": "An individual contributor is someone with no direct reports, a manager is someone who leads a team or individuals.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Individual contributor",
-            "value": "contributor"
-          },
-          {
-            "title": "Manager",
-            "value": "manager"
-          },
-          {
-            "title": "I'm not sure",
-            "value": "unsure"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "learning",
-    "title": "How do you like to learn?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "help": "Understanding how you like to learn will be recorded in your plan.",
-      "field": {
-        "type": "checkbox",
-        "required": true,
-        "options": [
-          {
-            "title": "On the job",
-            "value": "on_the_job"
-          },
-          {
-            "title": "Formal certifications",
-            "value": "formal_certifications"
-          },
-          {
-            "title": "Online courses",
-            "value": "online_courses"
-          },
-          {
-            "title": "Webinars/events",
-            "value": "webinars_events"
-          },
-          {
-            "title": "Mentoring",
-            "value": "mentoring"
-          },
-          {
-            "title": "Secondments",
-            "value": "secondments"
-          }
-        ],
-        "value": []
-      }
-    }
-  },
-  {
-    "id": "priorities",
-    "title": "What matters to you when choosing a new role?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "help": "Understanding what's important to you when choosing a role helps future career conversations.",
-      "field": {
-        "type": "checkbox",
-        "required": true,
-        "options": [
-          {
-            "title": "Flexibility",
-            "value": "flexibility"
-          },
-          {
-            "title": "Remuneration",
-            "value": "remuneration"
-          },
-          {
-            "title": "Growth opportunities",
-            "value": "growth_opportunities"
-          },
-          {
-            "title": "Agency/Department",
-            "value": "agency_department"
-          },
-          {
-            "title": "Grade",
-            "value": "grade"
-          },
-          {
-            "title": "Culture",
-            "value": "culture"
-          },
-          {
-            "title": "Level of responsibility",
-            "value": "level_of_responsibility"
-          }
-        ],
-        "value": []
-      }
-    }
-  },
-  {
     "id": "finished",
-    "title": "Your personalised career pathway is ready",
+    "title": "Your personalised career pathway are ready!",
     "type": "interstitial",
+    "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Your results",

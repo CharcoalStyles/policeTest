@@ -15,7 +15,7 @@
     </div>
     <div v-if="stepIcon" class="hidden md:flex md:w-2/3 lg:w-1/2 justify-end">
       <div class="bg-nsw-grey-100 w-full rounded-t-full rounded-l-full flex items-center justify-center" style="aspect-ratio: 1/1;max-width: 288px;">
-        <img src="/icon-edit.svg" alt="Arrow icon">
+        <img :src="stepIcon" alt="Arrow icon">
       </div>
     </div>
   </div>

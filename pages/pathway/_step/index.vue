@@ -9,7 +9,7 @@
       </template>
       <template #right>
         <nsw-button :disabled="isStepDisabled(currentStep)" @click.native="goToNextStep">
-          Next
+          {{ nextLabel }}
         </nsw-button>
       </template>
     </navigation-actions>
@@ -35,7 +35,13 @@ export default {
   computed: {
     ...mapGetters([
       'getHumanReadableAnswerValue'
-    ])
+    ]),
+    nextLabel() {
+      if (this.isLastStep) {
+        return 'Go to my plan'
+      }
+      return 'Next'
+    }
   },
   created() {
     // 404 if the step id is invalid

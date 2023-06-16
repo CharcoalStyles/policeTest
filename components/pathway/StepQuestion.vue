@@ -16,7 +16,7 @@
     </div>
     <div v-if="showExplorerPanel" class="lg:w-1/2 flex lg:justify-end items-start">
       <div class="block p-4 md:p-8 bg-nsw-grey-100 lg:w-2/3 rounded-lg max-w-lg">
-        <h3 class="font-bold text-xl mb-6">
+        <h3 class="font-bold text-2xl mb-8">
           Cant find a job title that is relevant?
         </h3>
         <div class="font-bold mb-3">
