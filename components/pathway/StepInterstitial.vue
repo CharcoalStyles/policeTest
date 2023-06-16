@@ -5,11 +5,11 @@
         <h2 class="btn-blue font-bold text-nsw-brand-primary-blue mb-3">
           {{ step.schema.section }}
         </h2>
-        <h1 class="text-3xl md:text-3xl font-bold leading-snug">
+        <h1 class="text-3xl md:text-[40px] font-bold leading-tight">
           {{ step.title }}
         </h1>
       </div>
-      <p>
+      <p class="text-lg md:text-xl text-nsw-brand-grey-primary">
         {{ step.schema.description }}
       </p>
     </div>

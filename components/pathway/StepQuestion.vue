@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col lg:flex-row">
     <div :class="widthStyle">
-      <div class="mb-3 md:mb-4">
+      <div class="mb-3 md:mb-8">
         <h2 class="btn-blue font-bold text-nsw-brand-primary-blue mb-3">
           {{ step.schema.section }}
         </h2>
-        <h1 class="text-3xl md:text-question font-bold leading-snug">
+        <h1 class="text-2xl md:text-[32px] font-bold leading-snug">
           {{ step.title }}
         </h1>
       </div>
-      <p v-if="step.schema.help" class="mb-8">
+      <p v-if="step.schema.help" class="text-lg md:text-xl text-nsw-brand-grey-primary mb-8">
         {{ step.schema.help }}
       </p>
       <component :is="componentName" :step="step" class="mb-6" />

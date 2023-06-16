@@ -11,7 +11,9 @@ module.exports = {
       },
       fontSize: {
         family: '8rem',
-        question: '2rem'
+        '[32px]': '2rem',
+        '[40px]': '2.5rem',
+        '[42px]': '2.625rem'
       },
       // https://www.digital.nsw.gov.au/design-system/style/typography
       fontFamily: {

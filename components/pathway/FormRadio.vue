@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="nsw-forms">
+    <div class="nsw-forms -mt-4">
       <div class="nsw-form-group">
         <fieldset class="nsw-form-fieldset">
           <legend class="sr-only">

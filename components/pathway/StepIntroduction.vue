@@ -5,7 +5,7 @@
         <h2 class="btn-blue font-bold text-nsw-brand-primary-blue mb-3">
           Procurement Career Pathways tool
         </h2>
-        <h1 class="text-4xl font-bold leading-snug">
+        <h1 class="text-3xl md:text-[42px] font-bold leading-tight">
           Get a personalised career recommendation and plan.
         </h1>
       </div>
