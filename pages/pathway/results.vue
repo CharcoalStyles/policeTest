@@ -13,55 +13,37 @@
     </div>
     <div class="p-6 bg-white border rounded border-nsw-grey-200 lg:p-8 print-break">
       <div class="flex flex-col items-center justify-between mb-8 md:flex-row print:flex-row">
-        <h2 class="flex text-xl font-bold">
-          <img src="/icons/clipboard.svg" alt="Clipboard Icon" class="mr-4"> Your answers
+        <h2 class="flex text-2xl font-bold">
+          Your answers
         </h2>
-        <button class="p-2 underline print:hidden" @click="modals.update = true">
+        <nsw-button action="secondary-outline" @click="modals.update = true">
           Update answers
-        </button>
+        </nsw-button>
       </div>
       <div class="w-full">
-        <div v-if="getQuestionAnswer('goal-timeframe')" class="flex flex-col mb-8 md:flex-row">
+        <div v-if="currentRole.name" class="flex flex-col mb-6 md:flex-row">
           <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            Target timeframe
+            Your current role
           </div>
-          <div>I would like to get there in <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('goal-timeframe') }}</span></div>
+          <div>I am currently a <span class="font-bold text-nsw-brand-secondary-blue">{{ currentRole.name }}</span> or similar</div>
         </div>
-        <div v-if="getQuestionAnswer('disciplines')" class="flex flex-col mb-8 md:flex-row">
+        <div v-if="targetRole.name" class="flex flex-col mb-6 md:flex-row">
           <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            Interest areas
+            Your target role
           </div>
-          <div>I’m interested in <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('disciplines') }}</span></div>
+          <div>I would like to be a <span class="font-bold text-nsw-brand-secondary-blue">{{ targetRole.name }}</span> or similar</div>
         </div>
-        <div v-if="getQuestionAnswer('learning')" class="flex flex-col mb-8 md:flex-row">
+        <div v-if="readableSkillsList" class="flex flex-col mb-6 md:flex-row">
           <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            How you like to learn
+            Your procurement skills
           </div>
-          <div>I prefer to learn using <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('learning') }}</span></div>
+          <div>I assessed myself in <span class="font-bold text-nsw-brand-secondary-blue">{{ readableSkillsList }}</span></div>
         </div>
-        <div v-if="getQuestionAnswer('management')" class="flex flex-col mb-8 md:flex-row">
+        <div v-if="readableCapabilitiesList" class="flex flex-col mb-6 md:flex-row">
           <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            How you like to work
+            Your core capabilities
           </div>
-          <div><span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('management') }}</span></div>
-        </div>
-        <div v-if="getQuestionAnswer('priorities')" class="flex flex-col mb-8 md:flex-row">
-          <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            When choosing a role
-          </div>
-          <div>I consider <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('priorities') }}</span></div>
-        </div>
-        <div v-if="getQuestionAnswer('additional-skills')" class="flex flex-col mb-8 md:flex-row">
-          <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            Other skills
-          </div>
-          <div>My other skills are <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('additional-skills') }}</span></div>
-        </div>
-        <div v-if="getQuestionAnswer('qualifications')" class="flex flex-col md:flex-row">
-          <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-            Qualifications
-          </div>
-          <div>My qualifications are <span class="font-bold text-nsw-brand-secondary-blue">{{ getQuestionAnswer('qualifications') }}</span></div>
+          <div>I assessed myself in <span class="font-bold text-nsw-brand-secondary-blue">{{ readableCapabilitiesList }}</span></div>
         </div>
       </div>
     </div>
@@ -223,6 +205,7 @@ import PrintPage from '@/components/PrintPage'
 import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
 import NextStepPanel from '@/components/pathway/results/NextStepPanel'
 import HelpBubble from '@/components/HelpBubble'
+import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 
 export default {
   layout: 'results',
@@ -352,6 +335,20 @@ export default {
     goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
         return this.$collect(this.roles).where('id', this.answers['goal-role'].value).first()
+      }
+      return false
+    },
+    readableSkillsList() {
+      const list = Object.keys(this.answers.skills).map((key) => capabilityNamesMap[key])
+      if (list.length > 0) {
+        return list.join(', ')
+      }
+      return false
+    },
+    readableCapabilitiesList() {
+      const list = Object.keys(this.answers.capabilities).map((key) => capabilityNamesMap[key])
+      if (list.length > 0) {
+        return list.join(', ')
       }
       return false
     }
