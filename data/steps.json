@@ -13,10 +13,11 @@
     "id": "introduction",
     "title": "Career questionnaire",
     "type": "interstitial",
+    "icon": "edit",
     "conditions": false,
     "schema": {
       "section": "Your personalised pathway",
-      "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your skills and capabilities, and ask you about your interests and preferences."
+      "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your procurement skills and capabilities."
     }
   },
   {
@@ -44,13 +45,37 @@
     }
   },
   {
-    "id": "work-digital",
-    "title": "Do you currently work in a digital role?",
+    "id": "work-procurement",
+    "title": "Do you currently work in a procurement role?",
     "type": "question",
     "conditions": false,
     "schema": {
       "section": "Your current role",
-      "help": "If you're currently in a digital role, we'll ask questions about your technical skills to help us recommend roles. Digital roles cover disciplines such as ICT, design, product, security and more.",
+      "help": "If you're currently in a procurement and contracting role, we'll ask questions about your technical skills to help us recommend roles. Procurement roles cover disciplines such as strategic sourcing, category management, contract management, procurement analysis, procurement advice, policy and governance.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "goal",
+    "title": "Do you have a specific role in mind that you’d like to move into?",
+    "type": "question",
+    "conditions": false,
+    "schema": {
+      "section": "Your goals",
+      "help": "If you have a specific role or pathway in mind, let’s explore how you can get there.",
       "field": {
         "type": "radio",
         "required": true,
@@ -69,7 +94,7 @@
   },
   {
     "id": "current-gov-role",
-    "title": "Select your current or most similar role?",
+    "title": "Select which job title closely matches your current role.",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -80,7 +105,7 @@
     ],
     "schema": {
       "section": "Your current role",
-      "help": "We will use this as a starting point and does not have to be an exact match",
+      "help": "We’ll use this as a starting point and does not have to be an exact match.",
       "field": {
         "type": "role",
         "required": true
@@ -108,30 +133,6 @@
     }
   },
   {
-    "id": "goal",
-    "title": "Do you have a specific role in mind that you'd like to move into?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Your current role",
-      "help": "If you have a specific role or pathway in mind, let's explore how you can get there.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "goal-role",
     "title": "What role do you want to move into?",
     "type": "question",
@@ -142,7 +143,7 @@
       }
     ],
     "schema": {
-      "section": "Your most recent role",
+      "section": "Your goal role",
       "help": "We can explore how you might move into this role.",
       "field": {
         "type": "role",

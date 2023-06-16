@@ -10,7 +10,8 @@ module.exports = {
         print: { raw: 'print' }
       },
       fontSize: {
-        family: '8rem'
+        family: '8rem',
+        question: '2rem'
       },
       // https://www.digital.nsw.gov.au/design-system/style/typography
       fontFamily: {

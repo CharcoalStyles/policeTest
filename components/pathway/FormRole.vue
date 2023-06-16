@@ -6,8 +6,8 @@
         :search="search"
         :get-result-value="getResultValue"
         :default-value="defaultValue"
-        placeholder="Search by keyword, EG: Design, Strategy, Analyst, Manager"
-        aria-label="Search by keyword, EG: Design, Strategy, Analyst, Manager"
+        placeholder="Search by keyword, e.g. Analyst, Procurement, Sourcing"
+        aria-label="Search by keyword, e.g. Analyst, Procurement, Sourcing"
         @submit="selectRole"
       >
         <template
