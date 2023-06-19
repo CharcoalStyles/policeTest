@@ -403,8 +403,13 @@ export default {
       return this.$store.getters.getHumanReadableAnswerValue(stepId)
     },
 
+    resetFilters() {
+      this.filter.format = 'All'
+    },
+
     selectTargetRole(role) {
       this.targetRole = role
+      this.resetFilters()
       this.$scrollTo('#comparison')
     },
 
