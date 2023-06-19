@@ -177,7 +177,7 @@
   },
   {
     "id": "finished",
-    "title": "Your personalised career pathway are ready!",
+    "title": "Your personalised career pathway is ready!",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
