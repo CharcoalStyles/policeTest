@@ -20,7 +20,7 @@
                 <h2 class="flex text-2xl font-bold">
                   Your answers
                 </h2>
-                <nsw-button action="secondary-outline" @click="modals.update = true">
+                <nsw-button action="secondary-outline" @click.native="modals.update = true">
                   Update answers
                 </nsw-button>
               </div>
