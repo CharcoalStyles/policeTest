@@ -164,12 +164,12 @@
               </div>
             </div>
             <div class="md:w-12/12">
-              <div v-for="(group, propertyName, groupIndex) in filteredResources.groups" :key="groupIndex">
+              <div v-for="(group, groupIndex) in filteredResources.groups" :key="groupIndex">
                 <h3 class="mb-6 mt-16 text-xl font-bold">
-                  {{ propertyName }}
+                  {{ group.label }}
                 </h3>
                 <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-                  <upskilling-resource v-for="(resource, index) in group" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
+                  <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
                 </div>
               </div>
             </div>
@@ -394,8 +394,13 @@ export default {
         }
         groupedResources[format].push(resource)
       })
+
+      const orderedGroups = Object.keys(groupedResources)
+        .map(key => ({ items: groupedResources[key], label: key }))
+        .sort((a, b) => this.filter.format.order.indexOf(a.label) - this.filter.format.order.indexOf(b.label))
+
       return {
-        groups: groupedResources,
+        groups: orderedGroups,
         count: filteredResources.length || 0
       }
     },
