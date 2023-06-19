@@ -2,11 +2,11 @@
   <div class="nsw-form-checkbox cursor-pointer">
     <input
       :id="id"
-      v-model="selected"
-      :value="modelValue"
-      class="nsw-form-checkbox__input"
+      v-model="model"
       type="checkbox"
-      @change="$emit('change', modelValue)"
+      :value="inputValue"
+      class="nsw-form-checkbox__input"
+      @change="$emit('change', inputValue)"
     >
     <label class="nsw-form-checkbox__label" :for="id">{{ label }}</label>
   </div>
@@ -19,7 +19,7 @@ export default {
       type: [Array, String],
       required: true
     },
-    modelValue: {
+    inputValue: {
       type: String,
       required: true
     },
@@ -38,16 +38,16 @@ export default {
     }
   },
   computed: {
+    model: {
+      get() {
+        return this.value
+      },
+      set(value) {
+        this.$emit('input', value)
+      }
+    },
     id() {
       return `${this.name}_${this.modelValue}`
-    }
-  },
-  watch: {
-    value: {
-      immediate: true,
-      handler(value) {
-        this.selected = value
-      }
     }
   }
 }

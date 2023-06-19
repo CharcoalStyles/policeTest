@@ -131,12 +131,21 @@
                 These resources have been curated as a starting point to assist your career progression.
               </p>
             </div>
-            <div class="">
-              <label class="font-bold" for="filterSkills">Type of content</label>
-              <div class="table mt-1">
-                <select id="filterSkills" v-model="filter.format" class="nsw-form-select">
-                  <option v-for="option in filterFormatOptions" :key="option" :value="option">{{ option }}</option>
-                </select>
+            <div class="flex h-12">
+              <div class="relative">
+                <label class="font-bold" for="filterSkills">Type of content</label>
+                <div class="mt-1" style="min-width:380px;">
+                  <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-format" @click="toggleFormatFilter">
+                    {{ filterFormatLabel }}
+                  </button>
+                </div>
+                <div v-if="filter.format.open" class="nsw-custom-select bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-format">
+                  <ul>
+                    <li v-for="option in filterFormatOptions" :key="option" :value="option">
+                      <input-checkbox v-model="filter.format.value" :input-value="option" :label="option" :name="option" @change="onFilterFormatChange" />
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="md:w-12/12">
@@ -219,6 +228,7 @@ import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
 import NextStepPanel from '@/components/pathway/results/NextStepPanel'
 import HelpBubble from '@/components/HelpBubble'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
+import InputCheckbox from '@/components/forms/InputCheckbox'
 
 export default {
   layout: 'results',
@@ -233,7 +243,8 @@ export default {
     PrintPage,
     DisclaimerPanel,
     NextStepPanel,
-    HelpBubble
+    HelpBubble,
+    InputCheckbox
   },
   data() {
     return {
@@ -244,8 +255,13 @@ export default {
         beta: true
       },
       filter: {
-        format: 'All'
-      }
+        format: {
+          open: false,
+          options: [],
+          value: ['All']
+        }
+      },
+      filterFormatOpen: false
     }
   },
   computed: {
@@ -253,6 +269,16 @@ export default {
       'answers',
       'getHumanReadableAnswerValue'
     ]),
+    filterFormatLabel() {
+      if (this.filter.format.value && this.filter.format.value.includes('All')) {
+        return 'All formats'
+      }
+      const filtered = this.filter.format.value.filter(item => item !== 'All')
+      if (filtered.length > 1) {
+        return `${filtered.length} formats`
+      }
+      return this.filter.format.value[0]
+    },
     filterFormatOptions() {
       if (this.allResources.length > 0) {
         const formats = this.$collect(
@@ -301,7 +327,7 @@ export default {
     filteredResources() {
       const groupedResources = {}
       const filteredResources = this.allResources.filter(resource => {
-        if (!this.filter.format || this.filter.format === 'All' || resource.format[0] === this.filter.format) {
+        if (!this.filter.format.value || this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format[0])) {
           return true
         }
         return false
@@ -373,8 +399,33 @@ export default {
     if (this.goalRole) {
       this.targetRole = this.goalRole
     }
+    window.addEventListener('click', (e) => {
+      this.checkCustomSelect(e.target)
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', (e) => {
+      this.checkCustomSelect(e.target)
+    })
   },
   methods: {
+    checkCustomSelect(target) {
+      if (!target.closest('.nsw-custom-select')) {
+        this.filter.format.open = false
+      }
+    },
+    toggleFormatFilter(e) {
+      e.stopPropagation()
+      this.filter.format.open = !this.filter.format.open
+    },
+    onFilterFormatChange(value) {
+      if (value === 'All' && this.filter.format.value.includes('All')) {
+        this.filter.format.value = ['All']
+      }
+      if (value !== 'All' && this.filter.format.value.includes(value)) {
+        this.filter.format.value = this.filter.format.value.filter(item => item !== 'All')
+      }
+    },
     printPage() {
       // Track in GA
       this.$ga.event({
@@ -404,7 +455,7 @@ export default {
     },
 
     resetFilters() {
-      this.filter.format = 'All'
+      this.filter.format.value = ['All']
     },
 
     selectTargetRole(role) {
