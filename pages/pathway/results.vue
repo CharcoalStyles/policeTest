@@ -381,10 +381,32 @@ export default {
     filteredResources() {
       const groupedResources = {}
       const filteredResources = this.allResources.filter(resource => {
-        if (!this.filter.format.value || this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format[0])) {
-          return true
+        const match = {
+          format: false,
+          capability: false
         }
-        return false
+        if (this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format[0])) {
+          match.format = true
+        }
+        if (this.filter.capability.value.includes('All')) {
+          match.capability = true
+        }
+
+        const matchedSkills = this.$collect(resource.skills)
+          .unique('code')
+          .map((item) => item.code)
+          .contains((value) => this.filter.capability.value.includes(value))
+
+        const matchedCapabilities = this.$collect(resource.capabilities)
+          .unique('code')
+          .map((item) => item.code)
+          .contains((value, key) => this.filter.capability.value.includes(value))
+
+        if (matchedSkills || matchedCapabilities) {
+          match.capability = true
+        }
+
+        return match.format && match.capability
       })
 
       filteredResources.forEach((resource) => {
@@ -487,6 +509,9 @@ export default {
       this.filter.format.open = false
     },
     onFilterFormatChange(value) {
+      if (!this.filter.format.value || this.filter.format.value.length === 0) {
+        this.filter.format.value = ['All']
+      }
       if (value === 'All' && this.filter.format.value.includes('All')) {
         this.filter.format.value = ['All']
       }
@@ -495,6 +520,9 @@ export default {
       }
     },
     onFilterCapabilityChange(value) {
+      if (!this.filter.capability.value || this.filter.capability.value.length === 0) {
+        this.filter.capability.value = ['All']
+      }
       if (value === 'All' && this.filter.capability.value.includes('All')) {
         this.filter.capability.value = ['All']
       }
