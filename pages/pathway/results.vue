@@ -134,7 +134,7 @@
             <div class="">
               <label class="font-bold" for="filterSkills">Type of content</label>
               <div class="table mt-1">
-                <select id="filterSkills" v-model="filterFormatValue" class="nsw-form-select">
+                <select id="filterSkills" v-model="filter.format" class="nsw-form-select">
                   <option v-for="option in filterFormatOptions" :key="option" :value="option">{{ option }}</option>
                 </select>
               </div>
@@ -243,7 +243,9 @@ export default {
         update: false,
         beta: true
       },
-      filterFormatValue: 'All'
+      filter: {
+        format: 'All'
+      }
     }
   },
   computed: {
@@ -299,7 +301,7 @@ export default {
     filteredResources() {
       const groupedResources = {}
       const filteredResources = this.allResources.filter(resource => {
-        if (!this.filterFormatValue || this.filterFormatValue === 'All' || resource.format[0] === this.filterFormatValue) {
+        if (!this.filter.format || this.filter.format === 'All' || resource.format[0] === this.filter.format) {
           return true
         }
         return false
