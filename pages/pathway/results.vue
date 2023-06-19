@@ -132,17 +132,32 @@
               </p>
             </div>
             <div class="flex h-12">
-              <div class="relative">
-                <label class="font-bold" for="filterSkills">Type of content</label>
+              <div class="relative mr-4">
+                <label class="font-bold" for="filterFormats">Type of content</label>
                 <div class="mt-1" style="min-width:380px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-format" @click="toggleFormatFilter">
                     {{ filterFormatLabel }}
                   </button>
                 </div>
-                <div v-if="filter.format.open" class="nsw-custom-select bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-format">
+                <div v-if="filter.format.open" class="nsw-custom-select-format bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-format">
                   <ul>
                     <li v-for="option in filterFormatOptions" :key="option" :value="option">
                       <input-checkbox v-model="filter.format.value" :input-value="option" :label="option" :name="option" @change="onFilterFormatChange" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="relative">
+                <label class="font-bold" for="filterCapabilities">Skills</label>
+                <div class="mt-1" style="min-width:380px;">
+                  <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
+                    {{ filterCapabilityLabel }}
+                  </button>
+                </div>
+                <div v-if="filter.capability.open" class="nsw-custom-select-capability bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-capability">
+                  <ul>
+                    <li v-for="option in filterCapabilityOptions" :key="option" :value="option">
+                      <input-checkbox v-model="filter.capability.value" :input-value="option" :label="getCapabilityOptionLabel(option)" :name="option" @change="onFilterCapabilityChange" />
                     </li>
                   </ul>
                 </div>
@@ -259,9 +274,13 @@ export default {
           open: false,
           options: [],
           value: ['All']
+        },
+        capability: {
+          open: false,
+          options: [],
+          value: ['All']
         }
-      },
-      filterFormatOpen: false
+      }
     }
   },
   computed: {
@@ -279,6 +298,16 @@ export default {
       }
       return this.filter.format.value[0]
     },
+    filterCapabilityLabel() {
+      if (this.filter.capability.value && this.filter.capability.value.includes('All')) {
+        return 'All capabilities'
+      }
+      const filtered = this.filter.capability.value.filter(item => item !== 'All')
+      if (filtered.length > 1) {
+        return `${filtered.length} capabilities`
+      }
+      return capabilityNamesMap[this.filter.capability.value[0]]
+    },
     filterFormatOptions() {
       if (this.allResources.length > 0) {
         const formats = this.$collect(
@@ -286,6 +315,20 @@ export default {
         ).unique().all()
         formats.unshift('All')
         return formats
+      }
+      return ['All']
+    },
+    filterCapabilityOptions() {
+      if (this.allResources.length > 0) {
+        const tmp = []
+        this.allResources.map((resource) => {
+          resource.skills.forEach(({ code }) => tmp.push(code))
+          resource.capabilities.forEach(({ code }) => tmp.push(code))
+        })
+
+        const filteredCodes = this.$collect(tmp).unique().all().filter(code => this.targetRoleCapabilities.includes(code))
+        filteredCodes.unshift('All')
+        return filteredCodes || ['']
       }
       return ['All']
     },
@@ -410,13 +453,22 @@ export default {
   },
   methods: {
     checkCustomSelect(target) {
-      if (!target.closest('.nsw-custom-select')) {
+      if (!target.closest('.nsw-custom-select-format')) {
         this.filter.format.open = false
+      }
+      if (!target.closest('.nsw-custom-select-capability')) {
+        this.filter.capability.open = false
       }
     },
     toggleFormatFilter(e) {
       e.stopPropagation()
       this.filter.format.open = !this.filter.format.open
+      this.filter.capability.open = false
+    },
+    toggleCapabilityFilter(e) {
+      e.stopPropagation()
+      this.filter.capability.open = !this.filter.capability.open
+      this.filter.format.open = false
     },
     onFilterFormatChange(value) {
       if (value === 'All' && this.filter.format.value.includes('All')) {
@@ -425,6 +477,17 @@ export default {
       if (value !== 'All' && this.filter.format.value.includes(value)) {
         this.filter.format.value = this.filter.format.value.filter(item => item !== 'All')
       }
+    },
+    onFilterCapabilityChange(value) {
+      if (value === 'All' && this.filter.capability.value.includes('All')) {
+        this.filter.capability.value = ['All']
+      }
+      if (value !== 'All' && this.filter.capability.value.includes(value)) {
+        this.filter.capability.value = this.filter.capability.value.filter(item => item !== 'All')
+      }
+    },
+    getCapabilityOptionLabel(key) {
+      return capabilityNamesMap[key] || key
     },
     printPage() {
       // Track in GA
