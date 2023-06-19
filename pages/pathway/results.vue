@@ -273,7 +273,17 @@ export default {
         format: {
           open: false,
           options: [],
-          value: ['All']
+          value: ['All'],
+          order: [
+            'Online courses',
+            'Instructorled training',
+            'Qualifications',
+            'Video and audio',
+            'Articles',
+            'Events',
+            'Learning through others',
+            'On the job'
+          ]
         },
         capability: {
           open: false,
@@ -313,8 +323,9 @@ export default {
         const formats = this.$collect(
           this.allResources.map(resource => resource.format[0])
         ).unique().all()
-        formats.unshift('All')
-        return formats
+        const orderedFormats = formats.sort((a, b) => this.filter.format.order.indexOf(a) - this.filter.format.order.indexOf(b))
+        orderedFormats.unshift('All')
+        return orderedFormats
       }
       return ['All']
     },
