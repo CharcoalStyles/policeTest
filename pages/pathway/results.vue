@@ -368,6 +368,9 @@ export default {
   },
   mounted() {
     this.logAnswersToGoogleAnalytics()
+    if (this.goalRole) {
+      this.targetRole = this.goalRole
+    }
   },
   methods: {
     printPage() {
