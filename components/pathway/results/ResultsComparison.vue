@@ -13,8 +13,8 @@
       </td>
     </tr>
     <tr v-for="(skill, index) in skillsMatrix" :key="`skill-${index}`">
-      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.current" type="skill" @skillClicked="showSkillModal" />
-      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.target" type="skill" instructions @skillClicked="showSkillModal" />
+      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.current" type="skill" instructions="selfAssessed" current-instructions @skillClicked="showSkillModal" />
+      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.target" type="skill" instructions="targetRole" @skillClicked="showSkillModal" />
     </tr>
     <tr>
       <td class="lg:w-1/2 p-4 lg:p-8">
@@ -29,8 +29,8 @@
       </td>
     </tr>
     <tr v-for="(capability, index) in capabilitiesMatrix" :key="`capability-${index}`">
-      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="capability.current" type="capability" @skillClicked="showCapabilityModal" />
-      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="capability.target" type="capability" instructions @skillClicked="showCapabilityModal" />
+      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="capability.current" type="capability" instructions="selfAssessed" @skillClicked="showCapabilityModal" />
+      <comparison-row :current-role="currentRole" :target-role="targetRole" :item="capability.target" type="capability" instructions="targetRole" @skillClicked="showCapabilityModal" />
     </tr>
     <modal-skill
       :show="modals.skill"

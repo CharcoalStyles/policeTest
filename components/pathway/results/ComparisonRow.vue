@@ -46,11 +46,17 @@ export default {
       required: true
     },
     instructions: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: 'targetRole'
     }
   },
   computed: {
+    assessedSkills() {
+      return {
+        ...this.$store.state.pathway.answers.skills,
+        ...this.$store.state.pathway.answers.capabilities
+      }
+    },
     emptyMessage() {
       if (this.instructions) {
         return this.targetRole ? `This ${this.type} is not required` : 'Not currently known'
@@ -61,36 +67,41 @@ export default {
       return this.type === 'skill' ? 'skills' : 'capabilities'
     },
     journeyType() {
-      if (!this.instructions || !this.item || !this.targetRole) {
+      if (!this.item) {
         return false
       }
 
-      const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
-      const targetRoleItem = this.$collect(this.targetRole[this.valueName].focus).where('code', this.item.code).first()
-
-      // New skill
-      if (!currentRoleItem && targetRoleItem) {
-        return {
-          text: 'New skill',
-          colour: 'green',
-          tooltip: 'A new skill that is required for this role.'
+      if (this.instructions === 'selfAssessed' && this.item.code in this.assessedSkills) {
+        const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
+        const assessedValue = this.assessedSkills[this.item.code].value
+        if (assessedValue < currentRoleItem.level) {
+          return {
+            text: 'Upskill',
+            colour: 'orange',
+            tooltip: `You assessed yourself at Level ${assessedValue}.`
+          }
         }
-      }
+      } else if (this.instructions === 'targetRole' && this.targetRole) {
+        const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
+        const targetRoleItem = this.$collect(this.targetRole[this.valueName].focus).where('code', this.item.code).first()
 
-      // Existing skill at correct level
-      if (targetRoleItem.level === currentRoleItem.level) {
+        if (!currentRoleItem && targetRoleItem) {
+          return {
+            text: 'New skill',
+            colour: 'green',
+            tooltip: 'A new skill that is required for this role.'
+          }
+        }
+
+        if (targetRoleItem && targetRoleItem?.level > currentRoleItem?.level) {
+          return {
+            text: 'Upskill',
+            colour: 'orange',
+            tooltip: 'Upskilling in a skill you currently have.'
+          }
+        }
         return false
       }
-
-      // Requires upskill
-      if (targetRoleItem.level > currentRoleItem.level) {
-        return {
-          text: 'Upskill',
-          colour: 'orange',
-          tooltip: 'Upskilling in a skill you currently have.'
-        }
-      }
-
       return false
     }
   },
