@@ -42,7 +42,7 @@ const codeLevelParser = (item) => {
 }
 
 const parseFormat = format => {
-  return format.replace('-', '').split(';')
+  return format
 }
 
 const parseDefault = recommended => {

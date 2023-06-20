@@ -321,7 +321,7 @@ export default {
     filterFormatOptions() {
       if (this.allResources.length > 0) {
         const formats = this.$collect(
-          this.allResources.map(resource => resource.format[0])
+          this.allResources.map(resource => resource.format)
         ).unique().all()
         const orderedFormats = formats.sort((a, b) => this.filter.format.order.indexOf(a) - this.filter.format.order.indexOf(b))
         orderedFormats.unshift('All')
@@ -385,7 +385,7 @@ export default {
           format: false,
           capability: false
         }
-        if (this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format[0])) {
+        if (this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format)) {
           match.format = true
         }
         if (this.filter.capability.value.includes('All')) {
@@ -410,11 +410,10 @@ export default {
       })
 
       filteredResources.forEach((resource) => {
-        const format = resource.format[0]
-        if (!groupedResources.hasOwnProperty(format)) {
-          groupedResources[format] = []
+        if (!groupedResources.hasOwnProperty(resource.format)) {
+          groupedResources[resource.format] = []
         }
-        groupedResources[format].push(resource)
+        groupedResources[resource.format].push(resource)
       })
 
       const orderedGroups = Object.keys(groupedResources)

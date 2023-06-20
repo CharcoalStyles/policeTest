@@ -210,6 +210,11 @@ export default {
 
       const skill = this.getSkillByCode(skillRequired.code)
 
+      if (!skill) {
+        console.warn(`Unable to find matching skill: ${skillRequired.code}`)
+        return false
+      }
+
       return {
         name: skill.name,
         code: skill.code,
