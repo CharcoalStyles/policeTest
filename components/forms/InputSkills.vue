@@ -1,13 +1,8 @@
 <template>
   <div>
-    <div v-for="(subcategory, index) in groupedSkills" :key="index" class="nsw-form-checkbox mb-10">
-      <h4 class="mb-6 font-bold">
-        {{ subcategory.name }}
-      </h4>
-      <div v-for="skill in subcategory.skills" :key="skill.code">
-        <input :id="skill.code" v-model="values" class="nsw-form-checkbox__input" type="checkbox" :value="skill.code" @change="$emit('input', values)">
-        <label class="nsw-form-checkbox__label" :for="skill.code">{{ skill.name }}</label>
-      </div>
+    <div v-for="skill in sortedSkills" :key="skill.code">
+      <input :id="skill.code" v-model="values" class="nsw-form-checkbox__input" type="checkbox" :value="skill.code" @change="$emit('input', values)">
+      <label class="nsw-form-checkbox__label" :for="skill.code">{{ skill.name }}</label>
     </div>
   </div>
 </template>
@@ -33,19 +28,13 @@ export default {
     }
   },
   computed: {
-    // Group the skills by subcategory
-    groupedSkills() {
+    sortedSkills() {
       return this.$collect(this.skills)
-        .groupBy('subcategory')
-        .keys()
-        .map(key => ({
-          name: key,
-          skills: this.$collect(this.skills)
-            .where('subcategory', key)
-            .sortByDesc('name')
-            .all()
+        .map(item => ({
+          name: item.name,
+          code: item.code
         }))
-        .sortByDesc('subcategory')
+        .sortBy('name')
         .all()
     }
   },
