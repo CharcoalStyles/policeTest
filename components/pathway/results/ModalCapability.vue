@@ -68,10 +68,10 @@
             <h5 class="font-bold mb-4">
               {{ selectedLevel.name }}
             </h5>
-            <p class="mb-6">
+            <p class="mb-4">
               {{ selectedLevel.easyDescription }}
             </p>
-            <ul class="list-disc pl-5 w-11/12">
+            <ul class="list-disc pl-4 w-11/12">
               <li v-for="(attribute, index) in selectedLevel.attributes" :key="index" class="mb-2">
                 {{ attribute }}.
               </li>

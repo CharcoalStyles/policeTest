@@ -1,5 +1,5 @@
 <template>
-  <base-modal :show="show" :max-width="maxWidth" :title="selectedSkill.subcategory" :closeable="closeable" @close="$emit('close')">
+  <base-modal :show="show" :max-width="maxWidth" :title="selectedSkill.category" :closeable="closeable" @close="$emit('close')">
     <div class="leading-relaxed">
       <div>
         <div class="mb-6">
@@ -68,7 +68,14 @@
             <h5 class="font-bold mb-4">
               {{ selectedLevel.name }}
             </h5>
-            <p>{{ selectedLevel.description }}</p>
+            <p class="mb-4">
+              {{ selectedLevel.easyDescription }}
+            </p>
+            <ul class="list-disc pl-4 w-11/12">
+              <li v-for="(attribute, index) in selectedLevel.attributes" :key="index" class="mb-2">
+                {{ attribute }}.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -159,6 +166,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.selectedSkill)
     this.$ga.event({
       eventCategory: 'Pathway Results',
       eventAction: 'Skill Modal Opened',
