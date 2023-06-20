@@ -44,7 +44,7 @@ skillsCsvData.data.forEach((row) => {
 })
 
 skillsCsvData.data.forEach((row) => {
-  if (skills.find((item) => item.subcode === row.subcategory_code)) {
+  if (skills.find((item) => item.code === row.subcategory_code)) {
     return false
   }
   skills.push({
