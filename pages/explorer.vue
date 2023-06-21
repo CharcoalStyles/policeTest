@@ -149,7 +149,7 @@
         </div>
       </div>
       <div
-        class="p-4 bg-nsw-grey-100 border-t border-nsw-grey-200 flex justify-between"
+        class="p-4 bg-white border-t border-nsw-grey-200 flex justify-between"
       >
         <div
           class="cursor-pointer flex items-center"
