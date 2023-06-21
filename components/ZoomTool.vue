@@ -9,12 +9,15 @@
         </button>
       </div>
     </transition> -->
-    <div class="flex flex-col">
-      <button class="w-8 h-8 mb-3 bg-white flex items-center justify-center shadow-lg border border-gray-300" @click="zoomIn">
-        <img src="/zoom-plus.svg" alt="Zoom Plus icon" class="h-5">
-      </button>
-      <button class="w-8 h-8 bg-white flex items-center justify-center shadow-lg border border-gray-300" @click="zoomOut">
+    <div class="flex flex-row shadow-lg">
+      <div class="h-8 bg-white flex items-center justify-center border border-gray-300 select-none" style="width:60px;">
+        <span>{{ zoomRange }}%</span>
+      </div>
+      <button class="w-8 h-8 bg-white flex items-center justify-center border border-gray-300" @click="zoomOut">
         <img src="/zoom-minus.svg" alt="Zoom Minus icon" class="h-5">
+      </button>
+      <button class="w-8 h-8 bg-white flex items-center justify-center border border-gray-300" @click="zoomIn">
+        <img src="/zoom-plus.svg" alt="Zoom Plus icon" class="h-5">
       </button>
     </div>
   </div>
@@ -22,9 +25,21 @@
 
 <script>
 export default {
+  props: {
+    zoom: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       help: true
+    }
+  },
+  computed: {
+    zoomRange() {
+      const rounded = Math.round(this.zoom * 10) / 10
+      return rounded * 100
     }
   },
   methods: {

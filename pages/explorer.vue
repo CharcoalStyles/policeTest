@@ -127,6 +127,7 @@
       <div class="relative flex-grow">
         <zoom-tool
           class="not-zoomable fixed top-0 right-0 m-8 z-10"
+          :zoom="zoom"
           @zoom="updateZoom"
         />
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
@@ -229,7 +230,7 @@ export default {
         skills: false,
         onboarding: true
       },
-      zoom: 0.8,
+      zoom: 0.4,
       panning: false,
       options: {
         salary: {
@@ -383,7 +384,7 @@ export default {
 
     demoExplorerAnimation() {
       this.modals.onboarding = false
-      this.panZoom.smoothZoom(20, 20, 0.1)
+      this.panZoom.smoothZoom(20, 20, 0.4)
     },
 
     /**
