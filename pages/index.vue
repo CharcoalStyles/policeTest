@@ -1,20 +1,19 @@
 <template>
   <div class="bg-blob bg-no-repeat bg-right-50-screen">
-    <hero-section image="/images/home-hero.jpg" class="bg-nsw-brand-psc-purple">
-      <div class="text-white">
-        <div class="font-bold mb-3 text-sm">
-          Digital Career Pathways
-        </div>
-        <h1 class="font-bold text-4xl leading-tight xl:w-10/12 mb-6">
-          Supporting individuals and managers with career growth.
+    <hero-section image="/images/home-hero.jpg" class="">
+      <div class="text-nsw-brand-grey-primary">
+        <h1 class="font-bold text-4xl xl:text-5xl leading-tight xl:w-11/12 mb-6">
+          Supporting individuals in procurement with career growth.
         </h1>
-        <p class="w-8/12 mb-8">
-          Build and manage a digital career in NSW Government based on interests, capabilities, goals and past experiences.
+        <p class="w-11/12 mb-8">
+          Build and manage a procurement career in the NSW Government based on procurement skills, capabilities and goals.
         </p>
       </div>
-      <nuxt-link to="/pathway" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-white">
-        Get started
-      </nuxt-link>
+      <div>
+        <nuxt-link to="/pathway" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
+          Plan my career growth
+        </nuxt-link>
+      </div>
     </hero-section>
     <section-container title="For individuals" link="/pathway" :cols="3">
       <feature-panel image="/images/home1.jpg" alt="Assess your skills and capabilities" title="Identify your strengths and areas for development required for your next role.">

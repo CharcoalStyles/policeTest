@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="flex flex-col md:flex-row md:py-12 xl:container">
-      <div class="md:w-1/2 px-4 md:px-6">
-        <div class="py-6 xl:py-12">
+  <div class="border-b border-nsw-grey-200">
+    <div class="flex flex-col md:flex-row xl:container">
+      <div class="flex md:w-1/2 px-4 md:px-6">
+        <div class="flex flex-1 flex-col justify-center py-8">
           <slot />
         </div>
       </div>
