@@ -10,7 +10,9 @@
     :rail-style="railStyle"
     :process-style="processStyle"
     :dot-style="dotStyle"
+    :dot-size="17"
     :tooltip="'none'"
+    :height="2"
     @change="updateValue"
   />
 </template>

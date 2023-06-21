@@ -4,59 +4,64 @@
       class="relative z-0 bg-nsw-grey-100 flex flex-col flex-shrink-0 nsw-forms max-h-screen w-screen lg:w-aside lg:border-r lg:border-nsw-grey-200"
     >
       <div
-        class="bg-nsw-brand-secondary-blue px-4 h-10 w-full flex-shrink-0 flex items-center"
+        class="bg-nsw-brand-purple-dark px-6 py-3 w-full flex-shrink-0 flex items-center"
       >
-        <h1 class="font-bold text-lg text-white">Role Explorer</h1>
+        <h1 class="font-bold text-base text-white">Role Explorer</h1>
       </div>
       <div class="relative flex-grow flex flex-col overflow-hidden">
         <div class="flex-grow flex flex-col overflow-hidden">
           <div class="flex-shrink">
             <div class="bg-white shadow-lg">
-              <div class="px-4 pt-4">
+              <div class="px-6 pt-6">
                 <div class="flex items-center justify-between leading-none">
-                  <h2 class="font-bold text-xl">Discover roles</h2>
+                  <h2 class="font-bold text-2xl">Discover roles</h2>
                   <button
-                    class="text-sm underline font-bold text-nsw-blue-800"
+                    class="text-sm underline font-semibold text-nsw-blue-800"
+                    style="text-underline-offset: 2px;"
                     @click="resetAllFilters"
                   >
                     Reset
                   </button>
                 </div>
               </div>
-              <div class="p-4">
+              <div class="px-6 pt-4 pb-6">
                 <div class="grid gap-x-6 gap-y-3 md:gap-y-6 grid-cols-2">
                   <div class="col-span-2 flex flex-col">
-                    <label class="font-bold mb-2">Search by keyword</label>
+                    <label class="font-semibold mb-2 text-sm">Search by keyword</label>
                     <input
                       id="keywords"
                       v-debounce:300ms.fireonempty="updateKeyword"
                       name="keywords"
-                      class="nsw-form-input"
+                      class="nsw-form-input h-role-input"
                       placeholder="Enter a keyword"
                       :value="filter.keyword"
                     />
                   </div>
                   <div class="flex flex-col">
-                    <label class="font-bold mb-1">Salary</label>
-                    <div class="text-sm mb-3 text-gray-700">
-                      ${{ filter.salary[0] / 1000 }}k - ${{
-                        filter.salary[1] / 1000
-                      }}k
+                    <div class="flex justify-between">
+                      <label class="text-sm font-bold mb-2">Salary</label>
+                      <div class="text-sm text-gray-700">
+                        ${{ filter.salary[0] / 1000 }}k - ${{
+                          filter.salary[1] / 1000
+                        }}k
+                      </div>
                     </div>
-                    <div class="w-full flex justify-center">
-                      <div class="w-11/12">
-                        <input-range
-                          v-model="filter.salary"
-                          :min="options.salary.min"
-                          :max="options.salary.max"
-                        />
+                    <div class="flex items-center justify-center px-3 bg-nsw-grey-50 rounded h-role-input">
+                      <div class="w-full flex justify-center">
+                        <div class="w-11/12">
+                          <input-range
+                            v-model="filter.salary"
+                            :min="options.salary.min"
+                            :max="options.salary.max"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="flex flex-col">
-                    <label class="font-bold mb-2">Skills</label>
+                    <label class="text-sm font-bold mb-2">Skills</label>
                     <div
-                      class="p-3 rounded nsw-form-select cursor-pointer"
+                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                       @click="modals.skills = true"
                     >
                       {{ filter.skills.length }} selected
@@ -65,18 +70,18 @@
                 </div>
               </div>
               <div
-                class="px-4 py-4 flex items-center justify-between bg-gray-100 border-gray-300 border-b"
+                class="px-6 py-4 flex items-center justify-between bg-nsw-grey-50 border-gray-300 border-b"
               >
-                <div class="font-bold text-lg">
+                <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
                 <div class="flex items-center">
-                  <label class="mr-3" for="sort">Sort by:</label>
+                  <label class="mr-3 text-sm" for="sort">Sort by:</label>
                   <div class="inline-block relative">
                     <select
                       id="sort"
                       v-model="filter.sortBy"
-                      class="nsw-form-select"
+                      class="nsw-form-select h-role-input py-0"
                     >
                       <option value="manager">Manager roles</option>
                       <option value="gradeId">Salary</option>
@@ -469,5 +474,8 @@ export default {
 .role-leave-to {
   transform: translateX(100%);
   opacity: 0;
+}
+.h-role-input {
+  height: 40px;
 }
 </style>

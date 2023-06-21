@@ -36,7 +36,8 @@ module.exports = {
           'psc-green': '#00857C',
           'psc-purple': '#3E2C56',
           'grey-primary': '#22272B',
-          'teal-primary': '#2E808E'
+          'teal-primary': '#2E808E',
+          'purple-dark': '#441170'
         },
         'nsw-grey': {
           50: '#F2F2F2',
