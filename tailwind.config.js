@@ -35,6 +35,7 @@ module.exports = {
           'tertiary-blue': '#0085B3',
           'psc-green': '#00857C',
           'psc-purple': '#3E2C56',
+          'grey-light': '#EBEBEB',
           'grey-primary': '#22272B',
           'teal-primary': '#2E808E',
           'purple-dark': '#441170'

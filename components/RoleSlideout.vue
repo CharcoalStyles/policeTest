@@ -1,17 +1,17 @@
 <template>
   <div key="role" class="absolute top-0 left-0 h-slider w-full lg:w-aside flex flex-col bg-white z-10">
-    <div class="h-12 flex-shrink-0 bg-nsw-brand-primary-blue text-white flex items-center px-4">
+    <div class="h-12 flex-shrink-0 bg-nsw-brand-primary-blue text-white flex items-center px-6">
       <button class="font-semibold flex items-center" @click="$emit('back')">
         <img src="/icons/chevron-left.svg" class="mr-2"> All roles
       </button>
     </div>
-    <div class="slideout-scroll p-5 flex-grow overflow-y-scroll">
-      <div class="mb-6">
-        <h2 class="font-bold text-2xl pr-3">
+    <div class="slideout-scroll px-6 py-8 flex-grow overflow-y-scroll">
+      <div class="mb-4">
+        <h2 class="font-bold text-[32px] pr-3 leading-tight">
           {{ role.name }}
         </h2>
       </div>
-      <div class="mb-10 flex space-x-3">
+      <div class="mb-8 flex space-x-3">
         <information-badge size="xs" colour="grey">
           Grade {{ role.grade }}
         </information-badge>
@@ -19,56 +19,55 @@
           Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}
         </information-badge>
       </div>
-      <div class="mb-10">
-        <h4 class="font-bold text-lg mb-3">
+      <div class="mb-8">
+        <h4 class="font-bold text-xl mb-3">
           Role purpose
         </h4>
         <p class="pr-3">
           {{ role.description }}
         </p>
       </div>
-      <div class="mb-10">
-        <h4 class="font-bold text-lg mb-3">
+      <div class="mb-8">
+        <h4 class="font-bold text-xl mb-3">
           Job Skills
         </h4>
         <div class="flex flex-wrap">
-          <information-badge v-for="skill in role.skills.focus" :key="skill.code" size="xs" colour="grey" class="mr-3 mb-3">
+          <information-badge v-for="skill in role.skills.focus" :key="skill.code" size="xs" colour="gray" class="mr-3 mb-3">
             {{ getSkillName(skill.code) }}
           </information-badge>
         </div>
       </div>
-      <div class="mb-10">
-        <div class="p-4 bg-nsw-grey-100 border-l-4 border-nsw-brand-primary-blue">
-          <h5 class="font-bold mb-3">
+      <div class="mb-8">
+        <div class="py-4 pl-4 pr-6 bg-nsw-grey-100 border-l-4 border-nsw-brand-primary-blue">
+          <h5 class="font-bold text-lg mb-3 text-grey-primary">
             Interested in this role?
           </h5>
           <p class="mb-3">
-            Use the pathways tool and reference this role title when completing the questionnaire
+            Use the <nuxt-link to="/pathway" class="font-semibold text-nsw-brand-primary-blue underline" style="text-underline-offset: 2px;">
+              Pathway tool
+            </nuxt-link> and reference this role title when completing the questionnaire.
           </p>
-          <nuxt-link to="/pathway" class="font-bold text-nsw-brand-primary-blue underline">
-            Pathway tool
-          </nuxt-link>
         </div>
       </div>
       <!-- <div class="mb-6">
-        <h4 class="font-bold text-lg mb-3">
+        <h4 class="font-bold text-xl mb-3">
           People typically progress to
         </h4>
         <div>
           here
         </div>
       </div> -->
-      <div class="mb-10">
+      <!-- <div class="mb-8">
         <h4 class="font-bold text-xl mb-3">
           Relationships to other roles
         </h4>
-      </div>
-      <div v-if="getSimilarRolesBySkills.items.length" class="mb-10">
-        <h4 class="font-bold mb-6 flex items-center">
+      </div> -->
+      <div v-if="getSimilarRolesBySkills.items.length" class="mb-6">
+        <h4 class="font-bold mb-4 flex items-center text-lg">
           Similar in skillset
-          <information-badge size="xs" colour="grey" class="font-normal ml-3">
+          <!-- <information-badge size="xs" colour="grey" class="font-normal ml-3">
             {{ getSimilarRolesBySkills.items.length }}
-          </information-badge>
+          </information-badge> -->
         </h4>
         <div class="flex flex-col">
           <job-role
@@ -79,12 +78,12 @@
           />
         </div>
       </div>
-      <div v-if="getSimilarRolesByGrade.length" class="mb-10">
-        <h4 class="font-bold mb-6 flex items-center">
+      <div v-if="getSimilarRolesByGrade.length" class="mb-6">
+        <h4 class="font-bold mb-4 flex items-center text-lg">
           Similar in salary
-          <information-badge size="xs" colour="grey" class="font-normal ml-3">
+          <!-- <information-badge size="xs" colour="grey" class="font-normal ml-3">
             {{ getSimilarRolesByGrade.length }}
-          </information-badge>
+          </information-badge> -->
         </h4>
         <transition-group name="list" tag="div" class="flex flex-col">
           <job-role
