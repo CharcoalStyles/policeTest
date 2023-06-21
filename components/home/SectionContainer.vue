@@ -1,17 +1,17 @@
 <template>
   <div class="w-full xl:container">
-    <div class="p-4 pt-6 md:pt-12 md:px-6">
+    <div class="p-4 pt-12 md:pt-16 md:px-6">
       <div class="flex flex-col md:flex-row justify-between">
-        <h2 class="font-bold text-xl md:text-3xl mb-3 md:mb-6">
+        <h2 class="font-bold text-2xl md:text-3xl mb-3 md:mb-6">
           {{ title }}
         </h2>
-        <nuxt-link v-if="link" :to="link" class="mb-3 md:mb-2 font-bold flex items-center whitespace-no-wrap">
-          Get started <img src="/icons/arrow.svg" alt="Arrow icon" class="ml-2">
-        </nuxt-link>
       </div>
       <div class="grid gap-6 xl:gap-8" :class="columns">
         <slot />
       </div>
+      <nuxt-link v-if="link" :to="link" class="mt-8 font-bold flex items-center whitespace-no-wrap underline text-nsw-brand-purple-dark" style="text-underline-offset: 4px;">
+        Plan my career growth <img src="/icons/arrow.svg" alt="Arrow icon" class="ml-2">
+      </nuxt-link>
     </div>
   </div>
 </template>

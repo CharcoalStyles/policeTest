@@ -15,26 +15,12 @@
         </nuxt-link>
       </div>
     </hero-section>
-    <section-container title="For individuals" link="/pathway" :cols="3">
-      <feature-panel image="/images/home1.jpg" alt="Assess your skills and capabilities" title="Identify your strengths and areas for development required for your next role.">
-        Understand your strengths and areas of development to build on for your next role. Get ideas on how to improve them.
+    <section-container title="Manage your career" link="/pathway" :cols="2">
+      <feature-panel image="/images/home1.jpg" alt="Assess your skills and capabilities" title="Assess your skills and capabilities.">
+        Identify your strengths and areas for development required for your next role. Compare current and desired roles side by side to see the skills you may need to build or improve on.
       </feature-panel>
-      <feature-panel image="/images/home2.jpg" alt="View digital roles within NSW Government" title="Learn about the digital roles currently available across NSW Government.">
-        Better understand what digital roles currently exist in NSW Government and which agencies they sit in.
-      </feature-panel>
-      <feature-panel image="/images/home3.jpg" alt="Create a personalised career plan" title="Use this plan to discuss career growth and opportunities with your manager.">
-        Create a personalised plan with career opportunities that you can discuss with your manager.
-      </feature-panel>
-    </section-container>
-    <section-container title="For managers" class="mb-12" link="/pathway" :cols="3">
-      <feature-panel image="/images/home4.jpg" alt="Group discussing a topic." title="Retain top talent by supporting career aspirations">
-        Discuss with your team how they can reach career goals.
-      </feature-panel>
-      <feature-panel image="/images/home5.jpg" alt="Group talking in workshop." title="Improve the capability of your team">
-        Outputs from the self-assessment tool create a tangible starting point for honest and productive performance conversations.
-      </feature-panel>
-      <feature-panel image="/images/home6.jpg" alt="Group listening in class." title="Take the guesswork out of career advice">
-        Show possible career pathways and discuss skill development opportunities.
+      <feature-panel image="/images/home2.jpg" alt="Create a personalised career plan." title="Create a personalised career plan.">
+        Get a personalised action plan with career opportunities that you can discuss with your manager. Access resources to take your career to the next level.
       </feature-panel>
     </section-container>
     <section-container title="How this tool can help you">
