@@ -310,11 +310,11 @@ export default {
     },
     filterCapabilityLabel() {
       if (this.filter.capability.value && this.filter.capability.value.includes('All')) {
-        return 'All capabilities'
+        return 'All skills'
       }
       const filtered = this.filter.capability.value.filter(item => item !== 'All')
       if (filtered.length > 1) {
-        return `${filtered.length} capabilities`
+        return `${filtered.length} skills`
       }
       return capabilityNamesMap[this.filter.capability.value[0]]
     },
