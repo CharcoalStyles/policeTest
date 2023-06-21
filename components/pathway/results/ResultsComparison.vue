@@ -3,12 +3,12 @@
     <tr>
       <td class="lg:w-1/2 p-4 lg:p-8">
         <div class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Current skill <help-bubble tooltip="Your current role SFIA skill requirements." />
+          Current skill <help-bubble tooltip="Your current role procurement skill requirements." />
         </div>
       </td>
       <td class="lg:w-1/2 p-4 lg:p-8">
         <div class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Target skill <help-bubble tooltip="Your target role SFIA skill requirements." />
+          Target skill <help-bubble tooltip="Your target role procurement skill requirements." />
         </div>
       </td>
     </tr>
