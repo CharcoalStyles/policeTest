@@ -72,7 +72,7 @@
               <div v-if="goalRole" class="grid grid-cols-1 gap-16 mb-10 lg:grid-cols-2">
                 <div>
                   <h4 class="flex items-center mb-6 text-lg font-bold">
-                    Your goal role <help-bubble tooltip="This is the role you told us you wanted to move into." />
+                    Your target role <help-bubble tooltip="This is the role you told us you wanted to move into." />
                   </h4>
                   <role-selector :role="goalRole" :target-role="targetRole" @click.native="selectTargetRole(goalRole)" @keyup.space="selectTargetRole(goalRole)" />
                 </div>
