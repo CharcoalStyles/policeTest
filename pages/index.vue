@@ -28,6 +28,9 @@
       <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
         <div class="flex flex-col flex-1 justify-center">
           <div class="text-white">
+            <div class="font-bold mb-4">
+              Role explorer tool
+            </div>
             <h2 class="font-bold text-3xl xl:text-[32px] leading-tight xl:w-11/12 mb-4">
               Supporting individuals in procurement with career growth.
             </h2>
@@ -48,56 +51,39 @@
     </div>
 
     <section-container title="How this tool can help you">
-      <div class="flex flex-col md:flex-row md:justify-between">
+      <div class="flex flex-col md:flex-row md:justify-between md:ml-24 mt-6">
+        <checkerboard-panel image="/images/illustration-personalised.svg" alt="Graphic showing how your interests influence your career plan." />
         <checkerboard-panel
           title="Get a personalised career pathway"
           description="Sort and prioritise career pathways based on what matters."
-          link="/pathway"
         />
-        <checkerboard-panel image="/images/illustration-personalised.svg" alt="Graphic showing how your interests influence your career plan." />
       </div>
 
-      <div class="flex flex-col-reverse md:flex-row md:justify-between">
-        <checkerboard-panel image="/images/illustration-understand.svg" alt="Graphic showing how your current role compares to your target role." />
+      <div class="flex flex-col-reverse md:flex-row md:justify-between md:mr-24">
         <checkerboard-panel
           title="Understand the skills required for future roles"
           description="Compare current and potential roles side by side to see the skills you may need to build or improve on."
-          link="/pathway"
         />
+        <checkerboard-panel image="/images/illustration-understand.svg" alt="Graphic showing how your current role compares to your target role." />
       </div>
 
-      <div class="flex flex-col md:flex-row md:justify-between">
+      <div class="flex flex-col md:flex-row md:justify-between md:ml-24">
+        <checkerboard-panel image="/images/illustration-upskill.svg" alt="Graphic showing the different methods you can upskill." />
         <checkerboard-panel
           title="Access upskilling resources"
           description="Access resources to take your career to the next level, resource recommendations are based on future roles relevant to you."
-          link="/pathway"
         />
-        <checkerboard-panel image="/images/illustration-upskill.svg" alt="Graphic showing the different methods you can upskill." />
       </div>
 
-      <div class="flex flex-col-reverse md:flex-row md:justify-between">
-        <checkerboard-panel image="/images/illustration-share.svg" alt="Graphic showing how you can use the career planner." />
+      <div class="flex flex-col-reverse md:flex-row md:justify-between md:mr-24">
         <checkerboard-panel
           title="Share your plan"
           description="If you’re happy with the plan, share it with your manager ahead of your next one on one session."
-          link="/pathway"
         />
+        <checkerboard-panel image="/images/illustration-share.svg" alt="Graphic showing how you can use the career planner." />
       </div>
     </section-container>
-    <hero-section image="/images/illustration-roleexplorer.svg" class="bg-nsw-grey-100 border-b border-nsw-grey-200 md:border-b-0">
-      <div class="font-bold mb-3 text-sm">
-        Digital careers in NSW Government
-      </div>
-      <h4 class="font-bold text-3xl leading-tight xl:w-10/12 mb-6">
-        Explore digital careers with NSW Government
-      </h4>
-      <p class="w-8/12 mb-8">
-        See all the various roles, levels and how they’re connected across NSW Government.
-      </p>
-      <nsw-button @click.native="$router.push('/explorer')">
-        Explore now
-      </nsw-button>
-    </hero-section>
+
     <responsive-container class="my-6 md:my-3">
       <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="mb-6 flex justify-center md:justify-start">

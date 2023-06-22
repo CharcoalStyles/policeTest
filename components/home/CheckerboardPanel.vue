@@ -1,10 +1,10 @@
 <template>
-  <div v-if="image" class="px-3 md:px-0 py-6 md:py-8 flex items-center justify-center">
+  <div v-if="image" class="px-3 md:px-0 flex flex-1 items-center justify-center">
     <img :src="image" :alt="alt">
   </div>
-  <div v-else class="py-6 md:py-8 md:w-1/2 flex flex-col justify-center">
-    <div>
-      <h3 v-if="title" class="font-bold text-2xl text-nsw-brand-primary-blue mb-6">
+  <div v-else class="md:w-1/2 flex flex-col flex-1 justify-center items-center">
+    <div style="max-width:362px;">
+      <h3 v-if="title" class="font-bold text-2xl md:text-[32px] text-nsw-brand-grey-primary mb-4 leading-tight">
         {{ title }}
       </h3>
       <p v-if="description" class="mb-6">
