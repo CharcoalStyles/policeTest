@@ -23,6 +23,30 @@
         Get a personalised action plan with career opportunities that you can discuss with your manager. Access resources to take your career to the next level.
       </feature-panel>
     </section-container>
+
+    <div class="bg-nsw-brand-purple-dark py-16 md:py-20 my-12 md:my-16">
+      <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
+        <div class="flex flex-col flex-1 justify-center">
+          <div class="text-white">
+            <h2 class="font-bold text-3xl xl:text-[32px] leading-tight xl:w-11/12 mb-4">
+              Supporting individuals in procurement with career growth.
+            </h2>
+            <p class="w-11/12 mb-4">
+              Build and manage a procurement career in the NSW Government based on procurement skills, capabilities and goals.
+            </p>
+          </div>
+          <div>
+            <nuxt-link to="/explorer" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-white text-nsw-brand-grey-primary">
+              Explore roles
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="flex-1">
+          <img src="/images/home-hero.jpg" alt="" class="w-full object-cover" style="aspect-ratio: 16/9;" />
+        </div>
+      </div>
+    </div>
+
     <section-container title="How this tool can help you">
       <div class="flex flex-col md:flex-row md:justify-between">
         <checkerboard-panel
