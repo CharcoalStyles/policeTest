@@ -84,7 +84,7 @@
       </div>
     </section-container>
 
-    <div class="bg-nsw-grey-50 py-16 md:py-20 my-12 md:my-16">
+    <div class="bg-nsw-grey-50 py-16 md:py-20 mt-12 md:mt-16">
       <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
         <div class="flex flex-col flex-1 justify-center">
           <div class="text-nsw-brand-grey-primary">
@@ -103,41 +103,21 @@
         </div>
       </div>
     </div>
-
-    <responsive-container class="my-6 md:my-3">
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="mb-6 flex justify-center md:justify-start">
-          <img src="/images/nsw-logo.png" alt="NSW Logo">
-        </div>
-        <div class="md:w-10/12 text-center md:text-left">
-          <h4 class="font-bold text-lg mb-3">
-            Meeting evolving citizen needs.
-          </h4>
-          <p>
-            Highlighting exciting career opportunities in digital enables us to build a passionate workforce that has a clear career path for the future.
-          </p>
-        </div>
-      </div>
-    </responsive-container>
   </div>
 </template>
 
 <script>
 import FeaturePanel from '@/components/home/FeaturePanel'
 import HeroSection from '@/components/home/HeroSection'
-import ResponsiveContainer from '@/components/ResponsiveContainer'
 import SectionContainer from '@/components/home/SectionContainer'
 import CheckerboardPanel from '@/components/home/CheckerboardPanel'
-import NswButton from '@/components/nsw/NswButton'
 
 export default {
   components: {
-    NswButton,
     FeaturePanel,
     HeroSection,
     SectionContainer,
-    CheckerboardPanel,
-    ResponsiveContainer
+    CheckerboardPanel
   }
 }
 </script>
