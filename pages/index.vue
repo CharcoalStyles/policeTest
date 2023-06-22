@@ -84,6 +84,26 @@
       </div>
     </section-container>
 
+    <div class="bg-nsw-grey-50 py-16 md:py-20 my-12 md:my-16">
+      <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
+        <div class="flex flex-col flex-1 justify-center">
+          <div class="text-nsw-brand-grey-primary">
+            <h2 class="font-bold text-3xl xl:text-[32px] leading-tight xl:w-11/12 mb-4">
+              Explore upskilling resources
+            </h2>
+            <p class="w-10/12">
+              View all procurement upskilling resources in one place and find what’s relevant to you.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-1 items-center md:justify-center">
+          <nuxt-link to="/#" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
+            ## View resources ##
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+
     <responsive-container class="my-6 md:my-3">
       <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="mb-6 flex justify-center md:justify-start">
