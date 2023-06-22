@@ -163,6 +163,15 @@
                 </div>
               </div>
             </div>
+            <div class="md:w-8/12">
+              <div v-if="filteredResources.count < 1">
+                <div class="py-6 lg:py-16">
+                  <disclaimer-panel heading="No resources available">
+                    Select another role or remove filters to view resources.
+                  </disclaimer-panel>
+                </div>
+              </div>
+            </div>
             <div class="md:w-12/12">
               <div v-for="(group, groupIndex) in filteredResources.groups" :key="groupIndex">
                 <h3 class="mb-6 mt-16 text-xl font-bold">
@@ -217,10 +226,12 @@
               </next-step-panel>
             </div>
           </div>
-          <div class="py-6 lg:py-16">
-            <print-page class="mb-6" @click.native="printPage" />
-            <disclaimer-panel>Salaries are indicative only. Check the position description when applying</disclaimer-panel>
-            <disclaimer-panel>Completing resources does not guarantee successful transition to any role</disclaimer-panel>
+          <div class="md:w-8/12">
+            <div class="py-6 lg:py-16">
+              <print-page class="mb-6" @click.native="printPage" />
+              <disclaimer-panel>Salaries are indicative only. Check the position description when applying</disclaimer-panel>
+              <disclaimer-panel>Completing resources does not guarantee successful transition to any role</disclaimer-panel>
+            </div>
           </div>
         </div>
         <modal-update :show="modals.update" max-width="xl" :scrollable="false" @close="modals.update = false" />
