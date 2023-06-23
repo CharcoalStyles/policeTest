@@ -85,6 +85,7 @@
                     >
                       <option value="manager">Manager roles</option>
                       <option value="gradeId">Salary</option>
+                      <option value="gradeId">Grade</option>
                     </select>
                   </div>
                 </div>
