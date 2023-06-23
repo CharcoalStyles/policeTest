@@ -143,7 +143,7 @@ export default {
     },
     search(input) {
       this.value = input
-      const fuzzy = new FuzzySearch(this.filteredRoles, ['name'], {
+      const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias'], {
         sort: true
       })
       return fuzzy.search(input)
