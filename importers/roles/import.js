@@ -94,6 +94,13 @@ const parseSalary = (salary) => {
   return parseInt(salary.replace(',', '').replace('$', ''))
 }
 
+const parseAlias = (row) => {
+  if (row) {
+    return row.split(', ')
+  }
+  return []
+}
+
 // Transform role data with parsers
 rolesCsvData.data.forEach((row) => {
   roles.push({
@@ -115,7 +122,8 @@ rolesCsvData.data.forEach((row) => {
     },
     capabilities: {
       focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array
-    }
+    },
+    alias: parseAlias(row.alias)
   })
 })
 
