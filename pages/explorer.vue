@@ -230,7 +230,7 @@ export default {
         skills: false,
         onboarding: true
       },
-      zoom: 0.4,
+      zoom: 0.5,
       panning: false,
       options: {
         salary: {
@@ -351,7 +351,7 @@ export default {
     },
     resetExplorerMap() {
       this.panZoom.moveTo(0, 0)
-      this.panZoom.zoomAbs(0, 0, 0.1)
+      this.panZoom.zoomAbs(0, 0, 0.5)
     },
     resetAllFilters() {
       this.resetExplorerMap()
@@ -384,7 +384,7 @@ export default {
 
     demoExplorerAnimation() {
       this.modals.onboarding = false
-      this.panZoom.smoothZoom(20, 20, 0.4)
+      this.panZoom.smoothZoom(20, 20, 1)
     },
 
     /**
