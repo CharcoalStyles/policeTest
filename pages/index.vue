@@ -45,7 +45,10 @@
           </div>
         </div>
         <div class="flex-1">
-          <img src="/images/home-hero.jpg" alt="" class="w-full object-cover" style="aspect-ratio: 16/9;" />
+          <client-only>
+            <vimeo-player ref="player" :video-id="videoID" :player-height="height" :controls="true" video-url="https://vimeo.com/357726193/b1773b87c6" @ready="onReady"></vimeo-player>
+          </client-only>
+          <!-- <img src="/images/home-hero.jpg" alt="" class="w-full object-cover" style="aspect-ratio: 16/9;" /> -->
         </div>
       </div>
     </div>
@@ -118,6 +121,28 @@ export default {
     HeroSection,
     SectionContainer,
     CheckerboardPanel
+  },
+  data() {
+    return {
+      videoID: '357726193',
+      height: 500,
+      options: {
+        muted: true,
+        autoplay: true
+      },
+      playerReady: false
+    }
+  },
+  methods: {
+    onReady() {
+      this.playerReady = true
+    },
+    play() {
+      this.$refs.player.play()
+    },
+    pause() {
+      this.$refs.player.pause()
+    }
   }
 }
 </script>

@@ -32,7 +32,8 @@ export default {
     '~/plugins/collect',
     '~/plugins/debounce',
     '~/plugins/pluralise',
-    { src: '~/plugins/persist', ssr: false }
+    { src: '~/plugins/persist', ssr: false },
+    { src: '~plugins/vimeo-player' }
   ],
 
   // Auto import components
@@ -57,5 +58,9 @@ export default {
   modules: ['portal-vue/nuxt', '@nuxt/content', 'vue-scrollto/nuxt'],
 
   // Build Configuration
-  build: {}
+  build: {
+    vendor: [
+      'vue-vimeo-player'
+    ]
+  }
 }
