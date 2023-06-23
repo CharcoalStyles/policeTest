@@ -424,7 +424,11 @@ export default {
         if (!groupedResources.hasOwnProperty(resource.format)) {
           groupedResources[resource.format] = []
         }
-        groupedResources[resource.format].push(resource)
+        if (resource.default) {
+          groupedResources[resource.format].unshift(resource)
+        } else {
+          groupedResources[resource.format].push(resource)
+        }
       })
 
       const orderedGroups = Object.keys(groupedResources)
