@@ -593,11 +593,7 @@ export default {
             role.id !== this.goalRole?.id
           )
         })
-        .sort((a, b) => {
-          const roleA = a.name.toUpperCase()
-          const roleB = b.name.toUpperCase()
-          return (roleA < roleB) ? -1 : (roleA > roleB) ? 1 : 0
-        })
+        .sortBy('gradeId')
         .all()
     },
 
