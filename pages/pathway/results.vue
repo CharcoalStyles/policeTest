@@ -131,7 +131,7 @@
                 These resources have been curated as a starting point to assist your career progression.
               </p>
             </div>
-            <div class="flex h-12">
+            <div class="flex">
               <div class="relative mr-4">
                 <label class="font-bold" for="filterFormats">Type of content</label>
                 <div class="mt-1" style="min-width:380px;">
@@ -139,7 +139,7 @@
                     {{ filterFormatLabel }}
                   </button>
                 </div>
-                <div v-if="filter.format.open" class="nsw-custom-select-format bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-format">
+                <div v-if="filter.format.open" class="nsw-custom-select-format bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10" aria-describedby="filter-format">
                   <ul>
                     <li v-for="option in filterFormatOptions" :key="option" :value="option">
                       <input-checkbox v-model="filter.format.value" :input-value="option" :label="option" :name="option" @change="onFilterFormatChange" />
@@ -154,12 +154,38 @@
                     {{ filterCapabilityLabel }}
                   </button>
                 </div>
-                <div v-if="filter.capability.open" class="nsw-custom-select-capability bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2" aria-describedby="filter-capability">
+                <div v-if="filter.capability.open" class="nsw-custom-select-capability bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10" aria-describedby="filter-capability">
                   <ul>
                     <li v-for="option in filterCapabilityOptions" :key="option" :value="option">
                       <input-checkbox v-model="filter.capability.value" :input-value="option" :label="getCapabilityOptionLabel(option)" :name="option" @change="onFilterCapabilityChange" />
                     </li>
                   </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex space-x-4 items-center mt-6">
+              <div class="relative space-x-4">
+                <div class="nsw-form-checkbox cursor-pointer">
+                  <input
+                    id="form-free-checkbox"
+                    v-model="filter.free.value"
+                    type="checkbox"
+                    :value="false"
+                    class="nsw-form-checkbox__input"
+                  >
+                  <label class="nsw-form-checkbox__label mt-0" for="form-free-checkbox">Free</label>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="nsw-form-checkbox cursor-pointer">
+                  <input
+                    id="form-recommended-checkbox"
+                    v-model="filter.recommended.value"
+                    type="checkbox"
+                    :value="false"
+                    class="nsw-form-checkbox__input"
+                  >
+                  <label class="nsw-form-checkbox__label mt-0" for="form-recommended-checkbox">Recommended</label>
                 </div>
               </div>
             </div>
@@ -174,7 +200,7 @@
             </div>
             <div class="md:w-12/12">
               <div v-for="(group, groupIndex) in filteredResources.groups" :key="groupIndex">
-                <h3 class="mb-6 mt-16 text-xl font-bold">
+                <h3 class="mb-6 mt-12 text-xl font-bold">
                   {{ group.label }}
                 </h3>
                 <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
@@ -300,6 +326,12 @@ export default {
           open: false,
           options: [],
           value: ['All']
+        },
+        free: {
+          value: false
+        },
+        recommended: {
+          value: false
         }
       }
     }
@@ -401,6 +433,14 @@ export default {
         }
         if (this.filter.capability.value.includes('All')) {
           match.capability = true
+        }
+
+        if (this.filter.free.value && resource.cost !== '0') {
+          return false
+        }
+
+        if (this.filter.recommended.value && resource.default !== true) {
+          return false
         }
 
         const matchedSkills = this.$collect(resource.skills)
