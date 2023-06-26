@@ -11,10 +11,10 @@
       {{ role.roleFunction }}
     </p>
     <div class="flex flex-col lg:flex-row">
-      <information-badge class="mb-6 rounded-full mr-3" size="sm">
+      <information-badge v-if="role.grade" class="mb-6 rounded-full mr-3" size="sm">
         Grade: {{ role.grade }}
       </information-badge>
-      <information-badge class="mb-6 rounded-full mr-3" size="sm" tooltip="Salaries are indicative only. Check the role description when applying.">
+      <information-badge v-if="role.salary.min && role.salary.max" class="mb-6 rounded-full mr-3" size="sm" tooltip="Salaries are indicative only. Check the role description when applying.">
         Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}
       </information-badge>
       <information-badge v-if="role.manager" size="sm" class="mb-6 rounded-full">
