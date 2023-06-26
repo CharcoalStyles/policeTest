@@ -338,7 +338,14 @@ export default {
       const colour = this.$collect(this.colours)
         .where('function', this.roleFunction.name)
         .first()
-      return `background-color: ${colour[type]}`
+      if (colour) {
+        return `background-color: ${colour[type]}`
+      }
+      const defaultColour = {
+        light: '#FFFAF0',
+        dark: '#FEEBC8'
+      }
+      return `background-color: ${defaultColour[type]}`
     },
     rolesInGrade(roles, level) {
       return this.$collect(roles).where('grade', level).all()

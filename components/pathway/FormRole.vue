@@ -36,7 +36,7 @@
                   Can't see your role here?
                 </div>
                 <div class="text-sm">
-                  Try expanding your search and select a role that closely matches.
+                  Select a role that closely matches you role.
                 </div>
               </li>
             </ul>

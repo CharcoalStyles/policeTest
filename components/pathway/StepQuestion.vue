@@ -18,6 +18,9 @@
         </p>
       </div>
       <component :is="componentName" :step="step" class="mb-6" />
+      <div v-if="step.schema.support" class="">
+        <p v-for="(text, index) in step.schema.support" :key="index" class="text-base text-nsw-brand-grey-primary mb-3">{{ text }}</p>
+      </div>
     </div>
     <div v-if="showExplorerPanel" class="lg:w-1/2 flex lg:justify-end items-start">
       <div class="block p-4 md:p-8 bg-nsw-grey-100 lg:w-2/3 rounded-lg max-w-lg">

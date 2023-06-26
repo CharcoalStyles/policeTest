@@ -110,7 +110,11 @@
       "field": {
         "type": "role",
         "required": true
-      }
+      },
+      "support": [
+        "This tool includes common types of procurement roles, and similar related roles, that can be found in the NSW public sector.",
+        "However, role titles may be different for each NSW public sector organisation. "
+      ]
     }
   },
   {
