@@ -40,6 +40,9 @@ export default {
       if (this.isLastStep) {
         return 'Go to my plan'
       }
+      if (this.currentStepIndex === 0) {
+        return 'Get started'
+      }
       return 'Next'
     }
   },

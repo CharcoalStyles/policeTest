@@ -17,17 +17,18 @@
           <li>We’ll ask a few questions</li>
           <li>We’ll show you what roles you could move into</li>
           <li>We’ll help you understand what skills you need to improve</li>
-          <li>We’ll surface upskilling resources</li>
+          <li>Get ways to upskill</li>
         </ul>
       </div>
       <div class="mb-6">
         <h3 class="text-2xl font-bold mb-3">
           Who is this best suited for?
         </h3>
+        <p class="mb-3">People looking:</p>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
-          <li>People looking to develop their skills and capabilities</li>
-          <li>People looking for the next step in their career</li>
-          <li>People looking to work in a NSW Government procurement role</li>
+          <li>to develop their skills and capabilities</li>
+          <li>for the next step in their career</li>
+          <li>to work in a NSW Government procurement role</li>
         </ul>
       </div>
       <div class="mb-6 lg:mb-0">
@@ -49,10 +50,10 @@
           Use the Role Explorer tool
         </div>
         <p class="mb-12">
-          See all the various roles, levels and how they’re connected across NSW Governement.
+          See common procurement roles types, levels, and how they’re connected across the NSW public sector.
         </p>
         <nsw-button action="secondary-outline" @click.native="$router.push('/explorer')">
-          Browse roles
+          Browse role types
         </nsw-button>
       </div>
     </div>
