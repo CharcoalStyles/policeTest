@@ -30,7 +30,7 @@
                 </button>
               </div>
             </div>
-            <ul v-if="value && !results.length && focussed" class="bg-white mt-2 rounded shadow-md overflow-y-scroll max-h-autosuggest">
+            <!-- <ul v-if="value && !results.length && focussed" class="bg-white mt-2 rounded shadow-md overflow-y-scroll max-h-autosuggest">
               <li class="py-3 px-4 leading-loose">
                 <div class="font-bold">
                   Can't see your role here?
@@ -38,19 +38,22 @@
                 <div class="text-sm">
                   Select a role that closely matches you role.
                 </div>
+                <button class="px-3 py-1 pointer-events-auto bg-nsw-brand-secondary-blue text-white text-sm rounded mt-1" aria-label="Select no role" @click="selectNoRole">
+                  Can't find role
+                </button>
               </li>
-            </ul>
-            <ul v-else v-bind="resultListProps" class="bg-white mt-2 rounded shadow-md overflow-y-scroll max-h-autosuggest" v-on="resultListListeners">
+            </ul> -->
+            <ul v-if="results.length" v-bind="resultListProps" class="bg-white mt-2 rounded shadow-md overflow-y-scroll max-h-autosuggest" v-on="resultListListeners">
               <li v-for="(role, index) in results" :key="resultProps[index].id" v-bind="resultProps[index]" class="py-3 px-4 border-b border-nsw-grey-200 cursor-pointer hover:bg-nsw-grey-100" :class="{ 'bg-nsw-grey-100' : isRoleSelected(role) }">
                 <div class="flex justify-between">
                   <div class="mb-3 font-bold" style="min-width:50%;">
                     {{ role.name }}
                   </div>
                   <div class="flex flex-wrap mb-2 md:mb-1 justify-end" style="min-width:50%;max-width:50%;">
-                    <information-badge size="xs" colour="grey" class="mr-2 mb-2">
+                    <information-badge v-if="role.grade" size="xs" colour="grey" class="mr-2 mb-2">
                       {{ role.grade }}
                     </information-badge>
-                    <information-badge size="xs" colour="grey">
+                    <information-badge v-if="role.salary.min && role.salary.max" size="xs" colour="grey">
                       Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}
                     </information-badge>
                   </div>
@@ -103,6 +106,9 @@ export default {
     currentValue() {
       return this.$store.state.pathway.answers[this.step.id]?.value
     },
+    defaultNoRole() {
+      return this.getRoleByCode(99)
+    },
     defaultValue() {
       return this.currentValue ? this.getRoleByCode(this.currentValue).name : ''
     },
@@ -146,16 +152,22 @@ export default {
       const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias'], {
         sort: true
       })
-      return fuzzy.search(input)
+      const result = fuzzy.search(input)
+      if (result.length === 0) {
+        return [this.defaultNoRole]
+      }
+      return result.filter(i => i.id !== 99)
     },
     getResultValue(result) {
       return result.name
     },
     selectRole(role) {
-      this.$store.dispatch('saveQuestionAnswer', {
-        id: this.step.id,
-        value: role.id
-      })
+      if (role && role.id) {
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: this.step.id,
+          value: role.id
+        })
+      }
     },
     clearRole() {
       this.$refs.autocomplete.value = ''
