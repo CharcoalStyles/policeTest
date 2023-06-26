@@ -38,8 +38,8 @@
                   <div>I would like to be a <span class="font-bold text-nsw-brand-secondary-blue">{{ targetRole.name }}</span> or similar</div>
                 </div>
                 <div v-if="readableSkillsList" class="flex flex-col mb-6 md:flex-row">
-                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    Your procurement skills
+                  <div class="flex items-center flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
+                    Your procurement skills <help-bubble tooltip="These are the general skills/capabilities for the role type you selected" />
                   </div>
                   <div>I assessed myself in <span class="font-bold text-nsw-brand-secondary-blue">{{ readableSkillsList }}</span></div>
                 </div>
@@ -65,7 +65,7 @@
                 <step-badge>1</step-badge> Select your target role
               </h3>
               <p class="md:w-2/3">
-                Compare your current role to a target role by skill, capability, salary and grade. You'll also be shown upskilling resources to help you get to your target role.
+                A target role compares your current role, identify skills gaps, surfaces learning resources.
               </p>
             </div>
             <div class="lg:w-10/12">
@@ -134,7 +134,7 @@
             <div class="flex">
               <div class="relative mr-4">
                 <label class="font-bold" for="filterFormats">Type of content</label>
-                <div class="mt-1" style="min-width:380px;">
+                <div class="mt-1" style="min-width:340px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-format" @click="toggleFormatFilter">
                     {{ filterFormatLabel }}
                   </button>
@@ -148,8 +148,8 @@
                 </div>
               </div>
               <div class="relative">
-                <label class="font-bold" for="filterCapabilities">Skills</label>
-                <div class="mt-1" style="min-width:380px;">
+                <label class="font-bold" for="filterCapabilities">Skill</label>
+                <div class="mt-1" style="min-width:340px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
                     {{ filterCapabilityLabel }}
                   </button>
@@ -162,30 +162,30 @@
                   </ul>
                 </div>
               </div>
-            </div>
-            <div class="flex space-x-4 items-center mt-6">
-              <div class="relative space-x-4">
-                <div class="nsw-form-checkbox cursor-pointer">
-                  <input
-                    id="form-free-checkbox"
-                    v-model="filter.free.value"
-                    type="checkbox"
-                    :value="false"
-                    class="nsw-form-checkbox__input"
-                  >
-                  <label class="nsw-form-checkbox__label mt-0" for="form-free-checkbox">Free</label>
+              <div class="flex space-x-8 items-center mt-6 pl-12">
+                <div class="relative space-x-4">
+                  <div class="nsw-form-checkbox cursor-pointer">
+                    <input
+                      id="form-free-checkbox"
+                      v-model="filter.free.value"
+                      type="checkbox"
+                      :value="false"
+                      class="nsw-form-checkbox__input"
+                    >
+                    <label class="nsw-form-checkbox__label mt-0" for="form-free-checkbox">Free</label>
+                  </div>
                 </div>
-              </div>
-              <div class="relative">
-                <div class="nsw-form-checkbox cursor-pointer">
-                  <input
-                    id="form-recommended-checkbox"
-                    v-model="filter.recommended.value"
-                    type="checkbox"
-                    :value="false"
-                    class="nsw-form-checkbox__input"
-                  >
-                  <label class="nsw-form-checkbox__label mt-0" for="form-recommended-checkbox">Recommended</label>
+                <div class="relative">
+                  <div class="nsw-form-checkbox cursor-pointer">
+                    <input
+                      id="form-recommended-checkbox"
+                      v-model="filter.recommended.value"
+                      type="checkbox"
+                      :value="false"
+                      class="nsw-form-checkbox__input"
+                    >
+                    <label class="nsw-form-checkbox__label mt-0" for="form-recommended-checkbox">Recommended</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -255,8 +255,9 @@
           <div class="md:w-8/12">
             <div class="py-6 lg:py-16">
               <print-page class="mb-6" @click.native="printPage" />
-              <disclaimer-panel>Salaries are indicative only. Check the position description when applying</disclaimer-panel>
-              <disclaimer-panel>Completing resources does not guarantee successful transition to any role</disclaimer-panel>
+              <disclaimer-panel>Salaries are indicative only. Check the position description when applying.</disclaimer-panel>
+              <disclaimer-panel>Completing resources does not guarantee successful transition to any role.</disclaimer-panel>
+              <disclaimer-panel>Disclaimer for about role groups &amp; titles difference across agencies.</disclaimer-panel>
             </div>
           </div>
         </div>
