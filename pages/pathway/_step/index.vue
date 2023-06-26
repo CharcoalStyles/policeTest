@@ -65,7 +65,7 @@ export default {
       const previousStep = this.getPreviousStepByCurrentIndex(this.currentStepIndex)
 
       // If previous step has child steps redirect to last
-      if ('steps' in previousStep) {
+      if ('steps' in previousStep && previousStep.steps.length > 0) {
         const previousChildStep = this.$collect(previousStep.steps).last()
         this.$router.push(`/pathway/${previousStep.id}/${previousChildStep.id}`)
       } else {
@@ -88,7 +88,7 @@ export default {
         const nextStep = this.getNextStepByCurrentIndex(this.currentStepIndex)
 
         // If this step has child steps redirect to first
-        if ('steps' in this.currentStep) {
+        if ('steps' in this.currentStep && this.currentStep.steps.length > 0) {
           const nextChildStep = this.$collect(this.currentStep.steps).first()
           this.$router.push(`/pathway/${this.currentStep.id}/${nextChildStep.id}`)
         } else {

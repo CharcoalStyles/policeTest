@@ -26,7 +26,7 @@ const getters = {
   // Filter steps based on conditions and answers
   filteredSteps: (state) => {
     return state.pathway.steps.filter((step) => {
-      return checkConditions(step.conditions, state.pathway.answers)
+      return checkConditions(step, state.pathway.answers)
     })
   },
   flattenedSteps: (state, getters) => {

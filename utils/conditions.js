@@ -1,7 +1,13 @@
 // Check all values in array are true
 const allConditionsMatch = value => value === true
 
-const checkConditions = (conditions, answers) => {
+const checkConditions = ({ conditions, steps, id }, answers) => {
+  if (id === 'skills' || id === 'capabilities') {
+    if (!steps || steps.length < 1) {
+      return false
+    }
+  }
+
   // No conditions so pass
   if (!conditions) {
     return true
