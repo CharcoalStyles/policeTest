@@ -9,9 +9,14 @@
           {{ step.title }}
         </h1>
       </div>
-      <p v-if="step.schema.help" class="text-lg md:text-xl text-nsw-brand-grey-primary mb-8">
-        {{ step.schema.help }}
-      </p>
+      <div v-if="step.schema.help" class="mb-8">
+        <p v-if="step.schema.help" class="text-lg md:text-xl text-nsw-brand-grey-primary">
+          {{ step.schema.help }}
+        </p>
+        <p v-if="step.schema.helpExtra" class="text-lg md:text-xl text-nsw-brand-grey-primary mt-4">
+          {{ step.schema.helpExtra }}
+        </p>
+      </div>
       <component :is="componentName" :step="step" class="mb-6" />
     </div>
     <div v-if="showExplorerPanel" class="lg:w-1/2 flex lg:justify-end items-start">

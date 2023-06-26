@@ -46,12 +46,13 @@
   },
   {
     "id": "work-procurement",
-    "title": "Do you currently work in a procurement role?",
+    "title": "Do you currently work in a procurement role, or similar?",
     "type": "question",
     "conditions": false,
     "schema": {
       "section": "Your current role",
-      "help": "If you're currently in a procurement and contracting role, we'll ask questions about your technical skills to help us recommend roles. Procurement roles cover disciplines such as strategic sourcing, category management, contract management, procurement analysis, procurement advice, policy and governance.",
+      "help": "If you're currently in a procurement and contracting role (or a similar role), we'll ask questions about your technical skills to help us recommend roles.",
+      "helpExtra": "Procurement roles can include disciplines such as strategic sourcing, category management, contract management, analysis, advice, policy and governance. Similar roles may include those in project, policy, administrative, finance, commercial and other related disciplines.",
       "field": {
         "type": "radio",
         "required": true,
