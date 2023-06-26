@@ -1,6 +1,6 @@
 <template>
   <tbody>
-    <tr>
+    <tr v-if="skillsMatrix.length > 0">
       <td class="lg:w-1/2 p-4 lg:p-8">
         <div class="flex items-center whitespace-no-wrap font-bold text-lg">
           Current skill <help-bubble tooltip="Your current role procurement skill requirements." />
@@ -16,7 +16,7 @@
       <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.current" type="skill" instructions="selfAssessed" current-instructions @skillClicked="showSkillModal" />
       <comparison-row :current-role="currentRole" :target-role="targetRole" :item="skill.target" type="skill" instructions="targetRole" @skillClicked="showSkillModal" />
     </tr>
-    <tr>
+    <tr v-if="capabilitiesMatrix.length > 0">
       <td class="lg:w-1/2 p-4 lg:p-8">
         <div class="flex items-center whitespace-no-wrap font-bold text-lg">
           Current capability <help-bubble tooltip="Your current role NSW Capability requirements. These are based on the NSW Capability Framework." />
