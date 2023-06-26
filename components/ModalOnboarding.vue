@@ -2,7 +2,7 @@
   <base-modal :show="show" :max-width="maxWidth" title="Role Explorer" :closeable="true" :scrollable="false" @close="$emit('close')">
     <div class="flex flex-col items-center justify-center">
       <img :src="panelImage" :alt="currentPanel.alt" class="mb-6">
-      <h2 class="font-bold text-lg mb-3">
+      <h2 class="font-bold text-lg mb-2">
         {{ currentPanel.title }}
       </h2>
       <p class="text-center">
@@ -47,19 +47,24 @@ export default {
     return {
       panels: [
         {
-          title: 'Explore digital roles',
-          text: 'Search via keywords, skills and salary to understand where roles sit inside NSW Government.',
+          title: 'Explore procurement roles',
+          text: 'Search via keywords, skills and salary to understand where roles sit inside the NSW public sector.',
           alt: 'Graphic showing a magnifying glass near some cards representing job roles.'
         },
         {
           title: 'Understand the relationships between roles',
-          text: 'See how one roles relates to another based on skills, grade, salary and role functions.',
+          text: 'See how one role relates to another based on skills, grade, salary and role functions.',
           alt: 'Graphic showing arrows between some cards representing job roles.'
         },
         {
           title: 'Take action toward desired role',
           text: 'Once you find a role of interest, use the Pathways tool to get a personalised action plan.',
           alt: 'Graphic showing a card representing a job role being moved.'
+        },
+        {
+          title: 'Help us learn',
+          text: 'This tool is currently in a pilot phase. Your feedback will help us improve the website.',
+          alt: 'Two conversation bubbles, implying feedback is given.'
         }
       ],
       panel: 0
@@ -79,7 +84,7 @@ export default {
       return this.panel === 0
     },
     isLastPanel() {
-      return this.panel === 2
+      return this.panel === 3
     }
   },
   methods: {
