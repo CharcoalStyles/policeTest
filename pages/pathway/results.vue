@@ -25,7 +25,7 @@
                 </nsw-button>
               </div>
               <div class="w-full">
-                <div v-if="currentRole.name" class="flex flex-col mb-6 md:flex-row">
+                <div v-if="currentRole.name && currentRole.id !== 99" class="flex flex-col mb-6 md:flex-row">
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
                     Your current role
                   </div>
