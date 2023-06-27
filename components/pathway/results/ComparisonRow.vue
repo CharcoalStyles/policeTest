@@ -59,7 +59,7 @@ export default {
     },
     emptyMessage() {
       if (this.instructions) {
-        return this.targetRole ? `This ${this.type} is not required` : 'Not currently known'
+        return this.targetRole ? `This is not a focus ${this.type} for this role` : 'Not currently known'
       }
       return ''
     },
