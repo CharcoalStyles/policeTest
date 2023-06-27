@@ -38,14 +38,18 @@
                   <div>I would like to be a <span class="font-bold text-nsw-brand-secondary-blue">{{ targetRole.name }}</span> or similar</div>
                 </div>
                 <div v-if="readableSkillsList" class="flex flex-col mb-6 md:flex-row">
-                  <div class="flex items-center flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    Your procurement skills <help-bubble tooltip="These are the general skills/capabilities for the role type you selected" />
+                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
+                    <div class="flex items-center whitespace-no-wrap">
+                      Your procurement skills<help-bubble tooltip="These are the typical procurement skills required for the role type you selected." />
+                    </div>
                   </div>
                   <div>I assessed myself in <span class="font-bold text-nsw-brand-secondary-blue">{{ readableSkillsList }}</span></div>
                 </div>
                 <div v-if="readableCapabilitiesList" class="flex flex-col mb-6 md:flex-row">
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    Your core capabilities
+                    <div class="flex items-center whitespace-no-wrap">
+                      Your core capabilities<help-bubble tooltip="These are the typical core capabilities required for the role type you selected." />
+                    </div>
                   </div>
                   <div>I assessed myself in <span class="font-bold text-nsw-brand-secondary-blue">{{ readableCapabilitiesList }}</span></div>
                 </div>
