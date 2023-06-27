@@ -17,60 +17,7 @@
       "focus": []
     },
     "capabilities": {
-      "focus": [
-        {
-          "code": "DIRE",
-          "level": "1"
-        },
-        {
-          "code": "ACWI",
-          "level": "1"
-        },
-        {
-          "code": "MASE",
-          "level": "1"
-        },
-        {
-          "code": "COEF",
-          "level": "1"
-        },
-        {
-          "code": "COTO",
-          "level": "1"
-        },
-        {
-          "code": "INAN",
-          "level": "1"
-        },
-        {
-          "code": "DERE",
-          "level": "1"
-        },
-        {
-          "code": "PLAN",
-          "level": "1"
-        },
-        {
-          "code": "THAN",
-          "level": "1"
-        },
-        {
-          "code": "FINA",
-          "level": "1"
-        },
-        {
-          "code": "TECH",
-          "level": "1"
-        },
-        {
-          "code": "PRMA",
-          "level": "1"
-        },
-        {
-          "code": "PRAN",
-          "level": "1"
-        }
-      ]
+      "focus": []
     },
     "alias": [],
     "genericRole": true

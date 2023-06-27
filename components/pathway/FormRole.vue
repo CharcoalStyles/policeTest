@@ -157,7 +157,7 @@ export default {
         return [this.defaultNoRole]
       }
       if (this.step.id === 'goal-role') {
-        return result.filter(i => i.id !== 99).filter(i => i.genericRole === false)
+        return result.filter(i => i.id !== 99).filter(i => !i.genericRole)
       }
       return result.filter(i => i.id !== 99)
     },
