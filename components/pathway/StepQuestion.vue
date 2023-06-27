@@ -22,19 +22,19 @@
         <p v-for="(text, index) in step.schema.support" :key="index" class="text-base text-nsw-brand-grey-primary mb-3">{{ text }}</p>
       </div>
     </div>
-    <div v-if="showExplorerPanel" class="lg:w-1/2 flex lg:justify-end items-start">
+    <div v-if="showNoRolePanel" class="lg:w-1/2 flex lg:justify-end items-start">
       <div class="block p-4 md:p-8 bg-nsw-grey-100 lg:w-2/3 rounded-lg max-w-lg">
         <h3 class="font-bold text-2xl mb-8">
-          Cant find a job title that is relevant?
+          None of these roles are similar to my current role
         </h3>
         <div class="font-bold mb-3">
           Use the Role Explorer tool
         </div>
         <p class="mb-12">
-          See all the various roles, levels and how they’re connected across NSW Governement.
+          If you are not currently in a procurement role and none of these roles are similar you may click the button below.
         </p>
-        <nsw-button action="secondary-outline" @click.native="$router.push('/explorer')">
-          Browse roles
+        <nsw-button action="secondary-outline" @click.native="setDefaultRole">
+          No current role
         </nsw-button>
       </div>
     </div>
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import step from '@/mixins/step'
 import FormRadio from '@/components/pathway/FormRadio'
 import FormRole from '@/components/pathway/FormRole'
 import FormSkill from '@/components/pathway/FormSkill'
@@ -62,6 +64,7 @@ export default {
     NswButton,
     VClamp
   },
+  mixins: [step],
   props: {
     step: {
       type: Object,
@@ -69,11 +72,18 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'getRoleByCode',
+      'getNextChildStepByCurrentIndex'
+    ]),
     clampText() {
       return this.expanded ? 'Read less' : 'Read more'
     },
     componentName() {
       return `form-${this.step.schema.field.type}`
+    },
+    defaultNoRole() {
+      return this.getRoleByCode(99)
     },
     widthStyle() {
       switch (this.step.schema.field.type) {
@@ -87,8 +97,23 @@ export default {
           break
       }
     },
-    showExplorerPanel() {
+    showNoRolePanel() {
       return ['current-gov-role', 'current-outside-role'].includes(this.step.id)
+    }
+  },
+  methods: {
+    setDefaultRole() {
+      if (this.defaultNoRole && this.defaultNoRole.id) {
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: this.step.id,
+          value: this.defaultNoRole.id
+        })
+        this.goToNextStep()
+      }
+    },
+    goToNextStep() {
+      const nextStep = this.getNextStepByCurrentIndex(this.currentStepIndex)
+      this.$router.push(`/pathway/${nextStep.id}`)
     }
   }
 }

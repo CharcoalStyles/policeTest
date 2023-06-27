@@ -6,7 +6,7 @@
     <h3 class="font-bold text-xl mb-4">
       {{ role.name }}
     </h3>
-    <p class="w-full lg:w-5/6 mb-6">
+    <p v-if="role.id !== 99" class="w-full lg:w-5/6 mb-6">
       {{ role.description }}
       {{ role.roleFunction }}
     </p>

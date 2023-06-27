@@ -627,6 +627,9 @@ export default {
     },
 
     familyRoles(currentRole) {
+      if (currentRole.id === 99) {
+        return []
+      }
       return this.$collect(this.roles)
         .filter(role => {
           return (
