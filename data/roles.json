@@ -17,9 +17,63 @@
       "focus": []
     },
     "capabilities": {
-      "focus": []
+      "focus": [
+        {
+          "code": "DIRE",
+          "level": "1"
+        },
+        {
+          "code": "ACWI",
+          "level": "1"
+        },
+        {
+          "code": "MASE",
+          "level": "1"
+        },
+        {
+          "code": "COEF",
+          "level": "1"
+        },
+        {
+          "code": "COTO",
+          "level": "1"
+        },
+        {
+          "code": "INAN",
+          "level": "1"
+        },
+        {
+          "code": "DERE",
+          "level": "1"
+        },
+        {
+          "code": "PLAN",
+          "level": "1"
+        },
+        {
+          "code": "THAN",
+          "level": "1"
+        },
+        {
+          "code": "FINA",
+          "level": "1"
+        },
+        {
+          "code": "TECH",
+          "level": "1"
+        },
+        {
+          "code": "PRMA",
+          "level": "1"
+        },
+        {
+          "code": "PRAN",
+          "level": "1"
+        }
+      ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 1,
@@ -81,7 +135,8 @@
     },
     "alias": [
       "Executive Director Procurement"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 2,
@@ -150,7 +205,8 @@
       "Director Strategic Procurement",
       "Director Commercial",
       "Head of Procurement"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 3,
@@ -214,7 +270,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": false
   },
   {
     "id": 4,
@@ -288,7 +345,8 @@
     },
     "alias": [
       "Director Contracts and Supplier Relationships"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 5,
@@ -344,7 +402,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": false
   },
   {
     "id": 6,
@@ -399,7 +458,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": false
   },
   {
     "id": 7,
@@ -458,7 +518,8 @@
     "alias": [
       "Associate Director Procurement Governance",
       "Manager Procurement Advice"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 8,
@@ -522,7 +583,8 @@
       "Associate Director Procurement Policy",
       "Procurement Strategy Manager",
       "Manager Procurement Advice"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 9,
@@ -588,7 +650,8 @@
     },
     "alias": [
       "Business Partner"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 10,
@@ -646,7 +709,8 @@
     },
     "alias": [
       "Principal Procurement Analyst"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 11,
@@ -704,7 +768,8 @@
     },
     "alias": [
       "Senior Sourcing Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 12,
@@ -770,7 +835,8 @@
     },
     "alias": [
       "Senior Manager Contracts"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 13,
@@ -841,7 +907,8 @@
     "alias": [
       "Procurement Manager",
       "Strategic Procurement Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 14,
@@ -911,7 +978,8 @@
     },
     "alias": [
       "Portfolio Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 15,
@@ -971,7 +1039,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": false
   },
   {
     "id": 16,
@@ -1034,7 +1103,8 @@
       "Senior Buyer",
       "Senior Project Officer",
       "Senior Procurement Consultant"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 17,
@@ -1089,7 +1159,8 @@
     "alias": [
       "Procurement Category Specialist",
       "Procurement Specialist"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 18,
@@ -1163,7 +1234,8 @@
     },
     "alias": [
       "Senior Policy Officer"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 19,
@@ -1232,7 +1304,8 @@
       "Contract Implementation Officer",
       "Senior Contracts Advisor",
       "Senior Supplier Relationship Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 20,
@@ -1295,7 +1368,8 @@
     "alias": [
       "Procurement Specialist",
       "Senior Advisor"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 21,
@@ -1349,7 +1423,8 @@
     },
     "alias": [
       "Procurement Consultant"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 22,
@@ -1404,7 +1479,8 @@
     "alias": [
       "Project Officer",
       "Project Coordinator"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 23,
@@ -1466,7 +1542,8 @@
     },
     "alias": [
       "Policy Officer"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 24,
@@ -1527,7 +1604,8 @@
       "Procurement Data Analyst",
       "Business Intelligence Analyst",
       "Data Analyst"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 25,
@@ -1588,7 +1666,8 @@
       "Project Officer",
       "Project Coordinator",
       "Procurement Consultant"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 26,
@@ -1642,7 +1721,8 @@
     },
     "alias": [
       "Project Officer"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 27,
@@ -1704,7 +1784,8 @@
       "Contracts Advisor",
       "Supplier Relationship Manager",
       "Account Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 28,
@@ -1762,7 +1843,8 @@
     },
     "alias": [
       "Assistant Business Analyst"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 29,
@@ -1826,7 +1908,8 @@
       "Purchasing Officer",
       "Assistant Project Officer",
       "Assistant Project Coordinator"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 30,
@@ -1879,7 +1962,8 @@
     },
     "alias": [
       "Assistant Policy Officer"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 31,
@@ -1934,7 +2018,8 @@
     "alias": [
       "Contract Support Officer",
       "Assistant Account Manager"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 32,
@@ -1981,7 +2066,8 @@
       "Business Support Officer",
       "Administrative Support Officer",
       "Administrative Officer"
-    ]
+    ],
+    "genericRole": false
   },
   {
     "id": 33,
@@ -2024,7 +2110,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 34,
@@ -2067,7 +2154,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 35,
@@ -2118,7 +2206,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 36,
@@ -2169,7 +2258,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 37,
@@ -2216,7 +2306,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 38,
@@ -2267,7 +2358,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 39,
@@ -2310,7 +2402,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 40,
@@ -2357,7 +2450,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 41,
@@ -2412,7 +2506,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 42,
@@ -2459,7 +2554,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 43,
@@ -2510,7 +2606,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 44,
@@ -2569,7 +2666,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 45,
@@ -2616,7 +2714,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 46,
@@ -2667,7 +2766,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 47,
@@ -2710,7 +2810,8 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   },
   {
     "id": 48,
@@ -2753,6 +2854,7 @@
         }
       ]
     },
-    "alias": []
+    "alias": [],
+    "genericRole": true
   }
 ]

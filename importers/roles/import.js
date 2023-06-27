@@ -123,7 +123,8 @@ rolesCsvData.data.forEach((row) => {
     capabilities: {
       focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array
     },
-    alias: parseAlias(row.alias)
+    alias: parseAlias(row.alias),
+    genericRole: !!row.generic_role
   })
 })
 
