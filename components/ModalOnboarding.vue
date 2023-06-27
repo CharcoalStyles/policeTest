@@ -60,11 +60,6 @@ export default {
           title: 'Take action toward desired role',
           text: 'Once you find a role of interest, use the Pathways tool to get a personalised action plan.',
           alt: 'Graphic showing a card representing a job role being moved.'
-        },
-        {
-          title: 'Help us learn',
-          text: 'This tool is currently in a pilot phase. Your feedback will help us improve the website.',
-          alt: 'Two conversation bubbles, implying feedback is given.'
         }
       ],
       panel: 0
@@ -84,7 +79,7 @@ export default {
       return this.panel === 0
     },
     isLastPanel() {
-      return this.panel === 3
+      return this.panel === 2
     }
   },
   methods: {
