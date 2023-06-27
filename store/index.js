@@ -157,7 +157,7 @@ const mutations = {
           title: currentSkill.name,
           type: 'question',
           schema: {
-            section: 'Assess your current PRPR skill level',
+            section: 'Select your current procurement skill level',
             help: currentSkill.description,
             field: {
               type: 'skill',
