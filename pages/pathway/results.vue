@@ -255,9 +255,10 @@
           <div class="md:w-8/12">
             <div class="py-6 lg:py-16">
               <print-page class="mb-6" @click.native="printPage" />
-              <disclaimer-panel>Salaries are indicative only. Check the position description when applying.</disclaimer-panel>
-              <disclaimer-panel>Completing resources does not guarantee successful transition to any role.</disclaimer-panel>
-              <disclaimer-panel>Disclaimer for about role groups &amp; titles difference across agencies.</disclaimer-panel>
+              <disclaimer-panel>Salaries are indicative only. Check the job ad when applying for a role.</disclaimer-panel>
+              <disclaimer-panel>Completing upskilling resources does not guarantee successful transition to any role.</disclaimer-panel>
+              <disclaimer-panel>This tool includes common types of procurement roles that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation.</disclaimer-panel>
+              <disclaimer-panel>This list of upskilling resources includes those offered by external training providers. These offerings have not been endorsed by NSW Government. Before registering, please review the offering to ensure it is relevant to you.</disclaimer-panel>
             </div>
           </div>
         </div>
