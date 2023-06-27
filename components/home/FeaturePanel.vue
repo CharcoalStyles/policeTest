@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white rounded overflow-hidden shadow-lg">
-    <img :src="image" :alt="alt" class="h-48 w-full object-cover bg-nsw-grey-200 border-b-4 border-nsw-brand-purple-dark">
+    <img :src="image" :alt="alt" class="w-full object-cover bg-nsw-grey-200 border-b-4 border-nsw-brand-purple-dark" style="aspect-ratio: 3/1;">
     <div class="p-4 md:p-8">
       <div class="font-bold mb-3 text-xl" v-text="title" />
       <p>
