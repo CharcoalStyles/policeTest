@@ -38,6 +38,22 @@
         </nsw-button>
       </div>
     </div>
+    <div v-if="showExplorerPanel" class="lg:w-1/2 flex lg:justify-end items-start">
+      <div class="block p-4 md:p-8 bg-nsw-grey-100 lg:w-2/3 rounded-lg max-w-lg">
+        <h3 class="font-bold text-2xl mb-8">
+          Cant find a role title that is relevant?
+        </h3>
+        <div class="font-bold mb-3">
+          Use the Role Explorer tool
+        </div>
+        <p class="mb-12">
+          See all the various procurement roles, levels and how they’re connected across the NSW public sector.
+        </p>
+        <nsw-button action="secondary-outline" @click.native="$router.push('/explorer')">
+          Browse role types
+        </nsw-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -99,6 +115,9 @@ export default {
     },
     showNoRolePanel() {
       return ['current-gov-role', 'current-outside-role'].includes(this.step.id)
+    },
+    showExplorerPanel() {
+      return ['goal-role'].includes(this.step.id)
     }
   },
   methods: {
