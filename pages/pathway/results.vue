@@ -643,7 +643,8 @@ export default {
             role.id !== currentRole.id &&
             role.gradeId >= currentRole.gradeId &&
             role.gradeId - currentRole.gradeId <= 3 &&
-            role.id !== this.goalRole?.id
+            role.id !== this.goalRole?.id &&
+            !role.genericRole
           )
         })
         .sortBy('gradeId')
