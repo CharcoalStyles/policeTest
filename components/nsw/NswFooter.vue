@@ -77,7 +77,6 @@
             <div class="flex items-center flex-1 text-white text-xs text-center lg:text-right font-bold mt-4 lg:mt-0">
               <div class="w-full">
                 <p>© 2023 <a href="https://www.psc.nsw.gov.au/accessibility" class="hover:underline" style="text-underline-offset: 2px">NSW Public Service Commission</a></p>
-                <p>Website by <a href="https://futurefriendly.team/" target="_blank" class="hover:underline" style="text-underline-offset: 2px">Future Friendly</a></p>
               </div>
             </div>
           </div>
