@@ -8,10 +8,10 @@
               <print-page class="top-0 right-0 mb-6 md:absolute" @click.native="printPage" />
               <div class="mb-8 md:mb-16 md:w-2/3 lg:w-1/2 pt-8 md:pt-16">
                 <h2 class="pb-3 font-bold btn-blue text-nsw-brand-primary-blue">
-                  Personal Career Pathway
+                  Your personal career pathway
                 </h2>
                 <h1 class="text-3xl md:text-4xl font-bold leading-snug tracking-tight lg:text-5xl">
-                  We’ve generated a plan to get you to your new career.
+                  We’ve generated a plan to get you to your next role
                 </h1>
               </div>
             </div>
@@ -69,7 +69,7 @@
                 <step-badge>1</step-badge> Select your target role
               </h3>
               <p class="md:w-2/3">
-                A target role compares your current role, identify skills gaps, surfaces learning resources.
+                Compare your current role to a target role by skill, capability, salary and grade. You’ll also be shown upskilling resources to help you get to your target role.
               </p>
             </div>
             <div class="lg:w-10/12">
