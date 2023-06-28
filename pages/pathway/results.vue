@@ -94,6 +94,11 @@
                   </h4>
                   <role-selector v-for="role in skillRoles(currentRole)" :key="role.id" :role="role" :target-role="targetRole" @click.native="selectTargetRole(role)" @keyup.space="selectTargetRole(role)" />
                 </div>
+                <div v-if="!targetRole && familyRoles(currentRole).length === 0 && skillRoles(currentRole).length === 0">
+                  <disclaimer-panel heading="No roles available">
+                    <a href="/pathway/goal" class="underline text-nsw-brand-primary-blue">Update your answers</a> to select a target role.
+                  </disclaimer-panel>
+                </div>
               </div>
             </div>
           </div>
@@ -116,7 +121,7 @@
                       <div class="flex flex-col items-center m-4 lg:m-8">
                         <img src="/icons/empty.svg" alt="No target role selected" class="mb-6">
                         <div class="text-center lg:w-2/3">
-                          Select a <a v-scroll-to="'#target'" href="#" class="underline text-nsw-brand-primary-blue">target role</a> to start comparing roles.
+                          Select a <a v-scroll-to="'#target'" href="/pathway/goal" class="underline text-nsw-brand-primary-blue">target role</a> to start comparing roles.
                         </div>
                       </div>
                     </div>
@@ -632,6 +637,7 @@ export default {
     },
 
     familyRoles(currentRole) {
+      console.log(currentRole)
       if (currentRole.id === 99) {
         return []
       }
