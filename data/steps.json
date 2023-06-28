@@ -16,7 +16,7 @@
     "icon": "edit",
     "conditions": false,
     "schema": {
-      "section": "Your personalised pathway",
+      "section": "Let’s get started",
       "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your procurement skills and capabilities."
     }
   },
@@ -164,7 +164,7 @@
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the skills required for your current role. If you are not currently in a procurement role you will assess some entry level skills."
+      "description": "In this section, you'll assess yourself on the skills required for your current role."
     },
     "steps": []
   },
@@ -176,7 +176,7 @@
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the capabilities required for your current role. If you are not currently in a procurement role you will assess some general capabilities."
+      "description": "In this section, you'll assess yourself on the capabilities required for your current role."
     },
     "steps": []
   },
@@ -188,7 +188,7 @@
     "conditions": false,
     "schema": {
       "section": "Your results",
-      "description": "Thank you for answering this questionnaire, click next to view your results."
+      "description": "Thank you for answering this questionnaire. Click ‘Go to my plan’ to view your personalised career plan."
     }
   }
 ]

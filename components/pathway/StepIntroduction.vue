@@ -3,7 +3,7 @@
     <div class="lg:w-1/2">
       <div class="mb-8 md:mb-12">
         <h2 class="btn-blue font-bold text-nsw-brand-primary-blue mb-3">
-          Procurement Career Pathways tool
+          Procurement Career Pathways Tool
         </h2>
         <h1 class="text-3xl md:text-[42px] font-bold leading-tight">
           Get a personalised career recommendation and plan.

@@ -27,9 +27,6 @@
         <h3 class="font-bold text-2xl mb-8">
           None of these roles are similar to my current role
         </h3>
-        <div class="font-bold mb-3">
-          Use the Role Explorer tool
-        </div>
         <p class="mb-12">
           If you are not currently in a procurement role and none of these roles are similar you may click the button below.
         </p>
