@@ -1,7 +1,7 @@
 <template>
   <base-modal :show="show" :max-width="maxWidth" title="Update details" :closeable="closeable" :scrollable="false" @close="$emit('close')">
     <p class="leading-relaxed">
-      In order to update your details we will return you to the questionnaire. Your original answers will be available for you to edit and re-submit.
+      In order to update your answers, we will return you to the questionnaire. Your original answers will be available for you to edit and re-submit.
     </p>
     <template #footer>
       <nsw-button action="secondary" class="mr-4" @click.native="$emit('close')">

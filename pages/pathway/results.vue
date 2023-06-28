@@ -157,7 +157,7 @@
                 </div>
               </div>
               <div class="relative">
-                <label class="font-bold" for="filterCapabilities">Skill</label>
+                <label class="font-bold" for="filterCapabilities">Skills</label>
                 <div class="mt-1" style="min-width:340px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
                     {{ filterCapabilityLabel }}
