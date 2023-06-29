@@ -44,7 +44,7 @@ export default {
         eventCategory: 'Pathway Results',
         eventAction: 'Update Answer Modal'
       })
-
+      this.$emit('close')
       this.$router.push('/pathway')
     }
   }
