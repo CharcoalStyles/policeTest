@@ -8,7 +8,6 @@
     </h3>
     <p v-if="role.id !== 99" class="w-full lg:w-5/6 mb-6">
       {{ role.description }}
-      {{ role.roleFunction }}
     </p>
     <div class="flex flex-col lg:flex-row">
       <information-badge v-if="role.grade" class="mb-6 rounded-full mr-3" size="sm">
