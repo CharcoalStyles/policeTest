@@ -21,35 +21,38 @@
           </div>
         </div>
         <div class="flex flex-row">
-          <div class="w-4/12 pr-20">
-            <h3 class="text-2xl font-bold first:mt-0">
+          <div class="w-4/12 pr-10">
+            <h3 class="text-2xl font-bold mb-2">
               Filter results
             </h3>
-            <div class="w-full border-b border-nsw-grey-200 pb-6">
-              <div class="pt-6">
+            <div class="w-full border-b border-nsw-grey-200 pb-4">
+              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.format.open = !filter.format.open">
                 <p class="font-bold">Type of content</p>
-              </div>
-              <ul>
+                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.format.open ? 'rotate-0' : 'rotate-180'">
+              </button>
+              <ul v-if="filter.format.open">
                 <li v-for="option in filterFormatOptions" :key="option" :value="option">
                   <input-checkbox v-model="filter.format.value" :input-value="option" :label="option" :name="option" @change="onFilterFormat" />
                 </li>
               </ul>
             </div>
-            <div class="w-full border-b border-nsw-grey-200 pb-6">
-              <div class="pt-6">
+            <div class="w-full border-b border-nsw-grey-200 pb-4">
+              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.capability.open = !filter.capability.open">
                 <p class="font-bold">Skills</p>
-              </div>
-              <ul>
+                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.capability.open ? 'rotate-0' : 'rotate-180'">
+              </button>
+              <ul v-if="filter.capability.open">
                 <li v-for="option in filterCapabilityOptions" :key="option" :value="option">
                   <input-checkbox v-model="filter.capability.value" :input-value="option" :label="getCapabilityOptionLabel(option)" :name="option" @change="onFilterCapability" />
                 </li>
               </ul>
             </div>
-            <div class="w-full border-b border-nsw-grey-200 pb-6">
-              <div class="pt-6">
+            <div class="w-full border-b border-nsw-grey-200 pb-4">
+              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.level.open = !filter.level.open">
                 <p class="font-bold">Level</p>
-              </div>
-              <ul>
+                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.level.open ? 'rotate-0' : 'rotate-180'">
+              </button>
+              <ul v-if="filter.level.open">
                 <li v-for="option in filterLevelOptions" :key="option" :value="option">
                   <input-checkbox v-model="filter.level.value" :input-value="option" :label="option" :name="option" />
                 </li>
@@ -81,10 +84,23 @@
                 </div>
               </div>
             </div>
-            <div class="w-full py-6">
-              <button class="text-nsw-brand-primary-blue font-semibold hover:underline" style="text-underline-offset: 2px;" @click="clearFilters">
+            <div class="w-full py-6 mb-6">
+              <button class="text-nsw-brand-primary-blue font-semibold hover:underline focus:outline-none focus:underline" style="text-underline-offset: 2px;" @click="clearFilters">
                 Clear all filters
               </button>
+            </div>
+            <div class="mb-16">
+              <div class="block px-6 py-8 bg-nsw-grey-100 rounded-lg">
+                <h3 class="font-bold text-xl mb-5 md:pr-24">
+                  Create a personalised career plan.
+                </h3>
+                <p class="mb-6">
+                  Get a personalised action plan with career opportunities that you can discuss with your manager. Access resources to take your career to the next level.
+                </p>
+                <nsw-button action="psc" @click.native="$router.push('/pathway')">
+                  Plan my career growth
+                </nsw-button>
+              </div>
             </div>
           </div>
           <div class="w-8/12">
@@ -129,7 +145,7 @@ export default {
       resources,
       filter: {
         format: {
-          open: false,
+          open: true,
           options: [],
           value: ['All'],
           order: [
@@ -144,12 +160,12 @@ export default {
           ]
         },
         capability: {
-          open: false,
+          open: true,
           options: [],
           value: ['All']
         },
         level: {
-          open: false,
+          open: true,
           options: [],
           value: []
         },
@@ -312,6 +328,7 @@ export default {
       this.filter.recommended.value = false
       this.filter.format.value = ['All']
       this.filter.capability.value = ['All']
+      this.filter.level.value = []
     },
     onFilterCapability(value) {
       this.onFilterCheckbox(value, 'capability')

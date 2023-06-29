@@ -32,6 +32,9 @@ export default {
         case 'highlight':
           return 'bg-nsw-brand-primary-highlight text-white focus:bg-nsw-brand-tertiary-blue'
           break
+        case 'psc':
+          return 'bg-nsw-brand-purple-dark text-white focus:bg-nsw-brand-tertiary-blue'
+          break
         default:
           return 'bg-nsw-brand-primary-blue text-white focus:bg-nsw-brand-tertiary-blue'
           break
