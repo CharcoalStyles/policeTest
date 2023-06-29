@@ -150,7 +150,7 @@ export default {
           value: ['All'],
           order: [
             'Online courses',
-            'Instructorled training',
+            'Instructor-led training',
             'Qualifications',
             'Video and audio',
             'Articles',

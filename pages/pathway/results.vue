@@ -157,7 +157,7 @@
                 </div>
               </div>
               <div class="relative">
-                <label class="font-bold" for="filterCapabilities">Skills</label>
+                <label class="font-bold" for="filterCapabilities">Skill</label>
                 <div class="mt-1" style="min-width:340px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
                     {{ filterCapabilityLabel }}
@@ -324,7 +324,7 @@ export default {
           value: ['All'],
           order: [
             'Online courses',
-            'Instructorled training',
+            'Instructor-led training',
             'Qualifications',
             'Video and audio',
             'Articles',
