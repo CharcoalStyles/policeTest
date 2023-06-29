@@ -16,6 +16,9 @@
           {{ cost }}
         </div>
       </div>
+      <div class="w-full text-sm font-bold text-xl mb-4">
+        {{ resource.title }}
+      </div>
       <div v-if="capabilities" class="mb-2 flex flex-wrap">
         <information-badge
           v-for="name in capabilities"
@@ -26,9 +29,6 @@
         >
           {{ name }}
         </information-badge>
-      </div>
-      <div class="w-full text-sm font-bold text-lg mb-4">
-        {{ resource.title }}
       </div>
       <div class="w-full">
         <v-clamp
