@@ -49,6 +49,13 @@ const parseDefault = recommended => {
   return recommended === '1'
 }
 
+const parseTargetLevel = level => {
+  if (level && typeof level === 'string') {
+    return level.replace(/\s/g, '').split(',')
+  }
+  return []
+}
+
 // Init empty resources
 const resources = []
 
@@ -63,8 +70,7 @@ resourcesCsvData.data.forEach((row, index) => {
     specificCapabilities: row.procurement_professionals_capability_set.split(','),
     roleFunctions: [], // Not included in the CSV
     author: row.author,
-    level: '', // Not indluded in the CSV
-    // format: row.format,
+    targetLevel: parseTargetLevel(row.role_level_this_resource_is_targeted_at), // NEW
     format: parseFormat(row.format),
     default: parseDefault(row.recommended), // Not included in the CSV
     cost: row.cost, // NEW

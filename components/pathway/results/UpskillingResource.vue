@@ -68,15 +68,24 @@
         </v-clamp>
       </div>
       <div class="w-full flex mt-8 items-center justify-between">
-        <img src="/icons/link.svg" alt="Link icon" class="w-6" />
-        <div v-if="resource.default">
+        <div class="flex space-x-2">
           <information-badge
+            v-for="level in resource.targetLevel"
+            :key="level"
+            size="xs"
+            colour="blue-outline"
+          >
+            {{ level }}
+          </information-badge>
+          <information-badge
+            v-if="resource.default"
             size="xs"
             colour="blue-outline"
           >
             Recommended
           </information-badge>
         </div>
+        <img src="/icons/link.svg" alt="Link icon" class="w-6" />
       </div>
     </div>
   </div>
@@ -100,6 +109,10 @@ export default {
     targetRoleCapabilities: {
       type: Array,
       default: () => []
+    },
+    showAllSkills: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -109,6 +122,12 @@ export default {
   },
   computed: {
     capabilities() {
+      if (this.showAllSkills && this.resource.skills) {
+        return this.$collect(this.resource.skills)
+          .unique('code')
+          .map((item) => capabilityNamesMap[item.code])
+          .all()
+      }
       if (this.targetRoleCapabilities.length <= 0 || !this.resource.skills) {
         return false
       }
