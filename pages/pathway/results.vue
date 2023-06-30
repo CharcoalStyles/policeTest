@@ -172,7 +172,9 @@
                 </div>
               </div>
               <div class="relative">
-                <label class="font-bold" for="filterCapabilities">Level</label>
+                <label class="flex items-center whitespace-no-wrap font-bold" for="filterCapabilities">
+                  Level <help-bubble tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5." />
+                </label>
                 <div class="mt-1" style="min-width:260px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-level" @click="toggleLevelFilter">
                     {{ filterLevelLabel }}
@@ -356,7 +358,12 @@ export default {
         level: {
           open: false,
           options: [],
-          value: ['All']
+          value: ['All'],
+          order: [
+            'Foundational',
+            'Intermediate',
+            'Advanced'
+          ]
         },
         free: {
           value: false
@@ -434,8 +441,9 @@ export default {
           resource.targetLevel.forEach((level) => tmp.push(level))
         })
         const levels = this.$collect(tmp).unique().all()
-        levels.unshift('All')
-        return levels
+        const orderedLevels = levels.sort((a, b) => this.filter.level.order.indexOf(a) - this.filter.level.order.indexOf(b))
+        orderedLevels.unshift('All')
+        return orderedLevels
       }
       return ['All']
     },
