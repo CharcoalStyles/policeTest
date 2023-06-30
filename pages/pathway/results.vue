@@ -143,7 +143,7 @@
             <div class="flex">
               <div class="relative mr-4">
                 <label class="font-bold" for="filterFormats">Type of content</label>
-                <div class="mt-1" style="min-width:340px;">
+                <div class="mt-1" style="min-width:260px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-format" @click="toggleFormatFilter">
                     {{ filterFormatLabel }}
                   </button>
@@ -156,9 +156,9 @@
                   </ul>
                 </div>
               </div>
-              <div class="relative">
+              <div class="relative mr-4">
                 <label class="font-bold" for="filterCapabilities">Skill</label>
-                <div class="mt-1" style="min-width:340px;">
+                <div class="mt-1" style="min-width:260px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
                     {{ filterCapabilityLabel }}
                   </button>
@@ -167,6 +167,21 @@
                   <ul>
                     <li v-for="option in filterCapabilityOptions" :key="option" :value="option">
                       <input-checkbox v-model="filter.capability.value" :input-value="option" :label="getCapabilityOptionLabel(option)" :name="option" @change="onFilterCapabilityChange" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="relative">
+                <label class="font-bold" for="filterCapabilities">Level</label>
+                <div class="mt-1" style="min-width:260px;">
+                  <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-level" @click="toggleLevelFilter">
+                    {{ filterLevelLabel }}
+                  </button>
+                </div>
+                <div v-if="filter.level.open" class="nsw-custom-select-level bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10" aria-describedby="filter-level">
+                  <ul>
+                    <li v-for="option in filterLevelOptions" :key="option" :value="option">
+                      <input-checkbox v-model="filter.level.value" :input-value="option" :label="option" :name="option" @change="onFilterLevelChange" />
                     </li>
                   </ul>
                 </div>
@@ -338,6 +353,11 @@ export default {
           options: [],
           value: ['All']
         },
+        level: {
+          open: false,
+          options: [],
+          value: ['All']
+        },
         free: {
           value: false
         },
@@ -372,6 +392,16 @@ export default {
       }
       return capabilityNamesMap[this.filter.capability.value[0]]
     },
+    filterLevelLabel() {
+      if (this.filter.level.value && this.filter.level.value.includes('All')) {
+        return 'All levels'
+      }
+      const filtered = this.filter.level.value.filter(item => item !== 'All')
+      if (filtered.length > 1) {
+        return `${filtered.length} levels`
+      }
+      return this.filter.level.value[0]
+    },
     filterFormatOptions() {
       if (this.allResources.length > 0) {
         const formats = this.$collect(
@@ -394,6 +424,18 @@ export default {
         const filteredCodes = this.$collect(tmp).unique().all().filter(code => this.targetRoleCapabilities.includes(code))
         filteredCodes.unshift('All')
         return filteredCodes || ['']
+      }
+      return ['All']
+    },
+    filterLevelOptions() {
+      if (this.allResources.length > 0) {
+        const tmp = []
+        this.allResources.map((resource) => {
+          resource.targetLevel.forEach((level) => tmp.push(level))
+        })
+        const levels = this.$collect(tmp).unique().all()
+        levels.unshift('All')
+        return levels
       }
       return ['All']
     },
@@ -437,13 +479,18 @@ export default {
       const filteredResources = this.allResources.filter(resource => {
         const match = {
           format: false,
-          capability: false
+          capability: false,
+          level: false
         }
         if (this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format)) {
           match.format = true
         }
         if (this.filter.capability.value.includes('All')) {
           match.capability = true
+        }
+
+        if (this.filter.level.value.includes('All')) {
+          match.level = true
         }
 
         if (this.filter.free.value && resource.cost !== '0') {
@@ -464,11 +511,19 @@ export default {
           .map((item) => item.code)
           .contains((value, key) => this.filter.capability.value.includes(value))
 
+        const matchedLevels = this.$collect(resource.targetLevel)
+          .map((item) => item)
+          .contains((value, key) => this.filter.level.value.includes(value))
+
+        if (matchedLevels) {
+          match.level = true
+        }
+
         if (matchedSkills || matchedCapabilities) {
           match.capability = true
         }
 
-        return match.format && match.capability
+        return match.format && match.capability && match.level
       })
 
       filteredResources.forEach((resource) => {
@@ -562,16 +617,27 @@ export default {
       if (!target.closest('.nsw-custom-select-capability')) {
         this.filter.capability.open = false
       }
+      if (!target.closest('.nsw-custom-select-level')) {
+        this.filter.level.open = false
+      }
     },
     toggleFormatFilter(e) {
       e.stopPropagation()
       this.filter.format.open = !this.filter.format.open
       this.filter.capability.open = false
+      this.filter.level.open = false
     },
     toggleCapabilityFilter(e) {
       e.stopPropagation()
       this.filter.capability.open = !this.filter.capability.open
       this.filter.format.open = false
+      this.filter.level.open = false
+    },
+    toggleLevelFilter(e) {
+      e.stopPropagation()
+      this.filter.level.open = !this.filter.level.open
+      this.filter.format.open = false
+      this.filter.capability.open = false
     },
     onFilterFormatChange(value) {
       if (!this.filter.format.value || this.filter.format.value.length === 0) {
@@ -593,6 +659,17 @@ export default {
       }
       if (value !== 'All' && this.filter.capability.value.includes(value)) {
         this.filter.capability.value = this.filter.capability.value.filter(item => item !== 'All')
+      }
+    },
+    onFilterLevelChange(value) {
+      if (!this.filter.level.value || this.filter.level.value.length === 0) {
+        this.filter.level.value = ['All']
+      }
+      if (value === 'All' && this.filter.level.value.includes('All')) {
+        this.filter.level.value = ['All']
+      }
+      if (value !== 'All' && this.filter.level.value.includes(value)) {
+        this.filter.level.value = this.filter.level.value.filter(item => item !== 'All')
       }
     },
     getCapabilityOptionLabel(key) {
