@@ -257,6 +257,7 @@ export default {
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
       return collect(fuzzy.search(this.filter.keyword))
+        .filter((role) => !role.genericRole)
         .where('salary.min', '>=', this.filter.salary[0])
         .where('salary.max', '<=', this.filter.salary[1])
         .filter((role) => {
