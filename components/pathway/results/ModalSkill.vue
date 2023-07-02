@@ -166,7 +166,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.selectedSkill)
     this.$ga.event({
       eventCategory: 'Pathway Results',
       eventAction: 'Skill Modal Opened',
