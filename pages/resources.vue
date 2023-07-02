@@ -166,7 +166,11 @@ export default {
         },
         level: {
           open: true,
-          options: [],
+          order: [
+            'Foundational',
+            'Intermediate',
+            'Advanced'
+          ],
           value: []
         },
         free: {
@@ -216,7 +220,8 @@ export default {
         resources.map((resource) => {
           resource.targetLevel.forEach((level) => tmp.push(level))
         })
-        return this.$collect(tmp).unique().all()
+        const levels = this.$collect(tmp).unique().all()
+        return levels.sort((a, b) => this.filter.level.order.indexOf(a) - this.filter.level.order.indexOf(b))
       }
       return ['All']
     },
