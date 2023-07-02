@@ -13,21 +13,21 @@
     <footer class="bg-nsw-grey-50">
       <div class="w-full xl:container">
         <div class="px-4 md:px-6 py-12 md:py-16">
-          <div class="grid grid-cols-9 gap-12">
+          <div class="grid grid-cols-9 md:gap-12">
             <div class="col-span-9 lg:col-span-3">
               <label class="block text-lg font-bold mb-5" for="footer-search">Search the PSC</label>
-              <div>
+              <div class="mb-6">
                 <form class="relative" @submit="onSearch">
                   <div class="flex items-center justify-center absolute top-0 left-0 bottom-0 text-nsw-grey-400 select-none pointer-events-none" style="width:44px;">
                     <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="css-0"><path d="M12.7 11.3c.9-1.2 1.4-2.6 1.4-4.2 0-3.9-3.1-7.1-7-7.1S0 3.2 0 7.1c0 3.9 3.2 7.1 7.1 7.1 1.6 0 3.1-.5 4.2-1.4l3 3c.2.2.5.3.7.3s.5-.1.7-.3c.4-.4.4-1 0-1.4l-3-3.1zm-5.6.8c-2.8 0-5.1-2.2-5.1-5S4.3 2 7.1 2s5.1 2.3 5.1 5.1-2.3 5-5.1 5z"></path></svg>
                   </div>
-                  <input id="footer-search" v-model="search" class="nsw-form__input" type="text" value="" placeholder="Search" style="padding-left:36px;">
+                  <input id="footer-search" v-model="search" class="nsw-form__input max-w-full" type="text" value="" placeholder="Search" style="padding-left:36px;">
                 </form>
               </div>
             </div>
             <div class="col-span-9 md:col-span-3 lg:col-span-2">
               <p class="text-lg font-bold mb-5">Connect with us</p>
-              <ul>
+              <ul class="mb-6">
                 <li v-for="item in link.connect" :key="item.label" class="mt-2">
                   <a :href="item.href" class="hover:underline" style="text-underline-offset: 2px">{{ item.label }}</a>
                 </li>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-span-9 md:col-span-3 lg:col-span-2">
               <p class="text-lg font-bold mb-5">About us</p>
-              <ul>
+              <ul class="mb-6">
                 <li v-for="item in link.about" :key="item.label" class="mt-2">
                   <a :href="item.href" class="hover:underline" style="text-underline-offset: 2px">{{ item.label }}</a>
                 </li>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-span-9 md:col-span-3 lg:col-span-2">
               <p class="text-lg font-bold mb-5">Key information</p>
-              <ul>
+              <ul class="mb-6">
                 <li v-for="item in link.information" :key="item.label" class="mt-2">
                   <a :href="item.href" class="hover:underline" style="text-underline-offset: 2px">{{ item.label }}</a>
                 </li>

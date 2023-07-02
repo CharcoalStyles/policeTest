@@ -13,7 +13,7 @@
           </div>
           <div class="w-full md:w-8/12 mb-20">
             <form class="relative rounded overflow-hidden" @submit="onSearch">
-              <input id="footer-search" v-model="searchValue" class="nsw-form__input" type="text" value="">
+              <input id="resource-search" v-model="searchValue" class="nsw-form__input" type="text" value="">
               <button class="absolute top-0 right-0 bottom-0 bg-nsw-brand-primary-blue text-white px-8 flex items-center justify-center" type="submit">
                 Search
               </button>
