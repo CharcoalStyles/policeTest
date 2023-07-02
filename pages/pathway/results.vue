@@ -285,6 +285,7 @@
               <disclaimer-panel>Completing upskilling resources does not guarantee successful transition to any role.</disclaimer-panel>
               <disclaimer-panel>This tool includes common types of procurement roles that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation.</disclaimer-panel>
               <disclaimer-panel>This list of upskilling resources includes those offered by external training providers. These offerings have not been endorsed by NSW Government. Before registering, please review the offering to ensure it is relevant to you.</disclaimer-panel>
+              <disclaimer-panel>For queries relating to the Procurement Career Pathway tool, please contact the NSW Procurement Capability team at: <a href="mailto:NSWP_Capability@treasury.nsw.gov.au" class="font-semibold text-nsw-brand-primary-blue">NSWP_Capability@treasury.nsw.gov.au</a></disclaimer-panel>
             </div>
           </div>
         </div>
