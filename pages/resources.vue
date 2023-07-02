@@ -49,7 +49,9 @@
             </div>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
               <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.level.open = !filter.level.open">
-                <p class="font-bold">Level</p>
+                <p class="flex items-center whitespace-no-wrap font-bold">
+                  Level <help-bubble tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5." />
+                </p>
                 <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.level.open ? 'rotate-0' : 'rotate-180'">
               </button>
               <ul v-if="filter.level.open">
@@ -364,6 +366,10 @@ export default {
         eventLabel: resource.title,
         eventValue: resource.id
       })
+
+      // Open browser window
+      const win = window.open(resource.url, '_blank')
+      win.focus()
     }
   }
 }
