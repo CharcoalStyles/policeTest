@@ -459,7 +459,6 @@ export default {
       return ['All']
     },
     allResources() {
-      // TODO: Include core capabilities
       if (!this.targetRole) {
         return []
       }
@@ -467,6 +466,8 @@ export default {
 
       const targetRoleSkills = this.targetRole.skills.focus
       const currentRoleSkills = this.currentRole.skills.focus
+      const targetRoleCapabilities = this.targetRole.capabilities.focus
+      const currentRoleCapabilities = this.currentRole.capabilities.focus
 
       const matchingResources = this.$collect(this.resources)
         .filter(resource => {
@@ -480,6 +481,19 @@ export default {
                 keep = true
               // They have that skill, does it reach the required level
               } else if (currentRoleSkill && resourceSkill.level > currentRoleSkill.level) {
+                keep = true
+              }
+            })
+          })
+          targetRoleCapabilities.forEach(capability => {
+            const resourceCapabilities = this.$collect(resource.capabilities).where('code', capability.code).all()
+            resourceCapabilities.forEach(resourceCapability => {
+              const currentRoleCapability = this.$collect(currentRoleCapabilities).where('code', capability.code).first()
+              // They don't have that skill, return the resource
+              if (!currentRoleCapability) {
+                keep = true
+              // They have that skill, does it reach the required level
+              } else if (currentRoleCapability && resourceCapability.level > currentRoleCapability.level) {
                 keep = true
               }
             })
