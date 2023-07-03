@@ -310,7 +310,6 @@ export default {
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
-      console.log(results)
       return results
     }
   },

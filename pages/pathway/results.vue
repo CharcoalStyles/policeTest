@@ -733,7 +733,6 @@ export default {
     },
 
     familyRoles(currentRole) {
-      console.log(currentRole)
       if (currentRole.id === 99) {
         return []
       }
@@ -781,7 +780,6 @@ export default {
     },
 
     outboundLinkClick(url) {
-      console.log('register', url)
       this.$ga.event({
         eventCategory: 'Outbound Link',
         eventAction: 'Click',
