@@ -30,8 +30,8 @@
         </h3>
         <p class="mb-3">People looking:</p>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
-          <li>to develop their skills and capabilities.</li>
-          <li>for the next step in their career.</li>
+          <li>to develop their skills and capabilities</li>
+          <li>for the next step in their career</li>
           <li>to work in a NSW public sector procurement role.</li>
         </ul>
       </div>

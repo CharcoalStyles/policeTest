@@ -28,7 +28,7 @@
           None of these roles are similar to my current role
         </h3>
         <p class="mb-12">
-          If you are not currently in a procurement role and none of these roles are similar you may click the button below.
+          If you are not currently in a procurement role and none of these roles are similar, click the button below.
         </p>
         <nsw-button action="secondary-outline" @click.native="setDefaultRole">
           No current role
