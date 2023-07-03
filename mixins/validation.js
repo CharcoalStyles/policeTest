@@ -10,10 +10,17 @@ export default {
     },
     isChildStepDisabled(step) {
       if (step.schema.field.type === 'skill') {
-        return !this.$store.state.pathway.answers.skills?.[step.id]?.value
+        const value = this.$store.state.pathway.answers.skills?.[step.id]?.value
+        if (Number.isInteger(value) && value > -1) {
+          return false
+        }
       } else {
-        return !this.$store.state.pathway.answers.capabilities?.[step.id]?.value
+        const value = this.$store.state.pathway.answers.capabilities?.[step.id]?.value
+        if (Number.isInteger(value) && value > -1) {
+          return false
+        }
       }
+      return true
     }
   }
 }
