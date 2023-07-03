@@ -236,45 +236,55 @@
             </div>
           </div>
           <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
-            <h2 class="mb-12 text-3xl font-bold">
-              What you could do next
+            <h2 class="mb-6 text-4xl font-bold">
+              Next steps
             </h2>
             <div class="grid grid-cols-6 gap-6">
               <next-step-panel
                 class="col-span-6"
-                title="Have a one-on-one with your manager"
-                text="Print a copy and use it in your next meeting with your manager to align on growth opportunities to focus on."
+                title="Take steps to advance your career"
+                text="Get tips to help with your capability and career development."
               >
-                <print-page @click.native="printPage" />
+                <a
+                  href="/next-steps.pdf"
+                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
+                >
+                  Career and capability development guide
+                </a>
               </next-step-panel>
 
               <next-step-panel
                 class="col-span-6 lg:col-span-2"
                 title="Use the Role Explorer"
-                text="If you haven’t found the role you are looking you can search over 165 digital roles with our Role Explorer."
+                text="If you haven’t found the role you are looking for, use the Role Explorer to browse different procurement role types, levels and how they’re connected across the NSW public sector."
               >
-                <nuxt-link to="/explorer" class="flex items-center font-semibold text-nsw-brand-primary-blue" target="_blank" @click.native="outboundLinkClick('/explorer')">
-                  Search for more digital roles <img src="/icons/link.svg" alt="Link" class="ml-3">
+                <nuxt-link to="/explorer" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
+                  Browse typical roles
                 </nuxt-link>
               </next-step-panel>
 
               <next-step-panel
                 class="col-span-6 lg:col-span-2"
-                title="See if your target role is available "
-                text="Browse available job opportunities with NSW Government."
+                title="See if your target role is available"
+                text="Browse procurement job opportunities in the NSW public sector."
               >
-                <h4 class="mb-3 text-sm font-bold">
-                  Relevant resources
-                </h4>
-                <a href="https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/information-and-communications-technology-jobs/all-locations/all-worktypes?jobcategoryid=10352" class="flex items-center font-semibold text-nsw-brand-primary-blue" target="_blank" @click="outboundLinkClick('https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/information-and-communications-technology-jobs/all-locations/all-worktypes?jobcategoryid=10352')">I work for NSW <img src="/icons/link.svg" alt="Link icon" class="ml-3"></a>
+                <a
+                  href="https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554"
+                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
+                  @click="outboundLinkClick('https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554')"
+                >
+                  I work for NSW
+                </a>
               </next-step-panel>
 
               <next-step-panel
                 class="col-span-6 lg:col-span-2"
-                title="Start learning now"
-                text="Think about how you can create opportunities for learning on the job"
+                title="View all upskilling resources"
+                text="View procurement upskilling resources for all skills and capabilities in one place."
               >
-                <a href="https://www.psc.nsw.gov.au/sites/default/files/2020-11/user_guide_employee_learning_and_developing.pdf" class="flex items-center font-semibold text-nsw-brand-primary-blue" target="_blank" @click="outboundLinkClick('https://www.psc.nsw.gov.au/sites/default/files/2020-11/user_guide_employee_learning_and_developing.pdf')">Learning and development guide <img src="/icons/link.svg" alt="Link" class="ml-3"></a>
+                <nuxt-link to="/resources" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
+                  View all resources
+                </nuxt-link>
               </next-step-panel>
             </div>
           </div>
@@ -771,6 +781,7 @@ export default {
     },
 
     outboundLinkClick(url) {
+      console.log('register', url)
       this.$ga.event({
         eventCategory: 'Outbound Link',
         eventAction: 'Click',

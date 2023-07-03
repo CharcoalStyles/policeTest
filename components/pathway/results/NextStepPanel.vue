@@ -1,14 +1,12 @@
 <template>
-  <div class="bg-nsw-grey-100 p-4 md:p-6 cursor-pointer flex flex-col justify-between print:border print:border-nsw-grey-200 print:rounded-lg">
+  <div class="border border-nsw-grey-200 p-4 md:py-8 md:px-10 rounded-lg cursor-pointer flex flex-col justify-between">
     <div>
-      <h3 class="text-xl font-bold mb-6">
+      <h3 class="text-2xl font-bold mb-4">
         {{ title }}
       </h3>
-      <p class="mb-6">
+      <p class="mb-8">
         {{ text }}
       </p>
-    </div>
-    <div>
       <slot />
     </div>
   </div>
