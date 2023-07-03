@@ -95,8 +95,8 @@
           </div>
         </div>
         <div class="flex flex-1 items-center md:justify-center">
-          <nuxt-link to="/#" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
-            ## View all resources ##
+          <nuxt-link to="/resources" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
+            View all resources
           </nuxt-link>
         </div>
       </div>
