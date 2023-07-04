@@ -17,7 +17,7 @@
               <h5 class="font-bold mb-3">
                 You assessed
               </h5>
-              <information-badge v-if="accessedLevel" size="xs">
+              <information-badge v-if="accessedLevel !== false " size="xs">
                 Level {{ accessedLevel }}
               </information-badge>
               <div v-else class="italic text-nsw-grey-600">
@@ -53,7 +53,7 @@
             </div>
           </div>
         </div>
-        <div v-if="selectedLevel">
+        <div v-if="selectedLevel !== false">
           <div class="border-b-2 border-nsw-grey-200 flex overflow-x-scroll">
             <panel-tab
               v-for="level in selectedSkill.levels"
@@ -127,7 +127,7 @@ export default {
     return {
       skills,
       tabs: {
-        level: 0
+        level: false
       }
     }
   },
@@ -139,7 +139,7 @@ export default {
       return this.$store.state.pathway.answers.capabilities
     },
     selectedLevel() {
-      if (!this.tabs.level) {
+      if (this.tabs.level === false) {
         return false
       }
       return this.selectedSkill.levels.find(level => level.level === this.tabs.level)
@@ -161,7 +161,7 @@ export default {
     selectedSkill: {
       immediate: true,
       handler(newSkill) {
-        this.tabs.level = newSkill.levels?.[0].level ?? 0
+        this.tabs.level = newSkill.levels?.[0].level ?? false
       }
     }
   },

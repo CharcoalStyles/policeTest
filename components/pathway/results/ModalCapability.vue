@@ -53,7 +53,7 @@
             </div>
           </div>
         </div>
-        <div v-if="selectedLevel">
+        <div v-if="selectedLevel !== false">
           <div class="border-b-2 border-nsw-grey-200 flex">
             <panel-tab
               v-for="level in selectedCapability.levels"
@@ -127,7 +127,7 @@ export default {
     return {
       skills,
       tabs: {
-        level: 0
+        level: false
       }
     }
   },
@@ -136,7 +136,7 @@ export default {
       return this.$store.state.pathway.answers.capabilities
     },
     selectedLevel() {
-      if (!this.tabs.level) {
+      if (this.tabs.level === false) {
         return false
       }
       return this.selectedCapability.levels.find(level => level.level === this.tabs.level)
@@ -158,7 +158,7 @@ export default {
     selectedCapability: {
       immediate: true,
       handler(newSkill) {
-        this.tabs.level = newSkill.levels?.[0].level ?? 0
+        this.tabs.level = newSkill.levels?.[0].level ?? false
       }
     }
   },
