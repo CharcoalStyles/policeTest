@@ -38,7 +38,7 @@
             </div>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
               <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.capability.open = !filter.capability.open">
-                <p class="font-bold">Skills</p>
+                <p class="font-bold">Skill</p>
                 <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.capability.open ? 'rotate-0' : 'rotate-180'">
               </button>
               <ul v-if="filter.capability.open">
