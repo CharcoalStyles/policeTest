@@ -63,7 +63,7 @@
 
     <section-container title="How this tool can help you" :cols="2">
       <div class="lg:w-10/12 lg:my-8">
-        <img src="images/feature-comparison.png" :alt="alt" class="w-full object-cover mb-8">
+        <img src="images/feature-comparison.png" alt="Skills and capabilities comparison table" class="w-full object-cover mb-8">
         <h3 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
           Understand the skills required for future roles
         </h3>
@@ -72,7 +72,7 @@
         </p>
       </div>
       <div class="lg:w-10/12 lg:my-8">
-        <img src="images/feature-upskilling.png" :alt="alt" class="w-full object-cover mb-8">
+        <img src="images/feature-upskilling.png" alt="Upskilling resources card" class="w-full object-cover mb-8">
         <h3 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
           Access upskilling resources
         </h3>
