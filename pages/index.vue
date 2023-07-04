@@ -3,7 +3,7 @@
     <hero-section image="/images/home-hero.jpg" class="">
       <div class="text-nsw-brand-grey-primary">
         <h2 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
-          Procurement Career Pathway Tool
+          Procurement Career Pathways Tool
         </h2>
         <h1 class="font-bold text-4xl xl:text-5xl leading-tight xl:w-11/12 mb-4">
           Supporting you to develop your procurement career
