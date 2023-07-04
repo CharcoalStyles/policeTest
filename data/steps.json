@@ -95,7 +95,7 @@
   },
   {
     "id": "current-gov-role",
-    "title": "Select which job title closely matches your current role.",
+    "title": "Select which job title closely matches your current role",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -157,25 +157,25 @@
   },
   {
     "id": "skills",
-    "title": "Let's assess your current skills.",
+    "title": "Let's assess your current skills",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the skills required for your current role"
+      "description": "In this section, you'll assess yourself on the skills required for your current role."
     },
     "steps": []
   },
   {
     "id": "capabilities",
-    "title": "Let's assess your capabilities.",
+    "title": "Let's assess your capabilities",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the capabilities required for your current role"
+      "description": "In this section, you'll assess yourself on the capabilities required for your current role."
     },
     "steps": []
   },
