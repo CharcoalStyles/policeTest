@@ -96,7 +96,9 @@
                 </div>
                 <div v-if="!targetRole && familyRoles(currentRole).length === 0 && skillRoles(currentRole).length === 0">
                   <disclaimer-panel heading="No roles available">
-                    <a href="/pathway/goal" class="underline text-nsw-brand-primary-blue">Update your answers</a> to select a target role.
+                    <nuxt-link to="/pathway/goal" class="underline text-nsw-brand-primary-blue">
+                      Update your answers
+                    </nuxt-link> to select a target role.
                   </disclaimer-panel>
                 </div>
               </div>
