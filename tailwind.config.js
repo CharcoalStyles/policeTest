@@ -10,7 +10,7 @@ module.exports = {
         print: { raw: 'print' }
       },
       fontSize: {
-        family: '8rem',
+        family: '6rem',
         '[32px]': '2rem',
         '[40px]': '2.5rem',
         '[42px]': '2.625rem'

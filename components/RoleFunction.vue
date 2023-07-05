@@ -14,11 +14,11 @@
     <div class="inline-block" :style="getBgColour('light')">
       <div class="px-12 py-8 flex justify-center">
         <h2 class="font-bold text-family px-64 py-16 z-20">
-          {{ roleFunction.name }}
+          Common types of NSW public sector procurement roles by job family
         </h2>
       </div>
       <table class="border-collapse w-full">
-        <tr class="text-2xl">
+        <tr class="text-3xl">
           <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
           <th
             v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
