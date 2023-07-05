@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex-grow z-10">
+  <div class="relative flex-grow z-50">
     <div class="xl:container">
       <div class="relative px-4 md:px-6">
         <div class="flex flex-col">
@@ -11,18 +11,25 @@
               Search all resources. Search by keyword or filter the results to find what’s relevant to you.
             </p>
           </div>
-          <div class="w-full md:w-8/12 mb-20">
-            <form class="relative rounded overflow-hidden" @submit="onSearch">
+          <div class="w-full md:w-8/12 mb-6 md:mb-16">
+            <form class="relative rounded overflow-hidden md:mb-4" @submit="onSearch">
               <input id="resource-search" v-model="searchValue" class="nsw-form__input" type="text" value="">
               <button class="absolute top-0 right-0 bottom-0 bg-nsw-brand-primary-blue text-white px-8 flex items-center justify-center" type="submit">
                 Search
               </button>
             </form>
+            <div class="text-lg mb-6 hidden md:block">
+              Showing {{ filteredResources.count }} results
+            </div>
           </div>
         </div>
         <div class="flex flex-row">
-          <div class="w-4/12 pr-10">
-            <h3 class="text-2xl font-bold mb-2">
+          <div class="px-4 pb-6 fixed md:relative top-0 left-0 bottom-0 right-0 overflow-scroll md:overflow-visible bg-white md:block w-full md:w-4/12 md:pr-10 md:p-0 transform md:transform-none duration-200" style="z-index:1000;" :class="!showPanel ? '-translate-x-full md:translate-x-0' : 'translate-x-0'">
+            <button class="sticky top-0 flex items-center py-5 md:hidden mb-6 rounded border-b w-full bg-white z-10" @click="togglePanel">
+              <img src="/icons/chevron-left-blue.svg" class="mr-1">
+              <span class="font-bold text-nsw-brand-primary-blue">Back</span>
+            </button>
+            <h3 class="text-2xl font-bold md:mb-2">
               Filter results
             </h3>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
@@ -105,7 +112,14 @@
               </div>
             </div>
           </div>
-          <div class="w-8/12">
+          <div class="w-full md:w-8/12">
+            <button class="flex items-center p-4 md:hidden bg-nsw-grey-50 w-full mb-6 rounded" @click="togglePanel">
+              <img src="/icon-filters.svg" class="mr-2" />
+              <span class="font-bold text-nsw-brand-primary-blue underline" style="text-underline-offset: 2px">Filters</span>
+            </button>
+            <div class="text-lg mb-6 md:hidden">
+              Showing {{ filteredResources.count }} results
+            </div>
             <div v-if="filteredResources.count < 1">
               <div class="">
                 <disclaimer-panel heading="No resources found">
@@ -142,6 +156,7 @@ export default {
   },
   data() {
     return {
+      showPanel: false,
       searchValue: '',
       results: resources,
       resources,
@@ -324,6 +339,10 @@ export default {
     }
   },
   methods: {
+    togglePanel(e) {
+      e.preventDefault()
+      this.showPanel = !this.showPanel
+    },
     onSearch(e) {
       e.preventDefault()
       this.filter.query.value = this.searchValue
