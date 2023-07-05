@@ -2,7 +2,7 @@
   <div class="flex flex-col cursor-pointer">
     <div class="h-1 bg-nsw-brand-primary-blue w-full rounded-t-lg"></div>
     <div
-      class="p-8 border-l border-l-nsw-grey-200 border-r border-r-nsw-grey-200 border-b border-b-nsw-grey-200 hover:border-nsw-grey-400 rounded-b-lg"
+      class="px-4 py-6 sm:px-8 sm:py-8 border-l border-l-nsw-grey-200 border-r border-r-nsw-grey-200 border-b border-b-nsw-grey-200 hover:border-nsw-grey-400 rounded-b-lg"
       style="flex-grow: 1"
     >
       <div class="w-full text-sm font-semibold">

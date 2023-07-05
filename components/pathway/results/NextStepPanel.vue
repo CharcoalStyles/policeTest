@@ -1,10 +1,10 @@
 <template>
-  <div class="border border-nsw-grey-200 p-4 md:py-8 md:px-10 rounded-lg cursor-pointer flex flex-col justify-between">
+  <div class="border border-nsw-grey-200 px-4 pb-6 pt-4 sm:px-8 sm:pt-8 sm:pb-8 rounded-lg cursor-pointer flex flex-col justify-between">
     <div>
-      <h3 class="text-2xl font-bold mb-4">
+      <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
         {{ title }}
       </h3>
-      <p class="mb-8">
+      <p class="mb-4 sm:mb-8">
         {{ text }}
       </p>
       <slot />

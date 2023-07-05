@@ -17,7 +17,7 @@
             </div>
             <div class="p-6 bg-white border rounded border-nsw-grey-200 lg:p-8 print-break">
               <div class="flex flex-row items-center justify-between mb-8 print:flex-row">
-                <h2 class="flex text-2xl font-bold">
+                <h2 class="flex text-lg sm:text-2xl font-bold">
                   Your answers
                 </h2>
                 <nsw-button action="secondary-outline" @click.native="modals.update = true">
@@ -142,8 +142,8 @@
                 These resources have been curated as a starting point to assist your career progression.
               </p>
             </div>
-            <div class="flex">
-              <div class="relative mr-4">
+            <div class="flex flex-wrap">
+              <div class="relative mr-4 mb-4 w-full sm:w-auto">
                 <label class="font-bold" for="filterFormats">Type of content</label>
                 <div class="mt-1" style="min-width:260px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-format" @click="toggleFormatFilter">
@@ -158,7 +158,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="relative mr-4">
+              <div class="relative mr-4 mb-4 w-full sm:w-auto">
                 <label class="font-bold" for="filterCapabilities">Skill</label>
                 <div class="mt-1" style="min-width:260px;">
                   <button class="nsw-form-select text-left" aria-expanded="true" aria-controls="filter-capability" @click="toggleCapabilityFilter">
@@ -173,7 +173,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="relative">
+              <div class="relative mr-4 sm:mr-8 mb-4 w-full sm:w-auto">
                 <label class="flex items-center whitespace-no-wrap font-bold" for="filterCapabilities">
                   Level <help-bubble tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5." />
                 </label>
@@ -190,8 +190,8 @@
                   </ul>
                 </div>
               </div>
-              <div class="flex space-x-8 items-center mt-6 pl-12">
-                <div class="relative space-x-4">
+              <div class="flex space-x-8 items-end mt-0 mb-4 mt-2 sm:mt-0">
+                <div class="relative mb-1">
                   <div class="nsw-form-checkbox cursor-pointer">
                     <input
                       id="form-free-checkbox"
@@ -203,7 +203,7 @@
                     <label class="nsw-form-checkbox__label mt-0" for="form-free-checkbox">Free</label>
                   </div>
                 </div>
-                <div class="relative">
+                <div class="relative mb-1">
                   <div class="nsw-form-checkbox cursor-pointer">
                     <input
                       id="form-recommended-checkbox"
@@ -228,7 +228,7 @@
             </div>
             <div class="md:w-12/12">
               <div v-for="(group, groupIndex) in filteredResources.groups" :key="groupIndex">
-                <h3 class="mb-6 mt-12 text-xl font-bold">
+                <h3 class="mb-6 mt-6 sm:mt-12 text-xl font-bold">
                   {{ group.label }}
                 </h3>
                 <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
@@ -238,7 +238,7 @@
             </div>
           </div>
           <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
-            <h2 class="mb-6 text-4xl font-bold">
+            <h2 class="mb-6 text-3xl md:text-4xl font-bold">
               Next steps
             </h2>
             <div class="grid grid-cols-6 gap-6">
