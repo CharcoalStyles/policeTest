@@ -5,7 +5,7 @@
         {{ tooltip }}
       </div>
       <div slot="reference">
-        <img src="/icons/help.svg" class="ml-2" alt="Help icon">
+        <img src="/icons/help.svg" class="ml-2 shrink-0" alt="Help icon">
       </div>
     </popper>
   </div>

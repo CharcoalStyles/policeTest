@@ -6,11 +6,16 @@
       </div>
     </div>
     <div class="text-sm">
-      <div class="text-nsw-grey-800 flex space-x-2 mb-1">
-        <div>Grade: {{ role.grade }}</div>
+      <div class="sm:hidden font-bold mb-1">
+        {{ role.name }}
+      </div>
+      <div class="text-nsw-grey-800 sm:flex sm:space-x-2 sm:mb-1">
+        <div class="mb-1 sm:mb-0">
+          Grade: {{ role.grade }}
+        </div>
         <div>Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}</div>
       </div>
-      <div class="font-bold">
+      <div class="hidden sm:block font-bold">
         {{ role.name }}
       </div>
     </div>

@@ -45,11 +45,11 @@
             </ul> -->
             <ul v-if="results.length" v-bind="resultListProps" class="bg-white mt-2 rounded shadow-md overflow-y-scroll max-h-autosuggest" v-on="resultListListeners">
               <li v-for="(role, index) in results" :key="resultProps[index].id" v-bind="resultProps[index]" class="py-3 px-4 border-b border-nsw-grey-200 cursor-pointer hover:bg-nsw-grey-100" :class="{ 'bg-nsw-grey-100' : isRoleSelected(role) }">
-                <div class="flex justify-between">
-                  <div class="mb-3 font-bold" style="min-width:50%;">
+                <div class="sm:flex justify-between">
+                  <div class="mb-3 font-bold sm:whitespace-no-wrap">
                     {{ role.name }}
                   </div>
-                  <div class="flex flex-wrap mb-2 md:mb-1 justify-end" style="min-width:50%;max-width:50%;">
+                  <div class="flex flex-wrap mb-2 sm:mb-1 sm:justify-end">
                     <information-badge v-if="role.grade" size="xs" colour="grey" class="mr-2 mb-2">
                       {{ role.grade }}
                     </information-badge>
