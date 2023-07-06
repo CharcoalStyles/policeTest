@@ -465,37 +465,50 @@ export default {
         return []
       }
       const defaultResources = this.$collect(this.resources).where('default', true).all()
-
       const targetRoleSkills = this.targetRole.skills.focus
-      const currentRoleSkills = this.currentRole.skills.focus
       const targetRoleCapabilities = this.targetRole.capabilities.focus
-      const currentRoleCapabilities = this.currentRole.capabilities.focus
 
       const matchingResources = this.$collect(this.resources)
         .filter(resource => {
           let keep = false
-          targetRoleSkills.forEach(skill => {
-            const resourceSkills = this.$collect(resource.skills).where('code', skill.code).all()
-            resourceSkills.forEach(resourceSkill => {
-              const currentRoleSkill = this.$collect(currentRoleSkills).where('code', skill.code).first()
-              // They don't have that skill, return the resource
-              if (!currentRoleSkill) {
+
+          targetRoleSkills.forEach((targetRoleSkill) => {
+            // Get all resource skills that match targte role skills
+            const matchedResourceSkills = this.$collect(resource.skills).where('code', targetRoleSkill.code).all()
+            const selfAssessmentSkillLevel = this.answers.skills[targetRoleSkill.code]?.value
+
+            // Iterrate through matched skills
+            matchedResourceSkills.forEach((resourceSkill) => {
+              const resourceSkillLevel = parseInt(resourceSkill?.level)
+
+              // This is a new skill AND the resource skill level is higher than or equal to the target skill level
+              if (selfAssessmentSkillLevel === undefined && resourceSkillLevel >= targetRoleSkill.level) {
                 keep = true
-              // They have that skill, does it reach the required level
-              } else if (currentRoleSkill && resourceSkill.level > currentRoleSkill.level) {
+              }
+
+              // resource skill level is higher than the users self-assessment level AND is higher than or equal to the target role level
+              if (resourceSkillLevel > selfAssessmentSkillLevel && resourceSkillLevel >= targetRoleSkill.level) {
                 keep = true
               }
             })
           })
-          targetRoleCapabilities.forEach(capability => {
-            const resourceCapabilities = this.$collect(resource.capabilities).where('code', capability.code).all()
-            resourceCapabilities.forEach(resourceCapability => {
-              const currentRoleCapability = this.$collect(currentRoleCapabilities).where('code', capability.code).first()
-              // They don't have that skill, return the resource
-              if (!currentRoleCapability) {
+
+          targetRoleCapabilities.forEach((targetRoleCapbility) => {
+            // Get all resource capabilities that match targte role capabilities
+            const matchedResourceCapabilities = this.$collect(resource.capabilities).where('code', targetRoleCapbility.code).all()
+            const selfAssessmentCapabilityLevel = this.answers.capabilities[targetRoleCapbility.code]?.value
+
+            // Iterrate through matched capabilities
+            matchedResourceCapabilities.forEach((resourceCapability) => {
+              const resourceCapabilityLevel = parseInt(resourceCapability?.level)
+
+              // This is a new capability AND the resource capability level is higher than or equal to the target capability level
+              if (selfAssessmentCapabilityLevel === undefined && resourceCapabilityLevel >= targetRoleCapbility.level) {
                 keep = true
-              // They have that skill, does it reach the required level
-              } else if (currentRoleCapability && resourceCapability.level > currentRoleCapability.level) {
+              }
+
+              // resource capability level is higher than the users self-assessment level AND is higher than or equal to the target role level
+              if (resourceCapabilityLevel > selfAssessmentCapabilityLevel && resourceCapabilityLevel >= targetRoleCapbility.level) {
                 keep = true
               }
             })
