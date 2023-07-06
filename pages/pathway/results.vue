@@ -392,6 +392,23 @@ export default {
       'answers',
       'getHumanReadableAnswerValue'
     ]),
+    skillsAndCapabilitiesLevelMap() {
+      const target = {}
+      const current = {}
+      this.targetRole.skills.focus.forEach(({ code, level }) => {
+        target[code] = parseInt(level)
+      })
+      this.targetRole.capabilities.focus.forEach(({ code, level }) => {
+        target[code] = parseInt(level)
+      })
+      this.currentRole.skills.focus.forEach(({ code, level }) => {
+        current[code] = parseInt(level)
+      })
+      this.currentRole.capabilities.focus.forEach(({ code, level }) => {
+        current[code] = parseInt(level)
+      })
+      return { target, current }
+    },
     filterFormatLabel() {
       if (this.filter.format.value && this.filter.format.value.includes('All')) {
         return 'All formats'
@@ -436,14 +453,22 @@ export default {
     filterCapabilityOptions() {
       if (this.allResources.length > 0) {
         const tmp = []
-        this.allResources.map((resource) => {
-          resource.skills.forEach(({ code }) => tmp.push(code))
-          resource.capabilities.forEach(({ code }) => tmp.push(code))
+
+        this.allResources.forEach((resource) => {
+          const matchedSkills = this.$collect([...resource.skills, ...resource.capabilities])
+            .unique('code')
+            .filter(({ code, level }) => this.isNewSkill({ code }) || this.isUpskill({ code, level }))
+            .all()
+          tmp.push(...matchedSkills)
         })
 
-        const filteredCodes = this.$collect(tmp).unique().all().filter(code => this.targetRoleCapabilities.includes(code))
-        filteredCodes.unshift('All')
-        return filteredCodes || ['']
+        const codes = this.$collect(tmp)
+          .unique('code')
+          .map(({ code }) => code)
+          .all()
+
+        codes.unshift('All')
+        return codes || ['']
       }
       return ['All']
     },
@@ -549,15 +574,21 @@ export default {
           return false
         }
 
-        const matchedSkills = this.$collect(resource.skills)
+        const matchedSkills = this.$collect([...resource.skills, ...resource.capabilities])
           .unique('code')
-          .map((item) => item.code)
-          .contains((value) => this.filter.capability.value.includes(value))
+          .filter(({ code, level }) => {
+            if (this.filter.capability.value.includes(code)) {
+              // Is a new skill OR Matching resources has an equal or better level than the target role
+              if (this.isNewSkill({ code }) || this.isUpskill({ code, level })) {
+                return true
+              }
+              return false
+            }
+          })
 
-        const matchedCapabilities = this.$collect(resource.capabilities)
-          .unique('code')
-          .map((item) => item.code)
-          .contains((value, key) => this.filter.capability.value.includes(value))
+        if (matchedSkills?.items && matchedSkills.items.length > 0) {
+          match.capability = true
+        }
 
         const matchedLevels = this.$collect(resource.targetLevel)
           .map((item) => item)
@@ -565,10 +596,6 @@ export default {
 
         if (matchedLevels) {
           match.level = true
-        }
-
-        if (matchedSkills || matchedCapabilities) {
-          match.capability = true
         }
 
         return match.format && match.capability && match.level
@@ -806,6 +833,14 @@ export default {
         })
         .sortBy('gradeId')
         .all()
+    },
+
+    isNewSkill({ code }) {
+      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined && typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number'
+    },
+
+    isUpskill({ code, level }) {
+      return parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code]
     },
 
     outboundLinkClick(url) {
