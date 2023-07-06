@@ -21,13 +21,13 @@
       </div>
       <div v-if="capabilities" class="mb-2 flex flex-wrap">
         <information-badge
-          v-for="name in capabilities"
-          :key="name"
+          v-for="item in capabilities"
+          :key="item.name"
           size="xs"
           class="mr-2 mb-2"
           colour="gray"
         >
-          {{ name }}
+          {{ item.name }}
         </information-badge>
       </div>
       <div class="w-full">
@@ -117,6 +117,11 @@ export default {
     showAllSkills: {
       type: Boolean,
       default: false
+    },
+    skillsCapabilitiesLevelMap: {
+      type: Object,
+      required: false,
+      default: () => false
     }
   },
   data() {
@@ -130,7 +135,7 @@ export default {
         return this.$collect(this.resource.skills)
           .merge(this.resource.capabilities)
           .unique('code')
-          .map((item) => capabilityNamesMap[item.code])
+          .map((item) => ({ name: capabilityNamesMap[item.code], level: item.level }))
           .all()
       }
       if (this.targetRoleCapabilities.length <= 0 || !this.resource.skills) {
@@ -141,7 +146,16 @@ export default {
         .merge(this.resource.capabilities)
         .unique('code')
         .filter(({ code }) => this.targetRoleCapabilities.includes(code))
-        .map((item) => capabilityNamesMap[item.code])
+        .filter(({ code, level }) => {
+          if (this.skillsCapabilitiesLevelMap === false) {
+            return true
+          }
+          if (this.isNewSkill({ code }) || this.isUpskill({ code, level })) {
+            return true
+          }
+          return false
+        })
+        .map((item) => ({ name: capabilityNamesMap[item.code], level: item.level }))
         .all()
     },
     clampText() {
@@ -172,6 +186,18 @@ export default {
     },
     formats() {
       return this.resource.format.toString()
+    }
+  },
+  methods: {
+    isNewSkill({ code }) {
+      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined && typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number'
+    },
+
+    isUpskill({ code, level }) {
+      return this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
+      this.skillsAndCapabilitiesLevelMap?.current?.[code] &&
+        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
+        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code]
     }
   }
 }
