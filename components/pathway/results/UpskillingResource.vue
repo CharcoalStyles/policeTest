@@ -110,6 +110,10 @@ export default {
       type: Array,
       default: () => []
     },
+    targetRoleSkills: {
+      type: Array,
+      default: () => []
+    },
     showAllSkills: {
       type: Boolean,
       default: false
@@ -122,8 +126,9 @@ export default {
   },
   computed: {
     capabilities() {
-      if (this.showAllSkills && this.resource.skills) {
+      if (this.showAllSkills && (this.resource.skills || this.resource.capabilities)) {
         return this.$collect(this.resource.skills)
+          .merge(this.resource.capabilities)
           .unique('code')
           .map((item) => capabilityNamesMap[item.code])
           .all()
@@ -131,7 +136,9 @@ export default {
       if (this.targetRoleCapabilities.length <= 0 || !this.resource.skills) {
         return false
       }
+
       return this.$collect(this.resource.skills)
+        .merge(this.resource.capabilities)
         .unique('code')
         .filter(({ code }) => this.targetRoleCapabilities.includes(code))
         .map((item) => capabilityNamesMap[item.code])
