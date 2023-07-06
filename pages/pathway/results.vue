@@ -232,7 +232,7 @@
                   {{ group.label }}
                 </h3>
                 <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-                  <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" @click.native="openUpskillResource(resource)" />
+                  <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" :skills-capabilities-level-map="skillsAndCapabilitiesLevelMap" @click.native="openUpskillResource(resource)" />
                 </div>
               </div>
             </div>
@@ -395,6 +395,8 @@ export default {
     skillsAndCapabilitiesLevelMap() {
       const target = {}
       const current = {}
+      const assessed = {}
+
       this.targetRole.skills.focus.forEach(({ code, level }) => {
         target[code] = parseInt(level)
       })
@@ -406,6 +408,12 @@ export default {
       })
       this.currentRole.capabilities.focus.forEach(({ code, level }) => {
         current[code] = parseInt(level)
+      })
+      Object.keys(this.answers.skills).map((key) => {
+        assessed[key] = this.answers.skills[key]?.value
+      })
+      Object.keys(this.answers.capabilities).map((key) => {
+        assessed[key] = this.answers.capabilities[key]?.value
       })
       return { target, current }
     },
@@ -840,7 +848,10 @@ export default {
     },
 
     isUpskill({ code, level }) {
-      return parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code]
+      return this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
+      this.skillsAndCapabilitiesLevelMap?.current?.[code] &&
+        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
+        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code]
     },
 
     outboundLinkClick(url) {
