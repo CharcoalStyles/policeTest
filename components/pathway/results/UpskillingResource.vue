@@ -123,7 +123,7 @@ export default {
     skillsAndCapabilitiesLevelMap: {
       type: Object,
       required: false,
-      default: () => false
+      default: () => {}
     }
   },
   data() {
@@ -137,6 +137,7 @@ export default {
         return this.$collect(this.resource.skills)
           .merge(this.resource.capabilities)
           .map((item) => ({ name: capabilityNamesMap[item.code], level: item.level }))
+          .unique('name')
           .all()
       }
       if (this.targetRoleCapabilities.length <= 0 || !this.resource.skills) {
@@ -147,7 +148,7 @@ export default {
         .merge(this.resource.capabilities)
         .filter(({ code }) => this.targetRoleCapabilities.includes(code))
         .filter(({ code, level }) => {
-          if (this.skillsAndCapabilitiesLevelMap === false) {
+          if (Object.keys(this.skillsAndCapabilitiesLevelMap).length === 0 && this.skillsAndCapabilitiesLevelMap.constructor === Object) {
             return true
           }
           if (this.isNewSkill({ code, level }) || this.isUpskill({ code, level })) {
@@ -156,6 +157,7 @@ export default {
           return false
         })
         .map((item) => ({ name: capabilityNamesMap[item.code], level: item.level }))
+        .unique('name')
         .all()
     },
     clampText() {
