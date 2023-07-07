@@ -223,10 +223,12 @@ export default {
         const tmp = []
         resources.map((resource) => {
           resource.skills.forEach(({ code }) => tmp.push(code))
+          resource.capabilities.forEach(({ code }) => tmp.push(code))
         })
 
         const filteredCodes = this.$collect(tmp).unique().all()
-        filteredCodes.unshift('All')
+        const sorted = filteredCodes.sort()
+        sorted.unshift('All')
         return filteredCodes || ['']
       }
       return ['All']
