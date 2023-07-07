@@ -63,7 +63,7 @@ export default {
     },
     emptyMessage() {
       if (this.instructions) {
-        return this.targetRole ? `This is not a focus ${this.type} for this role` : 'Not currently known'
+        return this.targetRole ? `Not a focus ${this.type}, but may be complimentary` : 'Not currently known'
       }
       return ''
     },
@@ -84,14 +84,14 @@ export default {
           return {
             text: 'Upskill (1)',
             colour: 'orange',
-            tooltip: `You assessed yourself at Level ${assessedValue}.`
+            tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
           }
         }
         if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
           return {
             text: 'Upskill (2)',
             colour: 'orange',
-            tooltip: `You assessed yourself at Level ${assessedValue}.`
+            tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
           }
         }
         if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
