@@ -415,7 +415,7 @@ export default {
       Object.keys(this.answers.capabilities).map((key) => {
         assessed[key] = this.answers.capabilities[key]?.value
       })
-      return { target, current }
+      return { target, current, assessed }
     },
     filterFormatLabel() {
       if (this.filter.format.value && this.filter.format.value.includes('All')) {
@@ -464,8 +464,10 @@ export default {
 
         this.allResources.forEach((resource) => {
           const matchedSkills = this.$collect([...resource.skills, ...resource.capabilities])
-            .unique('code')
-            .filter(({ code, level }) => this.isNewSkill({ code }) || this.isUpskill({ code, level }))
+            .filter(({ code, level }) => {
+              console.log(`${code} : ${level}`)
+              return this.isNewSkill({ code, level }) || this.isUpskill({ code, level })
+            })
             .all()
           tmp.push(...matchedSkills)
         })
@@ -508,19 +510,15 @@ export default {
           targetRoleSkills.forEach((targetRoleSkill) => {
             // Get all resource skills that match targte role skills
             const matchedResourceSkills = this.$collect(resource.skills).where('code', targetRoleSkill.code).all()
-            const selfAssessmentSkillLevel = this.answers.skills[targetRoleSkill.code]?.value
 
             // Iterrate through matched skills
-            matchedResourceSkills.forEach((resourceSkill) => {
-              const resourceSkillLevel = parseInt(resourceSkill?.level)
-
-              // This is a new skill AND the resource skill level is higher than or equal to the target skill level
-              if (selfAssessmentSkillLevel === undefined && resourceSkillLevel >= targetRoleSkill.level) {
+            matchedResourceSkills.forEach(({ code, level }) => {
+              if (this.isNewSkill({ code, level: parseInt(level) })) {
+                console.log('New Skill')
                 keep = true
               }
-
-              // resource skill level is higher than the users self-assessment level AND is higher than or equal to the target role level
-              if (resourceSkillLevel > selfAssessmentSkillLevel && resourceSkillLevel >= targetRoleSkill.level) {
+              if (this.isUpskill({ code, level: parseInt(level) })) {
+                console.log('Up Skill')
                 keep = true
               }
             })
@@ -529,19 +527,13 @@ export default {
           targetRoleCapabilities.forEach((targetRoleCapbility) => {
             // Get all resource capabilities that match targte role capabilities
             const matchedResourceCapabilities = this.$collect(resource.capabilities).where('code', targetRoleCapbility.code).all()
-            const selfAssessmentCapabilityLevel = this.answers.capabilities[targetRoleCapbility.code]?.value
 
             // Iterrate through matched capabilities
-            matchedResourceCapabilities.forEach((resourceCapability) => {
-              const resourceCapabilityLevel = parseInt(resourceCapability?.level)
-
-              // This is a new capability AND the resource capability level is higher than or equal to the target capability level
-              if (selfAssessmentCapabilityLevel === undefined && resourceCapabilityLevel >= targetRoleCapbility.level) {
+            matchedResourceCapabilities.forEach(({ code, level }) => {
+              if (this.isNewSkill({ code, level: parseInt(level) })) {
                 keep = true
               }
-
-              // resource capability level is higher than the users self-assessment level AND is higher than or equal to the target role level
-              if (resourceCapabilityLevel > selfAssessmentCapabilityLevel && resourceCapabilityLevel >= targetRoleCapbility.level) {
+              if (this.isUpskill({ code, level: parseInt(level) })) {
                 keep = true
               }
             })
@@ -583,7 +575,6 @@ export default {
         }
 
         const matchedSkills = this.$collect([...resource.skills, ...resource.capabilities])
-          .unique('code')
           .filter(({ code, level }) => {
             if (this.filter.capability.value.includes(code)) {
               // Is a new skill OR Matching resources has an equal or better level than the target role
@@ -843,15 +834,31 @@ export default {
         .all()
     },
 
-    isNewSkill({ code }) {
-      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined && typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number'
+    // Pass in resource code and resource level
+    isNewSkill({ code, level }) {
+      // Current role does not include code
+      // Target role does include level (which is a number)
+      // Resource level is greater than assessed level
+      // Resource level is less than OR equal to target level
+      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined &&
+        typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number' &&
+        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.assessed?.[code] &&
+        parseInt(level) <= this.skillsAndCapabilitiesLevelMap?.target?.[code]
     },
 
+    // Pass in resource code and resource level
     isUpskill({ code, level }) {
+      // Target role includes CODE
+      // Current role includes CODE
+      // Resource LEVEL is greater than OR equal to target role LEVEL
+      // Resource LEVEL is less than OR equal to target LEVEL
+      // Resource LEVEL is greater than assessed LEVEL
       return this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
       this.skillsAndCapabilitiesLevelMap?.current?.[code] &&
         parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code]
+        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code] &&
+        parseInt(level) <= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
+        this.skillsAndCapabilitiesLevelMap?.assessed?.[code] < this.skillsAndCapabilitiesLevelMap?.target?.[code]
     },
 
     outboundLinkClick(url) {
