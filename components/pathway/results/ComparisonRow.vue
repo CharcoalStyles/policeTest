@@ -45,6 +45,10 @@ export default {
       type: String,
       required: true
     },
+    roleType: {
+      type: String,
+      required: true
+    },
     instructions: {
       type: String,
       default: 'targetRole'
@@ -71,36 +75,32 @@ export default {
         return false
       }
 
-      if (this.instructions === 'selfAssessed' && this.item.code in this.assessedSkills) {
+      if (this.instructions === 'selfAssessed' && this.targetRole) {
         const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
-        const assessedValue = this.assessedSkills[this.item.code].value
-        if (assessedValue < currentRoleItem.level) {
+        const targetRoleItem = this.$collect(this.targetRole[this.valueName].focus).where('code', this.item.code).first()
+        const assessedValue = this.assessedSkills?.[this.item.code]?.value
+
+        if (this.roleType === 'current' && assessedValue < currentRoleItem.level) {
           return {
-            text: 'Upskill',
+            text: 'Upskill (1)',
             colour: 'orange',
             tooltip: `You assessed yourself at Level ${assessedValue}.`
           }
         }
-      } else if (this.instructions === 'targetRole' && this.targetRole) {
-        const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
-        const targetRoleItem = this.$collect(this.targetRole[this.valueName].focus).where('code', this.item.code).first()
-
-        if (!currentRoleItem && targetRoleItem) {
+        if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
+          return {
+            text: 'Upskill (2)',
+            colour: 'orange',
+            tooltip: `You assessed yourself at Level ${assessedValue}.`
+          }
+        }
+        if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
           return {
             text: 'New skill',
             colour: 'green',
             tooltip: 'A new skill that is required for this role.'
           }
         }
-
-        if (targetRoleItem && targetRoleItem?.level > currentRoleItem?.level) {
-          return {
-            text: 'Upskill',
-            colour: 'orange',
-            tooltip: 'Upskilling in a skill you currently have.'
-          }
-        }
-        return false
       }
       return false
     }

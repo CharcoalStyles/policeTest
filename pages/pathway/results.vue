@@ -109,7 +109,7 @@
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
                 <step-badge>2</step-badge> Your role comparison
               </h3>
-              <p>Select any <strong>skill</strong> or <strong>capability</strong> to understand gaps and upskilling resources.</p>
+              <p>Select any <strong>skill</strong> or <strong>capability</strong> to understand gaps and where you my need to upskill for both your current and target role.</p>
             </div>
             <table class="block w-full overflow-x-scroll border border-gray-600 rounded-lg table-auto lg:overflow-x-auto">
               <thead class="border-b border-gray-600">
@@ -467,7 +467,6 @@ export default {
         this.allResources.forEach((resource) => {
           const matchedSkills = this.$collect([...resource.skills, ...resource.capabilities])
             .filter(({ code, level }) => {
-              console.log(`${code} : ${level}`)
               return this.isNewSkill({ code, level }) || this.isUpskill({ code, level })
             })
             .all()
@@ -516,11 +515,9 @@ export default {
             // Iterrate through matched skills
             matchedResourceSkills.forEach(({ code, level }) => {
               if (this.isNewSkill({ code, level: parseInt(level) })) {
-                console.log('New Skill')
                 keep = true
               }
               if (this.isUpskill({ code, level: parseInt(level) })) {
-                console.log('Up Skill')
                 keep = true
               }
             })
