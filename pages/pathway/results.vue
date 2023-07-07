@@ -232,7 +232,7 @@
                   {{ group.label }}
                 </h3>
                 <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-                  <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" :skills-capabilities-level-map="skillsAndCapabilitiesLevelMap" @click.native="openUpskillResource(resource)" />
+                  <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :target-role-capabilities="targetRoleCapabilities" :skills-and-capabilities-level-map="skillsAndCapabilitiesLevelMap" @click.native="openUpskillResource(resource)" />
                 </div>
               </div>
             </div>
@@ -309,6 +309,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import skillMatch from '@/mixins/skillMatch'
 import resources from '@/data/resources.json'
 import RoleSelector from '@/components/pathway/results/RoleSelector'
 import RoleSelected from '@/components/pathway/results/RoleSelected'
@@ -339,6 +340,7 @@ export default {
     HelpBubble,
     InputCheckbox
   },
+  mixins: [skillMatch],
   data() {
     return {
       resources,
@@ -832,33 +834,6 @@ export default {
         })
         .sortBy('gradeId')
         .all()
-    },
-
-    // Pass in resource code and resource level
-    isNewSkill({ code, level }) {
-      // Current role does not include code
-      // Target role does include level (which is a number)
-      // Resource level is greater than assessed level
-      // Resource level is less than OR equal to target level
-      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined &&
-        typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number' &&
-        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.assessed?.[code] &&
-        parseInt(level) <= this.skillsAndCapabilitiesLevelMap?.target?.[code]
-    },
-
-    // Pass in resource code and resource level
-    isUpskill({ code, level }) {
-      // Target role includes CODE
-      // Current role includes CODE
-      // Resource LEVEL is greater than OR equal to target role LEVEL
-      // Resource LEVEL is less than OR equal to target LEVEL
-      // Resource LEVEL is greater than assessed LEVEL
-      return this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-      this.skillsAndCapabilitiesLevelMap?.current?.[code] &&
-        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code] &&
-        parseInt(level) <= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-        this.skillsAndCapabilitiesLevelMap?.assessed?.[code] < this.skillsAndCapabilitiesLevelMap?.target?.[code]
     },
 
     outboundLinkClick(url) {

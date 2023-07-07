@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import skillMatch from '@/mixins/skillMatch'
 import InformationBadge from '@/components/InformationBadge'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 import VClamp from 'vue-clamp'
@@ -101,6 +102,7 @@ export default {
     InformationBadge,
     VClamp
   },
+  mixins: [skillMatch],
   props: {
     resource: {
       type: Object,
@@ -118,7 +120,7 @@ export default {
       type: Boolean,
       default: false
     },
-    skillsCapabilitiesLevelMap: {
+    skillsAndCapabilitiesLevelMap: {
       type: Object,
       required: false,
       default: () => false
@@ -134,7 +136,6 @@ export default {
       if (this.showAllSkills && (this.resource.skills || this.resource.capabilities)) {
         return this.$collect(this.resource.skills)
           .merge(this.resource.capabilities)
-          .unique('code')
           .map((item) => ({ name: capabilityNamesMap[item.code], level: item.level }))
           .all()
       }
@@ -144,13 +145,12 @@ export default {
 
       return this.$collect(this.resource.skills)
         .merge(this.resource.capabilities)
-        .unique('code')
         .filter(({ code }) => this.targetRoleCapabilities.includes(code))
         .filter(({ code, level }) => {
-          if (this.skillsCapabilitiesLevelMap === false) {
+          if (this.skillsAndCapabilitiesLevelMap === false) {
             return true
           }
-          if (this.isNewSkill({ code }) || this.isUpskill({ code, level })) {
+          if (this.isNewSkill({ code, level }) || this.isUpskill({ code, level })) {
             return true
           }
           return false
@@ -186,18 +186,6 @@ export default {
     },
     formats() {
       return this.resource.format.toString()
-    }
-  },
-  methods: {
-    isNewSkill({ code }) {
-      return this.skillsAndCapabilitiesLevelMap?.current?.[code] === undefined && typeof this.skillsAndCapabilitiesLevelMap?.target?.[code] === 'number'
-    },
-
-    isUpskill({ code, level }) {
-      return this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-      this.skillsAndCapabilitiesLevelMap?.current?.[code] &&
-        parseInt(level) >= this.skillsAndCapabilitiesLevelMap?.target?.[code] &&
-        parseInt(level) > this.skillsAndCapabilitiesLevelMap?.assessed?.[code]
     }
   }
 }
