@@ -58,7 +58,7 @@
         <div class="px-4 md:px-6 py-8">
           <div class="lg:flex">
             <div class="flex flex-1 justify-center mb-4 lg:mb-0 lg:justify-start">
-              <a href="https://www.psc.nsw.gov.au/">
+              <a href="https://www.psc.nsw.gov.au/" target="_blank">
                 <img
                   src="/logo_waratah_white.svg"
                   alt="NSW Public Service Commission logo"
@@ -68,28 +68,28 @@
               </a>
             </div>
             <div class="flex flex-col lg:flex-row items-center justify-center flex-1 text-center text-white space-y-2 lg:space-y-0 space-x-2 text-sm font-bold">
-              <a href="https://www.psc.nsw.gov.au/accessibility" class="hover:underline" style="text-underline-offset: 2px">Accessibility</a>
+              <a href="https://www.psc.nsw.gov.au/accessibility" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Accessibility</a>
               <span class="hidden lg:flex">|</span>
-              <a href="https://www.psc.nsw.gov.au/privacy-policy" class="hover:underline" style="text-underline-offset: 2px">Privacy&nbsp;Policy</a>
+              <a href="https://www.psc.nsw.gov.au/privacy-policy" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Privacy&nbsp;Policy</a>
               <span class="hidden lg:flex">|</span>
-              <a href="https://www.psc.nsw.gov.au/terms-and-conditions" class="hover:underline" style="text-underline-offset: 2px">Terms&nbsp;&amp;&nbsp;Conditions</a>
+              <a href="https://www.psc.nsw.gov.au/terms-and-conditions" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Terms&nbsp;&amp;&nbsp;Conditions</a>
             </div>
             <div class="flex items-center flex-1 text-white text-xs text-center lg:text-right font-bold mt-4 lg:mt-0">
               <div class="w-full">
-                <p>© 2023 <a href="https://www.psc.nsw.gov.au/accessibility" class="hover:underline" style="text-underline-offset: 2px">NSW Public Service Commission</a></p>
+                <p>© 2023 <a href="https://www.psc.nsw.gov.au/accessibility" class="hover:underline" style="text-underline-offset: 2px" target="_blank">NSW Public Service Commission</a></p>
               </div>
             </div>
           </div>
         </div>
         <div class="px-4 md:px-6 py-6 nsw-footer-border">
           <div class="flex flex-col lg:flex-row items-center justify-center flex-1 text-center text-white space-y-2 lg:space-y-0 space-x-2 text-sm">
-            <a href="https://premiersawards.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px">Public Service Commission</a>
+            <a href="https://premiersawards.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Public Service Commission</a>
             <span class="hidden lg:flex">|</span>
-            <a href="https://www.psc.nsw.gov.au/privacy-policy" class="hover:underline" style="text-underline-offset: 2px">Premier's Awards</a>
+            <a href="https://www.psc.nsw.gov.au/privacy-policy" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Premier's Awards</a>
             <span class="hidden lg:flex">|</span>
-            <a href="https://www.comprac.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px">Communities of Practice</a>
+            <a href="https://www.comprac.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Communities of Practice</a>
             <span class="hidden lg:flex">|</span>
-            <a href="https://sef.psc.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px">Senior Executive Fundamentals</a>
+            <a href="https://sef.psc.nsw.gov.au/" class="hover:underline" style="text-underline-offset: 2px" target="_blank">Senior Executive Fundamentals</a>
           </div>
         </div>
       </div>

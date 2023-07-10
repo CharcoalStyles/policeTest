@@ -82,14 +82,14 @@ export default {
 
         if (this.roleType === 'current' && assessedValue < currentRoleItem.level) {
           return {
-            text: 'Upskill (1)',
+            text: 'Upskill',
             colour: 'orange',
             tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
           }
         }
         if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
           return {
-            text: 'Upskill (2)',
+            text: 'Upskill',
             colour: 'orange',
             tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
           }
