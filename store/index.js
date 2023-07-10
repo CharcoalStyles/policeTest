@@ -232,6 +232,14 @@ const mutations = {
     state.pathway.steps[capabilitiesStepIndex].steps = []
   },
 
+  CLEAR_SKILL_ANSWERS(state) {
+    state.pathway.answers.skills = {}
+  },
+
+  CLEAR_CAPABILITY_ANSWERS(state) {
+    state.pathway.answers.capabilities = {}
+  },
+
   SET_QUESTIONS_COMPLETE(state) {
     state.pathway.completed = true
   }
@@ -250,6 +258,8 @@ const actions = {
       } else {
         commit('CLEAR_SKILL_ASSESSMENT', payload)
         commit('CLEAR_CAPABILITY_ASSESSMENT', payload)
+        commit('CLEAR_SKILL_ANSWERS')
+        commit('CLEAR_CAPABILITY_ANSWERS')
       }
     }
   },
