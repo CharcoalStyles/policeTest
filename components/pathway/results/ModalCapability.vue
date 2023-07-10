@@ -163,11 +163,11 @@ export default {
     }
   },
   mounted() {
-    // this.$ga.event({
-    //   eventCategory: 'Pathway Results',
-    //   eventAction: 'Capability Modal Opened',
-    //   eventLabel: this.selectedCapability.subcode
-    // })
+    window.dataLayer.push({
+      eventCategory: 'Pathway Results',
+      eventAction: 'Capability Modal Opened',
+      eventLabel: this.selectedCapability.subcode
+    })
   }
 }
 </script>
