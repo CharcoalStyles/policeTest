@@ -62,7 +62,7 @@
                 <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.level.open ? 'rotate-0' : 'rotate-180'">
               </button>
               <ul v-if="filter.level.open">
-                <li v-for="option in filterLevelOptions" :key="option" :value="option.value">
+                <li v-for="option in filterLevelOptions" :key="option.value" :value="option.value">
                   <input-checkbox v-model="filter.level.value" :input-value="option.value" :label="option.label" :name="option.value" />
                 </li>
               </ul>
@@ -250,7 +250,7 @@ export default {
             return { label, value }
           })
       }
-      return ['All']
+      return [{ label: 'All', value: 'All' }]
     },
     filteredResources() {
       const groupedResources = {}

@@ -184,7 +184,7 @@
                 </div>
                 <div v-if="filter.level.open" class="nsw-custom-select-level bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10" aria-describedby="filter-level">
                   <ul>
-                    <li v-for="option in filterLevelOptions" :key="option" :value="option.value">
+                    <li v-for="option in filterLevelOptions" :key="option.value" :value="option.value">
                       <input-checkbox v-model="filter.level.value" :input-value="option.value" :label="option.label" :name="option.value" @change="onFilterLevelChange" />
                     </li>
                   </ul>
@@ -500,7 +500,7 @@ export default {
         orderedLevels.unshift({ label: 'All', value: 'All' })
         return orderedLevels
       }
-      return ['All']
+      return [{ label: 'All', value: 'All' }]
     },
     allResources() {
       if (!this.targetRole) {
