@@ -184,8 +184,8 @@
                 </div>
                 <div v-if="filter.level.open" class="nsw-custom-select-level bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10" aria-describedby="filter-level">
                   <ul>
-                    <li v-for="option in filterLevelOptions" :key="option" :value="option">
-                      <input-checkbox v-model="filter.level.value" :input-value="option" :label="option" :name="option" @change="onFilterLevelChange" />
+                    <li v-for="option in filterLevelOptions" :key="option" :value="option.value">
+                      <input-checkbox v-model="filter.level.value" :input-value="option.value" :label="option.label" :name="option.value" @change="onFilterLevelChange" />
                     </li>
                   </ul>
                 </div>
@@ -490,8 +490,14 @@ export default {
           resource.targetLevel.forEach((level) => tmp.push(level))
         })
         const levels = this.$collect(tmp).unique().all()
-        const orderedLevels = levels.sort((a, b) => this.filter.level.order.indexOf(a) - this.filter.level.order.indexOf(b))
-        orderedLevels.unshift('All')
+        const orderedLevels = levels.sort((a, b) => this.filter.level.order.indexOf(a) - this.filter.level.order.indexOf(b)).map((value) => {
+          const label = value
+            .replaceAll('Foundational', 'Foundational (Level 1)')
+            .replaceAll('Intermediate', 'Intermediate (Level 2-3)')
+            .replaceAll('Advanced', 'Advanced (Level 4-5)')
+          return { label, value }
+        })
+        orderedLevels.unshift({ label: 'All', value: 'All' })
         return orderedLevels
       }
       return ['All']
