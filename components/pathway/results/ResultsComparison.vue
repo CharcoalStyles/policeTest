@@ -177,22 +177,22 @@ export default {
     showSkillModal(modal) {
       this.selectedSkill = this.getSkillByCode(modal.skill)
       // Track in GA
-      this.$ga.event({
-        eventCategory: 'Skill',
-        eventAction: 'Open modal',
-        eventLabel: this.selectedSkill.name
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Skill',
+      //   eventAction: 'Open modal',
+      //   eventLabel: this.selectedSkill.name
+      // })
       this.modalJourney = modal.journey
       this.modals.skill = true
     },
 
     showCapabilityModal(modal) {
       this.selectedCapability = this.getCapabilityByCode(modal.skill)
-      this.$ga.event({
-        eventCategory: 'Capability',
-        eventAction: 'Open modal',
-        eventLabel: this.selectedCapability.name
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Capability',
+      //   eventAction: 'Open modal',
+      //   eventLabel: this.selectedCapability.name
+      // })
       this.modalJourney = modal.journey
       this.modals.capability = true
     },

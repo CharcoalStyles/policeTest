@@ -41,15 +41,10 @@ export default {
     cssPath: '~/assets/tailwind.css'
   },
 
-  googleAnalytics: {
-    id: 'UA-188748344-2'
-  },
-
   // Modules for dev and build
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules

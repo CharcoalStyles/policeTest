@@ -389,12 +389,12 @@ export default {
 
     openUpskillResource(resource) {
       // Track in GA
-      this.$ga.event({
-        eventCategory: 'All Resources',
-        eventAction: 'Upskill Resource',
-        eventLabel: resource.title,
-        eventValue: resource.id
-      })
+      // this.$ga.event({
+      //   eventCategory: 'All Resources',
+      //   eventAction: 'Upskill Resource',
+      //   eventLabel: resource.title,
+      //   eventValue: resource.id
+      // })
 
       // Open browser window
       const win = window.open(resource.url, '_blank')

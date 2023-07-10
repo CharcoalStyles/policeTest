@@ -756,22 +756,22 @@ export default {
     },
     printPage() {
       // Track in GA
-      this.$ga.event({
-        eventCategory: 'Pathway Results',
-        eventAction: 'Print Page'
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Pathway Results',
+      //   eventAction: 'Print Page'
+      // })
       // Trigger print in browser
       window.print()
     },
 
     openUpskillResource(resource) {
       // Track in GA
-      this.$ga.event({
-        eventCategory: 'Pathway Results',
-        eventAction: 'Upskill Resource',
-        eventLabel: resource.title,
-        eventValue: resource.id
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Pathway Results',
+      //   eventAction: 'Upskill Resource',
+      //   eventLabel: resource.title,
+      //   eventValue: resource.id
+      // })
 
       // Open browser window
       const win = window.open(resource.url, '_blank')
@@ -840,20 +840,20 @@ export default {
     },
 
     outboundLinkClick(url) {
-      this.$ga.event({
-        eventCategory: 'Outbound Link',
-        eventAction: 'Click',
-        eventLabel: url
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Outbound Link',
+      //   eventAction: 'Click',
+      //   eventLabel: url
+      // })
     },
 
     logAnswersToGoogleAnalytics() {
       // Question flow: Current NSW govt employee or not
-      this.$ga.event({
-        eventCategory: 'Pathway Answers',
-        eventAction: 'Government Employee',
-        eventLabel: this.getHumanReadableAnswerValue('work-gov')
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Pathway Answers',
+      //   eventAction: 'Government Employee',
+      //   eventLabel: this.getHumanReadableAnswerValue('work-gov')
+      // })
     }
   }
 }

@@ -166,11 +166,11 @@ export default {
     }
   },
   mounted() {
-    this.$ga.event({
-      eventCategory: 'Pathway Results',
-      eventAction: 'Skill Modal Opened',
-      eventLabel: this.selectedSkill.code
-    })
+    // this.$ga.event({
+    //   eventCategory: 'Pathway Results',
+    //   eventAction: 'Skill Modal Opened',
+    //   eventLabel: this.selectedSkill.code
+    // })
   }
 }
 </script>

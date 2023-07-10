@@ -40,10 +40,10 @@ export default {
   methods: {
     returnToQuestionFlow() {
       // Log action to GA
-      this.$ga.event({
-        eventCategory: 'Pathway Results',
-        eventAction: 'Update Answer Modal'
-      })
+      // this.$ga.event({
+      //   eventCategory: 'Pathway Results',
+      //   eventAction: 'Update Answer Modal'
+      // })
       this.$emit('close')
       this.$router.push('/pathway')
     }
