@@ -25,8 +25,8 @@
             <div class="relative">
               <input ref="role" class="nsw-form-input roles-autosuggest placeholder-gray-700 disabled:text-black" v-bind="inputProps" :disabled="isDisabled" v-on="inputListeners" @focus="toggleFocus" @blur="toggleFocus">
               <div v-if="currentValue" class="absolute top-0 bottom-0 right-0 flex justify-center pointer-events-none">
-                <button class="px-3 pointer-events-auto" aria-label="Clear selected role" @click="clearRole">
-                  <img src="/icons/close.svg" class="h-4">
+                <button class="px-4 pointer-events-auto border-2 border-nsw-brand-primary-blue my-1 mr-1 font-semibold rounded" aria-label="Clear selected role" @click="clearRole">
+                  Reset
                 </button>
               </div>
             </div>
