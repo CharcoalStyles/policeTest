@@ -71,7 +71,7 @@
   },
   {
     "id": "current-gov-role",
-    "title": "Select which job title closely matches your current role",
+    "title": "Select which role is most similar to your current role",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -94,7 +94,7 @@
   },
   {
     "id": "current-outside-role",
-    "title": "Select which job title closely matches your current role",
+    "title": "Select which role is most similar to your current role",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -141,7 +141,7 @@
   },
   {
     "id": "goal-role",
-    "title": "What role do you want to move into?",
+    "title": "What type of role do you want to move into?",
     "type": "question",
     "conditions": [
       {
