@@ -19,7 +19,7 @@
       </div>
       <table class="border-collapse w-full">
         <tr class="text-3xl">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Salary</th>
+          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Grade</th>
           <th
             v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
             :key="item.name"
@@ -34,7 +34,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['B2'] }}
+              {{ gradeMap['B2'] }}
             </div>
           </td>
           <td
@@ -66,7 +66,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['B1'] }}
+              {{ gradeMap['B1'] }}
             </div>
           </td>
           <td
@@ -97,7 +97,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['11-12'] }}
+              {{ gradeMap['11-12'] }}
             </div>
           </td>
           <td
@@ -132,7 +132,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['9-10'] }}
+              {{ gradeMap['9-10'] }}
             </div>
           </td>
           <td
@@ -163,7 +163,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['7-8'] }}
+              {{ gradeMap['7-8'] }}
             </div>
           </td>
           <td
@@ -195,7 +195,7 @@
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['5-6'] }}
+              {{ gradeMap['5-6'] }}
             </div>
           </td>
           <td
@@ -226,7 +226,7 @@
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ salaryMap['3-4'] }}
+              {{ gradeMap['3-4'] }}
             </div>
           </td>
           <td
