@@ -6,7 +6,7 @@
     "conditions": false,
     "schema": {
       "section": "Your personalised pathway",
-      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and capabilities."
+      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and general capabilities."
     }
   },
   {
@@ -17,7 +17,7 @@
     "conditions": false,
     "schema": {
       "section": "Let’s get started",
-      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and capabilities."
+      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and general capabilities."
     }
   },
   {
