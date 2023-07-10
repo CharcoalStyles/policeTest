@@ -70,30 +70,6 @@
     }
   },
   {
-    "id": "goal",
-    "title": "Do you have a specific role in mind that you’d like to move into?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Your goals",
-      "help": "If you have a specific role or pathway in mind, let’s explore how you can get there.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "current-gov-role",
     "title": "Select which job title closely matches your current role",
     "type": "question",
@@ -133,6 +109,30 @@
       "field": {
         "type": "role",
         "required": true
+      }
+    }
+  },
+  {
+    "id": "goal",
+    "title": "Do you have a specific role in mind that you’d like to move into?",
+    "type": "question",
+    "conditions": false,
+    "schema": {
+      "section": "Your goals",
+      "help": "If you have a specific role or pathway in mind, let’s explore how you can get there.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
       }
     }
   },
