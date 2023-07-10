@@ -94,7 +94,7 @@
   },
   {
     "id": "current-outside-role",
-    "title": "Select your current or most similar role?",
+    "title": "Select which job title closely matches your current role",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -104,12 +104,15 @@
       }
     ],
     "schema": {
-      "section": "Your most recent role",
-      "help": "As a starting point, we will explore your skills and capabilities based on your current role.",
+      "section": "Your current role",
+      "help": "We’ll use this as a starting point and does not have to be an exact match.",
       "field": {
         "type": "role",
         "required": true
-      }
+      },
+      "support": [
+        "This tool includes common types of procurement roles, and similar related roles, that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation."
+      ]
     }
   },
   {
