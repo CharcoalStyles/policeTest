@@ -5,9 +5,9 @@
       <div class="pl-12 pr-6">
         {{ description }}
       </div>
-      <div v-show="expanded" class="mt-6 mb-4 pl-12">
+      <div v-show="expanded" class="mt-4 mb-4 pl-12">
         {{ descriptionLong }}
-        <ul>
+        <ul class="list-disc pl-4 w-11/12">
           <li v-for="(attribute, index) in attributes" :key="index">
             {{ attribute }}
           </li>
