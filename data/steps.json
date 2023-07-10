@@ -6,7 +6,7 @@
     "conditions": false,
     "schema": {
       "section": "Your personalised pathway",
-      "description": "In this questionnaire, we'll ask you about your current situation, have you self assess your skills and capabilities, and ask you about your interests and preferences."
+      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and capabilities."
     }
   },
   {
@@ -17,7 +17,7 @@
     "conditions": false,
     "schema": {
       "section": "Let’s get started",
-      "description": "In this questionnaire, we'll ask you about your current situation and have you self-asses your procurement skills and capabilities."
+      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and capabilities."
     }
   },
   {
@@ -51,7 +51,7 @@
     "conditions": false,
     "schema": {
       "section": "Your current role",
-      "help": "If you're currently in a procurement and contracting role (or a similar role), we'll ask questions about your technical skills to help us recommend roles.",
+      "help": "If so, we'll ask questions about your technical skills to help us recommend roles.",
       "helpExtra": "Procurement roles can include disciplines such as strategic sourcing, category management, contract management, analysis, advice, policy and governance. Similar roles may include those in project, policy, administrative, finance, commercial and other related disciplines.",
       "field": {
         "type": "radio",
@@ -160,25 +160,25 @@
   },
   {
     "id": "skills",
-    "title": "Let's assess your current skills",
+    "title": "Let’s assess your current procurement skills",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the skills required for your current role."
+      "description": "In this section, you’ll assess yourself on the focus procurement skills required for your current role. These are technical skills based on the {{procurement_professionals_capability_set}}."
     },
     "steps": []
   },
   {
     "id": "capabilities",
-    "title": "Let's assess your capabilities",
+    "title": "Let’s assess your general capabilities",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the capabilities required for your current role."
+      "description": "In this section, you’ll assess yourself on the general focus capabilities required for your current role. These are transferrable and based on the {{nsw_public_sector_capability_framework}}."
     },
     "steps": []
   },

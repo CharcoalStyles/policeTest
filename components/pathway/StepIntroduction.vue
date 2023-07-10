@@ -40,9 +40,11 @@
           Notes about this tool
         </h3>
         <ul class="ml-5 list-outside list-disc leading-loose">
-          <li>All your responses are saved anonymously to your web browser while using this tool.</li>
+          <li>Your responses are saved anonymously to your web browser. Clearing your browser cache will reset your responses. This tool is regularly updated. To see these updates you will need to clear your cache.</li>
           <li>None of your information is stored on the Internet after you leave this experience.</li>
-          <li>The Procurement Career Pathways tool is built using the <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/occupation-specific-capability-sets/procurement-capability-set" class="text-nsw-brand-primary-blue underline font-bold" style="text-underline-offset: 2px;">NSW Public Sector Capability Framework</a> and <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/occupation-specific-capability-sets/procurement-capability-set" class="text-nsw-brand-primary-blue underline font-bold" style="text-underline-offset: 2px;">Procurement Professionals Capability Set</a>.</li>
+          <li>The Procurement Career Pathways tool is built using the <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/the-capability-framework" target="_blank" class="text-nsw-brand-primary-blue underline font-bold" style="text-underline-offset: 2px;">NSW Public Sector Capability Framework</a> and <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/occupation-specific-capability-sets/procurement-capability-set" class="text-nsw-brand-primary-blue underline font-bold" target="_blank" style="text-underline-offset: 2px;">Procurement Professionals Capability Set</a>.</li>
+          <li>This tool compares the skills and capabilities of your self-assessment against the focus capabilities required for your current and target roles. Focus capabilities are those you need to be recruited into a role. Complimentary capabilities are also required, but these can be developed on the job. Check role descriptions to see which capabilities are focus and complimentary.</li>
+          <li>For queries relating to the Procurement Career Pathway tool, please contact the NSW Procurement Capability team at: <a href="mailto:https://www.psc.nsw.gov.au/workforce-management/capability-framework/the-capability-framework" class="text-nsw-brand-primary-blue underline font-bold" target="_blank" style="text-underline-offset: 2px;">NSWP_Capability@treasury.nsw.gov.au</a></li>
         </ul>
       </div>
     </div>
