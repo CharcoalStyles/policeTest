@@ -16,7 +16,7 @@
     <section-container title="Plan your career pathway" :cols="2">
       <feature-panel image="/images/home1.jpg" alt="Explore roles" title="Explore roles">
         <div class="mb-6">
-          See types of procurement roles that are common across the NSW public sector, and how they’re connected.
+          See types of procurement roles that are common across the NSW public sector and how they’re connected.
         </div>
         <nuxt-link to="/explorer" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
           Explore role types
@@ -90,7 +90,7 @@
               Explore upskilling resources
             </h2>
             <p class="w-10/12">
-              View all procurement upskilling resources in one place to find what’s relevant to you.
+              View upskilling resources for focus and complimentary capabilities relevant to procurement roles you’re interested in.
             </p>
           </div>
         </div>

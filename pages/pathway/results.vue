@@ -84,13 +84,13 @@
               <div class="grid grid-cols-1 col-gap-16 lg:grid-cols-2">
                 <div v-if="familyRoles(currentRole).length">
                   <h4 class="mb-6 text-lg font-bold">
-                    Roles in the same area as your current role
+                    Other roles in the same area as your current role
                   </h4>
                   <role-selector v-for="role in familyRoles(currentRole)" :key="role.id" :role="role" :target-role="targetRole" @click.native="selectTargetRole(role)" @keyup.space="selectTargetRole(role)" />
                 </div>
                 <div v-if="skillRoles(currentRole).length">
                   <h4 class="mb-6 text-lg font-bold">
-                    Roles with skills you already have
+                    Other roles with skills you already have
                   </h4>
                   <role-selector v-for="role in skillRoles(currentRole)" :key="role.id" :role="role" :target-role="targetRole" @click.native="selectTargetRole(role)" @keyup.space="selectTargetRole(role)" />
                 </div>
@@ -139,7 +139,7 @@
                 {{ filteredResources.count || 0 }} upskilling resources
               </h3>
               <p class="md:w-2/3">
-                These resources have been curated as a starting point to assist your career progression.
+                These resources have been curated as a starting point to assist in upskilling the focus capabilities of your current and target role. Check <nuxt-link to="/resources" class="font-semibold text-nsw-brand-primary-blue underline">All Resources</nuxt-link> for additional resources that can be used to upskill the complimentary capabilities of your roles.
               </p>
             </div>
             <div class="flex flex-wrap">

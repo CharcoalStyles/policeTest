@@ -8,7 +8,7 @@
               Procurement upskilling resources
             </h1>
             <p>
-              Search all resources. Search by keyword or filter the results to find what’s relevant to you.
+              Search resources for upskilling both focus and complimentary capabilities listed in role descriptions of job ads. Search by keyword or filter the results to find what’s relevant to roles you’re interested in.
             </p>
           </div>
           <div class="w-full md:w-8/12 mb-6 md:mb-16">
