@@ -84,8 +84,7 @@
                       class="nsw-form-select h-role-input py-0"
                     >
                       <option value="manager">Manager roles</option>
-                      <option value="gradeId">Salary</option>
-                      <option value="gradeId">Grade</option>
+                      <option value="gradeId">Grade & Salary</option>
                     </select>
                   </div>
                 </div>
