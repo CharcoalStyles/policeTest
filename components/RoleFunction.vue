@@ -303,7 +303,14 @@ export default {
         '11-12': '$134k - $155k',
         B1: '$193k - $275k',
         B2: '$275k - $346'
-      }
+      },
+      roleFunctionOrder: [
+        'Procurement Analysis',
+        'Procurement Advice',
+        'Procurement Services',
+        'Contract Management',
+        'Procurement Executive'
+      ]
     }
   },
   computed: {
@@ -321,7 +328,7 @@ export default {
           name: key,
           roles: this.$collect(roles).where('familyRole', key).all()
         }))
-      return result
+      return result.sort((a, b) => this.roleFunctionOrder.indexOf(a.name) - this.roleFunctionOrder.indexOf(b.name))
     },
     // groupRolesByRoleFunction(roles) {
     //   const result = this.$collect(this.roles)
