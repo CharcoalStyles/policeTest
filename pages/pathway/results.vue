@@ -583,7 +583,7 @@ export default {
           .filter(({ code, level }) => {
             if (this.filter.capability.value.includes(code)) {
               // Is a new skill OR Matching resources has an equal or better level than the target role
-              if (this.isNewSkill({ code }) || this.isUpskill({ code, level })) {
+              if (this.isNewSkill({ code, level }) || this.isUpskill({ code, level })) {
                 return true
               }
               return false
