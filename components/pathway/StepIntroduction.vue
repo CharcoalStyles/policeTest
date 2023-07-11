@@ -59,20 +59,14 @@
         <p class="mb-12">
           See common procurement roles types, levels, and how they’re connected across the NSW public sector.
         </p>
-        <nsw-button action="secondary-outline" @click.native="$router.push('/explorer')">
+        <nuxt-link target="_blank" to="/explorer" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
           Browse role types
-        </nsw-button>
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NswButton from '@/components/nsw/NswButton'
-
-export default {
-  components: {
-    NswButton
-  }
-}
+export default {}
 </script>
