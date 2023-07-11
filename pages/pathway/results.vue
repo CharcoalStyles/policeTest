@@ -139,7 +139,7 @@
                 {{ filteredResources.count || 0 }} upskilling resources
               </h3>
               <p class="md:w-2/3">
-                These resources have been curated as a starting point to assist in upskilling the focus capabilities of your current and target role. Check <nuxt-link to="/resources" class="font-semibold text-nsw-brand-primary-blue underline">All Resources</nuxt-link> for additional resources that can be used to upskill the complimentary capabilities of your roles.
+                These resources have been curated as a starting point to assist in upskilling the focus capabilities of your current and target role. Check <nuxt-link to="/resources" class="font-semibold text-nsw-brand-primary-blue underline" target="_blank">All Resources</nuxt-link> for additional resources that can be used to upskill the complimentary capabilities of your roles.
               </p>
             </div>
             <div class="flex flex-wrap">
@@ -249,6 +249,7 @@
               >
                 <a
                   href="/next-steps.pdf"
+                  target="_blank"
                   class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
                 >
                   Career and capability development guide
@@ -260,7 +261,7 @@
                 title="Use the Role Explorer"
                 text="If you haven’t found the role you are looking for, use the Role Explorer to browse different procurement role types, levels and how they’re connected across the NSW public sector."
               >
-                <nuxt-link to="/explorer" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
+                <nuxt-link to="/explorer" target="_blank" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
                   Browse typical roles
                 </nuxt-link>
               </next-step-panel>
@@ -271,6 +272,7 @@
                 text="Browse procurement job opportunities in the NSW public sector."
               >
                 <a
+                  target="_blank"
                   href="https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554"
                   class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
                   @click="outboundLinkClick('https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554')"
@@ -284,7 +286,7 @@
                 title="View all upskilling resources"
                 text="View procurement upskilling resources for all skills and capabilities in one place."
               >
-                <nuxt-link to="/resources" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
+                <nuxt-link target="_blank" to="/resources" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
                   View all resources
                 </nuxt-link>
               </next-step-panel>
