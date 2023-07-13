@@ -73,7 +73,7 @@
             </p>
             <ul class="list-disc pl-4 w-11/12">
               <li v-for="(attribute, index) in selectedLevel.attributes" :key="index" class="mb-2">
-                {{ attribute }}.
+                {{ attribute }}
               </li>
             </ul>
           </div>
