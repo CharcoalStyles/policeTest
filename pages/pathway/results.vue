@@ -139,7 +139,7 @@
                 {{ filteredResources.count || 0 }} upskilling resources
               </h3>
               <p class="md:w-2/3">
-                These resources have been curated as a starting point to assist in upskilling the focus capabilities of your current and target role. Check <nuxt-link to="/resources" class="font-semibold text-nsw-brand-primary-blue underline" target="_blank">All Resources</nuxt-link> for additional resources that can be used to upskill the complimentary capabilities of your roles.
+                These resources have been curated as a starting point to assist in upskilling the focus capabilities of your target role. Check <nuxt-link to="/resources" class="font-semibold text-nsw-brand-primary-blue underline" target="_blank">All Resources</nuxt-link> for additional resources that can be used to upskill in your current role and complimentary capabilities.
               </p>
             </div>
             <div class="flex flex-wrap">
