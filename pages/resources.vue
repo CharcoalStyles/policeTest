@@ -4,17 +4,34 @@
       <div class="relative px-4 md:px-6">
         <div class="flex flex-col">
           <div class="mb-8 md:mb-12 pt-8 md:pt-16">
-            <h1 class="text-3xl md:text-4xl font-bold leading-snug tracking-tight lg:text-5xl mb-4">
+            <h1
+              class="text-3xl md:text-4xl font-bold leading-snug tracking-tight lg:text-5xl mb-4"
+            >
               Procurement upskilling resources
             </h1>
             <p>
-              Search resources for upskilling both focus and complimentary capabilities listed in role descriptions of job ads. Search by keyword or filter the results to find what’s relevant to roles you’re interested in.
+              Search resources for upskilling both focus and complimentary
+              capabilities listed in role descriptions of job ads. Search by
+              keyword or filter the results to find what’s relevant to roles
+              you’re interested in.
             </p>
           </div>
           <div class="w-full md:w-8/12 mb-6 md:mb-16">
-            <form class="relative rounded overflow-hidden md:mb-4" @submit="onSearch">
-              <input id="resource-search" v-model="searchValue" class="nsw-form__input" type="text" value="">
-              <button class="absolute top-0 right-0 bottom-0 bg-nsw-brand-primary-blue text-white px-8 flex items-center justify-center" type="submit">
+            <form
+              class="relative rounded overflow-hidden md:mb-4"
+              @submit="onSearch"
+            >
+              <input
+                id="resource-search"
+                v-model="searchValue"
+                class="nsw-form__input"
+                type="text"
+                value=""
+              />
+              <button
+                class="absolute top-0 right-0 bottom-0 bg-nsw-brand-primary-blue text-white px-8 flex items-center justify-center"
+                type="submit"
+              >
                 Search
               </button>
             </form>
@@ -24,46 +41,111 @@
           </div>
         </div>
         <div class="flex flex-row">
-          <div class="px-4 pb-6 fixed md:relative top-0 left-0 bottom-0 right-0 overflow-scroll md:overflow-visible bg-white md:block w-full md:w-4/12 md:pr-10 md:p-0 transform md:transform-none duration-200" style="z-index:1000;" :class="!showPanel ? '-translate-x-full md:translate-x-0' : 'translate-x-0'">
-            <button class="sticky top-0 flex items-center py-5 md:hidden mb-6 rounded border-b w-full bg-white z-10" @click="togglePanel">
-              <img src="/icons/chevron-left-blue.svg" class="mr-1">
+          <div
+            class="px-4 pb-6 fixed md:relative top-0 left-0 bottom-0 right-0 overflow-scroll md:overflow-visible bg-white md:block w-full md:w-4/12 md:pr-10 md:p-0 transform md:transform-none duration-200"
+            style="z-index: 1000"
+            :class="
+              !showPanel
+                ? '-translate-x-full md:translate-x-0'
+                : 'translate-x-0'
+            "
+          >
+            <button
+              class="sticky top-0 flex items-center py-5 md:hidden mb-6 rounded border-b w-full bg-white z-10"
+              @click="togglePanel"
+            >
+              <img src="/icons/chevron-left-blue.svg" class="mr-1" />
               <span class="font-bold text-nsw-brand-primary-blue">Back</span>
             </button>
-            <h3 class="text-2xl font-bold md:mb-2">
-              Filter results
-            </h3>
+            <h3 class="text-2xl font-bold md:mb-2">Filter results</h3>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
-              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.format.open = !filter.format.open">
+              <button
+                class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4"
+                @click="filter.format.open = !filter.format.open"
+              >
                 <p class="font-bold">Type of content</p>
-                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.format.open ? 'rotate-0' : 'rotate-180'">
+                <img
+                  src="/icons/chevron.svg"
+                  alt="Toggle Panel icon"
+                  class="transform mr-4"
+                  :class="filter.format.open ? 'rotate-0' : 'rotate-180'"
+                />
               </button>
               <ul v-if="filter.format.open">
-                <li v-for="option in filterFormatOptions" :key="option" :value="option">
-                  <input-checkbox v-model="filter.format.value" :input-value="option" :label="option" :name="option" @change="onFilterFormat" />
+                <li
+                  v-for="option in filterFormatOptions"
+                  :key="option"
+                  :value="option"
+                >
+                  <input-checkbox
+                    v-model="filter.format.value"
+                    :input-value="option"
+                    :label="option"
+                    :name="option"
+                    @change="onFilterFormat"
+                  />
                 </li>
               </ul>
             </div>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
-              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.capability.open = !filter.capability.open">
+              <button
+                class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4"
+                @click="filter.capability.open = !filter.capability.open"
+              >
                 <p class="font-bold">Skill</p>
-                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.capability.open ? 'rotate-0' : 'rotate-180'">
+                <img
+                  src="/icons/chevron.svg"
+                  alt="Toggle Panel icon"
+                  class="transform mr-4"
+                  :class="filter.capability.open ? 'rotate-0' : 'rotate-180'"
+                />
               </button>
               <ul v-if="filter.capability.open">
-                <li v-for="option in filterCapabilityOptions" :key="option" :value="option">
-                  <input-checkbox v-model="filter.capability.value" :input-value="option" :label="getCapabilityOptionLabel(option)" :name="option" @change="onFilterCapability" />
+                <li
+                  v-for="option in filterCapabilityOptions"
+                  :key="option"
+                  :value="option"
+                >
+                  <input-checkbox
+                    v-model="filter.capability.value"
+                    :input-value="option"
+                    :label="getCapabilityOptionLabel(option)"
+                    :name="option"
+                    @change="onFilterCapability"
+                  />
                 </li>
               </ul>
             </div>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
-              <button class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4" @click="filter.level.open = !filter.level.open">
+              <button
+                class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4"
+                @click="filter.level.open = !filter.level.open"
+              >
                 <p class="flex items-center whitespace-no-wrap font-bold">
-                  Level <help-bubble tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5." />
+                  Level
+                  <help-bubble
+                    tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5."
+                  />
                 </p>
-                <img src="/icons/chevron.svg" alt="Toggle Panel icon" class="transform mr-4" :class="filter.level.open ? 'rotate-0' : 'rotate-180'">
+                <img
+                  src="/icons/chevron.svg"
+                  alt="Toggle Panel icon"
+                  class="transform mr-4"
+                  :class="filter.level.open ? 'rotate-0' : 'rotate-180'"
+                />
               </button>
               <ul v-if="filter.level.open">
-                <li v-for="option in filterLevelOptions" :key="option.value" :value="option.value">
-                  <input-checkbox v-model="filter.level.value" :input-value="option.value" :label="option.label" :name="option.value" />
+                <li
+                  v-for="option in filterLevelOptions"
+                  :key="option.value"
+                  :value="option.value"
+                >
+                  <input-checkbox
+                    v-model="filter.level.value"
+                    :input-value="option.value"
+                    :label="option.label"
+                    :name="option.value"
+                  />
                 </li>
               </ul>
             </div>
@@ -76,8 +158,12 @@
                     type="checkbox"
                     :value="false"
                     class="nsw-form-checkbox__input"
+                  />
+                  <label
+                    class="nsw-form-checkbox__label mt-0"
+                    for="form-free-checkbox"
+                    >Free</label
                   >
-                  <label class="nsw-form-checkbox__label mt-0" for="form-free-checkbox">Free</label>
                 </div>
               </div>
               <div class="relative">
@@ -88,13 +174,21 @@
                     type="checkbox"
                     :value="false"
                     class="nsw-form-checkbox__input"
+                  />
+                  <label
+                    class="nsw-form-checkbox__label mt-0"
+                    for="form-recommended-checkbox"
+                    >Recommended</label
                   >
-                  <label class="nsw-form-checkbox__label mt-0" for="form-recommended-checkbox">Recommended</label>
                 </div>
               </div>
             </div>
             <div class="w-full py-6 mb-6">
-              <button class="text-nsw-brand-primary-blue font-semibold hover:underline focus:outline-none focus:underline" style="text-underline-offset: 2px;" @click="clearFilters">
+              <button
+                class="text-nsw-brand-primary-blue font-semibold hover:underline focus:outline-none focus:underline"
+                style="text-underline-offset: 2px"
+                @click="clearFilters"
+              >
                 Clear all filters
               </button>
             </div>
@@ -104,18 +198,30 @@
                   Create a personalised career plan.
                 </h3>
                 <p class="mb-6">
-                  Get a personalised action plan with career opportunities that you can discuss with your manager. Access resources to take your career to the next level.
+                  Get a personalised action plan with career opportunities that
+                  you can discuss with your manager. Access resources to take
+                  your career to the next level.
                 </p>
-                <nsw-button action="psc" @click.native="$router.push('/pathway')">
+                <nsw-button
+                  action="psc"
+                  @click.native="$router.push('/pathway')"
+                >
                   Plan my career growth
                 </nsw-button>
               </div>
             </div>
           </div>
           <div class="w-full md:w-8/12">
-            <button class="flex items-center p-4 md:hidden bg-nsw-grey-50 w-full mb-6 rounded" @click="togglePanel">
+            <button
+              class="flex items-center p-4 md:hidden bg-nsw-grey-50 w-full mb-6 rounded"
+              @click="togglePanel"
+            >
               <img src="/icon-filters.svg" class="mr-2" />
-              <span class="font-bold text-nsw-brand-primary-blue underline" style="text-underline-offset: 2px">Filters</span>
+              <span
+                class="font-bold text-nsw-brand-primary-blue underline"
+                style="text-underline-offset: 2px"
+                >Filters</span
+              >
             </button>
             <div class="text-lg mb-6 md:hidden">
               Showing {{ filteredResources.count }} results
@@ -127,12 +233,22 @@
                 </disclaimer-panel>
               </div>
             </div>
-            <div v-for="(group, groupIndex) in filteredResources.groups" :key="groupIndex" class="mb-12">
+            <div
+              v-for="(group, groupIndex) in filteredResources.groups"
+              :key="groupIndex"
+              class="mb-12"
+            >
               <h3 class="mb-6 text-xl font-bold first:mt-0">
                 {{ group.label }}
               </h3>
               <div class="mb-10 grid gap-6">
-                <upskilling-resource v-for="(resource, index) in group.items" :key="index" :resource="resource" :show-all-skills="true" @click.native="openUpskillResource(resource)" />
+                <upskilling-resource
+                  v-for="(resource, index) in group.items"
+                  :key="index"
+                  :resource="resource"
+                  :show-all-skills="true"
+                  @click.native="openUpskillResource(resource)"
+                />
               </div>
             </div>
           </div>
@@ -183,11 +299,7 @@ export default {
         },
         level: {
           open: true,
-          order: [
-            'Foundational',
-            'Intermediate',
-            'Advanced'
-          ],
+          order: ['Foundational', 'Intermediate', 'Advanced'],
           value: []
         },
         free: {
@@ -203,16 +315,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'answers',
-      'getHumanReadableAnswerValue'
-    ]),
+    ...mapGetters(['answers', 'getHumanReadableAnswerValue']),
     filterFormatOptions() {
       if (resources.length > 0) {
         const formats = this.$collect(
-          resources.map(resource => resource.format)
-        ).unique().all()
-        const orderedFormats = formats.sort((a, b) => this.filter.format.order.indexOf(a) - this.filter.format.order.indexOf(b))
+          resources.map((resource) => resource.format)
+        )
+          .unique()
+          .all()
+        const orderedFormats = formats.sort(
+          (a, b) =>
+            this.filter.format.order.indexOf(a) -
+            this.filter.format.order.indexOf(b)
+        )
         orderedFormats.unshift('All')
         return orderedFormats
       }
@@ -241,7 +356,12 @@ export default {
         })
         const levels = this.$collect(tmp).unique().all()
 
-        return levels.sort((a, b) => this.filter.level.order.indexOf(a) - this.filter.level.order.indexOf(b))
+        return levels
+          .sort(
+            (a, b) =>
+              this.filter.level.order.indexOf(a) -
+              this.filter.level.order.indexOf(b)
+          )
           .map((value) => {
             const label = value
               .replaceAll('Foundational', 'Foundational (Level 1)')
@@ -261,13 +381,16 @@ export default {
         })
         allResources = fuzzy.search(this.filter.query.value)
       }
-      const filteredResources = allResources.filter(resource => {
+      const filteredResources = allResources.filter((resource) => {
         const match = {
           format: false,
           capability: false,
           level: false
         }
-        if (this.filter.format.value.includes('All') || this.filter.format.value.includes(resource.format)) {
+        if (
+          this.filter.format.value.includes('All') ||
+          this.filter.format.value.includes(resource.format)
+        ) {
           match.format = true
         }
         if (this.filter.capability.value.includes('All')) {
@@ -294,7 +417,9 @@ export default {
         const matchedCapabilities = this.$collect(resource.capabilities)
           .unique('code')
           .map((item) => item.code)
-          .contains((value, key) => this.filter.capability.value.includes(value))
+          .contains((value, key) =>
+            this.filter.capability.value.includes(value)
+          )
 
         const matchedLevels = this.$collect(resource.targetLevel)
           .map((item) => item)
@@ -323,8 +448,12 @@ export default {
       })
 
       const orderedGroups = Object.keys(groupedResources)
-        .map(key => ({ items: groupedResources[key], label: key }))
-        .sort((a, b) => this.filter.format.order.indexOf(a.label) - this.filter.format.order.indexOf(b.label))
+        .map((key) => ({ items: groupedResources[key], label: key }))
+        .sort(
+          (a, b) =>
+            this.filter.format.order.indexOf(a.label) -
+            this.filter.format.order.indexOf(b.label)
+        )
 
       return {
         groups: orderedGroups,
@@ -344,8 +473,12 @@ export default {
         }
       })
       return Object.keys(groupedResources)
-        .map(key => ({ items: groupedResources[key], label: key }))
-        .sort((a, b) => this.filter.format.order.indexOf(a.label) - this.filter.format.order.indexOf(b.label))
+        .map((key) => ({ items: groupedResources[key], label: key }))
+        .sort(
+          (a, b) =>
+            this.filter.format.order.indexOf(a.label) -
+            this.filter.format.order.indexOf(b.label)
+        )
     }
   },
   methods: {
@@ -380,7 +513,9 @@ export default {
         this.filter[field].value = ['All']
       }
       if (value !== 'All' && this.filter[field].value.includes(value)) {
-        this.filter[field].value = this.filter[field].value.filter(item => item !== 'All')
+        this.filter[field].value = this.filter[field].value.filter(
+          (item) => item !== 'All'
+        )
       }
     },
     getCapabilityOptionLabel(key) {
@@ -390,10 +525,10 @@ export default {
     openUpskillResource(resource) {
       // Track in GA
       window.dataLayer.push({
-        eventCategory: 'All Resources',
-        eventAction: 'Upskill Resource',
-        eventLabel: resource.title,
-        eventValue: resource.id
+        event: 'upskill_resource',
+        category: 'all_resources',
+        label: resource.title,
+        value: resource.id
       })
 
       // Open browser window
