@@ -15,6 +15,13 @@
         </div>
         <div>Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}</div>
       </div>
+
+      <!-- <div class="text-nsw-grey-800 sm:flex sm:space-x-2 sm:mb-1">
+        <div class="mb-1 sm:mb-0">
+          familyFunction: {{ role.familyFunction }}
+        </div>
+        <div>familyRole: {{ role.familyRole }}</div>
+      </div> -->
       <div class="hidden sm:block font-bold">
         {{ role.name }}
       </div>

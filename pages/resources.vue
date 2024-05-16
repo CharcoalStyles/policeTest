@@ -57,7 +57,9 @@
               <img src="/icons/chevron-left-blue.svg" class="mr-1" />
               <span class="font-bold text-nsw-brand-primary-blue">Back</span>
             </button>
-            <h3 class="text-2xl font-bold md:mb-2">Filter results</h3>
+            <h3 class="text-2xl font-bold md:mb-2">
+              Filter results
+            </h3>
             <div class="w-full border-b border-nsw-grey-200 pb-4">
               <button
                 class="flex items-center justify-between py-5 w-full focus:outline-none focus:border-nsw-brand-primary-blue -mb-4"

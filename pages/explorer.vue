@@ -252,6 +252,8 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
+      console.log(this.filter.keyword);
+      console.log(this.roles);
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills

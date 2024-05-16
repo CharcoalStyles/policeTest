@@ -12,6 +12,7 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@fast-csv/parse": "^5.0.0",
     "@nuxt/content": "^1.11.1",
     "collect.js": "^4.28.6",
     "core-js": "^3.6.5",

@@ -14,9 +14,7 @@
         </div>
       </div>
       <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-3">
-          How it works
-        </h2>
+        <h2 class="text-2xl font-bold mb-3">How it works</h2>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
           <li>Answer a few questions.</li>
           <li>See roles you could move into.</li>
@@ -25,9 +23,7 @@
         </ul>
       </div>
       <div class="mb-6">
-        <h3 class="text-2xl font-bold mb-3">
-          Who is this best suited for?
-        </h3>
+        <h3 class="text-2xl font-bold mb-3">Who is this best suited for?</h3>
         <p class="mb-3">People looking:</p>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
           <li>to develop their skills and capabilities</li>
@@ -36,30 +32,72 @@
         </ul>
       </div>
       <div class="mb-6 lg:mb-0">
-        <h3 class="text-2xl font-bold mb-3">
-          Notes about this tool
-        </h3>
+        <h3 class="text-2xl font-bold mb-3">Notes about this tool</h3>
         <ul class="ml-5 list-outside list-disc leading-loose">
-          <li>Your responses are saved anonymously to your web browser. Clearing your browser cache will reset your responses. This tool is regularly updated. To see these updates you will need to clear your cache.</li>
-          <li>None of your information is stored on the Internet after you leave this experience.</li>
-          <li>The Procurement Career Pathways tool is built using the <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/the-capability-framework" target="_blank" class="text-nsw-brand-primary-blue underline font-bold" style="text-underline-offset: 2px;">NSW Public Sector Capability Framework</a> and <a href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/occupation-specific-capability-sets/procurement-capability-set" class="text-nsw-brand-primary-blue underline font-bold" target="_blank" style="text-underline-offset: 2px;">Procurement Professionals Capability Set</a>.</li>
-          <li>This tool compares the skills and capabilities of your self-assessment against the focus capabilities required for your current and target roles. Focus capabilities are those you need to be recruited into a role. Complimentary capabilities are also required, but these can be developed on the job. Check role descriptions to see which capabilities are focus and complimentary.</li>
-          <li>For queries relating to the Procurement Career Pathway tool, please contact the NSW Procurement Capability team at: <a href="mailto:NSWP_Capability@treasury.nsw.gov.au" class="text-nsw-brand-primary-blue underline font-bold" target="_blank" style="text-underline-offset: 2px;">NSWP_Capability@treasury.nsw.gov.au</a></li>
+          <li>
+            Your responses are saved anonymously to your web browser. Clearing
+            your browser cache will reset your responses. This tool is regularly
+            updated. To see these updates you will need to clear your cache.
+          </li>
+          <li>
+            None of your information is stored on the Internet after you leave
+            this experience.
+          </li>
+          <li>
+            The Procurement Career Pathways tool is built using the
+            <a
+              href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/the-capability-framework"
+              target="_blank"
+              class="text-nsw-brand-primary-blue underline font-bold"
+              style="text-underline-offset: 2px"
+              >NSW Public Sector Capability Framework</a
+            >
+            and
+            <a
+              href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/occupation-specific-capability-sets/procurement-capability-set"
+              class="text-nsw-brand-primary-blue underline font-bold"
+              target="_blank"
+              style="text-underline-offset: 2px"
+              >Procurement Professionals Capability Set</a
+            >.
+          </li>
+          <li>
+            This tool compares the skills and capabilities of your
+            self-assessment against the focus capabilities required for your
+            current and target roles. Focus capabilities are those you need to
+            be recruited into a role. Complimentary capabilities are also
+            required, but these can be developed on the job. Check role
+            descriptions to see which capabilities are focus and complimentary.
+          </li>
+          <li>
+            For queries relating to the Procurement Career Pathway tool, please
+            contact the NSW Procurement Capability team at:
+            <a
+              href="mailto:NSWP_Capability@treasury.nsw.gov.au"
+              class="text-nsw-brand-primary-blue underline font-bold"
+              target="_blank"
+              style="text-underline-offset: 2px"
+              >NSWP_Capability@treasury.nsw.gov.au</a
+            >
+          </li>
         </ul>
       </div>
     </div>
     <div class="lg:w-5/12 flex justify-end items-start">
-      <div class="block p-8 bg-nsw-grey-100 lg:w-10/12 rounded-lg xl:max-w-lg">
-        <h3 class="font-bold text-2xl mb-8">
-          Unsure if this tool is for you?
-        </h3>
-        <div class="font-bold mb-3">
-          Use the Role Explorer tool
-        </div>
+      <div
+        class="block p-8 bg-nsw-brand-primary-blue-light lg:w-10/12 rounded-lg xl:max-w-lg"
+      >
+        <h3 class="font-bold text-2xl mb-8">Unsure if this tool is for you?</h3>
+        <div class="font-bold mb-3">Use the Role Explorer tool</div>
         <p class="mb-12">
-          See common procurement roles types, levels, and how they’re connected across the NSW public sector.
+          See common procurement roles types, levels, and how they’re connected
+          across the NSW public sector.
         </p>
-        <nuxt-link target="_blank" to="/explorer" class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base">
+        <nuxt-link
+          target="_blank"
+          to="/explorer"
+          class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap  hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
+        >
           Browse role types
         </nuxt-link>
       </div>

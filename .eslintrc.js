@@ -27,14 +27,11 @@ module.exports = {
     'space-before-function-paren': ['error', 'never'],
     'vue/html-self-closing': 'off',
     'vue/html-closing-bracket-newline': [
-      'error',
       {
         singleline: 'never',
-        multiline: 'always'
       }
     ],
     'vue/singleline-html-element-content-newline': [
-      'error',
       {
         ignoreWhenNoAttributes: true,
         ignoreWhenEmpty: true,

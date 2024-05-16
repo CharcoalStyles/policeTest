@@ -166,6 +166,7 @@ export default {
     },
     selectRole(role) {
       if (role && role.id) {
+        console.log(role)
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value: role.id

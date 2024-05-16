@@ -101,16 +101,27 @@ const parseAlias = (row) => {
   return []
 }
 
+
+rolesCsvData.data.slice(0,5).forEach((testRole) => {
+console.log({
+  name: testRole.role,
+  familyFunction: testRole.job_family,
+  familyRole: testRole.job_role,
+  roleFunction: testRole.job_function
+});
+});
+
+
 // Transform role data with parsers
-rolesCsvData.data.forEach((row) => {
+rolesCsvData.data.forEach((row, i) => {
   roles.push({
-    id: parseInt(row.id),
+    id: i, //parseInt(row.id),
     name: row.role,
     grade: row.grade,
     gradeId: gradeIdParser(row.grade), // parse via lookup table
-    familyFunction: row.job_family_function,
-    familyRole: row.job_family_role,
-    roleFunction: row.role_function,
+    familyFunction: row.job_family,
+    familyRole: row.job_role,
+    roleFunction: row.job_function,
     description: parseDescription(row.purpose),
     manager: parseManager(row.manager), // parse as bool
     salary: {
@@ -118,7 +129,7 @@ rolesCsvData.data.forEach((row) => {
       max: parseSalary(row.salary_max)
     },
     skills: {
-      focus: codeLevelParser(row.procurement_occupation_specific_focus) // parse as array
+      focus: codeLevelParser(row.occupation_specific_focus) // parse as array
     },
     capabilities: {
       focus: codeLevelParser(row.nswg_capabilities_focus) // parse as array

@@ -1,30 +1,37 @@
 <template>
   <div class="relative z-20">
-    <div class="bg-nsw-brand-teal-primary">
-      <div class="xl:container px-4 md:px-6 py-2">
-        <p class="text-white text-xs">A NSW Government website</p>
+    <div class="bg-nsw-brand-primary-blue">
+      <div class="xl:container px-6 py-2">
+        <p class="text-white text-xs">A NSW Police Force website</p>
       </div>
     </div>
-    <div class="bg-white border-b border-nsw-grey-200 py-3 lg:py-0">
-      <header class="px-4 md:px-6 flex xl:container nsw-header__main">
+    <div class="xl:container bg-white py-5">
+      <header class="px-6 flex gap-10">
         <nuxt-link to="/">
           <img
-            src="/logo.svg"
-            alt="Logo for NSW Public Service Commission"
-            title="NSW Public Service Commission"
-            class="h-12 lg:h-auto"
+            src="/police-force-logo.svg"
+            alt="Logo for NSW Police Force"
+            title="NSW Police Force"
+            height="76"
           />
         </nuxt-link>
-        <div class="nsw-header__name hidden lg:flex">
-          <div class="nsw-header__title">
-            Public Service Commission
-          </div>
+        <div class="">
+          <img
+            src="/logo.svg"
+            alt="Logo for NSW Government"
+            title="NSW Police Force"
+            height="76"
+          />
         </div>
       </header>
-      <div class="px-4 md:px-6 mt-3 font-xl lg:hidden nsw-header__title">
-        Public Service Commission
-      </div>
     </div>
+
+    <!-- <div class="xl:container flex flex-row bg-nsw-grey-200 px-6 pt-8 gap-2">
+      <div class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center">
+        Beta
+      </div>
+      <div class="text-nsw-brand-primary-blue">This is a <span class="underline">new service</span> - your <span class="underline">feedback</span> will help us improve it.</div>
+    </div> -->
   </div>
 </template>
 

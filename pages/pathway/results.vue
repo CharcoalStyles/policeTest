@@ -1,6 +1,6 @@
 <template>
   <div class="relative flex-grow z-10">
-    <div class="bg-nsw-grey-50 inset-border">
+    <div class="bg-nsw-grey-100 inset-border">
       <div class="xl:container">
         <div class="relative px-4 md:px-6 pt-6">
           <div class="relative">
@@ -150,6 +150,7 @@
                   <h4 class="mb-6 text-lg font-bold">
                     Other roles in the same area as your current role
                   </h4>
+                  <p> Number of roles: {{ familyRoles(currentRole).length }}</p>
                   <role-selector
                     v-for="role in familyRoles(currentRole)"
                     :key="role.id"
@@ -1106,22 +1107,24 @@ export default {
     },
 
     familyRoles(currentRole) {
-      if (currentRole.id === 99) {
-        return []
-      }
+      // if (currentRole.id === 99) {
+      //   return []
+      // }
+      console.log("Current", currentRole)
+      console.log({One: this.roles[0]})
       return this.$collect(this.roles)
         .filter((role) => {
           return (
             role.familyFunction === currentRole.familyFunction &&
             role.familyRole === currentRole.familyRole &&
             role.id !== currentRole.id &&
-            role.gradeId >= currentRole.gradeId &&
-            role.gradeId - currentRole.gradeId <= 3 &&
-            role.id !== this.goalRole?.id &&
-            !role.genericRole
+            // role.gradeId >= currentRole.gradeId &&
+            // role.gradeId - currentRole.gradeId <= 3 &&
+            role.id !== this.goalRole?.id //&&
+            // !role.genericRole
           )
         })
-        .sortBy('gradeId')
+        // .sortBy('gradeId')
         .all()
     },
 
