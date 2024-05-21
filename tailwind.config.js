@@ -1,14 +1,12 @@
 module.exports = {
-  future: {},
-  purge: [],
   theme: {
     container: {
       center: true
     },
     extend: {
-      screens: {
-        print: { raw: 'print' }
-      },
+      // screens: {
+      //   print: { raw: 'print' }
+      // },
       fontSize: {
         family: '6rem',
         '[32px]': '2rem',

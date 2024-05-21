@@ -8,16 +8,17 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "lint": "yarn lint:js"
   },
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",
     "@nuxt/content": "^1.11.1",
+    "@nuxtjs/tailwindcss": "^6.12.0",
     "collect.js": "^4.28.6",
     "core-js": "^3.6.5",
     "fuzzy-search": "^3.2.1",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.17.3",
     "panzoom": "Timo-Weike/panzoom",
     "portal-vue": "^2.1.7",
     "vue-debounce": "^2.5.8",
@@ -34,7 +35,6 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^3.4.2",
     "@trevoreyre/autocomplete-vue": "^2.2.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",

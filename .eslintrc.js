@@ -26,17 +26,7 @@ module.exports = {
     'no-prototype-builtins': 'off',
     'space-before-function-paren': ['error', 'never'],
     'vue/html-self-closing': 'off',
-    'vue/html-closing-bracket-newline': [
-      {
-        singleline: 'never',
-      }
-    ],
-    'vue/singleline-html-element-content-newline': [
-      {
-        ignoreWhenNoAttributes: true,
-        ignoreWhenEmpty: true,
-        ignores: ['h1', 'h2', 'option', 'label', 'span', 'th', 'td', 'svg', 'a', 'p']
-      }
-    ]
+    'vue/html-closing-bracket-newline': 0,
+    'vue/singleline-html-element-content-newline': 0
   }
 }
