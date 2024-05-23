@@ -16,8 +16,8 @@
     "icon": "edit",
     "conditions": false,
     "schema": {
-      "section": "Let’s get started",
-      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and general capabilities."
+      "section": "Your personalised pathway",
+      "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your skills and capabilities, and ask you about your interests and preferences."
     }
   },
   {
@@ -70,39 +70,9 @@
     }
   },
   {
-    "id": "current-gov-role",
+    "id": "current-role",
     "title": "Select which job title closely matches your current role",
     "type": "question",
-    "assessible": true,
-    "conditions": [
-      {
-        "id": "work-gov",
-        "value": "yes"
-      }
-    ],
-    "schema": {
-      "section": "Your current role",
-      "help": "We’ll use this as a starting point and does not have to be an exact match.",
-      "field": {
-        "type": "role",
-        "required": true
-      },
-      "support": [
-        "This tool includes common types of procurement roles, and similar related roles, that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation."
-      ]
-    }
-  },
-  {
-    "id": "current-outside-role",
-    "title": "Select which job title closely matches your current role",
-    "type": "question",
-    "assessible": true,
-    "conditions": [
-      {
-        "id": "work-gov",
-        "value": "no"
-      }
-    ],
     "schema": {
       "section": "Your current role",
       "help": "We’ll use this as a starting point and does not have to be an exact match.",
