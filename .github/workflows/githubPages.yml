@@ -1,0 +1,35 @@
+name: Build to Github Pages
+
+permissions: 
+  id-token: write # This is required for requesting the JWT
+  contents: write
+  
+on:
+  push:
+    branches: [ "results-update-may23" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        
+      - name: Install dependencies 🔧
+        run: yarn
+
+      - name: Build the HTML5 version
+        run: |
+          yarn build
+          yarn generate
+      
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        if: always()
+        with:
+          branch: gh-pages
+          folder: dist
