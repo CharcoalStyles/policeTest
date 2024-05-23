@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <section-container title="How this tool can help you" :cols="2">
+    <section-container title="How this tool can help you" :cols="1">
       <div class="lg:w-10/12 lg:my-8">
         <img src="images/feature-comparison.png" alt="Skills and capabilities comparison table" class="w-full object-cover mb-8">
         <h3 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
@@ -71,36 +71,7 @@
           Compare current and desired roles side by side to see the skills you may need to build or improve on.
         </p>
       </div>
-      <div class="lg:w-10/12 lg:my-8">
-        <img src="images/feature-upskilling.png" alt="Upskilling resources card" class="w-full object-cover mb-8">
-        <h3 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
-          Access upskilling resources
-        </h3>
-        <p class="w-11/12 mb-4">
-          Access resources to take your career to the next level. Resource recommendations are based on skills and capabilities relevant to you.
-        </p>
-      </div>
     </section-container>
-
-    <div class="bg-nsw-grey-50 py-16 md:py-20 mt-12 md:mt-16">
-      <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
-        <div class="flex flex-col flex-1 justify-center">
-          <div class="text-nsw-brand-grey-primary">
-            <h2 class="font-bold text-3xl xl:text-[32px] leading-tight xl:w-11/12 mb-4">
-              Explore upskilling resources
-            </h2>
-            <p class="w-10/12">
-              View upskilling resources for focus and complimentary capabilities relevant to procurement roles you’re interested in.
-            </p>
-          </div>
-        </div>
-        <div class="flex flex-1 items-center md:justify-center">
-          <nuxt-link to="/resources" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
-            View all resources
-          </nuxt-link>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 

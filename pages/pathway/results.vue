@@ -2,14 +2,21 @@
   <div class="relative flex-grow z-10">
     <div class="bg-nsw-grey-100 inset-border">
       <div class="xl:container">
-        <div class="relative px-4 md:px-6 pt-6">
-          <div class="relative">
-            <div class="flex flex-col md:flex-row">
-              <print-page
-                class="top-0 right-0 mb-6 md:absolute"
-                @click.native="printPage"
-              />
-              <div class="mb-8 md:mb-16 md:w-2/3 lg:w-1/2 pt-8 md:pt-16">
+        <div class="flex flex-row md:pb-10 md:pt-8">
+          <div
+            class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1"
+          >
+            Beta
+          </div>
+          <div class="text-nsw-brand-primary-blue px-2 py-1">
+            This is a <span class="underline">new service</span> - your
+            <span class="underline">feedback</span> will help us improve it.
+          </div>
+        </div>
+        <div class="px-4 md:px-6 pt-6">
+          <div class="">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <div class="mb-8 md:mb-16 md:w-2/3 lg:w-1/2">
                 <h2 class="pb-3 font-bold btn-blue text-nsw-brand-primary-blue">
                   Your personal career pathway
                 </h2>
@@ -18,6 +25,9 @@
                 >
                   We’ve generated a plan to get you to your next role
                 </h1>
+              </div>
+              <div>
+                <print-page class="mb-6" @click.native="printPage" />
               </div>
             </div>
             <div
@@ -121,14 +131,13 @@
               </h3>
               <p class="md:w-2/3">
                 Compare your current role to a target role by skill, capability,
-                salary and grade. You’ll also be shown upskilling resources to
-                help you get to your target role.
+                salary and grade.
               </p>
             </div>
-            <div class="lg:w-10/12">
+            <div class="w-full">
               <div
                 v-if="goalRole"
-                class="grid grid-cols-1 gap-16 mb-10 lg:grid-cols-2"
+                class="w-full md:w-1/2 pb-4"
               >
                 <div>
                   <h4 class="flex items-center mb-6 text-lg font-bold">
@@ -145,38 +154,59 @@
                   />
                 </div>
               </div>
-              <div class="grid grid-cols-1 col-gap-16 lg:grid-cols-2">
-                <div v-if="familyRoles(currentRole).length">
+              <div class="flex flex-row gap-8 flex-wrap">
+                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4" v-if="familyRoles(currentRole).nextRoles.length">
                   <h4 class="mb-6 text-lg font-bold">
-                    Other roles in the same area as your current role
+                    Next Roles in our current Job Function ({{familyRoles(currentRole).nextRoles.length}})
                   </h4>
-                  <p> Number of roles: {{ familyRoles(currentRole).length }}</p>
+                  <div class="max-h-96 overflow-auto">
                   <role-selector
-                    v-for="role in familyRoles(currentRole)"
-                    :key="role.id"
-                    :role="role"
+                    v-for="role in familyRoles(currentRole).nextRoles"
+                    :key="role.role.id"
+                    :role="role.role"
+                    :rank="role.rank"
                     :target-role="targetRole"
-                    @click.native="selectTargetRole(role)"
-                    @keyup.space="selectTargetRole(role)"
+                    @click.native="selectTargetRole(role.role)"
+                    @keyup.space="selectTargetRole(role.role)"
                   />
+                  </div>
                 </div>
-                <div v-if="skillRoles(currentRole).length">
+                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"  v-if="familyRoles(currentRole).sameFamily.length">
+                  <h4 class="mb-6 text-lg font-bold">
+                    Similar roles in your Job Family ({{familyRoles(currentRole).sameFamily.length}})
+                  </h4>
+                  <div class="max-h-96 overflow-auto">
+                  <role-selector
+                    v-for="role in familyRoles(currentRole).sameFamily"
+                    :key="role.role.id"
+                    :role="role.role"
+                    :rank="role.rank"
+                    :target-role="targetRole"
+                    @click.native="selectTargetRole(role.role)"
+                    @keyup.space="selectTargetRole(role.role)"
+                  />
+                  </div>
+                </div>
+                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4" v-if="skillRoles(currentRole).length">
                   <h4 class="mb-6 text-lg font-bold">
                     Other roles with skills you already have
                   </h4>
+                  <div class="max-h-96 overflow-auto">
                   <role-selector
                     v-for="role in skillRoles(currentRole)"
-                    :key="role.id"
-                    :role="role"
+                    :key="role.role.id"
+                    :role="role.role"
+                    :rank="role.rank"
                     :target-role="targetRole"
-                    @click.native="selectTargetRole(role)"
-                    @keyup.space="selectTargetRole(role)"
+                    @click.native="selectTargetRole(role.role)"
+                    @keyup.space="selectTargetRole(role.role)"
                   />
+                  </div>
                 </div>
                 <div
                   v-if="
                     !targetRole &&
-                    familyRoles(currentRole).length === 0 &&
+                    familyRoles(currentRole).totalCount === 0 &&
                     skillRoles(currentRole).length === 0
                   "
                 >
@@ -257,205 +287,6 @@
               />
             </table>
           </div>
-          <div class="pt-16 print-break">
-            <div class="mb-6">
-              <h3 class="mb-3 text-3xl font-bold">
-                {{ filteredResources.count || 0 }} upskilling resources
-              </h3>
-              <p class="md:w-2/3">
-                These resources have been curated as a starting point to assist
-                in upskilling the focus capabilities of your target role. Check
-                <nuxt-link
-                  to="/resources"
-                  class="font-semibold text-nsw-brand-primary-blue underline"
-                  target="_blank"
-                >
-                  All Resources
-                </nuxt-link>
-                for additional resources that can be used to upskill in your
-                current role and complimentary capabilities.
-              </p>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="relative mr-4 mb-4 w-full sm:w-auto">
-                <label class="font-bold" for="filterFormats"
-                  >Type of content</label
-                >
-                <div class="mt-1" style="min-width: 260px">
-                  <button
-                    class="nsw-form-select text-left"
-                    aria-expanded="true"
-                    aria-controls="filter-format"
-                    @click="toggleFormatFilter"
-                  >
-                    {{ filterFormatLabel }}
-                  </button>
-                </div>
-                <div
-                  v-if="filter.format.open"
-                  class="nsw-custom-select-format bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10"
-                  aria-describedby="filter-format"
-                >
-                  <ul>
-                    <li
-                      v-for="option in filterFormatOptions"
-                      :key="option"
-                      :value="option"
-                    >
-                      <input-checkbox
-                        v-model="filter.format.value"
-                        :input-value="option"
-                        :label="option"
-                        :name="option"
-                        @change="onFilterFormatChange"
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="relative mr-4 mb-4 w-full sm:w-auto">
-                <label class="font-bold" for="filterCapabilities">Skill</label>
-                <div class="mt-1" style="min-width: 260px">
-                  <button
-                    class="nsw-form-select text-left"
-                    aria-expanded="true"
-                    aria-controls="filter-capability"
-                    @click="toggleCapabilityFilter"
-                  >
-                    {{ filterCapabilityLabel }}
-                  </button>
-                </div>
-                <div
-                  v-if="filter.capability.open"
-                  class="nsw-custom-select-capability bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10"
-                  aria-describedby="filter-capability"
-                >
-                  <ul>
-                    <li
-                      v-for="option in filterCapabilityOptions"
-                      :key="option"
-                      :value="option"
-                    >
-                      <input-checkbox
-                        v-model="filter.capability.value"
-                        :input-value="option"
-                        :label="getCapabilityOptionLabel(option)"
-                        :name="option"
-                        @change="onFilterCapabilityChange"
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="relative mr-4 sm:mr-8 mb-4 w-full sm:w-auto">
-                <label
-                  class="flex items-center whitespace-no-wrap font-bold"
-                  for="filterCapabilities"
-                >
-                  Level
-                  <help-bubble
-                    tooltip="Foundational upskilling resources typically align with Level 1 capabilities. Intermediate aligns with levels 2-3, and advanced aligns to levels 4-5."
-                  />
-                </label>
-                <div class="mt-1" style="min-width: 260px">
-                  <button
-                    class="nsw-form-select text-left"
-                    aria-expanded="true"
-                    aria-controls="filter-level"
-                    @click="toggleLevelFilter"
-                  >
-                    {{ filterLevelLabel }}
-                  </button>
-                </div>
-                <div
-                  v-if="filter.level.open"
-                  class="nsw-custom-select-level bg-white rounded shadow-lg absolute top-12 left-0 w-full px-4 py-2 z-10"
-                  aria-describedby="filter-level"
-                >
-                  <ul>
-                    <li
-                      v-for="option in filterLevelOptions"
-                      :key="option.value"
-                      :value="option.value"
-                    >
-                      <input-checkbox
-                        v-model="filter.level.value"
-                        :input-value="option.value"
-                        :label="option.label"
-                        :name="option.value"
-                        @change="onFilterLevelChange"
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="flex space-x-8 items-end mt-0 mb-4 mt-2 sm:mt-0">
-                <div class="relative mb-1">
-                  <div class="nsw-form-checkbox cursor-pointer">
-                    <input
-                      id="form-free-checkbox"
-                      v-model="filter.free.value"
-                      type="checkbox"
-                      :value="false"
-                      class="nsw-form-checkbox__input"
-                    />
-                    <label
-                      class="nsw-form-checkbox__label mt-0"
-                      for="form-free-checkbox"
-                      >Free</label
-                    >
-                  </div>
-                </div>
-                <div class="relative mb-1">
-                  <div class="nsw-form-checkbox cursor-pointer">
-                    <input
-                      id="form-recommended-checkbox"
-                      v-model="filter.recommended.value"
-                      type="checkbox"
-                      :value="false"
-                      class="nsw-form-checkbox__input"
-                    />
-                    <label
-                      class="nsw-form-checkbox__label mt-0"
-                      for="form-recommended-checkbox"
-                      >Recommended</label
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="md:w-8/12">
-              <div v-if="filteredResources.count < 1">
-                <div class="py-6 lg:py-16">
-                  <disclaimer-panel heading="No resources available">
-                    Select another role or remove filters to view resources.
-                  </disclaimer-panel>
-                </div>
-              </div>
-            </div>
-            <div class="md:w-12/12">
-              <div
-                v-for="(group, groupIndex) in filteredResources.groups"
-                :key="groupIndex"
-              >
-                <h3 class="mb-6 mt-6 sm:mt-12 text-xl font-bold">
-                  {{ group.label }}
-                </h3>
-                <div class="grid grid-cols-1 gap-6 mb-10 md:grid-cols-2">
-                  <upskilling-resource
-                    v-for="(resource, index) in group.items"
-                    :key="index"
-                    :resource="resource"
-                    :target-role-capabilities="targetRoleCapabilities"
-                    :skills-and-capabilities-level-map="
-                      skillsAndCapabilitiesLevelMap
-                    "
-                    @click.native="openUpskillResource(resource)"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
             <h2 class="mb-6 text-3xl md:text-4xl font-bold">Next steps</h2>
             <div class="grid grid-cols-6 gap-6">
@@ -505,20 +336,6 @@
                   I work for NSW
                 </a>
               </next-step-panel>
-
-              <next-step-panel
-                class="col-span-6 lg:col-span-2"
-                title="View all upskilling resources"
-                text="View procurement upskilling resources for all skills and capabilities in one place."
-              >
-                <nuxt-link
-                  target="_blank"
-                  to="/resources"
-                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
-                >
-                  View all resources
-                </nuxt-link>
-              </next-step-panel>
             </div>
           </div>
           <div class="md:w-8/12">
@@ -527,21 +344,6 @@
               <disclaimer-panel>
                 Salaries are indicative only. Check the job ad when applying for
                 a role.
-              </disclaimer-panel>
-              <disclaimer-panel>
-                Completing upskilling resources does not guarantee successful
-                transition to any role.
-              </disclaimer-panel>
-              <disclaimer-panel>
-                This tool includes common types of procurement roles that can be
-                found in the NSW public sector. However, role titles may be
-                different for each NSW public sector organisation.
-              </disclaimer-panel>
-              <disclaimer-panel>
-                This list of upskilling resources includes those offered by
-                external training providers. These offerings have not been
-                endorsed by NSW Government. Before registering, please review
-                the offering to ensure it is relevant to you.
               </disclaimer-panel>
               <disclaimer-panel>
                 For queries relating to the Procurement Career Pathway tool,
@@ -568,12 +370,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import skillMatch from '@/mixins/skillMatch'
-import resources from '@/data/resources.json'
 import RoleSelector from '@/components/pathway/results/RoleSelector'
 import RoleSelected from '@/components/pathway/results/RoleSelected'
 import ResultsComparison from '@/components/pathway/results/ResultsComparison'
-import UpskillingResource from '@/components/pathway/results/UpskillingResource'
 import ModalUpdate from '@/components/pathway/results/ModalUpdate'
 import StepBadge from '@/components/pathway/results/StepBadge'
 import PrintPage from '@/components/PrintPage'
@@ -581,7 +380,6 @@ import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
 import NextStepPanel from '@/components/pathway/results/NextStepPanel'
 import HelpBubble from '@/components/HelpBubble'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
-import InputCheckbox from '@/components/forms/InputCheckbox'
 
 export default {
   layout: 'results',
@@ -590,356 +388,26 @@ export default {
     RoleSelector,
     RoleSelected,
     ResultsComparison,
-    UpskillingResource,
     ModalUpdate,
     StepBadge,
     PrintPage,
     DisclaimerPanel,
     NextStepPanel,
-    HelpBubble,
-    InputCheckbox
+    HelpBubble
   },
-  mixins: [skillMatch],
   data() {
     return {
-      resources,
       targetRole: false,
       modals: {
         update: false,
         beta: true
-      },
-      filter: {
-        format: {
-          open: false,
-          options: [],
-          value: ['All'],
-          order: [
-            'Online courses',
-            'Instructor-led training',
-            'Qualifications',
-            'Video and audio',
-            'Articles',
-            'Events',
-            'Learning through others',
-            'On the job'
-          ]
-        },
-        capability: {
-          open: false,
-          options: [],
-          value: ['All']
-        },
-        level: {
-          open: false,
-          options: [],
-          value: ['All'],
-          order: ['Foundational', 'Intermediate', 'Advanced']
-        },
-        free: {
-          value: false
-        },
-        recommended: {
-          value: false
-        }
       }
     }
   },
   computed: {
     ...mapGetters(['answers', 'getHumanReadableAnswerValue']),
-    skillsAndCapabilitiesLevelMap() {
-      const target = {}
-      const current = {}
-      const assessed = {}
-
-      this.targetRole.skills.focus.forEach(({ code, level }) => {
-        target[code] = parseInt(level)
-      })
-      this.targetRole.capabilities.focus.forEach(({ code, level }) => {
-        target[code] = parseInt(level)
-      })
-      this.currentRole.skills.focus.forEach(({ code, level }) => {
-        current[code] = parseInt(level)
-      })
-      this.currentRole.capabilities.focus.forEach(({ code, level }) => {
-        current[code] = parseInt(level)
-      })
-      Object.keys(this.answers.skills).map((key) => {
-        assessed[key] = this.answers.skills[key]?.value
-      })
-      Object.keys(this.answers.capabilities).map((key) => {
-        assessed[key] = this.answers.capabilities[key]?.value
-      })
-      return { target, current, assessed }
-    },
-    filterFormatLabel() {
-      if (
-        this.filter.format.value &&
-        this.filter.format.value.includes('All')
-      ) {
-        return 'All formats'
-      }
-      const filtered = this.filter.format.value.filter((item) => item !== 'All')
-      if (filtered.length > 1) {
-        return `${filtered.length} formats`
-      }
-      return this.filter.format.value[0]
-    },
-    filterCapabilityLabel() {
-      if (
-        this.filter.capability.value &&
-        this.filter.capability.value.includes('All')
-      ) {
-        return 'All skills'
-      }
-      const filtered = this.filter.capability.value.filter(
-        (item) => item !== 'All'
-      )
-      if (filtered.length > 1) {
-        return `${filtered.length} skills`
-      }
-      return capabilityNamesMap[this.filter.capability.value[0]]
-    },
-    filterLevelLabel() {
-      if (this.filter.level.value && this.filter.level.value.includes('All')) {
-        return 'All levels'
-      }
-      const filtered = this.filter.level.value.filter((item) => item !== 'All')
-      if (filtered.length > 1) {
-        return `${filtered.length} levels`
-      }
-      return this.filter.level.value[0]
-    },
-    filterFormatOptions() {
-      if (this.allResources.length > 0) {
-        const formats = this.$collect(
-          this.allResources.map((resource) => resource.format)
-        )
-          .unique()
-          .all()
-        const orderedFormats = formats.sort(
-          (a, b) =>
-            this.filter.format.order.indexOf(a) -
-            this.filter.format.order.indexOf(b)
-        )
-        orderedFormats.unshift('All')
-        return orderedFormats
-      }
-      return ['All']
-    },
-    filterCapabilityOptions() {
-      if (this.allResources.length > 0) {
-        const tmp = []
-
-        this.allResources.forEach((resource) => {
-          const matchedSkills = this.$collect([
-            ...resource.skills,
-            ...resource.capabilities
-          ])
-            .filter(({ code, level }) => {
-              return (
-                this.isNewSkill({ code, level }) ||
-                this.isUpskill({ code, level })
-              )
-            })
-            .all()
-          tmp.push(...matchedSkills)
-        })
-
-        const codes = this.$collect(tmp)
-          .unique('code')
-          .map(({ code }) => code)
-          .all()
-
-        codes.unshift('All')
-        return codes || ['']
-      }
-      return ['All']
-    },
-    filterLevelOptions() {
-      if (this.allResources.length > 0) {
-        const tmp = []
-        this.allResources.map((resource) => {
-          resource.targetLevel.forEach((level) => tmp.push(level))
-        })
-        const levels = this.$collect(tmp).unique().all()
-        const orderedLevels = levels
-          .sort(
-            (a, b) =>
-              this.filter.level.order.indexOf(a) -
-              this.filter.level.order.indexOf(b)
-          )
-          .map((value) => {
-            const label = value
-              .replaceAll('Foundational', 'Foundational (Level 1)')
-              .replaceAll('Intermediate', 'Intermediate (Level 2-3)')
-              .replaceAll('Advanced', 'Advanced (Level 4-5)')
-            return { label, value }
-          })
-        orderedLevels.unshift({ label: 'All', value: 'All' })
-        return orderedLevels
-      }
-      return [{ label: 'All', value: 'All' }]
-    },
-    allResources() {
-      if (!this.targetRole) {
-        return []
-      }
-      const defaultResources = this.$collect(this.resources)
-        .where('default', true)
-        .all()
-      const targetRoleSkills = this.targetRole.skills.focus
-      const targetRoleCapabilities = this.targetRole.capabilities.focus
-
-      const matchingResources = this.$collect(this.resources)
-        .filter((resource) => {
-          let keep = false
-
-          targetRoleSkills.forEach((targetRoleSkill) => {
-            // Get all resource skills that match targte role skills
-            const matchedResourceSkills = this.$collect(resource.skills)
-              .where('code', targetRoleSkill.code)
-              .all()
-
-            // Iterrate through matched skills
-            matchedResourceSkills.forEach(({ code, level }) => {
-              if (this.isNewSkill({ code, level: parseInt(level) })) {
-                keep = true
-              }
-              if (this.isUpskill({ code, level: parseInt(level) })) {
-                keep = true
-              }
-            })
-          })
-
-          targetRoleCapabilities.forEach((targetRoleCapbility) => {
-            // Get all resource capabilities that match targte role capabilities
-            const matchedResourceCapabilities = this.$collect(
-              resource.capabilities
-            )
-              .where('code', targetRoleCapbility.code)
-              .all()
-
-            // Iterrate through matched capabilities
-            matchedResourceCapabilities.forEach(({ code, level }) => {
-              if (this.isNewSkill({ code, level: parseInt(level) })) {
-                keep = true
-              }
-              if (this.isUpskill({ code, level: parseInt(level) })) {
-                keep = true
-              }
-            })
-          })
-          return keep
-        })
-        .filter((resource) => {
-          return !defaultResources.includes(resource)
-        })
-        .all()
-
-      return [...matchingResources, ...defaultResources]
-    },
-    filteredResources() {
-      const groupedResources = {}
-      const filteredResources = this.allResources.filter((resource) => {
-        const match = {
-          format: false,
-          capability: false,
-          level: false
-        }
-        if (
-          this.filter.format.value.includes('All') ||
-          this.filter.format.value.includes(resource.format)
-        ) {
-          match.format = true
-        }
-        if (this.filter.capability.value.includes('All')) {
-          match.capability = true
-        }
-
-        if (this.filter.level.value.includes('All')) {
-          match.level = true
-        }
-
-        if (this.filter.free.value && resource.cost !== '0') {
-          return false
-        }
-
-        if (this.filter.recommended.value && resource.default !== true) {
-          return false
-        }
-
-        const matchedSkills = this.$collect([
-          ...resource.skills,
-          ...resource.capabilities
-        ]).filter(({ code, level }) => {
-          if (this.filter.capability.value.includes(code)) {
-            // Is a new skill OR Matching resources has an equal or better level than the target role
-            if (
-              this.isNewSkill({ code, level }) ||
-              this.isUpskill({ code, level })
-            ) {
-              return true
-            }
-            return false
-          }
-        })
-
-        if (matchedSkills?.items && matchedSkills.items.length > 0) {
-          match.capability = true
-        }
-
-        const matchedLevels = this.$collect(resource.targetLevel)
-          .map((item) => item)
-          .contains((value, key) => this.filter.level.value.includes(value))
-
-        if (matchedLevels) {
-          match.level = true
-        }
-
-        return match.format && match.capability && match.level
-      })
-
-      filteredResources.forEach((resource) => {
-        if (!groupedResources.hasOwnProperty(resource.format)) {
-          groupedResources[resource.format] = []
-        }
-        if (resource.default) {
-          groupedResources[resource.format].unshift(resource)
-        } else {
-          groupedResources[resource.format].push(resource)
-        }
-      })
-
-      const orderedGroups = Object.keys(groupedResources)
-        .map((key) => ({ items: groupedResources[key], label: key }))
-        .sort(
-          (a, b) =>
-            this.filter.format.order.indexOf(a.label) -
-            this.filter.format.order.indexOf(b.label)
-        )
-
-      return {
-        groups: orderedGroups,
-        count: filteredResources.length || 0
-      }
-    },
-    targetRoleCapabilities() {
-      if (!this.targetRole) {
-        return []
-      }
-      const targetRoleCapabilities = this.$collect(
-        this.targetRole.capabilities.focus
-      )
-        .unique('code')
-        .map((item) => item.code)
-        .all()
-      const targetRoleSkills = this.$collect(this.targetRole.skills.focus)
-        .unique('code')
-        .map((item) => item.code)
-        .all()
-      return [...targetRoleCapabilities, ...targetRoleSkills]
-    },
     roles() {
+      console.log('tttttttt', this.$store.state.roles)
       return this.$store.state.roles
     },
     currentRole() {
@@ -980,94 +448,20 @@ export default {
     }
   },
   mounted() {
-    this.logAnswersToGoogleAnalytics()
+    // this.logAnswersToGoogleAnalytics()
     if (this.goalRole) {
       this.targetRole = this.goalRole
     }
-    window.addEventListener('click', (e) => {
-      this.checkCustomSelect(e.target)
-    })
+    // window.addEventListener('click', (e) => {
+    //   this.checkCustomSelect(e.target)
+    // })
   },
   beforeDestroy() {
-    window.removeEventListener('click', (e) => {
-      this.checkCustomSelect(e.target)
-    })
+    // window.removeEventListener('click', (e) => {
+    //   this.checkCustomSelect(e.target)
+    // })
   },
   methods: {
-    checkCustomSelect(target) {
-      if (!target.closest('.nsw-custom-select-format')) {
-        this.filter.format.open = false
-      }
-      if (!target.closest('.nsw-custom-select-capability')) {
-        this.filter.capability.open = false
-      }
-      if (!target.closest('.nsw-custom-select-level')) {
-        this.filter.level.open = false
-      }
-    },
-    toggleFormatFilter(e) {
-      e.stopPropagation()
-      this.filter.format.open = !this.filter.format.open
-      this.filter.capability.open = false
-      this.filter.level.open = false
-    },
-    toggleCapabilityFilter(e) {
-      e.stopPropagation()
-      this.filter.capability.open = !this.filter.capability.open
-      this.filter.format.open = false
-      this.filter.level.open = false
-    },
-    toggleLevelFilter(e) {
-      e.stopPropagation()
-      this.filter.level.open = !this.filter.level.open
-      this.filter.format.open = false
-      this.filter.capability.open = false
-    },
-    onFilterFormatChange(value) {
-      if (!this.filter.format.value || this.filter.format.value.length === 0) {
-        this.filter.format.value = ['All']
-      }
-      if (value === 'All' && this.filter.format.value.includes('All')) {
-        this.filter.format.value = ['All']
-      }
-      if (value !== 'All' && this.filter.format.value.includes(value)) {
-        this.filter.format.value = this.filter.format.value.filter(
-          (item) => item !== 'All'
-        )
-      }
-    },
-    onFilterCapabilityChange(value) {
-      if (
-        !this.filter.capability.value ||
-        this.filter.capability.value.length === 0
-      ) {
-        this.filter.capability.value = ['All']
-      }
-      if (value === 'All' && this.filter.capability.value.includes('All')) {
-        this.filter.capability.value = ['All']
-      }
-      if (value !== 'All' && this.filter.capability.value.includes(value)) {
-        this.filter.capability.value = this.filter.capability.value.filter(
-          (item) => item !== 'All'
-        )
-      }
-    },
-    onFilterLevelChange(value) {
-      if (!this.filter.level.value || this.filter.level.value.length === 0) {
-        this.filter.level.value = ['All']
-      }
-      if (value === 'All' && this.filter.level.value.includes('All')) {
-        this.filter.level.value = ['All']
-      }
-      if (value !== 'All' && this.filter.level.value.includes(value)) {
-        this.filter.level.value = this.filter.level.value.filter(
-          (item) => item !== 'All'
-        )
-      }
-    },
-    getCapabilityOptionLabel(key) {
-      return capabilityNamesMap[key] || key
-    },
     printPage() {
       // Track in GA
       window.dataLayer.push({
@@ -1078,111 +472,266 @@ export default {
       window.print()
     },
 
-    openUpskillResource(resource) {
-      // Track in GA
-      window.dataLayer.push({
-        event: 'upskill_resource',
-        category: 'pathway_results',
-        label: resource.title,
-        value: resource.id
-      })
-
-      // Open browser window
-      const win = window.open(resource.url, '_blank')
-      win.focus()
-    },
-
     getQuestionAnswer(stepId) {
       return this.$store.getters.getHumanReadableAnswerValue(stepId)
     },
 
-    resetFilters() {
-      this.filter.format.value = ['All']
-    },
+    // resetFilters() {
+    //   this.filter.format.value = ['All']
+    // },
 
     selectTargetRole(role) {
       this.targetRole = role
-      this.resetFilters()
+      // this.resetFilters()
       this.$scrollTo('#comparison')
     },
 
     familyRoles(currentRole) {
-      // if (currentRole.id === 99) {
-      //   return []
-      // }
-      console.log("Current", currentRole)
-      console.log({One: this.roles[0]})
-      return this.$collect(this.roles)
-        .filter((role) => {
-          return (
-            role.familyFunction === currentRole.familyFunction &&
-            role.familyRole === currentRole.familyRole &&
-            role.id !== currentRole.id &&
-            // role.gradeId >= currentRole.gradeId &&
-            // role.gradeId - currentRole.gradeId <= 3 &&
-            role.id !== this.goalRole?.id //&&
-            // !role.genericRole
-          )
-        })
-        // .sortBy('gradeId')
-        .all()
+      const isPolicing = currentRole.jobFamily === 'Policing'
+
+      const familyFiltered = this.roles.filter(
+        (role) => role.jobFamily === currentRole.jobFamily
+      )
+
+      const functionFiltered = familyFiltered.filter(
+        (role) => role.jobFunction === currentRole.jobFunction
+      )
+
+      const nextRoles = functionFiltered.filter(
+        (role) => {
+          let nextRoleJump = 1
+          if (currentRole.gradeId.type === 'policing' && currentRole.gradeId.grade === 2) {
+            nextRoleJump = 2
+          }
+          return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
+        }
+      )
+      console.log(nextRoles)
+
+      const sameGradeFamily = familyFiltered.filter((role) => {
+        if (isPolicing) {
+          return role.gradeId.grade === currentRole.gradeId.grade
+        }
+
+        return (
+          role.gradeId.grade === currentRole.gradeId.grade ||
+          role.gradeId.grade + 1 === currentRole.gradeId.grade
+        )
+      })
+
+      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles) // .map(({ role }) => role)
+      const rankedSameGradeFamily = this.rankAndSortRoles(
+        currentRole,
+        sameGradeFamily
+      ) // .map(({ role }) => role)
+
+      console.log({
+        rankedNextRoles,
+        rankedSameGradeFamily
+      })
+
+      return {
+        totalCount: rankedNextRoles.length + rankedSameGradeFamily.length,
+        nextRoles: rankedNextRoles,
+        sameFamily: rankedSameGradeFamily
+      }
+
+      // return (
+      //   this.$collect(this.roles)
+      //     .filter((role) => {
+      //       return (
+      //         role.jobFamily === currentRole.jobFamily &&
+      //         role.jobRole === currentRole.jobRole &&
+      //         // role.id !== currentRole.id &&
+      //         // role.gradeId >= currentRole.gradeId &&
+      //         // role.gradeId - currentRole.gradeId <= 3 &&
+      //         // role.id !== this.goalRole?.id //&&
+      //         !role.genericRole
+      //       )
+      //     })
+      //     // .sortBy('gradeId')
+      //     .all()
+      // )
     },
 
     isRoleSharingSkills(firstRole, secondRole) {
-      // Pluck out the skill codes for comparison
-      const currentSkills = this.$collect(firstRole.skills.focus)
-        .pluck('code')
-        .all()
-      const comparisonSkills = this.$collect(secondRole.skills.focus)
-        .pluck('code')
-        .all()
+      const results = firstRole.capabilities.focus.reduce((acc, item) => {
+        // console.log({ item })
+        const sameCode = secondRole.capabilities.focus.find(
+          (otherItem) => item.code === otherItem.code
+        )
+        // console.log({ sameCode })
+        if (sameCode) {
+          const sameLevel = secondRole.capabilities.focus.find(
+            (otherItem) => item.level >= otherItem.level
+          )
 
-      // Only match when roles share at least 2 skills
-      return (
-        this.$collect(currentSkills).intersect(comparisonSkills).count() > 1
-      )
+          if (sameLevel) {
+            acc.push(item)
+          }
+        }
+        return acc
+      }, [])
+
+      return results
+    },
+
+    roleShareCapabilitiesRank(firstRole, secondRole) {
+      const result = {
+        focusFocus: 0,
+        allFocus: 0,
+        focusAll: 0,
+        allAll: 0
+      }
+
+      firstRole.capabilities.all.forEach((firstCap) => {
+        secondRole.capabilities.all.forEach((secondCap) => {
+          if (firstCap.code === secondCap.code) {
+            const firstFocus = firstRole.capabilities.focus
+              .map(({ code }) => code)
+              .includes(firstCap.code)
+            const secondFocus = secondRole.capabilities.focus
+              .map(({ code }) => code)
+              .includes(secondCap.code)
+
+            let resultKey = 'focusFocus'
+
+            if (!firstFocus && secondFocus) {
+              resultKey = 'allFocus'
+            } else if (firstFocus && !secondFocus) {
+              resultKey = 'focusAll'
+            } else if (!firstFocus && !secondFocus) {
+              resultKey = 'allAll'
+            }
+
+            const levelDelta = firstCap.level - secondCap.level
+
+            if (levelDelta === 0) {
+              // equal
+              result[resultKey] += 1
+            }
+
+            // if (levelDelta >= 1) { // FirstCap higher
+            //   result[resultKey] += 1.2
+            //   return
+            // }
+
+            // if (levelDelta === -1) { // FirstCap off by one
+            //   result[resultKey] += 0.3
+            // }
+          }
+        })
+      })
+
+      return result
+    },
+
+    rankAndSortRoles(currentRole, compareRoles) {
+      return compareRoles
+        .map((role) => {
+          const sharingSkills = this.roleShareCapabilitiesRank(
+            currentRole,
+            role
+          )
+          return {
+            role,
+            rank: sharingSkills
+          }
+        }, [])
+        .sort((a, b) => {
+          return b.rank.focusFocus - a.rank.focusFocus
+        })
+        .reduce((acc, rankedRole) => {
+          const totalFocus = rankedRole.rank.focusFocus
+
+          if (acc.length === 0) {
+            acc.push([rankedRole])
+          } else {
+            const lastRank = acc[acc.length - 1]
+            if (lastRank[0].rank.focusFocus === totalFocus) {
+              acc[acc.length - 1].push(rankedRole)
+            } else {
+              acc.push([rankedRole])
+            }
+          }
+          return acc
+        }, [])
+        .reduce((acc, rankedRoleGroup) => {
+          const reRanked = rankedRoleGroup.sort((a, b) => {
+            const aRank =
+              a.rank.focusAll + a.rank.allFocus * 0.6 + a.rank.allAll * 0.1
+            const bRank =
+              b.rank.focusAll + b.rank.allFocus * 0.6 + b.rank.allAll * 0.1
+            return bRank - aRank
+          })
+          reRanked.forEach((rankedRole) => {
+            acc.push(rankedRole)
+          })
+          return acc
+        }, [])
+        // .map(({ role }) => role)
     },
 
     skillRoles(currentRole) {
-      return (
-        this.$collect(this.roles)
-          // Filter roles and only return those that share at least 2 skills
-          .filter((role) => this.isRoleSharingSkills(role, currentRole))
-          // Filter out my current role and goal role if chosen
-          .filter(
-            (role) =>
-              role.id !== currentRole.id && role.id !== this.goalRole?.id
-          )
-          // Only return roles with equal or higher grade, but no higher than 3 grades
-          .filter(
-            (role) =>
-              role.gradeId >= currentRole.gradeId &&
-              role.gradeId - currentRole.gradeId <= 3
-          )
-          // Filter out any roles already listed in family and next
-          .filter((role) => {
-            return !this.familyRoles(currentRole).includes(role)
-          })
-          .sortBy('gradeId')
-          .all()
+      const familyFiltered = this.roles.filter(
+        (role) => role.jobFamily !== currentRole.jobFamily
       )
-    },
+      console.log(
+        `Family Filtered: ${familyFiltered.length} / ${this.roles.length}`
+      )
 
-    outboundLinkClick(url) {
-      window.dataLayer.push({
-        event: 'click',
-        category: 'outbound_link',
-        label: url
-      })
-    },
+      const matches = this.rankAndSortRoles(currentRole, familyFiltered) // .map(({ role }) => role)
 
-    logAnswersToGoogleAnalytics() {
-      // Question flow: Current NSW govt employee or not
-      window.dataLayer.push({
-        event: 'government_employee',
-        category: 'pathway_answers',
-        label: this.getHumanReadableAnswerValue('work-gov')
-      })
+      // console.log(
+      //   matches.map(({ role, rank }) => {
+      //     return `${role.name} -(${rank.focusFocus},${rank.focusAll},${rank.allFocus},${rank.allAll})`
+      //   })
+      // )
+
+      // const matchedRoles = matches.map(({ role }) => role)
+
+      // let currentIndex = matches.length
+      // while (currentIndex !== 0) {
+      //   const randomIndex = Math.floor(Math.random() * currentIndex)
+      //   currentIndex--
+      //   ;[matches[currentIndex], matches[randomIndex]] = [
+      //     matches[randomIndex],
+      //     matches[currentIndex]
+      //   ]
+      // }
+
+      const filteredMatchedRoles = matches
+        // Filter out my current role and goal role if chosen
+        .filter(
+          ({ role }) => role.id !== currentRole.id && role.id !== this.goalRole?.id
+        )
+
+      console.log(
+        `Final Filtered: ${filteredMatchedRoles.length} / ${familyFiltered.length}`
+      )
+
+      return filteredMatchedRoles.slice(0, 6)
+      // return (
+      //   this.$collect(this.roles)
+      //     // Filter roles and only return those that share at least 2 skills
+      //     .filter((role) => this.isRoleSharingSkills(role, currentRole))
+      //     // Filter out my current role and goal role if chosen
+      //     .filter(
+      //       (role) =>
+      //         role.id !== currentRole.id && role.id !== this.goalRole?.id
+      //     )
+      //     // Only return roles with equal or higher grade, but no higher than 3 grades
+      //     .filter((role) => {
+      //       role.gradeId >= currentRole.gradeId &&
+      //         role.gradeId - currentRole.gradeId <= 3
+      //     })
+      //     // Filter out any roles already listed in family and next
+      //     // .filter((role) => {
+      //     //   !this.familyRoles(currentRole).map((r) => r.id).includes(role.id)
+      //     // })
+      //     .sortBy('gradeId')
+      //     .all()
+      // )
     }
   }
 }

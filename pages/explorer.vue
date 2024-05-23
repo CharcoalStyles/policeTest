@@ -252,8 +252,6 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      console.log(this.filter.keyword);
-      console.log(this.roles);
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
@@ -282,12 +280,12 @@ export default {
      */
     filteredRolesByFunction() {
       return this.filteredRoles
-        .groupBy('familyFunction')
+        .groupBy('jobFamily')
         .keys()
         .map((key) => ({
           name: key,
           roles: this.filteredRoles
-            .where('familyFunction', key)
+            .where('jobFamily', key)
             .sortByDesc(this.filter.sortBy)
             .all()
         }))
@@ -300,12 +298,12 @@ export default {
      */
     filteredRolesByFamilyRole() {
       const results = this.filteredRoles
-        .groupBy('familyRole')
+        .groupBy('jobRole')
         .keys()
         .map((key) => ({
           name: key,
           roles: this.filteredRoles
-            .where('familyRole', key)
+            .where('jobRole', key)
             .sortByDesc(this.filter.sortBy)
             .all()
         }))

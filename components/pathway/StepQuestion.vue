@@ -18,20 +18,23 @@
         </p>
       </div>
       <component :is="componentName" :step="step" class="mb-6" />
-      <div v-if="step.schema.support" class="">
+      <!-- <div v-if="step.schema.support" class="">
         <p v-for="(text, index) in step.schema.support" :key="index" class="text-base text-nsw-brand-grey-primary mb-3">{{ text }}</p>
-      </div>
+      </div> -->
     </div>
     <div v-if="showNoRolePanel" class="lg:w-1/2 flex lg:justify-end items-start">
-      <div class="block p-4 md:p-8 bg-nsw-grey-100 lg:w-2/3 rounded-lg max-w-lg">
+      <div class="block p-4 md:p-8 bg-nsw-brand-primary-blue-light lg:w-2/3 rounded-lg max-w-lg">
         <h3 class="font-bold text-2xl mb-8">
-          None of these roles are similar to my current role
+          Cant find a job title that is relevant?
         </h3>
-        <p class="mb-12">
-          If you are not currently in a procurement role and none of these roles are similar, click the button below.
+        <p class="font-bold mb-2">
+          Use the Role Explorer tool
+        </p>
+        <p class="mb-10">
+          See all the various roles, levels and how they're connected across the NSW Police Force.
         </p>
         <nsw-button action="secondary-outline" @click.native="setDefaultRole">
-          No current role
+          Browse Roles
         </nsw-button>
       </div>
     </div>
@@ -103,11 +106,9 @@ export default {
         case 'skill':
         case 'capability':
           return 'w-full lg:w-8/12'
-          break
 
         default:
           return 'w-full lg:w-7/12'
-          break
       }
     },
     showNoRolePanel() {
@@ -119,13 +120,7 @@ export default {
   },
   methods: {
     setDefaultRole() {
-      if (this.defaultNoRole && this.defaultNoRole.id) {
-        this.$store.dispatch('saveQuestionAnswer', {
-          id: this.step.id,
-          value: this.defaultNoRole.id
-        })
-        this.goToNextStep()
-      }
+      this.$router.push('/explorer')
     },
     goToNextStep() {
       const nextStep = this.getNextStepByCurrentIndex(this.currentStepIndex)

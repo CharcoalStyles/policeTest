@@ -6,8 +6,8 @@
         :search="search"
         :get-result-value="getResultValue"
         :default-value="defaultValue"
-        placeholder="Search by keyword, e.g. Analyst, Procurement, Sourcing"
-        aria-label="Search by keyword, e.g. Analyst, Procurement, Sourcing"
+        placeholder="Search by keyword, e.g. Case Officer, Intelligence, Coordinator"
+        aria-label="Search by keyword, e.g. Case Officer, Intelligence, Coordinator"
         @submit="selectRole"
       >
         <template
@@ -166,7 +166,6 @@ export default {
     },
     selectRole(role) {
       if (role && role.id) {
-        console.log(role)
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value: role.id

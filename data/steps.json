@@ -71,7 +71,7 @@
   },
   {
     "id": "current-gov-role",
-    "title": "Select which role is most similar to your current role",
+    "title": "Select which job title closely matches your current role",
     "type": "question",
     "assessible": true,
     "conditions": [
@@ -94,7 +94,7 @@
   },
   {
     "id": "current-outside-role",
-    "title": "Select which role is most similar to your current role",
+    "title": "Select which job title closely matches your current role",
     "type": "question",
     "assessible": true,
     "conditions": [

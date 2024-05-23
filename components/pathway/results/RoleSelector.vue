@@ -18,12 +18,12 @@
 
       <!-- <div class="text-nsw-grey-800 sm:flex sm:space-x-2 sm:mb-1">
         <div class="mb-1 sm:mb-0">
-          familyFunction: {{ role.familyFunction }}
+          jobFamily: {{ role.jobFamily }}
         </div>
-        <div>familyRole: {{ role.familyRole }}</div>
+        <div>jobRole: {{ role.jobRole }}</div>
       </div> -->
       <div class="hidden sm:block font-bold">
-        {{ role.name }}
+        {{ role.name }}  {{rankAsString}}
       </div>
     </div>
   </div>
@@ -39,11 +39,21 @@ export default {
     targetRole: {
       type: [Object, Boolean],
       required: true
+    },
+    rank: {
+      type: Object,
+      required: false
     }
   },
   computed: {
     isRoleSelected() {
       return this.targetRole && this.role.id === this.targetRole.id
+    },
+    rankAsString() {
+      if (this.rank) {
+        return `(${this.rank.focusFocus}, ${this.rank.focusAll}, ${this.rank.allFocus}, ${this.rank.allAll})`
+      }
+      return ''
     }
   }
 }
