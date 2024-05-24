@@ -176,11 +176,11 @@ export default {
     }
   },
   mounted() {
-    window.dataLayer.push({
-      event: 'skill_modal_opened',
-      category: 'pathway_results',
-      label: this.selectedSkill.code
-    })
+    // window.dataLayer.push({
+    //   event: 'skill_modal_opened',
+    //   category: 'pathway_results',
+    //   label: this.selectedSkill.code
+    // })
   }
 }
 </script>

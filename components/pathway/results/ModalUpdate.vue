@@ -50,10 +50,10 @@ export default {
   methods: {
     returnToQuestionFlow() {
       // Log action to GA
-      window.dataLayer.push({
-        event: 'update_answer_modal',
-        category: 'pathway_results'
-      })
+      // window.dataLayer.push({
+      //   event: 'update_answer_modal',
+      //   category: 'pathway_results'
+      // })
       this.$emit('close')
       this.$router.push('/pathway')
     }

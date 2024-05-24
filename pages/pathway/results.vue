@@ -485,10 +485,10 @@ export default {
   methods: {
     printPage() {
       // Track in GA
-      window.dataLayer.push({
-        event: 'print_page',
-        category: 'pathway_results'
-      })
+      // window.dataLayer.push({
+      //   event: 'print_page',
+      //   category: 'pathway_results'
+      // })
       // Trigger print in browser
       window.print()
     },
