@@ -2,7 +2,7 @@
   {
     "id": "start",
     "title": "Get a personalised career recommendation and plan",
-    "type": "Career Pathways Tool sdsd",
+    "type": "introduction",
     "conditions": false,
     "schema": {
       "section": "Your personalised pathway",
@@ -21,65 +21,10 @@
     }
   },
   {
-    "id": "work-gov",
-    "title": "Do you currently work for NSW Government?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Your current role",
-      "help": "",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "work-procurement",
-    "title": "Do you currently work in a procurement role, or similar?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Your current role",
-      "help": "If so, we'll ask questions about your technical skills to help us recommend roles.",
-      "helpExtra": "Procurement roles can include disciplines such as strategic sourcing, category management, contract management, analysis, advice, policy and governance. Similar roles may include those in project, policy, administrative, finance, commercial and other related disciplines.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "current-gov-role",
+    "id": "current-role",
     "title": "Select which job title closely matches your current role",
     "type": "question",
     "assessible": true,
-    "conditions": [
-      {
-        "id": "work-gov",
-        "value": "yes"
-      }
-    ],
     "schema": {
       "section": "Your current role",
       "help": "We’ll use this as a starting point and does not have to be an exact match.",
@@ -93,26 +38,46 @@
     }
   },
   {
-    "id": "current-outside-role",
-    "title": "Select which job title closely matches your current role",
+    "id": "criteria",
+    "title": "Do any of the following criteria apply to you?",
     "type": "question",
-    "assessible": true,
-    "conditions": [
-      {
-        "id": "work-gov",
-        "value": "no"
-      }
-    ],
     "schema": {
-      "section": "Your current role",
-      "help": "We’ll use this as a starting point and does not have to be an exact match.",
+      "section": "Essential elements",
+      "help": "This makes sure we can we provide relevant opportunities inline with essential job requirements.",
       "field": {
-        "type": "role",
-        "required": true
-      },
-      "support": [
-        "This tool includes common types of procurement roles, and similar related roles, that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation."
-      ]
+        "type": "checkbox",
+        "required": false,
+        "options": [
+          {
+            "title": "I am of Aboriginal or Torres Strait Islander origin",
+            "value": "ATSI"
+          },
+          {
+            "title": "I am a Designated Detective (hold an associate degree in Policing Practice)",
+            "value": "DDP"
+          },
+          {
+            "title": "I hold a current Australian Commercial Pilot licence (CPL) or Air Transport Pilot Licence (ATPL)",
+            "value": "ATPL"
+          },
+          {
+            "title": "I am a registered Psychologist",
+            "value": "RPS"
+          },
+          {
+            "title": "I am a registered Nurse",
+            "value": "RN"
+          },
+          {
+            "title": "I am a registered General Practitioner or Physician",
+            "value": "RGP"
+          },
+          {
+            "title": "I hold a solicitor’s practicing certificate",
+            "value": "SPC"
+          }
+        ]
+      }
     }
   },
   {
@@ -160,13 +125,13 @@
   },
   {
     "id": "skills",
-    "title": "Let’s assess your current procurement skills",
+    "title": "Let's assess your current skills",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the focus procurement skills required for your current role. These are technical skills based on the {{procurement_professionals_capability_set}}."
+      "description": "In this section, you'll assess yourself on the focus procurement skills required for your current role. These are technical skills based on the {{procurement_professionals_capability_set}}."
     },
     "steps": []
   },
@@ -178,7 +143,7 @@
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the general focus capabilities required for your current role. These are transferrable and based on the {{nsw_public_sector_capability_framework}}."
+      "description": "In this section, you'll assess yourself on the general focus capabilities required for your current role. These are transferrable and based on the {{nsw_public_sector_capability_framework}}."
     },
     "steps": []
   },
@@ -190,7 +155,7 @@
     "conditions": false,
     "schema": {
       "section": "Your results",
-      "description": "Thank you for answering this questionnaire. Click ‘Go to my plan’ to view your personalised career plan."
+      "description": "Thank you for answering this questionnaire. Click 'Go to my plan' to view your personalised career plan."
     }
   }
 ]

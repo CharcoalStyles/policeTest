@@ -7,7 +7,7 @@ export default {
 
   // Global page headers
   head: {
-    title: 'Procurement Career Pathways Tool',
+    title: 'NSW Police Career Pathways Tool',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

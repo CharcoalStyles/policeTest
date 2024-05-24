@@ -431,14 +431,12 @@ export default {
       return this.$store.state.roles
     },
     currentRole() {
-      if (this.answers.hasOwnProperty('current-gov-role')) {
+      if (this.answers.hasOwnProperty('current-role')) {
         return this.$store.getters.getRoleByCode(
-          this.answers['current-gov-role'].value
+          this.answers['current-role'].value
         )
       }
-      return this.$store.getters.getRoleByCode(
-        this.answers['current-outside-role'].value
-      )
+      return null
     },
     goalRole() {
       console.log('goalRole', this.answers.hasOwnProperty('goal-role'), this.answers['goal-role'])
