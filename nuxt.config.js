@@ -73,8 +73,4 @@ export default {
   build: {
     vendor: ['vue-vimeo-player']
   },
-
-  router: {
-    base: '/policeTest'
-  }
 }
