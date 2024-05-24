@@ -23,7 +23,7 @@
         <div>jobRole: {{ role.jobRole }}</div>
       </div> -->
       <div class="hidden sm:block font-bold">
-        {{ role.name }}  {{rankAsString}}
+        {{ role.name }}  {{ rankAsString }}
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@ export default {
     },
     rankAsString() {
       if (this.rank) {
-        return `(${this.rank.focusFocus}, ${this.rank.focusAll}, ${this.rank.allFocus}, ${this.rank.allAll})`
+        return `(${this.rank.focusFocus.toFixed(2)}, ${this.rank.focusAll.toFixed(2)}, ${this.rank.allFocus.toFixed(2)}, ${this.rank.allAll.toFixed(2)})`
       }
       return ''
     }
