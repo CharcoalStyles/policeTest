@@ -11,6 +11,13 @@
  */
 
 
+/**
+  * vue-class-component v7.0.1
+  * (c) 2015-present Evan You
+  * @license MIT
+  */
+
+
 /*
 object-assign
 (c) Sindre Sorhus
@@ -59,13 +66,6 @@ object-assign
     v0.8.1 (c) Kyle Simpson
     MIT License: http://getify.mit-license.org
 */
-
-
-/**
-  * vue-class-component v7.0.1
-  * (c) 2015-present Evan You
-  * @license MIT
-  */
 
 
 /**!
