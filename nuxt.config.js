@@ -18,15 +18,6 @@ export default {
           'Build and manage a digital career in NSW Government based on interests, capabilities, goals and past experiences.'
       }
     ],
-    script: [
-      {
-        src: 'https://www.googletagmanager.com/gtag/js?id=G-KF79WV96DK',
-        async: true
-      },
-      {
-        src: '/analytics.js'
-      }
-    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {

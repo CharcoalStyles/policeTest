@@ -469,27 +469,12 @@ export default {
     }
   },
   mounted() {
-    // this.logAnswersToGoogleAnalytics()
     if (this.goalRole) {
       this.targetRole = this.goalRole
     }
-    // window.addEventListener('click', (e) => {
-    //   this.checkCustomSelect(e.target)
-    // })
-  },
-  beforeDestroy() {
-    // window.removeEventListener('click', (e) => {
-    //   this.checkCustomSelect(e.target)
-    // })
   },
   methods: {
     printPage() {
-      // Track in GA
-      // window.dataLayer.push({
-      //   event: 'print_page',
-      //   category: 'pathway_results'
-      // })
-      // Trigger print in browser
       window.print()
     },
 
@@ -497,13 +482,8 @@ export default {
       return this.$store.getters.getHumanReadableAnswerValue(stepId)
     },
 
-    // resetFilters() {
-    //   this.filter.format.value = ['All']
-    // },
-
     selectTargetRole(role) {
       this.targetRole = role
-      // this.resetFilters()
       this.$scrollTo('#comparison')
     },
 
@@ -558,11 +538,10 @@ export default {
 
     isRoleSharingSkills(firstRole, secondRole) {
       const results = firstRole.capabilities.focus.reduce((acc, item) => {
-        // console.log({ item })
         const sameCode = secondRole.capabilities.focus.find(
           (otherItem) => item.code === otherItem.code
         )
-        // console.log({ sameCode })
+
         if (sameCode) {
           const sameLevel = secondRole.capabilities.focus.find(
             (otherItem) => item.level >= otherItem.level
