@@ -148,6 +148,135 @@
     "steps": []
   },
   {
+    "id": "preferences-and-interests",
+    "title": "Tell us your preferences and interests",
+    "type": "interstitial",
+    "icon": "searchDocs",
+    "conditions": false,
+    "schema": {
+      "section": "About you",
+      "description": "In this section, we’ll ask you about your interests and preferences to be taken into consideration in your career pathway. "
+    }
+  },
+  {
+    "id": "sworn",
+    "title": "Are you looking for a policing, or non-policing role?",
+    "type": "question",
+    "schema": {
+      "section": "Work area",
+      "help": "This makes sure we can highlight opportunities within your relevant duties.",
+      "field": {
+        "type": "radio",
+        "required": false,
+        "options": [
+          {
+            "title": "Policing",
+            "value": "sworn"
+          },
+          {
+            "title": "Non-policing",
+            "value": "non-sworn"
+          },
+          {
+            "title": "Either",
+            "value": "either"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "interests",
+    "title": "What other areas are you interested in?",
+    "type": "question",
+    "conditions": false,
+    "schema": {
+      "section": "Additional interests",
+      "help": "This helps us suggest roles within discipline areas that are interesting to you. You don’t need to have any previous experience in these areas to be shown roles.",
+      "field": {
+        "type": "interests"
+      }
+    }
+  },
+  {
+    "id": "management",
+    "title": "Are you more interested in being an individual contributor or a supervisor/manager?",
+    "type": "question",
+    "schema": {
+      "section": "Managing people",
+      "help": "This makes sure we can highlight opportunities that match your preferred working style.",
+      "field": {
+        "type": "radio",
+        "required": false,
+        "options": [
+          {
+            "title": "Individual contributor",
+            "value": "individual"
+          },
+          {
+            "title": "Supervisor/Manager",
+            "value": "manager"
+          },
+          {
+            "title": "I'm not sure",
+            "value": "either"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "new-role",
+    "title": "What matters to you when choosing a new role?",
+    "type": "question",
+    "schema": {
+      "section": "Role properties",
+      "help": "This helps us create an accurate profile for you to prioritise your career opportunities. ",
+      "field": {
+        "type": "checkbox",
+        "required": false,
+        "options": [
+          {
+            "title": "Flexibility",
+            "value": "flexibility"
+          },
+          {
+            "title": "Remuneration",
+            "value": "remuneration"
+          },
+          {
+            "title": "Command",
+            "value": "command"
+          },
+          {
+            "title": "Growth opportunities",
+            "value": "growth"
+          },
+          {
+            "title": "Rank/Grade",
+            "value": "rank"
+          },
+          {
+            "title": "Culture",
+            "value": "culture"
+          },
+          {
+            "title": "Level of responsibility",
+            "value": "responsibility"
+          },
+          {
+            "title": "Location",
+            "value": "location"
+          },
+          {
+            "title": "Role type (Operational / Specialist / Corporate)",
+            "value": "roleType"
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "finished",
     "title": "Your personalised career pathway is ready!",
     "type": "interstitial",

@@ -48,6 +48,7 @@ import FormRadio from '@/components/pathway/FormRadio'
 import FormRole from '@/components/pathway/FormRole'
 import FormSkill from '@/components/pathway/FormSkill'
 import FormCapability from '@/components/pathway/FormCapability'
+import FormInterests from '@/components/pathway/FormInterests'
 import FormText from '@/components/pathway/FormText'
 import FormCheckbox from '@/components/pathway/FormCheckbox'
 import NswButton from '@/components/nsw/NswButton'
@@ -59,6 +60,7 @@ export default {
     FormRole,
     FormSkill,
     FormCapability,
+    FormInterests,
     FormText,
     FormCheckbox,
     NswButton,
@@ -90,6 +92,9 @@ export default {
         case 'skill':
         case 'capability':
           return 'w-full lg:w-8/12'
+
+        case 'interests':
+          return 'w-full lg:w-10/12'
 
         default:
           return 'w-full lg:w-7/12'
