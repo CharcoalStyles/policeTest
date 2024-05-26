@@ -29,9 +29,17 @@ export default {
   computed: {
     answer: {
       get() {
-        return this.$store.state.pathway.answers[this.step.id]?.value ?? this.step.schema.field.value
+        if (this.$store.state.pathway.answers[this.step.id]?.value) {
+          return this.$store.state.pathway.answers[this.step.id].value
+        }
+        if (this.step.schema.field.value) {
+          return this.step.schema.field.value
+        }
+        console.log(this.step.schema.field.options)
+        return []
       },
       set(value) {
+        console.log('value', value)
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value

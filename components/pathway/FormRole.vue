@@ -116,11 +116,8 @@ export default {
       return Boolean(this.currentValue)
     },
     currentRole() {
-      if (this.answers.hasOwnProperty('current-gov-role')) {
-        return this.getRoleByCode(this.answers['current-gov-role'].value)
-      }
-      if (this.answers.hasOwnProperty('current-outside-role')) {
-        return this.getRoleByCode(this.answers['current-outside-role'].value)
+      if (this.answers.hasOwnProperty('current-role')) {
+        return this.getRoleByCode(this.answers['current-role'].value)
       }
       return false
     },
@@ -156,10 +153,10 @@ export default {
       if (result.length === 0) {
         return [this.defaultNoRole]
       }
-      if (this.step.id === 'goal-role') {
-        return result.filter(i => i.id !== 99).filter(i => !i.genericRole)
-      }
-      return result.filter(i => i.id !== 99)
+      // if (this.step.id === 'goal-role') {
+      //   return result // .filter(i => i.id !== 99).filter(i => !i.genericRole)
+      // }
+      return result // .filter(i => i.id !== 99)
     },
     getResultValue(result) {
       return result.name

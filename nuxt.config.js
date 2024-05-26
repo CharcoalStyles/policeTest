@@ -7,7 +7,7 @@ export default {
 
   // Global page headers
   head: {
-    title: 'Procurement Career Pathways Tool',
+    title: 'NSW Police Career Pathways Tool',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,15 +16,6 @@ export default {
         name: 'description',
         content:
           'Build and manage a digital career in NSW Government based on interests, capabilities, goals and past experiences.'
-      }
-    ],
-    script: [
-      {
-        src: 'https://www.googletagmanager.com/gtag/js?id=G-KF79WV96DK',
-        async: true
-      },
-      {
-        src: '/analytics.js'
       }
     ],
     link: [
@@ -72,5 +63,5 @@ export default {
   // Build Configuration
   build: {
     vendor: ['vue-vimeo-player']
-  },
+  }
 }

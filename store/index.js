@@ -25,6 +25,7 @@ const state = () => ({
 const getters = {
   // Filter steps based on conditions and answers
   filteredSteps: (state) => {
+    console.log('filteredSteps', state.pathway)
     return state.pathway.steps.filter((step) => {
       return checkConditions(step, state.pathway.answers)
     })
