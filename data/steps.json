@@ -6,7 +6,7 @@
     "conditions": false,
     "schema": {
       "section": "Your personalised pathway",
-      "description": "In this questionnaire, we'll ask you about your current situation and have you self-assess your procurement skills and general capabilities."
+      "description": "In this questionnaire, we'll ask you about your current position, have you self-assess your skills and capabilities, and ask you about your interests and preferences."
     }
   },
   {
@@ -16,7 +16,7 @@
     "icon": "edit",
     "conditions": false,
     "schema": {
-      "section": "Let’s get started",
+      "section": "Let's get started",
       "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your skills and capabilities, and ask you about your interests and preferences."
     }
   },
@@ -27,14 +27,11 @@
     "assessible": true,
     "schema": {
       "section": "Your current role",
-      "help": "We’ll use this as a starting point and does not have to be an exact match.",
+      "help": "We'll use this as a starting point and does not have to be an exact match.",
       "field": {
         "type": "role",
         "required": true
-      },
-      "support": [
-        "This tool includes common types of procurement roles, and similar related roles, that can be found in the NSW public sector. However, role titles may be different for each NSW public sector organisation."
-      ]
+      }
     }
   },
   {
@@ -73,8 +70,12 @@
             "value": "RGP"
           },
           {
-            "title": "I hold a solicitor’s practicing certificate",
+            "title": "I hold a solicitor's practicing certificate",
             "value": "SPC"
+          },
+          {
+            "title": "None apply",
+            "value": "none"
           }
         ]
       }
@@ -82,12 +83,12 @@
   },
   {
     "id": "goal",
-    "title": "Do you have a specific role in mind that you’d like to move into?",
+    "title": "Do you have a specific role in mind that you'd like to move into?",
     "type": "question",
     "conditions": false,
     "schema": {
       "section": "Your goals",
-      "help": "If you have a specific role or pathway in mind, let’s explore how you can get there.",
+      "help": "If you have a specific role or pathway in mind, let's explore how you can get there.",
       "field": {
         "type": "radio",
         "required": true,
@@ -106,7 +107,7 @@
   },
   {
     "id": "goal-role",
-    "title": "What type of role do you want to move into?",
+    "title": "What role do you want to move into?",
     "type": "question",
     "conditions": [
       {
@@ -115,7 +116,7 @@
       }
     ],
     "schema": {
-      "section": "Your target role",
+      "section": "Your goal role",
       "help": "We can explore how you might move into this role.",
       "field": {
         "type": "role",
@@ -131,19 +132,19 @@
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the focus procurement skills required for your current role. These are technical skills based on the {{procurement_professionals_capability_set}}."
+      "description": "In this section, you’ll assess yourself on the skills required for your current role."
     },
     "steps": []
   },
   {
     "id": "capabilities",
-    "title": "Let’s assess your general capabilities",
+    "title": "Let's assess your general capabilities",
     "type": "interstitial",
     "icon": "checklist",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you'll assess yourself on the general focus capabilities required for your current role. These are transferrable and based on the {{nsw_public_sector_capability_framework}}."
+      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
     },
     "steps": []
   },
@@ -155,7 +156,7 @@
     "conditions": false,
     "schema": {
       "section": "About you",
-      "description": "In this section, we’ll ask you about your interests and preferences to be taken into consideration in your career pathway. "
+      "description": "In this section, we'll ask you about your interests and preferences to be taken into consideration in your career pathway."
     }
   },
   {
@@ -192,7 +193,7 @@
     "conditions": false,
     "schema": {
       "section": "Additional interests",
-      "help": "This helps us suggest roles within discipline areas that are interesting to you. You don’t need to have any previous experience in these areas to be shown roles.",
+      "help": "This helps us suggest roles within discipline areas that are interesting to you. You don't need to have any previous experience in these areas to be shown roles.",
       "field": {
         "type": "interests"
       }
@@ -238,39 +239,39 @@
         "options": [
           {
             "title": "Flexibility",
-            "value": "flexibility"
+            "value": "Flexibility"
           },
           {
             "title": "Remuneration",
-            "value": "remuneration"
+            "value": "Remuneration"
           },
           {
             "title": "Command",
-            "value": "command"
+            "value": "Command"
           },
           {
             "title": "Growth opportunities",
-            "value": "growth"
+            "value": "Growth opportunities"
           },
           {
             "title": "Rank/Grade",
-            "value": "rank"
+            "value": "Rank/Grade"
           },
           {
             "title": "Culture",
-            "value": "culture"
+            "value": "Culture"
           },
           {
             "title": "Level of responsibility",
-            "value": "responsibility"
+            "value": "Level of responsibility"
           },
           {
             "title": "Location",
-            "value": "location"
+            "value": "Location"
           },
           {
             "title": "Role type (Operational / Specialist / Corporate)",
-            "value": "roleType"
+            "value": "Role type (Operational / Specialist / Corporate)"
           }
         ]
       }

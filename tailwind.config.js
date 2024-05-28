@@ -15,7 +15,7 @@ module.exports = {
       },
       // https://www.digital.nsw.gov.au/design-system/style/typography
       fontFamily: {
-        sans: ['Public Sans', 'Arial', 'sans-serif']
+        sans: ['Montserrat', 'Public Sans', 'Arial', 'sans-serif']
       },
       // https://www.digital.nsw.gov.au/design-system/style/colour
       colors: {

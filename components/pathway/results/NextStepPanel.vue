@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-nsw-grey-200 px-4 pb-6 pt-4 sm:px-8 sm:pt-8 sm:pb-8 rounded-lg cursor-pointer flex flex-col justify-between">
+  <div class="border border-nsw-grey-100 px-4 pb-6 pt-4 sm:px-8 sm:pt-8 sm:pb-8 rounded-lg cursor-pointer flex flex-col justify-between">
     <div>
       <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
         {{ title }}
