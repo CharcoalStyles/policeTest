@@ -46,18 +46,16 @@
               </div>
               <div class="w-full">
                 <div
-                  v-if="currentRole.name && currentRole.id !== 99"
+                  v-if="currentRole.name"
                   class="flex flex-col mb-6 md:flex-row"
                 >
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    Your current role
+                    My current role
                   </div>
                   <div>
-                    I am currently a
-                    <span class="font-bold text-nsw-brand-secondary-blue">{{
-                      currentRole.name
-                    }}</span>
-                    or similar
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      {{ currentRole.name }} - {{ currentRole.grade }}
+                    </span>
                   </div>
                 </div>
                 <div
@@ -76,12 +74,52 @@
                   </div>
                 </div>
                 <div
+                  v-if="readableInterestsList.length > 0"
+                  class="flex flex-col mb-6 md:flex-row"
+                >
+                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
+                    Interest Areas
+                  </div>
+                  <div>
+                    I'm instested in
+                    <span class="font-bold text-nsw-brand-secondary-blue">{{
+                      readableInterestsList
+                    }}</span>
+                  </div>
+                </div>
+                <div
+                  v-if="managementPreference"
+                  class="flex flex-col mb-6 md:flex-row"
+                >
+                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
+                    How you like to work
+                  </div>
+                  <div>
+                    {{ managementPreference }}
+                  </div>
+                </div>
+                <div
+                  v-if="newRolePreference"
+                  class="flex flex-col mb-6 md:flex-row"
+                >
+                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
+                    When Choosing A Role
+                  </div>
+                  <div>
+                    I consider
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      {{ newRolePreference }}</span
+                    >
+                  </div>
+                </div>
+                <!-- <div
                   v-if="readableSkillsList"
                   class="flex flex-col mb-6 md:flex-row"
                 >
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
                     <div class="flex items-center whitespace-no-wrap">
-                      Your procurement skills<help-bubble
+                      Your skills
+                       <help-bubble
                         tooltip="These are the typical procurement skills required for the role type you selected."
                       />
                     </div>
@@ -99,7 +137,8 @@
                 >
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
                     <div class="flex items-center whitespace-no-wrap">
-                      Your core capabilities<help-bubble
+                      Your core capabilities
+                      <help-bubble
                         tooltip="These are the typical core capabilities required for the role type you selected."
                       />
                     </div>
@@ -110,7 +149,7 @@
                       readableCapabilitiesList
                     }}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -139,9 +178,9 @@
                 <div>
                   <h4 class="flex items-center mb-6 text-lg font-bold">
                     Your target role
-                    <help-bubble
+                    <!-- <help-bubble
                       tooltip="This is the role you told us you wanted to move into."
-                    />
+                    /> -->
                   </h4>
                   <role-selector
                     :role="goalRole"
@@ -160,7 +199,7 @@
                     Progression roles from your current role
                   </h4>
                   <div class="flex flex-row gap-2 flex-wrap mb-2">
-                    <div class="nsw-form-checkbox cursor-pointer">
+                    <!-- <div class="nsw-form-checkbox cursor-pointer">
                       <input
                         id="progressionEC"
                         v-model="testingOptions.withExtendedCapabilities.progression"
@@ -168,13 +207,12 @@
                         class="nsw-form-checkbox__input"
                       >
                       <label class="nsw-form-checkbox__label" for="progressionEC">With extended capabilities</label>
-                    </div>
+                    </div> -->
                   </div>
                   <role-selector
                     v-for="role in familyRoles(currentRole).merged"
                     :key="role.role.id"
                     :role="role.role"
-                    :rank="role.rank"
                     :target-role="targetRole"
                     @click.native="selectTargetRole(role.role)"
                     @keyup.space="selectTargetRole(role.role)"
@@ -188,7 +226,7 @@
                     Adjacent roles that share your current capabilities
                   </h4>
                   <div class="flex flex-row gap-2 flex-wrap mb-2">
-                    <div class="nsw-form-checkbox cursor-pointer">
+                    <!-- <div class="nsw-form-checkbox cursor-pointer">
                       <input
                         id="adjacentEC"
                         v-model="testingOptions.withExtendedCapabilities.adjacent"
@@ -205,13 +243,12 @@
                         class="nsw-form-checkbox__input"
                       >
                       <label class="nsw-form-checkbox__label" for="gradeLogic">With grade logic</label>
-                    </div>
+                    </div> -->
                   </div>
                   <role-selector
                     v-for="role in skillRoles(currentRole).slice(0, 7)"
                     :key="role.role.id"
                     :role="role.role"
-                    :rank="role.rank"
                     :target-role="targetRole"
                     @click.native="selectTargetRole(role.role)"
                     @keyup.space="selectTargetRole(role.role)"
@@ -241,7 +278,7 @@
             id="comparison"
             class="w-full py-6 border-b lg:py-16 border-nsw-grey-200 print-break"
           >
-            <div class="mb-10">
+            <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
                 <step-badge>2</step-badge> Your role comparison
               </h3>
@@ -303,53 +340,84 @@
           </div>
           <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
             <h2 class="mb-6 text-3xl md:text-4xl font-bold">Next steps</h2>
-            <div class="grid grid-cols-6 gap-6">
-              <next-step-panel
-                class="col-span-6"
-                title="Take steps to advance your career"
-                text="Get tips to help with your capability and career development."
-              >
-                <a
-                  href="/next-steps.pdf"
-                  target="_blank"
-                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
-                >
-                  Career and capability development guide
-                </a>
-              </next-step-panel>
+            <div class="flex gap-6 w-full bg-nsw-grey-100 mb-12">
+              <div class="flex flex-col px-12 py-8">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+                  Start a career conversation
+                </h3>
+                <p class="mb-4 sm:mb-8">
+                  Share this plan with your Supervisor / Manager or support
+                  network by printing this page or sending it to them via email.
+                </p>
+                <div class="flex flex-col">
+                  <p class="mb-2">Relevant resources</p>
+                  <nuxt-link
+                    to="/explorer"
+                    target="_blank"
+                    class="flex items-center underline text-nsw-brand-primary-blue"
+                  >
+                    NSWPF Careers intranet site
+                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
+                  </nuxt-link>
+                  <nuxt-link
+                    to="/explorer"
+                    target="_blank"
+                    class="flex items-center underline text-nsw-brand-primary-blue"
+                  >
+                    NSWPF Role Description Library
+                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
+                  </nuxt-link>
+                  <nuxt-link
+                    to="/explorer"
+                    target="_blank"
+                    class="flex items-center underline text-nsw-brand-primary-blue"
+                  >
+                    SFIA Skill framework
+                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
+                  </nuxt-link>
+                </div>
+              </div>
+              <div class="w-52 pr-12 pt-8">
+                <print-page class="mb-6" @click.native="printPage" />
+              </div>
+            </div>
+            <div class="flex flex-row gap-10">
+              <div class="bg-nsw-grey-100 px-12 py-8">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+                  Search for more roles
+                </h3>
+                <p class="mb-4 sm:mb-8">
+                  If you haven’t found the role you are looking for you can
+                  search over 1300 NSWPF roles with our role explorer.
+                </p>
 
-              <next-step-panel
-                class="col-span-6 lg:col-span-2"
-                title="Use the Role Explorer"
-                text="If you haven’t found the role you are looking for, use the Role Explorer to browse different procurement role types, levels and how they’re connected across the NSW public sector."
-              >
                 <nuxt-link
                   to="/explorer"
                   target="_blank"
-                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
+                  class="underline text-nsw-brand-primary-blue"
                 >
-                  Browse typical roles
+                  Role explorer
                 </nuxt-link>
-              </next-step-panel>
+              </div>
 
-              <next-step-panel
-                class="col-span-6 lg:col-span-2"
-                title="See if your target role is available"
-                text="Browse procurement job opportunities in the NSW public sector."
-              >
-                <a
+              <div class="bg-nsw-grey-100 px-12 py-8">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+                  Search for your target role and related roles
+                </h3>
+                <p class="mb-4 sm:mb-8">
+                  Browse available NSWPF administrative job opportunities with
+                  NSW Government.
+                </p>
+
+                <nuxt-link
+                  to="/explorer"
                   target="_blank"
-                  href="https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554"
-                  class="inline-flex items-center justify-center font-bold rounded-md focus:border-nsw-brand-tertiary-blue focus:outline-buttons whitespace-no-wrap bg-white hover:bg-nsw-brand-primary-blue text-nsw-brand-primary-blue hover:text-white border-2 border-nsw-brand-primary-blue h-10 md:h-12 px-6 md:px-8 text-sm md:text-base"
-                  @click="
-                    outboundLinkClick(
-                      'https://iworkfor.nsw.gov.au/jobs/all-keywords/all-agencies/all-organisations--entities/all-locations/all-worktypes?jobcategoryid=16631,16632,10370,10591,10588,10590,10592,10589,10761,10681,10554'
-                    )
-                  "
+                  class="flex items-center underline text-nsw-brand-primary-blue"
                 >
                   I work for NSW
-                </a>
-              </next-step-panel>
+                  <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
+                </nuxt-link>
+              </div>
             </div>
           </div>
           <div class="md:w-8/12">
@@ -360,13 +428,8 @@
                 a role.
               </disclaimer-panel>
               <disclaimer-panel>
-                For queries relating to the Procurement Career Pathway tool,
-                please contact the NSW Procurement Capability team at:
-                <a
-                  href="mailto:NSWP_Capability@treasury.nsw.gov.au"
-                  class="font-semibold text-nsw-brand-primary-blue"
-                  >NSWP_Capability@treasury.nsw.gov.au</a
-                >
+                Completing pre-requisites does not guarantee successful
+                transition to any role
               </disclaimer-panel>
             </div>
           </div>
@@ -439,7 +502,11 @@ export default {
       return null
     },
     goalRole() {
-      console.log('goalRole', this.answers.hasOwnProperty('goal-role'), this.answers['goal-role'])
+      console.log(
+        'goalRole',
+        this.answers.hasOwnProperty('goal-role'),
+        this.answers['goal-role']
+      )
       if (this.answers.hasOwnProperty('goal-role')) {
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
@@ -464,6 +531,30 @@ export default {
         return list.join(', ')
       }
       return false
+    },
+    readableInterestsList() {
+      return this.answers.interests.value.join(', ')
+    },
+    managementPreference() {
+      if (this.answers.hasOwnProperty('management')) {
+        switch (this.answers.management.value) {
+          case 'individual':
+            return 'I would prefer to be an Individual contributor'
+          case 'manager':
+            return 'I would prefer to be a manager'
+          case 'either':
+            return "I don't have a preference over being an Individual contributor or Manager"
+          default:
+            return null
+        }
+      }
+      return null
+    },
+    newRolePreference() {
+      if (this.answers.hasOwnProperty('new-role')) {
+        return this.answers['new-role'].value.join(', ')
+      }
+      return ''
     }
   },
   mounted() {
@@ -519,7 +610,11 @@ export default {
         )
       })
 
-      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles, this.testingOptions.withExtendedCapabilities.progression)
+      const rankedNextRoles = this.rankAndSortRoles(
+        currentRole,
+        nextRoles,
+        this.testingOptions.withExtendedCapabilities.progression
+      )
       const rankedSameGradeFamily = this.rankAndSortRoles(
         currentRole,
         sameGradeFamily,
@@ -530,7 +625,10 @@ export default {
         totalCount: rankedNextRoles.length + rankedSameGradeFamily.length,
         nextRoles: rankedNextRoles,
         sameFamily: rankedSameGradeFamily,
-        merged: [...rankedNextRoles.slice(0, 3), ...rankedSameGradeFamily.slice(0, 4)]
+        merged: [
+          ...rankedNextRoles.slice(0, 3),
+          ...rankedSameGradeFamily.slice(0, 4)
+        ]
       }
     },
 
@@ -555,7 +653,11 @@ export default {
       return results
     },
 
-    roleShareCapabilitiesRank(firstRole, secondRole, withExtendedCapabilities = false) {
+    roleShareCapabilitiesRank(
+      firstRole,
+      secondRole,
+      withExtendedCapabilities = false
+    ) {
       const result = {
         focusFocus: 0,
         allFocus: 0,
@@ -608,7 +710,12 @@ export default {
       return result
     },
 
-    rankAndSortRoles(currentRole, compareRoles, withExtendedCapabilities = false, withGradeLogic = false) {
+    rankAndSortRoles(
+      currentRole,
+      compareRoles,
+      withExtendedCapabilities = false,
+      withGradeLogic = false
+    ) {
       return compareRoles
         .map((role) => {
           const sharingSkills = this.roleShareCapabilitiesRank(
@@ -617,7 +724,11 @@ export default {
             withExtendedCapabilities
           )
 
-          if (withGradeLogic && currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
+          if (
+            withGradeLogic &&
+            currentRole.gradeId.grade !== -1 &&
+            role.gradeId.grade !== -1
+          ) {
             const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
             if (gradeDelta === 0) {
@@ -678,7 +789,12 @@ export default {
         (role) => role.jobFamily !== currentRole.jobFamily
       )
 
-      const matches = this.rankAndSortRoles(currentRole, familyFiltered, this.testingOptions.withExtendedCapabilities.adjacent, this.testingOptions.withGradeLogic)
+      const matches = this.rankAndSortRoles(
+        currentRole,
+        familyFiltered,
+        this.testingOptions.withExtendedCapabilities.adjacent,
+        this.testingOptions.withGradeLogic
+      )
       console.log('x', matches[0])
 
       const filteredMatchedRoles = matches
