@@ -2,20 +2,16 @@
   <tbody>
     <tr v-if="skillsMatrix.length > 0">
       <td class="lg:w-1/2 p-4 lg:p-8">
-        <div class="flex items-center whitespace-no-wrap font-bold text-lg">
+        <div class="whitespace-no-wrap font-bold text-lg">
           Current skill
-          <help-bubble
-            tooltip="Your current role procurement skill requirements."
-          />
         </div>
+        <p>Based on the NSWPF Skills and Capability Set</p>
       </td>
       <td class="lg:w-1/2 p-4 lg:p-8">
         <div class="flex items-center whitespace-no-wrap font-bold text-lg">
           Target skill
-          <help-bubble
-            tooltip="Your target role procurement skill requirements."
-          />
         </div>
+        <p>Based on the NSWPF Skills and Capability Set</p>
       </td>
     </tr>
     <tr v-for="(skill, index) in skillsMatrix" :key="`skill-${index}`">

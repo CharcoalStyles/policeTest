@@ -280,7 +280,7 @@
           >
             <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
-                <step-badge>2</step-badge> Your role comparison
+                <step-badge>2</step-badge> Your skills and capability comparison
               </h3>
               <p>
                 Select any <strong>skill</strong> or
@@ -289,9 +289,9 @@
               </p>
             </div>
             <table
-              class="block w-full overflow-x-scroll border border-gray-600 rounded-lg table-auto lg:overflow-x-auto"
+              class="block w-full overflow-x-scroll border border-gray-300 rounded-lg table-auto lg:overflow-x-auto"
             >
-              <thead class="border-b border-gray-600">
+              <thead class="border-b border-gray-300">
                 <tr>
                   <td class="align-top lg:w-1/2 print:w-1/2">
                     <role-selected
@@ -579,9 +579,12 @@ export default {
     familyRoles(currentRole) {
       const isPolicing = currentRole.jobFamily === 'Policing'
 
-      const familyFiltered = this.roles.filter(
-        (role) => role.jobFamily === currentRole.jobFamily
-      )
+      const familyFiltered = this.roles
+        .filter((role) => role.jobFamily === currentRole.jobFamily)
+        .filter(
+          ({ role }) =>
+            role.id !== currentRole.id && role.id !== this.goalRole?.id
+        )
 
       const functionFiltered = familyFiltered.filter(
         (role) => role.jobFunction === currentRole.jobFunction
@@ -597,7 +600,6 @@ export default {
         }
         return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
       })
-      console.log(nextRoles)
 
       const sameGradeFamily = familyFiltered.filter((role) => {
         if (isPolicing) {
@@ -795,7 +797,6 @@ export default {
         this.testingOptions.withExtendedCapabilities.adjacent,
         this.testingOptions.withGradeLogic
       )
-      console.log('x', matches[0])
 
       const filteredMatchedRoles = matches
         // Filter out my current role and goal role if chosen
