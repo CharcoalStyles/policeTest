@@ -1,5 +1,7 @@
 const fs = require('fs')
 const papa = require('papaparse')
+const Iconv = require('iconv').Iconv
+const iconv = require('iconv-lite');
 
 /**
  * Import using the 'yarn run import filename.csv' command
@@ -102,12 +104,25 @@ const filename = process.argv.slice(2).length
   ? process.argv.slice(2)[0]
   : 'roles.csv'
 
+const file = fs.readFileSync(filename)
+// const iconv = new Iconv('UCS-2-INTERNAL', 'utf8//TRANSLIT')
+// const buffer = iconv.convert(file)
+// const result = buffer.toString('utf8')
+
+const result = iconv.decode(file, 'utf8');
+
 // Import roles csv and rename headers
-const rolesCsvData = papa.parse(fs.readFileSync(filename, 'utf8'), {
+const rolesCsvData = papa.parse(result, {
   header: true,
   skipEmptyLines: true,
   transformHeader: (h) => {
     return h.replace(/\s/g, '_').toLowerCase()
+  },
+  transform: (row, index) => {
+    if (['purpose'].includes(index)) {
+      console.log(row)
+    }
+    return row
   }
 })
 

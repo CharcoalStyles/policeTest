@@ -33,8 +33,7 @@
         <h3 class="font-bold text-2xl mb-8">Unsure if this tool is for you?</h3>
         <div class="font-bold mb-3">Use the Role Explorer tool</div>
         <p class="mb-12">
-          See common procurement roles types, levels, and how they're connected
-          across the NSW public sector.
+          See all the various roles, levels and how they're connected across NSWPF.
         </p>
         <nuxt-link
           target="_blank"

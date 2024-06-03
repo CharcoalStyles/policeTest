@@ -14,42 +14,44 @@
     <div class="inline-block" :style="getBgColour('light')">
       <div class="px-12 py-8 flex justify-center">
         <h2 class="font-bold text-family px-64 py-16 z-20">
-          Common types of NSW public sector procurement roles by job family
+          {{ roleFunction.name }}
         </h2>
       </div>
       <table class="border-collapse w-full">
         <tr class="text-3xl">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Grade</th>
+          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32"></th>
           <th
-            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="item.name"
+            v-for="xKey in columns"
+            :key="xKey"
             class="px-12 py-8 whitespace-no-wrap h-20 text-left"
           >
-            {{ item.name }}
+            {{ xKey }}
           </th>
         </tr>
-        <tr>
+        <tr v-for="(yKey, index) in rows" :key="yKey">
           <td
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
-              {{ gradeMap['B2'] }}
+              {{ yKey }}
             </div>
           </td>
           <td
-            v-for="item in groupRolesByFamilyRole(roleFunction.roles)"
-            :key="item.name"
+            v-for="xKey in columns"
+            :key="xKey"
             class="border-r-2 border-white"
           >
             <transition-group
               name="list"
               tag="div"
               class="p-8 whitespace-no-wrap h-56 flex items-center"
-              :style="getBgColour('dark')"
+              :style="
+                index % 2 === 0 ? getBgColour('dark') : getBgColour('light')
+              "
             >
               <role-panel
-                v-for="role in rolesInGrade(item.roles, gradeMap['B2'])"
+                v-for="role in getRolesByAxis(xKey, yKey)"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -60,7 +62,7 @@
             </transition-group>
           </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td
             class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
@@ -112,10 +114,7 @@
               :style="getBgColour('light')"
             >
               <role-panel
-                v-for="role in rolesInGrade(
-                  item.roles,
-                  gradeMap['11-12']
-                )"
+                v-for="role in rolesInGrade(item.roles, gradeMap['11-12'])"
                 :key="role.id"
                 :role="role"
                 class="mr-8"
@@ -251,7 +250,7 @@
               />
             </transition-group>
           </td>
-        </tr>
+        </tr> -->
       </table>
     </div>
   </div>
@@ -286,6 +285,10 @@ export default {
   data() {
     return {
       colours,
+      axisKeys: {
+        x: 'jobFunction',
+        y: 'grade'
+      },
       gradeMap: {
         '3-4': 'Clerk Grade 3/4',
         '5-6': 'Clerk Grade 5/6',
@@ -316,19 +319,59 @@ export default {
   computed: {
     zoomedOut() {
       return this.zoom <= 0.15
+    },
+    columns() {
+      const y = this.roleFunction.roles.reduce((acc, role) => {
+        if (!acc.includes(role[this.axisKeys.x])) {
+          acc.push(role[this.axisKeys.x])
+        }
+        return acc
+      }, [])
+      console.log(y)
+      return y
+    },
+    rows() {
+      return this.roleFunction.roles.reduce((acc, role) => {
+        if (!acc.includes(role[this.axisKeys.y])) {
+          acc.push(role[this.axisKeys.y])
+        }
+        return acc
+      }, [])
     }
   },
   methods: {
+    getRolesByAxis(xAxisValue, yAxisValue) {
+      return this.roleFunction.roles
+        .filter((role) => role[this.axisKeys.y] === yAxisValue)
+        .filter((role) => role[this.axisKeys.x] === xAxisValue)
+    },
+    // groupEverything(roles) {
+    //   const ranks = roles.map((role) => ({
+    //     grade: role.grade,
+    //     gradeId: role.gradeId
+    //   })).sort((a, b) => a.gradeId.grade - b.gradeId.grade)
+    //   const functions = roles.map((role) => ({
+    //     name: rank.gradeId.type,
+    //     roles: ranks.filter((r) => r.gradeId.type === rank.gradeId.type)
+    //   }))
+
+    //   return {ranks, functions}
+    // },
     groupRolesByFamilyRole(roles) {
-      const result = this.$collect(this.roles)
-        .where('familyFunction', this.roleFunction.name)
-        .groupBy('familyRole')
+      const result = this.$collect(roles)
+        // .where('familyFunction', this.roleFunction.name)
+        .groupBy('jobFunction')
         .keys()
         .map((key) => ({
           name: key,
-          roles: this.$collect(roles).where('familyRole', key).all()
+          roles: this.$collect(roles).where('jobFunction', key).all()
         }))
-      return result.sort((a, b) => this.roleFunctionOrder.indexOf(a.name) - this.roleFunctionOrder.indexOf(b.name))
+      console.log({ roles, result })
+      return result.sort(
+        (a, b) =>
+          this.roleFunctionOrder.indexOf(a.name) -
+          this.roleFunctionOrder.indexOf(b.name)
+      )
     },
     // groupRolesByRoleFunction(roles) {
     //   const result = this.$collect(this.roles)
