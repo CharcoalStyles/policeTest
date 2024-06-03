@@ -1,3 +1,10 @@
+/**
+  * vue-class-component v7.0.1
+  * (c) 2015-present Evan You
+  * @license MIT
+  */
+
+
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.1
@@ -24,11 +31,17 @@
  */
 
 
-/**
-  * vue-class-component v7.0.1
-  * (c) 2015-present Evan You
-  * @license MIT
-  */
+/*!
+ * Vue.js v2.7.16
+ * (c) 2014-2023 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
 
 
 /*
@@ -79,16 +92,3 @@ object-assign
     v0.8.1 (c) Kyle Simpson
     MIT License: http://getify.mit-license.org
 */
-
-
-/*!
- * Vue.js v2.7.16
- * (c) 2014-2023 Evan You
- * Released under the MIT License.
- */
-
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
- */
