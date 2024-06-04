@@ -283,7 +283,7 @@ export default {
      * Filter roles by function group
      */
     filteredRolesByFunction() {
-      const x = this.filteredRoles
+      return this.filteredRoles
         .groupBy('jobFamily')
         .keys()
         .map((key) => ({
@@ -295,8 +295,6 @@ export default {
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
-      console.log('yy', x)
-      return x
     },
 
     /**

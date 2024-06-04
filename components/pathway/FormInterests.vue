@@ -99,7 +99,6 @@ export default {
           }
 
           if (this.$store.state.pathway.answers.hasOwnProperty('sworn')) {
-            console.log(this.$store.state.pathway.answers.sworn, role.jobFamily)
             const sworn = this.$store.state.pathway.answers.sworn
             if (sworn.value === 'sworn' && role.jobFamily !== 'Policing') {
               return acc
@@ -140,11 +139,9 @@ export default {
         if (this.step.schema.field.value) {
           return this.step.schema.field.value
         }
-        console.log(this.step.schema.field.options)
         return []
       },
       set(value) {
-        console.log('value', value)
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value
