@@ -419,13 +419,6 @@ export default {
       modals: {
         update: false,
         beta: true
-      },
-      testingOptions: {
-        withExtendedCapabilities: {
-          progression: true,
-          adjacent: true
-        },
-        withGradeLogic: true
       }
     }
   },
@@ -546,15 +539,10 @@ export default {
         )
       })
 
-      const rankedNextRoles = this.rankAndSortRoles(
-        currentRole,
-        nextRoles,
-        this.testingOptions.withExtendedCapabilities.progression
-      )
+      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles)
       const rankedSameGradeFamily = this.rankAndSortRoles(
         currentRole,
-        sameGradeFamily,
-        this.testingOptions.withExtendedCapabilities.progression
+        sameGradeFamily
       )
 
       return {
@@ -589,11 +577,7 @@ export default {
       return results
     },
 
-    roleShareCapabilitiesRank(
-      firstRole,
-      secondRole,
-      withExtendedCapabilities = false
-    ) {
+    roleShareCapabilitiesRank(firstRole, secondRole) {
       const result = {
         focusFocus: 0,
         allFocus: 0,
@@ -627,17 +611,16 @@ export default {
               // equal
               result[resultKey] += 1
             }
-            if (withExtendedCapabilities) {
-              if (levelDelta >= 1) {
-                // FirstCap higher
-                result[resultKey] += 1.2
-                return
-              }
 
-              if (levelDelta === -1) {
-                // FirstCap off by one
-                result[resultKey] += 0.3
-              }
+            if (levelDelta >= 1) {
+              // FirstCap higher
+              result[resultKey] += 1.2
+              return
+            }
+
+            if (levelDelta === -1) {
+              // FirstCap off by one
+              result[resultKey] += 0.3
             }
           }
         })
@@ -646,25 +629,17 @@ export default {
       return result
     },
 
-    rankAndSortRoles(
-      currentRole,
-      compareRoles,
-      withExtendedCapabilities = false,
-      withGradeLogic = false
-    ) {
+    rankAndSortRoles(currentRole, compareRoles) {
       return compareRoles
         .map((role) => {
+          // Capability comparison
           const sharingSkills = this.roleShareCapabilitiesRank(
             currentRole,
-            role,
-            withExtendedCapabilities
+            role
           )
 
-          if (
-            withGradeLogic &&
-            currentRole.gradeId.grade !== -1 &&
-            role.gradeId.grade !== -1
-          ) {
+          // Grade logic
+          if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
             const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
             if (gradeDelta === 0) {
@@ -679,6 +654,13 @@ export default {
             if (gradeDelta > 0) {
               // next grade
               sharingSkills.focusFocus -= 0.5
+            }
+          }
+
+          // Interests comparison
+          if (this.answers.hasOwnProperty('interests')) {
+            if (this.answers.interests.value.includes(role.jobFunction)) {
+              sharingSkills.focusFocus += 1
             }
           }
 
@@ -725,12 +707,7 @@ export default {
         (role) => role.jobFamily !== currentRole.jobFamily
       )
 
-      const matches = this.rankAndSortRoles(
-        currentRole,
-        familyFiltered,
-        this.testingOptions.withExtendedCapabilities.adjacent,
-        this.testingOptions.withGradeLogic
-      )
+      const matches = this.rankAndSortRoles(currentRole, familyFiltered)
 
       const filteredMatchedRoles = matches
         // Filter out my current role and goal role if chosen
