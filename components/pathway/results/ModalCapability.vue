@@ -173,11 +173,11 @@ export default {
     }
   },
   mounted() {
-    window.dataLayer.push({
-      event: 'capability_modal_opened',
-      category: 'pathway_results',
-      label: this.selectedCapability.subcode
-    })
+    // window.dataLayer.push({
+    //   event: 'capability_modal_opened',
+    //   category: 'pathway_results',
+    //   label: this.selectedCapability.subcode
+    // })
   }
 }
 </script>

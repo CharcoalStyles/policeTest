@@ -248,22 +248,22 @@ export default {
     showSkillModal(modal) {
       this.selectedSkill = this.getSkillByCode(modal.skill)
       // Track in GA
-      window.dataLayer.push({
-        event: 'open_modal',
-        category: 'skill',
-        label: this.selectedSkill.name
-      })
+      // window.dataLayer.push({
+      //   event: 'open_modal',
+      //   category: 'skill',
+      //   label: this.selectedSkill.name
+      // })
       this.modalJourney = modal.journey
       this.modals.skill = true
     },
 
     showCapabilityModal(modal) {
       this.selectedCapability = this.getCapabilityByCode(modal.skill)
-      window.dataLayer.push({
-        event: 'open_modal',
-        category: 'capability',
-        label: this.selectedCapability.name
-      })
+      // window.dataLayer.push({
+      //   event: 'open_modal',
+      //   category: 'capability',
+      //   label: this.selectedCapability.name
+      // })
       this.modalJourney = modal.journey
       this.modals.capability = true
     },

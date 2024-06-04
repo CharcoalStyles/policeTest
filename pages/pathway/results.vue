@@ -135,10 +135,7 @@
               </p>
             </div>
             <div class="w-full">
-              <div
-                v-if="goalRole"
-                class="w-full md:w-1/2 pb-4"
-              >
+              <div v-if="goalRole" class="w-full md:w-1/2 pb-4">
                 <div>
                   <h4 class="flex items-center mb-6 text-lg font-bold">
                     Your target role
@@ -155,13 +152,26 @@
                 </div>
               </div>
               <div class="flex flex-row gap-8 flex-wrap">
-                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4" v-if="familyRoles(currentRole).nextRoles.length">
+                <div
+                  v-if="familyRoles(currentRole).merged.length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
+                >
                   <h4 class="mb-6 text-lg font-bold">
-                    Next Roles in our current Job Function ({{familyRoles(currentRole).nextRoles.length}})
+                    Progression roles from your current role
                   </h4>
-                  <div class="max-h-96 overflow-auto">
+                  <div class="flex flex-row gap-2 flex-wrap mb-2">
+                    <div class="nsw-form-checkbox cursor-pointer">
+                      <input
+                        id="progressionEC"
+                        v-model="testingOptions.withExtendedCapabilities.progression"
+                        type="checkbox"
+                        class="nsw-form-checkbox__input"
+                      >
+                      <label class="nsw-form-checkbox__label" for="progressionEC">With extended capabilities</label>
+                    </div>
+                  </div>
                   <role-selector
-                    v-for="role in familyRoles(currentRole).nextRoles"
+                    v-for="role in familyRoles(currentRole).merged"
                     :key="role.role.id"
                     :role="role.role"
                     :rank="role.rank"
@@ -169,15 +179,36 @@
                     @click.native="selectTargetRole(role.role)"
                     @keyup.space="selectTargetRole(role.role)"
                   />
-                  </div>
                 </div>
-                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"  v-if="familyRoles(currentRole).sameFamily.length">
+                <div
+                  v-if="skillRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
+                >
                   <h4 class="mb-6 text-lg font-bold">
-                    Similar roles in your Job Family ({{familyRoles(currentRole).sameFamily.length}})
+                    Adjacent roles that share your current capabilities
                   </h4>
-                  <div class="max-h-96 overflow-auto">
+                  <div class="flex flex-row gap-2 flex-wrap mb-2">
+                    <div class="nsw-form-checkbox cursor-pointer">
+                      <input
+                        id="adjacentEC"
+                        v-model="testingOptions.withExtendedCapabilities.adjacent"
+                        type="checkbox"
+                        class="nsw-form-checkbox__input"
+                      >
+                      <label class="nsw-form-checkbox__label" for="adjacentEC">With extended capabilities</label>
+                    </div>
+                    <div class="nsw-form-checkbox cursor-pointer">
+                      <input
+                        id="gradeLogic"
+                        v-model="testingOptions.withGradeLogic"
+                        type="checkbox"
+                        class="nsw-form-checkbox__input"
+                      >
+                      <label class="nsw-form-checkbox__label" for="gradeLogic">With grade logic</label>
+                    </div>
+                  </div>
                   <role-selector
-                    v-for="role in familyRoles(currentRole).sameFamily"
+                    v-for="role in skillRoles(currentRole).slice(0, 7)"
                     :key="role.role.id"
                     :role="role.role"
                     :rank="role.rank"
@@ -185,23 +216,6 @@
                     @click.native="selectTargetRole(role.role)"
                     @keyup.space="selectTargetRole(role.role)"
                   />
-                  </div>
-                </div>
-                <div class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4" v-if="skillRoles(currentRole).length">
-                  <h4 class="mb-6 text-lg font-bold">
-                    Other roles with skills you already have
-                  </h4>
-                  <div class="max-h-96 overflow-auto">
-                  <role-selector
-                    v-for="role in skillRoles(currentRole)"
-                    :key="role.role.id"
-                    :role="role.role"
-                    :rank="role.rank"
-                    :target-role="targetRole"
-                    @click.native="selectTargetRole(role.role)"
-                    @keyup.space="selectTargetRole(role.role)"
-                  />
-                  </div>
                 </div>
                 <div
                   v-if="
@@ -401,13 +415,19 @@ export default {
       modals: {
         update: false,
         beta: true
+      },
+      testingOptions: {
+        withExtendedCapabilities: {
+          progression: true,
+          adjacent: true
+        },
+        withGradeLogic: true
       }
     }
   },
   computed: {
     ...mapGetters(['answers', 'getHumanReadableAnswerValue']),
     roles() {
-      console.log('tttttttt', this.$store.state.roles)
       return this.$store.state.roles
     },
     currentRole() {
@@ -421,6 +441,7 @@ export default {
       )
     },
     goalRole() {
+      console.log('goalRole', this.answers.hasOwnProperty('goal-role'), this.answers['goal-role'])
       if (this.answers.hasOwnProperty('goal-role')) {
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
@@ -464,10 +485,10 @@ export default {
   methods: {
     printPage() {
       // Track in GA
-      window.dataLayer.push({
-        event: 'print_page',
-        category: 'pathway_results'
-      })
+      // window.dataLayer.push({
+      //   event: 'print_page',
+      //   category: 'pathway_results'
+      // })
       // Trigger print in browser
       window.print()
     },
@@ -497,15 +518,16 @@ export default {
         (role) => role.jobFunction === currentRole.jobFunction
       )
 
-      const nextRoles = functionFiltered.filter(
-        (role) => {
-          let nextRoleJump = 1
-          if (currentRole.gradeId.type === 'policing' && currentRole.gradeId.grade === 2) {
-            nextRoleJump = 2
-          }
-          return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
+      const nextRoles = functionFiltered.filter((role) => {
+        let nextRoleJump = 1
+        if (
+          currentRole.gradeId.type === 'policing' &&
+          currentRole.gradeId.grade === 2
+        ) {
+          nextRoleJump = 2
         }
-      )
+        return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
+      })
       console.log(nextRoles)
 
       const sameGradeFamily = familyFiltered.filter((role) => {
@@ -519,39 +541,19 @@ export default {
         )
       })
 
-      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles) // .map(({ role }) => role)
+      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles, this.testingOptions.withExtendedCapabilities.progression)
       const rankedSameGradeFamily = this.rankAndSortRoles(
         currentRole,
-        sameGradeFamily
-      ) // .map(({ role }) => role)
-
-      console.log({
-        rankedNextRoles,
-        rankedSameGradeFamily
-      })
+        sameGradeFamily,
+        this.testingOptions.withExtendedCapabilities.progression
+      )
 
       return {
         totalCount: rankedNextRoles.length + rankedSameGradeFamily.length,
         nextRoles: rankedNextRoles,
-        sameFamily: rankedSameGradeFamily
+        sameFamily: rankedSameGradeFamily,
+        merged: [...rankedNextRoles.slice(0, 3), ...rankedSameGradeFamily.slice(0, 4)]
       }
-
-      // return (
-      //   this.$collect(this.roles)
-      //     .filter((role) => {
-      //       return (
-      //         role.jobFamily === currentRole.jobFamily &&
-      //         role.jobRole === currentRole.jobRole &&
-      //         // role.id !== currentRole.id &&
-      //         // role.gradeId >= currentRole.gradeId &&
-      //         // role.gradeId - currentRole.gradeId <= 3 &&
-      //         // role.id !== this.goalRole?.id //&&
-      //         !role.genericRole
-      //       )
-      //     })
-      //     // .sortBy('gradeId')
-      //     .all()
-      // )
     },
 
     isRoleSharingSkills(firstRole, secondRole) {
@@ -576,7 +578,7 @@ export default {
       return results
     },
 
-    roleShareCapabilitiesRank(firstRole, secondRole) {
+    roleShareCapabilitiesRank(firstRole, secondRole, withExtendedCapabilities = false) {
       const result = {
         focusFocus: 0,
         allFocus: 0,
@@ -610,15 +612,18 @@ export default {
               // equal
               result[resultKey] += 1
             }
+            if (withExtendedCapabilities) {
+              if (levelDelta >= 1) {
+                // FirstCap higher
+                result[resultKey] += 1.2
+                return
+              }
 
-            // if (levelDelta >= 1) { // FirstCap higher
-            //   result[resultKey] += 1.2
-            //   return
-            // }
-
-            // if (levelDelta === -1) { // FirstCap off by one
-            //   result[resultKey] += 0.3
-            // }
+              if (levelDelta === -1) {
+                // FirstCap off by one
+                result[resultKey] += 0.3
+              }
+            }
           }
         })
       })
@@ -626,13 +631,33 @@ export default {
       return result
     },
 
-    rankAndSortRoles(currentRole, compareRoles) {
+    rankAndSortRoles(currentRole, compareRoles, withExtendedCapabilities = false, withGradeLogic = false) {
       return compareRoles
         .map((role) => {
           const sharingSkills = this.roleShareCapabilitiesRank(
             currentRole,
-            role
+            role,
+            withExtendedCapabilities
           )
+
+          if (withGradeLogic && currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
+            const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
+
+            if (gradeDelta === 0) {
+              sharingSkills.focusFocus += 1
+            }
+
+            if (gradeDelta === -1) {
+              // next grade
+              sharingSkills.focusFocus += 0.5
+            }
+
+            if (gradeDelta > 0) {
+              // next grade
+              sharingSkills.focusFocus -= 0.5
+            }
+          }
+
           return {
             role,
             rank: sharingSkills
@@ -669,69 +694,23 @@ export default {
           })
           return acc
         }, [])
-        // .map(({ role }) => role)
     },
 
     skillRoles(currentRole) {
       const familyFiltered = this.roles.filter(
         (role) => role.jobFamily !== currentRole.jobFamily
       )
-      console.log(
-        `Family Filtered: ${familyFiltered.length} / ${this.roles.length}`
-      )
 
-      const matches = this.rankAndSortRoles(currentRole, familyFiltered) // .map(({ role }) => role)
-
-      // console.log(
-      //   matches.map(({ role, rank }) => {
-      //     return `${role.name} -(${rank.focusFocus},${rank.focusAll},${rank.allFocus},${rank.allAll})`
-      //   })
-      // )
-
-      // const matchedRoles = matches.map(({ role }) => role)
-
-      // let currentIndex = matches.length
-      // while (currentIndex !== 0) {
-      //   const randomIndex = Math.floor(Math.random() * currentIndex)
-      //   currentIndex--
-      //   ;[matches[currentIndex], matches[randomIndex]] = [
-      //     matches[randomIndex],
-      //     matches[currentIndex]
-      //   ]
-      // }
+      const matches = this.rankAndSortRoles(currentRole, familyFiltered, this.testingOptions.withExtendedCapabilities.adjacent, this.testingOptions.withGradeLogic)
+      console.log('x', matches[0])
 
       const filteredMatchedRoles = matches
         // Filter out my current role and goal role if chosen
         .filter(
-          ({ role }) => role.id !== currentRole.id && role.id !== this.goalRole?.id
+          ({ role }) =>
+            role.id !== currentRole.id && role.id !== this.goalRole?.id
         )
-
-      console.log(
-        `Final Filtered: ${filteredMatchedRoles.length} / ${familyFiltered.length}`
-      )
-
-      return filteredMatchedRoles.slice(0, 6)
-      // return (
-      //   this.$collect(this.roles)
-      //     // Filter roles and only return those that share at least 2 skills
-      //     .filter((role) => this.isRoleSharingSkills(role, currentRole))
-      //     // Filter out my current role and goal role if chosen
-      //     .filter(
-      //       (role) =>
-      //         role.id !== currentRole.id && role.id !== this.goalRole?.id
-      //     )
-      //     // Only return roles with equal or higher grade, but no higher than 3 grades
-      //     .filter((role) => {
-      //       role.gradeId >= currentRole.gradeId &&
-      //         role.gradeId - currentRole.gradeId <= 3
-      //     })
-      //     // Filter out any roles already listed in family and next
-      //     // .filter((role) => {
-      //     //   !this.familyRoles(currentRole).map((r) => r.id).includes(role.id)
-      //     // })
-      //     .sortBy('gradeId')
-      //     .all()
-      // )
+      return filteredMatchedRoles
     }
   }
 }
