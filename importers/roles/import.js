@@ -1,7 +1,5 @@
 const fs = require('fs')
 const papa = require('papaparse')
-const Iconv = require('iconv').Iconv
-const iconv = require('iconv-lite');
 
 /**
  * Import using the 'yarn run import filename.csv' command
@@ -104,25 +102,14 @@ const filename = process.argv.slice(2).length
   ? process.argv.slice(2)[0]
   : 'roles.csv'
 
-const file = fs.readFileSync(filename)
-// const iconv = new Iconv('UCS-2-INTERNAL', 'utf8//TRANSLIT')
-// const buffer = iconv.convert(file)
-// const result = buffer.toString('utf8')
-
-const result = iconv.decode(file, 'utf8');
+const file = fs.readFileSync(filename, 'utf-8')
 
 // Import roles csv and rename headers
-const rolesCsvData = papa.parse(result, {
+const rolesCsvData = papa.parse(file, {
   header: true,
   skipEmptyLines: true,
   transformHeader: (h) => {
     return h.replace(/\s/g, '_').toLowerCase()
-  },
-  transform: (row, index) => {
-    if (['purpose'].includes(index)) {
-      console.log(row)
-    }
-    return row
   }
 })
 
@@ -273,6 +260,10 @@ rolesCsvData.data.forEach((row, i) => {
     jobRole: row.job_role,
     jobFunction: row.job_function,
     description: parseDescription(row.purpose),
+    essential: {
+      detective: row['new_-_grade'].includes('Detective'),
+      aboriginality: row.aboriginality_y === 'Y'
+    },
     location: row['new_-_location'],
     manager: parseManager(row.manager), // parse as bool
     salary: {
@@ -306,48 +297,6 @@ rolesCsvData.data.forEach((row, i) => {
 
   ids.push({ i, nswpf_id: row.nswpf_role_number })
 })
-
-// const duped = ids.reduce((acc, r) => {
-//   if (Object.keys(acc).includes(r.nswpf_id)) {
-//     acc[r.nswpf_id].push(r.i)
-//   } else {
-//     acc[r.nswpf_id] = [r.i]
-//   }
-//   return acc
-// }, {})
-// fs.writeFileSync('d1.json', JSON.stringify(duped))
-
-// const deduped = Object.keys(duped)
-//   .filter(nswpfId => duped[nswpfId].length > 1)
-//   .reduce((acc, nswpfId) => {
-//     acc[nswpfId] = duped[nswpfId].map(i => roles[i])
-//       .map((role) => {
-//         return {
-//           csv_row: role.id + 2,
-//           name: role.name
-//         }
-//       })
-//     return acc
-//   }, {})
-
-// fs.writeFileSync('d2.json', JSON.stringify(deduped))
-
-// const dedupedString = Object.keys(deduped)
-//   .reduce((acc, nswpfId) => {
-//     acc += `${nswpfId}\n`
-//     acc += deduped[nswpfId]
-//       .map((role) => {
-//         return `  CSV Row: ${role.csv_row} (${role.name})`
-//         // {
-//         //   csv_row: role.id + 2,
-//         //   name: role.name,
-//         // }
-//       }).join('\n')
-//     acc += '\n\n'
-//     return acc
-//   }, '')
-
-// fs.writeFileSync('d2.txt', dedupedString)
 
 // Write to json file on disk
 fs.writeFileSync('roles.json', JSON.stringify(roles))
