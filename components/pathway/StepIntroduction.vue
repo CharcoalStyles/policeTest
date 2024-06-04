@@ -12,18 +12,17 @@
       <div class="mb-6">
         <h2 class="text-2xl font-bold mb-3">How it works</h2>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
-          <li>We’ll ask a few questions</li>
-          <li>We’ll show you what roles you could move into</li>
-          <li>We’ll help you understand what skills you need to improve</li>
-          <li>We’ll surface upskilling resources.</li>
+          <li>We'll ask a few questions</li>
+          <li>We'll show you what roles might best suit you </li>
+          <li>We'll help you understand what you need to improve and develop</li>
+          <li>We'll give you the information to guide your next career conversation</li>
         </ul>
       </div>
       <div class="mb-6">
         <h3 class="text-2xl font-bold mb-3">Who is this best suited for?</h3>
         <ul class="ml-5 list-outside list-disc leading-loose lg:w-5/6">
           <li>People looking for the next step in their career</li>
-          <li>for the next step in their career</li>
-          <li>People looking to work in a NSW Government digital role</li>
+          <li>People looking for a change within NSWPF, but don't know where to start</li>
         </ul>
       </div>
     </div>
@@ -34,7 +33,7 @@
         <h3 class="font-bold text-2xl mb-8">Unsure if this tool is for you?</h3>
         <div class="font-bold mb-3">Use the Role Explorer tool</div>
         <p class="mb-12">
-          See common procurement roles types, levels, and how they’re connected
+          See common procurement roles types, levels, and how they're connected
           across the NSW public sector.
         </p>
         <nuxt-link
