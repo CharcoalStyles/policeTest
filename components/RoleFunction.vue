@@ -321,14 +321,12 @@ export default {
       return this.zoom <= 0.15
     },
     columns() {
-      const y = this.roleFunction.roles.reduce((acc, role) => {
+      return this.roleFunction.roles.reduce((acc, role) => {
         if (!acc.includes(role[this.axisKeys.x])) {
           acc.push(role[this.axisKeys.x])
         }
         return acc
       }, [])
-      console.log(y)
-      return y
     },
     rows() {
       return this.roleFunction.roles.reduce((acc, role) => {
@@ -366,7 +364,7 @@ export default {
           name: key,
           roles: this.$collect(roles).where('jobFunction', key).all()
         }))
-      console.log({ roles, result })
+
       return result.sort(
         (a, b) =>
           this.roleFunctionOrder.indexOf(a.name) -
