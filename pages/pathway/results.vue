@@ -112,44 +112,6 @@
                     >
                   </div>
                 </div>
-                <!-- <div
-                  v-if="readableSkillsList"
-                  class="flex flex-col mb-6 md:flex-row"
-                >
-                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    <div class="flex items-center whitespace-no-wrap">
-                      Your skills
-                       <help-bubble
-                        tooltip="These are the typical procurement skills required for the role type you selected."
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    I assessed myself in
-                    <span class="font-bold text-nsw-brand-secondary-blue">{{
-                      readableSkillsList
-                    }}</span>
-                  </div>
-                </div>
-                <div
-                  v-if="readableCapabilitiesList"
-                  class="flex flex-col mb-6 md:flex-row"
-                >
-                  <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
-                    <div class="flex items-center whitespace-no-wrap">
-                      Your core capabilities
-                      <help-bubble
-                        tooltip="These are the typical core capabilities required for the role type you selected."
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    I assessed myself in
-                    <span class="font-bold text-nsw-brand-secondary-blue">{{
-                      readableCapabilitiesList
-                    }}</span>
-                  </div>
-                </div> -->
               </div>
             </div>
           </div>
@@ -169,8 +131,8 @@
                 <step-badge>1</step-badge> Select your target role
               </h3>
               <p class="md:w-2/3">
-                Compare your current role to a target role by skill, capability,
-                salary and grade.
+                A target role compares your current role, identify skills gaps,
+                surfaces learning resources.
               </p>
             </div>
             <div class="w-full">
@@ -178,9 +140,6 @@
                 <div>
                   <h4 class="flex items-center mb-6 text-lg font-bold">
                     Your target role
-                    <!-- <help-bubble
-                      tooltip="This is the role you told us you wanted to move into."
-                    /> -->
                   </h4>
                   <role-selector
                     :role="goalRole"
@@ -195,19 +154,14 @@
                   v-if="familyRoles(currentRole).merged.length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
                 >
-                  <h4 class="mb-6 text-lg font-bold">
-                    Progression roles from your current role
-                  </h4>
-                  <div class="flex flex-row gap-2 flex-wrap mb-2">
-                    <!-- <div class="nsw-form-checkbox cursor-pointer">
-                      <input
-                        id="progressionEC"
-                        v-model="testingOptions.withExtendedCapabilities.progression"
-                        type="checkbox"
-                        class="nsw-form-checkbox__input"
-                      >
-                      <label class="nsw-form-checkbox__label" for="progressionEC">With extended capabilities</label>
-                    </div> -->
+                  <div class="mb-6">
+                    <h4 class="text-lg font-bold">
+                      Progression roles from your current role
+                    </h4>
+                    <p>
+                      Based on your current role and within your general
+                      profession
+                    </p>
                   </div>
                   <role-selector
                     v-for="role in familyRoles(currentRole).merged"
@@ -222,28 +176,15 @@
                   v-if="skillRoles(currentRole).length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
                 >
-                  <h4 class="mb-6 text-lg font-bold">
-                    Adjacent roles that share your current capabilities
-                  </h4>
-                  <div class="flex flex-row gap-2 flex-wrap mb-2">
-                    <!-- <div class="nsw-form-checkbox cursor-pointer">
-                      <input
-                        id="adjacentEC"
-                        v-model="testingOptions.withExtendedCapabilities.adjacent"
-                        type="checkbox"
-                        class="nsw-form-checkbox__input"
-                      >
-                      <label class="nsw-form-checkbox__label" for="adjacentEC">With extended capabilities</label>
-                    </div>
-                    <div class="nsw-form-checkbox cursor-pointer">
-                      <input
-                        id="gradeLogic"
-                        v-model="testingOptions.withGradeLogic"
-                        type="checkbox"
-                        class="nsw-form-checkbox__input"
-                      >
-                      <label class="nsw-form-checkbox__label" for="gradeLogic">With grade logic</label>
-                    </div> -->
+                  <div class="mb-6">
+                    <h4 class="text-lg font-bold">
+                      Adjacent roles that share your current capabilities
+                    </h4>
+                    <p>
+                      Roles from other parts of the organisation, that share
+                      your current capabilities
+                    </p>
+                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
                     v-for="role in skillRoles(currentRole).slice(0, 7)"
@@ -280,18 +221,18 @@
           >
             <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
-                <step-badge>2</step-badge> Your role comparison
+                <step-badge>2</step-badge> Your skills and capability comparison
               </h3>
               <p>
                 Select any <strong>skill</strong> or
-                <strong>capability</strong> to understand gaps and where you my
-                need to upskill for both your current and target role.
+                <strong>capability</strong> to understand gaps and upskilling
+                opportunities.
               </p>
             </div>
             <table
-              class="block w-full overflow-x-scroll border border-gray-600 rounded-lg table-auto lg:overflow-x-auto"
+              class="block w-full overflow-x-scroll border border-gray-300 rounded-lg table-auto lg:overflow-x-auto"
             >
-              <thead class="border-b border-gray-600">
+              <thead class="border-b border-gray-300">
                 <tr>
                   <td class="align-top lg:w-1/2 print:w-1/2">
                     <role-selected
@@ -502,11 +443,6 @@ export default {
       return null
     },
     goalRole() {
-      console.log(
-        'goalRole',
-        this.answers.hasOwnProperty('goal-role'),
-        this.answers['goal-role']
-      )
       if (this.answers.hasOwnProperty('goal-role')) {
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
@@ -578,10 +514,11 @@ export default {
 
     familyRoles(currentRole) {
       const isPolicing = currentRole.jobFamily === 'Policing'
-
-      const familyFiltered = this.roles.filter(
-        (role) => role.jobFamily === currentRole.jobFamily
-      )
+      const familyFiltered = this.roles
+        .filter((role) => role.jobFamily === currentRole.jobFamily)
+        .filter((role) => {
+          return role.id !== currentRole.id && role.id !== this.goalRole?.id
+        })
 
       const functionFiltered = familyFiltered.filter(
         (role) => role.jobFunction === currentRole.jobFunction
@@ -597,7 +534,6 @@ export default {
         }
         return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
       })
-      console.log(nextRoles)
 
       const sameGradeFamily = familyFiltered.filter((role) => {
         if (isPolicing) {
@@ -795,7 +731,6 @@ export default {
         this.testingOptions.withExtendedCapabilities.adjacent,
         this.testingOptions.withGradeLogic
       )
-      console.log('x', matches[0])
 
       const filteredMatchedRoles = matches
         // Filter out my current role and goal role if chosen

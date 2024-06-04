@@ -17,7 +17,7 @@
                   <h2 class="font-bold text-2xl">Discover roles</h2>
                   <button
                     class="text-sm underline font-semibold text-nsw-blue-800"
-                    style="text-underline-offset: 2px;"
+                    style="text-underline-offset: 2px"
                     @click="resetAllFilters"
                   >
                     Reset
@@ -27,7 +27,9 @@
               <div class="px-6 pt-4 pb-6">
                 <div class="grid gap-x-6 gap-y-3 md:gap-y-6 grid-cols-2">
                   <div class="col-span-2 flex flex-col">
-                    <label class="font-semibold mb-2 text-sm">Search by keyword</label>
+                    <label class="font-semibold mb-2 text-sm"
+                      >Search by keyword</label
+                    >
                     <input
                       id="keywords"
                       v-debounce:300ms.fireonempty="updateKeyword"
@@ -46,7 +48,9 @@
                         }}k
                       </div>
                     </div>
-                    <div class="flex items-center justify-center px-3 bg-nsw-grey-50 rounded h-role-input">
+                    <div
+                      class="flex items-center justify-center px-3 bg-nsw-grey-50 rounded h-role-input"
+                    >
                       <div class="w-full flex justify-center">
                         <div class="w-11/12">
                           <input-range
@@ -279,7 +283,7 @@ export default {
      * Filter roles by function group
      */
     filteredRolesByFunction() {
-      return this.filteredRoles
+      const x = this.filteredRoles
         .groupBy('jobFamily')
         .keys()
         .map((key) => ({
@@ -291,6 +295,8 @@ export default {
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
+      console.log('yy', x)
+      return x
     },
 
     /**

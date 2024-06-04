@@ -2,12 +2,100 @@
 # yarn lockfile v1
 
 
-"fs@^0.0.1-security":
-  "integrity" "sha1-invTcYa23d84E/I4WLV+yq9eQdQ= sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w=="
-  "resolved" "https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz"
-  "version" "0.0.1-security"
+"@fast-csv/format@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@fast-csv/format/-/format-5.0.0.tgz#f2e557fdd4370360b418cc78636684c07b12d0ba"
+  integrity sha512-IyMpHwYIOGa2f0BJi6Wk55UF0oBA5urdIydoEDYxPo88LFbeb3Yr4rgpu98OAO1glUWheSnNtUgS80LE+/dqmw==
+  dependencies:
+    lodash.escaperegexp "^4.1.2"
+    lodash.isboolean "^3.0.3"
+    lodash.isequal "^4.5.0"
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
 
-"papaparse@^5.3.0":
-  "integrity" "sha512-Lb7jN/4bTpiuGPrYy4tkKoUS8sTki8zacB5ke1p5zolhcSE4TlWgrlsxjrDTbG/dFVh07ck7X36hUf/b5V68pg=="
-  "resolved" "https://registry.npmjs.org/papaparse/-/papaparse-5.3.0.tgz"
-  "version" "5.3.0"
+"@fast-csv/parse@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@fast-csv/parse/-/parse-5.0.0.tgz#091665753f9e58f0dda6a55ae30f582526042903"
+  integrity sha512-ecF8tCm3jVxeRjEB6VPzmA+1wGaJ5JgaUX2uesOXdXD6qQp0B3EdshOIed4yT1Xlj/F2f8v4zHSo0Oi31L697g==
+  dependencies:
+    lodash.escaperegexp "^4.1.2"
+    lodash.groupby "^4.6.0"
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
+    lodash.isundefined "^3.0.1"
+    lodash.uniq "^4.5.0"
+
+fast-csv@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/fast-csv/-/fast-csv-5.0.1.tgz#2beaa2437ea83bd335cc3a39a41e69d9936f3987"
+  integrity sha512-Q43zC4NdQD5MAWOVQOF8KA+D6ddvTJjX2ib8zqysm74jZhtk6+dc8C75/OqRV6Y9CLc4kgvbC3PLG8YL4YZfgw==
+  dependencies:
+    "@fast-csv/format" "5.0.0"
+    "@fast-csv/parse" "5.0.0"
+
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz"
+  integrity "sha1-invTcYa23d84E/I4WLV+yq9eQdQ= sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w=="
+
+iconv-lite@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
+  integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3.0.0"
+
+iconv@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/iconv/-/iconv-3.0.1.tgz#31d319d71b59415cf348362c382961b1eb6f0e81"
+  integrity sha512-lJnFLxVc0d82R7GfU7a9RujKVUQ3Eee19tPKWZWBJtAEGRHVEyFzCtbNl3GPKuDnHBBRT4/nDS4Ru9AIDT72qA==
+
+lodash.escaperegexp@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
+  integrity sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==
+
+lodash.groupby@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.groupby/-/lodash.groupby-4.6.0.tgz#0b08a1dcf68397c397855c3239783832df7403d1"
+  integrity sha512-5dcWxm23+VAoz+awKmBaiBvzox8+RqMgFhi7UvX9DHZr2HdxHXM/Wrf8cfKpsW37RNrvtPn6hSwNqurSILbmJw==
+
+lodash.isboolean@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+  integrity sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+  integrity sha512-up2Mzq3545mwVnMhTDMdfoG1OurpA/s5t88JmQX809eH3C8491iu2sfKhTfhQtKY78oPNhiaHJUpT/dUDAAtng==
+
+lodash.isundefined@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.isundefined/-/lodash.isundefined-3.0.1.tgz#23ef3d9535565203a66cefd5b830f848911afb48"
+  integrity sha512-MXB1is3s899/cD8jheYYE2V9qTHwKvt+npCwpD+1Sxm3Q3cECXCiYHjeHWXNwr6Q0SOBPrYUDxendrO6goVTEA==
+
+lodash.uniq@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
+  integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
+
+papaparse@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.npmjs.org/papaparse/-/papaparse-5.3.0.tgz"
+  integrity sha512-Lb7jN/4bTpiuGPrYy4tkKoUS8sTki8zacB5ke1p5zolhcSE4TlWgrlsxjrDTbG/dFVh07ck7X36hUf/b5V68pg==
+
+"safer-buffer@>= 2.1.2 < 3.0.0":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+  integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==

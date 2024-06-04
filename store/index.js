@@ -167,7 +167,7 @@ const mutations = {
           title: currentSkill.name,
           type: 'question',
           schema: {
-            section: 'Select your current procurement skill level',
+            section: 'Select your current skill level',
             help: currentSkill.description,
             field: {
               type: 'skill',
