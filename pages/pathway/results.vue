@@ -664,6 +664,17 @@ export default {
             }
           }
 
+          // Management preference
+          if (this.answers.hasOwnProperty('management')) {
+            if (this.answers.management.value !== 'either') {
+              const wantManager = this.answers.management.value === 'manager'
+              const isManager = role.manager
+              if (wantManager === isManager) {
+                sharingSkills.focusFocus += 1
+              }
+            }
+          }
+
           return {
             role,
             rank: sharingSkills
