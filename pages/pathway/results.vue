@@ -462,6 +462,9 @@ export default {
       return false
     },
     readableInterestsList() {
+      if (!this.answers.hasOwnProperty('interests')) {
+        return false
+      }
       return this.answers.interests.value.join(', ')
     },
     managementPreference() {
