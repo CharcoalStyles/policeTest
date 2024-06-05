@@ -114,30 +114,6 @@
     }
   },
   {
-    "id": "skills",
-    "title": "Let's assess your current skills",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the skills required for your current role."
-    },
-    "steps": []
-  },
-  {
-    "id": "capabilities",
-    "title": "Let's assess your general capabilities",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
-    },
-    "steps": []
-  },
-  {
     "id": "sworn",
     "title": "Are you looking for a policing, or non-policing role?",
     "type": "question",
@@ -163,6 +139,63 @@
         ]
       }
     }
+  },
+  {
+    "id": "detective-roles",
+    "title": "Are you interested in Detective roles?",
+    "type": "question",
+    "conditions": [
+      {
+        "id": "isDetective",
+        "value": "no"
+      },
+      {
+        "id": "isPolice",
+        "value": "yes"
+      }
+    ],
+    "schema": {
+      "section": "Detective roles",
+      "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
+      "field": {
+        "type": "radio",
+        "required": false,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "skills",
+    "title": "Let's assess your current skills",
+    "type": "interstitial",
+    "icon": "checklist",
+    "conditions": false,
+    "schema": {
+      "section": "Self assessment",
+      "description": "In this section, you’ll assess yourself on the skills required for your current role."
+    },
+    "steps": []
+  },
+  {
+    "id": "capabilities",
+    "title": "Let's assess your general capabilities",
+    "type": "interstitial",
+    "icon": "checklist",
+    "conditions": false,
+    "schema": {
+      "section": "Self assessment",
+      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
+    },
+    "steps": []
   },
   {
     "id": "interests",
