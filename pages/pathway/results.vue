@@ -462,10 +462,10 @@ export default {
       return false
     },
     readableInterestsList() {
-      if (this.answers.hasOwnProperty('interests')) {
-        return this.answers.interests.value.join(', ')
+      if (!this.answers.hasOwnProperty('interests')) {
+        return false
       }
-      return null
+      return this.answers.interests.value.join(', ')
     },
     managementPreference() {
       if (this.answers.hasOwnProperty('management')) {
