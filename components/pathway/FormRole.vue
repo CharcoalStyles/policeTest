@@ -287,6 +287,18 @@ export default {
           id: this.step.id,
           value: role.id
         })
+
+        if (this.step.id === 'current-role') {
+          this.$store.dispatch('saveQuestionAnswer', {
+            id: 'isDetective',
+            value: role.grade.split(' ')[0] === 'Detective' ? 'yes' : 'no'
+          })
+
+          this.$store.dispatch('saveQuestionAnswer', {
+            id: 'isPolice',
+            value: role.jobFamily === 'Policing' ? 'yes' : 'no'
+          })
+        }
       }
     },
     clearRole() {
@@ -295,6 +307,23 @@ export default {
         id: this.step.id,
         value: ''
       })
+
+      if (this.step.id === 'current-role') {
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: 'isDetective',
+          value: ''
+        })
+
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: 'isPolice',
+          value: ''
+        })
+
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: 'detective-roles',
+          value: ''
+        })
+      }
     },
     isRoleSelected(role) {
       return this.currentValue === role.id

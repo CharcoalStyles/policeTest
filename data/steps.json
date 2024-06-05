@@ -114,6 +114,66 @@
     }
   },
   {
+    "id": "sworn",
+    "title": "Are you looking for a policing, or non-policing role?",
+    "type": "question",
+    "schema": {
+      "section": "Work area",
+      "help": "This makes sure we can highlight opportunities within your relevant duties.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Policing",
+            "value": "sworn"
+          },
+          {
+            "title": "Non-policing",
+            "value": "non-sworn"
+          },
+          {
+            "title": "Either",
+            "value": "either"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "detective-roles",
+    "title": "Are you interested in Detective roles?",
+    "type": "question",
+    "conditions": [
+      {
+        "id": "isDetective",
+        "value": "no"
+      },
+      {
+        "id": "isPolice",
+        "value": "yes"
+      }
+    ],
+    "schema": {
+      "section": "Detective roles",
+      "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "skills",
     "title": "Let's assess your current skills",
     "type": "interstitial",
@@ -138,33 +198,6 @@
     "steps": []
   },
   {
-    "id": "sworn",
-    "title": "Are you looking for a policing, or non-policing role?",
-    "type": "question",
-    "schema": {
-      "section": "Work area",
-      "help": "This makes sure we can highlight opportunities within your relevant duties.",
-      "field": {
-        "type": "radio",
-        "required": false,
-        "options": [
-          {
-            "title": "Policing",
-            "value": "sworn"
-          },
-          {
-            "title": "Non-policing",
-            "value": "non-sworn"
-          },
-          {
-            "title": "Either",
-            "value": "either"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "interests",
     "title": "What other areas are you interested in?",
     "type": "question",
@@ -186,7 +219,7 @@
       "help": "This makes sure we can highlight opportunities that match your preferred working style.",
       "field": {
         "type": "radio",
-        "required": false,
+        "required": true,
         "options": [
           {
             "title": "Individual contributor",
