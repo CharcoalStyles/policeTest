@@ -10,17 +10,6 @@
     }
   },
   {
-    "id": "introduction",
-    "title": "Career questionnaire",
-    "type": "interstitial",
-    "icon": "edit",
-    "conditions": false,
-    "schema": {
-      "section": "Let's get started",
-      "description": "In this questionnaire, we'll ask you about your current situation, have you self-assess your skills and capabilities, and ask you about your interests and preferences."
-    }
-  },
-  {
     "id": "current-role",
     "title": "Select which job title closely matches your current role",
     "type": "question",
@@ -122,41 +111,6 @@
         "type": "role",
         "required": true
       }
-    }
-  },
-  {
-    "id": "skills",
-    "title": "Let's assess your current skills",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the skills required for your current role."
-    },
-    "steps": []
-  },
-  {
-    "id": "capabilities",
-    "title": "Let's assess your general capabilities",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
-    },
-    "steps": []
-  },
-  {
-    "id": "preferences-and-interests",
-    "title": "Tell us your preferences and interests",
-    "type": "interstitial",
-    "icon": "searchDocs",
-    "conditions": false,
-    "schema": {
-      "section": "About you",
-      "description": "In this section, we'll ask you about your interests and preferences to be taken into consideration in your career pathway."
     }
   },
   {
@@ -275,17 +229,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "id": "finished",
-    "title": "Your personalised career pathway is ready!",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Your results",
-      "description": "Thank you for answering this questionnaire. Click 'Go to my plan' to view your personalised career plan."
     }
   }
 ]
