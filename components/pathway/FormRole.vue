@@ -283,9 +283,14 @@ export default {
     },
     selectRole(role) {
       if (role && role.id) {
+        console.log(role.id)
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
           value: role.id
+        })
+        this.$store.dispatch('saveQuestionAnswer', {
+          id: 'isDetective',
+          value: role.grade.split(' ')[0] === 'Detective'
         })
       }
     },
