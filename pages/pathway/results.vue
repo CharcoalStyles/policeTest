@@ -677,13 +677,11 @@ export default {
               }
             }
           }
-
           // role volume (number of positions)
           if (role.numPositions) {
             const minVolume = role.numPositions.split(' ')[1]
             sharingSkills.focusFocus += 1 + minVolume.length * 0.1
           }
-
           return {
             role,
             rank: sharingSkills
