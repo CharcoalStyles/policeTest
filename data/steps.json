@@ -122,7 +122,7 @@
       "help": "This makes sure we can highlight opportunities within your relevant duties.",
       "field": {
         "type": "radio",
-        "required": false,
+        "required": true,
         "options": [
           {
             "title": "Policing",
@@ -159,7 +159,7 @@
       "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
       "field": {
         "type": "radio",
-        "required": false,
+        "required": true,
         "options": [
           {
             "title": "Yes",
@@ -219,7 +219,7 @@
       "help": "This makes sure we can highlight opportunities that match your preferred working style.",
       "field": {
         "type": "radio",
-        "required": false,
+        "required": true,
         "options": [
           {
             "title": "Individual contributor",

@@ -462,10 +462,10 @@ export default {
       return false
     },
     readableInterestsList() {
-      if (this.answers.hasOwnProperty('interests')) {
-        return this.answers.interests.value.join(', ')
+      if (!this.answers.hasOwnProperty('interests')) {
+        return false
       }
-      return null
+      return this.answers.interests.value.join(', ')
     },
     managementPreference() {
       if (this.answers.hasOwnProperty('management')) {
@@ -510,6 +510,10 @@ export default {
 
     familyRoles(currentRole) {
       const isPolicing = currentRole.jobFamily === 'Policing'
+      const showDetective = this.answers.hasOwnProperty('detective-roles')
+        ? this.answers['detective-roles'].value.includes('yes')
+        : false
+
       const familyFiltered = this.roles
         .filter((role) => role.jobFamily === currentRole.jobFamily)
         .filter((role) => {
@@ -533,6 +537,9 @@ export default {
 
       const sameGradeFamily = familyFiltered.filter((role) => {
         if (isPolicing) {
+          if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
+            return false
+          }
           return role.gradeId.grade === currentRole.gradeId.grade
         }
 
