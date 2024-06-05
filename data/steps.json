@@ -114,6 +114,30 @@
     }
   },
   {
+    "id": "skills",
+    "title": "Let's assess your current skills",
+    "type": "interstitial",
+    "icon": "checklist",
+    "conditions": false,
+    "schema": {
+      "section": "Self assessment",
+      "description": "In this section, you’ll assess yourself on the skills required for your current role."
+    },
+    "steps": []
+  },
+  {
+    "id": "capabilities",
+    "title": "Let's assess your general capabilities",
+    "type": "interstitial",
+    "icon": "checklist",
+    "conditions": false,
+    "schema": {
+      "section": "Self assessment",
+      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
+    },
+    "steps": []
+  },
+  {
     "id": "sworn",
     "title": "Are you looking for a policing, or non-policing role?",
     "type": "question",
