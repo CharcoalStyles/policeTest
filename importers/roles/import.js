@@ -248,10 +248,10 @@ const ids = []
 // Transform role data with parsers
 rolesCsvData.data.forEach((row, i) => {
   roles.push({
-    id: i, // parseInt(row.id),
+    id: row.nswpf_role_number,
     roleNumber: row.nswpf_role_number,
     fullDescription: row.link_to_full_role_description,
-    numPositions: row.number_of_positions,
+    numPositions: row.number_of_positions.trim(),
     command_BusUnit: row['new_-__command/business_unit'],
     name: row.role,
     grade: row['new_-_grade'],
