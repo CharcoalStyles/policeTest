@@ -115,7 +115,7 @@
   },
   {
     "id": "sworn",
-    "title": "Are you looking for a policing, or non-policing role?",
+    "title": "Are you looking for a sworn or unsworn role?",
     "type": "question",
     "schema": {
       "section": "Work area",
@@ -125,11 +125,11 @@
         "required": true,
         "options": [
           {
-            "title": "Policing",
+            "title": "Sworn",
             "value": "sworn"
           },
           {
-            "title": "Non-policing",
+            "title": "Unsworn",
             "value": "non-sworn"
           },
           {
