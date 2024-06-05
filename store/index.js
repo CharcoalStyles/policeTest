@@ -145,8 +145,6 @@ const mutations = {
   },
 
   ADD_SKILL_ASSESSMENT(state, payload) {
-    console.log('Adding skill assessment')
-    console.log(payload, state.pathway)
     const skillStepIndex = state.pathway.steps.findIndex(
       (step) => step.id === 'skills'
     )
@@ -261,7 +259,6 @@ const actions = {
     // Save answer to store
     commit('SET_ANSWER', payload)
 
-    console.log(state.pathway.steps, payload.id)
     // Add skills and capability steps
     if (isAssessible(state.pathway.steps, payload.id)) {
       if (payload.value) {
