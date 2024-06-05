@@ -10,10 +10,16 @@
         </h1>
       </div>
       <div v-if="step.schema.help" class="mb-8">
-        <p v-if="step.schema.help" class="text-lg md:text-xl text-nsw-brand-grey-primary">
+        <p
+          v-if="step.schema.help"
+          class="text-lg md:text-xl text-nsw-brand-grey-primary"
+        >
           {{ step.schema.help }}
         </p>
-        <p v-if="step.schema.helpExtra" class="text-lg md:text-xl text-nsw-brand-grey-primary mt-4">
+        <p
+          v-if="step.schema.helpExtra"
+          class="text-lg md:text-xl text-nsw-brand-grey-primary mt-4"
+        >
           {{ step.schema.helpExtra }}
         </p>
       </div>
@@ -22,16 +28,20 @@
         <p v-for="(text, index) in step.schema.support" :key="index" class="text-base text-nsw-brand-grey-primary mb-3">{{ text }}</p>
       </div> -->
     </div>
-    <div v-if="showNoRolePanel" class="lg:w-1/2 flex lg:justify-end items-start">
-      <div class="block p-4 md:p-8 bg-nsw-brand-primary-blue-light lg:w-2/3 rounded-lg max-w-lg">
+    <div
+      v-if="showNoRolePanel"
+      class="lg:w-1/2 flex lg:justify-end items-start"
+    >
+      <div
+        class="block p-4 md:p-8 bg-nsw-brand-primary-blue-light lg:w-2/3 rounded-lg max-w-lg"
+      >
         <h3 class="font-bold text-2xl mb-8">
-          Cant find a job title that is relevant?
+          {{ noRolePanelText }}
         </h3>
-        <p class="font-bold mb-2">
-          Use the Role Explorer tool
-        </p>
+        <p class="font-bold mb-2">Use the Role Explorer tool</p>
         <p class="mb-10">
-          See all the various roles, levels and how they're connected across the NSW Police Force.
+          See all the various roles, levels and how they're connected across the
+          NSW Police Force.
         </p>
         <nsw-button action="secondary-outline" @click.native="setDefaultRole">
           Browse Roles
@@ -74,10 +84,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getRoleByCode',
-      'getNextChildStepByCurrentIndex'
-    ]),
+    ...mapGetters(['getRoleByCode', 'getNextChildStepByCurrentIndex']),
     clampText() {
       return this.expanded ? 'Read less' : 'Read more'
     },
@@ -102,6 +109,16 @@ export default {
     },
     showNoRolePanel() {
       return ['current-role', 'goal-role'].includes(this.step.id)
+    },
+    noRolePanelText() {
+      switch (this.step.id) {
+        case 'current-role':
+          return 'Unsure of the details of your role?'
+        case 'goal-role':
+          return 'Unsure of the details of your goal role?'
+        default:
+          return 'Cant find a job title that is relevant?'
+      }
     }
   },
   methods: {
