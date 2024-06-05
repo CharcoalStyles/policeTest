@@ -74,7 +74,7 @@
                   </div>
                 </div>
                 <div
-                  v-if="readableInterestsList.length > 0"
+                  v-if="readableInterestsList"
                   class="flex flex-col mb-6 md:flex-row"
                 >
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
@@ -677,7 +677,11 @@ export default {
               }
             }
           }
-
+          // role volume (number of positions)
+          if (role.numPositions) {
+            const minVolume = role.numPositions.split(' ')[1]
+            sharingSkills.focusFocus += 1 + minVolume.length * 0.1
+          }
           return {
             role,
             rank: sharingSkills
