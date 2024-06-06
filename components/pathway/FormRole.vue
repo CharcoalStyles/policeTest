@@ -116,22 +116,28 @@
               :class="{ 'bg-nsw-grey-100': isRoleSelected(role) }"
             >
               <div class="sm:flex justify-between">
-                <div class="mb-3 font-bold sm:whitespace-no-wrap">
-                  {{ role.name }}
+                <div class="flex flex-col mb-3">
+                  <div class="font-bold sm:whitespace-no-wrap">
+                    {{ role.name }}
+                  </div>
+                  <div class="text-sm text-nsw-brand-primary-blue sm:whitespace-no-wrap">
+                    {{ role.jobFunction }}
+                  </div>
                 </div>
-                <div class="flex flex-wrap mb-2 sm:mb-1 sm:justify-end">
+                <div class="flex flex-col items-end mb-2 sm:mb-1">
                   <information-badge
                     v-if="role.grade"
                     size="xs"
-                    colour="grey"
-                    class="mr-2 mb-2"
+                    colour="nsw-brand-primary-blue-light"
+                    class="mb-2"
                   >
                     {{ role.grade }}
                   </information-badge>
                   <information-badge
                     v-if="role.salary.min && role.salary.max"
                     size="xs"
-                    colour="grey"
+                    colour="nsw-brand-primary-blue-light"
+                    class="mb-2"
                   >
                     Salary: {{ $currency(role.salary.min) }} -
                     {{ $currency(role.salary.max) }}
