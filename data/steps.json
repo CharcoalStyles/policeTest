@@ -24,53 +24,6 @@
     }
   },
   {
-    "id": "criteria",
-    "title": "Do any of the following criteria apply to you?",
-    "type": "question",
-    "schema": {
-      "section": "Essential elements",
-      "help": "This makes sure we can we provide relevant opportunities inline with essential job requirements.",
-      "field": {
-        "type": "checkbox",
-        "required": false,
-        "options": [
-          {
-            "title": "I am of Aboriginal or Torres Strait Islander origin",
-            "value": "ATSI"
-          },
-          {
-            "title": "I am a Designated Detective (hold an associate degree in Policing Practice)",
-            "value": "DDP"
-          },
-          {
-            "title": "I hold a current Australian Commercial Pilot licence (CPL) or Air Transport Pilot Licence (ATPL)",
-            "value": "ATPL"
-          },
-          {
-            "title": "I am a registered Psychologist",
-            "value": "RPS"
-          },
-          {
-            "title": "I am a registered Nurse",
-            "value": "RN"
-          },
-          {
-            "title": "I am a registered General Practitioner or Physician",
-            "value": "RGP"
-          },
-          {
-            "title": "I hold a solicitor's practicing certificate",
-            "value": "SPC"
-          },
-          {
-            "title": "None apply",
-            "value": "none"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "goal",
     "title": "Do you have a specific role in mind that you'd like to move into?",
     "type": "question",
