@@ -26,9 +26,9 @@ module.exports = {
           error: '#B81237'
         },
         'nsw-brand': {
-          'primary-blue': '#002664',
-          'primary-blue-2': '#146CFD',
-          'primary-blue-light': '#CBEDFD',
+          'primary-blue': '#061A4D',
+          'primary-blue-2': '#074889',
+          'primary-blue-light': '#C9D7ED',
           'primary-highlight': '#D7153A',
           'secondary-blue': '#2E5299',
           'tertiary-blue': '#0085B3',
