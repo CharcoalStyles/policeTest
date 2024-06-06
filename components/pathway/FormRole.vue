@@ -13,13 +13,6 @@
           v-model="filter.jobFamily"
           class="nsw-form-select"
           placeholder="Select"
-          @change="
-            () => {
-              if (filter.jobFunction !== '') {
-                filter.jobFunction = ''
-              }
-            }
-          "
         >
           <option value="" disabled selected>Select</option>
           <option v-for="jobFamily in jobFamilies" :key="jobFamily">
@@ -44,11 +37,11 @@
           id="sort"
           v-model="filter.jobFunction"
           class="nsw-form-select"
-          @change="() => (filter.jobFamily = '')"
+          @change="onSelectFunction()"
         >
           <option value="" disabled selected>Select</option>
-          <option v-for="jobFuncion in jobFunctions" :key="jobFuncion">
-            {{ jobFuncion }}
+          <option v-for="jobFunction in jobFunctions" :key="jobFunction">
+            {{ jobFunction }}
           </option>
         </select>
       </div>
@@ -232,14 +225,11 @@ export default {
           return acc
         }, [])
     },
-    /**
-     * Ensure the same role cannot be selected for current and goal
-     **/
     filteredRoles() {
       return this.$collect(this.$store.state.roles)
         .filter((role) => {
-          if (this.currentRole) {
-            return role.id !== this.currentRole.id
+          if (this.currentRole && role.id === this.currentRole.id) {
+            return false
           }
 
           if (this.filter.jobFunction) {
@@ -261,9 +251,6 @@ export default {
     }
   },
   methods: {
-    updateValue(e) {
-      this.value = e.target.value
-    },
     search(input) {
       this.value = input
       const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias'], {
@@ -273,13 +260,15 @@ export default {
       if (result.length === 0) {
         return [this.defaultNoRole]
       }
-      // if (this.step.id === 'goal-role') {
-      //   return result // .filter(i => i.id !== 99).filter(i => !i.genericRole)
-      // }
-      return result // .filter(i => i.id !== 99)
+      return result
     },
     getResultValue(result) {
       return result.name
+    },
+    onSelectFunction() {
+      if (this.filter.jobFamily === '') {
+        this.filter.jobFamily = this.filteredRoles[0].jobFamily
+      }
     },
     selectRole(role) {
       if (role && role.id) {
