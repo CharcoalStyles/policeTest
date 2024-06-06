@@ -13,13 +13,6 @@
           v-model="filter.jobFamily"
           class="nsw-form-select"
           placeholder="Select"
-          @change="
-            () => {
-              if (filter.jobFunction !== '') {
-                filter.jobFunction = ''
-              }
-            }
-          "
         >
           <option value="" disabled selected>Select</option>
           <option v-for="jobFamily in jobFamilies" :key="jobFamily">
@@ -44,11 +37,11 @@
           id="sort"
           v-model="filter.jobFunction"
           class="nsw-form-select"
-          @change="() => (filter.jobFamily = '')"
+          @change="onSelectFunction()"
         >
           <option value="" disabled selected>Select</option>
-          <option v-for="jobFuncion in jobFunctions" :key="jobFuncion">
-            {{ jobFuncion }}
+          <option v-for="jobFunction in jobFunctions" :key="jobFunction">
+            {{ jobFunction }}
           </option>
         </select>
       </div>
@@ -280,6 +273,11 @@ export default {
     },
     getResultValue(result) {
       return result.name
+    },
+    onSelectFunction() {
+      if (this.filter.jobFamily === '') {
+        this.filter.jobFamily = this.filteredRoles[0].jobFamily
+      }
     },
     selectRole(role) {
       if (role && role.id) {
