@@ -22,51 +22,7 @@
         "required": true
       }
     }
-  },
-  {
-    "id": "goal",
-    "title": "Do you have a specific role in mind that you'd like to move into?",
-    "type": "question",
-    "conditions": false,
-    "schema": {
-      "section": "Your goals",
-      "help": "If you have a specific role or pathway in mind, let's explore how you can get there.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "goal-role",
-    "title": "What role do you want to move into?",
-    "type": "question",
-    "conditions": [
-      {
-        "id": "goal",
-        "value": "yes"
-      }
-    ],
-    "schema": {
-      "section": "Your goal role",
-      "help": "We can explore how you might move into this role.",
-      "field": {
-        "type": "role",
-        "required": true
-      }
-    }
-  },
-  {
+  },{
     "id": "sworn",
     "title": "Are you looking for a sworn or unsworn role?",
     "type": "question",
@@ -123,6 +79,49 @@
             "value": "no"
           }
         ]
+      }
+    }
+  },
+  {
+    "id": "goal",
+    "title": "Do you have a specific role in mind that you'd like to move into?",
+    "type": "question",
+    "conditions": false,
+    "schema": {
+      "section": "Your goals",
+      "help": "If you have a specific role or pathway in mind, let's explore how you can get there.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "goal-role",
+    "title": "What role do you want to move into?",
+    "type": "question",
+    "conditions": [
+      {
+        "id": "goal",
+        "value": "yes"
+      }
+    ],
+    "schema": {
+      "section": "Your goal role",
+      "help": "We can explore how you might move into this role.",
+      "field": {
+        "type": "role",
+        "required": true
       }
     }
   },
