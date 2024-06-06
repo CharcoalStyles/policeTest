@@ -79,7 +79,7 @@ export default {
           return 'bg-nsw-grey-100'
           break
         default:
-          return 'bg-gray-200'
+          return `bg-${this.colour}`
           break
       }
     }
