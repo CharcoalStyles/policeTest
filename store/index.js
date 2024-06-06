@@ -7,17 +7,8 @@ import steps from '@/data/steps.json'
 import checkConditions from '@/utils/conditions'
 import isAssessible from '@/utils/assessible'
 
-// eslint-disable-next-line no-control-regex
-const re = /(?![\x00-\x7F]|[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3})./g
-
 const state = () => ({
-  roles: roles.map((role) => {
-    return {
-      ...role,
-      name: role.name.replace(re, ''),
-      fullDescription: role.fullDescription.replace(re, '')
-    }
-  }),
+  roles,
   skills,
   capabilities,
   pathway: {
