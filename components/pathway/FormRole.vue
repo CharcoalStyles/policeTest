@@ -24,7 +24,7 @@
 
     <div class="mb-12">
       <div class="text-2xl font-bold mb-4">
-        <p>Select your section or unit</p>
+        <p>Select your function</p>
       </div>
       <div class="mb-1">
         <div class="text-base font-bold">Select from the list below</div>

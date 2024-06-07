@@ -67,7 +67,8 @@
     ],
     "schema": {
       "section": "Detective roles",
-      "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
+      "help": "Detective roles require successful completion of Designated Detective training. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
+      "helpExtra": "For full requirements around becoming a Designated Detective, please refer to the Detective Training Unit.",
       "field": {
         "type": "radio",
         "required": true,
