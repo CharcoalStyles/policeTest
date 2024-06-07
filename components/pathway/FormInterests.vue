@@ -10,14 +10,14 @@
             <div class="flex flex-col">
               <p class="font-bold">Your selections:</p>
               <div
-                class="flex flex-row items-center justify-center border border-nsw-brand-primary-blue rounded-xl text-center h-28"
+                class="flex flex-row items-center p-4 justify-center border border-nsw-brand-primary-blue rounded-xl text-center h-min-28"
               >
                 <p v-if="answer.length === 0" class="text-nsw-grey-700">
                   Select a maximum of three interest areas
                 </p>
                 <div
                   v-else
-                  class="w-full flex flex-row items-center gap-2 justify-around"
+                  class="w-full flex flex-col md:flex-row items-center gap-2 justify-around md:justify-start"
                 >
                   <div
                     v-for="jobFunction in answer"
@@ -52,7 +52,7 @@
                       <div
                         v-for="jobFunction in jobFamily.jobFunctions"
                         :key="jobFunction"
-                        class="w-1/3 flex-grow"
+                        class="w-full md:w-1/3 flex-grow"
                       >
                         <input
                           :id="jobFunction"

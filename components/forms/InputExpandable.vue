@@ -2,7 +2,7 @@
   <div class="relative border group border-black mb-4 p-4 md:py-4 md:pl-6 md:pr-8 rounded-md flex flex-col">
     <slot />
     <div>
-      <div class="pl-12 pr-6">
+      <div class="pl-12 pr-6 font-bold">
         {{ description }}
       </div>
       <div v-show="expanded" class="mt-4 mb-4 pl-12">

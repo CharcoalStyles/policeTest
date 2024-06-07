@@ -135,17 +135,19 @@ const mutations = {
     })
   },
 
-  ADD_SKILL_ASSESSMENT(state, payload) {
-    const skillStepIndex = state.pathway.steps.findIndex(
-      (step) => step.id === 'skills'
+  ADD_SKILL_AND_CAPABILITY_ASSESSMENT(state, payload) {
+    const skillAndCapabilityStepIndex = state.pathway.steps.findIndex(
+      (step) => step.id === 'skills-and-capabilities'
     )
+    console.log(skillAndCapabilityStepIndex)
+    console.log(state.pathway.steps)
 
     // Reset in case any have already been set
-    state.pathway.steps[skillStepIndex].steps = []
+    state.pathway.steps[skillAndCapabilityStepIndex].steps = []
 
     // Add new
     const role = state.roles.find((role) => role.id === payload.value)
-    const skillSteps = []
+    const steps = []
 
     // Generate dynamic skill child steps
     role.skills.focus.forEach((skill) => {
@@ -157,7 +159,7 @@ const mutations = {
           title: currentSkill.name,
           type: 'question',
           schema: {
-            section: 'Select your current skill level',
+            section: 'Self Assessment - Skills',
             help: currentSkill.description,
             field: {
               type: 'skill',
@@ -167,29 +169,14 @@ const mutations = {
             value: null
           }
         }
-        skillSteps.push(childStep)
+        steps.push(childStep)
       } else {
         console.warn(`No Skill found for: ${skill.code}`)
       }
     })
 
-    // Add generated skill steps as child questions
-    state.pathway.steps[skillStepIndex].steps = skillSteps
-  },
+    console.log('s1', steps)
 
-  ADD_CAPABILITY_ASSESSMENT(state, payload) {
-    const capabilitiesStepIndex = state.pathway.steps.findIndex(
-      (step) => step.id === 'capabilities'
-    )
-
-    // Reset in case any have already been set
-    state.pathway.steps[capabilitiesStepIndex].steps = []
-
-    // Add new
-    const role = state.roles.find((role) => role.id === payload.value)
-    const capabilitySteps = []
-
-    // Generate dynamic capability steps
     role.capabilities.focus.forEach((capability) => {
       const currentCapability = state.capabilities.find(
         (c) => c.subcode === capability.code
@@ -200,7 +187,7 @@ const mutations = {
         title: currentCapability.subcategory,
         type: 'question',
         schema: {
-          section: 'Select your current level of capability',
+          section: 'Self Assessment - Capability',
           help: currentCapability.description,
           field: {
             type: 'capability',
@@ -211,25 +198,20 @@ const mutations = {
         }
       }
 
-      capabilitySteps.push(childStep)
+      steps.push(childStep)
     })
 
-    // Add generated capability child steps
-    state.pathway.steps[capabilitiesStepIndex].steps = capabilitySteps
+    console.log('s2', steps)
+
+    // Add generated skill and capability child steps
+    state.pathway.steps[skillAndCapabilityStepIndex].steps = steps
   },
 
-  CLEAR_SKILL_ASSESSMENT(state, payload) {
+  CLEAR_SKILL_AND_CAPABILITY_ASSESSMENT(state, payload) {
     const skillStepIndex = state.pathway.steps.findIndex(
-      (step) => step.id === 'skills'
+      (step) => step.id === 'skills-and-capabilities'
     )
     state.pathway.steps[skillStepIndex].steps = []
-  },
-
-  CLEAR_CAPABILITY_ASSESSMENT(state, payload) {
-    const capabilitiesStepIndex = state.pathway.steps.findIndex(
-      (step) => step.id === 'capabilities'
-    )
-    state.pathway.steps[capabilitiesStepIndex].steps = []
   },
 
   CLEAR_SKILL_ANSWERS(state) {
@@ -253,11 +235,9 @@ const actions = {
     // Add skills and capability steps
     if (isAssessible(state.pathway.steps, payload.id)) {
       if (payload.value) {
-        commit('ADD_SKILL_ASSESSMENT', payload)
-        commit('ADD_CAPABILITY_ASSESSMENT', payload)
+        commit('ADD_SKILL_AND_CAPABILITY_ASSESSMENT', payload)
       } else {
-        commit('CLEAR_SKILL_ASSESSMENT', payload)
-        commit('CLEAR_CAPABILITY_ASSESSMENT', payload)
+        commit('CLEAR_SKILL_AND_CAPABILITY_ASSESSMENT', payload)
         commit('CLEAR_SKILL_ANSWERS')
         commit('CLEAR_CAPABILITY_ANSWERS')
       }
