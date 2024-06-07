@@ -1,24 +1,69 @@
 <template>
   <div class="p-4 lg:p-8">
-    <information-badge class="mb-6 rounded-lg" :colour="pillColour">
-      Your {{ type }} role
+    <information-badge class="mb-4 font-bold" :colour="pillColour" rounded="md">
+      <p class="px-2">Your {{ type }} role</p>
     </information-badge>
     <h3 class="font-bold text-xl mb-4">
       {{ role.name }}
     </h3>
-    <p v-if="role.id !== 99" class="w-full lg:w-5/6 mb-6">
-      {{ role.description }}
-    </p>
-    <div class="flex flex-col lg:flex-row">
-      <information-badge v-if="role.grade" class="mb-2 sm:mb-6 rounded-full mr-3" size="sm">
-        Grade: {{ role.grade }}
+    <div class="flex flex-col gap-3 lg:flex-row mb-6">
+      <information-badge v-if="role.grade" class="rounded-full" size="sm">
+        {{ role.grade }}
       </information-badge>
-      <information-badge v-if="role.salary.min && role.salary.max" class="mb-2 sm:mb-6 rounded-full mr-3" size="sm" tooltip="Salaries are indicative only. Check the job ad when applying for a role.">
-        Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}
+      <information-badge
+        v-if="role.salary.min && role.salary.max"
+        class="rounded-full"
+        size="sm"
+      >
+        {{ $currency(role.salary.min) }} -
+        {{ $currency(role.salary.max) }}
       </information-badge>
-      <information-badge v-if="role.manager" size="sm" class="mb-2 sm:mb-6 rounded-full">
+      <information-badge v-if="role.manager" size="sm" class="rounded-full">
         Manager role
       </information-badge>
+      <information-badge
+        v-if="role.numPositions"
+        size="sm"
+        class="rounded-full"
+      >
+        {{ role.numPositions }} positions
+      </information-badge>
+      <information-badge
+        v-if="role.location && role.location !== 'Various'"
+        size="sm"
+        class="rounded-full"
+      >
+        {{ role.location }}
+      </information-badge>
+    </div>
+    <p class="w-full lg:w-5/6 mb-6">
+      {{ role.description }}
+    </p>
+    <div class="w-fit">
+      <a
+        :href="role.fullDescription"
+        class="flex flex-row gap-1 underline text-sm text-nsw-brand-primary-blue mb-6"
+      >
+        <img src="/icons/pages.svg" alt="Link icon" />
+        <p>Role Description</p>
+      </a>
+    </div>
+    <div v-if="hasEssentialRequirements">
+      <div class="flex flex-row gap-2">
+        <img src="/essential.svg" alt="Link icon" />
+        <p class="font-bold text-nsw-brand-primary-blue">
+          Essential Requirements
+        </p>
+      </div>
+      <ul class="pl-6 list-outside list-disc">
+        <li
+          v-for="requirement in getEssentialRequirements"
+          :key="requirement"
+          class="mb-2leading-loose"
+        >
+          {{ requirement }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -46,7 +91,29 @@ export default {
   },
   computed: {
     pillColour() {
-      return this.type === 'current' ? 'blue' : 'green'
+      console.log(this.role)
+      return this.type === 'current' ? 'nsw-brand-primary-blue-light' : 'green'
+    },
+    hasEssentialRequirements() {
+      return Object.keys(this.role.essential).reduce((acc, key) => {
+        return acc || this.role.essential[key]
+      }, false)
+    },
+    getEssentialRequirements() {
+      return Object.keys(this.role.essential)
+        .filter((key) => {
+          return this.role.essential[key]
+        })
+        .map((key) => {
+          switch (key) {
+            case 'aboriginality':
+              return 'Flexible working hours'
+            case 'detective':
+              return 'Remote working'
+            default:
+              return key
+          }
+        })
     }
   }
 }
