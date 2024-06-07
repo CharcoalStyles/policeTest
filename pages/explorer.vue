@@ -129,27 +129,80 @@
 
     <main class="hidden lg:flex flex-col flex-grow">
       <div class="relative flex-grow">
-        <zoom-tool
+        <!-- <zoom-tool
           class="not-zoomable fixed top-0 right-0 m-8 z-10"
           :zoom="zoom"
           @zoom="updateZoom"
-        />
+        /> -->
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
-          <div class="block zoomable">
+          <div class="flex flex-row gap-2 m-2">
             <div
-              class="families inline-flex flex-wrap p-20"
-              :class="{ 'pointer-events-none': panning }"
+              class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
             >
-              <role-function
-                v-for="(group, index) in filteredRolesByFunction"
-                :key="group.name"
-                :role-function="group"
-                :roles="roles"
-                :index="index"
-                :zoom="zoom"
-                @selected="viewRole"
-              />
+              Beta
             </div>
+            <div class="text-nsw-brand-primary-blue">
+              This is a <span class="underline">new service</span> - your
+              <span class="underline">feedback</span> will help us improve it.
+            </div>
+          </div>
+          <div class="px-8 mt-10">
+            <div
+              class="w-full mb-4 text-center h-32"
+              :class="boxStyle"
+            >
+              <div>
+                <p class="font-bold">{{ filteredRolesByFunction[0].name }}</p>
+                <p class="text-sm">
+                  {{ filteredRolesByFunction[0].roles.length }} roles
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row mb-4">
+              <div
+                v-for="f in filteredRolesByFunction.slice(1, 4)"
+                :key="f.name"
+                class="w-1/4 flex-grow text-center h-32"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row flex-wrap mb-4">
+              <div
+                v-for="f in filteredRolesByFunction.slice(4, 16)"
+                :key="f.name"
+                class="w-1/5  flex-grow text-center h-32"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row flex-wrap">
+              <div
+                v-for="f in filteredRolesByFunction.slice(16)"
+                :key="f.name"
+                class="w-1/3 flex-grow text-center h-16"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="block zoomable" :class="viewLevel === 1 ? 'hidden' : ''">
+            <div
+              class="families inline-flex flex-wrap p-2"
+              :class="{ 'pointer-events-none': panning }"
+            ></div>
           </div>
         </div>
       </div>
@@ -234,7 +287,7 @@ export default {
         skills: false,
         onboarding: true
       },
-      zoom: 0.5,
+      zoom: 1,
       panning: false,
       options: {
         salary: {
@@ -248,7 +301,9 @@ export default {
         interests: [],
         salary: [70000, 346000],
         sortBy: 'gradeId'
-      }
+      },
+      viewLevel: 1,
+      boxStyle: 'bg-nsw-brand-primary-blue-light rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue transition-color duration-500'
     }
   },
   computed: {
@@ -264,11 +319,12 @@ export default {
         .where('salary.min', '>=', this.filter.salary[0])
         .where('salary.max', '<=', this.filter.salary[1])
         .filter((role) => {
-          return this.filter.skills.length && role.skills.focus
-            ? collect(role.skills.focus)
+          if (this.filter.skills.length > 0 && role.skills.focus) {
+            return collect(role.skills.focus)
               .whereIn('code', this.filter.skills)
               .count()
-            : true
+          }
+          return true
         })
     },
 
