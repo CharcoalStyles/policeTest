@@ -1,9 +1,28 @@
 <template>
   <div>
-    <input-expandable v-for="option in step.schema.field.options" :key="option.id" :description="option.easyDescription" :attributes="option.attributes">
+    <p class="font-bold mb-5">
+      Assess yourself on this skill and select your current level
+    </p>
+    <input-expandable
+      v-for="option in step.schema.field.options"
+      :key="option.id"
+      :description="option.easyDescription"
+      :attributes="option.attributes"
+    >
       <div class="nsw-form-radio">
-        <input :id="option.level" v-model="answer" :name="option.level" :value="option.level" class="nsw-form-radio__input" type="radio">
-        <label class="nsw-form-radio__label mt-0 mb-0 font-semibold text-base py-0 flex items-center" :for="option.level">{{ option.name }}</label>
+        <input
+          :id="option.level"
+          v-model="answer"
+          :name="option.level"
+          :value="option.level"
+          class="nsw-form-radio__input"
+          type="radio"
+        />
+        <label
+          class="nsw-form-radio__label mt-0 mb-0 font-bold text-base py-0 flex items-center"
+          :for="option.level"
+          >{{ option.name }}</label
+        >
       </div>
     </input-expandable>
   </div>

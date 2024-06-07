@@ -6,10 +6,26 @@
           <legend class="sr-only">
             {{ step.title }}
           </legend>
+          <p v-if="step.schema.field.limit" class="font-bold">
+            You can select a maximum of {{ step.schema.field.limit }} options
+          </p>
           <div class="nsw-form-radio">
-            <div v-for="option in step.schema.field.options" :key="option.value">
-              <input :id="option.value" v-model="answer" :name="option.value" :value="option.value" class="nsw-form-checkbox__input" type="checkbox">
-              <label class="nsw-form-checkbox__label" :for="option.value">{{ option.title }}</label>
+            <div
+              v-for="option in step.schema.field.options"
+              :key="option.value"
+            >
+              <input
+                :id="option.value"
+                v-model="answer"
+                :name="option.value"
+                :value="option.value"
+                :disabled="answer.includes(option.value) ? false : disabled"
+                class="nsw-form-checkbox__input"
+                type="checkbox"
+              />
+              <label class="nsw-form-checkbox__label" :for="option.value">{{
+                option.title
+              }}</label>
             </div>
           </div>
         </fieldset>
@@ -27,6 +43,12 @@ export default {
     }
   },
   computed: {
+    disabled(option) {
+      if (this.step.schema.field.limit) {
+        return this.answer.length >= this.step.schema.field.limit
+      }
+      return false
+    },
     answer: {
       get() {
         if (this.$store.state.pathway.answers[this.step.id]?.value) {
