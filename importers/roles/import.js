@@ -256,7 +256,7 @@ rolesCsvData.data.forEach((row, i) => {
     name: row.role,
     grade: row['new_-_grade'],
     gradeId: gradeIdParser(row['new_-_grade'], row.job_family),
-    jobFamily: row.job_family,
+    jobFamily: row.job_family === 'Development program' ? 'Policing' : row.job_family,
     jobRole: row.job_role,
     jobFunction: row.job_function,
     description: parseDescription(row.purpose),
