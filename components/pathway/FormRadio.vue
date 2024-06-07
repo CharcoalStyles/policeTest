@@ -7,9 +7,27 @@
             {{ step.title }}
           </legend>
           <div class="nsw-form-radio">
-            <div v-for="option in step.schema.field.options" :key="option.value">
-              <input :id="option.value" v-model="answer" :name="option.value" :value="option.value" class="nsw-form-radio__input" type="radio">
-              <label class="nsw-form-radio__label" :for="option.value">{{ option.title }}</label>
+            <div
+              v-for="option in step.schema.field.options"
+              :key="option.value"
+            >
+              <input
+                :id="option.value"
+                v-model="answer"
+                :name="option.value"
+                :value="option.value"
+                class="nsw-form-radio__input"
+                type="radio"
+              />
+              <label class="nsw-form-radio__label" :for="option.value">
+                <p>{{ option.title }}</p>
+                <p
+                  v-if="option.description"
+                  class="text-xs text-nsw-brand-grey-primary"
+                >
+                  {{ option.description }}
+                </p></label
+              >
             </div>
           </div>
         </fieldset>

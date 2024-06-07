@@ -22,6 +22,67 @@
         "required": true
       }
     }
+  },{
+    "id": "sworn",
+    "title": "In terms of career development, are you interested in Policing or Administrative roles?",
+    "type": "question",
+    "schema": {
+      "section": "Work area",
+      "help": "This makes sure we can highlight opportunities within your relevant duties.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Policing",
+            "value": "sworn",
+            "description": "(including Student Police Officers)"
+          },
+          {
+            "title": "Administrative",
+            "value": "non-sworn",
+            "description": "(including Special Constables)"
+          },
+          {
+            "title": "Either",
+            "value": "either"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "detective-roles",
+    "title": "Are you interested in Detective roles?",
+    "type": "question",
+    "conditions": [
+      {
+        "id": "isDetective",
+        "value": "no"
+      },
+      {
+        "id": "isPolice",
+        "value": "yes"
+      }
+    ],
+    "schema": {
+      "section": "Detective roles",
+      "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
+      "field": {
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "title": "Yes",
+            "value": "yes"
+          },
+          {
+            "title": "No",
+            "value": "no"
+          }
+        ]
+      }
+    }
   },
   {
     "id": "goal",
@@ -67,86 +128,14 @@
     }
   },
   {
-    "id": "sworn",
-    "title": "Are you looking for a sworn or unsworn role?",
-    "type": "question",
-    "schema": {
-      "section": "Work area",
-      "help": "This makes sure we can highlight opportunities within your relevant duties.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Sworn",
-            "value": "sworn"
-          },
-          {
-            "title": "Unsworn",
-            "value": "non-sworn"
-          },
-          {
-            "title": "Either",
-            "value": "either"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "detective-roles",
-    "title": "Are you interested in Detective roles?",
-    "type": "question",
-    "conditions": [
-      {
-        "id": "isDetective",
-        "value": "no"
-      },
-      {
-        "id": "isPolice",
-        "value": "yes"
-      }
-    ],
-    "schema": {
-      "section": "Detective roles",
-      "help": "Detective roles require an Associate Degree in Policing Practice or equivalent course/experience. Your answer ensures we provide relevant opportunities inline with essential job requirements.",
-      "field": {
-        "type": "radio",
-        "required": true,
-        "options": [
-          {
-            "title": "Yes",
-            "value": "yes"
-          },
-          {
-            "title": "No",
-            "value": "no"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "skills",
-    "title": "Let's assess your current skills",
+    "id": "skills-and-capabilities",
+    "title": "Let's assess your skills and capabilities",
     "type": "interstitial",
-    "icon": "checklist",
+    "icon": "edit",
     "conditions": false,
     "schema": {
       "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the skills required for your current role."
-    },
-    "steps": []
-  },
-  {
-    "id": "capabilities",
-    "title": "Let's assess your general capabilities",
-    "type": "interstitial",
-    "icon": "checklist",
-    "conditions": false,
-    "schema": {
-      "section": "Self assessment",
-      "description": "In this section, you’ll assess yourself on the capabilities required for your current role you will be asked to assess some more general capabilities."
+      "description": "In this section, you’ll assess yourself on the skills and capabilities required for your current role."
     },
     "steps": []
   },
@@ -156,7 +145,7 @@
     "type": "question",
     "conditions": false,
     "schema": {
-      "section": "Additional interests",
+      "section": "Interests and Preferences",
       "help": "This helps us suggest roles within discipline areas that are interesting to you. You don't need to have any previous experience in these areas to be shown roles.",
       "field": {
         "type": "interests"
@@ -168,7 +157,7 @@
     "title": "Are you more interested in being an individual contributor or a supervisor/manager?",
     "type": "question",
     "schema": {
-      "section": "Managing people",
+      "section": "Interests and Preferences",
       "help": "This makes sure we can highlight opportunities that match your preferred working style.",
       "field": {
         "type": "radio",
@@ -195,11 +184,12 @@
     "title": "What matters to you when choosing a new role?",
     "type": "question",
     "schema": {
-      "section": "Role properties",
+      "section": "Interests and Preferences",
       "help": "This helps us create an accurate profile for you to prioritise your career opportunities. ",
       "field": {
         "type": "checkbox",
         "required": false,
+        "limit": 3,
         "options": [
           {
             "title": "Flexibility",
