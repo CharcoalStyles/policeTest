@@ -127,7 +127,7 @@
             class="py-6 border-b lg:py-16 border-nsw-grey-200 print-break"
           >
             <div class="mb-10">
-              <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
+              <h3 class="flex items-center mb-3 text-3xl font-bold md:text-3xl">
                 <step-badge>1</step-badge> Select your target role
               </h3>
               <p class="md:w-2/3">
@@ -138,9 +138,10 @@
             <div class="w-full">
               <div v-if="goalRole" class="w-full md:w-1/2 pb-4">
                 <div>
-                  <h4 class="flex items-center mb-6 text-lg font-bold">
-                    Your target role
-                  </h4>
+                  <div class="mb-6">
+                    <h4 class="text-2xl font-bold">Your desired role</h4>
+                    <p>The role you identified in the career questionnaire</p>
+                  </div>
                   <role-selector
                     :role="goalRole"
                     :target-role="targetRole"
@@ -149,56 +150,101 @@
                   />
                 </div>
               </div>
-              <div class="flex flex-row gap-8 flex-wrap">
+              <hr class="mb-6" />
+              <div class="mb-7">
+                <h4 v-if="goalRole" class="text-2xl font-bold">
+                  Other options based on your answers
+                </h4>
+                <h4 v-else class="text-2xl font-bold">
+                  Options based on your answers
+                </h4>
+              </div>
+              <div class="flex flex-row flex-wrap">
                 <div
-                  v-if="familyRoles(currentRole).merged.length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
+                  v-if="progressionRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
-                    <h4 class="text-lg font-bold">
-                      Progression roles from your current role
-                    </h4>
-                    <p>
-                      Based on your current role and within your general
-                      profession
-                    </p>
+                    <h4 class="text-xl font-bold">Progression roles</h4>
+                    <p>Roles that your current role can progress to</p>
                   </div>
+                </div>
+                <div
+                  v-if="adjacentRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                >
+                  <div class="mb-6">
+                    <h4 class="text-xl font-bold">Adjacent roles</h4>
+                    <p>
+                      Roles from your current work area that share your current
+                      capabilities
+                    </p>
+                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
+                  </div>
+                </div>
+                <div
+                  v-if="skillRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                >
+                  <div class="mb-6">
+                    <h4 class="text-xl font-bold">Roles with similar skills</h4>
+                    <p>
+                      Roles from other parts of the organisation that share your
+                      current skills and capabilities
+                    </p>
+                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lists -->
+
+              <div class="flex flex-row flex-wrap">
+                <div
+                  v-if="progressionRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                >
                   <role-selector
-                    v-for="role in familyRoles(currentRole).merged"
-                    :key="role.role.id"
-                    :role="role.role"
+                    v-for="role in progressionRoles(currentRole).slice(0, 3)"
+                    :key="role.id"
+                    :role="role"
                     :target-role="targetRole"
-                    @click.native="selectTargetRole(role.role)"
-                    @keyup.space="selectTargetRole(role.role)"
+                    @click.native="selectTargetRole(role)"
+                    @keyup.space="selectTargetRole(role)"
+                  />
+                </div>
+                <div
+                  v-if="adjacentRoles(currentRole).length"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                >
+                  <role-selector
+                    v-for="role in adjacentRoles(currentRole).slice(0, 3)"
+                    :key="role.id"
+                    :role="role"
+                    :target-role="targetRole"
+                    @click.native="selectTargetRole(role)"
+                    @keyup.space="selectTargetRole(role)"
                   />
                 </div>
                 <div
                   v-if="skillRoles(currentRole).length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] pb-4"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
-                  <div class="mb-6">
-                    <h4 class="text-lg font-bold">
-                      Adjacent roles that share your current capabilities
-                    </h4>
-                    <p>
-                      Roles from other parts of the organisation, that share
-                      your current capabilities
-                    </p>
-                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
-                  </div>
                   <role-selector
-                    v-for="role in skillRoles(currentRole).slice(0, 7)"
-                    :key="role.role.id"
-                    :role="role.role"
+                    v-for="role in skillRoles(currentRole).slice(0, 3)"
+                    :key="role.id"
+                    :role="role"
                     :target-role="targetRole"
-                    @click.native="selectTargetRole(role.role)"
-                    @keyup.space="selectTargetRole(role.role)"
+                    @click.native="selectTargetRole(role)"
+                    @keyup.space="selectTargetRole(role)"
                   />
                 </div>
+
                 <div
                   v-if="
                     !targetRole &&
-                    familyRoles(currentRole).totalCount === 0 &&
+                    progressionRoles(currentRole).length === 0 &&
+                    adjacentRoles(currentRole).length === 0 &&
                     skillRoles(currentRole).length === 0
                   "
                 >
@@ -395,8 +441,6 @@ import ModalUpdate from '@/components/pathway/results/ModalUpdate'
 import StepBadge from '@/components/pathway/results/StepBadge'
 import PrintPage from '@/components/PrintPage'
 import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
-import NextStepPanel from '@/components/pathway/results/NextStepPanel'
-import HelpBubble from '@/components/HelpBubble'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 
 export default {
@@ -409,9 +453,7 @@ export default {
     ModalUpdate,
     StepBadge,
     PrintPage,
-    DisclaimerPanel,
-    NextStepPanel,
-    HelpBubble
+    DisclaimerPanel
   },
   data() {
     return {
@@ -437,6 +479,7 @@ export default {
     },
     goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
+        console.log(this.answers['goal-role'].value)
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
           .first()
@@ -508,62 +551,104 @@ export default {
       this.$scrollTo('#comparison')
     },
 
-    familyRoles(currentRole) {
-      const isPolicing = currentRole.jobFamily === 'Policing'
+    progressionRoles(currentRole) {
       const showDetective = this.answers.hasOwnProperty('detective-roles')
         ? this.answers['detective-roles'].value.includes('yes')
         : false
 
-      const familyFiltered = this.roles
-        .filter((role) => role.jobFamily === currentRole.jobFamily)
+      const filteredRoles = this.roles
         .filter((role) => {
-          return role.id !== currentRole.id && role.id !== this.goalRole?.id
+          // filter out sworn roles
+          if (this.answers.hasOwnProperty('sworn')) {
+            switch (this.answers.sworn.value) {
+              case 'yes':
+                return role.jobFamily === 'Policing'
+              case 'no':
+                return role.jobFamily !== 'Policing'
+              default:
+                return true
+            }
+          }
+          return true
         })
-
-      const functionFiltered = familyFiltered.filter(
-        (role) => role.jobFunction === currentRole.jobFunction
-      )
-
-      const nextRoles = functionFiltered.filter((role) => {
-        let nextRoleJump = 1
-        if (
-          currentRole.gradeId.type === 'policing' &&
-          currentRole.gradeId.grade === 2
-        ) {
-          nextRoleJump = 2
-        }
-        return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
-      })
-
-      const sameGradeFamily = familyFiltered.filter((role) => {
-        if (isPolicing) {
+        .filter((role) => {
+          // Filter out roles not in current Job Function
+          if (role.jobFunction === currentRole.jobFunction) {
+            console.log(role.jobFunction, currentRole.jobFunction)
+          }
+          return role.jobFunction === currentRole.jobFunction
+        })
+        .filter((role) => {
+          // Filter out detective roles if not wanted; super edge case for this set, but gotta do it!
           if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
+            console.log('filtering out detective role')
             return false
           }
-          return role.gradeId.grade === currentRole.gradeId.grade
-        }
+          return true
+        })
+        .filter((role) => {
+          // Only pick roles that are the next level up
+          // Will need to fix this logic for roles that don't have numerical grades, by using salary
+          let nextRoleJump = 1
+          if (
+            currentRole.gradeId.type === 'policing' &&
+            currentRole.gradeId.grade === 2
+          ) {
+            nextRoleJump = 2
+          }
+          return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
+        })
 
-        return (
-          role.gradeId.grade === currentRole.gradeId.grade ||
-          role.gradeId.grade + 1 === currentRole.gradeId.grade
-        )
-      })
-
-      const rankedNextRoles = this.rankAndSortRoles(currentRole, nextRoles)
-      const rankedSameGradeFamily = this.rankAndSortRoles(
-        currentRole,
-        sameGradeFamily
+      return this.rankAndSortRoles(currentRole, filteredRoles).map(
+        ({ role }) => role
       )
+    },
 
-      return {
-        totalCount: rankedNextRoles.length + rankedSameGradeFamily.length,
-        nextRoles: rankedNextRoles,
-        sameFamily: rankedSameGradeFamily,
-        merged: [
-          ...rankedNextRoles.slice(0, 3),
-          ...rankedSameGradeFamily.slice(0, 4)
-        ]
-      }
+    adjacentRoles(currentRole) {
+      const showDetective = this.answers.hasOwnProperty('detective-roles')
+        ? this.answers['detective-roles'].value.includes('yes')
+        : false
+
+      const filteredRoles = this.roles
+        .filter((role) => {
+          // filter out sworn roles
+          if (this.answers.hasOwnProperty('sworn')) {
+            switch (this.answers.sworn.value) {
+              case 'yes':
+                return role.jobFamily === 'Policing'
+              case 'no':
+                return role.jobFamily !== 'Policing'
+              default:
+                return true
+            }
+          }
+          return true
+        })
+        .filter((role) => {
+          // Filter out roles not in current Job Family
+          return role.jobFamily === currentRole.jobFamily
+        })
+        .filter((role) => {
+          // Filter out roles in current Job Function
+          return role.jobFunction === currentRole.jobFunction
+        })
+        .filter((role) => {
+          // Filter out detective roles if not wanted
+          if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
+            console.log('filtering out detective role')
+            return false
+          }
+          return true
+        })
+        .filter((role) => {
+          // Only pick roles that are the same grade
+          // Will need to fix this logic for roles that don't have numerical grades, by using salary
+          return role.gradeId.grade === currentRole.gradeId.grade
+        })
+
+      return this.rankAndSortRoles(currentRole, filteredRoles).map(
+        ({ role }) => role
+      )
     },
 
     isRoleSharingSkills(firstRole, secondRole) {
@@ -728,19 +813,33 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const familyFiltered = this.roles.filter(
-        (role) => role.jobFamily !== currentRole.jobFamily
-      )
+      const matches = this.roles
+        .filter((role) => role.jobFamily !== currentRole.jobFamily)
+        .filter((role) => {
+          // filter out sworn roles
+          if (this.answers.hasOwnProperty('sworn')) {
+            switch (this.answers.sworn.value) {
+              case 'yes':
+                return role.jobFamily === 'Policing'
+              case 'no':
+                return role.jobFamily !== 'Policing'
+              default:
+                return true
+            }
+          }
+          return true
+        })
+        .filter((role) => {
+          if (role.id === currentRole.id) {
+            return false
+          }
+          if (this.answers.hasOwnProperty('goal-role')) {
+            return role.id === this.answers['goal-role'].value.id
+          }
+          return true
+        })
 
-      const matches = this.rankAndSortRoles(currentRole, familyFiltered)
-
-      const filteredMatchedRoles = matches
-        // Filter out my current role and goal role if chosen
-        .filter(
-          ({ role }) =>
-            role.id !== currentRole.id && role.id !== this.goalRole?.id
-        )
-      return filteredMatchedRoles
+      return this.rankAndSortRoles(currentRole, matches).map(({ role }) => role)
     }
   }
 }
