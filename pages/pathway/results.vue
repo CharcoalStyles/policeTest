@@ -550,7 +550,7 @@ export default {
       this.targetRole = role
       this.$scrollTo('#comparison')
     },
-
+    
     progressionRoles(currentRole) {
       const showDetective = this.answers.hasOwnProperty('detective-roles')
         ? this.answers['detective-roles'].value.includes('yes')
