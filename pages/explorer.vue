@@ -36,15 +36,15 @@
                       name="keywords"
                       class="nsw-form-input h-role-input"
                       placeholder="Enter a keyword"
-                      :value="filter.keyword"
+                      :value="debouncedFilters.keyword"
                     />
                   </div>
                   <div class="flex flex-col">
                     <div class="flex justify-between">
                       <label class="text-sm font-bold mb-2">Salary</label>
                       <div class="text-sm text-gray-700">
-                        ${{ filter.salary[0] / 1000 }}k - ${{
-                          filter.salary[1] / 1000
+                        ${{ debouncedFilters.salary[0] / 1000 }}k - ${{
+                          debouncedFilters.salary[1] / 1000
                         }}k
                       </div>
                     </div>
@@ -54,7 +54,7 @@
                       <div class="w-full flex justify-center">
                         <div class="w-11/12">
                           <input-range
-                            v-model="filter.salary"
+                            v-model="debouncedFilters.salary"
                             :min="options.salary.min"
                             :max="options.salary.max"
                           />
@@ -68,7 +68,7 @@
                       class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                       @click="modals.skills = true"
                     >
-                      {{ filter.skills.length }} selected
+                      {{ debouncedFilters.skills.length }} selected
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                   <div class="inline-block relative">
                     <select
                       id="sort"
-                      v-model="filter.sortBy"
+                      v-model="debouncedFilters.sortBy"
                       class="nsw-form-select h-role-input py-0"
                     >
                       <option value="manager">Manager roles</option>
@@ -129,27 +129,82 @@
 
     <main class="hidden lg:flex flex-col flex-grow">
       <div class="relative flex-grow">
-        <zoom-tool
+        <!-- <zoom-tool
           class="not-zoomable fixed top-0 right-0 m-8 z-10"
           :zoom="zoom"
           @zoom="updateZoom"
-        />
+        /> -->
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
-          <div class="block zoomable">
+          <div class="flex flex-row gap-2 m-2">
             <div
-              class="families inline-flex flex-wrap p-20"
-              :class="{ 'pointer-events-none': panning }"
+              class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
             >
-              <role-function
-                v-for="(group, index) in filteredRolesByFunction"
-                :key="group.name"
-                :role-function="group"
-                :roles="roles"
-                :index="index"
-                :zoom="zoom"
-                @selected="viewRole"
-              />
+              Beta
             </div>
+            <div class="text-nsw-brand-primary-blue">
+              This is a <span class="underline">new service</span> - your
+              <span class="underline">feedback</span> will help us improve it.
+            </div>
+          </div>
+          <div class="px-8 mt-10">
+            <div
+              v-for="f in bentoFamilyFunctions.xl"
+              :key="f.name"
+              class="w-full flex-grow text-center h-32 mb-4"
+              :class="boxStyle"
+            >
+              <div>
+                <p class="font-bold">{{ filteredRolesByFamilyRole[0].name }}</p>
+                <p class="text-sm">
+                  {{ filteredRolesByFamilyRole[0].roles.length }} roles
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row mb-4">
+              <div
+                v-for="f in bentoFamilyFunctions.l"
+                :key="f.name"
+                class="w-1/4 bento-max-33 flex-grow text-center h-32"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row flex-wrap mb-4">
+              <div
+                v-for="f in bentoFamilyFunctions.m"
+                :key="f.name"
+                class="w-1/5 bento-max-25 flex-grow text-center h-32"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-4 flex-row flex-wrap">
+              <div
+                v-for="f in bentoFamilyFunctions.s"
+                :key="f.name"
+                class="w-1/3 bento-max-50 flex-grow text-center h-16"
+                :class="boxStyle"
+              >
+                <div class="px-4">
+                  <p class="font-bold">{{ f.name }}</p>
+                  <p class="text-sm">{{ f.roles.length }} roles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="block zoomable" :class="viewLevel === 1 ? 'hidden' : ''">
+            <div
+              class="families inline-flex flex-wrap p-2"
+              :class="{ 'pointer-events-none': panning }"
+            ></div>
           </div>
         </div>
       </div>
@@ -181,7 +236,7 @@
       @close="modals.skills = false"
       @reset="resetSkillsFilter"
     >
-      <input-skills v-model="filter.skills" :roles="roles" />
+      <input-skills v-model="debouncedFilters.skills" :roles="roles" />
     </skills-selector>
     <modal-onboarding
       :show="modals.onboarding"
@@ -234,7 +289,7 @@ export default {
         skills: false,
         onboarding: true
       },
-      zoom: 0.5,
+      zoom: 1,
       panning: false,
       options: {
         salary: {
@@ -248,10 +303,27 @@ export default {
         interests: [],
         salary: [70000, 346000],
         sortBy: 'gradeId'
-      }
+      },
+      filterTimeout: null,
+      viewLevel: 1,
+      boxStyle:
+        'bg-nsw-brand-primary-blue-light rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
     }
   },
   computed: {
+    debouncedFilters: {
+      get() {
+        return this.filter
+      },
+      set(val) {
+        if (this.filterTimeout) {
+          clearTimeout(this.filterTimeout)
+        }
+        this.filterTimeout = setTimeout(() => {
+          this.filter = val
+        }, 300)
+      }
+    },
     /**
      * Filter roles based on filtering form values
      */
@@ -259,16 +331,17 @@ export default {
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
-      return collect(fuzzy.search(this.filter.keyword))
+      return collect(fuzzy.search(this.debouncedFilters.keyword))
         .filter((role) => !role.genericRole)
-        .where('salary.min', '>=', this.filter.salary[0])
-        .where('salary.max', '<=', this.filter.salary[1])
+        .where('salary.min', '>=', this.debouncedFilters.salary[0])
+        .where('salary.max', '<=', this.debouncedFilters.salary[1])
         .filter((role) => {
-          return this.filter.skills.length && role.skills.focus
-            ? collect(role.skills.focus)
-              .whereIn('code', this.filter.skills)
+          if (this.filter.skills.length > 0 && role.skills.focus) {
+            return collect(role.skills.focus)
+              .whereIn('code', this.debouncedFilters.skills)
               .count()
-            : true
+          }
+          return true
         })
     },
 
@@ -280,17 +353,17 @@ export default {
     },
 
     /**
-     * Filter roles by function group
+     * Filter roles by job function
      */
     filteredRolesByFunction() {
       return this.filteredRoles
-        .groupBy('jobFamily')
+        .groupBy('jobFunction')
         .keys()
         .map((key) => ({
           name: key,
           roles: this.filteredRoles
-            .where('jobFamily', key)
-            .sortByDesc(this.filter.sortBy)
+            .where('jobFunction', key)
+            .sortByDesc(this.debouncedFilters.sortBy)
             .all()
         }))
         .sortByDesc((group) => group.roles.length)
@@ -298,22 +371,41 @@ export default {
     },
 
     /**
-     * Filter roles by function group
+     * Filter roles by job family
      */
     filteredRolesByFamilyRole() {
       const results = this.filteredRoles
-        .groupBy('jobRole')
+        .groupBy('jobFamily')
         .keys()
         .map((key) => ({
           name: key,
           roles: this.filteredRoles
-            .where('jobRole', key)
-            .sortByDesc(this.filter.sortBy)
+            .where('jobFamily', key)
+            .sortByDesc(this.debouncedFilters.sortBy)
             .all()
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
+
       return results
+    },
+
+    bentoFamilyFunctions() {
+      return this.filteredRolesByFamilyRole.reduce(
+        (acc, roles) => {
+          if (roles.roles.length > 300) {
+            acc.xl.push(roles)
+          } else if (roles.roles.length >= 100) {
+            acc.l.push(roles)
+          } else if (roles.roles.length >= 10) {
+            acc.m.push(roles)
+          } else {
+            acc.s.push(roles)
+          }
+          return acc
+        },
+        { xl: [], l: [], m: [], s: [] }
+      )
     }
   },
   mounted() {
@@ -369,14 +461,14 @@ export default {
     },
 
     resetSkillsFilter() {
-      this.filter.skills = []
+      this.debouncedFilters.skills = []
     },
 
     /**
      * Update keyword value on debounce
      */
     updateKeyword(value) {
-      this.filter.keyword = value
+      this.debouncedFilters.keyword = value
     },
 
     /**
@@ -395,9 +487,9 @@ export default {
      * Add/remove interest from filter
      */
     toggleInterest(interest) {
-      this.filter.interests = this.filter.interests.includes(interest)
-        ? this.filter.interests.filter((i) => i !== interest)
-        : [...this.filter.interests, interest]
+      this.debouncedFilters.interests = this.debouncedFilters.interests.includes(interest)
+        ? this.debouncedFilters.interests.filter((i) => i !== interest)
+        : [...this.debouncedFilters.interests, interest]
     },
 
     /**
@@ -482,5 +574,14 @@ export default {
 }
 .h-role-input {
   height: 40px;
+}
+.bento-max-25 {
+  max-width: calc(25% - 12px);
+}
+.bento-max-50 {
+  max-width: calc(50% - 8px);
+}
+.bento-max-33 {
+  max-width: calc(33.33% - 10px);
 }
 </style>

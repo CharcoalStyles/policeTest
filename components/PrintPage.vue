@@ -1,6 +1,6 @@
 <template>
   <button class="flex items-center underline print:hidden text-sm text-nsw-brand-primary-blue" style="text-underline-offset: 4px;">
-    <img src="/icons/print.svg" alt="Print icon" class="mr-2">
-    Print this page
+    <img src="/saveCopy.svg" alt="Save a copy icon" class="mr-3">
+    Save a copy
   </button>
 </template>

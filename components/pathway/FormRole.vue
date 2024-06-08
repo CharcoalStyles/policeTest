@@ -13,13 +13,6 @@
           v-model="filter.jobFamily"
           class="nsw-form-select"
           placeholder="Select"
-          @change="
-            () => {
-              if (filter.jobFunction !== '') {
-                filter.jobFunction = ''
-              }
-            }
-          "
         >
           <option value="" disabled selected>Select</option>
           <option v-for="jobFamily in jobFamilies" :key="jobFamily">
@@ -31,7 +24,7 @@
 
     <div class="mb-12">
       <div class="text-2xl font-bold mb-4">
-        <p>Select your section or unit</p>
+        <p>Select your function</p>
       </div>
       <div class="mb-1">
         <div class="text-base font-bold">Select from the list below</div>
@@ -44,11 +37,11 @@
           id="sort"
           v-model="filter.jobFunction"
           class="nsw-form-select"
-          @change="() => (filter.jobFamily = '')"
+          @change="onSelectFunction()"
         >
           <option value="" disabled selected>Select</option>
-          <option v-for="jobFuncion in jobFunctions" :key="jobFuncion">
-            {{ jobFuncion }}
+          <option v-for="jobFunction in jobFunctions" :key="jobFunction">
+            {{ jobFunction }}
           </option>
         </select>
       </div>
@@ -123,22 +116,28 @@
               :class="{ 'bg-nsw-grey-100': isRoleSelected(role) }"
             >
               <div class="sm:flex justify-between">
-                <div class="mb-3 font-bold sm:whitespace-no-wrap">
-                  {{ role.name }}
+                <div class="flex flex-col mb-3">
+                  <div class="font-bold sm:whitespace-no-wrap">
+                    {{ role.name }}
+                  </div>
+                  <div class="text-sm text-nsw-brand-primary-blue sm:whitespace-no-wrap">
+                    {{ role.jobFunction }}
+                  </div>
                 </div>
-                <div class="flex flex-wrap mb-2 sm:mb-1 sm:justify-end">
+                <div class="flex flex-col items-end mb-2 sm:mb-1">
                   <information-badge
                     v-if="role.grade"
                     size="xs"
-                    colour="grey"
-                    class="mr-2 mb-2"
+                    colour="nsw-brand-primary-blue-light"
+                    class="mb-2"
                   >
                     {{ role.grade }}
                   </information-badge>
                   <information-badge
                     v-if="role.salary.min && role.salary.max"
                     size="xs"
-                    colour="grey"
+                    colour="nsw-brand-primary-blue-light"
+                    class="mb-2"
                   >
                     Salary: {{ $currency(role.salary.min) }} -
                     {{ $currency(role.salary.max) }}
@@ -232,14 +231,11 @@ export default {
           return acc
         }, [])
     },
-    /**
-     * Ensure the same role cannot be selected for current and goal
-     **/
     filteredRoles() {
       return this.$collect(this.$store.state.roles)
         .filter((role) => {
-          if (this.currentRole) {
-            return role.id !== this.currentRole.id
+          if (this.currentRole && role.id === this.currentRole.id) {
+            return false
           }
 
           if (this.filter.jobFunction) {
@@ -261,9 +257,6 @@ export default {
     }
   },
   methods: {
-    updateValue(e) {
-      this.value = e.target.value
-    },
     search(input) {
       this.value = input
       const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias'], {
@@ -273,13 +266,15 @@ export default {
       if (result.length === 0) {
         return [this.defaultNoRole]
       }
-      // if (this.step.id === 'goal-role') {
-      //   return result // .filter(i => i.id !== 99).filter(i => !i.genericRole)
-      // }
-      return result // .filter(i => i.id !== 99)
+      return result
     },
     getResultValue(result) {
       return result.name
+    },
+    onSelectFunction() {
+      if (this.filter.jobFamily === '') {
+        this.filter.jobFamily = this.filteredRoles[0].jobFamily
+      }
     },
     selectRole(role) {
       if (role && role.id) {

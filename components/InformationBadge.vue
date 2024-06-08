@@ -4,8 +4,19 @@
       <div class="popper">
         {{ tooltip }}
       </div>
-      <div slot="reference" class="px-3 py-0.5 inline-flex items-center rounded-full whitespace-no-wrap focus:outline-none" :class="[baseSize, badgeColour, badgeCursor, badgeBorder, textColor]">
-        <slot /> <img v-if="tooltip" src="/icons/help.svg" alt="Help icon" class="ml-2" :class="iconSize">
+      <div
+        slot="reference"
+        class="px-3 py-0.5 inline-flex items-center whitespace-no-wrap focus:outline-none"
+        :class="[baseSize, badgeColour, badgeCursor, badgeBorder, textColor, badgeRounded]"
+      >
+        <slot />
+        <img
+          v-if="tooltip"
+          src="/icons/help.svg"
+          alt="Help icon"
+          class="ml-2"
+          :class="iconSize"
+        />
       </div>
     </popper>
   </div>
@@ -30,6 +41,10 @@ export default {
     tooltip: {
       type: String,
       default: ''
+    },
+    rounded: {
+      type: String,
+      default: 'full'
     }
   },
   computed: {
@@ -49,7 +64,23 @@ export default {
       return this.tooltip ? 'hover:cursor-pointer' : 'hover:cursor-default'
     },
     badgeBorder() {
-      return this.colour === 'blue-outline' ? 'border border-nsw-brand-primary-blue' : ''
+      return this.colour === 'blue-outline'
+        ? 'border border-nsw-brand-primary-blue'
+        : ''
+    },
+    badgeRounded() {
+      switch (this.rounded) {
+        case 'full':
+          return 'rounded-full'
+        case 'lg':
+          return 'rounded-lg'
+        case 'md':
+          return 'rounded-md'
+        case 'sm':
+          return 'rounded-sm'
+        default:
+          return ''
+      }
     },
     textColor() {
       switch (this.colour) {
@@ -75,11 +106,11 @@ export default {
         case 'orange':
           return 'bg-orange-200'
           break
-        case 'gray':
-          return 'bg-nsw-grey-100'
+        case 'grey':
+          return 'bg-slate-200'
           break
         default:
-          return 'bg-gray-200'
+          return `bg-${this.colour}`
           break
       }
     }

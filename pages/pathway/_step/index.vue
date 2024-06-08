@@ -1,19 +1,35 @@
 <template>
   <div class="pb-32">
     <div class="flex flex-row md:pb-20 md:pt-8">
-      <div class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1">Beta</div>
-      <div class="text-nsw-brand-primary-blue px-2 py-1">This is a <span class="underline">new service</span> - your <span class="underline">feedback</span> will help us improve it.</div>
+      <div
+        class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1"
+      >
+        Beta
+      </div>
+      <div class="text-nsw-brand-primary-blue px-2 py-1">
+        This is a <span class="underline">new service</span> - your
+        <span class="underline">feedback</span> will help us improve it.
+      </div>
     </div>
     <dynamic-step :step="currentStep" />
     <navigation-actions>
       <template #left>
-        <nsw-button v-if="currentStepIndex" action="secondary" @click.native="goToPreviousStep">
+        <nsw-button
+          v-if="currentStepIndex"
+          action="secondary"
+          @click.native="goToPreviousStep"
+        >
           Back
         </nsw-button>
       </template>
       <template #right>
-        <nsw-button :disabled="isStepDisabled(currentStep)" @click.native="goToNextStep">
+        <nsw-button
+          :disabled="isStepDisabled(currentStep)"
+          class="flex flex-row items-center"
+          @click.native="goToNextStep"
+        >
           {{ nextLabel }}
+          <img src="/icons/sml-arrow.svg" class="ml-3 shrink-0" alt="Help icon" />
         </nsw-button>
       </template>
     </navigation-actions>
@@ -37,12 +53,10 @@ export default {
   },
   mixins: [step, validation],
   computed: {
-    ...mapGetters([
-      'getHumanReadableAnswerValue'
-    ]),
+    ...mapGetters(['getHumanReadableAnswerValue']),
     nextLabel() {
       if (this.isLastStep) {
-        return 'Go to my plan'
+        return 'Create Career Plan '
       }
       if (this.currentStepIndex === 0) {
         return 'Get started'
@@ -66,7 +80,9 @@ export default {
         return
       }
 
-      const previousStep = this.getPreviousStepByCurrentIndex(this.currentStepIndex)
+      const previousStep = this.getPreviousStepByCurrentIndex(
+        this.currentStepIndex
+      )
 
       // If previous step has child steps redirect to last
       if ('steps' in previousStep && previousStep.steps.length > 0) {
@@ -94,7 +110,9 @@ export default {
         // If this step has child steps redirect to first
         if ('steps' in this.currentStep && this.currentStep.steps.length > 0) {
           const nextChildStep = this.$collect(this.currentStep.steps).first()
-          this.$router.push(`/pathway/${this.currentStep.id}/${nextChildStep.id}`)
+          this.$router.push(
+            `/pathway/${this.currentStep.id}/${nextChildStep.id}`
+          )
         } else {
           this.$router.push(`/pathway/${nextStep.id}`)
         }
