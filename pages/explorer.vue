@@ -117,15 +117,15 @@
                 <div class="flex gap-4 flex-row">
                   <div class="w-1/2">
                     <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-2">Grade</label>
+                      <label class="text-sm font-bold mb-2">Location</label>
                       <div
                         class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                        @click="modals.skills = true"
+                        @click="showSelectorPopup('location')"
                       >
                         {{
-                          debouncedFilters.grade.length === 0
+                          debouncedFilters.location.length === 0
                             ? 'All'
-                            : `${debouncedFilters.grade.length} selected`
+                            : `${debouncedFilters.location.length} selected`
                         }}
                       </div>
                     </div>
@@ -408,6 +408,7 @@ export default {
         skills: [],
         interests: [],
         grade: [],
+        location: [],
         salary: [70000, 346000],
         sortBy: 'gradeId',
         sworn: 'other'
@@ -674,14 +675,43 @@ export default {
         case 'skills':
           this.modals.selector = true
           this.modalData.title = 'Select Skills'
-          this.modalData.instructions = 'Select skills that relate to a role to see how they match to others.'
-          this.modalData.data = this.skills.map((s) => ({
-            value: s.code,
-            label: s.name
-          })).sort((a, b) => a.label.localeCompare(b.label))
+          this.modalData.instructions =
+            'Select skills that relate to a role to see how they match to others.'
+          this.modalData.data = this.skills
+            .map((s) => ({
+              value: s.code,
+              label: s.name
+            }))
+            .sort((a, b) => a.label.localeCompare(b.label))
           this.modalData.filterKey = 'skills'
           this.modalData.reset = () => {
             this.debouncedFilters.skills = []
+          }
+          break
+        case 'location':
+          this.modals.selector = true
+          this.modalData.title = 'Select Location'
+          this.modalData.instructions =
+            'Select location that relates to a role to see how they match to others.'
+          this.modalData.data = this.roles
+            .reduce((acc, role) => {
+              if (!role.location) {
+                console.log('no location')
+                return acc
+              }
+              if (!acc.includes(role.location)) {
+                acc.push(role.location)
+              }
+              return acc
+            }, [])
+            .sort((a, b) => a.localeCompare(b.label))
+            .map((l) => ({
+              value: l,
+              label: l
+            }))
+          this.modalData.filterKey = 'location'
+          this.modalData.reset = () => {
+            this.debouncedFilters.location = []
           }
           break
         default:
