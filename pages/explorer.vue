@@ -452,6 +452,12 @@ export default {
           }
           return true
         })
+        .filter((role) => {
+          if (this.filter.location.length > 0 && role.location) {
+            return this.filter.location.includes(role.location)
+          }
+          return true
+        })
     },
 
     /**
@@ -696,7 +702,6 @@ export default {
           this.modalData.data = this.roles
             .reduce((acc, role) => {
               if (!role.location) {
-                console.log('no location')
                 return acc
               }
               if (!acc.includes(role.location)) {
