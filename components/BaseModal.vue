@@ -1,7 +1,7 @@
 <template>
   <portal to="modal">
     <transition leave-active-class="duration-200">
-      <div v-show="show" class="fixed flex items-center justify-center inset-0 overflow-y-auto z-20">
+      <div v-show="show" class="fixed flex items-center justify-center inset-0 z-20">
         <transition
           enter-active-class="ease-out duration-300"
           enter-class="opacity-0"
