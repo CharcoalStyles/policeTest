@@ -4,7 +4,7 @@
       class="relative z-0 bg-nsw-grey-100 flex flex-col flex-shrink-0 nsw-forms max-h-screen w-screen lg:w-aside lg:border-r lg:border-nsw-grey-200"
     >
       <div
-        class="bg-nsw-brand-purple-dark px-6 py-3 w-full flex-shrink-0 flex items-center"
+        class="bg-nsw-brand-primary-blue px-6 py-3 w-full flex-shrink-0 flex items-center"
       >
         <h1 class="font-bold text-base text-white">Role Explorer</h1>
       </div>
@@ -24,22 +24,72 @@
                   </button>
                 </div>
               </div>
-              <div class="px-6 pt-4 pb-6">
-                <div class="grid gap-x-6 gap-y-3 md:gap-y-6 grid-cols-2">
-                  <div class="col-span-2 flex flex-col">
-                    <label class="font-semibold mb-2 text-sm"
-                      >Search by keyword</label
+              <div class="px-6 pt-4 pb-6 flex flex-col gap-3">
+                <div>
+                  <label class="mb-1">
+                    <p class="pb-2 font-bold text-sm">Search by keyword</p>
+                  </label>
+                  <input
+                    id="keywords"
+                    v-debounce:300ms.fireonempty="updateKeyword"
+                    name="keywords"
+                    class="nsw-form-input h-role-input"
+                    placeholder="Search"
+                    :value="debouncedFilters.keyword"
+                  />
+                </div>
+
+                <div>
+                  <p class="pb-2 font-bold text-sm">Role Type</p>
+                  <div
+                    class="flex flex-row w-full rounded-md text-sm"
+                    role="group"
+                  >
+                    <button
+                      type="button"
+                      class="py-4 w-1/3 py-2 rounded-s-md border border-nsw-brand-primary-blue"
+                      :class="swornButtonSelected('other')"
+                      @click="filter.sworn = 'other'"
                     >
-                    <input
-                      id="keywords"
-                      v-debounce:300ms.fireonempty="updateKeyword"
-                      name="keywords"
-                      class="nsw-form-input h-role-input"
-                      placeholder="Enter a keyword"
-                      :value="debouncedFilters.keyword"
-                    />
+                      All
+                    </button>
+                    <button
+                      type="button"
+                      class="py-4 w-1/3 py-2 border-t border-b border-nsw-brand-primary-blue"
+                      :class="swornButtonSelected('police')"
+                      @click="filter.sworn = 'police'"
+                    >
+                      Policing
+                    </button>
+                    <button
+                      type="button"
+                      class="py-4 w-1/3 py-2 rounded-e-md border border-nsw-brand-primary-blue"
+                      :class="swornButtonSelected('administrative')"
+                      @click="filter.sworn = 'administrative'"
+                    >
+                      Administrative
+                    </button>
                   </div>
-                  <div class="flex flex-col">
+                </div>
+
+                <div class="flex gap-4 flex-row">
+                  <div class="w-1/2">
+                    <div class="flex flex-col">
+                      <label class="text-sm font-bold mb-2">Grade</label>
+                      <div
+                        class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                        @click="modals.grade = true"
+                      >
+                        {{
+                          debouncedFilters.grade.length === 0
+                            ? 'All'
+                            : `${debouncedFilters.grade.length} selected`
+                        }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w-1/2">
                     <div class="flex justify-between">
                       <label class="text-sm font-bold mb-2">Salary</label>
                       <div class="text-sm text-gray-700">
@@ -62,13 +112,37 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-col">
-                    <label class="text-sm font-bold mb-2">Skills</label>
-                    <div
-                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                      @click="modals.skills = true"
-                    >
-                      {{ debouncedFilters.skills.length }} selected
+                </div>
+
+                <div class="flex gap-4 flex-row">
+                  <div class="w-1/2">
+                    <div class="flex flex-col">
+                      <label class="text-sm font-bold mb-2">Grade</label>
+                      <div
+                        class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                        @click="modals.skills = true"
+                      >
+                        {{
+                          debouncedFilters.grade.length === 0
+                            ? 'All'
+                            : `${debouncedFilters.grade.length} selected`
+                        }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-1/2">
+                    <div class="flex flex-col">
+                      <label class="text-sm font-bold mb-2">Skills</label>
+                      <div
+                        class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                        @click="showSelectorPopup('skills')"
+                      >
+                        {{
+                          debouncedFilters.skills.length === 0
+                            ? 'All'
+                            : `${debouncedFilters.skills.length} selected`
+                        }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -230,14 +304,35 @@
       </div>
     </main>
 
-    <skills-selector
+    <!-- <generic-selector
+      v-model="debouncedFilters.skills"
+      :data="
+        skills.map((s) => ({
+          value: s.code,
+          label: s.name
+        }))
+      "
       :show="modals.skills"
       max-width="xl"
+      title="Select Skills"
       @close="modals.skills = false"
       @reset="resetSkillsFilter"
     >
-      <input-skills v-model="debouncedFilters.skills" :roles="roles" />
-    </skills-selector>
+      Select skills that relate to a role to see how they match to others.
+    </generic-selector> -->
+
+    <generic-selector
+      v-model="debouncedFilters[modalData.filterKey]"
+      :data="modalData.data"
+      :show="modals.selector"
+      max-width="xl"
+      :title="modalData.title"
+      @close="modals.selector = false"
+      @reset="modalData.reset"
+    >
+      {{ modalData.instructions }}
+    </generic-selector>
+
     <modal-onboarding
       :show="modals.onboarding"
       max-width="xl"
@@ -249,10 +344,11 @@
 </template>
 
 <script>
-import roles from '@/data/roles.json'
 import collect from 'collect.js'
 import FuzzySearch from 'fuzzy-search'
 import panzoom from 'panzoom'
+import roles from '@/data/roles.json'
+import skills from '@/data/skills.json'
 import InputRange from '@/components/forms/InputRange'
 import JobRole from '@/components/JobRole'
 import RoleFunction from '@/components/RoleFunction'
@@ -263,6 +359,7 @@ import NswButton from '@/components/nsw/NswButton'
 import SkillsSelector from '@/components/SkillsSelector'
 import ModalOnboarding from '@/components/ModalOnboarding'
 import InputSkills from '@/components/forms/InputSkills'
+import GenericSelector from '~/components/GenericSelector.vue'
 
 export default {
   layout: 'blank',
@@ -276,18 +373,27 @@ export default {
     NswButton,
     SkillsSelector,
     InputSkills,
-    ModalOnboarding
+    ModalOnboarding,
+    GenericSelector
   },
   data() {
     return {
       roles,
+      skills,
       loading: false,
       slideout: false,
       selectedRole: false,
       previousRoleId: false,
       modals: {
-        skills: false,
+        selector: false,
         onboarding: true
+      },
+      modalData: {
+        data: [],
+        filterKey: '',
+        reset: () => {},
+        title: '',
+        instructions: ''
       },
       zoom: 1,
       panning: false,
@@ -301,13 +407,15 @@ export default {
         keyword: '',
         skills: [],
         interests: [],
+        grade: [],
         salary: [70000, 346000],
-        sortBy: 'gradeId'
+        sortBy: 'gradeId',
+        sworn: 'other'
       },
       filterTimeout: null,
       viewLevel: 1,
       boxStyle:
-        'bg-nsw-brand-primary-blue-light rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
+        'bg-nsw-brand-primary-blue-light cursor-pointer rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
     }
   },
   computed: {
@@ -487,9 +595,10 @@ export default {
      * Add/remove interest from filter
      */
     toggleInterest(interest) {
-      this.debouncedFilters.interests = this.debouncedFilters.interests.includes(interest)
-        ? this.debouncedFilters.interests.filter((i) => i !== interest)
-        : [...this.debouncedFilters.interests, interest]
+      this.debouncedFilters.interests =
+        this.debouncedFilters.interests.includes(interest)
+          ? this.debouncedFilters.interests.filter((i) => i !== interest)
+          : [...this.debouncedFilters.interests, interest]
     },
 
     /**
@@ -553,6 +662,31 @@ export default {
           this.panZoom.smoothMoveTo(-(xPos - padding), -(yPos - padding))
         }
       }, 1000)
+    },
+    swornButtonSelected(buttonType) {
+      if (buttonType === this.filter.sworn) {
+        return 'bg-nsw-brand-primary-blue text-white font-bold'
+      }
+      return 'bg-white text-nsw-brand-primary-blue'
+    },
+    showSelectorPopup(type) {
+      switch (type) {
+        case 'skills':
+          this.modals.selector = true
+          this.modalData.title = 'Select Skills'
+          this.modalData.instructions = 'Select skills that relate to a role to see how they match to others.'
+          this.modalData.data = this.skills.map((s) => ({
+            value: s.code,
+            label: s.name
+          })).sort((a, b) => a.label.localeCompare(b.label))
+          this.modalData.filterKey = 'skills'
+          this.modalData.reset = () => {
+            this.debouncedFilters.skills = []
+          }
+          break
+        default:
+          break
+      }
     }
   }
 }
