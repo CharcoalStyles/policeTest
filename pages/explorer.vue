@@ -440,30 +440,44 @@ export default {
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
-      return collect(fuzzy.search(this.debouncedFilters.keyword))
-        .filter((role) => !role.genericRole)
-        .where('salary.min', '>=', this.debouncedFilters.salary[0])
-        .where('salary.max', '<=', this.debouncedFilters.salary[1])
-        .filter((role) => {
-          if (this.filter.skills.length > 0 && role.skills.focus) {
-            return collect(role.skills.focus)
-              .whereIn('code', this.debouncedFilters.skills)
-              .count()
-          }
-          return true
-        })
-        .filter((role) => {
-          if (this.filter.location.length > 0 && role.location) {
-            return this.filter.location.includes(role.location)
-          }
-          return true
-        })
-        .filter((role) => {
-          if (this.filter.grade.length > 0 && role.grade) {
-            return this.filter.grade.includes(role.grade)
-          }
-          return true
-        })
+      return (
+        collect(fuzzy.search(this.debouncedFilters.keyword))
+          .filter((role) => !role.genericRole)
+          .filter((role) => {
+            switch (this.debouncedFilters.sworn) {
+              case 'other':
+                return true
+              case 'police':
+                return role.jobFamily === 'Policing'
+              case 'administrative':
+                return role.jobFamily !== 'Policing'
+              default:
+                return false
+            }
+          })
+          .where('salary.min', '>=', this.debouncedFilters.salary[0])
+          .where('salary.max', '<=', this.debouncedFilters.salary[1])
+          .filter((role) => {
+            if (this.filter.skills.length > 0 && role.skills.focus) {
+              return collect(role.skills.focus)
+                .whereIn('code', this.debouncedFilters.skills)
+                .count()
+            }
+            return true
+          })
+          .filter((role) => {
+            if (this.filter.location.length > 0 && role.location) {
+              return this.filter.location.includes(role.location)
+            }
+            return true
+          })
+          .filter((role) => {
+            if (this.filter.grade.length > 0 && role.grade) {
+              return this.filter.grade.includes(role.grade)
+            }
+            return true
+          })
+      )
     },
 
     /**
