@@ -78,7 +78,7 @@
                       <label class="text-sm font-bold mb-2">Grade</label>
                       <div
                         class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                        @click="modals.grade = true"
+                        @click="showSelectorPopup('grade')"
                       >
                         {{
                           debouncedFilters.grade.length === 0
@@ -399,8 +399,8 @@ export default {
       panning: false,
       options: {
         salary: {
-          min: 70000,
-          max: 346000
+          min: 38000,
+          max: 362000
         }
       },
       filter: {
@@ -409,7 +409,7 @@ export default {
         interests: [],
         grade: [],
         location: [],
-        salary: [70000, 346000],
+        salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
       },
@@ -455,6 +455,12 @@ export default {
         .filter((role) => {
           if (this.filter.location.length > 0 && role.location) {
             return this.filter.location.includes(role.location)
+          }
+          return true
+        })
+        .filter((role) => {
+          if (this.filter.grade.length > 0 && role.grade) {
+            return this.filter.grade.includes(role.grade)
           }
           return true
         })
@@ -717,6 +723,31 @@ export default {
           this.modalData.filterKey = 'location'
           this.modalData.reset = () => {
             this.debouncedFilters.location = []
+          }
+          break
+        case 'grade':
+          this.modals.selector = true
+          this.modalData.title = 'Select Grade'
+          this.modalData.instructions =
+            'Select grade that relates to a role to see how they match to others.'
+          this.modalData.data = this.roles
+            .reduce((acc, role) => {
+              if (!role.grade) {
+                return acc
+              }
+              if (!acc.includes(role.grade)) {
+                acc.push(role.grade)
+              }
+              return acc
+            }, [])
+            .sort((a, b) => a.localeCompare(b.label))
+            .map((l) => ({
+              value: l,
+              label: l
+            }))
+          this.modalData.filterKey = 'grade'
+          this.modalData.reset = () => {
+            this.debouncedFilters.grade = []
           }
           break
         default:
