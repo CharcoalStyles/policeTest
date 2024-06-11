@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mr-32 mb-32 rounded-3xl overflow-hidden">
+  <div class="relative mr-96 mb-32 rounded-3xl overflow-visible">
     <transition name="fade">
       <div
         v-show="zoomedOut"
@@ -11,7 +11,7 @@
         </div>
       </div>
     </transition>
-    <div class="inline-block" :style="getBgColour('light')">
+    <div class="inline-block w-max" :style="getBgColour('light')">
       <div class="px-12 py-8 flex justify-center">
         <h2 class="font-bold text-family px-64 py-16 z-20">
           {{ roleFunction.name }}
