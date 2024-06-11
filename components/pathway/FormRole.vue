@@ -238,11 +238,11 @@ export default {
             return false
           }
 
-          if (this.filter.jobFunction) {
+          if (this.filter.jobFunction !== '') {
             return role.jobFunction === this.filter.jobFunction
           }
 
-          if (this.filter.jobFamily) {
+          if (this.filter.jobFamily !== '') {
             return role.jobFamily === this.filter.jobFamily
           }
 
