@@ -203,35 +203,36 @@
 
     <main class="hidden lg:flex flex-col flex-grow">
       <div class="relative flex-grow">
-        <!-- <zoom-tool
+        <div class="flex flex-row gap-2 not-zoomable fixed top-0  z-10  bg-white pl-2 p-2">
+          <div
+            class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
+          >
+            Beta
+          </div>
+          <div class="text-nsw-brand-primary-blue">
+            This is a <span class="underline">new service</span> - your
+            <span class="underline">feedback</span> will help us improve it.
+          </div>
+        </div>
+        <zoom-tool
+          v-if="viewState === 4"
           class="not-zoomable fixed top-0 right-0 m-8 z-10"
           :zoom="zoom"
           @zoom="updateZoom"
-        /> -->
+        />
+
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
-          <div class="flex flex-row gap-2 m-2">
-            <div
-              class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
-            >
-              Beta
-            </div>
-            <div class="text-nsw-brand-primary-blue">
-              This is a <span class="underline">new service</span> - your
-              <span class="underline">feedback</span> will help us improve it.
-            </div>
-          </div>
-          <div class="px-8 mt-10">
+          <div class="px-8 mt-10" :class="viewState === 1 ? '' : 'hidden'">
             <div
               v-for="f in bentoFamilyFunctions.xl"
               :key="f.name"
               class="w-full flex-grow text-center h-32 mb-4"
               :class="boxStyle"
+              @click="bentoL1Select(f.name)"
             >
               <div>
-                <p class="font-bold">{{ filteredRolesByFamilyRole[0].name }}</p>
-                <p class="text-sm">
-                  {{ filteredRolesByFamilyRole[0].roles.length }} roles
-                </p>
+                <p class="font-bold">{{ f.name }}</p>
+                <p class="text-sm">{{ f.roles.length }} roles</p>
               </div>
             </div>
             <div class="flex gap-4 flex-row mb-4">
@@ -240,6 +241,7 @@
                 :key="f.name"
                 class="w-1/4 bento-max-33 flex-grow text-center h-32"
                 :class="boxStyle"
+                @click="bentoL1Select(f.name)"
               >
                 <div class="px-4">
                   <p class="font-bold">{{ f.name }}</p>
@@ -253,6 +255,7 @@
                 :key="f.name"
                 class="w-1/5 bento-max-25 flex-grow text-center h-32"
                 :class="boxStyle"
+                @click="bentoL1Select(f.name)"
               >
                 <div class="px-4">
                   <p class="font-bold">{{ f.name }}</p>
@@ -266,6 +269,7 @@
                 :key="f.name"
                 class="w-1/3 bento-max-50 flex-grow text-center h-16"
                 :class="boxStyle"
+                @click="bentoL1Select(f.name)"
               >
                 <div class="px-4">
                   <p class="font-bold">{{ f.name }}</p>
@@ -274,11 +278,21 @@
               </div>
             </div>
           </div>
-          <div class="block zoomable" :class="viewLevel === 1 ? 'hidden' : ''">
+          <div class="block zoomable" :class="viewState === 4 ? '' : 'hidden'">
             <div
               class="families inline-flex flex-wrap p-2"
               :class="{ 'pointer-events-none': panning }"
-            ></div>
+            >
+              <role-function
+                v-for="(group, index) in filteredRolesByFunction"
+                :key="group.name"
+                :role-function="group"
+                :roles="roles"
+                :index="index"
+                :zoom="zoom"
+                @selected="viewRole"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -303,23 +317,6 @@
         </nsw-button>
       </div>
     </main>
-
-    <!-- <generic-selector
-      v-model="debouncedFilters.skills"
-      :data="
-        skills.map((s) => ({
-          value: s.code,
-          label: s.name
-        }))
-      "
-      :show="modals.skills"
-      max-width="xl"
-      title="Select Skills"
-      @close="modals.skills = false"
-      @reset="resetSkillsFilter"
-    >
-      Select skills that relate to a role to see how they match to others.
-    </generic-selector> -->
 
     <generic-selector
       v-model="debouncedFilters[modalData.filterKey]"
@@ -395,7 +392,7 @@ export default {
         title: '',
         instructions: ''
       },
-      zoom: 1,
+      zoom: 0.4,
       panning: false,
       options: {
         salary: {
@@ -409,12 +406,14 @@ export default {
         interests: [],
         grade: [],
         location: [],
+        jobFamily: '',
+        jobFunction: '',
         salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
       },
       filterTimeout: null,
-      viewLevel: 1,
+      viewState: 1,
       boxStyle:
         'bg-nsw-brand-primary-blue-light cursor-pointer rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
     }
@@ -440,44 +439,54 @@ export default {
       // Filter by keyword
       const fuzzy = new FuzzySearch(this.roles, ['name'])
       // Filter by salary and skills
-      return (
-        collect(fuzzy.search(this.debouncedFilters.keyword))
-          .filter((role) => !role.genericRole)
-          .filter((role) => {
-            switch (this.debouncedFilters.sworn) {
-              case 'other':
-                return true
-              case 'police':
-                return role.jobFamily === 'Policing'
-              case 'administrative':
-                return role.jobFamily !== 'Policing'
-              default:
-                return false
-            }
-          })
-          .where('salary.min', '>=', this.debouncedFilters.salary[0])
-          .where('salary.max', '<=', this.debouncedFilters.salary[1])
-          .filter((role) => {
-            if (this.filter.skills.length > 0 && role.skills.focus) {
-              return collect(role.skills.focus)
-                .whereIn('code', this.debouncedFilters.skills)
-                .count()
-            }
-            return true
-          })
-          .filter((role) => {
-            if (this.filter.location.length > 0 && role.location) {
-              return this.filter.location.includes(role.location)
-            }
-            return true
-          })
-          .filter((role) => {
-            if (this.filter.grade.length > 0 && role.grade) {
-              return this.filter.grade.includes(role.grade)
-            }
-            return true
-          })
-      )
+      return collect(fuzzy.search(this.debouncedFilters.keyword))
+        .filter((role) => !role.genericRole)
+        .filter((role) => {
+          switch (this.debouncedFilters.sworn) {
+            case 'other':
+              return true
+            case 'police':
+              return role.jobFamily === 'Policing'
+            case 'administrative':
+              return role.jobFamily !== 'Policing'
+            default:
+              return false
+          }
+        })
+        .filter((role) => {
+          if (this.filter.jobFamily) {
+            return role.jobFamily === this.filter.jobFamily
+          }
+          return true
+        })
+        .filter((role) => {
+          if (this.filter.jobFunction) {
+            return role.jobFunction === this.filter.jobFunction
+          }
+          return true
+        })
+        .where('salary.min', '>=', this.debouncedFilters.salary[0])
+        .where('salary.max', '<=', this.debouncedFilters.salary[1])
+        .filter((role) => {
+          if (this.filter.skills.length > 0 && role.skills.focus) {
+            return collect(role.skills.focus)
+              .whereIn('code', this.debouncedFilters.skills)
+              .count()
+          }
+          return true
+        })
+        .filter((role) => {
+          if (this.filter.location.length > 0 && role.location) {
+            return this.filter.location.includes(role.location)
+          }
+          return true
+        })
+        .filter((role) => {
+          if (this.filter.grade.length > 0 && role.grade) {
+            return this.filter.grade.includes(role.grade)
+          }
+          return true
+        })
     },
 
     /**
@@ -590,8 +599,13 @@ export default {
         keyword: '',
         skills: [],
         interests: [],
-        salary: [70000, 346000],
-        sortBy: 'gradeId'
+        grade: [],
+        location: [],
+        jobFamily: '',
+        jobFunction: '',
+        salary: [38000, 362000],
+        sortBy: 'gradeId',
+        sworn: 'other'
       }
     },
 
@@ -767,6 +781,11 @@ export default {
         default:
           break
       }
+    },
+    bentoL1Select(jobFamily) {
+      console.log(jobFamily)
+      this.filter.jobFamily = jobFamily
+      this.viewState = 4
     }
   }
 }
