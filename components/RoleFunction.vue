@@ -11,15 +11,20 @@
         </div>
       </div>
     </transition>
-    <div class="inline-block w-max" :style="getBgColour('light')">
-      <div class="px-12 py-8 flex justify-center">
-        <h2 class="font-bold text-family px-64 py-16 z-20">
-          {{ roleFunction.name }}
+    <div
+      class="inline-block w-max bg-nsw-brand-primary-blue-light rounded-ss-3xl"
+    >
+      <div class="px-12 py-10 ml-4 flex flex-col">
+        <h2 class="font-bold text-3xl z-20">
+          {{ familyName }}
         </h2>
+        <h3 class="font-bold text-2xl z-20">
+          {{ roleFunction.name }}
+        </h3>
       </div>
       <table class="border-collapse w-full">
-        <tr class="text-3xl">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32"></th>
+        <tr class="text-3xl bg-nsw-grey-200">
+          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Rank</th>
           <th
             v-for="xKey in columns"
             :key="xKey"
@@ -280,13 +285,17 @@ export default {
     roleFunction: {
       type: Object,
       required: true
+    },
+    familyName: {
+      type: String,
+      required: true
     }
   },
   data() {
     return {
       colours,
       axisKeys: {
-        x: 'jobFunction',
+        x: 'command_BusUnit',
         y: 'grade'
       },
       gradeMap: {
@@ -321,43 +330,60 @@ export default {
       return this.zoom <= 0.15
     },
     columns() {
-      return this.roleFunction.roles.reduce((acc, role) => {
-        if (!acc.includes(role[this.axisKeys.x])) {
-          acc.push(role[this.axisKeys.x])
+      const columns = this.roleFunction.roles.reduce((acc, role) => {
+        if (!acc.includes(role[this.axisKeys.x].trim())) {
+          acc.push(role[this.axisKeys.x].trim())
         }
         return acc
       }, [])
+
+      if (this.axisKeys.x === 'grade' && this.familyName === 'Policing') {
+        return [
+          'Superintendent',
+          'Inspector',
+          'Senior Sergeant',
+          'Sergeant',
+          'Senior Constable',
+          'Constable / Senior Constable',
+          'Constable',
+          'Grade Clerk 1/2'
+        ].filter((x) => columns.includes(x))
+      }
+
+      return columns
     },
     rows() {
-      return this.roleFunction.roles.reduce((acc, role) => {
+      const rows = this.roleFunction.roles.reduce((acc, role) => {
         if (!acc.includes(role[this.axisKeys.y])) {
           acc.push(role[this.axisKeys.y])
         }
         return acc
       }, [])
+
+      if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
+        return [
+          'Superintendent',
+          'Inspector',
+          'Senior Sergeant',
+          'Sergeant',
+          'Senior Constable',
+          'Constable / Senior Constable',
+          'Constable',
+          'Clerk 1/2'
+        ].filter((x) => rows.includes(x))
+      }
+
+      return rows
     }
   },
   methods: {
     getRolesByAxis(xAxisValue, yAxisValue) {
       return this.roleFunction.roles
         .filter((role) => role[this.axisKeys.y] === yAxisValue)
-        .filter((role) => role[this.axisKeys.x] === xAxisValue)
+        .filter((role) => role[this.axisKeys.x].trim() === xAxisValue)
     },
-    // groupEverything(roles) {
-    //   const ranks = roles.map((role) => ({
-    //     grade: role.grade,
-    //     gradeId: role.gradeId
-    //   })).sort((a, b) => a.gradeId.grade - b.gradeId.grade)
-    //   const functions = roles.map((role) => ({
-    //     name: rank.gradeId.type,
-    //     roles: ranks.filter((r) => r.gradeId.type === rank.gradeId.type)
-    //   }))
-
-    //   return {ranks, functions}
-    // },
     groupRolesByFamilyRole(roles) {
       const result = this.$collect(roles)
-        // .where('familyFunction', this.roleFunction.name)
         .groupBy('jobFunction')
         .keys()
         .map((key) => ({
@@ -371,29 +397,15 @@ export default {
           this.roleFunctionOrder.indexOf(b.name)
       )
     },
-    // groupRolesByRoleFunction(roles) {
-    //   const result = this.$collect(this.roles)
-    //     .where('familyRole', this.familyRole.name)
-    //     .groupBy('roleFunction')
-    //     .keys()
-    //     .map((key) => ({
-    //       name: key,
-    //       roles: this.$collect(roles).where('roleFunction', key).all()
-    //     }))
-    //   return result
-    // },
     getBgColour(type) {
-      const colour = this.$collect(this.colours)
-        .where('function', this.roleFunction.name)
-        .first()
-      if (colour) {
-        return `background-color: ${colour[type]}`
+      switch (type) {
+        case 'light':
+          return 'background-color: #F0F5FB'
+        case 'dark':
+          return 'background-color: #E4EBF6'
+        default:
+          return 'background-color: #FFFAF0'
       }
-      const defaultColour = {
-        light: '#FFFAF0',
-        dark: '#FEEBC8'
-      }
-      return `background-color: ${defaultColour[type]}`
     },
     rolesInGrade(roles, level) {
       return this.$collect(roles).where('grade', level).all()

@@ -203,7 +203,9 @@
 
     <main class="hidden lg:flex flex-col flex-grow">
       <div class="relative flex-grow">
-        <div class="flex flex-row gap-2 not-zoomable fixed top-0  z-10  bg-white pl-2 p-2">
+        <div
+          class="flex flex-row gap-2 not-zoomable fixed top-0 z-10 bg-white pl-2 p-2"
+        >
           <div
             class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
           >
@@ -222,11 +224,11 @@
         />
 
         <div class="absolute inset-0 overflow-hidden focus:outline-none">
-          <div class="px-8 mt-10" :class="viewState === 1 ? '' : 'hidden'">
+          <div class="px-8 mt-16" :class="viewState === 1 ? '' : 'hidden'">
             <div
-              v-for="f in bentoFamilyFunctions.xl"
+              v-for="f in bentoJobFamily.xl"
               :key="f.name"
-              class="w-full flex-grow text-center h-32 mb-4"
+              class="w-full flex-grow text-center h-32 mb-4 bg-nsw-brand-primary-blue-light"
               :class="boxStyle"
               @click="bentoL1Select(f.name)"
             >
@@ -237,9 +239,9 @@
             </div>
             <div class="flex gap-4 flex-row mb-4">
               <div
-                v-for="f in bentoFamilyFunctions.l"
+                v-for="f in bentoJobFamily.l"
                 :key="f.name"
-                class="w-1/4 bento-max-33 flex-grow text-center h-32"
+                class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
                 :class="boxStyle"
                 @click="bentoL1Select(f.name)"
               >
@@ -251,9 +253,9 @@
             </div>
             <div class="flex gap-4 flex-row flex-wrap mb-4">
               <div
-                v-for="f in bentoFamilyFunctions.m"
+                v-for="f in bentoJobFamily.m"
                 :key="f.name"
-                class="w-1/5 bento-max-25 flex-grow text-center h-32"
+                class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
                 :class="boxStyle"
                 @click="bentoL1Select(f.name)"
               >
@@ -265,9 +267,9 @@
             </div>
             <div class="flex gap-4 flex-row flex-wrap">
               <div
-                v-for="f in bentoFamilyFunctions.s"
+                v-for="f in bentoJobFamily.s"
                 :key="f.name"
-                class="w-1/3 bento-max-50 flex-grow text-center h-16"
+                class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light"
                 :class="boxStyle"
                 @click="bentoL1Select(f.name)"
               >
@@ -278,7 +280,137 @@
               </div>
             </div>
           </div>
-          <div class="block zoomable" :class="viewState === 4 ? '' : 'hidden'">
+
+          <div class="px-8 mt-16" :class="viewState === 2 ? '' : 'hidden'">
+            <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
+              <p class="font-bold text-3xl ml-4">{{ filter.jobFamily }}</p>
+              <div class="m-4">
+                <div
+                  v-for="f in bentoJobFunctions.xl"
+                  :key="f.name"
+                  class="w-full flex-grow text-center h-32 mb-2 bg-nsw-brand-primary-blue-light-2"
+                  :class="boxStyle"
+                  @click="bentoL2Select(f.name)"
+                >
+                  <div>
+                    <p class="font-bold">{{ f.name }}</p>
+                    <p class="text-sm">{{ f.roles.length }} roles</p>
+                  </div>
+                </div>
+                <div class="flex gap-2 flex-row mb-2">
+                  <div
+                    v-for="f in bentoJobFunctions.l"
+                    :key="f.name"
+                    class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
+                    :class="boxStyle"
+                    @click="bentoL2Select(f.name)"
+                  >
+                    <div class="px-4">
+                      <p class="font-bold">{{ f.name }}</p>
+                      <p class="text-sm">{{ f.roles.length }} roles</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex gap-2 flex-row flex-wrap mb-2">
+                  <div
+                    v-for="f in bentoJobFunctions.m"
+                    :key="f.name"
+                    class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
+                    :class="boxStyle"
+                    @click="bentoL2Select(f.name)"
+                  >
+                    <div class="px-4">
+                      <p class="font-bold">{{ f.name }}</p>
+                      <p class="text-sm">{{ f.roles.length }} roles</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex gap-2 flex-row flex-wrap">
+                  <div
+                    v-for="f in bentoJobFunctions.s"
+                    :key="f.name"
+                    class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light-2"
+                    :class="boxStyle"
+                    @click="bentoL2Select(f.name)"
+                  >
+                    <div class="px-4">
+                      <p class="font-bold">{{ f.name }}</p>
+                      <p class="text-sm">{{ f.roles.length }} roles</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento level 3-->
+          <div class="px-8 mt-16" :class="viewState === 3 ? '' : 'hidden'">
+            <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
+              <p class="font-bold text-3xl ml-4 mb-2">{{ filter.jobFamily }}</p>
+
+              <div class="bg-nsw-brand-primary-blue-light-2 rounded-2xl p-4">
+                <p class="font-bold text-2xl ml-2">{{ filter.jobFunction }}</p>
+                <div class="text-sm m-4">
+                  <div
+                    v-for="f in bentoJobCommand.xl"
+                    :key="f.name"
+                    class="w-full flex-grow text-center h-16 mb-1 bg-white"
+                    :class="boxStyle"
+                    @click="bentoL2Select(f.name)"
+                  >
+                    <div>
+                      <p class="font-bold">{{ f.name }}</p>
+                      <p class="text-sm">{{ f.roles.length }} roles</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-1 flex-row mb-1">
+                    <div
+                      v-for="f in bentoJobCommand.l"
+                      :key="f.name"
+                      class="w-1/4 bento-max-33 flex-grow text-center h-16 bg-white"
+                      :class="boxStyle"
+                      @click="bentoL2Select(f.name)"
+                    >
+                      <div class="px-4">
+                        <p class="font-bold">{{ f.name }}</p>
+                        <p class="text-sm">{{ f.roles.length }} roles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex gap-1 flex-row flex-wrap mb-1">
+                    <div
+                      v-for="f in bentoJobCommand.m"
+                      :key="f.name"
+                      class="w-1/5 bento-max-25 flex-grow text-center h-16 bg-white"
+                      :class="boxStyle"
+                      @click="bentoL2Select(f.name)"
+                    >
+                      <div class="px-4">
+                        <p class="font-bold">{{ f.name }}</p>
+                        <p class="text-sm">{{ f.roles.length }} roles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex gap-1 flex-row flex-wrap">
+                    <div
+                      v-for="f in bentoJobCommand.s"
+                      :key="f.name"
+                      class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-white"
+                      :class="boxStyle"
+                      @click="bentoL2Select(f.name)"
+                    >
+                      <div class="px-4">
+                        <p class="font-bold">{{ f.name }}</p>
+                        <p class="text-sm">{{ f.roles.length }} roles</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block zoomable cursor-move" :class="viewState === 4 ? '' : 'hidden'">
             <div
               class="families inline-flex flex-wrap p-2"
               :class="{ 'pointer-events-none': panning }"
@@ -290,6 +422,7 @@
                 :roles="roles"
                 :index="index"
                 :zoom="zoom"
+                :family-name="filter.jobFamily"
                 @selected="viewRole"
               />
             </div>
@@ -383,7 +516,7 @@ export default {
       previousRoleId: false,
       modals: {
         selector: false,
-        onboarding: true
+        onboarding: false
       },
       modalData: {
         data: [],
@@ -408,14 +541,16 @@ export default {
         location: [],
         jobFamily: '',
         jobFunction: '',
+        command: '',
         salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
       },
       filterTimeout: null,
       viewState: 1,
+      lastViewState: 1,
       boxStyle:
-        'bg-nsw-brand-primary-blue-light cursor-pointer rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
+        'cursor-pointer rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
     }
   },
   computed: {
@@ -514,6 +649,21 @@ export default {
         .all()
     },
 
+    filteredRolesByCommand() {
+      return this.filteredRoles
+        .groupBy('command_BusUnit')
+        .keys()
+        .map((key) => ({
+          name: key,
+          roles: this.filteredRoles
+            .where('command_BusUnit', key)
+            .sortByDesc(this.debouncedFilters.sortBy)
+            .all()
+        }))
+        .sortByDesc((group) => group.roles.length)
+        .all()
+    },
+
     /**
      * Filter roles by job family
      */
@@ -533,8 +683,7 @@ export default {
 
       return results
     },
-
-    bentoFamilyFunctions() {
+    bentoJobFamily() {
       return this.filteredRolesByFamilyRole.reduce(
         (acc, roles) => {
           if (roles.roles.length > 300) {
@@ -550,8 +699,43 @@ export default {
         },
         { xl: [], l: [], m: [], s: [] }
       )
+    },
+    bentoJobFunctions() {
+      return this.filteredRolesByFunction.reduce(
+        (acc, roles) => {
+          if (roles.roles.length > 100) {
+            acc.xl.push(roles)
+          } else if (roles.roles.length >= 20) {
+            acc.l.push(roles)
+          } else if (roles.roles.length >= 10) {
+            acc.m.push(roles)
+          } else {
+            acc.s.push(roles)
+          }
+          return acc
+        },
+        { xl: [], l: [], m: [], s: [] }
+      )
+    },
+    bentoJobCommand() {
+      return this.filteredRolesByCommand.reduce(
+        (acc, roles) => {
+          if (roles.roles.length > 50) {
+            acc.xl.push(roles)
+          } else if (roles.roles.length >= 30) {
+            acc.l.push(roles)
+          } else if (roles.roles.length >= 5) {
+            acc.m.push(roles)
+          } else {
+            acc.s.push(roles)
+          }
+          return acc
+        },
+        { xl: [], l: [], m: [], s: [] }
+      )
     }
   },
+
   mounted() {
     // Initialise pan zoom library
     const element = document.querySelector('.zoomable')
@@ -607,6 +791,7 @@ export default {
         sortBy: 'gradeId',
         sworn: 'other'
       }
+      this.viewState = 1
     },
 
     resetSkillsFilter() {
@@ -783,8 +968,22 @@ export default {
       }
     },
     bentoL1Select(jobFamily) {
-      console.log(jobFamily)
       this.filter.jobFamily = jobFamily
+
+      if (this.filteredRoles.items.length < 30) {
+        this.viewState = 4
+      } else {
+        this.viewState = 2
+      }
+    },
+    bentoL2Select(jobFunction) {
+      this.filter.jobFunction = jobFunction
+
+      // if (this.filteredRoles.items.length < 30) {
+      //   this.viewState = 4
+      // } else {
+      //   this.viewState = 3
+      // }
       this.viewState = 4
     }
   }
