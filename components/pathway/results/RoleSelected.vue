@@ -48,20 +48,16 @@
         <p>Role Description</p>
       </a>
     </div>
-    <div v-if="hasEssentialRequirements">
-      <div class="flex flex-row gap-2">
+    <div v-if="essentialRequirements != ''">
+      <div class="flex flex-row gap-2 mb-2">
         <img src="/essential.svg" alt="Link icon" />
         <p class="font-bold text-nsw-brand-primary-blue">
           Essential Requirements
         </p>
       </div>
-      <ul class="pl-6 list-outside list-disc">
-        <li
-          v-for="requirement in getEssentialRequirements"
-          :key="requirement"
-          class="mb-2leading-loose"
-        >
-          {{ requirement }}
+      <ul class="list-disc ml-5">
+        <li v-for="er in essentialRequirements" :key="er" class="text-sm mb-2">
+          {{ er }}
         </li>
       </ul>
     </div>
@@ -94,10 +90,12 @@ export default {
       console.log(this.role)
       return this.type === 'current' ? 'nsw-brand-primary-blue-light' : 'green'
     },
-    hasEssentialRequirements() {
-      return Object.keys(this.role.essential).reduce((acc, key) => {
-        return acc || this.role.essential[key]
-      }, false)
+    essentialRequirements() {
+      console.log(this.role.essentialRequirements)
+      if (this.role.essentialRequirements) {
+        return this.role.essentialRequirements.split('•\t').filter((er) => er !== '')
+      }
+      return ''
     },
     getEssentialRequirements() {
       return Object.keys(this.role.essential)
