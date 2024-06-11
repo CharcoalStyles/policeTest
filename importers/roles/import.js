@@ -260,6 +260,7 @@ rolesCsvData.data.forEach((row, i) => {
     jobRole: row.job_role,
     jobFunction: row.job_function,
     description: parseDescription(row.purpose),
+    essentialRequirements: row.essential_requirements,
     essential: {
       detective: row['new_-_grade'].includes('Detective'),
       aboriginality: row.aboriginality_y === 'Y'
