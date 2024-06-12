@@ -479,7 +479,6 @@ export default {
     },
     goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
-        console.log(this.answers['goal-role'].value)
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
           .first()

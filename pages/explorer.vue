@@ -410,7 +410,10 @@
             </div>
           </div>
 
-          <div class="block zoomable cursor-move" :class="viewState === 4 ? '' : 'hidden'">
+          <div
+            class="block zoomable cursor-move"
+            :class="viewState === 4 ? '' : 'hidden'"
+          >
             <div
               class="families inline-flex flex-wrap p-2"
               :class="{ 'pointer-events-none': panning }"
@@ -612,7 +615,7 @@ export default {
         })
         .filter((role) => {
           if (this.filter.location.length > 0 && role.location) {
-            return this.filter.location.includes(role.location)
+            return [...this.filter.location, 'Various'].includes(role.location)
           }
           return true
         })
@@ -924,12 +927,15 @@ export default {
               if (!role.location) {
                 return acc
               }
+              if (role.location === 'Various') {
+                return acc
+              }
               if (!acc.includes(role.location)) {
                 acc.push(role.location)
               }
               return acc
             }, [])
-            .sort((a, b) => a.localeCompare(b.label))
+            .sort((a, b) => a.localeCompare(b))
             .map((l) => ({
               value: l,
               label: l
@@ -939,14 +945,15 @@ export default {
             this.debouncedFilters.location = []
           }
           break
-        case 'grade':
+        case 'grade': {
           this.modals.selector = true
           this.modalData.title = 'Select Grade'
           this.modalData.instructions =
             'Select grade that relates to a role to see how they match to others.'
-          this.modalData.data = this.roles
+
+          const nonPoliceGrades = this.roles
             .reduce((acc, role) => {
-              if (!role.grade) {
+              if (role.jobFamily === 'Policing') {
                 return acc
               }
               if (!acc.includes(role.grade)) {
@@ -954,16 +961,41 @@ export default {
               }
               return acc
             }, [])
-            .sort((a, b) => a.localeCompare(b.label))
-            .map((l) => ({
-              value: l,
-              label: l
-            }))
+            .reduce((acc, grade) => {
+              if (acc.includes(grade)) {
+                return acc
+              }
+              return [...acc, grade]
+            }, [])
+            .sort()
+
+          this.modalData.data = [
+            'Superintendent',
+            'Inspector',
+            'Senior Sergeant',
+            'Sergeant',
+            'Senior Constable',
+            'Constable / Senior Constable',
+            'Constable',
+            'Detective Superintendent',
+            'Detective Inspector',
+            'Inspector',
+            'Detective Senior Sergeant',
+            'Detective Sergeant',
+            'Detective Senior Constable',
+            'Detective Constable / Detective Senior Constable',
+            'Detective Constable',
+            ...nonPoliceGrades
+          ].map((l) => ({
+            value: l,
+            label: l
+          }))
           this.modalData.filterKey = 'grade'
           this.modalData.reset = () => {
             this.debouncedFilters.grade = []
           }
           break
+        }
         default:
           break
       }

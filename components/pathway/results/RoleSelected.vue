@@ -87,11 +87,9 @@ export default {
   },
   computed: {
     pillColour() {
-      console.log(this.role)
       return this.type === 'current' ? 'nsw-brand-primary-blue-light' : 'green'
     },
     essentialRequirements() {
-      console.log(this.role.essentialRequirements)
       if (this.role.essentialRequirements) {
         return this.role.essentialRequirements.split('•\t').filter((er) => er !== '')
       }

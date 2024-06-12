@@ -372,7 +372,6 @@ export default {
         }
         return acc
       }, [])
-      console.log(rows)
 
       if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
         if (this.roleFunction.name === 'Investigations') {
