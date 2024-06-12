@@ -94,7 +94,7 @@ export default {
     jobFamilies() {
       return this.$store.state.roles
         .reduce((acc, role) => {
-          if (role.jobFamily === 'Development program') {
+          if (role.jobFunction === 'Development program') {
             return acc
           }
 
@@ -122,7 +122,7 @@ export default {
           return acc
         }, [])
         .sort((a, b) => {
-          return a.jobFamily.localeCompare(b.jobFamily)
+          return a.jobFamily === 'Policing' ? -1 : a.jobFamily.localeCompare(b.jobFamily)
         })
         .map((jobFamily) => {
           return {
