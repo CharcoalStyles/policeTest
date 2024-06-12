@@ -338,6 +338,19 @@ export default {
       }, [])
 
       if (this.axisKeys.x === 'grade' && this.familyName === 'Policing') {
+        if (this.roleFunction.name === 'Investigations') {
+          return [
+            'Detective Superintendent',
+            'Detective Inspector',
+            'Inspector',
+            'Detective Senior Sergeant',
+            'Detective Sergeant',
+            'Detective Senior Constable',
+            'Detective Constable / Detective Senior Constable',
+            'Detective Constable'
+          ].filter((x) => columns.includes(x))
+        }
+
         return [
           'Superintendent',
           'Inspector',
@@ -359,8 +372,21 @@ export default {
         }
         return acc
       }, [])
+      console.log(rows)
 
       if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
+        if (this.roleFunction.name === 'Investigations') {
+          return [
+            'Detective Superintendent',
+            'Detective Inspector',
+            'Inspector',
+            'Detective Senior Sergeant',
+            'Detective Sergeant',
+            'Detective Senior Constable',
+            'Detective Constable / Detective Senior Constable',
+            'Detective Constable'
+          ].filter((x) => rows.includes(x))
+        }
         return [
           'Superintendent',
           'Inspector',

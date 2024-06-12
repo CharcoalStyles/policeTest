@@ -787,6 +787,7 @@ export default {
         location: [],
         jobFamily: '',
         jobFunction: '',
+        command: '',
         salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
