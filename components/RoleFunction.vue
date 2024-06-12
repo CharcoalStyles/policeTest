@@ -297,32 +297,7 @@ export default {
       axisKeys: {
         x: 'command_BusUnit',
         y: 'grade'
-      },
-      gradeMap: {
-        '3-4': 'Clerk Grade 3/4',
-        '5-6': 'Clerk Grade 5/6',
-        '7-8': 'Clerk Grade 7/8',
-        '9-10': 'Clerk Grade 9/10',
-        '11-12': 'Clerk Grade 11/12',
-        B1: 'PSSE Band 1',
-        B2: 'PSSE Band 2'
-      },
-      salaryMap: {
-        '3-4': '$76k - $83k',
-        '5-6': '$90k - $99k',
-        '7-8': '$102k - $113k',
-        '9-10': '$116k - $128k',
-        '11-12': '$134k - $155k',
-        B1: '$193k - $275k',
-        B2: '$275k - $346'
-      },
-      roleFunctionOrder: [
-        'Procurement Analysis',
-        'Procurement Advice',
-        'Procurement Services',
-        'Contract Management',
-        'Procurement Executive'
-      ]
+      }
     }
   },
   computed: {
