@@ -216,145 +216,88 @@
             <span class="underline">feedback</span> will help us improve it.
           </div>
         </div>
-        <zoom-tool
-          v-if="viewState === 4"
-          class="not-zoomable fixed top-0 right-0 m-8 z-10"
-          :zoom="zoom"
-          @zoom="updateZoom"
-        />
 
-        <div class="absolute inset-0 overflow-hidden focus:outline-none">
-          <div class="px-8 mt-16" :class="viewState === 1 ? '' : 'hidden'">
+        <div class="absolute inset-0 focus:outline-none overflow-y-auto">
+          <div class="mt-16 mb-8">
             <div
-              v-for="f in bentoJobFamily.xl"
-              :key="f.name"
-              class="w-full flex-grow text-center h-32 mb-4 bg-nsw-brand-primary-blue-light"
-              :class="boxStyle"
-              @click="bentoL1Select(f.name)"
+              v-if="viewState !== 1"
+              class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+              @click="handleBack()"
             >
-              <div>
-                <p class="font-bold">{{ f.name }}</p>
-                <p class="text-sm">{{ f.roles.length }} roles</p>
-              </div>
+              <img
+                src="/icons/chevron-left-blue.svg"
+                alt="Clipboard icon"
+                class="pl-8 h-6"
+              />
+              <p class="text-nsw-brand-primary-blue">Back</p>
             </div>
-            <div class="flex gap-4 flex-row mb-4">
+            <!-- Bento level 1 -->
+            <div class="px-8" :class="viewState === 1 ? '' : 'hidden'">
               <div
-                v-for="f in bentoJobFamily.l"
+                v-for="f in bentoJobFamily.xl"
                 :key="f.name"
-                class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
+                class="w-full flex-grow text-center h-32 mb-4 bg-nsw-brand-primary-blue-light"
                 :class="boxStyle"
                 @click="bentoL1Select(f.name)"
               >
-                <div class="px-4">
+                <div>
                   <p class="font-bold">{{ f.name }}</p>
                   <p class="text-sm">{{ f.roles.length }} roles</p>
                 </div>
               </div>
-            </div>
-            <div class="flex gap-4 flex-row flex-wrap mb-4">
-              <div
-                v-for="f in bentoJobFamily.m"
-                :key="f.name"
-                class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
-                :class="boxStyle"
-                @click="bentoL1Select(f.name)"
-              >
-                <div class="px-4">
-                  <p class="font-bold">{{ f.name }}</p>
-                  <p class="text-sm">{{ f.roles.length }} roles</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex gap-4 flex-row flex-wrap">
-              <div
-                v-for="f in bentoJobFamily.s"
-                :key="f.name"
-                class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light"
-                :class="boxStyle"
-                @click="bentoL1Select(f.name)"
-              >
-                <div class="px-4">
-                  <p class="font-bold">{{ f.name }}</p>
-                  <p class="text-sm">{{ f.roles.length }} roles</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-8 mt-16" :class="viewState === 2 ? '' : 'hidden'">
-            <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
-              <p class="font-bold text-3xl ml-4">{{ filter.jobFamily }}</p>
-              <div class="m-4">
+              <div class="flex gap-4 flex-row mb-4">
                 <div
-                  v-for="f in bentoJobFunctions.xl"
+                  v-for="f in bentoJobFamily.l"
                   :key="f.name"
-                  class="w-full flex-grow text-center h-32 mb-2 bg-nsw-brand-primary-blue-light-2"
+                  class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
                   :class="boxStyle"
-                  @click="bentoL2Select(f.name)"
+                  @click="bentoL1Select(f.name)"
                 >
-                  <div>
+                  <div class="px-4">
                     <p class="font-bold">{{ f.name }}</p>
                     <p class="text-sm">{{ f.roles.length }} roles</p>
                   </div>
                 </div>
-                <div class="flex gap-2 flex-row mb-2">
-                  <div
-                    v-for="f in bentoJobFunctions.l"
-                    :key="f.name"
-                    class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
-                    :class="boxStyle"
-                    @click="bentoL2Select(f.name)"
-                  >
-                    <div class="px-4">
-                      <p class="font-bold">{{ f.name }}</p>
-                      <p class="text-sm">{{ f.roles.length }} roles</p>
-                    </div>
+              </div>
+              <div class="flex gap-4 flex-row flex-wrap mb-4">
+                <div
+                  v-for="f in bentoJobFamily.m"
+                  :key="f.name"
+                  class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light"
+                  :class="boxStyle"
+                  @click="bentoL1Select(f.name)"
+                >
+                  <div class="px-4">
+                    <p class="font-bold">{{ f.name }}</p>
+                    <p class="text-sm">{{ f.roles.length }} roles</p>
                   </div>
                 </div>
-                <div class="flex gap-2 flex-row flex-wrap mb-2">
-                  <div
-                    v-for="f in bentoJobFunctions.m"
-                    :key="f.name"
-                    class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
-                    :class="boxStyle"
-                    @click="bentoL2Select(f.name)"
-                  >
-                    <div class="px-4">
-                      <p class="font-bold">{{ f.name }}</p>
-                      <p class="text-sm">{{ f.roles.length }} roles</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex gap-2 flex-row flex-wrap">
-                  <div
-                    v-for="f in bentoJobFunctions.s"
-                    :key="f.name"
-                    class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light-2"
-                    :class="boxStyle"
-                    @click="bentoL2Select(f.name)"
-                  >
-                    <div class="px-4">
-                      <p class="font-bold">{{ f.name }}</p>
-                      <p class="text-sm">{{ f.roles.length }} roles</p>
-                    </div>
+              </div>
+              <div class="flex gap-4 flex-row flex-wrap">
+                <div
+                  v-for="f in bentoJobFamily.s"
+                  :key="f.name"
+                  class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light"
+                  :class="boxStyle"
+                  @click="bentoL1Select(f.name)"
+                >
+                  <div class="px-4">
+                    <p class="font-bold">{{ f.name }}</p>
+                    <p class="text-sm">{{ f.roles.length }} roles</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Bento level 3-->
-          <div class="px-8 mt-16" :class="viewState === 3 ? '' : 'hidden'">
-            <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
-              <p class="font-bold text-3xl ml-4 mb-2">{{ filter.jobFamily }}</p>
-
-              <div class="bg-nsw-brand-primary-blue-light-2 rounded-2xl p-4">
-                <p class="font-bold text-2xl ml-2">{{ filter.jobFunction }}</p>
-                <div class="text-sm m-4">
+            <!-- Bento level 2 -->
+            <div class="px-8" :class="viewState === 2 ? '' : 'hidden'">
+              <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
+                <p class="font-bold text-3xl ml-4">{{ filter.jobFamily }}</p>
+                <div class="m-4">
                   <div
-                    v-for="f in bentoJobCommand.xl"
+                    v-for="f in bentoJobFunctions.xl"
                     :key="f.name"
-                    class="w-full flex-grow text-center h-16 mb-1 bg-white"
+                    class="w-full flex-grow text-center h-32 mb-2 bg-nsw-brand-primary-blue-light-2"
                     :class="boxStyle"
                     @click="bentoL2Select(f.name)"
                   >
@@ -363,11 +306,11 @@
                       <p class="text-sm">{{ f.roles.length }} roles</p>
                     </div>
                   </div>
-                  <div class="flex gap-1 flex-row mb-1">
+                  <div class="flex gap-2 flex-row mb-2">
                     <div
-                      v-for="f in bentoJobCommand.l"
+                      v-for="f in bentoJobFunctions.l"
                       :key="f.name"
-                      class="w-1/4 bento-max-33 flex-grow text-center h-16 bg-white"
+                      class="w-1/4 bento-max-33 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
                       :class="boxStyle"
                       @click="bentoL2Select(f.name)"
                     >
@@ -377,11 +320,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex gap-1 flex-row flex-wrap mb-1">
+                  <div class="flex gap-2 flex-row flex-wrap mb-2">
                     <div
-                      v-for="f in bentoJobCommand.m"
+                      v-for="f in bentoJobFunctions.m"
                       :key="f.name"
-                      class="w-1/5 bento-max-25 flex-grow text-center h-16 bg-white"
+                      class="w-1/5 bento-max-25 flex-grow text-center h-32 bg-nsw-brand-primary-blue-light-2"
                       :class="boxStyle"
                       @click="bentoL2Select(f.name)"
                     >
@@ -391,11 +334,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex gap-1 flex-row flex-wrap">
+                  <div class="flex gap-2 flex-row flex-wrap">
                     <div
-                      v-for="f in bentoJobCommand.s"
+                      v-for="f in bentoJobFunctions.s"
                       :key="f.name"
-                      class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-white"
+                      class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-nsw-brand-primary-blue-light-2"
                       :class="boxStyle"
                       @click="bentoL2Select(f.name)"
                     >
@@ -408,26 +351,95 @@
                 </div>
               </div>
             </div>
-          </div>
 
-          <div
-            class="block zoomable cursor-move"
-            :class="viewState === 4 ? '' : 'hidden'"
-          >
-            <div
-              class="families inline-flex flex-wrap p-2"
-              :class="{ 'pointer-events-none': panning }"
-            >
-              <role-function
-                v-for="(group, index) in filteredRolesByFunction"
-                :key="group.name"
-                :role-function="group"
-                :roles="roles"
-                :index="index"
-                :zoom="zoom"
-                :family-name="filter.jobFamily"
-                @selected="viewRole"
-              />
+            <!-- Bento level 3 -->
+            <div class="px-8" :class="viewState === 3 ? '' : 'hidden'">
+              <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
+                <p class="font-bold text-3xl ml-4 mb-4">
+                  {{ filter.jobFamily }}
+                </p>
+
+                <div class="bg-nsw-brand-primary-blue-light-2 rounded-2xl p-4">
+                  <p class="font-bold text-2xl ml-2">
+                    {{ filter.jobFunction }}
+                  </p>
+                  <div class="text-sm m-4">
+                    <div
+                      v-for="f in bentoJobCommand.xl"
+                      :key="f.name"
+                      class="w-full flex-grow text-center h-16 mb-1 bg-white"
+                      :class="boxStyle"
+                      @click="bentoL3Select(f.name)"
+                    >
+                      <div>
+                        <p class="font-bold">{{ f.name }}</p>
+                        <p class="text-sm">{{ f.roles.length }} roles</p>
+                      </div>
+                    </div>
+                    <div class="flex gap-1 flex-row mb-1">
+                      <div
+                        v-for="f in bentoJobCommand.l"
+                        :key="f.name"
+                        class="w-1/4 bento-max-33 flex-grow text-center h-20 bg-white"
+                        :class="boxStyle"
+                        @click="bentoL3Select(f.name)"
+                      >
+                        <div class="px-4">
+                          <p class="font-bold">{{ f.name }}</p>
+                          <p class="text-sm">{{ f.roles.length }} roles</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex gap-1 flex-row flex-wrap mb-1">
+                      <div
+                        v-for="f in bentoJobCommand.m"
+                        :key="f.name"
+                        class="w-1/5 bento-max-25 flex-grow text-center h-20 bg-white"
+                        :class="boxStyle"
+                        @click="bentoL3Select(f.name)"
+                      >
+                        <div class="px-4">
+                          <p class="font-bold">{{ f.name }}</p>
+                          <p class="text-sm">{{ f.roles.length }} roles</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex gap-1 flex-row flex-wrap">
+                      <div
+                        v-for="f in bentoJobCommand.s"
+                        :key="f.name"
+                        class="w-1/3 bento-max-50 flex-grow text-center h-16 bg-white"
+                        :class="boxStyle"
+                        @click="bentoL3Select(f.name)"
+                      >
+                        <div class="px-4">
+                          <p class="font-bold">{{ f.name }}</p>
+                          <p class="text-sm">{{ f.roles.length }} roles</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Role Table (level 4) -->
+            <div class="block" :class="viewState === 4 ? '' : 'hidden'">
+              <div
+                class="families inline-flex flex-wrap p-2"
+                :class="{ 'pointer-events-none': panning }"
+              >
+                <role-function
+                  v-for="(group, index) in filteredRolesByFunction"
+                  :key="group.name"
+                  :role-function="group"
+                  :roles="roles"
+                  :index="index"
+                  :zoom="zoom"
+                  :family-name="filter.jobFamily"
+                  @selected="viewRole"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -479,13 +491,11 @@
 <script>
 import collect from 'collect.js'
 import FuzzySearch from 'fuzzy-search'
-import panzoom from 'panzoom'
 import roles from '@/data/roles.json'
 import skills from '@/data/skills.json'
 import InputRange from '@/components/forms/InputRange'
 import JobRole from '@/components/JobRole'
 import RoleFunction from '@/components/RoleFunction'
-import ZoomTool from '@/components/ZoomTool'
 import RoleSlideout from '@/components/RoleSlideout'
 import PageLoading from '@/components/PageLoading'
 import NswButton from '@/components/nsw/NswButton'
@@ -500,7 +510,6 @@ export default {
     InputRange,
     JobRole,
     RoleFunction,
-    ZoomTool,
     RoleSlideout,
     PageLoading,
     NswButton,
@@ -600,6 +609,12 @@ export default {
         .filter((role) => {
           if (this.filter.jobFunction) {
             return role.jobFunction === this.filter.jobFunction
+          }
+          return true
+        })
+        .filter((role) => {
+          if (this.filter.command) {
+            return role.command_BusUnit === this.filter.command
           }
           return true
         })
@@ -723,12 +738,12 @@ export default {
     bentoJobCommand() {
       return this.filteredRolesByCommand.reduce(
         (acc, roles) => {
-          if (roles.roles.length > 50) {
+          if (roles.roles.length > 20) {
             acc.xl.push(roles)
-          } else if (roles.roles.length >= 30) {
-            acc.l.push(roles)
-          } else if (roles.roles.length >= 5) {
-            acc.m.push(roles)
+          // } else if (roles.roles.length >= 20) {
+          //   acc.l.push(roles)
+          // } else if (roles.roles.length >= 5) {
+          //   acc.m.push(roles)
           } else {
             acc.s.push(roles)
           }
@@ -738,31 +753,7 @@ export default {
       )
     }
   },
-
-  mounted() {
-    // Initialise pan zoom library
-    const element = document.querySelector('.zoomable')
-
-    // Init panzoom
-    this.panZoom = panzoom(element, {
-      transformOrigin: { x: 0, y: 0 }, // zoom center
-      initialZoom: this.zoom,
-      maxZoom: 1,
-      minZoom: 0.1
-    })
-
-    this.panZoom.on('pan', () => {
-      this.panning = true
-    })
-
-    this.panZoom.on('panend', () => {
-      this.panning = false
-    })
-
-    this.panZoom.on('transform', (e) => {
-      this.zoom = e.getTransform().scale
-    })
-  },
+  mounted() {},
   methods: {
     resetSlideout() {
       this.slideout = false
@@ -776,12 +767,7 @@ export default {
       }
       this.previousRoleId = false
     },
-    resetExplorerMap() {
-      this.panZoom.moveTo(0, 0)
-      this.panZoom.zoomAbs(0, 0, 0.5)
-    },
     resetAllFilters() {
-      this.resetExplorerMap()
       this.filter = {
         keyword: '',
         skills: [],
@@ -840,57 +826,6 @@ export default {
         this.loading = false
         this.selectedRole = role
         this.slideout = true
-
-        // Scroll to top of panel
-        const roleScollPanel = document.querySelector('.slideout-scroll')
-        if (roleScollPanel) {
-          roleScollPanel.scroll({
-            top: 0,
-            left: 0
-          })
-        }
-        // Focus role in zoomable panel
-        const zoomDom = document.getElementsByClassName('zoomable')[0]
-        const roleDom = document.getElementsByClassName(`role-${role.id}`)[0]
-        if (roleDom) {
-          // Update the styling of the new role
-          roleDom.classList.remove('border-nsw-grey-200')
-          roleDom.classList.remove('border-white')
-          roleDom.classList.add('border-black')
-          // Restore the styling of the previous role
-          if (this.previousRoleId) {
-            const previousRoleDom = document.getElementsByClassName(
-              `role-${this.previousRoleId}`
-            )[0]
-            previousRoleDom.classList.add('border-nsw-grey-200')
-            previousRoleDom.classList.add('border-white')
-            previousRoleDom.classList.remove('border-black')
-          }
-          this.previousRoleId = role.id
-          // Default settings
-          const scale = 1
-          const padding = 210
-          // Dynamic settings
-          const transform = this.panZoom.getTransform()
-          const deltaX = transform.x
-          const deltaY = transform.y
-          const offsetX = scale + deltaX
-          const offsetY = scale + deltaY
-          // Reset the board
-          this.panZoom.zoomAbs(offsetX, offsetY, scale)
-          // Get the positions of the role relative to the board
-          const zoomBoundingBox = zoomDom.getBoundingClientRect()
-          const roleBoundingBox = roleDom.getBoundingClientRect()
-          // Get the new position
-          let xPos = roleBoundingBox.x - zoomBoundingBox.x
-          let yPos = roleBoundingBox.y - zoomBoundingBox.y
-          if (this.zoom !== 1) {
-            xPos = xPos / this.zoom
-            yPos = yPos / this.zoom
-          }
-          // Move the board to the role
-          this.panZoom.smoothMoveTo(-(xPos - padding), -(yPos - padding))
-        }
       }, 1000)
     },
     swornButtonSelected(buttonType) {
@@ -1000,8 +935,32 @@ export default {
           break
       }
     },
+    handleBack() {
+      switch (this.lastViewState) {
+        case 1:
+          this.viewState = this.lastViewState
+          this.filter.jobFamily = ''
+          this.filter.jobFunction = ''
+          this.filter.command = ''
+          break
+        case 2:
+          this.viewState = this.lastViewState
+          this.lastViewState = 1
+          this.filter.jobFunction = ''
+          this.filter.command = ''
+          break
+        case 3:
+          this.viewState = this.lastViewState
+          this.lastViewState = 2
+          this.filter.command = ''
+          break
+        default:
+          break
+      }
+    },
     bentoL1Select(jobFamily) {
       this.filter.jobFamily = jobFamily
+      this.lastViewState = this.viewState
 
       if (this.filteredRoles.items.length < 30) {
         this.viewState = 4
@@ -1011,12 +970,19 @@ export default {
     },
     bentoL2Select(jobFunction) {
       this.filter.jobFunction = jobFunction
+      this.lastViewState = this.viewState
 
-      // if (this.filteredRoles.items.length < 30) {
-      //   this.viewState = 4
-      // } else {
-      //   this.viewState = 3
-      // }
+      if (this.filteredRoles.items.length < 30) {
+        this.viewState = 4
+      } else {
+        this.viewState = 3
+      }
+      // this.viewState = 4
+    },
+    bentoL3Select(jobCommand) {
+      this.filter.command = jobCommand
+      this.lastViewState = this.viewState
+
       this.viewState = 4
     }
   }

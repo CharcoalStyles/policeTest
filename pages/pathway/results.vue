@@ -571,16 +571,11 @@ export default {
           return true
         })
         .filter((role) => {
-          // Filter out roles not in current Job Function
-          if (role.jobFunction === currentRole.jobFunction) {
-            console.log(role.jobFunction, currentRole.jobFunction)
-          }
           return role.jobFunction === currentRole.jobFunction
         })
         .filter((role) => {
           // Filter out detective roles if not wanted; super edge case for this set, but gotta do it!
           if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
-            console.log('filtering out detective role')
             return false
           }
           return true
@@ -634,7 +629,6 @@ export default {
         .filter((role) => {
           // Filter out detective roles if not wanted
           if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
-            console.log('filtering out detective role')
             return false
           }
           return true
