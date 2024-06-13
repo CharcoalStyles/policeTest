@@ -7,10 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "build-gen": "nuxt build && nuxt generate",
-    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:fix": "yarn lint -- --fix",
-    "lint": "yarn lint:js"
+    "build-gen": "nuxt build && nuxt generate"
   },
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",
@@ -24,7 +21,6 @@
     "portal-vue": "^2.1.7",
     "vue-debounce": "^2.5.8",
     "vue-multiselect": "^2.1.6",
-    "vue-panzoom": "^1.1.3",
     "vue-pinch-zoom": "^1.0.1",
     "vue-pluralize": "^0.0.2",
     "vue-scrollto": "^2.20.0",

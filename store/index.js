@@ -139,8 +139,6 @@ const mutations = {
     const skillAndCapabilityStepIndex = state.pathway.steps.findIndex(
       (step) => step.id === 'skills-and-capabilities'
     )
-    console.log(skillAndCapabilityStepIndex)
-    console.log(state.pathway.steps)
 
     // Reset in case any have already been set
     state.pathway.steps[skillAndCapabilityStepIndex].steps = []
@@ -175,8 +173,6 @@ const mutations = {
       }
     })
 
-    console.log('s1', steps)
-
     role.capabilities.focus.forEach((capability) => {
       const currentCapability = state.capabilities.find(
         (c) => c.subcode === capability.code
@@ -200,8 +196,6 @@ const mutations = {
 
       steps.push(childStep)
     })
-
-    console.log('s2', steps)
 
     // Add generated skill and capability child steps
     state.pathway.steps[skillAndCapabilityStepIndex].steps = steps

@@ -209,12 +209,13 @@ export default {
       return false
     },
     jobFamilies() {
-      return this.$store.state.roles.reduce((acc, role) => {
+      const allFamilies = this.$store.state.roles.reduce((acc, role) => {
         if (!acc.includes(role.jobFamily)) {
           acc.push(role.jobFamily)
         }
         return acc
       }, [])
+      return ['Policing', ...allFamilies.sort()]
     },
     jobFunctions() {
       return this.$store.state.roles
