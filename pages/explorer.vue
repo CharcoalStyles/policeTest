@@ -147,7 +147,7 @@
                   </div>
                 </div>
 
-                <div class="hidden">
+                <div class="">
                   <div class="flex flex-col">
                     <label class="text-sm font-bold mb-2">
                       Work Area / Job Function
@@ -612,7 +612,7 @@ export default {
         grade: [],
         location: [],
         jobFamily: '',
-        jobFunction: '',
+        jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
         sortBy: 'gradeId',
@@ -667,8 +667,8 @@ export default {
           return true
         })
         .filter((role) => {
-          if (this.filter.jobFunction) {
-            return role.jobFunction === this.filter.jobFunction
+          if (this.filter.jobFunction.length > 0) {
+            return this.filter.jobFunction.includes(role.jobFunction)
           }
           return true
         })
@@ -835,7 +835,7 @@ export default {
         grade: [],
         location: [],
         jobFamily: '',
-        jobFunction: '',
+        jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
         sortBy: 'gradeId',
