@@ -146,6 +146,42 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="">
+                  <div class="flex flex-col">
+                    <label class="text-sm font-bold mb-2">
+                      Work Area / Job Function
+                    </label>
+                    <div
+                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                      @click="showSelectorPopup('jobFunction')"
+                    >
+                      {{
+                        debouncedFilters.jobFunction.length === 0
+                          ? 'All'
+                          : `${debouncedFilters.jobFunction.length} selected`
+                      }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <div class="flex flex-col">
+                    <label class="text-sm font-bold mb-2">
+                      Command / Unit
+                    </label>
+                    <div
+                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                      @click="showSelectorPopup('command_BusUnit')"
+                    >
+                      {{
+                        debouncedFilters.command_BusUnit.length === 0
+                          ? 'All'
+                          : `${debouncedFilters.command_BusUnit.length} selected`
+                      }}
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 class="px-6 py-4 flex items-center justify-between bg-nsw-grey-50 border-gray-300 border-b"
@@ -576,8 +612,8 @@ export default {
         grade: [],
         location: [],
         jobFamily: '',
-        jobFunction: '',
-        command: '',
+        jobFunction: [],
+        command_BusUnit: [],
         salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
@@ -631,14 +667,14 @@ export default {
           return true
         })
         .filter((role) => {
-          if (this.filter.jobFunction) {
-            return role.jobFunction === this.filter.jobFunction
+          if (this.filter.jobFunction.length > 0) {
+            return this.filter.jobFunction.includes(role.jobFunction)
           }
           return true
         })
         .filter((role) => {
-          if (this.filter.command) {
-            return role.command_BusUnit === this.filter.command
+          if (this.filter.command_BusUnit.length > 0) {
+            return this.filter.command_BusUnit.includes(role.command_BusUnit)
           }
           return true
         })
@@ -799,8 +835,8 @@ export default {
         grade: [],
         location: [],
         jobFamily: '',
-        jobFunction: '',
-        command: '',
+        jobFunction: [],
+        command_BusUnit: [],
         salary: [38000, 362000],
         sortBy: 'gradeId',
         sworn: 'other'
@@ -955,6 +991,59 @@ export default {
           }
           break
         }
+        case 'jobFunction':
+          this.modals.selector = true
+          this.modalData.title = 'Select Job Function'
+          this.modalData.instructions =
+            'Select job function that relates to a role to see how they match to others.'
+
+          this.modalData.data = this.roles
+            .reduce((acc, role) => {
+              if (!acc.includes(role.jobFunction)) {
+                acc.push(role.jobFunction)
+              }
+              return acc
+            }, [])
+            .reduce((acc, jobFunction) => {
+              if (acc.includes(jobFunction)) {
+                return acc
+              }
+              return [...acc, jobFunction]
+            }, [])
+            .sort((a, b) => a.localeCompare(b))
+            .map((l) => ({
+              value: l,
+              label: l
+            }))
+          this.modalData.filterKey = 'jobFunction'
+          this.modalData.reset = () => {
+            this.debouncedFilters.jobFunction = []
+          }
+          break
+        case 'command_BusUnit':
+          this.modals.selector = true
+          this.modalData.title = 'Select Command / Business Unit'
+          this.modalData.instructions =
+            'Select the Select Command or Business Unit that relates to a role to see how they match to others.'
+
+          this.modalData.data = this.roles
+            .reduce((acc, role) => {
+              if (!acc.includes(role.command_BusUnit)) {
+                acc.push(role.command_BusUnit)
+              }
+              return acc
+            }, [])
+            .sort((a, b) => a.localeCompare(b))
+            .map((l) => ({
+              value: l,
+              label: l
+            }))
+
+          this.modalData.filterKey = 'command_BusUnit'
+          this.modalData.reset = () => {
+            this.debouncedFilters.command_BusUnit = []
+          }
+          break
         default:
           break
       }
@@ -965,18 +1054,18 @@ export default {
           this.viewState = this.lastViewState
           this.filter.jobFamily = ''
           this.filter.jobFunction = ''
-          this.filter.command = ''
+          this.filter.command_BusUnit = []
           break
         case 2:
           this.viewState = this.lastViewState
           this.lastViewState = 1
           this.filter.jobFunction = ''
-          this.filter.command = ''
+          this.filter.command_BusUnit = []
           break
         case 3:
           this.viewState = this.lastViewState
           this.lastViewState = 2
-          this.filter.command = ''
+          this.filter.command_BusUnit = []
           break
         default:
           break
@@ -1004,7 +1093,7 @@ export default {
       // this.viewState = 4
     },
     bentoL3Select(jobCommand) {
-      this.filter.command = jobCommand
+      this.filter.command_BusUnit = [jobCommand]
       this.lastViewState = this.viewState
 
       this.viewState = 4
