@@ -333,9 +333,7 @@ export default {
           'Inspector',
           'Senior Sergeant',
           'Sergeant',
-          'Senior Constable',
           'Constable / Senior Constable',
-          'Constable',
           'Grade Clerk 1/2'
         ].filter((x) => columns.includes(x))
       }
