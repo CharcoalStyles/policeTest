@@ -948,7 +948,10 @@ export default {
 
           const nonPoliceGrades = this.roles
             .reduce((acc, role) => {
-              if (role.jobFamily === 'Policing') {
+              if (
+                role.jobFamily === 'Policing' ||
+                role.grade.startsWith('Clerk')
+              ) {
                 return acc
               }
               if (!acc.includes(role.grade)) {
@@ -964,22 +967,37 @@ export default {
             }, [])
             .sort()
 
+          const clerkGrades = this.roles
+            .reduce((acc, role) => {
+              if (role.grade.startsWith('Clerk') && !acc.includes(role.grade)) {
+                acc.push(role.grade)
+              }
+              return acc
+            }, [])
+            .reduce((acc, grade) => {
+              if (acc.includes(grade)) {
+                return acc
+              }
+              return [...acc, grade]
+            }, [])
+            .sort((a, b) => {
+              const aVal = a.split(' ')[1].split('/')[0]
+              const bVal = b.split(' ')[1].split('/')[0]
+              return bVal - aVal
+            })
+
           this.modalData.data = [
             'Superintendent',
             'Inspector',
             'Senior Sergeant',
             'Sergeant',
-            'Senior Constable',
             'Constable / Senior Constable',
-            'Constable',
             'Detective Superintendent',
             'Detective Inspector',
-            'Inspector',
             'Detective Senior Sergeant',
             'Detective Sergeant',
-            'Detective Senior Constable',
             'Detective Constable / Detective Senior Constable',
-            'Detective Constable',
+            ...clerkGrades,
             ...nonPoliceGrades
           ].map((l) => ({
             value: l,
