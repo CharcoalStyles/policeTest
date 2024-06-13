@@ -624,7 +624,7 @@ export default {
         })
         .filter((role) => {
           // Filter out roles in current Job Function
-          return role.jobFunction === currentRole.jobFunction
+          return role.jobFunction !== currentRole.jobFunction
         })
         .filter((role) => {
           // Filter out detective roles if not wanted
@@ -637,6 +637,15 @@ export default {
           // Only pick roles that are the same grade
           // Will need to fix this logic for roles that don't have numerical grades, by using salary
           return role.gradeId.grade === currentRole.gradeId.grade
+        })
+        .filter((role) => {
+          if (role.id === currentRole.id) {
+            return false
+          }
+          if (this.answers.hasOwnProperty('goal-role')) {
+            return role.id !== this.answers['goal-role'].value
+          }
+          return true
         })
 
       return this.rankAndSortRoles(currentRole, filteredRoles).map(
@@ -747,8 +756,10 @@ export default {
 
           // Interests comparison
           if (this.answers.hasOwnProperty('interests')) {
-            if (this.answers.interests.value.includes(role.jobFunction)) {
-              sharingSkills.focusFocus += 1
+            if (
+              this.answers.interests.value.includes(role.jobFunction.trim())
+            ) {
+              sharingSkills.focusFocus += 3
             }
           }
 
@@ -812,9 +823,9 @@ export default {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
             switch (this.answers.sworn.value) {
-              case 'yes':
+              case 'sworn':
                 return role.jobFamily === 'Policing'
-              case 'no':
+              case 'unsworn':
                 return role.jobFamily !== 'Policing'
               default:
                 return true
@@ -827,7 +838,7 @@ export default {
             return false
           }
           if (this.answers.hasOwnProperty('goal-role')) {
-            return role.id === this.answers['goal-role'].value.id
+            return role.id !== this.answers['goal-role'].value
           }
           return true
         })
