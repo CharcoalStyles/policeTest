@@ -219,18 +219,6 @@
 
         <div class="absolute inset-0 focus:outline-none overflow-y-auto">
           <div class="mt-16 mb-8">
-            <div
-              v-if="viewState !== 1"
-              class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
-              @click="handleBack()"
-            >
-              <img
-                src="/icons/chevron-left-blue.svg"
-                alt="Clipboard icon"
-                class="pl-8 h-6"
-              />
-              <p class="text-nsw-brand-primary-blue">Back</p>
-            </div>
             <!-- Bento level 1 -->
             <div class="px-8" :class="viewState === 1 ? '' : 'hidden'">
               <div
@@ -291,6 +279,18 @@
 
             <!-- Bento level 2 -->
             <div class="px-8" :class="viewState === 2 ? '' : 'hidden'">
+              <div
+                v-if="viewState !== 1"
+                class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+                @click="handleBack()"
+              >
+                <img
+                  src="/icons/chevron-left-blue.svg"
+                  alt="Clipboard icon"
+                  class="h-6"
+                />
+                <p class="text-nsw-brand-primary-blue">Back</p>
+              </div>
               <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
                 <p class="font-bold text-3xl ml-4">{{ filter.jobFamily }}</p>
                 <div class="m-4">
@@ -354,6 +354,18 @@
 
             <!-- Bento level 3 -->
             <div class="px-8" :class="viewState === 3 ? '' : 'hidden'">
+              <div
+                v-if="viewState !== 1"
+                class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+                @click="handleBack()"
+              >
+                <img
+                  src="/icons/chevron-left-blue.svg"
+                  alt="Clipboard icon"
+                  class="h-6"
+                />
+                <p class="text-nsw-brand-primary-blue">Back</p>
+              </div>
               <div class="bg-nsw-brand-primary-blue-light rounded-2xl p-4">
                 <p class="font-bold text-3xl ml-4 mb-4">
                   {{ filter.jobFamily }}
@@ -429,6 +441,17 @@
                 class="families inline-flex flex-wrap p-2"
                 :class="{ 'pointer-events-none': panning }"
               >
+                <div
+                  class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+                  @click="handleBack()"
+                >
+                  <img
+                    src="/icons/chevron-left-blue.svg"
+                    alt="Clipboard icon"
+                    class="h-6"
+                  />
+                  <p class="text-nsw-brand-primary-blue">Back</p>
+                </div>
                 <role-function
                   v-for="(group, index) in filteredRolesByFunction"
                   :key="group.name"
@@ -472,6 +495,7 @@
       :show="modals.selector"
       max-width="xl"
       :title="modalData.title"
+      :value="debouncedFilters[modalData.filterKey]"
       @close="modals.selector = false"
       @reset="modalData.reset"
     >
@@ -740,10 +764,10 @@ export default {
         (acc, roles) => {
           if (roles.roles.length > 20) {
             acc.xl.push(roles)
-          // } else if (roles.roles.length >= 20) {
-          //   acc.l.push(roles)
-          // } else if (roles.roles.length >= 5) {
-          //   acc.m.push(roles)
+            // } else if (roles.roles.length >= 20) {
+            //   acc.l.push(roles)
+            // } else if (roles.roles.length >= 5) {
+            //   acc.m.push(roles)
           } else {
             acc.s.push(roles)
           }
