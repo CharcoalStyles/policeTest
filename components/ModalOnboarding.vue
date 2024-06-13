@@ -47,8 +47,8 @@ export default {
     return {
       panels: [
         {
-          title: 'Explore procurement roles',
-          text: 'Search via keywords, skills and salary to understand where roles sit inside the NSW public sector.',
+          title: 'Explore roles',
+          text: 'Search via keywords, skills and salary to understand where roles sit inside the NSW Police Force.',
           alt: 'Graphic showing a magnifying glass near some cards representing job roles.'
         },
         {
