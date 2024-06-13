@@ -205,7 +205,7 @@
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <role-selector
-                    v-for="role in progressionRoles(currentRole).slice(0, 3)"
+                    v-for="role in progressionRoles(currentRole).slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -218,7 +218,7 @@
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <role-selector
-                    v-for="role in adjacentRoles(currentRole).slice(0, 3)"
+                    v-for="role in adjacentRoles(currentRole).slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -231,7 +231,7 @@
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <role-selector
-                    v-for="role in skillRoles(currentRole).slice(0, 3)"
+                    v-for="role in skillRoles(currentRole).slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
