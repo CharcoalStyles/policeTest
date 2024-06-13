@@ -588,7 +588,7 @@ export default {
       previousRoleId: false,
       modals: {
         selector: false,
-        onboarding: false
+        onboarding: true
       },
       modalData: {
         data: [],
@@ -855,16 +855,8 @@ export default {
       this.debouncedFilters.keyword = value
     },
 
-    /**
-     * Update zoom level
-     */
-    updateZoom(zoom) {
-      this.panZoom.smoothZoom(20, 20, zoom)
-    },
-
     demoExplorerAnimation() {
       this.modals.onboarding = false
-      this.panZoom.smoothZoom(20, 20, 1)
     },
 
     /**
