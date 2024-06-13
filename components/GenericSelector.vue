@@ -60,6 +60,10 @@ export default {
     data: {
       type: Array,
       required: true
+    },
+    value: {
+      type: Array,
+      required: true
     }
   },
   data() {
@@ -67,9 +71,17 @@ export default {
       values: []
     }
   },
+  watch: {
+    value() {
+      this.values = this.value
+    }
+  },
+  mounted() {
+    this.values = this.value
+  },
   methods: {
     reset() {
-      this.values = []
+      // this.values = []
       this.$emit('reset')
     }
   }

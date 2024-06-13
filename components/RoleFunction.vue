@@ -14,31 +14,33 @@
     <div
       class="inline-block w-max bg-nsw-brand-primary-blue-light rounded-ss-3xl"
     >
-      <div class="px-12 py-10 ml-4 flex flex-col">
-        <h2 class="font-bold text-3xl z-20">
+      <div class="sticky w-fit left-0 px-4 py-6 ml-4 flex flex-col">
+        <h2 class="font-bold text-xl">
           {{ familyName }}
         </h2>
-        <h3 class="font-bold text-2xl z-20">
+        <h3 class="font-bold">
           {{ roleFunction.name }}
         </h3>
       </div>
       <table class="border-collapse w-full">
-        <tr class="text-3xl bg-nsw-grey-200">
-          <th class="px-12 py-8 whitespace-no-wrap h-20 w-32">Rank</th>
+        <tr class="bg-nsw-grey-200">
+          <th class="px-4 py-4 whitespace-no-wrap h-12 w-32">Rank</th>
           <th
             v-for="xKey in columns"
             :key="xKey"
-            class="px-12 py-8 whitespace-no-wrap h-20 text-left"
+            class="py-4 whitespace-no-wrap h-12 text-left"
           >
-            {{ xKey }}
+            <p class="px-4 sticky w-fit left-0">
+              {{ xKey }}
+            </p>
           </th>
         </tr>
-        <tr v-for="(yKey, index) in rows" :key="yKey">
+        <tr v-for="yKey in rows" :key="yKey">
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
-            <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
+            <div class="py-3 px-5 rounded-md font-bold bg-white">
               {{ yKey }}
             </div>
           </td>
@@ -69,7 +71,7 @@
         </tr>
         <!-- <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
@@ -101,7 +103,7 @@
         </tr>
         <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ gradeMap['11-12'] }}
@@ -132,7 +134,7 @@
         </tr>
         <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
@@ -164,7 +166,7 @@
         </tr>
         <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ gradeMap['7-8'] }}
@@ -195,7 +197,7 @@
         </tr>
         <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
@@ -227,7 +229,7 @@
         </tr>
         <tr>
           <td
-            class="px-12 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
+            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
           >
             <div class="py-3 px-5 rounded-md font-semibold text-lg bg-white">
               {{ gradeMap['3-4'] }}
@@ -297,32 +299,7 @@ export default {
       axisKeys: {
         x: 'command_BusUnit',
         y: 'grade'
-      },
-      gradeMap: {
-        '3-4': 'Clerk Grade 3/4',
-        '5-6': 'Clerk Grade 5/6',
-        '7-8': 'Clerk Grade 7/8',
-        '9-10': 'Clerk Grade 9/10',
-        '11-12': 'Clerk Grade 11/12',
-        B1: 'PSSE Band 1',
-        B2: 'PSSE Band 2'
-      },
-      salaryMap: {
-        '3-4': '$76k - $83k',
-        '5-6': '$90k - $99k',
-        '7-8': '$102k - $113k',
-        '9-10': '$116k - $128k',
-        '11-12': '$134k - $155k',
-        B1: '$193k - $275k',
-        B2: '$275k - $346'
-      },
-      roleFunctionOrder: [
-        'Procurement Analysis',
-        'Procurement Advice',
-        'Procurement Services',
-        'Contract Management',
-        'Procurement Executive'
-      ]
+      }
     }
   },
   computed: {
@@ -338,6 +315,19 @@ export default {
       }, [])
 
       if (this.axisKeys.x === 'grade' && this.familyName === 'Policing') {
+        if (this.roleFunction.name === 'Investigations') {
+          return [
+            'Detective Superintendent',
+            'Detective Inspector',
+            'Inspector',
+            'Detective Senior Sergeant',
+            'Detective Sergeant',
+            'Detective Senior Constable',
+            'Detective Constable / Detective Senior Constable',
+            'Detective Constable'
+          ].filter((x) => columns.includes(x))
+        }
+
         return [
           'Superintendent',
           'Inspector',
@@ -361,6 +351,18 @@ export default {
       }, [])
 
       if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
+        if (this.roleFunction.name === 'Investigations') {
+          return [
+            'Detective Superintendent',
+            'Detective Inspector',
+            'Inspector',
+            'Detective Senior Sergeant',
+            'Detective Sergeant',
+            'Detective Senior Constable',
+            'Detective Constable / Detective Senior Constable',
+            'Detective Constable'
+          ].filter((x) => rows.includes(x))
+        }
         return [
           'Superintendent',
           'Inspector',
