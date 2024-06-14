@@ -54,7 +54,9 @@
     </section-container>
 
     <section-container title="How it works">
-      <div class="flex flex-col items-center md:items-stretch md:flex-row flex-wrap container">
+      <div
+        class="flex flex-col items-center md:items-stretch md:flex-row flex-wrap container"
+      >
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/1.svg" class="h-64 mb-6" />
           <div class="mx-6">
@@ -96,6 +98,109 @@
         </div>
       </div>
     </section-container>
+
+    <div class="mb-16">
+      <div
+        class="container flex flex-col md:flex-row mb-8 md:mb-16 items-center md:items-stretch"
+      >
+        <div class="w-full md:w-1/2">
+          <img src="/images/individuals.png" class="p-6" />
+        </div>
+        <div class="w-full md:w-1/2 px-4">
+          <p class="text-3xl font-bold mb-4">Benefits for Individuals</p>
+          <ul class="ml-4 list-disc">
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">View roles within NSWPF</p>
+                <p>Explore roles and pathways within NSWPF.</p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Assess your skills and capabilities</p>
+                <p>
+                  Identify your strengths and areas for development required for
+                  your next role.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Create a personalised career plan</p>
+                <p>
+                  Use this plan as a basis for career conversations,
+                  professional growth and identifying development opportunities.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="container flex flex-col-reverse md:flex-row flex-wrap items-center md:items-stretch"
+      >
+        <div class="w-full md:w-1/2 px-4">
+          <p class="text-3xl font-bold mb-4">Benefits for Managers</p>
+          <ul class="ml-4 list-disc">
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">
+                  Retain top talent by supporting career aspirations
+                </p>
+                <p>
+                  Retain top talent by supporting team members in reaching their
+                  desired career goal within NSWPF.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Improve the capability of your team</p>
+                <p>
+                  Show possible career pathways and identify areas for
+                  improvement and development.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Start a meaningful career conversation</p>
+                <p>
+                  A self-assessment tool will create a tangible starting point
+                  for honest and tailored career conversations.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full md:w-1/2">
+          <img src="/images/managers.png" class="p-6" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-16">
+      <hr class="my-4" />
+      <div class="flex flex-row gap-4 lg:gap-0 justify-between">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12">
+          <img src="/pcc.png" class="h-12 xl:h-16" />
+          <img src="/tcsc.svg" class="h-12 xl:h-16" />
+        </div>
+        <div class="w-1/2">
+          <p class="text-xs text-nsw-brand-primary-blue">
+            The NSWPF Career Pathfinder data is updated periodically from the
+            latest approved NSWPF role descriptions, NSWPF Job Family Model, pay
+            grades/scales and the NSWPF Public Sector Capability Framework. All
+            care has been taken to provide correct information, however if you
+            identify an inaccuracy, we welcome your feedback. #PCC-Careers.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
