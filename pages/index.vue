@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blob bg-no-repeat bg-right-50-screen">
+  <div>
     <hero-section
       image="/images/012 Administrative and Police 1.png"
       class="bg-nsw-brand-primary-blue py-12"
