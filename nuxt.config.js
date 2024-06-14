@@ -3,7 +3,7 @@ export default {
   ssr: false,
 
   // Target
-  target: 'server',
+  target: 'static',
 
   // Global page headers
   head: {
@@ -43,9 +43,8 @@ export default {
     '~/plugins/currency',
     '~/plugins/collect',
     '~/plugins/debounce',
-    '~/plugins/pluralise'
-    // { src: '~/plugins/persist', ssr: false },
-    // { src: '~plugins/vimeo-player' }
+    '~/plugins/pluralise',
+    { src: '~/plugins/persist', ssr: false }
   ],
 
   // Auto import components
@@ -59,9 +58,4 @@ export default {
   tailwindcss: {
     cssPath: ['~/assets/tailwind.css', { injectPosition: 'first' }]
   }
-
-  // Build Configuration
-  // build: {
-  //   vendor: ['vue-vimeo-player']
-  // }
 }
