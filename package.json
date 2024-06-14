@@ -15,6 +15,7 @@
     "@nuxtjs/tailwindcss": "^6.12.0",
     "collect.js": "^4.28.6",
     "core-js": "^3.6.5",
+    "express": "^4.19.2",
     "fuzzy-search": "^3.2.1",
     "nuxt": "^2.17.3",
     "panzoom": "Timo-Weike/panzoom",
