@@ -44,7 +44,7 @@ export default {
     '~/plugins/collect',
     '~/plugins/debounce',
     '~/plugins/pluralise',
-    { src: '~/plugins/persist', ssr: false },
+    // { src: '~/plugins/persist', ssr: false },
     { src: '~plugins/vimeo-player' }
   ],
 
