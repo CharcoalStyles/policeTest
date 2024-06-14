@@ -22,38 +22,30 @@
         </p>
       </div>
     </hero-section>
-    <section-container title="Plan your career pathway" :cols="2">
+    <section-container title="Explore roles and make a personalised career plan" :cols="2">
       <feature-panel
-        image="/images/home1.jpg"
-        alt="Explore roles"
-        title="Explore roles"
+        image="/images/rescueDrone.png"
+        alt="Role Explorer"
+        title="Role Explorer"
       >
-        <div class="mb-6">
-          See types of procurement roles that are common across the NSW public
-          sector and how they’re connected.
-        </div>
-        <nuxt-link
-          to="/explorer"
-          class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white"
-        >
-          Explore role types
+        <nuxt-link to="/explorer">
+          <div class="mb-6 w-5/6">
+            Browse the broad array of roles and careers that exist in the NSWPF
+          </div>
+          <img src="/arrow.svg" />
         </nuxt-link>
       </feature-panel>
       <feature-panel
-        image="/images/home2.jpg"
-        alt="Assess your skills and capabilities"
-        title="Assess your skills and capabilities"
+        image="/images/meeting.png"
+        alt="Career Pathways Planner"
+        title="Career Pathways Planner"
       >
-        <div class="mb-6">
-          Compare your current and target roles side by side to see the skills
-          you may need to improve upon, and access upskilling resources to take
-          your career to the next level.
-        </div>
-        <nuxt-link
-          to="/pathway"
-          class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white"
-        >
-          Get my career plan
+        <nuxt-link to="/pathway">
+          <div class="mb-6">
+            Use this plan as a basis for career conversations, professional
+            growth and identifying development opportunities.
+          </div>
+          <img src="/arrow.svg" />
         </nuxt-link>
       </feature-panel>
     </section-container>
