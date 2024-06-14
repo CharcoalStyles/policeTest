@@ -1,8 +1,22 @@
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
+/**
+  * vue-class-component v7.0.1
+  * (c) 2015-present Evan You
+  * @license MIT
+  */
+
+
+/*!
+ * Vue.js v2.7.16
+ * (c) 2014-2023 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
+
 
 /*!
   * vue-scrollto v2.20.0
@@ -22,13 +36,6 @@ object-assign
  * Released under the MIT License.
  */
 
-/*!
- * weakmap-polyfill v2.0.4 - ECMAScript6 WeakMap polyfill
- * https://github.com/polygonplanet/weakmap-polyfill
- * Copyright (c) 2015-2021 polygonplanet <polygon.planet.aqua@gmail.com>
- * @license MIT
- */
-
 /*! 
   * portal-vue © Thorsten Lünborg, 2019 
   * 
@@ -39,13 +46,6 @@ object-assign
   * https://github.com/linusborg/portal-vue
   * 
  */
-
-/*! @vimeo/player v2.23.0 | (c) 2024 Vimeo | MIT License | https://github.com/vimeo/player.js */
-
-/*! Native Promise Only
-    v0.8.1 (c) Kyle Simpson
-    MIT License: http://getify.mit-license.org
-*/
 
 
 /**!
@@ -72,23 +72,3 @@ object-assign
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-
-/*!
- * Vue.js v2.7.16
- * (c) 2014-2023 Evan You
- * Released under the MIT License.
- */
-
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
- */
-
-
-/**
-  * vue-class-component v7.0.1
-  * (c) 2015-present Evan You
-  * @license MIT
-  */
