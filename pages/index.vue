@@ -1,77 +1,206 @@
 <template>
-  <div class="bg-blob bg-no-repeat bg-right-50-screen">
-    <hero-section image="/images/home-hero.jpg" class="">
-      <div class="text-nsw-brand-grey-primary">
-        <h2 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
-          Procurement Career Pathways Tool
-        </h2>
-        <h1 class="font-bold text-4xl xl:text-5xl leading-tight xl:w-11/12 mb-4">
-          Supporting you to develop your procurement career
+  <div>
+    <hero-section
+      image="/images/012 Administrative and Police 1.png"
+      class="bg-nsw-brand-primary-blue py-12"
+    >
+      <div class="text-white">
+        <div class="flex flex-row gap-2 mb-4">
+          <img src="/icons/careerPathfinder.svg" />
+          <h1 class="font-bold text-nsw-brand-primary-blue-light">
+            CAREER PATHFINDER
+          </h1>
+        </div>
+        <h1
+          class="font-bold text-4xl xl:text-5xl leading-tight xl:w-11/12 mb-4"
+        >
+          Where can a career in the NSWPF take you?
         </h1>
-        <p class="text-lg xl:text-xl w-11/12">
-          Get a personalised career plan to help you build and manage a procurement career in the NSW public sector.
+        <p class="text-lg xl:text-xl">
+          Identify and plan a career in the NSWPF based on your capabilities,
+          skills, goals, experience, and interests.
         </p>
       </div>
     </hero-section>
-    <section-container title="Plan your career pathway" :cols="2">
-      <feature-panel image="/images/home1.jpg" alt="Explore roles" title="Explore roles">
-        <div class="mb-6">
-          See types of procurement roles that are common across the NSW public sector and how they’re connected.
-        </div>
-        <nuxt-link to="/explorer" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
-          Explore role types
+    <section-container
+      title="Explore roles and make a personalised career plan"
+      :cols="2"
+    >
+      <feature-panel
+        image="/images/rescueDrone.png"
+        alt="Role Explorer"
+        title="Role Explorer"
+      >
+        <nuxt-link to="/explorer">
+          <div class="mb-6 w-5/6">
+            Browse the broad array of roles and careers that exist in the NSWPF
+          </div>
+          <img src="/arrow.svg" />
         </nuxt-link>
       </feature-panel>
-      <feature-panel image="/images/home2.jpg" alt="Assess your skills and capabilities" title="Assess your skills and capabilities">
-        <div class="mb-6">
-          Compare your current and target roles side by side to see the skills you may need to improve upon, and access upskilling resources to take your career to the next level.
-        </div>
-        <nuxt-link to="/pathway" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-nsw-brand-purple-dark text-white">
-          Get my career plan
+      <feature-panel
+        image="/images/meeting.png"
+        alt="Career Pathways Planner"
+        title="Career Pathways Planner"
+      >
+        <nuxt-link to="/pathway">
+          <div class="mb-6">
+            Use this plan as a basis for career conversations, professional
+            growth and identifying development opportunities.
+          </div>
+          <img src="/arrow.svg" />
         </nuxt-link>
       </feature-panel>
     </section-container>
 
-    <div class="bg-nsw-brand-purple-dark py-16 md:py-20 my-12 md:my-16">
-      <div class="flex flex-col lg:flex-row px-4 md:px-6 xl:container space-y-6 lg:space-y-0 lg:space-x-6">
-        <div class="flex flex-col flex-1 justify-center">
-          <div class="text-white">
-            <!-- <div class="font-bold mb-4">
-              Role explorer tool
-            </div> -->
-            <h2 class="font-bold text-3xl xl:text-[32px] leading-tight xl:w-11/12 mb-4">
-              Learn more about working in procurement
-            </h2>
-            <p class="w-11/12 mb-4">
-              Hear about what it’s like to work in public sector procurement, including the benefits and opportunities.
+    <section-container title="How it works">
+      <div
+        class="flex flex-col items-center md:items-stretch md:flex-row flex-wrap container"
+      >
+        <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
+          <img src="/figures/1.svg" class="h-64 mb-6" />
+          <div class="mx-6">
+            <p class="font-bold mb-2">Explore Roles</p>
+            <p>Explore roles and pathways within NSWPF.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
+          <img src="/figures/2.svg" class="h-64 mb-6" />
+          <div class="mx-6">
+            <p class="font-bold mb-2">Get personalised career pathways</p>
+            <p>
+              Explore and prioritise career pathways based on what matters to
+              you.
             </p>
           </div>
-          <!-- <div>
-            <nuxt-link to="/explorer" class="inline-flex items-center font-bold rounded-md h-10 md:h-12 px-6 md:px-8 text-sm md:text-base bg-white text-nsw-brand-grey-primary">
-              Explore roles
-            </nuxt-link>
-          </div> -->
         </div>
-        <div class="flex-1">
-          <client-only>
-            <vimeo-player ref="player" class="vimeo-video" :video-id="videoID" :player-height="height" :controls="true" video-url="https://vimeo.com/357726193/b1773b87c6" @ready="onReady"></vimeo-player>
-          </client-only>
-          <!-- <img src="/images/home-hero.jpg" alt="" class="w-full object-cover" style="aspect-ratio: 16/9;" /> -->
+
+        <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
+          <img src="/figures/3.svg" class="h-64 mb-6" />
+          <div class="mx-6">
+            <p class="font-bold mb-2">
+              Understand the skills required for future roles
+            </p>
+            <p>
+              Compare current and desired roles side by side to see the skills
+              you may need to build or improve on.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
+          <img src="/figures/4.svg" class="h-64 mb-6" />
+          <div class="mx-6">
+            <p class="font-bold mb-2">Save your plan</p>
+            <p>Save your plan and use it to start a career conversation.</p>
+          </div>
+        </div>
+      </div>
+    </section-container>
+
+    <div class="mb-16">
+      <div
+        class="container flex flex-col md:flex-row mb-8 md:mb-16 items-center md:items-stretch"
+      >
+        <div class="w-full md:w-1/2">
+          <img src="/images/individuals.png" class="p-6" />
+        </div>
+        <div class="w-full md:w-1/2 px-4">
+          <p class="text-3xl font-bold mb-4">Benefits for Individuals</p>
+          <ul class="ml-4 list-disc">
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">View roles within NSWPF</p>
+                <p>Explore roles and pathways within NSWPF.</p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Assess your skills and capabilities</p>
+                <p>
+                  Identify your strengths and areas for development required for
+                  your next role.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Create a personalised career plan</p>
+                <p>
+                  Use this plan as a basis for career conversations,
+                  professional growth and identifying development opportunities.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="container flex flex-col-reverse md:flex-row flex-wrap items-center md:items-stretch"
+      >
+        <div class="w-full md:w-1/2 px-4">
+          <p class="text-3xl font-bold mb-4">Benefits for Managers</p>
+          <ul class="ml-4 list-disc">
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">
+                  Retain top talent by supporting career aspirations
+                </p>
+                <p>
+                  Retain top talent by supporting team members in reaching their
+                  desired career goal within NSWPF.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Improve the capability of your team</p>
+                <p>
+                  Show possible career pathways and identify areas for
+                  improvement and development.
+                </p>
+              </div>
+            </li>
+
+            <li class="mb-3">
+              <div>
+                <p class="font-bold">Start a meaningful career conversation</p>
+                <p>
+                  A self-assessment tool will create a tangible starting point
+                  for honest and tailored career conversations.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full md:w-1/2">
+          <img src="/images/managers.png" class="p-6" />
         </div>
       </div>
     </div>
 
-    <section-container title="How this tool can help you" :cols="1">
-      <div class="lg:w-10/12 lg:my-8">
-        <img src="images/feature-comparison.png" alt="Skills and capabilities comparison table" class="w-full object-cover mb-8">
-        <h3 class="font-bold text-lg leading-tight xl:w-11/12 mb-4">
-          Understand the skills required for future roles
-        </h3>
-        <p class="w-11/12 mb-4">
-          Compare current and desired roles side by side to see the skills you may need to build or improve on.
-        </p>
+    <div class="container mb-16">
+      <hr class="my-4" />
+      <div class="flex flex-row gap-4 lg:gap-0 justify-between">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12">
+          <img src="/pcc.png" class="h-12 xl:h-16" />
+          <img src="/tcsc.svg" class="h-12 xl:h-16" />
+        </div>
+        <div class="w-1/2">
+          <p class="text-xs text-nsw-brand-primary-blue">
+            The NSWPF Career Pathfinder data is updated periodically from the
+            latest approved NSWPF role descriptions, NSWPF Job Family Model, pay
+            grades/scales and the NSWPF Public Sector Capability Framework. All
+            care has been taken to provide correct information, however if you
+            identify an inaccuracy, we welcome your feedback. #PCC-Careers.
+          </p>
+        </div>
       </div>
-    </section-container>
+    </div>
   </div>
 </template>
 
@@ -113,7 +242,7 @@ export default {
 <style>
 .vimeo-video {
   position: relative;
-    padding-top: 56.25%;
+  padding-top: 56.25%;
 }
 .vimeo-video iframe {
   width: 100%;
