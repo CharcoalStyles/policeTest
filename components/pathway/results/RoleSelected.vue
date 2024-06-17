@@ -6,7 +6,7 @@
     <h3 class="font-bold text-xl mb-4">
       {{ role.name }}
     </h3>
-    <div class="flex flex-col gap-3 lg:flex-row mb-6">
+    <div class="flex flex-col flex-wrap gap-3 lg:flex-row mb-6">
       <information-badge v-if="role.grade" class="rounded-full" size="sm">
         {{ role.grade }}
       </information-badge>
@@ -91,7 +91,7 @@ export default {
     },
     essentialRequirements() {
       if (this.role.essentialRequirements) {
-        return this.role.essentialRequirements.split('•\t').filter((er) => er !== '')
+        return this.role.essentialRequirements.split('•').filter((er) => er !== '').map((er) => er.trim())
       }
       return ''
     },
