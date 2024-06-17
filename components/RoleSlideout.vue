@@ -61,7 +61,7 @@
           <p>Role Description</p>
         </a>
       </div>
-      <div v-if="essentialRequirements != ''">
+      <div v-if="essentialRequirements">
         <div class="flex flex-row gap-2 mb-2">
           <img src="/essential.svg" alt="Link icon" />
           <p class="font-bold text-nsw-brand-primary-blue">
@@ -91,7 +91,7 @@
             type="skill"
             instructions="selfAssessed"
             role-type="current"
-            full-width="true"
+            :full-width="true"
           />
         </div>
       </div>
@@ -108,7 +108,7 @@
             type="capability"
             instructions="selfAssessed"
             role-type="current"
-            full-width="true"
+            :full-width="true"
           />
         </div>
       </div>
@@ -132,50 +132,37 @@
           </nuxt-link>
         </div>
       </div>
-      <!-- <div class="mb-6">
-        <h4 class="font-bold text-xl mb-3">
-          People typically progress to
-        </h4>
-        <div>
-          here
-        </div>
-      </div> -->
-      <!-- <div class="mb-8">
-        <h4 class="font-bold text-xl mb-3">
-          Relationships to other roles
-        </h4>
-      </div> -->
-      <div v-if="getSimilarRolesBySkills.items.length" class="mb-6">
+      <div v-if="progressionRoles.length" class="mb-6">
         <h4 class="font-bold mb-4 flex items-center text-lg">
-          Similar in skillset
+          Progression Roles
           <!-- <information-badge size="xs" colour="grey" class="font-normal ml-3">
             {{ getSimilarRolesBySkills.items.length }}
           </information-badge> -->
         </h4>
         <div class="flex flex-col">
           <job-role
-            v-for="similarRoleBySkills in getSimilarRolesBySkills"
+            v-for="similarRoleBySkills in progressionRoles.slice(0, 5)"
             :key="similarRoleBySkills.id"
             :role="similarRoleBySkills"
             @click.native="$emit('selected', similarRoleBySkills)"
           />
         </div>
       </div>
-      <div v-if="getSimilarRolesByGrade.length" class="mb-6">
+      <div v-if="adjacentRoles.length" class="mb-6">
         <h4 class="font-bold mb-4 flex items-center text-lg">
-          Similar in salary
+          Adjacent Roles
           <!-- <information-badge size="xs" colour="grey" class="font-normal ml-3">
-            {{ getSimilarRolesByGrade.length }}
+            {{ getSimilarRolesBySkills.items.length }}
           </information-badge> -->
         </h4>
-        <transition-group name="list" tag="div" class="flex flex-col">
+        <div class="flex flex-col">
           <job-role
-            v-for="similarRoleByGrade in getSimilarRolesByGrade"
-            :key="similarRoleByGrade.id"
-            :role="similarRoleByGrade"
-            @click.native="$emit('selected', similarRoleByGrade)"
+            v-for="similarRoleBySkills in adjacentRoles.slice(0, 5)"
+            :key="similarRoleBySkills.id"
+            :role="similarRoleBySkills"
+            @click.native="$emit('selected', similarRoleBySkills)"
           />
-        </transition-group>
+        </div>
       </div>
     </div>
   </div>
@@ -186,6 +173,11 @@ import skills from '@/data/skills.json'
 import InformationBadge from '@/components/InformationBadge'
 import JobRole from '@/components/JobRole'
 import ComparisonRow from '@/components/pathway/results/ComparisonRow'
+import {
+  adjacentRoles,
+  progressionRoles,
+  rankAndSortRoles
+} from '@/utils/roleComp'
 
 export default {
   components: {
@@ -209,21 +201,28 @@ export default {
     }
   },
   computed: {
-    getSimilarRolesByGrade() {
-      return this.$collect(this.roles).where('grade', this.role.grade).all()
+    progressionRoles() {
+      const progRoles = progressionRoles(this.roles, this.role)
+      const prog = rankAndSortRoles(this.role, progRoles).map(
+        ({ role }) => role
+      )
+      console.log({ prog })
+      return prog
     },
-    getSimilarRolesBySkills() {
-      return this.$collect(this.roles)
-        .where('id', '!==', this.role.id)
-        .where('gradeId', '>=', this.role.gradeId)
-        .filter((role) => {
-          const currentRoleSkills = this.getSkillsCodeArray(this.role)
-          const roleSklls = this.getSkillsCodeArray(role)
-          return (
-            this.$collect(currentRoleSkills).intersect(roleSklls).count() > 1
-          )
-        })
-        .sortBy('gradeId')
+    adjacentRoles() {
+      const adjRoles = adjacentRoles(this.roles, this.role)
+      const adj = rankAndSortRoles(this.role, adjRoles).map(({ role }) => role)
+      console.log({ adj })
+      return adj
+    },
+    essentialRequirements() {
+      if (this.role.essentialRequirements) {
+        return this.role.essentialRequirements
+          .split('•')
+          .filter((er) => er !== '')
+          .map((er) => er.trim())
+      }
+      return ''
     }
   },
   methods: {

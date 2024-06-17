@@ -2,7 +2,7 @@
   <div class="relative bg-white shadow-lg rounded-lg mb-4 px-6 py-5 flex flex-col cursor-pointer border border-nsw-brand-grey-light hover:border-nsw-brand-grey-primary hover:shadow-xl transition transform-all duration-200">
     <div class="flex justify-between mb-0">
       <div class="font-semibold mb-2 text-grey-primary text-sm">
-        Grade {{ role.grade }}
+        {{ role.grade }}
       </div>
       <information-badge v-if="role.manager" size="xs">
         Manager role

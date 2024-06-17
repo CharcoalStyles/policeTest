@@ -442,6 +442,7 @@ import StepBadge from '@/components/pathway/results/StepBadge'
 import PrintPage from '@/components/PrintPage'
 import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
+import { adjacentRoles, progressionRoles, roleShareCapabilitiesRank } from '@/utils/roleComp'
 
 export default {
   layout: 'results',
@@ -555,7 +556,7 @@ export default {
         ? this.answers['detective-roles'].value.includes('yes')
         : false
 
-      const filteredRoles = this.roles
+      const filteredRoles = progressionRoles(this.roles, currentRole)
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -571,27 +572,14 @@ export default {
           return true
         })
         .filter((role) => {
-          return role.jobFunction === currentRole.jobFunction
-        })
-        .filter((role) => {
           // Filter out detective roles if not wanted; super edge case for this set, but gotta do it!
           if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
             return false
           }
           return true
         })
-        .filter((role) => {
-          // Only pick roles that are the next level up
-          // Will need to fix this logic for roles that don't have numerical grades, by using salary
-          let nextRoleJump = 1
-          if (
-            currentRole.gradeId.type === 'policing' &&
-            currentRole.gradeId.grade === 2
-          ) {
-            nextRoleJump = 2
-          }
-          return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
-        })
+
+      console.log({ filteredRoles })
 
       return this.rankAndSortRoles(currentRole, filteredRoles).map(
         ({ role }) => role
@@ -603,7 +591,7 @@ export default {
         ? this.answers['detective-roles'].value.includes('yes')
         : false
 
-      const filteredRoles = this.roles
+      const filteredRoles = adjacentRoles(this.roles, currentRole)
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -619,31 +607,9 @@ export default {
           return true
         })
         .filter((role) => {
-          // Filter out roles not in current Job Family
-          return role.jobFamily === currentRole.jobFamily
-        })
-        .filter((role) => {
-          // Filter out roles in current Job Function
-          return role.jobFunction !== currentRole.jobFunction
-        })
-        .filter((role) => {
           // Filter out detective roles if not wanted
           if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
             return false
-          }
-          return true
-        })
-        .filter((role) => {
-          // Only pick roles that are the same grade
-          // Will need to fix this logic for roles that don't have numerical grades, by using salary
-          return role.gradeId.grade === currentRole.gradeId.grade
-        })
-        .filter((role) => {
-          if (role.id === currentRole.id) {
-            return false
-          }
-          if (this.answers.hasOwnProperty('goal-role')) {
-            return role.id !== this.answers['goal-role'].value
           }
           return true
         })
@@ -674,63 +640,11 @@ export default {
       return results
     },
 
-    roleShareCapabilitiesRank(firstRole, secondRole) {
-      const result = {
-        focusFocus: 0,
-        allFocus: 0,
-        focusAll: 0,
-        allAll: 0
-      }
-
-      firstRole.capabilities.all.forEach((firstCap) => {
-        secondRole.capabilities.all.forEach((secondCap) => {
-          if (firstCap.code === secondCap.code) {
-            const firstFocus = firstRole.capabilities.focus
-              .map(({ code }) => code)
-              .includes(firstCap.code)
-            const secondFocus = secondRole.capabilities.focus
-              .map(({ code }) => code)
-              .includes(secondCap.code)
-
-            let resultKey = 'focusFocus'
-
-            if (!firstFocus && secondFocus) {
-              resultKey = 'allFocus'
-            } else if (firstFocus && !secondFocus) {
-              resultKey = 'focusAll'
-            } else if (!firstFocus && !secondFocus) {
-              resultKey = 'allAll'
-            }
-
-            const levelDelta = firstCap.level - secondCap.level
-
-            if (levelDelta === 0) {
-              // equal
-              result[resultKey] += 1
-            }
-
-            if (levelDelta >= 1) {
-              // FirstCap higher
-              result[resultKey] += 1.2
-              return
-            }
-
-            if (levelDelta === -1) {
-              // FirstCap off by one
-              result[resultKey] += 0.3
-            }
-          }
-        })
-      })
-
-      return result
-    },
-
     rankAndSortRoles(currentRole, compareRoles) {
       return compareRoles
         .map((role) => {
           // Capability comparison
-          const sharingSkills = this.roleShareCapabilitiesRank(
+          const sharingSkills = roleShareCapabilitiesRank(
             currentRole,
             role
           )
