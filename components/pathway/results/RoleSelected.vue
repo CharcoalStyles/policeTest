@@ -48,6 +48,9 @@
         <p>Role Description</p>
       </a>
     </div>
+    <div class="mb-4">
+      <essential-requirements-icon :role="role" size="lg" />
+    </div>
     <div v-if="essentialRequirements != ''">
       <div class="flex flex-row gap-2 mb-2">
         <img src="/icons/essential.svg" alt="Link icon" />
@@ -66,10 +69,12 @@
 
 <script>
 import InformationBadge from '@/components/InformationBadge'
+import EssentialRequirementsIcon from '~/components/EssentialRequirementsIcon.vue'
 
 export default {
   components: {
-    InformationBadge
+    InformationBadge,
+    EssentialRequirementsIcon
   },
   props: {
     role: {
