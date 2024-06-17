@@ -757,8 +757,10 @@ export default {
             .all()
         }))
         .sortByDesc((group) => group.roles.length)
+        .filter((group) => group.name !== '')
         .all()
 
+      console.log({ results })
       return results
     },
     bentoJobFamily() {
