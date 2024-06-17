@@ -442,7 +442,11 @@ import StepBadge from '@/components/pathway/results/StepBadge'
 import PrintPage from '@/components/PrintPage'
 import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
 import capabilityNamesMap from '@/data/capabilityNamesMap.json'
-import { adjacentRoles, progressionRoles, roleShareCapabilitiesRank } from '@/utils/roleComp'
+import {
+  adjacentRoles,
+  progressionRoles,
+  roleShareCapabilitiesRank
+} from '@/utils/roleComp'
 
 export default {
   layout: 'results',
@@ -552,9 +556,17 @@ export default {
     },
     
     progressionRoles(currentRole) {
-      const showDetective = this.answers.hasOwnProperty('detective-roles')
-        ? this.answers['detective-roles'].value.includes('yes')
-        : false
+      let showDetective = true
+      if (this.answers.hasOwnProperty('detective-roles')) {
+        switch (this.answers['detective-roles'].value) {
+          case 'no':
+            showDetective = false
+            break
+          case 'yes':
+          default:
+            showDetective = true
+        }
+      }
 
       const filteredRoles = progressionRoles(this.roles, currentRole)
         .filter((role) => {
@@ -644,10 +656,7 @@ export default {
       return compareRoles
         .map((role) => {
           // Capability comparison
-          const sharingSkills = roleShareCapabilitiesRank(
-            currentRole,
-            role
-          )
+          const sharingSkills = roleShareCapabilitiesRank(currentRole, role)
 
           // Grade logic
           if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {

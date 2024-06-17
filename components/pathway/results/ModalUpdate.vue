@@ -54,6 +54,10 @@ export default {
       //   event: 'update_answer_modal',
       //   category: 'pathway_results'
       // })
+      this.$store.dispatch('saveQuestionAnswer', {
+        id: 'isDetective',
+        value: ''
+      })
       this.$emit('close')
       this.$router.push('/pathway')
     }

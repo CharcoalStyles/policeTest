@@ -1,29 +1,40 @@
 <template>
-  <div class="relative bg-white shadow-lg rounded-lg mb-4 px-6 py-5 flex flex-col cursor-pointer border border-nsw-brand-grey-light hover:border-nsw-brand-grey-primary hover:shadow-xl transition transform-all duration-200">
-    <div class="flex justify-between mb-0">
-      <div class="font-semibold mb-2 text-grey-primary text-sm">
+  <div
+    class="relative bg-white shadow-lg rounded-lg mb-4 px-6 py-5 flex flex-col cursor-pointer border border-nsw-brand-grey-light hover:border-nsw-brand-grey-primary hover:shadow-xl transition transform-all duration-200"
+  >
+    <div class="flex justify-between text-grey-primary text-sm mb-4">
+      <div>
         {{ role.grade }}
+        <span class="pl-4">Salary: {{ $currency(role.salary.min) }} -
+        {{ $currency(role.salary.max) }}</span>
       </div>
-      <information-badge v-if="role.manager" size="xs">
-        Manager role
-      </information-badge>
+      <div class="-mt-2">
+        <img
+          src="/icons/chevron-left-blue.svg"
+          style="transform: rotate(180deg)"
+          alt="Arrow icon"
+        />
+      </div>
     </div>
-    <div class="mb-2 text-nsw-gray-800 text-sm">
-      Salary: {{ $currency(role.salary.min) }} - {{ $currency(role.salary.max) }}
-    </div>
-    <div class="flex items-center">
-      <div class="flex-grow font-bold text-nsw-blue-800">
+    <div class="flex flex-col text-nsw-blue-800">
+      <div class="text-sm font-bold">
         {{ role.name }}
       </div>
-      <div class="flex-shrink">
-        <img src="/arrow.svg" class="h-4" alt="Arrow icon">
+      <div class="text-xs flex-grow">
+        {{ role.jobFunction }}
       </div>
     </div>
+    <EssentialRequirementsIcon :role="role" />
   </div>
 </template>
 
 <script>
+import EssentialRequirementsIcon from './EssentialRequirementsIcon.vue'
+
 export default {
+  components: {
+    EssentialRequirementsIcon
+  },
   props: {
     role: {
       type: Object,
