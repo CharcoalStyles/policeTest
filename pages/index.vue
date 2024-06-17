@@ -60,7 +60,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/1.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <p class="font-bold mb-2">Explore Roles</p>
+            <h4 class="font-bold mb-2">Explore Roles</h4>
             <p>Explore roles and pathways within NSWPF.</p>
           </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/2.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <p class="font-bold mb-2">Get personalised career pathways</p>
+            <h4 class="font-bold mb-2">Get personalised career pathways</h4>
             <p>
               Explore and prioritise career pathways based on what matters to
               you.
@@ -79,9 +79,9 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/3.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <p class="font-bold mb-2">
+            <h4 class="font-bold mb-2">
               Understand the skills required for future roles
-            </p>
+            </h4>
             <p>
               Compare current and desired roles side by side to see the skills
               you may need to build or improve on.
@@ -92,7 +92,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/4.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <p class="font-bold mb-2">Save your plan</p>
+            <h4 class="font-bold mb-2">Save your plan</h4>
             <p>Save your plan and use it to start a career conversation.</p>
           </div>
         </div>
@@ -104,9 +104,9 @@
         class="container flex flex-col md:flex-row mb-8 md:mb-16 items-center md:items-stretch"
       >
         <div class="w-full md:w-1/2">
-          <img src="/images/individuals.png" class="p-6" />
+          <img src="/images/individuals.png" class="p-6 object-cover" />
         </div>
-        <div class="w-full md:w-1/2 px-4">
+        <div class="w-full md:w-1/2 px-4 over">
           <p class="text-3xl font-bold mb-4">Benefits for Individuals</p>
           <ul class="ml-4 list-disc">
             <li class="mb-3">
@@ -178,7 +178,7 @@
           </ul>
         </div>
         <div class="w-full md:w-1/2">
-          <img src="/images/managers.png" class="p-6" />
+          <img src="/images/managers.png" class="p-6 object-cover" />
         </div>
       </div>
     </div>
