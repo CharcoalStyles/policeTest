@@ -48,9 +48,12 @@
         <p>Role Description</p>
       </a>
     </div>
+    <div class="mb-4">
+      <essential-requirements-icon :role="role" size="lg" />
+    </div>
     <div v-if="essentialRequirements != ''">
       <div class="flex flex-row gap-2 mb-2">
-        <img src="/essential.svg" alt="Link icon" />
+        <img src="/icons/essential.svg" alt="Link icon" />
         <p class="font-bold text-nsw-brand-primary-blue">
           Essential Requirements
         </p>
@@ -66,10 +69,12 @@
 
 <script>
 import InformationBadge from '@/components/InformationBadge'
+import EssentialRequirementsIcon from '~/components/EssentialRequirementsIcon.vue'
 
 export default {
   components: {
-    InformationBadge
+    InformationBadge,
+    EssentialRequirementsIcon
   },
   props: {
     role: {
@@ -94,22 +99,6 @@ export default {
         return this.role.essentialRequirements.split('•').filter((er) => er !== '').map((er) => er.trim())
       }
       return ''
-    },
-    getEssentialRequirements() {
-      return Object.keys(this.role.essential)
-        .filter((key) => {
-          return this.role.essential[key]
-        })
-        .map((key) => {
-          switch (key) {
-            case 'aboriginality':
-              return 'Flexible working hours'
-            case 'detective':
-              return 'Remote working'
-            default:
-              return key
-          }
-        })
     }
   }
 }

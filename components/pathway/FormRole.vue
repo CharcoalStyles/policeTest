@@ -120,9 +120,12 @@
                   <div class="font-bold sm:whitespace-no-wrap">
                     {{ role.name }}
                   </div>
-                  <div class="text-sm text-nsw-brand-primary-blue sm:whitespace-no-wrap">
+                  <div
+                    class="text-sm text-nsw-brand-primary-blue sm:whitespace-no-wrap"
+                  >
                     {{ role.jobFunction }}
                   </div>
+                  <EssentialRequirementsIcon :role="role" />
                 </div>
                 <div class="flex flex-col items-end mb-2 sm:mb-1">
                   <information-badge
@@ -166,11 +169,13 @@ import { mapGetters } from 'vuex'
 import FuzzySearch from 'fuzzy-search'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import InformationBadge from '@/components/InformationBadge'
+import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
 
 export default {
   components: {
     Autocomplete,
-    InformationBadge
+    InformationBadge,
+    EssentialRequirementsIcon
   },
   props: {
     step: {
