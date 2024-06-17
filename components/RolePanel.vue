@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-56 min-h-20 border border-nsw-grey-800 relative bg-white rounded-lg px-4 py-3 flex-shrink-0 float-left"
+    class="max-w-72 min-h-20 border border-nsw-grey-800 relative bg-white rounded-lg px-4 py-3 flex-shrink-0 float-left"
     :class="[clickableClasses, zoomToClass]"
   >
     <div class="flex flex-col">

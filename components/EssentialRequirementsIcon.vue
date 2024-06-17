@@ -1,23 +1,30 @@
 <template>
   <div>
-    <div v-if="role.essential.aboriginality" class="flex flex-row gap-2 pt-4">
-      <img src="/icons/essential-atsi.svg" alt="Essential Requirements icon" />
+    <div
+      v-if="role.essential.aboriginality"
+      class="flex flex-row items-start gap-2 pt-4"
+    >
+      <img src="/icons/essential-atsi.svg" class="mt-1" alt="Essential Requirements icon" />
       <p class="text-nsw-brand-primary-blue" :class="textSize">
         Aboriginal or Torres Strait Islander Identified Role
       </p>
     </div>
 
-    <div v-if="role.essential.detective" class="flex flex-row gap-2 pt-4">
+    <div
+      v-if="role.essential.detective"
+      class="flex flex-row items-start gap-2 pt-4"
+    >
       <img
         src="/icons/essential-detective.svg"
         alt="Essential Requirements icon"
+        class="mt-1"
       />
       <p class="text-nsw-brand-primary-blue" :class="textSize">
         Designated Detective Role
       </p>
     </div>
 
-    <div v-if="showDefaultIcon" class="flex flex-row gap-2 pt-4">
+    <div v-if="showDefaultIcon" class="flex flex-row items-start gap-2 pt-4">
       <img src="/icons/essential.svg" alt="Essential Requirements icon" />
       <p class="text-nsw-brand-primary-blue" :class="textSize">
         Essential Requirements
