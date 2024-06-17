@@ -9,7 +9,7 @@
         </p>
       </div>
       <hr class="w-full" />
-      <div class="mt-4 mb-8 pl-4 xl:pl-0 flex flex-row gap-3">
+      <div class="mt-4 mb-8 pl-4 xl:pl-0 flex flex-row flex-wrap gap-3">
         <nuxt-link to="/explorer" target="_blank" class="underline">
           Accessibility
         </nuxt-link>

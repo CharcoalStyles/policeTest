@@ -106,7 +106,7 @@
         <div class="w-full md:w-1/2">
           <img src="/images/individuals.png" class="p-6 object-cover" />
         </div>
-        <div class="w-full md:w-1/2 px-4">
+        <div class="w-full md:w-1/2 px-4 over">
           <p class="text-3xl font-bold mb-4">Benefits for Individuals</p>
           <ul class="ml-4 list-disc">
             <li class="mb-3">
