@@ -1,12 +1,28 @@
 <template>
-  <td class="comparison-cell lg:w-1/2 px-4 lg:px-8 py-4" :class="{ 'border-b border-b-gray-200' : item || emptyMessage }">
+  <td
+    class="comparison-cell px-4 py-4"
+    :class="{
+      'border-b border-b-gray-200': item || emptyMessage,
+      'lg:w-1/2 lg:px-8': !fullWidth
+    }"
+  >
     <div v-if="item" class="flex items-start justify-between">
-      <button class="underline text-left" @click="$emit('skillClicked', { skill: item.code, journey: journeyType })">
+      <button
+        class="underline text-left"
+        @click="
+          $emit('skillClicked', { skill: item.code, journey: journeyType })
+        "
+      >
         <span class="">{{ item.name }}</span>
       </button>
       <div class="pl-4 flex-shrink-0 flex space-x-3 whitespace-no-wrap">
         <template>
-          <information-badge v-if="journeyType" size="xs" :colour="journeyType.colour" :tooltip="journeyType.tooltip">
+          <information-badge
+            v-if="journeyType"
+            size="xs"
+            :colour="journeyType.colour"
+            :tooltip="journeyType.tooltip"
+          >
             {{ journeyType.text }}
           </information-badge>
         </template>
@@ -52,6 +68,10 @@ export default {
     instructions: {
       type: String,
       default: 'targetRole'
+    },
+    fullWidth: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -63,7 +83,9 @@ export default {
     },
     emptyMessage() {
       if (this.instructions) {
-        return this.targetRole ? `Not a focus ${this.type}, but may be complimentary` : 'Not currently known'
+        return this.targetRole
+          ? `Not a focus ${this.type}, but may be complimentary`
+          : 'Not currently known'
       }
       return ''
     },
@@ -76,18 +98,32 @@ export default {
       }
 
       if (this.instructions === 'selfAssessed' && this.targetRole) {
-        const currentRoleItem = this.$collect(this.currentRole[this.valueName].focus).where('code', this.item.code).first()
-        const targetRoleItem = this.$collect(this.targetRole[this.valueName].focus).where('code', this.item.code).first()
+        const currentRoleItem = this.$collect(
+          this.currentRole[this.valueName].focus
+        )
+          .where('code', this.item.code)
+          .first()
+        const targetRoleItem = this.$collect(
+          this.targetRole[this.valueName].focus
+        )
+          .where('code', this.item.code)
+          .first()
         const assessedValue = this.assessedSkills?.[this.item.code]?.value
 
-        if (this.roleType === 'current' && assessedValue < currentRoleItem.level) {
+        if (
+          this.roleType === 'current' &&
+          assessedValue < currentRoleItem.level
+        ) {
           return {
             text: 'Upskill',
             colour: 'orange',
             tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
           }
         }
-        if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
+        if (
+          this.roleType === 'target' &&
+          assessedValue < targetRoleItem.level
+        ) {
           return {
             text: 'Upskill',
             colour: 'orange',
