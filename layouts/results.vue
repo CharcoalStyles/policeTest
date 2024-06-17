@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen antialiased text-base print:w-full">
+  <div class="flex flex-col min-h-screen antialiased text-base">
     <div class="bg-nsw-grey-100 block h-header absolute z-0" />
     <nsw-header />
     <Nuxt />

@@ -159,7 +159,7 @@
                   Options based on your answers
                 </h4>
               </div>
-              <div class="flex flex-row flex-wrap">
+              <div class="md:flex flex-row flex-wrap hidden">
                 <div
                   v-if="progressionRoles(currentRole).length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
@@ -184,7 +184,7 @@
                 </div>
                 <div
                   v-if="skillRoles(currentRole).length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                  class="flex-none flex-grow  md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
                     <h4 class="text-xl font-bold">Roles with similar skills</h4>
@@ -202,8 +202,12 @@
               <div class="flex flex-row flex-wrap">
                 <div
                   v-if="progressionRoles(currentRole).length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                  class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
+                  <div class="mb-6 md:hidden">
+                    <h4 class="text-xl font-bold">Progression roles</h4>
+                    <p>Roles that your current role can progress to</p>
+                  </div>
                   <role-selector
                     v-for="role in progressionRoles(currentRole).slice(0, 6)"
                     :key="role.id"
@@ -215,8 +219,16 @@
                 </div>
                 <div
                   v-if="adjacentRoles(currentRole).length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                  class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
+                  <div class="mb-6 md:hidden">
+                    <h4 class="text-xl font-bold">Adjacent roles</h4>
+                    <p>
+                      Roles from your current work area that share your current
+                      capabilities
+                    </p>
+                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
+                  </div>
                   <role-selector
                     v-for="role in adjacentRoles(currentRole).slice(0, 6)"
                     :key="role.id"
@@ -228,8 +240,16 @@
                 </div>
                 <div
                   v-if="skillRoles(currentRole).length"
-                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                  class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
+                  <div class="mb-6 md:hidden">
+                    <h4 class="text-xl font-bold">Roles with similar skills</h4>
+                    <p>
+                      Roles from other parts of the organisation that share your
+                      current skills and capabilities
+                    </p>
+                    <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
+                  </div>
                   <role-selector
                     v-for="role in skillRoles(currentRole).slice(0, 6)"
                     :key="role.id"
