@@ -63,7 +63,7 @@
       </div>
       <div v-if="essentialRequirements">
         <div class="flex flex-row gap-2 mb-2">
-          <img src="/essential.svg" alt="Link icon" />
+          <img src="/icons/essential.svg" alt="Link icon" />
           <p class="font-bold text-nsw-brand-primary-blue">
             Essential Requirements
           </p>
