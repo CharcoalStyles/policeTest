@@ -252,7 +252,7 @@ rolesCsvData.data.forEach((row, i) => {
     roleNumber: row.nswpf_role_number,
     fullDescription: row.link_to_full_role_description,
     numPositions: row.number_of_positions.trim(),
-    command_BusUnit: row['new_-__command/business_unit'],
+    command_BusUnit: row['new_-__command/business_unit'].trim(),
     name: row.role,
     grade: row['new_-_grade'],
     gradeId: gradeIdParser(row['new_-_grade'], row.job_family),
