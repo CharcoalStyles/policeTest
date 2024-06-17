@@ -60,7 +60,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/1.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <h4 class="font-bold mb-2">Explore Roles</h4>
+            <h4 class="font-bold text-xl mb-2">Explore Roles</h4>
             <p>Explore roles and pathways within NSWPF.</p>
           </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/2.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <h4 class="font-bold mb-2">Get personalised career pathways</h4>
+            <h4 class="font-bold text-xl mb-2">Get personalised career pathways</h4>
             <p>
               Explore and prioritise career pathways based on what matters to
               you.
@@ -79,7 +79,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/3.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <h4 class="font-bold mb-2">
+            <h4 class="font-bold text-xl mb-2">
               Understand the skills required for future roles
             </h4>
             <p>
@@ -92,7 +92,7 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/4.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <h4 class="font-bold mb-2">Save your plan</h4>
+            <h4 class="font-bold text-xl mb-2">Save your plan</h4>
             <p>Save your plan and use it to start a career conversation.</p>
           </div>
         </div>
@@ -111,14 +111,14 @@
           <ul class="ml-4 list-disc">
             <li class="mb-3">
               <div>
-                <p class="font-bold">View roles within NSWPF</p>
+                <p class="font-bold text-xl">View roles within NSWPF</p>
                 <p>Explore roles and pathways within NSWPF.</p>
               </div>
             </li>
 
             <li class="mb-3">
               <div>
-                <p class="font-bold">Assess your skills and capabilities</p>
+                <p class="font-bold text-xl">Assess your skills and capabilities</p>
                 <p>
                   Identify your strengths and areas for development required for
                   your next role.
@@ -128,7 +128,7 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold">Create a personalised career plan</p>
+                <p class="font-bold text-xl">Create a personalised career plan</p>
                 <p>
                   Use this plan as a basis for career conversations,
                   professional growth and identifying development opportunities.
@@ -146,7 +146,7 @@
           <ul class="ml-4 list-disc">
             <li class="mb-3">
               <div>
-                <p class="font-bold">
+                <p class="font-bold text-xl">
                   Retain top talent by supporting career aspirations
                 </p>
                 <p>
@@ -158,7 +158,7 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold">Improve the capability of your team</p>
+                <p class="font-bold text-xl">Improve the capability of your team</p>
                 <p>
                   Show possible career pathways and identify areas for
                   improvement and development.
@@ -168,7 +168,7 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold">Start a meaningful career conversation</p>
+                <p class="font-bold text-xl">Start a meaningful career conversation</p>
                 <p>
                   A self-assessment tool will create a tangible starting point
                   for honest and tailored career conversations.
