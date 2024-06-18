@@ -61,6 +61,7 @@
           <p>Role Description</p>
         </a>
       </div>
+      <EssentialRequirementsIcon :role="role" />
       <div v-if="essentialRequirements">
         <div class="flex flex-row gap-2 mb-2">
           <img src="/icons/essential.svg" alt="Link icon" />
@@ -173,6 +174,7 @@ import skills from '@/data/skills.json'
 import InformationBadge from '@/components/InformationBadge'
 import JobRole from '@/components/JobRole'
 import ComparisonRow from '@/components/pathway/results/ComparisonRow'
+import EssentialRequirementsIcon from '@/components/EssentialRequirementsIcon'
 import {
   adjacentRoles,
   progressionRoles,
@@ -183,7 +185,8 @@ export default {
   components: {
     InformationBadge,
     JobRole,
-    ComparisonRow
+    ComparisonRow,
+    EssentialRequirementsIcon
   },
   props: {
     roles: {
@@ -206,13 +209,11 @@ export default {
       const prog = rankAndSortRoles(this.role, progRoles).map(
         ({ role }) => role
       )
-      console.log({ prog })
       return prog
     },
     adjacentRoles() {
       const adjRoles = adjacentRoles(this.roles, this.role)
       const adj = rankAndSortRoles(this.role, adjRoles).map(({ role }) => role)
-      console.log({ adj })
       return adj
     },
     essentialRequirements() {
