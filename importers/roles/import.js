@@ -247,6 +247,9 @@ fs.writeFileSync('keys.json', JSON.stringify(keys))
 const ids = []
 // Transform role data with parsers
 rolesCsvData.data.forEach((row, i) => {
+  if (row.job_family === '' || row.job_role === '' || row.job_function === '' || row.command_BusUnit === '') {
+    return
+  }
   roles.push({
     id: row.nswpf_role_number,
     roleNumber: row.nswpf_role_number,

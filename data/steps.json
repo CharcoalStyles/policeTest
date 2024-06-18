@@ -11,12 +11,12 @@
   },
   {
     "id": "current-role",
-    "title": "Select which job title closely matches your current role",
+    "title": "Start by identifying your current role",
     "type": "question",
     "assessible": true,
     "schema": {
       "section": "Your current role",
-      "help": "We'll use this as a starting point and does not have to be an exact match.",
+      "help": "We will use this as a starting point – it does not have to be an exact match. ",
       "field": {
         "type": "role",
         "required": true
@@ -40,7 +40,7 @@
           },
           {
             "title": "Administrative",
-            "value": "non-sworn",
+            "value": "unsworn",
             "description": "(including Special Constables)"
           },
           {
