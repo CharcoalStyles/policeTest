@@ -615,8 +615,6 @@ export default {
           return true
         })
 
-      console.log({ filteredRoles })
-
       return this.rankAndSortRoles(currentRole, filteredRoles).map(
         ({ role }) => role
       )

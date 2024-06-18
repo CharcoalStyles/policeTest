@@ -10,15 +10,12 @@
         </h1>
       </div>
       <div v-if="step.schema.help" class="mb-8">
-        <p
-          v-if="step.schema.help"
-          class="text-lg md:text-xl text-nsw-brand-grey-primary"
-        >
+        <p v-if="step.schema.help" class="text-nsw-brand-grey-primary">
           {{ step.schema.help }}
         </p>
         <p
           v-if="step.schema.helpExtra"
-          class="text-lg md:text-xl text-nsw-brand-grey-primary mt-4"
+          class="text-nsw-brand-grey-primary mt-4"
         >
           {{ step.schema.helpExtra }}
         </p>
