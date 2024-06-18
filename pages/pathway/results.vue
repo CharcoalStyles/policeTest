@@ -184,7 +184,7 @@
                 </div>
                 <div
                   v-if="skillRoles(currentRole).length"
-                  class="flex-none flex-grow  md:w-1/3 md:max-w-[50%] px-4 pb-4"
+                  class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
                     <h4 class="text-xl font-bold">Roles with similar skills</h4>
@@ -295,19 +295,20 @@
                 opportunities.
               </p>
             </div>
-            <table
-              class="block w-full overflow-x-scroll border border-gray-300 rounded-lg table-auto lg:overflow-x-auto"
-            >
-              <thead class="border-b border-gray-300">
-                <tr>
-                  <td class="align-top lg:w-1/2 print:w-1/2">
+
+            <div class="flex flex-col border border-gray-300 rounded-lg">
+              <div class="flex flex-row">
+                <div class="border-r border-gray-300 w-1/2 px-4 py-4">
+                  <div>
                     <role-selected
                       :roles="roles"
                       :role="currentRole"
                       type="current"
                     />
-                  </td>
-                  <td class="align-top lg:w-1/2 print:w-1/2">
+                  </div>
+                </div>
+                <div class="w-1/2 px-4 py-4">
+                  <div>
                     <role-selected
                       v-if="targetRole"
                       :roles="roles"
@@ -336,14 +337,17 @@
                         </div>
                       </div>
                     </div>
-                  </td>
-                </tr>
-              </thead>
-              <results-comparison
-                :current-role="currentRole"
-                :target-role="targetRole"
-              />
-            </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-gray-300">
+                <results-comparison
+                  :current-role="currentRole"
+                  :target-role="targetRole"
+                />
+              </div>
+            </div>
           </div>
           <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
             <h2 class="mb-6 text-3xl md:text-4xl font-bold">Next steps</h2>
@@ -797,11 +801,6 @@ export default {
   size: A4;
   margin: 1cm;
   -webkit-print-color-adjust: exact !important;
-}
-
-#comparison table tr td:first-child {
-  border-right-width: 1px;
-  border-right-color: #728096;
 }
 
 .print-break {

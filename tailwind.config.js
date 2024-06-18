@@ -4,9 +4,9 @@ module.exports = {
       center: true
     },
     extend: {
-      // screens: {
-      //   print: { raw: 'print' }
-      // },
+      screens: {
+        print: { raw: 'print' }
+      },
       fontSize: {
         family: '6rem',
         '[32px]': '2rem',
