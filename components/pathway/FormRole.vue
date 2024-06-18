@@ -221,11 +221,11 @@ export default {
     isDisabled() {
       return (
         Boolean(this.currentValue) ||
-        (this.step.id === 'role' && this.filter.sworn === '')
+        (this.step.id === 'current-role' && this.filter.sworn === '')
       )
     },
     searchPlaceholder() {
-      return this.step.id === 'role' && this.filter.sworn === ''
+      return this.step.id === 'current-role' && this.filter.sworn === ''
         ? ''
         : 'Start typing'
     },
@@ -248,7 +248,7 @@ export default {
       if (this.step.id === 'role') {
         return allFamilies
       }
-
+      console.log(this.$store.state.pathway.answers.sworn.value)
       if (this.$store.state.pathway.answers.sworn.value !== 'unsworn') {
         return ['Policing', ...allFamilies.sort()]
       }

@@ -42,7 +42,7 @@
     <div class="w-fit">
       <a
         :href="role.fullDescription"
-        class="flex flex-row gap-1 underline text-sm text-nsw-brand-primary-blue mb-6"
+        class="flex flex-row gap-1 underline text-sm text-nsw-brand-primary-blue mb-6 fold-links"
       >
         <img src="/icons/pages.svg" alt="Link icon" />
         <p>Role Description</p>
@@ -103,3 +103,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.fold-links::after{
+  word-break: break-all;
+}
+</style>

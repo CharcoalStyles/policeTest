@@ -124,7 +124,7 @@
         <div>
           <div
             id="target"
-            class="py-6 border-b lg:py-16 border-nsw-grey-200 print-break"
+            class="py-6 border-b lg:py-16 border-nsw-grey-200 print-break print:hidden"
           >
             <div class="mb-10">
               <h3 class="flex items-center mb-3 text-3xl font-bold md:text-3xl">
@@ -199,7 +199,7 @@
 
               <!-- Lists -->
 
-              <div class="flex flex-row flex-wrap">
+              <div class="flex flex-row flex-wrap print:hidden">
                 <div
                   v-if="progressionRoles(currentRole).length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
@@ -287,9 +287,10 @@
           >
             <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
-                <step-badge>2</step-badge> Your skills and capability comparison
+                <step-badge class="print:hidden">2</step-badge> Your skills and
+                capability comparison
               </h3>
-              <p>
+              <p class="print:hidden">
                 Select any <strong>skill</strong> or
                 <strong>capability</strong> to understand gaps and upskilling
                 opportunities.

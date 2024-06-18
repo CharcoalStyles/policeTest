@@ -103,7 +103,7 @@ export default {
             if (sworn.value === 'sworn' && role.jobFamily !== 'Policing') {
               return acc
             }
-            if (sworn.value === 'non-sworn' && role.jobFamily === 'Policing') {
+            if (sworn.value === 'unsworn' && role.jobFamily === 'Policing') {
               return acc
             }
           }
@@ -122,7 +122,14 @@ export default {
           return acc
         }, [])
         .sort((a, b) => {
-          return a.jobFamily === 'Policing' ? -1 : a.jobFamily.localeCompare(b.jobFamily)
+          console.log(a.jobFamily, b.jobFamily, a.jobFamily === 'Policing' ? -1 : a.jobFamily.localeCompare(b.jobFamily))
+          if (a.jobFamily === 'Policing') {
+            return -1
+          }
+          if (b.jobFamily === 'Policing') {
+            return 1
+          }
+          return a.jobFamily.localeCompare(b.jobFamily)
         })
         .map((jobFamily) => {
           return {
