@@ -1,6 +1,6 @@
 <template>
-  <td
-    class="comparison-cell px-4 py-4"
+  <div
+    class="comparison-cell mx-4 py-4"
     :class="{
       'border-b border-b-gray-200': item || emptyMessage,
       'lg:w-1/2 lg:px-8': !fullWidth
@@ -34,7 +34,7 @@
     <div v-else class="italic text-nsw-grey-600">
       {{ emptyMessage }}
     </div>
-  </td>
+  </div>
 </template>
 
 <script>

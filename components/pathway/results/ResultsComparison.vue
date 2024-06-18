@@ -1,75 +1,93 @@
 <template>
-  <tbody>
-    <tr v-if="skillsMatrix.length > 0">
-      <td class="lg:w-1/2 p-4 lg:p-8">
-        <div class="whitespace-no-wrap font-bold text-lg">Current skill</div>
+  <div class="flex flex-col pb-8 border-b border-gray-300">
+    <div class="flex flex-row" v-if="skillsMatrix.length > 0">
+      <div class="w-1/2 p-4 border-r border-gray-300">
+        <p class="whitespace-no-wrap font-bold text-lg">Current skill</p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
-      </td>
-      <td class="lg:w-1/2 p-4 lg:p-8">
-        <div class="flex items-center whitespace-no-wrap font-bold text-lg">
+      </div>
+      <div class="w-1/2 p-4">
+        <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Target skill
-        </div>
+        </p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
-      </td>
-    </tr>
-    <tr v-for="(skill, index) in skillsMatrix" :key="`skill-${index}`">
-      <comparison-row
-        :current-role="currentRole"
-        :target-role="targetRole"
-        :item="skill.current"
-        type="skill"
-        instructions="selfAssessed"
-        current-instructions
-        role-type="current"
-        @skillClicked="showSkillModal"
-      />
-      <comparison-row
-        :current-role="currentRole"
-        :target-role="targetRole"
-        :item="skill.target"
-        type="skill"
-        instructions="selfAssessed"
-        role-type="target"
-        @skillClicked="showSkillModal"
-      />
-    </tr>
-    <tr v-if="capabilitiesMatrix.length > 0">
-      <td class="lg:w-1/2 p-4 lg:p-8">
-        <div class="flex items-center whitespace-no-wrap font-bold text-lg">
+      </div>
+    </div>
+    <div
+      v-for="(skill, index) in skillsMatrix"
+      :key="`skill-${index}`"
+      class="flex flex-row"
+    >
+      <div class="border-r border-gray-300 w-1/2">
+        <comparison-row
+          :current-role="currentRole"
+          :target-role="targetRole"
+          :item="skill.current"
+          :full-width="true"
+          type="skill"
+          instructions="selfAssessed"
+          current-instructions
+          role-type="current"
+          @skillClicked="showSkillModal"
+        />
+      </div>
+
+      <div class="w-1/2">
+        <comparison-row
+          :current-role="currentRole"
+          :target-role="targetRole"
+          :item="skill.target"
+          :full-width="true"
+          type="skill"
+          instructions="selfAssessed"
+          role-type="target"
+          @skillClicked="showSkillModal"
+        />
+      </div>
+    </div>
+    <div class="flex flex-row" v-if="capabilitiesMatrix.length > 0">
+      <div class="w-1/2 p-4 pt-8 border-r border-gray-300">
+        <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Current capability
-        </div>
+        </p>
         <p class="text-sm">Based on the NSW Government Capability Framework</p>
-      </td>
-      <td class="lg:w-1/2 p-4 lg:p-8">
-        <div class="flex items-center whitespace-no-wrap font-bold text-lg">
+      </div>
+      <div class="w-1/2 p-4  pt-8">
+        <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Target capability
-        </div>
+        </p>
         <p class="text-sm">Based on the NSW Government Capability Framework</p>
-      </td>
-    </tr>
-    <tr
+      </div>
+    </div>
+    <div
       v-for="(capability, index) in capabilitiesMatrix"
       :key="`capability-${index}`"
+      class="flex flex-row"
     >
-      <comparison-row
-        :current-role="currentRole"
-        :target-role="targetRole"
-        :item="capability.current"
-        type="capability"
-        instructions="selfAssessed"
-        role-type="current"
-        @skillClicked="showCapabilityModal"
-      />
-      <comparison-row
-        :current-role="currentRole"
-        :target-role="targetRole"
-        :item="capability.target"
-        type="capability"
-        instructions="selfAssessed"
-        role-type="target"
-        @skillClicked="showCapabilityModal"
-      />
-    </tr>
+      <div class="border-r border-gray-300 w-1/2">
+        <comparison-row
+          :current-role="currentRole"
+          :target-role="targetRole"
+          :item="capability.current"
+          :full-width="true"
+          type="capability"
+          instructions="selfAssessed"
+          role-type="current"
+          @skillClicked="showCapabilityModal"
+        />
+      </div>
+      <div class="w-1/2">
+        <comparison-row
+          :current-role="currentRole"
+          :target-role="targetRole"
+          :item="capability.target"
+          :full-width="true"
+          type="capability"
+          instructions="selfAssessed"
+          role-type="target"
+          @skillClicked="showCapabilityModal"
+        />
+      </div>
+    </div>
     <modal-skill
       :show="modals.skill"
       :selected-skill="selectedSkill"
@@ -88,7 +106,7 @@
       max-width="3xl"
       @close="modals.capability = false"
     />
-  </tbody>
+  </div>
 </template>
 
 <script>
