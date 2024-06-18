@@ -760,7 +760,6 @@ export default {
         .filter((group) => group.name !== '')
         .all()
 
-      console.log({ results })
       return results
     },
     bentoJobFamily() {

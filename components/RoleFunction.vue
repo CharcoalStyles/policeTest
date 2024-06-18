@@ -24,7 +24,9 @@
       </div>
       <table class="border-collapse w-full">
         <tr class="bg-nsw-grey-200">
-          <th class="px-4 py-4 whitespace-no-wrap h-12 w-32">Rank</th>
+          <th class="px-4 py-4 whitespace-no-wrap h-12 w-32">
+            {{ rows.key === 'grade' ? 'Rank' : 'Salary' }}
+          </th>
           <th
             v-for="xKey in columns"
             :key="xKey"
@@ -35,7 +37,7 @@
             </p>
           </th>
         </tr>
-        <tr v-for="yKey in rows" :key="yKey">
+        <tr v-for="yKey in rows.labels" :key="yKey.label">
           <td
             class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
             :style="getBgColour('dark')"
@@ -110,7 +112,8 @@ export default {
       axisKeys: {
         x: 'command_BusUnit',
         y: 'grade'
-      }
+      },
+      yAxisSalaryOverride: false
     }
   },
   computed: {
@@ -125,34 +128,10 @@ export default {
         return acc
       }, [])
 
-      if (this.axisKeys.x === 'grade' && this.familyName === 'Policing') {
-        if (this.roleFunction.name === 'Investigations') {
-          return [
-            'Detective Superintendent',
-            'Detective Inspector',
-            'Inspector',
-            'Detective Senior Sergeant',
-            'Detective Sergeant',
-            'Detective Senior Constable',
-            'Detective Constable / Detective Senior Constable',
-            'Detective Constable'
-          ].filter((x) => columns.includes(x))
-        }
-
-        return [
-          'Superintendent',
-          'Inspector',
-          'Senior Sergeant',
-          'Sergeant',
-          'Constable / Senior Constable',
-          'Grade Clerk 1/2'
-        ].filter((x) => columns.includes(x))
-      }
-
       return columns
     },
     rows() {
-      const rows = this.roleFunction.roles.reduce((acc, role) => {
+      const grades = this.roleFunction.roles.reduce((acc, role) => {
         if (!acc.includes(role[this.axisKeys.y])) {
           acc.push(role[this.axisKeys.y])
         }
@@ -161,7 +140,7 @@ export default {
 
       if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
         if (this.roleFunction.name === 'Investigations') {
-          return [
+          const labels = [
             'Detective Superintendent',
             'Detective Inspector',
             'Inspector',
@@ -170,9 +149,13 @@ export default {
             'Detective Senior Constable',
             'Detective Constable / Detective Senior Constable',
             'Detective Constable'
-          ].filter((x) => rows.includes(x))
+          ].filter((x) => grades.includes(x))
+          return {
+            labels,
+            key: 'grade'
+          }
         }
-        return [
+        const labels = [
           'Superintendent',
           'Inspector',
           'Senior Sergeant',
@@ -181,16 +164,112 @@ export default {
           'Constable / Senior Constable',
           'Constable',
           'Clerk 1/2'
-        ].filter((x) => rows.includes(x))
+        ].filter((x) => grades.includes(x))
+
+        return {
+          labels,
+          key: 'grade'
+        }
       }
 
-      return rows
+      // find if columns contain any entries that don't start with "Grade"
+      const gradeCols = grades.filter((x) => {
+        return !x.startsWith('Clerk')
+      })
+
+      if (gradeCols.length === 0) {
+        const clerkGrades = this.roleFunction.roles
+          .reduce((acc, role) => {
+            if (role.grade.startsWith('Clerk') && !acc.includes(role.grade)) {
+              acc.push(role.grade)
+            }
+            return acc
+          }, [])
+          .reduce((acc, grade) => {
+            if (acc.includes(grade)) {
+              return acc
+            }
+            return [...acc, grade]
+          }, [])
+          .sort((a, b) => {
+            const aVal = a.split(' ')[1].split('/')[0]
+            const bVal = b.split(' ')[1].split('/')[0]
+            return bVal - aVal
+          })
+        const labels = clerkGrades.filter((x) => grades.includes(x))
+        return {
+          labels,
+          key: 'grade'
+        }
+      }
+
+      const activeIndexes = this.roleFunction.roles.reduce(
+        (acc, role) => {
+          if (role.salary.max < 101000) {
+            acc[4] += 1
+            return acc
+          }
+          if (role.salary.max < 121000) {
+            acc[3] += 1
+            return acc
+          }
+          if (role.salary.max < 151000) {
+            acc[2] += 1
+            return acc
+          }
+          if (role.salary.max < 185000) {
+            acc[1] += 1
+            return acc
+          }
+          acc[0] += 1
+          return acc
+        },
+        [0, 0, 0, 0, 0]
+      )
+
+      const labels = [
+        '$185k +',
+        '$151k - $184k',
+        '$121k - $150k',
+        '$101k - $120k',
+        '< $100k'
+      ].filter((_, i) => activeIndexes[i] > 0)
+
+      return {
+        labels,
+        key: 'salary'
+      }
     }
   },
   methods: {
     getRolesByAxis(xAxisValue, yAxisValue) {
       return this.roleFunction.roles
-        .filter((role) => role[this.axisKeys.y] === yAxisValue)
+        .filter((role) => {
+          if (this.rows.key === 'grade') {
+            return role.grade === yAxisValue
+          }
+          const io = [
+            '$185k +',
+            '$151k - $184k',
+            '$121k - $150k',
+            '$101k - $120k',
+            '< $100k'
+          ].indexOf(yAxisValue)
+
+          if (role.salary.max < 101000) {
+            return io === 4
+          }
+          if (role.salary.max < 121000) {
+            return io === 3
+          }
+          if (role.salary.max < 151000) {
+            return io === 2
+          }
+          if (role.salary.max < 185000) {
+            return io === 1
+          }
+          return true
+        })
         .filter((role) => role[this.axisKeys.x].trim() === xAxisValue)
     },
     groupRolesByFamilyRole(roles) {
