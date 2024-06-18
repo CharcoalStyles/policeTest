@@ -216,7 +216,15 @@
               </h3>
               <transition-group name="list" tag="div">
                 <job-role
-                  v-for="role in group.roles"
+                  v-for="role in group.roles.sort((a, b) => {
+                    switch (debouncedFilters.sortBy) {
+                      case 'manager':
+                        return a.manager ? -1 : 1
+                      case 'gradeId':
+                      default:
+                        return a.salary.max > b.salary.max ? -1 : 1
+                    }
+                  })"
                   :key="role.id"
                   :role="role"
                   @click.native="viewRole(role)"
@@ -628,6 +636,7 @@ export default {
   computed: {
     debouncedFilters: {
       get() {
+        console.log(this.filter)
         return this.filter
       },
       set(val) {
@@ -635,6 +644,7 @@ export default {
           clearTimeout(this.filterTimeout)
         }
         this.filterTimeout = setTimeout(() => {
+          console.log(val)
           this.filter = val
         }, 300)
       }
@@ -718,10 +728,7 @@ export default {
         .keys()
         .map((key) => ({
           name: key,
-          roles: this.filteredRoles
-            .where('jobFunction', key)
-            .sortByDesc(this.debouncedFilters.sortBy)
-            .all()
+          roles: this.filteredRoles.where('jobFunction', key).all()
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
@@ -733,10 +740,7 @@ export default {
         .keys()
         .map((key) => ({
           name: key,
-          roles: this.filteredRoles
-            .where('command_BusUnit', key)
-            .sortByDesc(this.debouncedFilters.sortBy)
-            .all()
+          roles: this.filteredRoles.where('command_BusUnit', key).all()
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
@@ -751,16 +755,12 @@ export default {
         .keys()
         .map((key) => ({
           name: key,
-          roles: this.filteredRoles
-            .where('jobFamily', key)
-            .sortByDesc(this.debouncedFilters.sortBy)
-            .all()
+          roles: this.filteredRoles.where('jobFamily', key).all()
         }))
         .sortByDesc((group) => group.roles.length)
         .filter((group) => group.name !== '')
         .all()
 
-      console.log({ results })
       return results
     },
     bentoJobFamily() {
