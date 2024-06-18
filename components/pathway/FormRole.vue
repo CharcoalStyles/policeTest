@@ -1,8 +1,46 @@
 <template>
   <div class="nsw-forms mb-80">
-    <div class="mb-12">
+    <div v-if="step.id === 'current-role'" class="mb-12">
       <div class="text-2xl font-bold mb-4">
-        <p>Select your work area</p>
+        <p>Is your current role in Policing or Administration?</p>
+      </div>
+      <div class="mb-1">
+        <div class="text-base font-bold">Select one</div>
+      </div>
+      <div>
+        <input
+          id="sworn"
+          v-model="filter.sworn"
+          value="sworn"
+          class="nsw-form-radio__input"
+          type="radio"
+        />
+        <label class="nsw-form-radio__label" for="sworn">
+          <p>Policing</p>
+          <p class="text-xs text-nsw-brand-grey-primary">
+            (including student police officers)
+          </p>
+        </label>
+
+        <input
+          id="unsworn"
+          v-model="filter.sworn"
+          value="unsworn"
+          class="nsw-form-radio__input"
+          type="radio"
+        />
+        <label class="nsw-form-radio__label" for="unsworn">
+          <p>Administrative</p>
+          <p class="text-xs text-nsw-brand-grey-primary">
+            (including Special Constables)
+          </p>
+        </label>
+      </div>
+    </div>
+
+    <div v-if="showWorkArea" class="mb-12">
+      <div class="text-2xl font-bold mb-4">
+        <p>Select the relevant work area</p>
       </div>
       <div class="mb-1">
         <div class="text-base font-bold">Select from the list below</div>
@@ -17,31 +55,6 @@
           <option value="" disabled selected>Select</option>
           <option v-for="jobFamily in jobFamilies" :key="jobFamily">
             {{ jobFamily }}
-          </option>
-        </select>
-      </div>
-    </div>
-
-    <div class="mb-12">
-      <div class="text-2xl font-bold mb-4">
-        <p>Select your function</p>
-      </div>
-      <div class="mb-1">
-        <div class="text-base font-bold">Select from the list below</div>
-      </div>
-      <div class="mb-1">
-        <div class="text-base">Optional</div>
-      </div>
-      <div>
-        <select
-          id="sort"
-          v-model="filter.jobFunction"
-          class="nsw-form-select"
-          @change="onSelectFunction()"
-        >
-          <option value="" disabled selected>Select</option>
-          <option v-for="jobFunction in jobFunctions" :key="jobFunction">
-            {{ jobFunction }}
           </option>
         </select>
       </div>
@@ -63,7 +76,7 @@
       :search="search"
       :get-result-value="getResultValue"
       :default-value="defaultValue"
-      placeholder="Start typing"
+      :placeholder="searchPlaceholder"
       aria-label="Search by keyword, e.g. Case Officer, Intelligence, Coordinator"
       @submit="selectRole"
     >
@@ -188,6 +201,7 @@ export default {
       value: '',
       focussed: false,
       filter: {
+        sworn: '',
         jobFamily: '',
         jobFunction: ''
       }
@@ -205,7 +219,15 @@ export default {
       return this.currentValue ? this.getRoleByCode(this.currentValue).name : ''
     },
     isDisabled() {
-      return Boolean(this.currentValue)
+      return (
+        Boolean(this.currentValue) ||
+        (this.step.id === 'current-role' && this.filter.sworn === '')
+      )
+    },
+    searchPlaceholder() {
+      return this.step.id === 'current-role' && this.filter.sworn === ''
+        ? ''
+        : 'Start typing'
     },
     currentRole() {
       if (this.answers.hasOwnProperty('current-role')) {
@@ -215,12 +237,22 @@ export default {
     },
     jobFamilies() {
       const allFamilies = this.$store.state.roles.reduce((acc, role) => {
+        if (role.jobFamily === 'Policing') {
+          return acc
+        }
         if (!acc.includes(role.jobFamily)) {
           acc.push(role.jobFamily)
         }
         return acc
       }, [])
-      return ['Policing', ...allFamilies.sort()]
+      if (this.step.id === 'role') {
+        return allFamilies
+      }
+      console.log(this.$store.state.pathway.answers.sworn.value)
+      if (this.$store.state.pathway.answers.sworn.value !== 'unsworn') {
+        return ['Policing', ...allFamilies.sort()]
+      }
+      return allFamilies.sort()
     },
     jobFunctions() {
       return this.$store.state.roles
@@ -244,8 +276,13 @@ export default {
             return false
           }
 
-          if (this.filter.jobFunction !== '') {
-            return role.jobFunction === this.filter.jobFunction
+          if (this.filter.sworn !== '') {
+            switch (this.filter.sworn) {
+              case 'sworn':
+                return role.jobFamily === 'Policing'
+              case 'unsworn':
+                return role.jobFamily !== 'Policing'
+            }
           }
 
           if (this.filter.jobFamily !== '') {
@@ -260,6 +297,12 @@ export default {
           return roleA < roleB ? -1 : roleA > roleB ? 1 : 0
         })
         .all()
+    },
+    showWorkArea() {
+      return (
+        this.step.id === 'goal-role' &&
+        this.$store.state.pathway.answers.sworn.value !== 'sworn'
+      )
     }
   },
   methods: {
