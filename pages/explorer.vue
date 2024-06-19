@@ -207,7 +207,7 @@
           </div>
           <div class="p-4 flex-grow overflow-y-scroll">
             <div
-              v-for="(group, index) in filteredRolesByFunction"
+              v-for="(group, index) in filteredRolesByFunction.familyRoles"
               :key="index"
               class="mb-10"
             >
@@ -489,13 +489,14 @@
                   <p class="text-nsw-brand-primary-blue">Back</p>
                 </div>
                 <role-function
-                  v-for="(group, index) in filteredRolesByFunction"
+                  v-for="(group, index) in filteredRolesByFunction.familyRoles"
                   :key="group.name"
                   :role-function="group"
                   :roles="roles"
                   :index="index"
                   :zoom="zoom"
                   :family-name="filter.jobFamily"
+                  :use-salary="filteredRolesByFunction.useSalary"
                   @selected="viewRole"
                 />
               </div>
@@ -713,7 +714,7 @@ export default {
      * Filter roles by job function
      */
     filteredRolesByFunction() {
-      return this.filteredRoles
+      const familyRoles = this.filteredRoles
         .groupBy('jobFunction')
         .keys()
         .map((key) => ({
@@ -725,6 +726,26 @@ export default {
         }))
         .sortByDesc((group) => group.roles.length)
         .all()
+
+      const tableGradeSalary = familyRoles.reduce(
+        (acc, roles) => {
+          roles.roles.forEach((role) => {
+            if (
+              role.jobFamily === 'Policing' ||
+              role.grade.startsWith('Clerk')
+            ) {
+              acc.grades += 1
+            } else {
+              acc.salary += 1
+            }
+          })
+
+          return acc
+        },
+        { grades: 0, salary: 0 }
+      )
+
+      return { familyRoles, useSalary: tableGradeSalary.salary > 0 }
     },
 
     filteredRolesByCommand() {
@@ -780,7 +801,7 @@ export default {
       )
     },
     bentoJobFunctions() {
-      return this.filteredRolesByFunction.reduce(
+      return this.filteredRolesByFunction.familyRoles.reduce(
         (acc, roles) => {
           if (roles.roles.length > 100) {
             acc.xl.push(roles)
