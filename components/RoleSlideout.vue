@@ -61,7 +61,9 @@
           <p>Role Description</p>
         </a>
       </div>
-      <EssentialRequirementsIcon :role="role" />
+      <div class="mb-4">
+        <EssentialRequirementsIcon :role="role" size="lg" />
+      </div>
       <div v-if="essentialRequirements">
         <div class="flex flex-row gap-2 mb-2">
           <img src="/icons/essential.svg" alt="Link icon" />
@@ -242,6 +244,7 @@ export default {
     getSkills(skills) {
       return skills.map(({ code, level }) => {
         const skill = this.$store.state.skills.find((c) => c.code === code)
+        console.log(code, level, skill)
 
         return {
           code,
