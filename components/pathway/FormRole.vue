@@ -248,7 +248,7 @@ export default {
       if (this.step.id === 'role') {
         return allFamilies
       }
-      console.log(this.$store.state.pathway.answers.sworn.value)
+
       if (this.$store.state.pathway.answers.sworn.value !== 'unsworn') {
         return ['Policing', ...allFamilies.sort()]
       }
