@@ -122,7 +122,6 @@ export default {
           return acc
         }, [])
         .sort((a, b) => {
-          console.log(a.jobFamily, b.jobFamily, a.jobFamily === 'Policing' ? -1 : a.jobFamily.localeCompare(b.jobFamily))
           if (a.jobFamily === 'Policing') {
             return -1
           }
