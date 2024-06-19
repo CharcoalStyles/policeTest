@@ -1,6 +1,6 @@
 <template>
   <div
-    class="comparison-cell mx-4 py-4"
+    class="comparison-cell py-4"
     :class="{
       'border-b border-b-gray-200': item || emptyMessage,
       'lg:w-1/2 lg:px-8': !fullWidth
