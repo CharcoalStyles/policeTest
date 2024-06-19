@@ -701,7 +701,7 @@ export default {
         })
         .filter((role) => {
           if (this.filter.location.length > 0 && role.location) {
-            return [...this.filter.location, 'Various'].includes(role.location)
+            return [...this.filter.location, 'Various'].includes(role.location.trim())
           }
           return true
         })
@@ -940,8 +940,8 @@ export default {
               if (role.location === 'Various') {
                 return acc
               }
-              if (!acc.includes(role.location)) {
-                acc.push(role.location)
+              if (!acc.includes(role.location.trim())) {
+                acc.push(role.location.trim())
               }
               return acc
             }, [])
