@@ -153,7 +153,7 @@
                       Work Area / Job Function
                     </label>
                     <div
-                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input "
+                      class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                       @click="showSelectorPopup('jobFunction')"
                     >
                       {{
@@ -189,19 +189,6 @@
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
-                <div class="flex items-center">
-                  <label class="mr-3 text-sm" for="sort">Sort by:</label>
-                  <div class="inline-block relative">
-                    <select
-                      id="sort"
-                      v-model="debouncedFilters.sortBy"
-                      class="nsw-form-select h-role-input py-0"
-                    >
-                      <option value="manager">Manager roles</option>
-                      <option value="gradeId">Grade & Salary</option>
-                    </select>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -217,13 +204,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in group.roles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
-                      case 'manager':
-                        return a.manager ? -1 : 1
-                      case 'gradeId':
-                      default:
-                        return a.salary.max > b.salary.max ? -1 : 1
-                    }
+                    return a.salary.max > b.salary.max ? -1 : 1
                   })"
                   :key="role.id"
                   :role="role"
@@ -417,7 +398,7 @@
 
                 <div class="bg-nsw-brand-primary-blue-light-2 rounded-2xl p-4">
                   <p class="font-bold text-2xl ml-2">
-                    {{ filter.jobFunction.join(' - ')}}
+                    {{ filter.jobFunction.join(' - ') }}
                   </p>
                   <div class="text-sm m-4">
                     <div
@@ -624,7 +605,6 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sortBy: 'gradeId',
         sworn: 'other'
       },
       filterTimeout: null,
@@ -863,7 +843,6 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sortBy: 'gradeId',
         sworn: 'other'
       }
       this.viewState = 1
