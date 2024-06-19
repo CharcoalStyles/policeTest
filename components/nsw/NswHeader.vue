@@ -7,7 +7,7 @@
     </div>
     <div class="xl:container bg-white py-5">
       <header class="px-6 flex gap-10">
-        <nuxt-link to="/">
+        <nuxt-link to="/" class="no-print-link">
           <img
             src="/police-force-logo.svg"
             alt="Logo for NSW Police Force"
@@ -45,3 +45,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .no-print-link::after {
+    content: none;
+  }
+</style>
