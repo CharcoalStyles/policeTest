@@ -579,7 +579,7 @@ export default {
       this.targetRole = role
       this.$scrollTo('#comparison')
     },
-    
+
     progressionRoles(currentRole) {
       let showDetective = true
       if (this.answers.hasOwnProperty('detective-roles')) {

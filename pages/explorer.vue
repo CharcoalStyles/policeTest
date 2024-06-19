@@ -189,19 +189,6 @@
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
-                <div class="flex items-center">
-                  <label class="mr-3 text-sm" for="sort">Sort by:</label>
-                  <div class="inline-block relative">
-                    <select
-                      id="sort"
-                      v-model="debouncedFilters.sortBy"
-                      class="nsw-form-select h-role-input py-0"
-                    >
-                      <option value="manager">Manager roles</option>
-                      <option value="gradeId">Grade & Salary</option>
-                    </select>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -216,15 +203,9 @@
               </h3>
               <transition-group name="list" tag="div">
                 <job-role
-                  v-for="role in group.roles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
-                      case 'manager':
-                        return a.manager ? -1 : 1
-                      case 'gradeId':
-                      default:
-                        return a.salary.max > b.salary.max ? -1 : 1
-                    }
-                  })"
+                  v-for="role in group.roles.sort((a, b) =>
+                    a.salary.max > b.salary.max ? -1 : 1
+                  )"
                   :key="role.id"
                   :role="role"
                   @click.native="viewRole(role)"
@@ -417,7 +398,7 @@
 
                 <div class="bg-nsw-brand-primary-blue-light-2 rounded-2xl p-4">
                   <p class="font-bold text-2xl ml-2">
-                    {{ filter.jobFunction }}
+                    {{ filter.jobFunction.join(' - ') }}
                   </p>
                   <div class="text-sm m-4">
                     <div
@@ -624,7 +605,6 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sortBy: 'gradeId',
         sworn: 'other'
       },
       filterTimeout: null,
@@ -701,7 +681,9 @@ export default {
         })
         .filter((role) => {
           if (this.filter.location.length > 0 && role.location) {
-            return [...this.filter.location, 'Various'].includes(role.location)
+            return [...this.filter.location, 'Various'].includes(
+              role.location.trim()
+            )
           }
           return true
         })
@@ -861,7 +843,6 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sortBy: 'gradeId',
         sworn: 'other'
       }
       this.viewState = 1
@@ -940,8 +921,8 @@ export default {
               if (role.location === 'Various') {
                 return acc
               }
-              if (!acc.includes(role.location)) {
-                acc.push(role.location)
+              if (!acc.includes(role.location.trim())) {
+                acc.push(role.location.trim())
               }
               return acc
             }, [])
@@ -1057,7 +1038,7 @@ export default {
           this.modals.selector = true
           this.modalData.title = 'Select Command / Business Unit'
           this.modalData.instructions =
-            'Select the Select Command or Business Unit that relates to a role to see how they match to others.'
+            'Select the Command or Business Unit that relates to a role to see how they match to others.'
 
           this.modalData.data = this.roles
             .reduce((acc, role) => {
@@ -1086,13 +1067,13 @@ export default {
         case 1:
           this.viewState = this.lastViewState
           this.filter.jobFamily = ''
-          this.filter.jobFunction = ''
+          this.filter.jobFunction = []
           this.filter.command_BusUnit = []
           break
         case 2:
           this.viewState = this.lastViewState
           this.lastViewState = 1
-          this.filter.jobFunction = ''
+          this.filter.jobFunction = []
           this.filter.command_BusUnit = []
           break
         case 3:
@@ -1115,7 +1096,7 @@ export default {
       }
     },
     bentoL2Select(jobFunction) {
-      this.filter.jobFunction = jobFunction
+      this.filter.jobFunction = [jobFunction]
       this.lastViewState = this.viewState
 
       if (this.filteredRoles.items.length < 30) {

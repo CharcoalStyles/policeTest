@@ -47,7 +47,7 @@ export default {
   props: {
     targetRole: {
       type: [Object, Boolean],
-      required: true
+      default: undefined
     },
     currentRole: {
       type: [Object, Boolean],

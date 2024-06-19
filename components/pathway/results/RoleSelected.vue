@@ -42,10 +42,11 @@
     <div class="w-fit">
       <a
         :href="role.fullDescription"
-        class="flex flex-row gap-1 underline text-sm text-nsw-brand-primary-blue mb-6 fold-links"
+        class="flex flex-row flex-wrap gap-1 underline text-sm text-nsw-brand-primary-blue mb-6 fold-links"
       >
         <img src="/icons/pages.svg" alt="Link icon" />
         <p>Role Description</p>
+        <div class="basis-full h-0"></div>
       </a>
     </div>
     <div class="mb-4">
@@ -96,7 +97,10 @@ export default {
     },
     essentialRequirements() {
       if (this.role.essentialRequirements) {
-        return this.role.essentialRequirements.split('•').filter((er) => er !== '').map((er) => er.trim())
+        return this.role.essentialRequirements
+          .split('•')
+          .filter((er) => er !== '')
+          .map((er) => er.trim())
       }
       return ''
     }
@@ -105,7 +109,10 @@ export default {
 </script>
 
 <style scoped>
-.fold-links::after{
-  word-break: break-all;
+@media print {
+  .fold-links::after {
+    content: '(' attr(href) ')';
+    word-break: break-all;
+  }
 }
 </style>
