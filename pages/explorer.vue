@@ -463,25 +463,26 @@
             <!-- Role Table (level 4) -->
             <div class="block" :class="viewState === 4 ? '' : 'hidden'">
               <div
-                class="families inline-flex flex-wrap p-2"
+                class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+                @click="handleBack()"
+              >
+                <img
+                  src="/icons/chevron-left-blue.svg"
+                  alt="Clipboard icon"
+                  class="h-6"
+                />
+                <p class="text-xl text-nsw-brand-primary-blue">Back</p>
+              </div>
+              <div
+                class="inline-flex flex-wrap p-2"
                 :class="{ 'pointer-events-none': panning }"
               >
-                <div
-                  class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
-                  @click="handleBack()"
-                >
-                  <img
-                    src="/icons/chevron-left-blue.svg"
-                    alt="Clipboard icon"
-                    class="h-6"
-                  />
-                  <p class="text-nsw-brand-primary-blue">Back</p>
-                </div>
                 <role-function
                   v-for="(group, index) in filteredRolesByFunction.familyRoles"
                   :key="group.name"
                   :role-function="group"
                   :roles="roles"
+                  :selected-role="selectedRole === false ? null : selectedRole"
                   :index="index"
                   :zoom="zoom"
                   :family-name="filter.jobFamily"
@@ -617,7 +618,6 @@ export default {
   computed: {
     debouncedFilters: {
       get() {
-        console.log(this.filter)
         return this.filter
       },
       set(val) {
@@ -625,7 +625,6 @@ export default {
           clearTimeout(this.filterTimeout)
         }
         this.filterTimeout = setTimeout(() => {
-          console.log(val)
           this.filter = val
         }, 300)
       }

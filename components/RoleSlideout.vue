@@ -244,7 +244,6 @@ export default {
     getSkills(skills) {
       return skills.map(({ code, level }) => {
         const skill = this.$store.state.skills.find((c) => c.code === code)
-        console.log(code, level, skill)
 
         return {
           code,

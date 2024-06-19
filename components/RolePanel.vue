@@ -1,7 +1,7 @@
 <template>
   <div
-    class="max-w-72 min-h-20 border border-nsw-grey-800 relative bg-white rounded-lg px-4 py-3 flex-shrink-0 float-left"
-    :class="[clickableClasses, zoomToClass]"
+    class="w-60 my-3 border border-nsw-grey-800 relative bg-white rounded-lg px-4 py-3"
+    :class="[clickableClasses, zoomToClass, selectedClass]"
   >
     <div class="flex flex-col">
       <div class="flex flex-col mb-2 text-grey-primary text-xs">
@@ -42,16 +42,23 @@ export default {
     zoomable: {
       type: Boolean,
       default: false
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     clickableClasses() {
       return this.clickable
-        ? 'border border-nsw-brand-grey-light hover:border-nsw-brand-grey-primary hover:shadow-xl transition transform-all duration-200 cursor-pointer'
+        ? 'hover:shadow-xl transition transform-all duration-200 cursor-pointer'
         : null
     },
     zoomToClass() {
       return this.zoomable ? `role-${this.role.id}` : null
+    },
+    selectedClass() {
+      return this.selected ? 'border-2 border-amber-300' : null
     }
   }
 }
