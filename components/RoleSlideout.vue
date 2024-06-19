@@ -84,7 +84,7 @@
 
       <div v-if="role.skills.focus.length > 0" class="my-8">
         <h4 class="font-bold text-xl mb-3">Role Skills</h4>
-        <div class="flex flex-wrap">
+        <div class="flex flex-col">
           <comparison-row
             v-for="skill in getSkills(role.skills.focus)"
             :key="skill.code"
