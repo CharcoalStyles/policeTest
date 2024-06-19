@@ -1,16 +1,5 @@
 <template>
   <div class="relative mr-96 mb-32 rounded-3xl overflow-visible">
-    <transition name="fade">
-      <div
-        v-show="zoomedOut"
-        class="absolute inset-0 z-10 flex items-center justify-center"
-        :style="getBgColour('light')"
-      >
-        <div class="rounded-full text-family bg-white py-12 px-32">
-          {{ roleFunction.roles.length }} roles
-        </div>
-      </div>
-    </transition>
     <div
       class="inline-block w-max bg-nsw-brand-primary-blue-light rounded-ss-3xl"
     >
@@ -25,7 +14,7 @@
       <table class="border-collapse w-full">
         <tr class="bg-nsw-grey-200">
           <th class="px-4 py-4 whitespace-no-wrap h-12 w-32">
-            {{ rows.key === 'grade' ? 'Rank' : 'Salary' }}
+            {{ useSalary ? 'Salary' : 'Rank' }}
           </th>
           <th
             v-for="xKey in columns"
@@ -104,6 +93,10 @@ export default {
     familyName: {
       type: String,
       required: true
+    },
+    useSalary: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
@@ -131,101 +124,79 @@ export default {
       return columns
     },
     rows() {
-      const grades = this.roleFunction.roles.reduce((acc, role) => {
-        if (!acc.includes(role[this.axisKeys.y])) {
-          acc.push(role[this.axisKeys.y])
-        }
-        return acc
-      }, [])
+      if (!this.useSalary) {
+        const grades = this.roleFunction.roles.reduce((acc, role) => {
+          if (!acc.includes(role[this.axisKeys.y])) {
+            acc.push(role[this.axisKeys.y])
+          }
+          return acc
+        }, [])
 
-      if (this.axisKeys.y === 'grade' && this.familyName === 'Policing') {
-        if (this.roleFunction.name === 'Investigations') {
+        if (this.familyName === 'Policing') {
+          if (this.roleFunction.name === 'Investigations') {
+            const labels = [
+              'Detective Superintendent',
+              'Detective Inspector',
+              'Inspector',
+              'Detective Senior Sergeant',
+              'Detective Sergeant',
+              'Detective Senior Constable',
+              'Detective Constable / Detective Senior Constable',
+              'Detective Constable'
+            ] // .filter((x) => grades.includes(x))
+            return {
+              labels,
+              key: 'grade'
+            }
+          }
           const labels = [
-            'Detective Superintendent',
-            'Detective Inspector',
+            'Superintendent',
             'Inspector',
-            'Detective Senior Sergeant',
-            'Detective Sergeant',
-            'Detective Senior Constable',
-            'Detective Constable / Detective Senior Constable',
-            'Detective Constable'
-          ].filter((x) => grades.includes(x))
+            'Senior Sergeant',
+            'Sergeant',
+            'Senior Constable',
+            'Constable / Senior Constable',
+            'Constable',
+            'Clerk 1/2'
+          ] // .filter((x) => grades.includes(x))
+
           return {
             labels,
             key: 'grade'
           }
         }
-        const labels = [
-          'Superintendent',
-          'Inspector',
-          'Senior Sergeant',
-          'Sergeant',
-          'Senior Constable',
-          'Constable / Senior Constable',
-          'Constable',
-          'Clerk 1/2'
-        ].filter((x) => grades.includes(x))
 
-        return {
-          labels,
-          key: 'grade'
-        }
-      }
+        // find if columns contain any entries that don't start with "Grade"
+        const gradeCols = grades.filter((x) => {
+          return !x.startsWith('Clerk')
+        })
 
-      // find if columns contain any entries that don't start with "Grade"
-      const gradeCols = grades.filter((x) => {
-        return !x.startsWith('Clerk')
-      })
-
-      if (gradeCols.length === 0) {
-        const clerkGrades = this.roleFunction.roles
-          .reduce((acc, role) => {
-            if (role.grade.startsWith('Clerk') && !acc.includes(role.grade)) {
-              acc.push(role.grade)
-            }
-            return acc
-          }, [])
-          .reduce((acc, grade) => {
-            if (acc.includes(grade)) {
+        if (gradeCols.length === 0) {
+          const clerkGrades = this.roleFunction.roles
+            .reduce((acc, role) => {
+              if (role.grade.startsWith('Clerk') && !acc.includes(role.grade)) {
+                acc.push(role.grade)
+              }
               return acc
-            }
-            return [...acc, grade]
-          }, [])
-          .sort((a, b) => {
-            const aVal = a.split(' ')[1].split('/')[0]
-            const bVal = b.split(' ')[1].split('/')[0]
-            return bVal - aVal
-          })
-        const labels = clerkGrades.filter((x) => grades.includes(x))
-        return {
-          labels,
-          key: 'grade'
+            }, [])
+            .reduce((acc, grade) => {
+              if (acc.includes(grade)) {
+                return acc
+              }
+              return [...acc, grade]
+            }, [])
+            .sort((a, b) => {
+              const aVal = a.split(' ')[1].split('/')[0]
+              const bVal = b.split(' ')[1].split('/')[0]
+              return bVal - aVal
+            })
+          const labels = clerkGrades // .filter((x) => grades.includes(x))
+          return {
+            labels,
+            key: 'grade'
+          }
         }
       }
-
-      const activeIndexes = this.roleFunction.roles.reduce(
-        (acc, role) => {
-          if (role.salary.max < 101000) {
-            acc[4] += 1
-            return acc
-          }
-          if (role.salary.max < 121000) {
-            acc[3] += 1
-            return acc
-          }
-          if (role.salary.max < 151000) {
-            acc[2] += 1
-            return acc
-          }
-          if (role.salary.max < 185000) {
-            acc[1] += 1
-            return acc
-          }
-          acc[0] += 1
-          return acc
-        },
-        [0, 0, 0, 0, 0]
-      )
 
       const labels = [
         '$185k +',
@@ -233,7 +204,7 @@ export default {
         '$121k - $150k',
         '$101k - $120k',
         '< $100k'
-      ].filter((_, i) => activeIndexes[i] > 0)
+      ] // .filter((_, i) => activeIndexes[i] > 0)
 
       return {
         labels,
@@ -245,30 +216,31 @@ export default {
     getRolesByAxis(xAxisValue, yAxisValue) {
       return this.roleFunction.roles
         .filter((role) => {
-          if (this.rows.key === 'grade') {
-            return role.grade === yAxisValue
-          }
-          const io = [
-            '$185k +',
-            '$151k - $184k',
-            '$121k - $150k',
-            '$101k - $120k',
-            '< $100k'
-          ].indexOf(yAxisValue)
+          if (this.useSalary) {
+            const io = [
+              '$185k +',
+              '$151k - $184k',
+              '$121k - $150k',
+              '$101k - $120k',
+              '< $100k'
+            ].indexOf(yAxisValue)
 
-          if (role.salary.max < 101000) {
-            return io === 4
+            if (role.salary.max < 101000) {
+              return io === 4
+            }
+            if (role.salary.max < 121000) {
+              return io === 3
+            }
+            if (role.salary.max < 151000) {
+              return io === 2
+            }
+            if (role.salary.max < 185000) {
+              return io === 1
+            }
+            return io === 0
           }
-          if (role.salary.max < 121000) {
-            return io === 3
-          }
-          if (role.salary.max < 151000) {
-            return io === 2
-          }
-          if (role.salary.max < 185000) {
-            return io === 1
-          }
-          return true
+
+          return role.grade === yAxisValue
         })
         .filter((role) => role[this.axisKeys.x].trim() === xAxisValue)
     },
