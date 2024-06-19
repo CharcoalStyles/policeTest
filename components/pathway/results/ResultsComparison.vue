@@ -17,7 +17,7 @@
       :key="`skill-${index}`"
       class="flex flex-row"
     >
-      <div class="border-r border-gray-300 w-1/2">
+      <div class="border-r border-gray-300 w-1/2 px-4">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
@@ -31,7 +31,7 @@
         />
       </div>
 
-      <div class="w-1/2">
+      <div class="w-1/2 px-4">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
@@ -63,7 +63,7 @@
       :key="`capability-${index}`"
       class="flex flex-row"
     >
-      <div class="border-r border-gray-300 w-1/2">
+      <div class="border-r border-gray-300 w-1/2 px-4">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
@@ -75,7 +75,7 @@
           @skillClicked="showCapabilityModal"
         />
       </div>
-      <div class="w-1/2">
+      <div class="w-1/2 px-4">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"

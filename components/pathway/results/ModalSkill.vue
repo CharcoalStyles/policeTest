@@ -12,7 +12,7 @@
           <h4 class="font-bold mb-4">Skill description</h4>
           <p>{{ selectedSkill.description }}</p>
         </div>
-        <div class="mb-12">
+        <div v-if="!noRole" class="mb-12">
           <h4 class="text-lg font-bold mb-4">Skill level</h4>
           <div class="flex flex-col md:flex-row">
             <div class="mb-4 md:mb-0 md:mr-12">
@@ -101,7 +101,7 @@ export default {
       required: true
     },
     currentRole: {
-      type: Object,
+      type: [Object, Boolean],
       required: true
     },
     targetRole: {
@@ -123,6 +123,10 @@ export default {
     journey: {
       type: [Object, Boolean],
       required: true
+    },
+    noRole: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -135,9 +139,15 @@ export default {
   },
   computed: {
     assessedSkills() {
+      if (this.noRole) {
+        return {}
+      }
       return this.$store.state.pathway.answers.skills
     },
     assessedCapabilities() {
+      if (this.noRole) {
+        return {}
+      }
       return this.$store.state.pathway.answers.capabilities
     },
     selectedLevel() {

@@ -84,7 +84,7 @@
 
       <div v-if="role.skills.focus.length > 0" class="my-8">
         <h4 class="font-bold text-xl mb-3">Role Skills</h4>
-        <div class="flex flex-wrap">
+        <div class="flex flex-col">
           <comparison-row
             v-for="skill in getSkills(role.skills.focus)"
             :key="skill.code"
@@ -95,6 +95,7 @@
             instructions="selfAssessed"
             role-type="current"
             :full-width="true"
+            @skillClicked="showSkillModal"
           />
         </div>
       </div>
@@ -112,6 +113,7 @@
             instructions="selfAssessed"
             role-type="current"
             :full-width="true"
+            @skillClicked="showCapabilityModal"
           />
         </div>
       </div>
@@ -168,14 +170,36 @@
         </div>
       </div>
     </div>
+    <modal-skill
+      :show="modals.skill"
+      :selected-skill="selectedSkill ? selectedSkill : false"
+      :current-role="role"
+      :target-role="false"
+      max-width="3xl"
+      :journey="false"
+      :no-role="true"
+      @close="modals.skill = false"
+    />
+    <modal-capability
+      :show="modals.capability"
+      :selected-capability="selectedCapability ? selectedCapability : false"
+      :current-role="role"
+      :target-role="false"
+      max-width="3xl"
+      :journey="false"
+      :no-role="true"
+      :start-level="3"
+      @close="modals.capability = false"
+    />
   </div>
 </template>
 
 <script>
-import skills from '@/data/skills.json'
 import InformationBadge from '@/components/InformationBadge'
 import JobRole from '@/components/JobRole'
 import ComparisonRow from '@/components/pathway/results/ComparisonRow'
+import ModalCapability from '@/components/pathway/results/ModalCapability'
+import ModalSkill from '@/components/pathway/results/ModalSkill'
 import EssentialRequirementsIcon from '@/components/EssentialRequirementsIcon'
 import {
   adjacentRoles,
@@ -188,7 +212,9 @@ export default {
     InformationBadge,
     JobRole,
     ComparisonRow,
-    EssentialRequirementsIcon
+    EssentialRequirementsIcon,
+    ModalCapability,
+    ModalSkill
   },
   props: {
     roles: {
@@ -202,10 +228,21 @@ export default {
   },
   data() {
     return {
-      skills
+      selectedSkill: false,
+      selectedCapability: false,
+      modals: {
+        skill: false,
+        capability: false
+      }
     }
   },
   computed: {
+    skills() {
+      return this.$store.state.skills
+    },
+    capabilities() {
+      return this.$store.state.capabilities
+    },
     progressionRoles() {
       const progRoles = progressionRoles(this.roles, this.role)
       const prog = rankAndSortRoles(this.role, progRoles).map(
@@ -229,6 +266,16 @@ export default {
     }
   },
   methods: {
+    showSkillModal(modal) {
+      this.selectedSkill = this.getSkillByCode(modal.skill)
+      this.modals.skill = true
+    },
+
+    showCapabilityModal(modal) {
+      this.selectedCapability = this.getCapabilityByCode(modal.skill)
+      this.modals.capability = true
+    },
+
     getSkillsCodeArray(role) {
       if (role.skills.focus) {
         return role.skills.focus.map((skill) => {
@@ -237,13 +284,20 @@ export default {
       }
       return []
     },
+    getSkillByCode(code) {
+      return this.$collect(this.skills).where('code', code).first()
+    },
+    getCapabilityByCode(code) {
+      return this.$collect(this.capabilities).where('subcode', code).first()
+    },
+
     getSkillName(code) {
       const skill = this.$collect(this.skills).where('code', code).first()
       return skill.name
     },
     getSkills(skills) {
       return skills.map(({ code, level }) => {
-        const skill = this.$store.state.skills.find((c) => c.code === code)
+        const skill = this.skills.find((c) => c.code === code)
 
         return {
           code,
