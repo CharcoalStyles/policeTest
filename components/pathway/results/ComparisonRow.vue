@@ -8,14 +8,14 @@
   >
     <div v-if="item" class="flex items-start justify-between">
       <button
-        class="underline text-left"
+        class="underline text-left flex-shrink"
         @click="
           $emit('skillClicked', { skill: item.code, journey: journeyType })
         "
       >
         <span class="">{{ item.name }}</span>
       </button>
-      <div class="pl-4 flex-shrink-0 flex space-x-3 whitespace-no-wrap">
+      <div class="pl-4 flex space-x-3 whitespace-no-wrap">
         <template>
           <information-badge
             v-if="journeyType"
@@ -26,8 +26,8 @@
             {{ journeyType.text }}
           </information-badge>
         </template>
-        <information-badge size="xs">
-          Level {{ item.level }}
+        <information-badge size="xs" class="break-words">
+          <p class="break-words">{{ pillLabel }}</p>
         </information-badge>
       </div>
     </div>
@@ -75,6 +75,29 @@ export default {
     }
   },
   computed: {
+    pillLabel() {
+      if (this.type === 'skill') {
+        const name = this.$store.state.skills
+          .find((skill) => skill.code === this.item.code)
+          .levels.find(
+            (level) => level.level.toString() === this.item.level.toString()
+          )
+          .name.trim()
+
+        if (name.includes(' - ')) {
+          return name.split(' - ')[1]
+        }
+
+        // split the name string on a UTF dash characters
+        const splitName = name.split(/[\u2010-\u2015\u2212\uFE58-\uFE5F\uFF0D\uFF3F]/)
+        console.log(splitName)
+        // return the last element of the split name array
+        return splitName[splitName.length - 1]
+      }
+      return this.$store.state.capabilities
+        .find((capability) => capability.subcode === this.item.code)
+        .levels[this.item.level - 1].name.split(' - ')[1]
+    },
     assessedSkills() {
       return {
         ...this.$store.state.pathway.answers.skills,
