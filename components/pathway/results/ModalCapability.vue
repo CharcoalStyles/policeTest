@@ -9,11 +9,11 @@
     <div class="leading-relaxed">
       <div>
         <div class="mb-6">
-          <h4 class="font-bold mb-4">Skill description</h4>
+          <h4 class="font-bold mb-4">Capability description</h4>
           <p>{{ selectedCapability.description }}</p>
         </div>
-        <div class="mb-12">
-          <h4 class="text-lg font-bold mb-4">Skill level</h4>
+        <div v-if="!noRole" class="mb-12">
+          <h4 class="text-lg font-bold mb-4">Capability level</h4>
           <div class="flex flex-col md:flex-row">
             <div class="mb-4 md:mb-0 md:mr-12">
               <h5 class="font-bold mb-3">You assessed</h5>
@@ -101,7 +101,7 @@ export default {
       required: true
     },
     currentRole: {
-      type: Object,
+      type: [Object, Boolean],
       required: true
     },
     targetRole: {
@@ -123,6 +123,10 @@ export default {
     journey: {
       type: [Object, Boolean],
       required: true
+    },
+    noRole: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
