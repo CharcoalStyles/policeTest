@@ -1,62 +1,63 @@
 <template>
-  <div class="relative mr-96 mb-32 rounded-3xl overflow-visible">
-    <div
-      class="inline-block w-max bg-nsw-brand-primary-blue-light rounded-ss-3xl"
-    >
-      <div class="sticky w-fit left-0 px-4 py-6 ml-4 flex flex-col">
-        <h2 class="font-bold text-xl">
-          {{ familyName }}
-        </h2>
-        <h3 class="font-bold">
-          {{ roleFunction.name }}
-        </h3>
+  <div class="mx-3 my-3 rounded-3xl overflow-visible">
+    <div class="w-max bg-nsw-brand-primary-blue-light rounded-t-3xl">
+      <!-- Header; Job Family & Job function -->
+      <div class="w-full border-b-4 border-white">
+        <div class="sticky w-fit left-0 px-4 py-6 ml-4 flex flex-col">
+          <h2 class="sticky font-bold text-xl">
+            {{ familyName }}
+          </h2>
+          <h3 class="font-bold">
+            {{ roleFunction.name }}
+          </h3>
+        </div>
       </div>
-      <table class="border-collapse w-full">
+
+      <table class="w-full">
+        <!-- header row -->
         <tr class="bg-nsw-grey-200">
-          <th class="px-4 py-4 whitespace-no-wrap h-12 w-32">
+          <th class="pl-12 text-left h-12 border-b-4 border-white">
             {{ useSalary ? 'Salary' : 'Rank' }}
           </th>
           <th
             v-for="xKey in columns"
             :key="xKey"
-            class="py-4 whitespace-no-wrap h-12 text-left"
+            class="pr-8 h-max border-b-4 border-white"
           >
-            <p class="px-4 sticky w-fit left-0">
-              {{ xKey }}
-            </p>
+            <p class="sticky max-w-60 left-0">{{ xKey }}</p>
           </th>
         </tr>
-        <tr v-for="yKey in rows.labels" :key="yKey.label">
-          <td
-            class="px-4 py-8 whitespace-no-wrap h-56 flex items-center border-r-2 border-white"
-            :style="getBgColour('dark')"
-          >
-            <div class="py-3 px-5 rounded-md font-bold bg-white">
-              {{ yKey }}
-            </div>
+        <!-- body row -->
+        <tr
+          v-for="(yKey, idx) in rows.labels"
+          :key="yKey.label"
+          class="border-0 h-max"
+          :style="idx % 2 === 0 ? getBgColour('dark') : getBgColour('light')"
+        >
+          <td class="pl-12 w-52 items-center text-sm font-bold">
+            {{ yKey }}
           </td>
-          <td
-            v-for="xKey in columns"
-            :key="xKey"
-            class="border-r-2 border-white"
-          >
+          <td v-for="xKey in columns" :key="xKey" class="p-0">
             <transition-group
               name="list"
               tag="div"
-              class="p-8 whitespace-no-wrap h-56 flex items-center"
-              :style="
-                index % 2 === 0 ? getBgColour('dark') : getBgColour('light')
-              "
+              class="whitespace-no-wrap min-h-28 h-full flex flex-col gap-2 mr-16"
             >
-              <role-panel
-                v-for="role in getRolesByAxis(xKey, yKey)"
-                :key="role.id"
-                :role="role"
-                class="mr-8"
-                clickable
-                zoomable
-                @click.native="$emit('selected', role)"
-              />
+              <div
+                v-for="roleGroup in getRolesByAxis(xKey, yKey)"
+                :key="roleGroup.map((rg) => rg.name).join('-')"
+                class="flex flex-row gap-2 items-start h-full"
+              >
+                <role-panel
+                  v-for="role in roleGroup"
+                  :key="role.id"
+                  :role="role"
+                  :selected="selectedRole && selectedRole.id === role.id"
+                  clickable
+                  zoomable
+                  @click.native="$emit('selected', role)"
+                />
+              </div>
             </transition-group>
           </td>
         </tr>
@@ -97,6 +98,10 @@ export default {
     useSalary: {
       type: Boolean,
       required: true
+    },
+    selectedRole: {
+      type: Object,
+      default: null
     }
   },
   data() {
@@ -214,7 +219,7 @@ export default {
   },
   methods: {
     getRolesByAxis(xAxisValue, yAxisValue) {
-      return this.roleFunction.roles
+      const roles = this.roleFunction.roles
         .filter((role) => {
           if (this.useSalary) {
             const io = [
@@ -243,6 +248,14 @@ export default {
           return role.grade === yAxisValue
         })
         .filter((role) => role[this.axisKeys.x].trim() === xAxisValue)
+
+      const groupedRoles = []
+      while (roles.length > 0) {
+        const group = roles.splice(0, 5)
+        groupedRoles.push(group)
+      }
+
+      return groupedRoles
     },
     groupRolesByFamilyRole(roles) {
       const result = this.$collect(roles)
