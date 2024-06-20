@@ -26,9 +26,11 @@
             {{ journeyType.text }}
           </information-badge>
         </template>
-        <information-badge size="xs" class="break-words">
-          <p class="break-words">{{ pillLabel }}</p>
-        </information-badge>
+        <skill-cap-info-badge
+          :is-skill="type === 'skill'"
+          :skill-code="item.code"
+          :level="item.level"
+        />
       </div>
     </div>
     <div v-else class="italic text-nsw-grey-600">
@@ -39,10 +41,12 @@
 
 <script>
 import InformationBadge from '@/components/InformationBadge'
+import SkillCapInfoBadge from '~/components/SkillCapInfoBadge.vue'
 
 export default {
   components: {
-    InformationBadge
+    InformationBadge,
+    SkillCapInfoBadge
   },
   props: {
     targetRole: {
@@ -76,27 +80,7 @@ export default {
   },
   computed: {
     pillLabel() {
-      if (this.type === 'skill') {
-        const name = this.$store.state.skills
-          .find((skill) => skill.code === this.item.code)
-          .levels.find(
-            (level) => level.level.toString() === this.item.level.toString()
-          )
-          .name.trim()
-
-        if (name.includes(' - ')) {
-          return name.split(' - ')[1]
-        }
-
-        // split the name string on a UTF dash characters
-        const splitName = name.split(/[\u2010-\u2015\u2212\uFE58-\uFE5F\uFF0D\uFF3F]/)
-        console.log(splitName)
-        // return the last element of the split name array
-        return splitName[splitName.length - 1]
-      }
-      return this.$store.state.capabilities
-        .find((capability) => capability.subcode === this.item.code)
-        .levels[this.item.level - 1].name.split(' - ')[1]
+      return this.getItemText(this.item.level)
     },
     assessedSkills() {
       return {
@@ -133,24 +117,34 @@ export default {
           .first()
         const assessedValue = this.assessedSkills?.[this.item.code]?.value
 
+        // const labelText = this.getItemText(
+        //   this.assessedSkills?.[this.item.code]?.value
+        // )
+
         if (
           this.roleType === 'current' &&
           assessedValue < currentRoleItem.level
         ) {
+          const labelText = this.getItemText(
+            this.assessedSkills?.[this.item.code]?.value
+          )
           return {
             text: 'Upskill',
             colour: 'orange',
-            tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
+            tooltip: `You assessed yourself at ${labelText} in your current role.`
           }
         }
         if (
           this.roleType === 'target' &&
           assessedValue < targetRoleItem.level
         ) {
+          const labelText = this.getItemText(
+            this.assessedSkills?.[this.item.code]?.value
+          )
           return {
             text: 'Upskill',
             colour: 'orange',
-            tooltip: `You assessed yourself at Level ${assessedValue} in your current role.`
+            tooltip: `You assessed yourself at ${labelText} in your current role.`
           }
         }
         if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
@@ -167,6 +161,40 @@ export default {
   methods: {
     capitaliseFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
+    },
+    getItemText(inputLevel) {
+      if (this.type === 'skill') {
+        const name = this.$store.state.skills.find(
+          (skill) => skill.code === this.item.code
+        )
+        const x = name.levels
+          .find((level) => {
+            const userLevel =
+              typeof inputLevel === 'string'
+                ? Number.parseInt(this.item.level)
+                : this.item.level
+            const thisLevel =
+              typeof level.level === 'string'
+                ? Number.parseInt(level.level)
+                : level.level
+            return userLevel === thisLevel
+          })
+          .name.trim()
+
+        if (x.includes(' - ')) {
+          return x.split(' - ')[1]
+        }
+
+        // split the name string on a UTF dash characters
+        const splitName = name.split(
+          /[\u2010-\u2015\u2212\uFE58-\uFE5F\uFF0D\uFF3F]/
+        )
+        // return the last element of the split name array
+        return splitName[splitName.length - 1]
+      }
+      return this.$store.state.capabilities
+        .find((capability) => capability.subcode === this.item.code)
+        .levels[inputLevel - 1].name.split(' - ')[1]
     }
   }
 }

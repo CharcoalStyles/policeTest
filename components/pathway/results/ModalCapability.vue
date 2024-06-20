@@ -17,26 +17,35 @@
           <div class="flex flex-col md:flex-row">
             <div class="mb-4 md:mb-0 md:mr-12">
               <h5 class="font-bold mb-3">You assessed</h5>
-              <information-badge v-if="accessedLevel" size="xs">
-                Level {{ accessedLevel }}
-              </information-badge>
+              <skill-cap-info-badge
+                v-if="accessedLevel"
+                :is-skill="false"
+                :skill-code="selectedCapability.subcode"
+                :level="currentRoleLevel.level"
+              />
               <div v-else class="italic text-nsw-grey-600">
                 Not currently known
               </div>
             </div>
             <div class="mb-4 md:mb-0 md:mr-12">
               <h5 class="font-bold mb-3">Your current role</h5>
-              <information-badge v-if="currentRoleLevel" size="xs">
-                Level {{ currentRoleLevel.level }}
-              </information-badge>
+              <skill-cap-info-badge
+                v-if="currentRoleLevel"
+                :is-skill="false"
+                :skill-code="selectedCapability.subcode"
+                :level="currentRoleLevel.level"
+              />
               <div v-else class="italic text-nsw-grey-600">N/A</div>
             </div>
             <div class="md:mr-12">
               <h5 class="font-bold mb-3">Target role</h5>
               <div class="flex space-x-3">
-                <information-badge v-if="targetRoleLevel" size="xs">
-                  Level {{ targetRoleLevel.level }}
-                </information-badge>
+                <skill-cap-info-badge
+                  v-if="targetRoleLevel"
+                  :is-skill="false"
+                  :skill-code="selectedCapability.subcode"
+                  :level="targetRoleLevel.level"
+                />
                 <div v-else class="italic text-nsw-grey-600">N/A</div>
                 <information-badge
                   v-if="journey"
@@ -59,7 +68,7 @@
               :selected="tabs.level"
               @click.native="tabs.level = level.level"
             >
-              Level {{ level.level }}
+              {{ getLabel(level) }}
             </panel-tab>
           </div>
           <div class="pt-6">
@@ -89,11 +98,13 @@
 import skills from '@/data/skills.json'
 import PanelTab from '@/components/pathway/results/PanelTab'
 import BaseModal from '@/components/BaseModal'
+import SkillCapInfoBadge from '~/components/SkillCapInfoBadge.vue'
 
 export default {
   components: {
     PanelTab,
-    BaseModal
+    BaseModal,
+    SkillCapInfoBadge
   },
   props: {
     selectedCapability: {
@@ -182,6 +193,21 @@ export default {
     //   category: 'pathway_results',
     //   label: this.selectedCapability.subcode
     // })
+  },
+  methods: {
+    getLabel(item) {
+      if (item.name.includes(' - ')) {
+        return item.name.split(' - ')[1]
+      }
+
+      // split the name string on a UTF dash characters
+      const splitName = item.name.split(
+        /[\u2010-\u2015\u2212\uFE58-\uFE5F\uFF0D\uFF3F]/
+      )
+
+      // return the last element of the split name array
+      return splitName[splitName.length - 1]
+    }
   }
 }
 </script>
