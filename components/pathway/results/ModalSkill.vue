@@ -17,24 +17,33 @@
           <div class="flex flex-col md:flex-row">
             <div class="mb-4 md:mb-0 md:mr-12">
               <h5 class="font-bold mb-3">You assessed</h5>
-              <information-badge v-if="accessedLevel !== false" size="xs">
-                Level {{ accessedLevel }}
-              </information-badge>
+              <skill-cap-info-badge
+                v-if="accessedLevel"
+                :is-skill="true"
+                :skill-code="selectedSkill.code"
+                :level="currentRoleLevel.level"
+              />
               <div v-else class="italic text-nsw-grey-600">N/A</div>
             </div>
             <div class="mb-4 md:mb-0 md:mr-12">
               <h5 class="font-bold mb-3">Your current role</h5>
-              <information-badge v-if="currentRoleLevel" size="xs">
-                Level {{ currentRoleLevel.level }}
-              </information-badge>
+              <skill-cap-info-badge
+                v-if="currentRoleLevel"
+                :is-skill="true"
+                :skill-code="selectedSkill.code"
+                :level="currentRoleLevel.level"
+              />
               <div v-else class="italic text-nsw-grey-600">N/A</div>
             </div>
             <div class="md:mr-12">
               <h5 class="font-bold mb-3">Target role</h5>
               <div class="flex space-x-3">
-                <information-badge v-if="targetRoleLevel" size="xs">
-                  Level {{ targetRoleLevel.level }}
-                </information-badge>
+                <skill-cap-info-badge
+                  v-if="targetRoleLevel"
+                  :is-skill="true"
+                  :skill-code="selectedSkill.code"
+                  :level="targetRoleLevel.level"
+                />
                 <div v-else class="italic text-nsw-grey-600">
                   Not currently known
                 </div>
@@ -89,11 +98,13 @@
 import skills from '@/data/skills.json'
 import PanelTab from '@/components/pathway/results/PanelTab'
 import BaseModal from '@/components/BaseModal'
+import SkillCapInfoBadge from '~/components/SkillCapInfoBadge.vue'
 
 export default {
   components: {
     PanelTab,
-    BaseModal
+    BaseModal,
+    SkillCapInfoBadge
   },
   props: {
     selectedSkill: {
