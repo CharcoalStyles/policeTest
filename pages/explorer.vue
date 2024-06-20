@@ -204,7 +204,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in group.roles.sort((a, b) =>
-                    a.salary.max > b.salary.max ? -1 : 1
+                    a.salary.max < b.salary.max ? -1 : 1
                   )"
                   :key="role.id"
                   :role="role"
