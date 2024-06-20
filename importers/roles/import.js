@@ -226,14 +226,6 @@ const parseManager = (manager) => {
   return manager === '1'
 }
 
-/**
- * Parse a salary string to int
- * @param {string} salary
- */
-const parseSalary = (salary) => {
-  return parseInt(salary.replace(',', '').replace('$', ''))
-}
-
 const parseAlias = (row) => {
   if (row) {
     return row.split(', ')
@@ -271,8 +263,8 @@ rolesCsvData.data.forEach((row, i) => {
     location: row['new_-_location'],
     manager: parseManager(row.manager), // parse as bool
     salary: {
-      min: parseSalary(row.salary_min),
-      max: parseSalary(row.salary_max)
+      min: parseInt(row.salary_min),
+      max: parseInt(row.salary_max)
     },
     skills: {
       focus: codeLevelParser(row.occupation_specific_focus) // parse as array
