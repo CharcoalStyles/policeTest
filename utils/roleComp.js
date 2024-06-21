@@ -52,13 +52,26 @@ export function adjacentRoles(roles, currentRole) {
       }
       return true
     }).filter((role) => {
-      // Only pick roles that are the next level up
-      // Will need to fix this logic for roles that don't have numerical grades, by using salary
+      // We'll never show the Student Police Officer role
+      if (role.name === 'Student Police Officer') {
+        return false
+      }
+
+      // Only pick roles that are the next level up for roles where whe have that numerical ranking
       if (
         currentRole.gradeId.type === 'policing' &&
         currentRole.gradeId.type === 'clerk'
       ) {
         return role.gradeId.grade === currentRole.gradeId.grade
+      }
+
+      // Salary logic
+
+      // If min salary is >5% less than current role's salary, then it's a no-go
+      if (
+        role.salary.min < currentRole.salary.min * 0.95
+      ) {
+        return false
       }
 
       if (
@@ -75,6 +88,7 @@ export function adjacentRoles(roles, currentRole) {
 export function skillRoles(currentRole) {
   return this.roles
     .filter((role) => role.jobFamily !== currentRole.jobFamily)
+    .filter((role) => role.name === 'Student Police Officer')
 }
 
 export function rankAndSortRoles(currentRole, compareRoles) {
