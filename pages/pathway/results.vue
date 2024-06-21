@@ -472,6 +472,7 @@ import {
   progressionRoles,
   roleShareCapabilitiesRank
 } from '@/utils/roleComp'
+import { shuffle } from '~/utils/array'
 
 export default {
   layout: 'results',
@@ -817,6 +818,25 @@ export default {
           })
           return acc
         }, [])
+        .reduce((acc, rankedRole) => {
+          if (
+            acc.find((x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus)
+          ) {
+            acc[
+              acc.findIndex(
+                (x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus
+              )
+            ].push(rankedRole)
+          } else {
+            acc.push([rankedRole])
+          }
+          return acc
+        }, [])
+        .map((rankedRoleGroup) => {
+          shuffle(rankedRoleGroup)
+          return rankedRoleGroup
+        })
+        .flat()
     },
 
     skillRoles(currentRole) {
