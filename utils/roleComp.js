@@ -34,8 +34,11 @@ export function progressionRoles(roles, currentRole) {
 export function adjacentRoles(roles, currentRole) {
   const filteredRoles = roles
     .filter((role) => {
-      // Filter out roles not in current Job Family
-      return role.jobFamily === currentRole.jobFamily
+      // Filter out roles not in current Job Family, if in Policing
+      if (currentRole.jobFamily === 'Policing') {
+        return role.jobFamily === currentRole.jobFamily
+      }
+      return true
     })
     .filter((role) => {
       // Filter out roles in current Job Function
