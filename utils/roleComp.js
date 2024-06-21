@@ -1,11 +1,11 @@
 export function progressionRoles(roles, currentRole, interests) {
   const filteredRoles = roles
     .filter((role) => {
+      if (interests.length > 0) {
+        const currentAndInterests = [currentRole.jobFunction, ...interests]
+        return currentAndInterests.includes(role.jobFunction)
+      }
       if (currentRole.gradeId.type === 'policing') {
-        if (interests.length > 0) {
-          const currentAndInterests = [currentRole.jobFunction, ...interests]
-          return currentAndInterests.includes(role.jobFunction)
-        }
         return currentRole.jobFamily === 'Policing'
       }
       return role.jobFunction === currentRole.jobFunction

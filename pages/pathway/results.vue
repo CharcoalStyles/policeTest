@@ -633,7 +633,12 @@ export default {
       )
       console.log(
         'progression',
-        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+        ranked
+          .map(
+            (r) =>
+              `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`
+          )
+          .slice(0, 15)
       )
 
       return ranked.map(({ role }) => role)
@@ -674,7 +679,12 @@ export default {
       )
       console.log(
         'adjacent',
-        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+        ranked
+          .map(
+            (r) =>
+              `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`
+          )
+          .slice(0, 15)
       )
 
       return ranked.map(({ role }) => role)
@@ -758,7 +768,28 @@ export default {
         .sort((a, b) => {
           return b.rank.focusFocus - a.rank.focusFocus
         })
-        .reduce((acc, rankedRole) => {
+        .reduce(
+          (acc, rankedRole, idx) => {
+            if (currentRole.jobFamily !== 'Policing') {
+              acc.roles.push(rankedRole)
+              return acc
+            }
+            if (currentRole.gradeId.grade === 4) {
+              if (rankedRole.role.gradeId.grade === 5) {
+                acc.counted += 1
+
+                if (idx > 5 && acc.counted <= 2) {
+                  acc.roles = [rankedRole, ...acc.roles]
+                  return acc
+                }
+              }
+            }
+            acc.roles.push(rankedRole)
+            return acc
+          },
+          { counted: 0, roles: [] }
+        )
+        .roles.reduce((acc, rankedRole) => {
           const totalFocus = rankedRole.rank.focusFocus
 
           if (acc.length === 0) {
