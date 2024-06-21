@@ -145,25 +145,25 @@ export default {
               'Inspector',
               'Detective Senior Sergeant',
               'Detective Sergeant',
-              'Detective Senior Constable',
-              'Detective Constable / Detective Senior Constable',
-              'Detective Constable'
+              'Detective Constable / Detective Senior Constable'
             ] // .filter((x) => grades.includes(x))
             return {
               labels,
               key: 'grade'
             }
           }
+
           const labels = [
             'Superintendent',
             'Inspector',
             'Senior Sergeant',
             'Sergeant',
-            'Senior Constable',
-            'Constable / Senior Constable',
-            'Constable',
-            'Clerk 1/2'
+            'Constable / Senior Constable'
           ] // .filter((x) => grades.includes(x))
+
+          if (this.roleFunction.name.toLowerCase() === 'development program') {
+            labels.push('Clerk 1/2')
+          }
 
           return {
             labels,
