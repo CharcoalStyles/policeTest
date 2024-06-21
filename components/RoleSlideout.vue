@@ -244,7 +244,7 @@ export default {
       return this.$store.state.capabilities
     },
     progressionRoles() {
-      const progRoles = progressionRoles(this.roles, this.role)
+      const progRoles = progressionRoles(this.roles, this.role, [])
       const prog = rankAndSortRoles(this.role, progRoles).map(
         ({ role }) => role
       )

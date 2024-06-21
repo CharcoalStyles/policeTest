@@ -1,6 +1,13 @@
-export function progressionRoles(roles, currentRole) {
+export function progressionRoles(roles, currentRole, interests) {
   const filteredRoles = roles
     .filter((role) => {
+      if (currentRole.gradeId.type === 'policing') {
+        if (interests.length > 0) {
+          const currentAndInterests = [currentRole.jobFunction, ...interests]
+          return currentAndInterests.includes(role.jobFunction)
+        }
+        return currentRole.jobFamily === 'Policing'
+      }
       return role.jobFunction === currentRole.jobFunction
     })
     .filter((role) => {
@@ -11,17 +18,22 @@ export function progressionRoles(roles, currentRole) {
         currentRole.gradeId.type === 'clerk'
       ) {
         const nextRoleJump = 2
-        if (
-          currentRole.gradeId.type === 'policing' &&
-          currentRole.gradeId.grade === 4 // Sergeant & Senior Sergeant
-        ) {
-          // Progression for Sergeants are Senior Sergeants and Inspectors
-          // but since Senior Sergeants are the "same level" as Sergeants,
-          // we need to check for that
-          if (currentRole.grade === 'Sergeant' && role.grade === 'Senior Sergeant') {
-            return true
+
+        // Policing specific rules
+        if (currentRole.gradeId.type === 'policing') {
+          // Sergeant & Senior Sergeant
+          if (
+            currentRole.gradeId.grade === 4
+          ) {
+            // Progression for Sergeants are Senior Sergeants and Inspectors
+            // but since Senior Sergeants are the "same level" as Sergeants,
+            // we need to check for that
+            if (currentRole.grade === 'Sergeant' && role.grade === 'Senior Sergeant') {
+              return true
+            }
           }
         }
+
         if (role.gradeId.grade <= currentRole.gradeId.grade) {
           return false
         }
@@ -82,8 +94,8 @@ export function adjacentRoles(roles, currentRole) {
   return filteredRoles
 }
 
-export function skillRoles(currentRole) {
-  return this.roles
+export function skillRoles(roles, currentRole) {
+  return roles
     .filter((role) => role.jobFamily !== currentRole.jobFamily)
     .filter((role) => role.name === 'Student Police Officer')
 }
