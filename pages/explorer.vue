@@ -634,7 +634,7 @@ export default {
      */
     filteredRoles() {
       // Filter by keyword
-      const fuzzy = new FuzzySearch(this.roles, ['name'])
+      const fuzzy = new FuzzySearch(this.roles, ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'])
       // Filter by salary and skills
       return collect(fuzzy.search(this.debouncedFilters.keyword))
         .filter((role) => !role.genericRole)

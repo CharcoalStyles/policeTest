@@ -308,7 +308,7 @@ export default {
   methods: {
     search(input) {
       this.value = input
-      const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias'], {
+      const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'], {
         sort: true
       })
       const result = fuzzy.search(input)
