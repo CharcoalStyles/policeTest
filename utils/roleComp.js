@@ -13,10 +13,22 @@ export function progressionRoles(roles, currentRole) {
         let nextRoleJump = 1
         if (
           currentRole.gradeId.type === 'policing' &&
-          currentRole.gradeId.grade === 2
+          currentRole.gradeId.grade === 2 // Constable & Constable / Senior Constable
         ) {
           nextRoleJump = 2
         }
+        if (
+          currentRole.gradeId.type === 'policing' &&
+          currentRole.gradeId.grade === 4 // Sergeant & Senior Sergeant
+        ) {
+          // Progression for Sergeants are Senior Sergeants and Inspectors
+          // but since Senior Sergeants are the "same level" as Sergeants,
+          // we need to check for that
+          if (currentRole.grade === 'Sergeant' && role.grade === 'Senior Sergeant') {
+            return true
+          }
+        }
+
         return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
       }
 

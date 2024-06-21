@@ -616,9 +616,11 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, filteredRoles).map(
-        ({ role }) => role
-      )
+      return this.rankAndSortRoles(
+        currentRole,
+        filteredRoles,
+        'progression'
+      ).map(({ role }) => role)
     },
 
     adjacentRoles(currentRole) {
@@ -649,7 +651,7 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, filteredRoles).map(
+      return this.rankAndSortRoles(currentRole, filteredRoles, 'adjacent').map(
         ({ role }) => role
       )
     },
@@ -675,7 +677,9 @@ export default {
       return results
     },
 
-    rankAndSortRoles(currentRole, compareRoles) {
+    rankAndSortRoles(currentRole, compareRoles, type) {
+      // type is type of reccomendation
+      // 'progression', 'adjacent' or 'skill'
       return compareRoles
         .map((role) => {
           // Capability comparison
@@ -789,7 +793,9 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, matches).map(({ role }) => role)
+      return this.rankAndSortRoles(currentRole, matches, 'skill').map(
+        ({ role }) => role
+      )
     }
   }
 }
