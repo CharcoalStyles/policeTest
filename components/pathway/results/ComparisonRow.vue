@@ -164,25 +164,27 @@ export default {
     },
     getItemText(inputLevel) {
       if (this.type === 'skill') {
-        const name = this.$store.state.skills.find(
-          (skill) => skill.code === this.item.code
+        const skill = this.$store.state.skills.find(
+          (s) => s.code === this.item.code
         )
-        const x = name.levels
-          .find((level) => {
-            const userLevel =
-              typeof inputLevel === 'string'
-                ? Number.parseInt(this.item.level)
-                : this.item.level
-            const thisLevel =
-              typeof level.level === 'string'
-                ? Number.parseInt(level.level)
-                : level.level
-            return userLevel === thisLevel
-          })
-          .name.trim()
+        console.log({ skill })
+        const name = skill.levels.find((level) => {
+          const userLevel = (
+            typeof inputLevel === 'string'
+              ? Number.parseInt(this.item.level)
+              : this.item.level
+          ).toString()
+          const thisLevel = (
+            typeof level.level === 'string'
+              ? Number.parseInt(level.level)
+              : level.level
+          ).toString()
+          console.log({ userLevel, thisLevel })
+          return userLevel === thisLevel
+        }).name.trim()
 
-        if (x.includes(' - ')) {
-          return x.split(' - ')[1]
+        if (name.includes(' - ')) {
+          return name.split(' - ')[1]
         }
 
         // split the name string on a UTF dash characters
