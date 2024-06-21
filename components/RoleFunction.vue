@@ -24,7 +24,7 @@
             :key="xKey"
             class="pr-8 h-max border-b-4 border-white"
           >
-            <p class="sticky max-w-60 left-0">{{ xKey }}</p>
+            <p class="sticky max-w-60 left-0 text-left">{{ xKey }}</p>
           </th>
         </tr>
         <!-- body row -->
