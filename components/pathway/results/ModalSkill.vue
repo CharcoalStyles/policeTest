@@ -60,7 +60,7 @@
           </div>
         </div>
         <div v-if="selectedLevel !== false">
-          <div class="border-b-2 border-nsw-grey-200 flex overflow-x-scroll">
+          <div class="border-b-2 border-nsw-grey-200 flex flex-wrap">
             <panel-tab
               v-for="level in selectedSkill.levels"
               :key="level.level"
