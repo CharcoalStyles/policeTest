@@ -284,6 +284,14 @@ export default {
                 return role.jobFamily !== 'Policing'
             }
           }
+          if (this.step.id === 'goal-role') {
+            switch (this.$store.state.pathway.answers.sworn.value) {
+              case 'sworn':
+                return role.jobFamily === 'Policing'
+              case 'unsworn':
+                return role.jobFamily !== 'Policing'
+            }
+          }
 
           if (this.filter.jobFamily !== '') {
             return role.jobFamily === this.filter.jobFamily
@@ -308,9 +316,13 @@ export default {
   methods: {
     search(input) {
       this.value = input
-      const fuzzy = new FuzzySearch(this.filteredRoles, ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'], {
-        sort: true
-      })
+      const fuzzy = new FuzzySearch(
+        this.filteredRoles,
+        ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
+        {
+          sort: true
+        }
+      )
       const result = fuzzy.search(input)
       if (result.length === 0) {
         return []
