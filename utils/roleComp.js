@@ -1,5 +1,4 @@
 export function progressionRoles(roles, currentRole) {
-  console.log(currentRole.gradeId)
   const filteredRoles = roles
     .filter((role) => {
       return role.jobFunction === currentRole.jobFunction
