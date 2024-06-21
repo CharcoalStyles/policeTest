@@ -1,23 +1,46 @@
-export function progressionRoles(roles, currentRole) {
+export function progressionRoles(roles, currentRole, interests) {
   const filteredRoles = roles
     .filter((role) => {
+      if (currentRole.gradeId.type === 'policing') {
+        if (interests.length > 0) {
+          const currentAndInterests = [currentRole.jobFunction, ...interests]
+          return currentAndInterests.includes(role.jobFunction)
+        }
+        return currentRole.jobFamily === 'Policing'
+      }
       return role.jobFunction === currentRole.jobFunction
     })
     .filter((role) => {
       // Only pick roles that are the next level up
-      // Will need to fix this logic for roles that don't have numerical grades, by using salary
       if (
-        currentRole.gradeId.type === 'policing' &&
-        currentRole.gradeId.type === 'clerk'
+        (currentRole.gradeId.type === 'policing' ||
+          currentRole.gradeId.type === 'clerk') && (
+          role.gradeId.type === 'policing' ||
+          role.gradeId.type === 'clerk'
+        ) && role.gradeId.grade !== -1 && currentRole.gradeId.grade !== -1
       ) {
-        let nextRoleJump = 1
-        if (
-          currentRole.gradeId.type === 'policing' &&
-          currentRole.gradeId.grade === 2
-        ) {
-          nextRoleJump = 2
+        const nextRoleJump = 2
+
+        // Policing specific rules
+        if (currentRole.gradeId.type === 'policing') {
+          // Sergeant & Senior Sergeant
+          if (
+            currentRole.gradeId.grade === 4
+          ) {
+            // Progression for Sergeants are Senior Sergeants and Inspectors
+            // but since Senior Sergeants are the "same level" as Sergeants,
+            // we need to check for that
+            if (currentRole.grade === 'Sergeant' && role.grade === 'Senior Sergeant') {
+              return true
+            }
+          }
         }
-        return role.gradeId.grade === currentRole.gradeId.grade + nextRoleJump
+
+        if (role.gradeId.grade <= currentRole.gradeId.grade) {
+          return false
+        }
+
+        return role.gradeId.grade <= currentRole.gradeId.grade + nextRoleJump
       }
 
       if (
@@ -34,20 +57,32 @@ export function progressionRoles(roles, currentRole) {
 export function adjacentRoles(roles, currentRole) {
   const filteredRoles = roles
     .filter((role) => {
-      // Filter out roles not in current Job Family
-      return role.jobFamily === currentRole.jobFamily
-    })
-    .filter((role) => {
-      // Filter out roles in current Job Function
-      return role.jobFunction !== currentRole.jobFunction
+      // Filter out roles not in current Job Family, if in Policing
+      if (currentRole.jobFamily === 'Policing') {
+        return role.jobFamily === currentRole.jobFamily
+      }
+      return true
     }).filter((role) => {
-      // Only pick roles that are the next level up
-      // Will need to fix this logic for roles that don't have numerical grades, by using salary
+      // We'll never show the Student Police Officer role
+      if (role.name === 'Student Police Officer') {
+        return false
+      }
+
+      // Only pick roles that are the next level up for roles where whe have that numerical ranking
       if (
         currentRole.gradeId.type === 'policing' &&
         currentRole.gradeId.type === 'clerk'
       ) {
         return role.gradeId.grade === currentRole.gradeId.grade
+      }
+
+      // Salary logic
+
+      // If min salary is >5% less than current role's salary, then it's a no-go
+      if (
+        role.salary.min < currentRole.salary.min * 0.95
+      ) {
+        return false
       }
 
       if (
@@ -61,9 +96,10 @@ export function adjacentRoles(roles, currentRole) {
   return filteredRoles
 }
 
-export function skillRoles(currentRole) {
-  return this.roles
+export function skillRoles(roles, currentRole) {
+  return roles
     .filter((role) => role.jobFamily !== currentRole.jobFamily)
+    .filter((role) => role.name === 'Student Police Officer')
 }
 
 export function rankAndSortRoles(currentRole, compareRoles) {
