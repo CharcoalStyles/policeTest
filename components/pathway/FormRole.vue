@@ -313,7 +313,7 @@ export default {
       })
       const result = fuzzy.search(input)
       if (result.length === 0) {
-        return [this.defaultNoRole]
+        return []
       }
       return result
     },
