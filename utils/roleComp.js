@@ -12,10 +12,12 @@ export function progressionRoles(roles, currentRole, interests) {
     })
     .filter((role) => {
       // Only pick roles that are the next level up
-      // Will need to fix this logic for roles that don't have numerical grades, by using salary
       if (
-        currentRole.gradeId.type === 'policing' ||
-        currentRole.gradeId.type === 'clerk'
+        (currentRole.gradeId.type === 'policing' ||
+          currentRole.gradeId.type === 'clerk') && (
+          role.gradeId.type === 'policing' ||
+          role.gradeId.type === 'clerk'
+        ) && role.gradeId.grade !== -1 && currentRole.gradeId.grade !== -1
       ) {
         const nextRoleJump = 2
 

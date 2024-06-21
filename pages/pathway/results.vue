@@ -470,7 +470,6 @@ import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 import {
   adjacentRoles,
   progressionRoles,
-  skillRoles,
   roleShareCapabilitiesRank
 } from '@/utils/roleComp'
 
@@ -600,7 +599,11 @@ export default {
         }
       }
 
-      const filteredRoles = progressionRoles(this.roles, currentRole, this.userInterests)
+      const filteredRoles = progressionRoles(
+        this.roles,
+        currentRole,
+        this.userInterests
+      )
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -727,9 +730,7 @@ export default {
 
           // Interests comparison
           if (this.userInterests.length > 0) {
-            if (
-              this.userInterests.includes(role.jobFunction.trim())
-            ) {
+            if (this.userInterests.includes(role.jobFunction.trim())) {
               sharingSkills.focusFocus += 3
             }
           }
@@ -788,7 +789,8 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const matches = skillRoles(this.roles, currentRole)
+      const matches = this.roles
+        .filter((role) => role.jobFamily !== currentRole.jobFamily)
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
