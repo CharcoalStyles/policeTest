@@ -161,7 +161,7 @@
               </div>
               <div class="md:flex flex-row flex-wrap hidden">
                 <div
-                  v-if="progressionRoles(currentRole).length"
+                  v-if="progRoles(currentRole).length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
@@ -170,7 +170,7 @@
                   </div>
                 </div>
                 <div
-                  v-if="adjacentRoles(currentRole).length"
+                  v-if="adjRoles(currentRole).length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
@@ -201,7 +201,7 @@
 
               <div class="flex flex-row flex-wrap print:hidden">
                 <div
-                  v-if="progressionRoles(currentRole).length"
+                  v-if="progRoles(currentRole).length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6 md:hidden">
@@ -209,7 +209,7 @@
                     <p>Roles that your current role can progress to</p>
                   </div>
                   <role-selector
-                    v-for="role in progressionRoles(currentRole).slice(0, 6)"
+                    v-for="role in progRoles(currentRole).slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -218,7 +218,7 @@
                   />
                 </div>
                 <div
-                  v-if="adjacentRoles(currentRole).length"
+                  v-if="adjRoles(currentRole).length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6 md:hidden">
@@ -230,7 +230,7 @@
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
-                    v-for="role in adjacentRoles(currentRole).slice(0, 6)"
+                    v-for="role in adjRoles(currentRole).slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -263,8 +263,8 @@
                 <div
                   v-if="
                     !targetRole &&
-                    progressionRoles(currentRole).length === 0 &&
-                    adjacentRoles(currentRole).length === 0 &&
+                    progRoles(currentRole).length === 0 &&
+                    adjRoles(currentRole).length === 0 &&
                     skillRoles(currentRole).length === 0
                   "
                 >
@@ -559,6 +559,12 @@ export default {
         return this.answers['new-role'].value.join(', ')
       }
       return ''
+    },
+    userInterests() {
+      if (this.answers.hasOwnProperty('interests')) {
+        return this.answers.interests.value
+      }
+      return []
     }
   },
   mounted() {
@@ -580,7 +586,7 @@ export default {
       this.$scrollTo('#comparison')
     },
 
-    progressionRoles(currentRole) {
+    progRoles(currentRole) {
       let showDetective = true
       if (this.answers.hasOwnProperty('detective-roles')) {
         switch (this.answers['detective-roles'].value) {
@@ -593,7 +599,11 @@ export default {
         }
       }
 
-      const filteredRoles = progressionRoles(this.roles, currentRole)
+      const filteredRoles = progressionRoles(
+        this.roles,
+        currentRole,
+        this.userInterests
+      )
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -616,12 +626,20 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, filteredRoles).map(
-        ({ role }) => role
+      const ranked = this.rankAndSortRoles(
+        currentRole,
+        filteredRoles,
+        'progression'
       )
+      console.log(
+        'progression',
+        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+      )
+
+      return ranked.map(({ role }) => role)
     },
 
-    adjacentRoles(currentRole) {
+    adjRoles(currentRole) {
       const showDetective = this.answers.hasOwnProperty('detective-roles')
         ? this.answers['detective-roles'].value.includes('yes')
         : false
@@ -649,9 +667,17 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, filteredRoles).map(
-        ({ role }) => role
+      const ranked = this.rankAndSortRoles(
+        currentRole,
+        filteredRoles,
+        'adjacent'
       )
+      console.log(
+        'adjacent',
+        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+      )
+
+      return ranked.map(({ role }) => role)
     },
 
     isRoleSharingSkills(firstRole, secondRole) {
@@ -675,7 +701,9 @@ export default {
       return results
     },
 
-    rankAndSortRoles(currentRole, compareRoles) {
+    rankAndSortRoles(currentRole, compareRoles, type) {
+      // type is type of reccomendation
+      // 'progression', 'adjacent' or 'skill'
       return compareRoles
         .map((role) => {
           // Capability comparison
@@ -701,10 +729,8 @@ export default {
           }
 
           // Interests comparison
-          if (this.answers.hasOwnProperty('interests')) {
-            if (
-              this.answers.interests.value.includes(role.jobFunction.trim())
-            ) {
+          if (this.userInterests.length > 0) {
+            if (this.userInterests.includes(role.jobFunction.trim())) {
               sharingSkills.focusFocus += 3
             }
           }
@@ -789,7 +815,9 @@ export default {
           return true
         })
 
-      return this.rankAndSortRoles(currentRole, matches).map(({ role }) => role)
+      return this.rankAndSortRoles(currentRole, matches, 'skill').map(
+        ({ role }) => role
+      )
     }
   }
 }
