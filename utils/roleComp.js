@@ -39,10 +39,6 @@ export function adjacentRoles(roles, currentRole) {
         return role.jobFamily === currentRole.jobFamily
       }
       return true
-    })
-    .filter((role) => {
-      // Filter out roles in current Job Function
-      return role.jobFunction !== currentRole.jobFunction
     }).filter((role) => {
       // Only pick roles that are the next level up
       // Will need to fix this logic for roles that don't have numerical grades, by using salary
