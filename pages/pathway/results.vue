@@ -633,7 +633,7 @@ export default {
       )
       console.log(
         'progression',
-        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+        ranked.map((r) => `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`).slice(0, 15)
       )
 
       return ranked.map(({ role }) => role)
@@ -674,7 +674,7 @@ export default {
       )
       console.log(
         'adjacent',
-        ranked.map((r) => `${r.role.name} (${r.rank.focusFocus})`).slice(0, 15)
+        ranked.map((r) => `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`).slice(0, 15)
       )
 
       return ranked.map(({ role }) => role)
