@@ -189,10 +189,21 @@
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
+                <div class="font-bold text-base">
+                  {{ debouncedFilters.keyword.length }} Length ({{
+                    !(
+                      filteredRolesByFunction.useSalary &&
+                      debouncedFilters.keyword.length > 0
+                    )
+                  }})
+                </div>
               </div>
             </div>
           </div>
-          <div class="p-4 flex-grow overflow-y-scroll">
+          <div
+            v-if="filter.keyword.length === 0"
+            class="p-4 flex-grow overflow-y-scroll"
+          >
             <div
               v-for="(group, index) in filteredRolesByFunction.familyRoles"
               :key="index"
@@ -206,6 +217,18 @@
                   v-for="role in group.roles.sort((a, b) =>
                     a.salary.max < b.salary.max ? -1 : 1
                   )"
+                  :key="role.id"
+                  :role="role"
+                  @click.native="viewRole(role)"
+                />
+              </transition-group>
+            </div>
+          </div>
+          <div v-else class="p-4 flex-grow overflow-y-scroll">
+            <div class="mb-10">
+              <transition-group name="list" tag="div">
+                <job-role
+                  v-for="role in filteredRoles"
                   :key="role.id"
                   :role="role"
                   @click.native="viewRole(role)"
@@ -634,7 +657,13 @@ export default {
      */
     filteredRoles() {
       // Filter by keyword
-      const fuzzy = new FuzzySearch(this.roles, ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'])
+      const fuzzy = new FuzzySearch(
+        this.roles,
+        ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
+        {
+          sort: true
+        }
+      )
       // Filter by salary and skills
       return collect(fuzzy.search(this.debouncedFilters.keyword))
         .filter((role) => !role.genericRole)
