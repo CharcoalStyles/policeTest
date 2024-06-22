@@ -189,14 +189,6 @@
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
-                <div class="font-bold text-base">
-                  {{ debouncedFilters.keyword.length }} Length ({{
-                    !(
-                      filteredRolesByFunction.useSalary &&
-                      debouncedFilters.keyword.length > 0
-                    )
-                  }})
-                </div>
               </div>
             </div>
           </div>
@@ -564,7 +556,7 @@
 
 <script>
 import collect from 'collect.js'
-import FuzzySearch from 'fuzzy-search'
+// import FuzzySearch from 'fuzzy-search'
 import roles from '@/data/roles.json'
 import skills from '@/data/skills.json'
 import InputRange from '@/components/forms/InputRange'
@@ -576,6 +568,7 @@ import NswButton from '@/components/nsw/NswButton'
 import SkillsSelector from '@/components/SkillsSelector'
 import ModalOnboarding from '@/components/ModalOnboarding'
 import InputSkills from '@/components/forms/InputSkills'
+import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
 
 export default {
@@ -657,15 +650,76 @@ export default {
      */
     filteredRoles() {
       // Filter by keyword
-      const fuzzy = new FuzzySearch(
-        this.roles,
-        ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
-        {
-          sort: true
-        }
-      )
+      // const fuzzy = new FuzzySearch(
+      //   this.roles,
+      //   ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
+      //   {
+      //     sort: true
+      //   }
+      // )
+      // const fuzzyStartTime = performance.now()
+      // const fuzzyResult = fuzzy.search(this.debouncedFilters.keyword)
+      // console.log(`Fuzzy search took ${performance.now() - fuzzyStartTime}ms`)
+
+      const keyword = keywordSearch(this.roles, [
+        { key: 'name', weight: 2 },
+        { key: 'alias' },
+        { key: 'command_BusUnit' },
+        { key: 'jobFunction' },
+        { key: 'grade', weight: 1.5 }
+      ])
+
+      // const keywordStartTime = performance.now()
+      const keywordResult = keyword(this.debouncedFilters.keyword)
+      // console.log(
+      //   `Keyword search took ${performance.now() - keywordStartTime}ms`
+      // )
+
+      console.log({
+        keyword15: keywordResult
+          .slice(0, 15)
+          .map(
+            (r) =>
+              `${r.item.name} (${r.item.jobFamily}, ${r.item.jobFunction})(${r.rank})`
+          )
+      })
+
+      const x = keywordResult.map((r) => r.item)
+
+      // console.log(
+      //   `fussy result: ${fuzzyResult.length} - keyword result: ${keywordResult.length}`
+      // )
+      // if (fuzzyResult.length !== keywordResult.length) {
+      //   const fuzzyIds = fuzzyResult.map((r) => r.id)
+      //   const keywordIds = keywordResult.map((r) => r.item.id)
+      //   const extraIdsFuzzy = fuzzyIds.filter((id) => !keywordIds.includes(id))
+      //   const extraIdsKeyword = keywordIds.filter(
+      //     (id) => !fuzzyIds.includes(id)
+      //   )
+      //   console.log(
+      //     `Extra fuzzy roles: ${extraIdsFuzzy
+      //       .map((id) => {
+      //         const role = roles.find((r) => r.id === id)
+      //         if (role) {
+      //           return `${role.name} (${role.jobFamily}, ${role.jobFUnction}}) (${role.grade})`
+      //         }
+      //       })
+      //       .join('\n\t- ')}`
+      //   )
+      //   console.log(
+      //     `Extra keyword ids: ${extraIdsKeyword
+      //       .map((id) => {
+      //         const role = roles.find((r) => r.id === id)
+      //         if (role) {
+      //           return `${role.name} (${role.jobFamily}, ${role.jobFunction}}) (${role.grade})`
+      //         }
+      //       })
+      //       .join('\n\t- ')}`
+      //   ) dog serg
+      // }
+
       // Filter by salary and skills
-      return collect(fuzzy.search(this.debouncedFilters.keyword))
+      return collect(x)
         .filter((role) => !role.genericRole)
         .filter((role) => {
           switch (this.debouncedFilters.sworn) {
