@@ -179,9 +179,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import FuzzySearch from 'fuzzy-search'
+// import FuzzySearch from 'fuzzy-search'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import InformationBadge from '@/components/InformationBadge'
+import { keywordSearch } from '@/utils/search'
 import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
 
 export default {
@@ -316,14 +317,22 @@ export default {
   methods: {
     search(input) {
       this.value = input
-      const fuzzy = new FuzzySearch(
-        this.filteredRoles,
-        ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
-        {
-          sort: true
-        }
-      )
-      const result = fuzzy.search(input)
+      // const fuzzy = new FuzzySearch(
+      //   this.filteredRoles,
+      //   ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
+      //   {
+      //     sort: true
+      //   }
+      // )
+      // const result = fuzzy.search(input)
+      const keyword = keywordSearch(this.filteredRoles, [
+        { key: 'name', weight: 2 },
+        { key: 'alias' },
+        { key: 'command_BusUnit' },
+        { key: 'jobFunction' },
+        { key: 'grade', weight: 1.5 }
+      ])
+      const result = keyword(input).map((r) => r.item)
       if (result.length === 0) {
         return []
       }
