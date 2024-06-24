@@ -761,6 +761,22 @@ export default {
             const minVolume = role.numPositions.split(' ')[1]
             sharingSkills.focusFocus += 1 + minVolume.length * 0.1
           }
+
+          // salary logic
+          if (role.salary.max > currentRole.salary.max) {
+            const diff = role.salary.max - currentRole.salary.max
+            switch (type) {
+              case 'progression':
+                sharingSkills.focusFocus -= (diff / 2000) * 0.1
+                break
+              case 'adjacent':
+                sharingSkills.focusFocus -= (diff / 2000) * 0.5
+                break
+              case 'skill':
+                sharingSkills.focusFocus -= (diff / 2000) * 0.05
+            }
+          }
+
           return {
             role,
             rank: sharingSkills
