@@ -279,7 +279,7 @@ export default {
           return true
         })
         .filter((role) => {
-          if (this.filter.sworn !== '') {
+          if (this.step.id === 'current-role' && this.filter.sworn !== '') {
             switch (this.filter.sworn) {
               case 'yes':
                 return role.jobFamily === 'Policing'
@@ -298,9 +298,10 @@ export default {
                 return role.jobFamily !== 'Policing'
             }
           }
+          return true
         })
         .filter((role) => {
-          if (this.filter.jobFamily !== '') {
+          if (this.step.id === 'goal-role' && this.filter.jobFamily !== '') {
             return role.jobFamily === this.filter.jobFamily
           }
 
@@ -324,14 +325,7 @@ export default {
   methods: {
     search(input) {
       this.value = input
-      // const fuzzy = new FuzzySearch(
-      //   this.filteredRoles,
-      //   ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
-      //   {
-      //     sort: true
-      //   }
-      // )
-      // const result = fuzzy.search(input)
+
       console.log(this.filter.jobFamily)
       const keyword = keywordSearch(this.filteredRoles, [
         { key: 'name', weight: 2 },
