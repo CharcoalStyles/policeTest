@@ -271,12 +271,14 @@ export default {
         }, [])
     },
     filteredRoles() {
-      return this.$collect(this.$store.state.roles)
+      const filteredRoles = this.$store.state.roles
         .filter((role) => {
           if (this.currentRole && role.id === this.currentRole.id) {
             return false
           }
-
+          return true
+        })
+        .filter((role) => {
           if (this.filter.sworn !== '') {
             switch (this.filter.sworn) {
               case 'yes':
@@ -285,6 +287,9 @@ export default {
                 return role.jobFamily !== 'Policing'
             }
           }
+          return true
+        })
+        .filter((role) => {
           if (this.step.id === 'goal-role') {
             switch (this.$store.state.pathway.answers.sworn.value) {
               case 'yes':
@@ -293,7 +298,8 @@ export default {
                 return role.jobFamily !== 'Policing'
             }
           }
-
+        })
+        .filter((role) => {
           if (this.filter.jobFamily !== '') {
             return role.jobFamily === this.filter.jobFamily
           }
@@ -305,7 +311,8 @@ export default {
           const roleB = b.name.toUpperCase()
           return roleA < roleB ? -1 : roleA > roleB ? 1 : 0
         })
-        .all()
+
+      return filteredRoles
     },
     showWorkArea() {
       return (
@@ -325,6 +332,7 @@ export default {
       //   }
       // )
       // const result = fuzzy.search(input)
+      console.log(this.filter.jobFamily)
       const keyword = keywordSearch(this.filteredRoles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },
