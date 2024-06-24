@@ -19,7 +19,7 @@
         :show="show"
         title="NSWPF Career Pathfinder"
         max-width="xl"
-        :closeable="closeable"
+        :closeable="true"
         :fit-content="true"
         @close="show = false"
       >

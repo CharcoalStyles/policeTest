@@ -2,7 +2,6 @@
   <div class="relative flex-grow z-10">
     <div class="bg-nsw-grey-100 inset-border">
       <div class="xl:container">
-        <nswpf-beta />
         <div class="px-4 md:px-6 pt-6">
           <div class="">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -24,7 +23,7 @@
               class="p-6 bg-white border rounded border-nsw-grey-200 lg:p-8 print-break"
             >
               <div
-                class="flex flex-row items-center justify-between mb-8 print:flex-row"
+                class="flex flex-row items-center justify-between mb-8 print:flex-row print:hidden"
               >
                 <h2 class="flex text-lg sm:text-2xl font-bold">Your answers</h2>
                 <nsw-button
@@ -71,7 +70,7 @@
                     Interest Areas
                   </div>
                   <div>
-                    I'm instested in
+                    I'm interested in
                     <span class="font-bold text-nsw-brand-secondary-blue">{{
                       readableInterestsList
                     }}</span>
@@ -84,8 +83,27 @@
                   <div class="flex-shrink-0 mb-3 font-bold md:mb-0 md:w-2/6">
                     How you like to work
                   </div>
-                  <div>
-                    {{ managementPreference }}
+                  <div v-if="managementPreference === 'individual'">
+                    I would prefer to be an
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      Individual contributor</span
+                    >
+                  </div>
+                  <div v-else-if="managementPreference === 'manager'">
+                    I would prefer to be a
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      Supervisor/Manager</span
+                    >
+                  </div>
+                  <div v-else>
+                    I don't have a preference over being an
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      Individual contributor</span
+                    >
+                    or
+                    <span class="font-bold text-nsw-brand-secondary-blue">
+                      Supervisor/Manager</span
+                    >
                   </div>
                 </div>
                 <div
@@ -114,15 +132,15 @@
         <div>
           <div
             id="target"
-            class="py-6 border-b lg:py-16 border-nsw-grey-200 print-break print:hidden"
+            class="py-6 border-b lg:py-16 border-nsw-grey-200 print:hidden"
           >
             <div class="mb-10">
               <h3 class="flex items-center mb-3 text-3xl font-bold md:text-3xl">
                 <step-badge>1</step-badge> Select your target role
               </h3>
               <p class="md:w-2/3">
-                A target role compares your current role, identify skills gaps,
-                surfaces learning resources.
+                Selecting a target role allows you to compare your current role,
+                identify skills gaps and find out about essential requirements.
               </p>
             </div>
             <div class="w-full">
@@ -156,7 +174,7 @@
                 >
                   <div class="mb-6">
                     <h4 class="text-xl font-bold">Progression roles</h4>
-                    <p>Roles that your current role can progress to</p>
+                    <p>Progression roles based on your answers and interests</p>
                   </div>
                 </div>
                 <div
@@ -165,10 +183,7 @@
                 >
                   <div class="mb-6">
                     <h4 class="text-xl font-bold">Adjacent roles</h4>
-                    <p>
-                      Roles from your current work area that share your current
-                      capabilities
-                    </p>
+                    <p>Adjacent roles based on your answers and interests</p>
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                 </div>
@@ -271,10 +286,7 @@
               </div>
             </div>
           </div>
-          <div
-            id="comparison"
-            class="w-full py-6 border-b lg:py-16 border-nsw-grey-200 print-break"
-          >
+          <div id="comparison" class="w-full py-6 lg:py-16">
             <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
                 <step-badge class="print:hidden">2</step-badge> Your skills and
@@ -340,91 +352,168 @@
               </div>
             </div>
           </div>
-          <div class="py-6 border-b lg:py-16 border-nsw-grey-200">
-            <h2 class="mb-6 text-3xl md:text-4xl font-bold">Next steps</h2>
-            <div class="flex gap-6 w-full bg-nsw-grey-100 mb-12">
-              <div class="flex flex-col px-12 py-8">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
-                  Start a career conversation
-                </h3>
-                <p class="mb-4 sm:mb-8">
-                  Share this plan with your Supervisor / Manager or support
-                  network by printing this page or sending it to them via email.
-                </p>
-                <div class="flex flex-col">
-                  <p class="mb-2">Relevant resources</p>
-                  <nuxt-link
-                    to="/explorer"
-                    target="_blank"
-                    class="flex items-center underline text-nsw-brand-primary-blue"
-                  >
-                    NSWPF Careers intranet site
-                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
-                  </nuxt-link>
-                  <nuxt-link
-                    to="/explorer"
-                    target="_blank"
-                    class="flex items-center underline text-nsw-brand-primary-blue"
-                  >
-                    NSWPF Role Description Library
-                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
-                  </nuxt-link>
-                  <nuxt-link
-                    to="/explorer"
-                    target="_blank"
-                    class="flex items-center underline text-nsw-brand-primary-blue"
-                  >
-                    SFIA Skill framework
-                    <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
-                  </nuxt-link>
+          <div class="print:hidden">
+            <h2 class="text-3xl font-bold mb-8">Next steps</h2>
+            <div class="flex flex-col gap-8">
+              <div class="flex flex-row flex-wrap gap-8">
+                <div
+                  class="w-full md:w-1/3 px-6 py-8 flex-grow flex flex-col gap-5 bg-nsw-brand-primary-blue-light"
+                >
+                  <p class="text-2xl font-bold">Start a career conversation</p>
+                  <p>
+                    Share this plan with your Supervisor / Manager or support
+                    network by saving a copy and using it in your next
+                    conversation.
+                  </p>
+                  <print-page class="mb-6" @click.native="printPage" />
+                </div>
+                <div
+                  class="w-full md:w-1/3 px-6 py-8 flex-grow flex flex-col gap-5 bg-nsw-grey-100"
+                >
+                  <p class="text-2xl font-bold">Career Advisory</p>
+                  <p>
+                    Our Career Advisory Team is here to help. Reach out to get
+                    help in planning your career with NSWPF.
+                  </p>
+                  <div>
+                    <a
+                      href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_planning_and_development_framework/career_skills_workshop"
+                      target="_blank"
+                      class="underline text-nsw-brand-primary-blue font-bold"
+                    >
+                      Career Advisory Team</a
+                    >
+                    <p class="text-nsw-brand-primary-blue font-bold">
+                      #PCC-Careers
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div class="w-52 pr-12 pt-8">
-                <print-page class="mb-6" @click.native="printPage" />
-              </div>
-            </div>
-            <div class="flex flex-row gap-10">
-              <div class="bg-nsw-grey-100 px-12 py-8">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
-                  Search for more roles
-                </h3>
-                <p class="mb-4 sm:mb-8">
-                  If you haven’t found the role you are looking for you can
-                  search over 1300 NSWPF roles with our role explorer.
-                </p>
 
-                <nuxt-link
-                  to="/explorer"
-                  target="_blank"
-                  class="underline text-nsw-brand-primary-blue"
+              <div class="flex flex-row flex-wrap gap-8">
+                <div
+                  class="w-full md:w-1/4 px-6 py-8 flex-grow flex flex-col gap-5 bg-nsw-grey-100"
                 >
-                  Role explorer
-                </nuxt-link>
-              </div>
-
-              <div class="bg-nsw-grey-100 px-12 py-8">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
-                  Search for your target role and related roles
-                </h3>
-                <p class="mb-4 sm:mb-8">
-                  Browse available NSWPF administrative job opportunities with
-                  NSW Government.
-                </p>
-
-                <nuxt-link
-                  to="/explorer"
-                  target="_blank"
-                  class="flex items-center underline text-nsw-brand-primary-blue"
+                  <p class="text-2xl font-bold">
+                    Search for more roles on the Role Explorer
+                  </p>
+                  <p>
+                    If you haven’t found the role you are looking for you can
+                    search over 1300 NSWPF roles with our Role Explorer.
+                  </p>
+                  <nuxt-link
+                    to="/explorer"
+                    class="underline text-nsw-brand-primary-blue font-bold"
+                  >
+                    Role Explorer
+                  </nuxt-link>
+                </div>
+                <div
+                  class="w-full md:w-1/4 px-6 py-8 flex-grow flex flex-col gap-5 bg-nsw-grey-100"
                 >
-                  I work for NSW
-                  <img src="/icons/link.svg" alt="Link icon" class="ml-2" />
-                </nuxt-link>
+                  <p class="text-2xl font-bold">
+                    Browse available roles or EOIs
+                  </p>
+                  <p>
+                    Search for your target role or related role opportunities -
+                    including available NSWPF administrative job opportunities
+                    with NSW Government.
+                  </p>
+                  <div class="flex flex-col gap-6">
+                    <div>
+                      <a
+                        href="https://iworkfor.nsw.gov.au/"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold flex flex-row gap-4"
+                      >
+                        iWorkforNSW
+                        <img src="/icons/link.svg" alt="External link icon"
+                      /></a>
+                    </div>
+
+                    <div>
+                      <a
+                        href="https://jobsnsw.taleo.net/careersection/nswpoliceforceeoi/jobsearch.ftl"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold"
+                      >
+                        NSWPF internal EOI board</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full md:w-1/4 px-6 py-8 flex-grow flex flex-col gap-5 bg-nsw-grey-100"
+                >
+                  <p class="text-2xl font-bold">Relevant resources</p>
+                  <div class="flex flex-col gap-2">
+                    <div>
+                      <a
+                        href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_planning_and_development_framework"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold"
+                      >
+                        NSWPF Careers intranet site</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/vacancies_transfers_and_mobility/role_description_library"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold"
+                      >
+                        NSWPF Role Description Library</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="https://intranet.police.nsw.gov.au/systems_availability_site/all_systems/pete#"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold"
+                      >
+                        PETE: Police Education Training Environment</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_management_system"
+                        target="_blank"
+                        class="underline text-nsw-brand-primary-blue font-bold"
+                      >
+                        My Performance and Capability Framework</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="https://sfia-online.org/en"
+                        target="_blank"
+                        class="underline flex-shrink text-nsw-brand-primary-blue font-bold flex flex-row gap-2"
+                      >
+                        SFIA Skill framework
+                        <img src="/icons/link.svg" alt="External link icon"
+                      /></a>
+                    </div>
+                    <div>
+                      <a
+                        href="hhttps://www.psc.nsw.gov.au/workforce-management/capability-framework/capability-framework-resources-index/capability-discovery-tool"
+                        target="_blank"
+                        class="underline flex-shrink text-nsw-brand-primary-blue font-bold flex flex-row gap-2"
+                      >
+                        NSW Government, Public Service Commission - Capability
+                        discovery tool
+                        <img src="/icons/link.svg" alt="External link icon"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div class="flex flex-row gap-8"></div>
             </div>
           </div>
+        </div>
+        <div>
           <div class="md:w-8/12">
             <div class="py-6 lg:py-16">
-              <print-page class="mb-6" @click.native="printPage" />
               <disclaimer-panel>
                 Salaries are indicative only. Check the job ad when applying for
                 a role.
@@ -535,16 +624,7 @@ export default {
     },
     managementPreference() {
       if (this.answers.hasOwnProperty('management')) {
-        switch (this.answers.management.value) {
-          case 'individual':
-            return 'I would prefer to be an Individual contributor'
-          case 'manager':
-            return 'I would prefer to be a manager'
-          case 'either':
-            return "I don't have a preference over being an Individual contributor or Manager"
-          default:
-            return null
-        }
+        return this.answers.management.value
       }
       return null
     },
@@ -562,14 +642,16 @@ export default {
     },
     columns() {
       const progRoles = this.progRoles(this.currentRole).slice(0, 6)
-      const adjRoles = this.adjRoles(this.currentRole).filter(
-        (r) => progRoles.find((a) => a.id === r.id) === undefined
-      ).slice(0, 6)
-      const skillRoles = this.skillRoles(this.currentRole).filter(
-        (r) =>
-          adjRoles.find((a) => a.id === r.id) === undefined &&
-          progRoles.find((a) => a.id === r.id) === undefined
-      ).slice(0, 6)
+      const adjRoles = this.adjRoles(this.currentRole)
+        .filter((r) => progRoles.find((a) => a.id === r.id) === undefined)
+        .slice(0, 6)
+      const skillRoles = this.skillRoles(this.currentRole)
+        .filter(
+          (r) =>
+            adjRoles.find((a) => a.id === r.id) === undefined &&
+            progRoles.find((a) => a.id === r.id) === undefined
+        )
+        .slice(0, 6)
       return { progRoles, adjRoles, skillRoles }
     }
   },

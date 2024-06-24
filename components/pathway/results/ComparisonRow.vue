@@ -15,7 +15,7 @@
       >
         <span class="">{{ item.name }}</span>
       </button>
-      <div class="pl-4 flex space-x-3 whitespace-no-wrap">
+      <div class="pl-4 flex flex-wrap gap-3 justify-end whitespace-no-wrap">
         <template>
           <information-badge
             v-if="journeyType"

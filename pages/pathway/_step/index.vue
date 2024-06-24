@@ -32,15 +32,13 @@ import validation from '@/mixins/validation'
 import DynamicStep from '@/components/pathway/DynamicStep'
 import NavigationActions from '@/components/pathway/NavigationActions'
 import NswButton from '@/components/nsw/NswButton'
-import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   layout: 'pathway',
   components: {
     NswButton,
     DynamicStep,
-    NavigationActions,
-    NswpfBeta
+    NavigationActions
   },
   mixins: [step, validation],
   computed: {

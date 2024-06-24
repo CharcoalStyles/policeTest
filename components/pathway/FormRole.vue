@@ -69,7 +69,8 @@
       </div>
     </div>
     <div class="mb-1">
-      <div class="text-base">Search by keyword, e.g. Case Officer</div>
+      <div v-if="step.id === 'current-role'" class="text-base">Search by keyword, e.g. General Duties Supervisor</div>
+      <div v-else class="text-base">Search by keyword, e.g. Highway Patrol Operative</div>
     </div>
     <autocomplete
       ref="autocomplete"

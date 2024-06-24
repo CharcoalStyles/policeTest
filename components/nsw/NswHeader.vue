@@ -1,15 +1,15 @@
 <template>
   <div class="z-20">
     <div class="bg-nsw-brand-primary-blue py-2">
-      <div class="container">
+      <div class="xl:container px-4">
         <nuxt-link to="/" class="no-print-link flex flex-row gap-2">
           <img src="/icons/careerPathfinder.svg" />
           <h1 class="text-white">CAREER PATHFINDER</h1>
         </nuxt-link>
       </div>
     </div>
-    <div class="xl:container bg-white py-5">
-      <header class="px-6 flex gap-10">
+    <div class="xl:container bg-white py-5 px-4">
+      <header class="px-2 flex gap-10">
         <img
           src="/police-force-logo.svg"
           alt="Logo for NSW Police Force"
@@ -25,8 +25,8 @@
           />
         </div>
       </header>
+      <nswpf-beta v-if="betaBanner" />
     </div>
-    <nswpf-beta v-if="betaBanner" />
   </div>
 </template>
 

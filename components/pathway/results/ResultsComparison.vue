@@ -7,7 +7,7 @@
       </div>
       <div class="w-1/2 p-4">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Target skill
+          Required skills
         </p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
       </div>
@@ -47,13 +47,13 @@
     <div class="flex flex-row" v-if="capabilitiesMatrix.length > 0">
       <div class="w-1/2 p-4 pt-8 border-r border-gray-300">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Current capability
+          Current role capabilities
         </p>
         <p class="text-sm">Based on the NSW Government Capability Framework</p>
       </div>
       <div class="w-1/2 p-4  pt-8">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Target capability
+          Target role capabilities
         </p>
         <p class="text-sm">Based on the NSW Government Capability Framework</p>
       </div>
