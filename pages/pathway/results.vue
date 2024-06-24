@@ -209,7 +209,7 @@
                     <p>Roles that your current role can progress to</p>
                   </div>
                   <role-selector
-                    v-for="role in columns.progRoles.slice(0, 6)"
+                    v-for="role in columns.progRoles"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -230,7 +230,7 @@
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
-                    v-for="role in columns.adjRoles.slice(0, 6)"
+                    v-for="role in columns.adjRoles"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -251,7 +251,7 @@
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
-                    v-for="role in columns.skillRoles.slice(0, 6)"
+                    v-for="role in columns.skillRoles"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -470,6 +470,7 @@ import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 import {
   adjacentRoles,
   progressionRoles,
+  skillRoles,
   roleShareCapabilitiesRank
 } from '@/utils/roleComp'
 import { shuffle } from '~/utils/array'
@@ -568,19 +569,15 @@ export default {
       return []
     },
     columns() {
-      const progRoles = this.progRoles(this.currentRole)
+      const progRoles = this.progRoles(this.currentRole).slice(0, 6)
       const adjRoles = this.adjRoles(this.currentRole).filter(
         (r) => progRoles.find((a) => a.id === r.id) === undefined
-      )
+      ).slice(0, 6)
       const skillRoles = this.skillRoles(this.currentRole).filter(
         (r) =>
           adjRoles.find((a) => a.id === r.id) === undefined &&
           progRoles.find((a) => a.id === r.id) === undefined
-      )
-      console.log(skillRoles.map((r) => r.id))
-
-      console.log(progRoles.length, adjRoles.length, skillRoles.length)
-
+      ).slice(0, 6)
       return { progRoles, adjRoles, skillRoles }
     }
   },
@@ -621,6 +618,13 @@ export default {
         currentRole,
         this.userInterests
       )
+        .filter((role) => role.id !== currentRole.id)
+        .filter((role) => {
+          if (this.goalRole) {
+            return role.id !== this.goalRole.id
+          }
+          return true
+        })
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -648,25 +652,31 @@ export default {
         filteredRoles,
         'progression'
       )
-      console.log(
-        'progression',
-        ranked
-          .map(
-            (r) =>
-              `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`
-          )
-          .slice(0, 15)
-      )
 
       return ranked.map(({ role }) => role)
     },
 
     adjRoles(currentRole) {
-      const showDetective = this.answers.hasOwnProperty('detective-roles')
-        ? this.answers['detective-roles'].value.includes('yes')
-        : false
+      let showDetective = true
+      if (this.answers.hasOwnProperty('detective-roles')) {
+        switch (this.answers['detective-roles'].value) {
+          case 'no':
+            showDetective = false
+            break
+          case 'yes':
+          default:
+            showDetective = true
+        }
+      }
 
       const filteredRoles = adjacentRoles(this.roles, currentRole)
+        .filter((role) => role.id !== currentRole.id)
+        .filter((role) => {
+          if (this.goalRole) {
+            return role.id !== this.goalRole.id
+          }
+          return true
+        })
         .filter((role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
@@ -693,15 +703,6 @@ export default {
         currentRole,
         filteredRoles,
         'adjacent'
-      )
-      console.log(
-        'adjacent',
-        ranked
-          .map(
-            (r) =>
-              `${r.role.name} (${r.role.jobFunction}: ${r.role.grade}) (${r.rank.focusFocus})`
-          )
-          .slice(0, 15)
       )
 
       return ranked.map(({ role }) => role)
@@ -795,10 +796,30 @@ export default {
 
           // bumps for Job Family and Job Function
           if (role.jobFamily === currentRole.jobFamily) {
-            sharingSkills.focusFocus += 1
+            switch (type) {
+              case 'progression':
+                sharingSkills.focusFocus += 2
+                break
+              case 'adjacent':
+                sharingSkills.focusFocus += 0.5
+                break
+              case 'skill':
+                sharingSkills.focusFocus += 0.05
+                break
+            }
           }
           if (role.jobFunction === currentRole.jobFunction) {
-            sharingSkills.focusFocus += 1
+            switch (type) {
+              case 'progression':
+                sharingSkills.focusFocus += 2
+                break
+              case 'adjacent':
+                sharingSkills.focusFocus += 0.5
+                break
+              case 'skill':
+                sharingSkills.focusFocus += 0.05
+                break
+            }
           }
 
           return {
@@ -880,9 +901,8 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const matches = this.roles
-        .filter((role) => role.jobFamily !== currentRole.jobFamily)
-        .filter((role) => {
+      const matches = skillRoles(this.roles, this.currentRole).filter(
+        (role) => {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
             switch (this.answers.sworn.value) {
@@ -895,16 +915,8 @@ export default {
             }
           }
           return true
-        })
-        .filter((role) => {
-          if (role.id === currentRole.id) {
-            return false
-          }
-          if (this.answers.hasOwnProperty('goal-role')) {
-            return role.id !== this.answers['goal-role'].value
-          }
-          return true
-        })
+        }
+      )
 
       return this.rankAndSortRoles(currentRole, matches, 'skill').map(
         ({ role }) => role

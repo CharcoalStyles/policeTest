@@ -1,14 +1,25 @@
 export function progressionRoles(roles, currentRole, interests) {
   const filteredRoles = roles
     .filter((role) => {
+      // We'll never show the Student Police Officer role
+      if (role.name === 'Student Police Officer') {
+        return false
+      }
+      return true
+    })
+    .filter((role) => {
       if (interests.length > 0) {
         const currentAndInterests = [currentRole.jobFunction, ...interests]
         return currentAndInterests.includes(role.jobFunction)
       }
+
       if (currentRole.gradeId.type === 'policing') {
         return currentRole.jobFamily === 'Policing'
       }
-      return role.jobFunction === currentRole.jobFunction
+      return true
+    })
+    .filter((role) => {
+      return true
     })
     .filter((role) => {
       // Only pick roles that are the next level up
@@ -62,20 +73,26 @@ export function adjacentRoles(roles, currentRole) {
         return role.jobFamily === currentRole.jobFamily
       }
       return true
-    }).filter((role) => {
+    })
+    .filter((role) => {
+      return true
       // We'll never show the Student Police Officer role
       if (role.name === 'Student Police Officer') {
         return false
       }
-
+    })
+    .filter((role) => {
       // Only pick roles that are the next level up for roles where whe have that numerical ranking
       if (
-        currentRole.gradeId.type === 'policing' &&
+        currentRole.gradeId.type === 'policing' ||
         currentRole.gradeId.type === 'clerk'
       ) {
         return role.gradeId.grade === currentRole.gradeId.grade
       }
-
+    }).filter((role) => {
+      if (currentRole.jobFamily === 'Policing') {
+        return true
+      }
       // Salary logic
 
       // If min salary is >5% less than current role's salary, then it's a no-go
@@ -97,9 +114,28 @@ export function adjacentRoles(roles, currentRole) {
 }
 
 export function skillRoles(roles, currentRole) {
-  return roles
+  const filtered = roles
     .filter((role) => role.jobFamily !== currentRole.jobFamily)
-    .filter((role) => role.name === 'Student Police Officer')
+    .filter((role) => role.name !== 'Student Police Officer')
+    .filter((role) => {
+      // Salary logic
+
+      // If min salary is >5% less than current role's salary, then it's a no-go
+      if (
+        role.salary.min < currentRole.salary.min * 0.95
+      ) {
+        return false
+      }
+
+      if (
+        Math.abs(role.salary.min - currentRole.salary.min) < 20000 &&
+        Math.abs(role.salary.max - currentRole.salary.max) < 20000
+      ) {
+        return true
+      }
+      return false
+    })
+  return filtered
 }
 
 export function rankAndSortRoles(currentRole, compareRoles) {
