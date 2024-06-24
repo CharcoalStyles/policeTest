@@ -11,7 +11,7 @@
         <input
           id="sworn"
           v-model="filter.sworn"
-          value="sworn"
+          value="yes"
           class="nsw-form-radio__input"
           type="radio"
         />
@@ -25,7 +25,7 @@
         <input
           id="unsworn"
           v-model="filter.sworn"
-          value="unsworn"
+          value="no"
           class="nsw-form-radio__input"
           type="radio"
         />
@@ -179,9 +179,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import FuzzySearch from 'fuzzy-search'
+// import FuzzySearch from 'fuzzy-search'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import InformationBadge from '@/components/InformationBadge'
+import { keywordSearch } from '@/utils/search'
 import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
 
 export default {
@@ -249,7 +250,7 @@ export default {
         return allFamilies
       }
 
-      if (this.$store.state.pathway.answers.sworn.value !== 'unsworn') {
+      if (this.$store.state.pathway.answers.sworn.value !== 'no') {
         return ['Policing', ...allFamilies.sort()]
       }
       return allFamilies.sort()
@@ -278,17 +279,17 @@ export default {
 
           if (this.filter.sworn !== '') {
             switch (this.filter.sworn) {
-              case 'sworn':
+              case 'yes':
                 return role.jobFamily === 'Policing'
-              case 'unsworn':
+              case 'no':
                 return role.jobFamily !== 'Policing'
             }
           }
           if (this.step.id === 'goal-role') {
             switch (this.$store.state.pathway.answers.sworn.value) {
-              case 'sworn':
+              case 'yes':
                 return role.jobFamily === 'Policing'
-              case 'unsworn':
+              case 'no':
                 return role.jobFamily !== 'Policing'
             }
           }
@@ -309,21 +310,29 @@ export default {
     showWorkArea() {
       return (
         this.step.id === 'goal-role' &&
-        this.$store.state.pathway.answers.sworn.value !== 'sworn'
+        this.$store.state.pathway.answers.sworn.value !== 'yes'
       )
     }
   },
   methods: {
     search(input) {
       this.value = input
-      const fuzzy = new FuzzySearch(
-        this.filteredRoles,
-        ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
-        {
-          sort: true
-        }
-      )
-      const result = fuzzy.search(input)
+      // const fuzzy = new FuzzySearch(
+      //   this.filteredRoles,
+      //   ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
+      //   {
+      //     sort: true
+      //   }
+      // )
+      // const result = fuzzy.search(input)
+      const keyword = keywordSearch(this.filteredRoles, [
+        { key: 'name', weight: 2 },
+        { key: 'alias' },
+        { key: 'command_BusUnit' },
+        { key: 'jobFunction' },
+        { key: 'grade', weight: 1.5 }
+      ])
+      const result = keyword(input).map((r) => r.item)
       if (result.length === 0) {
         return []
       }
