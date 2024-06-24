@@ -100,10 +100,10 @@ export default {
 
           if (this.$store.state.pathway.answers.hasOwnProperty('sworn')) {
             const sworn = this.$store.state.pathway.answers.sworn
-            if (sworn.value === 'sworn' && role.jobFamily !== 'Policing') {
+            if (sworn.value === 'yes' && role.jobFamily !== 'Policing') {
               return acc
             }
-            if (sworn.value === 'unsworn' && role.jobFamily === 'Policing') {
+            if (sworn.value === 'no' && role.jobFamily === 'Policing') {
               return acc
             }
           }

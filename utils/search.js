@@ -9,7 +9,6 @@
 
 export const keywordSearch = (area, keys, options) => {
   return (searchValue) => {
-    console.log({ searchValue, area })
     if (!searchValue) {
       return area.map((item) => ({ item, rank: 0 }))
     }

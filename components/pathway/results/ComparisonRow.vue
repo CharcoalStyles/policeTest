@@ -167,21 +167,21 @@ export default {
         const skill = this.$store.state.skills.find(
           (s) => s.code === this.item.code
         )
-        console.log({ skill })
-        const name = skill.levels.find((level) => {
-          const userLevel = (
-            typeof inputLevel === 'string'
-              ? Number.parseInt(this.item.level)
-              : this.item.level
-          ).toString()
-          const thisLevel = (
-            typeof level.level === 'string'
-              ? Number.parseInt(level.level)
-              : level.level
-          ).toString()
-          console.log({ userLevel, thisLevel })
-          return userLevel === thisLevel
-        }).name.trim()
+        const name = skill.levels
+          .find((level) => {
+            const userLevel = (
+              typeof inputLevel === 'string'
+                ? Number.parseInt(this.item.level)
+                : this.item.level
+            ).toString()
+            const thisLevel = (
+              typeof level.level === 'string'
+                ? Number.parseInt(level.level)
+                : level.level
+            ).toString()
+            return userLevel === thisLevel
+          })
+          .name.trim()
 
         if (name.includes(' - ')) {
           return name.split(' - ')[1]

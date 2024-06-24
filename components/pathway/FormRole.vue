@@ -11,7 +11,7 @@
         <input
           id="sworn"
           v-model="filter.sworn"
-          value="sworn"
+          value="yes"
           class="nsw-form-radio__input"
           type="radio"
         />
@@ -25,7 +25,7 @@
         <input
           id="unsworn"
           v-model="filter.sworn"
-          value="unsworn"
+          value="no"
           class="nsw-form-radio__input"
           type="radio"
         />
@@ -250,7 +250,7 @@ export default {
         return allFamilies
       }
 
-      if (this.$store.state.pathway.answers.sworn.value !== 'unsworn') {
+      if (this.$store.state.pathway.answers.sworn.value !== 'no') {
         return ['Policing', ...allFamilies.sort()]
       }
       return allFamilies.sort()
@@ -279,17 +279,17 @@ export default {
 
           if (this.filter.sworn !== '') {
             switch (this.filter.sworn) {
-              case 'sworn':
+              case 'yes':
                 return role.jobFamily === 'Policing'
-              case 'unsworn':
+              case 'no':
                 return role.jobFamily !== 'Policing'
             }
           }
           if (this.step.id === 'goal-role') {
             switch (this.$store.state.pathway.answers.sworn.value) {
-              case 'sworn':
+              case 'yes':
                 return role.jobFamily === 'Policing'
-              case 'unsworn':
+              case 'no':
                 return role.jobFamily !== 'Policing'
             }
           }
@@ -310,7 +310,7 @@ export default {
     showWorkArea() {
       return (
         this.step.id === 'goal-role' &&
-        this.$store.state.pathway.answers.sworn.value !== 'sworn'
+        this.$store.state.pathway.answers.sworn.value !== 'yes'
       )
     }
   },

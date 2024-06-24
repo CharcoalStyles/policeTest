@@ -35,12 +35,12 @@
         "options": [
           {
             "title": "Policing",
-            "value": "sworn",
+            "value": "yes",
             "description": "(including Student Police Officers)"
           },
           {
             "title": "Administrative",
-            "value": "unsworn",
+            "value": "no",
             "description": "(including Special Constables)"
           },
           {
