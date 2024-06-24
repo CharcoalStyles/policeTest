@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{571:function(n,e,t){"use strict";t.r(e);var l=t(16),component=Object(l.a)({},(function(){return(0,this._self._c)("div",{staticClass:"inline h-6 bg-green-200 flex items-center font-semibold px-4 rounded-full text-gray-800"},[this._v("\n  Emerging role\n")])}),[],!1,null,null,null);e.default=component.exports}}]);
