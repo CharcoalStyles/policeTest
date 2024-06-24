@@ -1,16 +1,6 @@
 <template>
   <div class="pb-32">
-    <div class="flex flex-row md:pb-20 md:pt-8">
-      <div
-        class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1"
-      >
-        Beta
-      </div>
-      <div class="text-nsw-brand-primary-blue px-2 py-1">
-        This is a <span class="underline">new service</span> - your
-        <span class="underline">feedback</span> will help us improve it.
-      </div>
-    </div>
+    <nswpf-beta />
     <dynamic-step :step="currentStep" />
     <navigation-actions>
       <template #left>
@@ -43,13 +33,15 @@ import validation from '@/mixins/validation'
 import DynamicStep from '@/components/pathway/DynamicStep'
 import NavigationActions from '@/components/pathway/NavigationActions'
 import NswButton from '@/components/nsw/NswButton'
+import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   layout: 'pathway',
   components: {
     NswButton,
     DynamicStep,
-    NavigationActions
+    NavigationActions,
+    NswpfBeta
   },
   mixins: [step, validation],
   computed: {

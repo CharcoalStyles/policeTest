@@ -251,10 +251,7 @@
           >
             Beta
           </div>
-          <div class="text-nsw-brand-primary-blue">
-            This is a <span class="underline">new service</span> - your
-            <span class="underline">feedback</span> will help us improve it.
-          </div>
+          <nswpf-beta />
         </div>
 
         <div class="absolute inset-0 focus:outline-none overflow-y-auto">
@@ -570,6 +567,7 @@ import ModalOnboarding from '@/components/ModalOnboarding'
 import InputSkills from '@/components/forms/InputSkills'
 import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
+import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   layout: 'blank',
@@ -583,7 +581,8 @@ export default {
     SkillsSelector,
     InputSkills,
     ModalOnboarding,
-    GenericSelector
+    GenericSelector,
+    NswpfBeta
   },
   data() {
     return {

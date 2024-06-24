@@ -2,17 +2,7 @@
   <div class="relative flex-grow z-10">
     <div class="bg-nsw-grey-100 inset-border">
       <div class="xl:container">
-        <div class="flex flex-row md:pb-10 md:pt-8">
-          <div
-            class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1"
-          >
-            Beta
-          </div>
-          <div class="text-nsw-brand-primary-blue px-2 py-1">
-            This is a <span class="underline">new service</span> - your
-            <span class="underline">feedback</span> will help us improve it.
-          </div>
-        </div>
+        <nswpf-beta />
         <div class="px-4 md:px-6 pt-6">
           <div class="">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -474,6 +464,7 @@ import {
   roleShareCapabilitiesRank
 } from '@/utils/roleComp'
 import { shuffle } from '~/utils/array'
+import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   layout: 'results',
@@ -485,7 +476,8 @@ export default {
     ModalUpdate,
     StepBadge,
     PrintPage,
-    DisclaimerPanel
+    DisclaimerPanel,
+    NswpfBeta
   },
   data() {
     return {
