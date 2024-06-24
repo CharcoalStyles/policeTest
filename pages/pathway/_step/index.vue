@@ -1,6 +1,5 @@
 <template>
   <div class="pb-32">
-    <nswpf-beta />
     <dynamic-step :step="currentStep" />
     <navigation-actions>
       <template #left>

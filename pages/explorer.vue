@@ -243,16 +243,7 @@
 
     <main class="hidden lg:flex flex-col flex-grow">
       <div class="relative flex-grow">
-        <div
-          class="flex flex-row gap-2 not-zoomable fixed top-0 z-10 bg-white pl-2 p-2"
-        >
-          <div
-            class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
-          >
-            Beta
-          </div>
-          <nswpf-beta />
-        </div>
+        <nswpf-beta />
 
         <div class="absolute inset-0 focus:outline-none overflow-y-auto">
           <div class="mt-16 mb-8">
