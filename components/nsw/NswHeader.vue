@@ -1,8 +1,9 @@
 <template>
-  <div class="relative z-20">
-    <div class="bg-nsw-brand-primary-blue">
-      <div class="xl:container px-6 py-2">
-        <p class="text-white text-xs">A NSW Police Force website</p>
+  <div class="z-20 ">
+    <div class="bg-nsw-brand-primary-blue py-4">
+      <div class="flex flex-row gap-2 xl:container pl-6">
+        <img src="/icons/careerPathfinder.svg" />
+        <h1 class="font-bold text-white">CAREER PATHFINDER</h1>
       </div>
     </div>
     <div class="xl:container bg-white py-5">
@@ -47,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-  .no-print-link::after {
-    content: none;
-  }
+.no-print-link::after {
+  content: none;
+}
 </style>
