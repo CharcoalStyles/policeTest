@@ -758,7 +758,7 @@ export default {
           // Interests comparison
           if (this.userInterests.length > 0) {
             if (this.userInterests.includes(role.jobFunction.trim())) {
-              sharingSkills.focusFocus += 3
+              sharingSkills.focusFocus += 5
             }
           }
 
@@ -791,6 +791,14 @@ export default {
               case 'skill':
                 sharingSkills.focusFocus -= (diff / 2000) * 0.05
             }
+          }
+
+          // bumps for Job Family and Job Function
+          if (role.jobFamily === currentRole.jobFamily) {
+            sharingSkills.focusFocus += 1
+          }
+          if (role.jobFunction === currentRole.jobFunction) {
+            sharingSkills.focusFocus += 1
           }
 
           return {
@@ -878,9 +886,9 @@ export default {
           // filter out sworn roles
           if (this.answers.hasOwnProperty('sworn')) {
             switch (this.answers.sworn.value) {
-              case 'sworn':
+              case 'yes':
                 return role.jobFamily === 'Policing'
-              case 'unsworn':
+              case 'no':
                 return role.jobFamily !== 'Policing'
               default:
                 return true
