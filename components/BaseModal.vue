@@ -1,7 +1,10 @@
 <template>
   <portal to="modal">
     <transition leave-active-class="duration-200">
-      <div v-show="show" class="fixed flex items-center justify-center inset-0 z-20">
+      <div
+        v-show="show"
+        class="fixed flex items-center justify-center inset-0 z-20"
+      >
         <transition
           enter-active-class="ease-out duration-300"
           enter-class="opacity-0"
@@ -10,8 +13,14 @@
           leave-class="opacity-100"
           leave-to-class="opacity-0"
         >
-          <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
-            <div class="absolute inset-0 bg-nsw-brand-primary-blue opacity-50" />
+          <div
+            v-show="show"
+            class="fixed inset-0 transform transition-all"
+            @click="close"
+          >
+            <div
+              class="absolute inset-0 bg-nsw-brand-primary-blue opacity-50"
+            />
           </div>
         </transition>
         <transition
@@ -22,19 +31,41 @@
           leave-class="opacity-100 translate-y-0 sm:scale-100"
           leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
-          <div v-if="show" id="dialog" class="bg-white shadow-xl transform transition-all w-modal-accessible flex flex-col focus:outline-none" tabindex="-1" :class="[maxWidthClass, scrollableContainerClass]" aria-labelledby="modal-title" aria-modal="true">
-            <div class="sticky w-full top-0 left-0 font-bold text-lg px-4 lg:px-8 py-3 lg:py-6 flex items-center justify-between border-b border-nsw-grey-200 bg-white z-10">
+          <div
+            v-if="show"
+            id="dialog"
+            class="bg-white shadow-xl transform transition-all w-modal-accessible flex flex-col focus:outline-none"
+            tabindex="-1"
+            :class="[maxWidthClass, scrollableContainerClass]"
+            aria-labelledby="modal-title"
+            aria-modal="true"
+          >
+            <div
+              class="sticky w-full top-0 left-0 font-bold text-lg px-4 lg:px-8 py-3 lg:py-6 flex items-center justify-between border-b border-nsw-grey-200 bg-white z-10"
+            >
               <h1 id="modal-title" class="w-10/12">
                 {{ title }}
               </h1>
-              <button v-if="closeable" type="button" class="absolute top-0 right-0 p-4 lg:p-8" title="Close this window" @click="close">
-                <img src="/icons/close.svg" alt="Close">
+              <button
+                v-if="closeable"
+                type="button"
+                class="absolute top-0 right-0 p-4 lg:p-8"
+                title="Close this window"
+                @click="close"
+              >
+                <img src="/icons/close.svg" alt="Close" />
               </button>
             </div>
-            <div class="px-4 lg:px-8 py-3 lg:py-6 flex-grow" :class="scrollableBodyClass">
+            <div
+              class="px-4 lg:px-8 py-3 lg:py-6 flex-grow"
+              :class="scrollableBodyClass"
+            >
               <slot />
             </div>
-            <div v-if="$slots.footer" class="flex-shrink-0 px-4 lg:px-8 py-3 lg:py-6 bg-gray-100 flex justify-between">
+            <div
+              v-if="$slots.footer"
+              class="flex-shrink-0 px-4 lg:px-8 py-3 lg:py-6 bg-gray-100 flex justify-between"
+            >
               <slot name="footer" />
             </div>
           </div>
@@ -66,6 +97,10 @@ export default {
     scrollable: {
       type: Boolean,
       default: true
+    },
+    fitContent: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -81,10 +116,17 @@ export default {
       }[this.maxWidth]
     },
     scrollableContainerClass() {
-      return this.scrollable ? 'h-modal-accessible lg:h-modal-accessible-lg' : 'max-h-modal-accessible lg:max-h-modal-accessible-lg'
+      if (!this.fitContent) {
+        return this.scrollable
+          ? 'h-modal-accessible lg:h-modal-accessible-lg'
+          : 'max-h-modal-accessible lg:max-h-modal-accessible-lg'
+      }
+      return ''
     },
     scrollableBodyClass() {
-      return this.scrollable ? 'overflow-y-scroll' : 'overflow-y-scroll lg:overflow-auto'
+      return this.scrollable
+        ? 'overflow-y-scroll'
+        : 'overflow-y-scroll lg:overflow-auto'
     }
   },
   watch: {

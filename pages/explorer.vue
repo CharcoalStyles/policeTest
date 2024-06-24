@@ -6,15 +6,18 @@
       <div
         class="bg-nsw-brand-primary-blue px-6 py-3 w-full flex-shrink-0 flex items-center"
       >
-        <h1 class="font-bold text-base text-white">Role Explorer</h1>
+        <nuxt-link to="/" class="no-print-link flex flex-row gap-2">
+          <img src="/icons/careerPathfinder.svg" />
+          <h1 class="text-white">CAREER PATHFINDER</h1>
+        </nuxt-link>
       </div>
       <div class="relative flex-grow flex flex-col overflow-hidden">
         <div class="flex-grow flex flex-col overflow-hidden">
           <div class="flex-shrink">
             <div class="bg-white shadow-lg">
-              <div class="px-6 pt-6">
+              <div class="px-6 pt-2">
                 <div class="flex items-center justify-between leading-none">
-                  <h2 class="font-bold text-2xl">Discover roles</h2>
+                  <h2 class="font-bold text-xl">Role Explorer</h2>
                   <button
                     class="text-sm underline font-semibold text-nsw-blue-800"
                     style="text-underline-offset: 2px"
@@ -75,7 +78,7 @@
                 <div class="flex gap-4 flex-row">
                   <div class="w-1/2">
                     <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-2">Grade</label>
+                      <label class="text-sm font-bold mb-2">Rank/Grade</label>
                       <div
                         class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                         @click="showSelectorPopup('grade')"
@@ -242,21 +245,8 @@
     </aside>
 
     <main class="hidden lg:flex flex-col flex-grow">
+      <nswpf-beta />
       <div class="relative flex-grow">
-        <div
-          class="flex flex-row gap-2 not-zoomable fixed top-0 z-10 bg-white pl-2 p-2"
-        >
-          <div
-            class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center"
-          >
-            Beta
-          </div>
-          <div class="text-nsw-brand-primary-blue">
-            This is a <span class="underline">new service</span> - your
-            <span class="underline">feedback</span> will help us improve it.
-          </div>
-        </div>
-
         <div class="absolute inset-0 focus:outline-none overflow-y-auto">
           <div class="mt-16 mb-8">
             <!-- Bento level 1 -->
@@ -570,6 +560,7 @@ import ModalOnboarding from '@/components/ModalOnboarding'
 import InputSkills from '@/components/forms/InputSkills'
 import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
+import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   layout: 'blank',
@@ -583,7 +574,8 @@ export default {
     SkillsSelector,
     InputSkills,
     ModalOnboarding,
-    GenericSelector
+    GenericSelector,
+    NswpfBeta
   },
   data() {
     return {

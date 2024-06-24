@@ -37,8 +37,8 @@
         </h3>
         <p class="font-bold mb-2">Use the Role Explorer tool</p>
         <p class="mb-10">
-          See all the various roles, levels and how they're connected across the
-          NSW Police Force.
+          See the various roles and levels across the NSWPF and how they’re
+          connected.
         </p>
         <nsw-button action="secondary-outline" @click.native="setDefaultRole">
           Browse Roles

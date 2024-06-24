@@ -1,20 +1,21 @@
 <template>
-  <div class="relative z-20">
-    <div class="bg-nsw-brand-primary-blue">
-      <div class="xl:container px-6 py-2">
-        <p class="text-white text-xs">A NSW Police Force website</p>
+  <div class="z-20">
+    <div class="bg-nsw-brand-primary-blue py-2">
+      <div class="xl:container px-4">
+        <nuxt-link to="/" class="no-print-link flex flex-row gap-2">
+          <img src="/icons/careerPathfinder.svg" />
+          <h1 class="text-white">CAREER PATHFINDER</h1>
+        </nuxt-link>
       </div>
     </div>
-    <div class="xl:container bg-white py-5">
-      <header class="px-6 flex gap-10">
-        <nuxt-link to="/" class="no-print-link">
-          <img
-            src="/police-force-logo.svg"
-            alt="Logo for NSW Police Force"
-            title="NSW Police Force"
-            height="76"
-          />
-        </nuxt-link>
+    <div class="xl:container bg-white py-5 px-4">
+      <header class="px-2 flex gap-10">
+        <img
+          src="/police-force-logo.svg"
+          alt="Logo for NSW Police Force"
+          title="NSW Police Force"
+          height="76"
+        />
         <div class="">
           <img
             src="/logo.svg"
@@ -24,19 +25,15 @@
           />
         </div>
       </header>
+      <nswpf-beta v-if="betaBanner" />
     </div>
-
-    <!-- <div class="xl:container flex flex-row bg-nsw-grey-200 px-6 pt-8 gap-2">
-      <div class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center">
-        Beta
-      </div>
-      <div class="text-nsw-brand-primary-blue">This is a <span class="underline">new service</span> - your <span class="underline">feedback</span> will help us improve it.</div>
-    </div> -->
   </div>
 </template>
 
 <script>
+import nswpfBeta from '../nswpfBeta.vue'
 export default {
+  components: { nswpfBeta },
   props: {
     betaBanner: {
       type: Boolean,
@@ -47,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-  .no-print-link::after {
-    content: none;
-  }
+.no-print-link::after {
+  content: none;
+}
 </style>

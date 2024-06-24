@@ -19,7 +19,7 @@
         {{ $currency(role.salary.max) }}
       </information-badge>
       <information-badge v-if="role.manager" size="sm" class="rounded-full">
-        Manager role
+        Supervisor Role
       </information-badge>
       <information-badge
         v-if="role.numPositions"
@@ -42,6 +42,7 @@
     <div class="w-fit">
       <a
         :href="role.fullDescription"
+        target="_blank"
         class="flex flex-row flex-wrap gap-1 underline text-sm text-nsw-brand-primary-blue mb-6 fold-links"
       >
         <img src="/icons/pages.svg" alt="Link icon" />

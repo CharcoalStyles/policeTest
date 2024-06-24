@@ -2,38 +2,27 @@
   <footer class="bg-nsw-brand-primary-blue">
     <div class="w-full xl:container flex flex-col text-white">
       <div class="mt-8 mb-4 px-4 xl:px-0">
-        <p>
-          We pay respect to the Traditional Custodians and First Peoples of NSW,
-          and acknowledge their continued connection to their country and
-          culture.
+        <p class="text-xs">
+          The NSW Police Force acknowledge First Nations peoples as the
+          Traditional Owners and Custodians and pay respect to Elders past,
+          present and to the future generations of Aboriginal peoples. NSW
+          Police Force express sincere appreciation for the rich contribution of
+          all Aboriginal and Torres Strait Islander Peoples.
         </p>
       </div>
       <hr class="w-full" />
-      <div class="mt-4 mb-8 pl-4 xl:pl-0 flex flex-row flex-wrap gap-3">
-        <nuxt-link to="/explorer" target="_blank" class="underline">
-          Accessibility
-        </nuxt-link>
-        <nuxt-link to="/explorer" target="_blank" class="underline">
+      <div class="text-xs font-bold mt-4 mb-8 pl-4 xl:pl-0 flex flex-row flex-wrap gap-4">
+        <a href="https://intranet.police.nsw.gov.au/home_page/copyright_and_disclaimer" target="_blank" class="underline">
           Copyright
-        </nuxt-link>
-        <nuxt-link to="/explorer" target="_blank" class="underline">
-          Disclaimer
-        </nuxt-link>
-        <nuxt-link to="/explorer" target="_blank" class="underline">
+        </a>
+        <a href="https://intranet.police.nsw.gov.au/law/privacy_code_of_practice" target="_blank" class="underline">
           Privacy
-        </nuxt-link>
-        <nuxt-link to="/explorer" target="_blank" class="underline">
-          Content sources
-        </nuxt-link>
-        <nuxt-link to="/explorer" target="_blank" class="underline">
-          RSS
-        </nuxt-link>
-
-        <nuxt-link to="/explorer" target="_blank" class="underline">
+        </a>
+        <a href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_planning_and_development_framework/career_" target="_blank" class="underline">
           Contact us
-        </nuxt-link>
+        </a>
       </div>
-      <p class="mb-8 pl-4 xl:pl-0">Copyright © 2023</p>
+      <p class="text-xs mb-8 pl-4 xl:pl-0">Copyright © 2024</p>
     </div>
   </footer>
 </template>
@@ -41,5 +30,4 @@
 <script>
 export default {}
 </script>
-<style>
-</style>
+<style></style>
