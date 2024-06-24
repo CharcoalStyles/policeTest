@@ -1,16 +1,5 @@
 <template>
   <div class="pb-32">
-    <div class="flex flex-row md:pb-20 md:pt-8">
-      <div
-        class="bg-nsw-brand-primary-blue font-bold text-center text-white px-2 py-1"
-      >
-        Beta
-      </div>
-      <div class="text-nsw-brand-primary-blue px-2 py-1">
-        This is a <span class="underline">new service</span> - your
-        <span class="underline">feedback</span> will help us improve it.
-      </div>
-    </div>
     <dynamic-step :step="currentStep" />
     <navigation-actions>
       <template #left>

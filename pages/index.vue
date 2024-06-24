@@ -5,12 +5,6 @@
       class="bg-nsw-brand-primary-blue py-12"
     >
       <div class="text-white">
-        <div class="flex flex-row gap-2 mb-4">
-          <img src="/icons/careerPathfinder.svg" />
-          <h1 class="font-bold text-nsw-brand-primary-blue-light">
-            CAREER PATHFINDER
-          </h1>
-        </div>
         <h1
           class="font-bold text-4xl xl:text-5xl leading-tight xl:w-11/12 mb-4"
         >
@@ -26,31 +20,31 @@
       title="Explore roles and make a personalised career plan"
       :cols="2"
     >
-      <feature-panel
-        image="/images/rescueDrone.png"
-        alt="Role Explorer"
-        title="Role Explorer"
-      >
-        <nuxt-link to="/explorer">
+      <nuxt-link to="/explorer">
+        <feature-panel
+          image="/images/rescueDrone.png"
+          alt="Role Explorer"
+          title="Role Explorer"
+        >
           <div class="mb-6 w-5/6">
-            Browse the broad array of roles and careers that exist in the NSWPF
+            Browse the various roles and careers that exist within the NSWPF.
           </div>
           <img src="/arrow.svg" />
-        </nuxt-link>
-      </feature-panel>
-      <feature-panel
-        image="/images/meeting.png"
-        alt="Career Pathways Planner"
-        title="Career Pathways Planner"
-      >
-        <nuxt-link to="/pathway">
+        </feature-panel>
+      </nuxt-link>
+      <nuxt-link to="/pathway">
+        <feature-panel
+          image="/images/meeting.png"
+          alt="Career Pathways Planner"
+          title="Career Pathways Planner"
+        >
           <div class="mb-6">
             Use this plan as a basis for career conversations, professional
             growth and identifying development opportunities.
           </div>
           <img src="/arrow.svg" />
-        </nuxt-link>
-      </feature-panel>
+        </feature-panel>
+      </nuxt-link>
     </section-container>
 
     <section-container title="How it works">
@@ -68,7 +62,9 @@
         <div class="flex flex-col w-full md:w-1/2 lg:w-1/4">
           <img src="/figures/2.svg" class="h-64 mb-6" />
           <div class="mx-6">
-            <h4 class="font-bold text-xl mb-2">Get personalised career pathways</h4>
+            <h4 class="font-bold text-xl mb-2">
+              Get personalised career pathways
+            </h4>
             <p>
               Explore and prioritise career pathways based on what matters to
               you.
@@ -118,7 +114,9 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold text-xl">Assess your skills and capabilities</p>
+                <p class="font-bold text-xl">
+                  Assess your skills and capabilities
+                </p>
                 <p>
                   Identify your strengths and areas for development required for
                   your next role.
@@ -128,7 +126,9 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold text-xl">Create a personalised career plan</p>
+                <p class="font-bold text-xl">
+                  Create a personalised career plan
+                </p>
                 <p>
                   Use this plan as a basis for career conversations,
                   professional growth and identifying development opportunities.
@@ -158,7 +158,9 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold text-xl">Improve the capability of your team</p>
+                <p class="font-bold text-xl">
+                  Improve the capability of your team
+                </p>
                 <p>
                   Show possible career pathways and identify areas for
                   improvement and development.
@@ -168,7 +170,9 @@
 
             <li class="mb-3">
               <div>
-                <p class="font-bold text-xl">Start a meaningful career conversation</p>
+                <p class="font-bold text-xl">
+                  Start a meaningful career conversation
+                </p>
                 <p>
                   A self-assessment tool will create a tangible starting point
                   for honest and tailored career conversations.
@@ -191,12 +195,12 @@
           <img src="/tcsc.svg" class="h-12 xl:h-16" />
         </div>
         <div class="w-1/2">
-          <p class="text-xs text-nsw-brand-primary-blue">
-            The NSWPF Career Pathfinder data is updated periodically from the
-            latest approved NSWPF role descriptions, NSWPF Job Family Model, pay
-            grades/scales and the NSWPF Public Sector Capability Framework. All
-            care has been taken to provide correct information, however if you
-            identify an inaccuracy, we welcome your feedback. #PCC-Careers.
+          <p class="text-xs text-nsw-brand-primary-blue pr-2">
+            The NSWPF Career Pathfinder data is updated periodically from NSWPF
+            role descriptions, NSWPF Job Family Model, pay grades/scales and the
+            NSWPF Public Sector Capability Framework. All care has been taken
+            to provide correct information, however if you identify an
+            inaccuracy, we welcome your feedback. #PCC-Careers.
           </p>
         </div>
       </div>

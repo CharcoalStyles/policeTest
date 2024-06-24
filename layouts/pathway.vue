@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen max-w-screen antialiased text-base">
-    <nsw-header />
+    <nsw-header :beta-banner="true" />
     <div class="flex-grow">
       <div class="xl:container">
         <div class="px-4 pb-8 md:px-6 md:pb-16">
@@ -9,6 +9,7 @@
       </div>
     </div>
     <question-navigation :step-key="stepKey" />
+    <portal-target name="modal" multiple />
   </div>
 </template>
 
@@ -41,7 +42,9 @@ export default {
      * Generate step key to locate position in master sequence
      */
     stepKey() {
-      return this.isChildStep() ? `${this.currentStep.id}-${this.currentChildStep().id}` : this.currentStep.id
+      return this.isChildStep()
+        ? `${this.currentStep.id}-${this.currentChildStep().id}`
+        : this.currentStep.id
     },
 
     /**
@@ -81,7 +84,10 @@ export default {
      * Current child step based in url param id
      */
     currentChildStep() {
-      return this.getChildStepById(this.$route.params.step, this.$route.params.id)
+      return this.getChildStepById(
+        this.$route.params.step,
+        this.$route.params.id
+      )
     }
   }
 }
