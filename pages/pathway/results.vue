@@ -161,7 +161,7 @@
               </div>
               <div class="md:flex flex-row flex-wrap hidden">
                 <div
-                  v-if="progRoles(currentRole).length"
+                  v-if="columns.progRoles.length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
@@ -170,7 +170,7 @@
                   </div>
                 </div>
                 <div
-                  v-if="adjRoles(currentRole).length"
+                  v-if="columns.adjRoles.length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
@@ -183,7 +183,7 @@
                   </div>
                 </div>
                 <div
-                  v-if="skillRoles(currentRole).length"
+                  v-if="columns.skillRoles.length"
                   class="flex-none flex-grow md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6">
@@ -201,7 +201,7 @@
 
               <div class="flex flex-row flex-wrap print:hidden">
                 <div
-                  v-if="progRoles(currentRole).length"
+                  v-if="columns.progRoles.length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6 md:hidden">
@@ -209,7 +209,7 @@
                     <p>Roles that your current role can progress to</p>
                   </div>
                   <role-selector
-                    v-for="role in progRoles(currentRole).slice(0, 6)"
+                    v-for="role in columns.progRoles.slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -218,7 +218,7 @@
                   />
                 </div>
                 <div
-                  v-if="adjRoles(currentRole).length"
+                  v-if="columns.adjRoles.length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6 md:hidden">
@@ -230,7 +230,7 @@
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
-                    v-for="role in adjRoles(currentRole).slice(0, 6)"
+                    v-for="role in columns.adjRoles.slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -239,7 +239,7 @@
                   />
                 </div>
                 <div
-                  v-if="skillRoles(currentRole).length"
+                  v-if="columns.skillRoles.length"
                   class="flex-none md:flex-grow w-full md:w-1/3 md:max-w-[50%] px-4 pb-4"
                 >
                   <div class="mb-6 md:hidden">
@@ -251,7 +251,7 @@
                     <div class="flex flex-row gap-2 flex-wrap mb-2"></div>
                   </div>
                   <role-selector
-                    v-for="role in skillRoles(currentRole).slice(0, 6)"
+                    v-for="role in columns.skillRoles.slice(0, 6)"
                     :key="role.id"
                     :role="role"
                     :target-role="targetRole"
@@ -263,9 +263,9 @@
                 <div
                   v-if="
                     !targetRole &&
-                    progRoles(currentRole).length === 0 &&
-                    adjRoles(currentRole).length === 0 &&
-                    skillRoles(currentRole).length === 0
+                    columns.progRoles.length === 0 &&
+                    columns.adjRoles.length === 0 &&
+                    columns.skillRoles.length === 0
                   "
                 >
                   <disclaimer-panel heading="No roles available">
@@ -566,6 +566,22 @@ export default {
         return this.answers.interests.value
       }
       return []
+    },
+    columns() {
+      const progRoles = this.progRoles(this.currentRole)
+      const adjRoles = this.adjRoles(this.currentRole).filter(
+        (r) => progRoles.find((a) => a.id === r.id) === undefined
+      )
+      const skillRoles = this.skillRoles(this.currentRole).filter(
+        (r) =>
+          adjRoles.find((a) => a.id === r.id) === undefined &&
+          progRoles.find((a) => a.id === r.id) === undefined
+      )
+      console.log(skillRoles.map((r) => r.id))
+
+      console.log(progRoles.length, adjRoles.length, skillRoles.length)
+
+      return { progRoles, adjRoles, skillRoles }
     }
   },
   mounted() {
