@@ -236,6 +236,13 @@ const actions = {
         commit('CLEAR_CAPABILITY_ANSWERS')
       }
     }
+
+    if (payload.id === 'goal' && payload.value === 'no') {
+      commit('SET_ANSWER', {
+        id: 'goal-role',
+        value: null
+      })
+    }
   },
   saveSkillAnswer({ commit }, payload) {
     commit('SET_SKILL_ANSWER', payload)
