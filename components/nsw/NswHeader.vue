@@ -25,7 +25,9 @@
           />
         </div>
       </header>
-      <nswpf-beta v-if="betaBanner" />
+      <div class="mt-4">
+        <nswpf-beta v-if="betaBanner" />
+      </div>
     </div>
   </div>
 </template>
