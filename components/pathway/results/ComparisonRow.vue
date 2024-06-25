@@ -99,6 +99,9 @@ export default {
     valueName() {
       return this.type === 'skill' ? 'skills' : 'capabilities'
     },
+    readableValueName() {
+      return this.type === 'skill' ? 'Skill' : 'Capability'
+    },
     journeyType() {
       if (!this.item) {
         return false
@@ -125,13 +128,10 @@ export default {
         this.roleType === 'current' &&
         assessedValue < currentRoleItem.level
       ) {
-        const labelText = this.getItemText(
-          this.assessedSkills?.[this.item.code]?.value
-        )
         return {
           text: 'Upskill',
           colour: 'orange',
-          tooltip: `You assessed yourself at ${labelText} in your current role.`
+          tooltip: `You assessed yourself at lower in this ${this.readableValueName} than your current role requires.`
         }
       }
 
@@ -140,18 +140,15 @@ export default {
           return {
             text: 'New skill',
             colour: 'green',
-            tooltip: 'A new skill that is required for this role.'
+            tooltip: `Compared to your current role, this role requires a new ${this.readableValueName}.`
           }
         }
 
         if (currentRoleItem.level < targetRoleItem.level) {
-          const labelText = this.getItemText(
-            this.assessedSkills?.[this.item.code]?.value
-          )
           return {
             text: 'Upskill',
             colour: 'orange',
-            tooltip: `You assessed yourself at ${labelText} in your current role.`
+            tooltip: `This role requires a higher level of ${this.readableValueName} than your current role.`
           }
         }
       }
