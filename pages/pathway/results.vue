@@ -833,7 +833,14 @@ export default {
           // Interests comparison
           if (this.userInterests.length > 0) {
             if (this.userInterests.includes(role.jobFunction.trim())) {
-              sharingSkills.focusFocus += 5
+              switch (type) {
+                case 'progression':
+                  sharingSkills.focusFocus += 4
+                  break
+                case 'adjacent':
+                  sharingSkills.focusFocus += 9
+                  break
+              }
             }
           }
 
@@ -850,7 +857,7 @@ export default {
           // role volume (number of positions)
           if (role.numPositions) {
             const minVolume = role.numPositions.split(' ')[1]
-            sharingSkills.focusFocus += 1 + minVolume.length * 0.1
+            sharingSkills.focusFocus += 1 + minVolume.length * 0.4
           }
 
           // salary logic
@@ -875,7 +882,7 @@ export default {
                 sharingSkills.focusFocus += 2
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 0.5
+                sharingSkills.focusFocus += 1
                 break
               case 'skill':
                 sharingSkills.focusFocus += 0.05
@@ -888,10 +895,28 @@ export default {
                 sharingSkills.focusFocus += 2
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 0.5
+                if (this.userInterests.length === 0) {
+                  sharingSkills.focusFocus += 2
+                }
+                sharingSkills.focusFocus += 1
                 break
               case 'skill':
                 sharingSkills.focusFocus += 0.05
+                break
+            }
+          }
+
+          // bumps for command / unit
+          if (role.command_BusUnit !== currentRole.command_BusUnit) {
+            switch (type) {
+              case 'progression':
+                sharingSkills.focusFocus += 1
+                break
+              case 'adjacent':
+                sharingSkills.focusFocus += 2.5
+                break
+              case 'skill':
+                sharingSkills.focusFocus += 0.5
                 break
             }
           }
@@ -910,11 +935,12 @@ export default {
               acc.roles.push(rankedRole)
               return acc
             }
+            // if the current role is a Sergent / Senior Sergeant we want to have a minimum of 3 Inspectors
             if (currentRole.gradeId.grade === 4) {
               if (rankedRole.role.gradeId.grade === 5) {
                 acc.counted += 1
 
-                if (idx > 5 && acc.counted <= 2) {
+                if (idx > 5 && acc.counted <= 3) {
                   acc.roles = [rankedRole, ...acc.roles]
                   return acc
                 }
