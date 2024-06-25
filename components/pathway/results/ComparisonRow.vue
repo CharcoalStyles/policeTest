@@ -104,55 +104,53 @@ export default {
         return false
       }
 
-      if (this.instructions === 'selfAssessed' && this.targetRole) {
-        const currentRoleItem = this.$collect(
-          this.currentRole[this.valueName].focus
-        )
-          .where('code', this.item.code)
-          .first()
-        const targetRoleItem = this.$collect(
-          this.targetRole[this.valueName].focus
-        )
-          .where('code', this.item.code)
-          .first()
-        const assessedValue = this.assessedSkills?.[this.item.code]?.value
+      console.log(
+        this.currentRole[this.valueName].focus,
+        this.instructions === 'selfAssessed',
+        this.targetRole
+      )
 
-        // const labelText = this.getItemText(
-        //   this.assessedSkills?.[this.item.code]?.value
-        // )
+      const currentRoleItem = this.$collect(
+        this.currentRole[this.valueName].focus
+      ).where('code', this.item.code)
+      const targetRoleItem = this.targetRole && this.$collect(
+        this.targetRole[this.valueName].focus
+      )
+        .where('code', this.item.code)
+        .first()
+      const assessedValue = this.assessedSkills?.[this.item.code]?.value
 
-        if (
-          this.roleType === 'current' &&
-          assessedValue < currentRoleItem.level
-        ) {
-          const labelText = this.getItemText(
-            this.assessedSkills?.[this.item.code]?.value
-          )
-          return {
-            text: 'Upskill',
-            colour: 'orange',
-            tooltip: `You assessed yourself at ${labelText} in your current role.`
-          }
+      console.log('l', this.currentRole[this.valueName].focus, currentRoleItem)
+
+      // This is the thing that needs work
+      if (
+        this.roleType === 'current' &&
+        assessedValue < currentRoleItem.level
+      ) {
+        const labelText = this.getItemText(
+          this.assessedSkills?.[this.item.code]?.value
+        )
+        return {
+          text: 'Upskill',
+          colour: 'orange',
+          tooltip: `You assessed yourself at ${labelText} in your current role.`
         }
-        if (
-          this.roleType === 'target' &&
-          assessedValue < targetRoleItem.level
-        ) {
-          const labelText = this.getItemText(
-            this.assessedSkills?.[this.item.code]?.value
-          )
-          return {
-            text: 'Upskill',
-            colour: 'orange',
-            tooltip: `You assessed yourself at ${labelText} in your current role.`
-          }
+      }
+      if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
+        const labelText = this.getItemText(
+          this.assessedSkills?.[this.item.code]?.value
+        )
+        return {
+          text: 'Upskill',
+          colour: 'orange',
+          tooltip: `You assessed yourself at ${labelText} in your current role.`
         }
-        if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
-          return {
-            text: 'New skill',
-            colour: 'green',
-            tooltip: 'A new skill that is required for this role.'
-          }
+      }
+      if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
+        return {
+          text: 'New skill',
+          colour: 'green',
+          tooltip: 'A new skill that is required for this role.'
         }
       }
       return false
@@ -171,8 +169,8 @@ export default {
           .find((level) => {
             const userLevel = (
               typeof inputLevel === 'string'
-                ? Number.parseInt(this.item.level)
-                : this.item.level
+                ? Number.parseInt(this.item.level) - 1
+                : this.item.level - 1
             ).toString()
             const thisLevel = (
               typeof level.level === 'string'
