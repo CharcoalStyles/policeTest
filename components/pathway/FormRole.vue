@@ -69,8 +69,12 @@
       </div>
     </div>
     <div class="mb-1">
-      <div v-if="step.id === 'current-role'" class="text-base">Search by keyword, e.g. General Duties Supervisor</div>
-      <div v-else class="text-base">Search by keyword, e.g. Highway Patrol Operative</div>
+      <div v-if="step.id === 'current-role'" class="text-base">
+        Search by keyword, e.g. General Duties Supervisor
+      </div>
+      <div v-else class="text-base">
+        Search by keyword, e.g. Highway Patrol Operative
+      </div>
     </div>
     <autocomplete
       ref="autocomplete"
@@ -360,6 +364,11 @@ export default {
           this.$store.dispatch('saveQuestionAnswer', {
             id: 'isDetective',
             value: role.grade.split(' ')[0] === 'Detective' ? 'yes' : 'no'
+          })
+
+          this.$store.dispatch('saveQuestionAnswer', {
+            id: 'detective-roles',
+            value: ''
           })
 
           this.$store.dispatch('saveQuestionAnswer', {
