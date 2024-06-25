@@ -125,11 +125,7 @@
                         class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                         @click="showSelectorPopup('location')"
                       >
-                        {{
-                          debouncedFilters.location.length === 0
-                            ? 'All'
-                            : `${debouncedFilters.location.length} selected`
-                        }}
+                        {{ locationLabel }}
                       </div>
                     </div>
                   </div>
@@ -524,15 +520,28 @@
     <generic-selector
       v-model="debouncedFilters[modalData.filterKey]"
       :data="modalData.data"
-      :show="modals.selector"
+      :show="modals.selector.generic"
       max-width="xl"
       :title="modalData.title"
       :value="debouncedFilters[modalData.filterKey]"
-      @close="modals.selector = false"
+      @close="modals.selector.generic = false"
       @reset="modalData.reset"
     >
       {{ modalData.instructions }}
     </generic-selector>
+
+    <location-selector
+      v-model="debouncedFilters[modalData.filterKey]"
+      :data="modalData.data"
+      :show="modals.selector.location"
+      max-width="xl"
+      :title="modalData.title"
+      :value="debouncedFilters[modalData.filterKey]"
+      @close="modals.selector.location = false"
+      @reset="modalData.reset"
+    >
+      {{ modalData.instructions }}
+    </location-selector>
 
     <modal-onboarding
       :show="modals.onboarding"
@@ -555,12 +564,11 @@ import RoleFunction from '@/components/RoleFunction'
 import RoleSlideout from '@/components/RoleSlideout'
 import PageLoading from '@/components/PageLoading'
 import NswButton from '@/components/nsw/NswButton'
-import SkillsSelector from '@/components/SkillsSelector'
 import ModalOnboarding from '@/components/ModalOnboarding'
-import InputSkills from '@/components/forms/InputSkills'
 import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
+import LocationSelector from '~/components/LocationSelector.vue'
 
 export default {
   layout: 'blank',
@@ -571,11 +579,10 @@ export default {
     RoleSlideout,
     PageLoading,
     NswButton,
-    SkillsSelector,
-    InputSkills,
     ModalOnboarding,
     GenericSelector,
-    NswpfBeta
+    NswpfBeta,
+    LocationSelector
   },
   data() {
     return {
@@ -586,7 +593,10 @@ export default {
       selectedRole: false,
       previousRoleId: false,
       modals: {
-        selector: false,
+        selector: {
+          generic: false,
+          location: false
+        },
         onboarding: true
       },
       modalData: {
@@ -609,7 +619,7 @@ export default {
         skills: [],
         interests: [],
         grade: [],
-        location: [],
+        location: ['Various'],
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
@@ -637,22 +647,11 @@ export default {
         }, 300)
       }
     },
+
     /**
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      // Filter by keyword
-      // const fuzzy = new FuzzySearch(
-      //   this.roles,
-      //   ['name', 'alias', 'command_BusUnit', 'jobFunction', 'grade'],
-      //   {
-      //     sort: true
-      //   }
-      // )
-      // const fuzzyStartTime = performance.now()
-      // const fuzzyResult = fuzzy.search(this.debouncedFilters.keyword)
-      // console.log(`Fuzzy search took ${performance.now() - fuzzyStartTime}ms`)
-
       const keyword = keywordSearch(this.roles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },
@@ -661,11 +660,7 @@ export default {
         { key: 'grade', weight: 1.5 }
       ])
 
-      // const keywordStartTime = performance.now()
       const keywordResult = keyword(this.debouncedFilters.keyword)
-      // console.log(
-      //   `Keyword search took ${performance.now() - keywordStartTime}ms`
-      // )
 
       console.log({
         keyword15: keywordResult
@@ -677,38 +672,6 @@ export default {
       })
 
       const x = keywordResult.map((r) => r.item)
-
-      // console.log(
-      //   `fussy result: ${fuzzyResult.length} - keyword result: ${keywordResult.length}`
-      // )
-      // if (fuzzyResult.length !== keywordResult.length) {
-      //   const fuzzyIds = fuzzyResult.map((r) => r.id)
-      //   const keywordIds = keywordResult.map((r) => r.item.id)
-      //   const extraIdsFuzzy = fuzzyIds.filter((id) => !keywordIds.includes(id))
-      //   const extraIdsKeyword = keywordIds.filter(
-      //     (id) => !fuzzyIds.includes(id)
-      //   )
-      //   console.log(
-      //     `Extra fuzzy roles: ${extraIdsFuzzy
-      //       .map((id) => {
-      //         const role = roles.find((r) => r.id === id)
-      //         if (role) {
-      //           return `${role.name} (${role.jobFamily}, ${role.jobFUnction}}) (${role.grade})`
-      //         }
-      //       })
-      //       .join('\n\t- ')}`
-      //   )
-      //   console.log(
-      //     `Extra keyword ids: ${extraIdsKeyword
-      //       .map((id) => {
-      //         const role = roles.find((r) => r.id === id)
-      //         if (role) {
-      //           return `${role.name} (${role.jobFamily}, ${role.jobFunction}}) (${role.grade})`
-      //         }
-      //       })
-      //       .join('\n\t- ')}`
-      //   ) dog serg
-      // }
 
       // Filter by salary and skills
       return collect(x)
@@ -754,12 +717,17 @@ export default {
           return true
         })
         .filter((role) => {
-          if (this.filter.location.length > 0 && role.location) {
-            return [...this.filter.location, 'Various'].includes(
-              role.location.trim()
-            )
+          if (role.location === 'Various') {
+            return this.filter.location.includes('Various')
           }
-          return true
+
+          const locations = this.filter.location.filter((l) => l !== 'Various')
+
+          if (locations.length === 0) {
+            return true
+          }
+
+          return locations.includes(role.location.trim())
         })
         .filter((role) => {
           if (this.filter.grade.length > 0 && role.grade) {
@@ -890,6 +858,21 @@ export default {
         },
         { xl: [], l: [], m: [], s: [] }
       )
+    },
+    locationLabel() {
+      const hasVarious = this.debouncedFilters.location.includes('Various')
+
+      if (this.filter.location.length === 0) {
+        return 'All'
+      }
+
+      if (this.filter.location.length === 1 && hasVarious) {
+        return 'All'
+      }
+
+      const numLocations = this.debouncedFilters.location.length
+
+      return `${numLocations} selected`
     }
   },
   mounted() {},
@@ -967,7 +950,7 @@ export default {
     showSelectorPopup(type) {
       switch (type) {
         case 'skills':
-          this.modals.selector = true
+          this.modals.selector.generic = true
           this.modalData.title = 'Select Skills'
           this.modalData.instructions =
             'Select skills that relate to a role to see how they match to others.'
@@ -983,16 +966,13 @@ export default {
           }
           break
         case 'location':
-          this.modals.selector = true
+          this.modals.selector.location = true
           this.modalData.title = 'Select Location'
           this.modalData.instructions =
-            'Select location that relates to a role to see how they match to others.'
+            'Select the locations you’re interested in.'
           this.modalData.data = this.roles
             .reduce((acc, role) => {
               if (!role.location) {
-                return acc
-              }
-              if (role.location === 'Various') {
                 return acc
               }
               if (!acc.includes(role.location.trim())) {
@@ -1007,11 +987,11 @@ export default {
             }))
           this.modalData.filterKey = 'location'
           this.modalData.reset = () => {
-            this.debouncedFilters.location = []
+            this.debouncedFilters.location = ['Various']
           }
           break
         case 'grade': {
-          this.modals.selector = true
+          this.modals.selector.generic = true
           this.modalData.title = 'Select Grade'
           this.modalData.instructions =
             'Select grade that relates to a role to see how they match to others.'
@@ -1080,7 +1060,7 @@ export default {
           break
         }
         case 'jobFunction':
-          this.modals.selector = true
+          this.modals.selector.generic = true
           this.modalData.title = 'Select Job Function'
           this.modalData.instructions =
             'Select job function that relates to a role to see how they match to others.'
@@ -1109,7 +1089,7 @@ export default {
           }
           break
         case 'command_BusUnit':
-          this.modals.selector = true
+          this.modals.selector.generic = true
           this.modalData.title = 'Select Command / Business Unit'
           this.modalData.instructions =
             'Select the Command or Business Unit that relates to a role to see how they match to others.'
