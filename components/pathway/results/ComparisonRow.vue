@@ -104,23 +104,21 @@ export default {
         return false
       }
 
-      console.log(
-        this.currentRole[this.valueName].focus,
-        this.instructions === 'selfAssessed',
-        this.targetRole
-      )
+      // console.log(
+      //   this.currentRole[this.valueName].focus,
+      //   this.instructions === 'selfAssessed',
+      //   this.targetRole
+      // )
 
-      const currentRoleItem = this.$collect(
-        this.currentRole[this.valueName].focus
-      ).where('code', this.item.code)
-      const targetRoleItem = this.targetRole && this.$collect(
-        this.targetRole[this.valueName].focus
+      const currentRoleItem = this.currentRole[this.valueName].focus.find(
+        (item) => item.code === this.item.code
       )
-        .where('code', this.item.code)
-        .first()
+      const targetRoleItem =
+        this.targetRole &&
+        this.targetRole[this.valueName].focus.find(
+          (item) => item.code === this.item.code
+        )
       const assessedValue = this.assessedSkills?.[this.item.code]?.value
-
-      console.log('l', this.currentRole[this.valueName].focus, currentRoleItem)
 
       // This is the thing that needs work
       if (
@@ -136,21 +134,25 @@ export default {
           tooltip: `You assessed yourself at ${labelText} in your current role.`
         }
       }
-      if (this.roleType === 'target' && assessedValue < targetRoleItem.level) {
-        const labelText = this.getItemText(
-          this.assessedSkills?.[this.item.code]?.value
-        )
-        return {
-          text: 'Upskill',
-          colour: 'orange',
-          tooltip: `You assessed yourself at ${labelText} in your current role.`
+
+      if (this.roleType === 'target') {
+        if (!currentRoleItem && targetRoleItem) {
+          return {
+            text: 'New skill',
+            colour: 'green',
+            tooltip: 'A new skill that is required for this role.'
+          }
         }
-      }
-      if (this.roleType === 'target' && !currentRoleItem && targetRoleItem) {
-        return {
-          text: 'New skill',
-          colour: 'green',
-          tooltip: 'A new skill that is required for this role.'
+
+        if (currentRoleItem.level < targetRoleItem.level) {
+          const labelText = this.getItemText(
+            this.assessedSkills?.[this.item.code]?.value
+          )
+          return {
+            text: 'Upskill',
+            colour: 'orange',
+            tooltip: `You assessed yourself at ${labelText} in your current role.`
+          }
         }
       }
       return false
