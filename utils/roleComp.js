@@ -12,7 +12,9 @@ export function progressionRoles(roles, currentRole, interests) {
         const currentAndInterests = [currentRole.jobFunction, ...interests]
         return currentAndInterests.includes(role.jobFunction)
       }
-
+      return true
+    })
+    .filter((role) => {
       if (currentRole.gradeId.type === 'policing') {
         return currentRole.jobFamily === 'Policing'
       }
