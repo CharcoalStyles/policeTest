@@ -148,54 +148,68 @@ const mutations = {
     const steps = []
 
     // Generate dynamic skill child steps
-    role.skills.focus.forEach((skill) => {
-      const currentSkill = state.skills.find((s) => s.code === skill.code)
+    role.skills.focus
+      .reduce((acc, skill) => {
+        if (!acc.find((s) => s.code === skill.code)) {
+          acc.push(skill)
+        }
+        return acc
+      }, [])
+      .forEach((skill) => {
+        const currentSkill = state.skills.find((s) => s.code === skill.code)
 
-      if (currentSkill) {
+        if (currentSkill) {
+          const childStep = {
+            id: currentSkill.code,
+            title: currentSkill.name,
+            type: 'question',
+            schema: {
+              section: 'Self Assessment - Skills',
+              help: currentSkill.description,
+              field: {
+                type: 'skill',
+                required: true,
+                options: currentSkill.levels
+              },
+              value: null
+            }
+          }
+          steps.push(childStep)
+        } else {
+          console.warn(`No Skill found for: ${skill.code}`)
+        }
+      })
+
+    role.capabilities.focus
+      .reduce((acc, capability) => {
+        if (!acc.find((c) => c.code === capability.code)) {
+          acc.push(capability)
+        }
+        return acc
+      }, [])
+      .forEach((capability) => {
+        const currentCapability = state.capabilities.find(
+          (c) => c.subcode === capability.code
+        )
+
         const childStep = {
-          id: currentSkill.code,
-          title: currentSkill.name,
+          id: currentCapability.subcode,
+          title: currentCapability.subcategory,
           type: 'question',
           schema: {
-            section: 'Self Assessment - Skills',
-            help: currentSkill.description,
+            section: 'Self Assessment - Capability',
+            help: currentCapability.description,
             field: {
-              type: 'skill',
+              type: 'capability',
               required: true,
-              options: currentSkill.levels
+              options: currentCapability.levels
             },
             value: null
           }
         }
+
         steps.push(childStep)
-      } else {
-        console.warn(`No Skill found for: ${skill.code}`)
-      }
-    })
-
-    role.capabilities.focus.forEach((capability) => {
-      const currentCapability = state.capabilities.find(
-        (c) => c.subcode === capability.code
-      )
-
-      const childStep = {
-        id: currentCapability.subcode,
-        title: currentCapability.subcategory,
-        type: 'question',
-        schema: {
-          section: 'Self Assessment - Capability',
-          help: currentCapability.description,
-          field: {
-            type: 'capability',
-            required: true,
-            options: currentCapability.levels
-          },
-          value: null
-        }
-      }
-
-      steps.push(childStep)
-    })
+      })
 
     // Add generated skill and capability child steps
     state.pathway.steps[skillAndCapabilityStepIndex].steps = steps
