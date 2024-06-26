@@ -1,9 +1,11 @@
-export default {
+/* eslint-disable nuxt/no-cjs-in-config */
+module.exports = {
   // Disable server-side rendering
   ssr: false,
 
   // Target
-  target: 'static',
+  target: 'server',
+  telemetry: false,
 
   // Global page headers
   head: {
