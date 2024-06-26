@@ -10,6 +10,7 @@ $ yarn
 $ yarn dev
 
 # serve locally through express at localhost:3000
+$ yarn build-gen
 $ yarn server-start
 ```
 
@@ -17,16 +18,10 @@ $ yarn server-start
 
 The application is built using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
 
-In server development (local) mode, the application is built and served using the following command:
-
-```bash
-$ yarn server-start
-```
-
 In production mode, the application has to be built before deployment. The following command builds the application, after which the application can be deployed:
 
 ```bash
-$ yarn build
+$ yarn build-gen
 ```
 
 When deployed the application will be served through the following command:
@@ -34,6 +29,8 @@ When deployed the application will be served through the following command:
 ```bash
 $ yarn server-start
 ```
+
+Or by running `index.js`, which is what the above command does.
 
 ## Content
 
