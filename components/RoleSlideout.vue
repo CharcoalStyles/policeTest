@@ -147,7 +147,7 @@
         </h4>
         <div class="flex flex-col">
           <job-role
-            v-for="similarRoleBySkills in progressionRoles.slice(0, 5)"
+            v-for="similarRoleBySkills in progressionRoles.slice(0, 6)"
             :key="similarRoleBySkills.id"
             :role="similarRoleBySkills"
             @click.native="$emit('selected', similarRoleBySkills)"
