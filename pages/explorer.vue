@@ -619,7 +619,7 @@ export default {
         skills: [],
         interests: [],
         grade: [],
-        location: ['Various'],
+        location: [],
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
@@ -717,17 +717,11 @@ export default {
           return true
         })
         .filter((role) => {
-          if (role.location === 'Various') {
-            return this.filter.location.includes('Various')
-          }
-
-          const locations = this.filter.location.filter((l) => l !== 'Various')
-
-          if (locations.length === 0) {
+          if (this.filter.location.length === 0) {
             return true
           }
 
-          return locations.includes(role.location.trim())
+          return this.filter.location.includes(role.location.trim())
         })
         .filter((role) => {
           if (this.filter.grade.length > 0 && role.grade) {
@@ -860,16 +854,6 @@ export default {
       )
     },
     locationLabel() {
-      const hasVarious = this.debouncedFilters.location.includes('Various')
-
-      if (this.filter.location.length === 0) {
-        return 'All'
-      }
-
-      if (this.filter.location.length === 1 && hasVarious) {
-        return 'All'
-      }
-
       const numLocations = this.debouncedFilters.location.length
 
       return `${numLocations} selected`
@@ -987,7 +971,7 @@ export default {
             }))
           this.modalData.filterKey = 'location'
           this.modalData.reset = () => {
-            this.debouncedFilters.location = ['Various']
+            this.debouncedFilters.location = []
           }
           break
         case 'grade': {
