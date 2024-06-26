@@ -244,7 +244,7 @@
       <nswpf-beta />
       <div class="relative flex-grow">
         <div class="absolute inset-0 focus:outline-none overflow-y-auto">
-          <div class="mt-16 mb-8">
+          <div class="mt-4 mb-8">
             <!-- Bento level 1 -->
             <div class="px-8" :class="viewState === 1 ? '' : 'hidden'">
               <div
