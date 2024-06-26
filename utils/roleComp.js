@@ -16,7 +16,7 @@ export function progressionRoles(roles, currentRole, interests) {
     })
     .filter((role) => {
       if (currentRole.gradeId.type === 'policing') {
-        return currentRole.jobFamily === 'Policing'
+        return role.jobFamily === 'Policing'
       }
       return true
     })

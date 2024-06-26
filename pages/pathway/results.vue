@@ -495,7 +495,7 @@
                     </div>
                     <div>
                       <a
-                        href="hhttps://www.psc.nsw.gov.au/workforce-management/capability-framework/capability-framework-resources-index/capability-discovery-tool"
+                        href="https://www.psc.nsw.gov.au/workforce-management/capability-framework/capability-framework-resources-index/capability-discovery-tool"
                         target="_blank"
                         class="underline flex-shrink text-nsw-brand-primary-blue font-bold flex flex-row gap-2"
                       >

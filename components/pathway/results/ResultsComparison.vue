@@ -2,12 +2,12 @@
   <div class="flex flex-col pb-8 border-b border-gray-300">
     <div class="flex flex-row" v-if="skillsMatrix.length > 0">
       <div class="w-1/2 p-4 border-r border-gray-300">
-        <p class="whitespace-no-wrap font-bold text-lg">Current skill</p>
+        <p class="whitespace-no-wrap font-bold text-lg">Current role skills</p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
       </div>
       <div class="w-1/2 p-4">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
-          Required skills
+          Target role skills
         </p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
       </div>
