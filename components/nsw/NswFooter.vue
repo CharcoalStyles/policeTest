@@ -18,9 +18,9 @@
         <a href="https://intranet.police.nsw.gov.au/law/privacy_code_of_practice" target="_blank" class="underline">
           Privacy
         </a>
-        <a href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_planning_and_development_framework/career_" target="_blank" class="underline">
+        <!-- <a href="https://intranet.police.nsw.gov.au/organisational_units/corporate_services/human_resource_services/careers_and_deployment/career_planning_and_development_framework/career_" target="_blank" class="underline">
           Contact us
-        </a>
+        </a> -->
       </div>
       <p class="text-xs mb-8 pl-4 xl:pl-0">Copyright © 2024</p>
     </div>
