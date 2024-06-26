@@ -1,39 +1,22 @@
-# NSW Police Career Pathway Tool
+# Procurement Career Pathways Tool
 
-## Essential development node commands
+## Build Setup
 
 ```bash
 # install dependencies
-$ yarn
+$ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# serve locally through express at localhost:3000
-$ yarn server-start
-```
-
-## Build
-
-The application is built using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
-
-In server development (local) mode, the application is built and served using the following command:
-
-```bash
-$ yarn server-start
-```
-
-In production mode, the application has to be built before deployment. The following command builds the application, after which the application can be deployed:
-
-```bash
+# build for production
 $ yarn build
+$ yarn generate
 ```
 
-When deployed the application will be served through the following command:
+The build and generated static site will be in the `/dist` directory.
 
-```bash
-$ yarn server-start
-```
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
 ## Content
 
@@ -46,14 +29,16 @@ JSON files in the `/data` directory exist for the following data:
 - Roles
 - Capabilities
 - Skills
+- Resources
 - Steps (Question form flow)
 - Capability Names (Map capability codes to full names)
+- Colours (Role Explorer Job Function Grouping)
 
 This information can be updated but the existing data structure must be observed. Any changes in structure will require code changes.
 
-## Importing new data 
+## Importing new data from PSC
 
-Import scripts for **roles**, **capabilities** and **skills** can be found in the `/importers` directory. These scripts convert csv files into json while also normalising and reformatting the data.
+Import scripts for **roles**, **resources**, **capabilities** and **skills** can be found in the `/importers` directory. These scripts convert csv files into json while also normalising and reformatting the data.
 
 These import scripts have dependencies of their own which you must be installed before you can run them. Ensure you are in the directory of the script you wish to use and then do the following.
 
