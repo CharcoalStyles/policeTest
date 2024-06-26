@@ -3,7 +3,7 @@ const { Nuxt, Builder } = require('nuxt')
 
 // Import and set Nuxt.js options
 const config = require('./nuxt.config.js')
-config.dev = process.env.NODE_ENV !== 'production'
+config.dev = false // Set to true if doing development wih the server
 const port = process.env.PORT || 3000
 
 const app = express()
