@@ -161,9 +161,12 @@ export default {
       )
     },
     accessedLevel() {
-      return this.selectedCapability.subcode in this.assessedCapabilities
-        ? this.assessedCapabilities[this.selectedCapability.subcode].value
-        : false
+      const x =
+        this.selectedCapability.subcode in this.assessedCapabilities
+          ? this.assessedCapabilities[this.selectedCapability.subcode].value
+          : false
+      console.log('AL', x)
+      return x
     },
     currentRoleLevel() {
       return this.$collect(this.currentRole.capabilities.focus)

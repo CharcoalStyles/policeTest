@@ -33,6 +33,7 @@ export default {
         const name = skill
           .find((skill) => skill.code === this.skillCode)
           .levels.find((level) => {
+            console.log(level, this.level)
             const userLevel = (
               typeof this.level === 'string'
                 ? Number.parseInt(level.level) - 1

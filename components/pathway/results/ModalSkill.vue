@@ -175,9 +175,14 @@ export default {
         : false
     },
     currentRoleLevel() {
-      return this.$collect(this.currentRole.skills.focus)
+      const y = this.currentRole.skills.focus.find(
+        (skill) => skill.code === this.selectedSkill.code
+      )
+      const x = this.$collect(this.currentRole.skills.focus)
         .where('code', this.selectedSkill.code)
         .first()
+      console.log('CRL', x, y, this.currentRole)
+      return x
     },
     targetRoleLevel() {
       if (!this.targetRole) {
