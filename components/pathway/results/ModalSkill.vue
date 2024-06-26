@@ -20,8 +20,8 @@
               <skill-cap-info-badge
                 v-if="accessedLevel"
                 :is-skill="true"
-                :skill-code="selectedSkill.code"
-                :level="currentRoleLevel.level"
+                :skill-code="accessedLevel.id"
+                :level="accessedLevel.value"
               />
               <div v-else class="italic text-nsw-grey-600">N/A</div>
             </div>
@@ -30,7 +30,7 @@
               <skill-cap-info-badge
                 v-if="currentRoleLevel"
                 :is-skill="true"
-                :skill-code="selectedSkill.code"
+                :skill-code="currentRoleLevel.code"
                 :level="currentRoleLevel.level"
               />
               <div v-else class="italic text-nsw-grey-600">N/A</div>
@@ -47,8 +47,12 @@
                 <div v-else class="italic text-nsw-grey-600">
                   Not currently known
                 </div>
+              </div>
+            </div>
+            <div v-if="journey" class="md:mr-12">
+              <h5 class="font-bold mb-3">&nbsp;</h5>
+              <div class="flex space-x-3">
                 <information-badge
-                  v-if="journey"
                   size="xs"
                   :colour="journey.colour"
                   :tooltip="journey.tooltip"
@@ -170,14 +174,15 @@ export default {
       )
     },
     accessedLevel() {
-      return this.selectedSkill.code in this.assessedSkills
-        ? this.assessedSkills[this.selectedSkill.code].value
-        : false
+      if (this.selectedSkill.code in this.assessedSkills) {
+        return this.assessedSkills[this.selectedSkill.code]
+      }
+      return false
     },
     currentRoleLevel() {
-      return this.$collect(this.currentRole.skills.focus)
-        .where('code', this.selectedSkill.code)
-        .first()
+      return this.currentRole.skills.focus.find((skill) => {
+        return skill.code === this.selectedSkill.code
+      })
     },
     targetRoleLevel() {
       if (!this.targetRole) {
