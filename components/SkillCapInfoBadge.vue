@@ -28,22 +28,19 @@ export default {
   computed: {
     pillLabel() {
       if (this.isSkill) {
-        console.log(this.skillCode)
-        const skill = this.$store.state.skills
-        const name = skill
-          .find((skill) => skill.code === this.skillCode)
-          .levels.find((level) => {
-            console.log(level, this.level)
-            const userLevel = (
+        const skill = this.$store.state.skills.find(
+          (skill) => skill.code === this.skillCode
+        )
+        const name = skill.levels
+          .find((level) => {
+            const userLevel =
               typeof this.level === 'string'
-                ? Number.parseInt(level.level) - 1
-                : level.level - 1
-            ).toString()
-            const thisLevel = (
+                ? Number.parseInt(level.level)
+                : level.level
+            const thisLevel =
               typeof this.level === 'string'
-                ? Number.parseInt(level.level) - 1
-                : level.level - 1
-            ).toString()
+                ? Number.parseInt(this.level)
+                : this.level
             return userLevel === thisLevel
           })
           .name.trim()

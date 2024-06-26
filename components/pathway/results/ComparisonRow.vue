@@ -107,12 +107,6 @@ export default {
         return false
       }
 
-      // console.log(
-      //   this.currentRole[this.valueName].focus,
-      //   this.instructions === 'selfAssessed',
-      //   this.targetRole
-      // )
-
       const currentRoleItem = this.currentRole[this.valueName].focus.find(
         (item) => item.code === this.item.code
       )
@@ -122,7 +116,6 @@ export default {
           (item) => item.code === this.item.code
         )
       const assessedValue = this.assessedSkills?.[this.item.code]?.value
-
       // This is the thing that needs work
       if (
         this.roleType === 'current' &&

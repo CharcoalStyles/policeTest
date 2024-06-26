@@ -21,7 +21,7 @@
                 v-if="accessedLevel"
                 :is-skill="false"
                 :skill-code="selectedCapability.subcode"
-                :level="currentRoleLevel.level"
+                :level="accessedLevel.value"
               />
               <div v-else class="italic text-nsw-grey-600">
                 Not currently known
@@ -47,8 +47,13 @@
                   :level="targetRoleLevel.level"
                 />
                 <div v-else class="italic text-nsw-grey-600">N/A</div>
+              </div>
+            </div>
+
+            <div v-if="journey" class="md:mr-12">
+              <h5 class="font-bold mb-3">&nbsp;</h5>
+              <div class="flex space-x-3">
                 <information-badge
-                  v-if="journey"
                   size="xs"
                   :colour="journey.colour"
                   :tooltip="journey.tooltip"
@@ -161,17 +166,15 @@ export default {
       )
     },
     accessedLevel() {
-      const x =
-        this.selectedCapability.subcode in this.assessedCapabilities
-          ? this.assessedCapabilities[this.selectedCapability.subcode].value
-          : false
-      console.log('AL', x)
-      return x
+      if (this.selectedCapability.subcode in this.assessedCapabilities) {
+        return this.assessedCapabilities[this.selectedCapability.subcode]
+      }
+      return false
     },
     currentRoleLevel() {
-      return this.$collect(this.currentRole.capabilities.focus)
-        .where('code', this.selectedCapability.subcode)
-        .first()
+      return this.currentRole.capabilities.focus.find((item) => {
+        return item.code === this.selectedCapability.subcode
+      })
     },
     targetRoleLevel() {
       if (!this.targetRole) {
