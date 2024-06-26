@@ -331,7 +331,6 @@ export default {
     search(input) {
       this.value = input
 
-      console.log(this.filter.jobFamily)
       const keyword = keywordSearch(this.filteredRoles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },

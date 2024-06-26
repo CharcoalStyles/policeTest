@@ -661,20 +661,8 @@ export default {
       ])
 
       const keywordResult = keyword(this.debouncedFilters.keyword)
-
-      console.log({
-        keyword15: keywordResult
-          .slice(0, 15)
-          .map(
-            (r) =>
-              `${r.item.name} (${r.item.jobFamily}, ${r.item.jobFunction})(${r.rank})`
-          )
-      })
-
-      const x = keywordResult.map((r) => r.item)
-
       // Filter by salary and skills
-      return collect(x)
+      return collect(keywordResult.map((r) => r.item))
         .filter((role) => !role.genericRole)
         .filter((role) => {
           switch (this.debouncedFilters.sworn) {
