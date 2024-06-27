@@ -17,6 +17,14 @@ export default {
   components: {
     NswHeader,
     NswFooter
+  },
+  async mounted() {
+    console.log('mounted - default')
+    await Promise.all([
+      this.$store.dispatch('loadRoles'),
+      this.$store.dispatch('loadSkills'),
+      this.$store.dispatch('loadCapabilities')
+    ])
   }
 }
 </script>

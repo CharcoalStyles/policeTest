@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import collect from 'collect.js'
-import roles from '@/data/roles.json'
-import skills from '@/data/skills.json'
-import capabilities from '@/data/capabilities.json'
 import steps from '@/data/steps.json'
 import checkConditions from '@/utils/conditions'
 import isAssessible from '@/utils/assessible'
+import cache from '@/utils/cache'
+import { getRoleUpdateDate, getSkillUpdateDate, getCapabilityUpdateDate, loadRoles, loadSkills, loadCapabilities } from '@/utils/data-loaders'
 
 const state = () => ({
-  roles,
-  skills,
-  capabilities,
+  roles: null,
+  skills: null,
+  capabilities: null,
   pathway: {
     completed: false,
     steps,
@@ -23,6 +22,12 @@ const state = () => ({
 })
 
 const getters = {
+  roles: (state) => {
+    if (!state.roles) {
+      return []
+    }
+    return state.roles
+  },
   // Filter steps based on conditions and answers
   filteredSteps: (state) => {
     return state.pathway.steps.filter((step) => {
@@ -114,6 +119,18 @@ const getters = {
 }
 
 const mutations = {
+  SET_ROLES(state, data) {
+    state.roles = data
+  },
+
+  SET_SKILLS(state, data) {
+    state.skills = data
+  },
+
+  SET_CAPABILITIES(state, data) {
+    state.capabilities = data
+  },
+
   SET_ANSWER(state, payload) {
     Vue.set(state.pathway.answers, payload.id, {
       ...state.pathway.answers[payload.id],
@@ -236,6 +253,48 @@ const mutations = {
 }
 
 const actions = {
+  setRoles({ commit }, data) {
+    cache.set('roles', data)
+    commit('SET_ROLES', data.data)
+  },
+  setSkills({ commit }, data) {
+    cache.set('skills', data)
+    commit('SET_SKILLS', data.data)
+  },
+  setCapabilities({ commit }, data) {
+    cache.set('capabilities', data)
+    commit('SET_CAPABILITIES', data.data)
+  },
+  async loadRoles({ commit }) {
+    const lastUpdated = await getRoleUpdateDate()
+    const lastCache = cache.get('roles')
+    if (lastCache && lastCache.lastUpdated === lastUpdated) {
+      commit('SET_ROLES', cache.get('roles'))
+      return
+    }
+    const roles = await loadRoles()
+    commit('SET_ROLES', roles.data)
+  },
+  async loadSkills({ commit }) {
+    const lastUpdated = await getSkillUpdateDate()
+    const lastCache = cache.get('skills')
+    if (lastCache && lastCache.lastUpdated === lastUpdated) {
+      commit('SET_SKILLS', cache.get('skills'))
+      return
+    }
+    const skills = await loadSkills()
+    commit('SET_SKILLS', skills.data)
+  },
+  async loadCapabilities({ commit }) {
+    const lastUpdated = await getCapabilityUpdateDate()
+    const lastCache = cache.get('capabilities')
+    if (lastCache && lastCache.lastUpdated === lastUpdated) {
+      commit('SET_CAPABILITIES', cache.get('capabilities'))
+      return
+    }
+    const capabilities = await loadCapabilities()
+    commit('SET_CAPABILITIES', capabilities.data)
+  },
   saveQuestionAnswer({ commit, state }, payload) {
     // Save answer to store
     commit('SET_ANSWER', payload)

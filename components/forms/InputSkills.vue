@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import skills from '@/data/skills.json'
 
 export default {
   props: {
@@ -23,13 +22,12 @@ export default {
   },
   data() {
     return {
-      skills,
       values: []
     }
   },
   computed: {
     sortedSkills() {
-      return this.$collect(this.skills)
+      return this.$collect(this.$store.state.skills)
         .map(item => ({
           name: item.name,
           code: item.code

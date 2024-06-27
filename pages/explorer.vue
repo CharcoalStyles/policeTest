@@ -556,8 +556,6 @@
 <script>
 import collect from 'collect.js'
 // import FuzzySearch from 'fuzzy-search'
-import roles from '@/data/roles.json'
-import skills from '@/data/skills.json'
 import InputRange from '@/components/forms/InputRange'
 import JobRole from '@/components/JobRole'
 import RoleFunction from '@/components/RoleFunction'
@@ -571,7 +569,7 @@ import NswpfBeta from '~/components/nswpfBeta.vue'
 import LocationSelector from '~/components/LocationSelector.vue'
 
 export default {
-  layout: 'blank',
+  layout: 'explore',
   components: {
     InputRange,
     JobRole,
@@ -586,8 +584,6 @@ export default {
   },
   data() {
     return {
-      roles,
-      skills,
       loading: false,
       slideout: false,
       selectedRole: false,
@@ -634,6 +630,10 @@ export default {
     }
   },
   computed: {
+    roles() {
+      console.log('roles', this.$store.getters.roles)
+      return this.$store.getters.roles
+    },
     debouncedFilters: {
       get() {
         return this.filter
@@ -652,6 +652,7 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
+      console.log('filteredRoles', this.roles)
       const keyword = keywordSearch(this.roles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },
@@ -926,7 +927,7 @@ export default {
           this.modalData.title = 'Select Skills'
           this.modalData.instructions =
             'Select skills that relate to a role to see how they match to others.'
-          this.modalData.data = this.skills
+          this.modalData.data = this.$store.state.skills
             .map((s) => ({
               value: s.code,
               label: s.name
