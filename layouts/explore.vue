@@ -8,7 +8,6 @@
 <script>
 export default {
   async mounted() {
-    console.log('mounted - explore')
     await Promise.all([
       this.$store.dispatch('loadRoles'),
       this.$store.dispatch('loadSkills'),

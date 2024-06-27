@@ -631,7 +631,6 @@ export default {
   },
   computed: {
     roles() {
-      console.log('roles', this.$store.getters.roles)
       return this.$store.getters.roles
     },
     debouncedFilters: {
@@ -652,7 +651,6 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      console.log('filteredRoles', this.roles)
       const keyword = keywordSearch(this.roles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },

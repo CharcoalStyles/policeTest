@@ -76,7 +76,6 @@ export default {
     }
   },
   async mounted() {
-    console.log('mounted - pathway')
     await Promise.all([
       this.$store.dispatch('loadRoles'),
       this.$store.dispatch('loadSkills'),
