@@ -52,7 +52,7 @@
           {{ role.description }}
         </p>
       </div>
-      <div class="w-fit">
+      <div v-if="role.fullDescription" class="w-fit">
         <a
           :href="role.fullDescription"
           target="_blank"
