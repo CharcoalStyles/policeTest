@@ -555,7 +555,6 @@
 
 <script>
 import collect from 'collect.js'
-// import FuzzySearch from 'fuzzy-search'
 import InputRange from '@/components/forms/InputRange'
 import JobRole from '@/components/JobRole'
 import RoleFunction from '@/components/RoleFunction'
