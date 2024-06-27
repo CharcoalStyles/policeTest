@@ -75,6 +75,14 @@ export default {
       return this.currentStepIndex === this.filteredSteps.length - 1
     }
   },
+  async mounted() {
+    console.log('mounted - pathway')
+    await Promise.all([
+      this.$store.dispatch('loadRoles'),
+      this.$store.dispatch('loadSkills'),
+      this.$store.dispatch('loadCapabilities')
+    ])
+  },
   methods: {
     isChildStep() {
       return this.$route.params.step && this.$route.params.id

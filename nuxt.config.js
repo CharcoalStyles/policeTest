@@ -45,7 +45,6 @@ export default {
     '~/plugins/collect',
     '~/plugins/debounce',
     '~/plugins/pluralise',
-    { src: '~/plugins/persist', ssr: false }
   ],
 
   // Auto import components

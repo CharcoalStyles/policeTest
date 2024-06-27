@@ -545,7 +545,6 @@ import ModalUpdate from '@/components/pathway/results/ModalUpdate'
 import StepBadge from '@/components/pathway/results/StepBadge'
 import PrintPage from '@/components/PrintPage'
 import DisclaimerPanel from '@/components/pathway/results/DisclaimerPanel'
-import capabilityNamesMap from '@/data/capabilityNamesMap.json'
 import {
   adjacentRoles,
   progressionRoles,
@@ -595,24 +594,6 @@ export default {
         return this.$collect(this.roles)
           .where('id', this.answers['goal-role'].value)
           .first()
-      }
-      return false
-    },
-    readableSkillsList() {
-      const list = Object.keys(this.answers.skills).map(
-        (key) => capabilityNamesMap[key]
-      )
-      if (list.length > 0) {
-        return list.join(', ')
-      }
-      return false
-    },
-    readableCapabilitiesList() {
-      const list = Object.keys(this.answers.capabilities).map(
-        (key) => capabilityNamesMap[key]
-      )
-      if (list.length > 0) {
-        return list.join(', ')
       }
       return false
     },

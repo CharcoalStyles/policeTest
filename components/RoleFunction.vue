@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import colours from '@/data/colours.json'
 import RolePanel from '@/components/RolePanel'
 
 export default {
@@ -106,7 +105,6 @@ export default {
   },
   data() {
     return {
-      colours,
       axisKeys: {
         x: 'command_BusUnit',
         y: 'grade'
