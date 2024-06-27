@@ -3,7 +3,8 @@ export default {
   ssr: false,
 
   // Target
-  target: 'static',
+  target: 'server',
+  telemetry: false,
 
   // Global page headers
   head: {

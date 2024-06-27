@@ -10,7 +10,7 @@ $ yarn
 $ yarn dev
 
 # serve locally through express at localhost:3000
-$ yarn build-gen
+$ yarn build
 $ yarn server-start
 ```
 
@@ -18,11 +18,24 @@ $ yarn server-start
 
 The application is built using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
 
-In production mode, the application has to be built before deployment. The following command builds the application, after which the application can be deployed:
+### Building
+
+The application has to be built before deployment. The following command builds the application, after which the application can be deployed:
 
 ```bash
-$ yarn build-gen
+$ yarn build
 ```
+
+### Deploying
+
+To deploy the application into Azure, zip up the following files and directories:
+
+* /_nuxt/
+* /node_modules/
+* index.js
+* nuxt.config
+
+### Running
 
 When deployed the application will be served through the following command:
 

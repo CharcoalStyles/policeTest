@@ -1,16 +1,29 @@
 const express = require('express')
-const app = express()
-app.use(express.static('dist'))
+
+const { Nuxt } = require('nuxt')
+
+const config = require('./nuxt.config.js')
 const port = process.env.PORT || 3000
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+const app = express()
 
-app.get('/healthcheck-api-sit/*', (req, res) => {
-  res.send('OK')
-})
+async function start() {
+  // Init Nuxt.js
+  const nuxt = new Nuxt(config)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  await nuxt.ready()
+
+  // Add healthcheck endpoint
+  app.get('/healthcheck-api-sit/*', (req, res) => {
+    res.send('OK')
+  })
+
+  // Give nuxt middleware to express
+  app.use(nuxt.render)
+  
+  // Listen the server
+  app.listen(port)
+  console.log(`Server listening on ${port}`)
+}
+
+start()
