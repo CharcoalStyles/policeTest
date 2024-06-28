@@ -3,7 +3,6 @@ const express = require('express')
 const { Nuxt } = require('nuxt')
 
 const config = require('./nuxt.config.js')
-const envVars = require('./envVars.js')
 const port = process.env.PORT || 3000
 
 const app = express()
@@ -14,7 +13,8 @@ async function start() {
     ...config,
     publicRuntimeConfig: {
       ...config.publicRuntimeConfig,
-      ...(envVars || {})
+      SMB_SHARE_NAME: process.env.SMB_SHARE_NAME,
+      FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL
     }
   })
 
