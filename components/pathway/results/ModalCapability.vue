@@ -100,7 +100,6 @@
 </template>
 
 <script>
-import skills from '@/data/skills.json'
 import PanelTab from '@/components/pathway/results/PanelTab'
 import BaseModal from '@/components/BaseModal'
 import SkillCapInfoBadge from '~/components/SkillCapInfoBadge.vue'
@@ -147,7 +146,6 @@ export default {
   },
   data() {
     return {
-      skills,
       tabs: {
         level: false
       }

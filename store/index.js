@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import collect from 'collect.js'
-import roles from '@/data/roles.json'
-import skills from '@/data/skills.json'
-import capabilities from '@/data/capabilities.json'
 import steps from '@/data/steps.json'
 import checkConditions from '@/utils/conditions'
 import isAssessible from '@/utils/assessible'
 
 const state = () => ({
-  roles,
-  skills,
-  capabilities,
+  roles: [],
+  skills: [],
+  capabilities: [],
+  dataUpdated: {
+    roles: null,
+    skills: null,
+    capabilities: null
+  },
   pathway: {
     completed: false,
     steps,
@@ -114,6 +116,21 @@ const getters = {
 }
 
 const mutations = {
+  SET_ROLES(state, data) {
+    state.roles = data.data
+    state.dataUpdated.roles = data.lastUpdated
+  },
+
+  SET_SKILLS(state, data) {
+    state.skills = data.data
+    state.dataUpdated.skills = data.lastUpdated
+  },
+
+  SET_CAPABILITIES(state, data) {
+    state.capabilities = data.data
+    state.dataUpdated.capabilities = data.lastUpdated
+  },
+
   SET_ANSWER(state, payload) {
     Vue.set(state.pathway.answers, payload.id, {
       ...state.pathway.answers[payload.id],
@@ -236,6 +253,30 @@ const mutations = {
 }
 
 const actions = {
+  async loadRoles({ commit, state }) {
+    const lastUpdated = await this.$azureLoader.getRoleUpdateDate()
+    if (state.dataUpdated.roles && state.dataUpdated.roles === lastUpdated) {
+      return
+    }
+    const roles = await this.$azureLoader.loadRoles()
+    commit('SET_ROLES', roles)
+  },
+  async loadSkills({ commit, state }) {
+    const lastUpdated = await this.$azureLoader.getSkillUpdateDate()
+    if (state.dataUpdated.skills && state.dataUpdated.skills === lastUpdated) {
+      return
+    }
+    const skills = await this.$azureLoader.loadSkills()
+    commit('SET_SKILLS', skills)
+  },
+  async loadCapabilities({ commit, state }) {
+    const lastUpdated = await this.$azureLoader.getCapabilityUpdateDate()
+    if (state.dataUpdated.capabilities && state.dataUpdated.capabilities === lastUpdated) {
+      return
+    }
+    const capabilities = await this.$azureLoader.loadCapabilities()
+    commit('SET_CAPABILITIES', capabilities)
+  },
   saveQuestionAnswer({ commit, state }, payload) {
     // Save answer to store
     commit('SET_ANSWER', payload)

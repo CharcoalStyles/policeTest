@@ -76,6 +76,10 @@ export default {
     fullWidth: {
       type: Boolean,
       default: false
+    },
+    noJourney: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -103,7 +107,7 @@ export default {
       return this.type === 'skill' ? 'Skill' : 'Capability'
     },
     journeyType() {
-      if (!this.item) {
+      if (!this.item || this.noJourney) {
         return false
       }
 

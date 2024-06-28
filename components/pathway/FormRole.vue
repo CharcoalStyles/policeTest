@@ -184,7 +184,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import FuzzySearch from 'fuzzy-search'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import InformationBadge from '@/components/InformationBadge'
 import { keywordSearch } from '@/utils/search'
