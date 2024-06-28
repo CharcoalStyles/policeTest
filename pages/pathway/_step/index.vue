@@ -18,7 +18,11 @@
           @click.native="goToNextStep"
         >
           {{ nextLabel }}
-          <img src="/icons/sml-arrow.svg" class="ml-3 shrink-0" alt="Help icon" />
+          <img
+            src="/icons/sml-arrow.svg"
+            class="ml-3 shrink-0"
+            alt="Help icon"
+          />
         </nsw-button>
       </template>
     </navigation-actions>
@@ -54,6 +58,18 @@ export default {
     }
   },
   created() {
+    if (this.currentStep.id === 'start') {
+      this.$azureInsights.startTrackEvent('Career Pathway Flow')
+      this.$azureInsights.trackEvent({
+        name: 'Pathway Start',
+        time: new Date().toISOString(),
+        timeMs: new Date().getTime()
+      })
+    }
+    this.$azureInsights.trackEvent({
+      name: 'Pathway Step',
+      step: this.currentStep.id
+    })
     // 404 if the step id is invalid
     if (!this.currentStep) {
       return this.$nuxt.error({ statusCode: 404, message: 'Step not found' })
@@ -89,6 +105,14 @@ export default {
     goToNextStep() {
       // No more steps
       if (this.isLastStep) {
+        this.$azureInsights.stopTrackEvent('Career Pathway Flow')
+
+        this.$azureInsights.trackEvent({
+          name: 'Pathway End',
+          time: new Date().toISOString(),
+          timeMs: new Date().getTime()
+        })
+
         // Mark the questions as complete for middleware
         this.$store.dispatch('markQuestionsComplete')
         // Redirect

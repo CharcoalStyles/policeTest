@@ -50,7 +50,8 @@ module.exports = {
     '~/plugins/collect',
     '~/plugins/debounce',
     '~/plugins/pluralise',
-    '~/plugins/azure-loader'
+    '~/plugins/azure-loader',
+    '~/plugins/azure-insights'
   ],
 
   // Auto import components
