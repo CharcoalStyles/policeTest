@@ -3,7 +3,6 @@ import collect from 'collect.js'
 import steps from '@/data/steps.json'
 import checkConditions from '@/utils/conditions'
 import isAssessible from '@/utils/assessible'
-import { getRoleUpdateDate, getSkillUpdateDate, getCapabilityUpdateDate, loadRoles, loadSkills, loadCapabilities } from '@/utils/data-loaders'
 
 const state = () => ({
   roles: [],
@@ -255,27 +254,27 @@ const mutations = {
 
 const actions = {
   async loadRoles({ commit, state }) {
-    const lastUpdated = await getRoleUpdateDate()
+    const lastUpdated = await this.$azureLoader.getRoleUpdateDate()
     if (state.dataUpdated.roles && state.dataUpdated.roles === lastUpdated) {
       return
     }
-    const roles = await loadRoles()
+    const roles = await this.$azureLoader.loadRoles()
     commit('SET_ROLES', roles)
   },
   async loadSkills({ commit, state }) {
-    const lastUpdated = await getSkillUpdateDate()
+    const lastUpdated = await this.$azureLoader.getSkillUpdateDate()
     if (state.dataUpdated.skills && state.dataUpdated.skills === lastUpdated) {
       return
     }
-    const skills = await loadSkills()
+    const skills = await this.$azureLoader.loadSkills()
     commit('SET_SKILLS', skills)
   },
   async loadCapabilities({ commit, state }) {
-    const lastUpdated = await getCapabilityUpdateDate()
+    const lastUpdated = await this.$azureLoader.getCapabilityUpdateDate()
     if (state.dataUpdated.capabilities && state.dataUpdated.capabilities === lastUpdated) {
       return
     }
-    const capabilities = await loadCapabilities()
+    const capabilities = await this.$azureLoader.loadCapabilities()
     commit('SET_CAPABILITIES', capabilities)
   },
   saveQuestionAnswer({ commit, state }, payload) {
