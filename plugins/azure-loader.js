@@ -21,14 +21,14 @@ export default ({ $config }, inject) => {
         })
       },
       loadSkills: async () => {
-        const response = await axios.get('/test-data/roles.csv')
+        const response = await axios.get('/test-data/skills.csv')
         return parseSkills({
           file: response.data,
           lastUpdated: 'local'
         })
       },
       loadCapabilities: async () => {
-        const response = await axios.get('/test-data/roles.csv')
+        const response = await axios.get('/test-data/capabilities.csv')
         return parseCapabilities({
           file: response.data,
           lastUpdated: 'local'
