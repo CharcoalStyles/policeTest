@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "build-gen": "nuxt build && nuxt generate",
-    "server-start": "node index.js"
+    "server-start": "node index.js",
+    "build-env-vars": "node buildEnvVarsFile.js"
   },
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",
@@ -20,6 +21,7 @@
     "express": "^4.19.2",
     "fuzzy-search": "^3.2.1",
     "nuxt": "^2.17.3",
+    "papaparse": "^5.4.1",
     "portal-vue": "^2.1.7",
     "vue-debounce": "^2.5.8",
     "vue-multiselect": "^2.1.6",

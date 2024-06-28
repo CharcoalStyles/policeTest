@@ -555,7 +555,6 @@
 
 <script>
 import collect from 'collect.js'
-// import FuzzySearch from 'fuzzy-search'
 import InputRange from '@/components/forms/InputRange'
 import JobRole from '@/components/JobRole'
 import RoleFunction from '@/components/RoleFunction'
@@ -631,8 +630,7 @@ export default {
   },
   computed: {
     roles() {
-      console.log('roles', this.$store.getters.roles)
-      return this.$store.getters.roles
+      return this.$store.state.roles
     },
     debouncedFilters: {
       get() {
@@ -652,7 +650,6 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      console.log('filteredRoles', this.roles)
       const keyword = keywordSearch(this.roles, [
         { key: 'name', weight: 2 },
         { key: 'alias' },

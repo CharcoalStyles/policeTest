@@ -96,6 +96,7 @@
             instructions="selfAssessed"
             role-type="current"
             :full-width="true"
+            :no-journey="true"
             @skillClicked="showSkillModal"
           />
         </div>
@@ -114,6 +115,7 @@
             instructions="selfAssessed"
             role-type="current"
             :full-width="true"
+            :no-journey="true"
             @skillClicked="showCapabilityModal"
           />
         </div>

@@ -1,10 +1,15 @@
-export default {
+module.exports = {
   // Disable server-side rendering
   ssr: false,
 
   // Target
   target: 'server',
   telemetry: false,
+
+  publicRuntimeConfig: {
+    SMB_SHARE_NAME: process.env.SMB_SHARE_NAME,
+    FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL
+  },
 
   // Global page headers
   head: {
@@ -45,6 +50,7 @@ export default {
     '~/plugins/collect',
     '~/plugins/debounce',
     '~/plugins/pluralise',
+    '~/plugins/azure-loader'
   ],
 
   // Auto import components

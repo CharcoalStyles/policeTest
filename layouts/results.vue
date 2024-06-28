@@ -18,7 +18,6 @@ export default {
     NswFooter
   },
   async mounted() {
-    console.log('mounted - results')
     await Promise.all([
       this.$store.dispatch('loadRoles'),
       this.$store.dispatch('loadSkills'),

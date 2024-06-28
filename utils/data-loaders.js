@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { process as processRoles } from './importers/role'
+import { process as processSkills } from './importers/skills'
+import { process as processCapabilities } from './importers/capabilities'
 
 export async function getRoleUpdateDate() {
   return await Promise.resolve('2023-01-01')
@@ -14,9 +17,10 @@ export async function getCapabilityUpdateDate() {
 
 export async function loadRoles() {
   try {
-    const response = await axios.get('/test-data/roles.json')
+    const response = await axios.get('/test-data/roles.csv')
+    const processed = processRoles(response.data)
     return {
-      data: response.data,
+      data: processed,
       lastUpdated: await getRoleUpdateDate()
     }
   } catch (error) {
@@ -26,9 +30,10 @@ export async function loadRoles() {
 
 export async function loadSkills() {
   try {
-    const response = await axios.get('/test-data/skills.json')
+    const response = await axios.get('/test-data/skills.csv')
+    const processed = processSkills(response.data)
     return {
-      data: response.data,
+      data: processed,
       lastUpdated: await getRoleUpdateDate()
     }
   } catch (error) {
@@ -38,9 +43,10 @@ export async function loadSkills() {
 
 export async function loadCapabilities() {
   try {
-    const response = await axios.get('/test-data/capabilities.json')
+    const response = await axios.get('/test-data/capabilities.csv')
+    const processed = processCapabilities(response.data)
     return {
-      data: response.data,
+      data: processed,
       lastUpdated: await getRoleUpdateDate()
     }
   } catch (error) {
