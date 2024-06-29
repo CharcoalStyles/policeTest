@@ -20,10 +20,12 @@ The application is built using [Nuxt.js](https://nuxtjs.org) and is served throu
 
 ### Building the application
 
-The application has to be built before deployment. The following command builds the application, after which the application can be deployed:
+The application has to be built before deployment. The environment variables are embedded into this build, so if building manually, you need a `.env` file that contains the required environment variables for the environmant (non-prod or prod) that you are building for.
+
+The following command builds the application, after which the application can be deployed:
 
 ```bash
-$ yarn build
+$ yarn build-gen
 ```
 
 ### Deploying
@@ -32,6 +34,7 @@ To deploy the application into Azure, zip up the following files and directories
 
 * /.nuxt/
 * /node_modules/
+* /dist/
 * index.js
 * nuxt.config
 

@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 
 const { Nuxt } = require('nuxt')
@@ -18,19 +19,13 @@ async function start() {
     }
   })
 
-  await nuxt.ready()
+app.use(express.static(path.join(__dirname, 'dist')))
 
-  // Add healthcheck endpoint
-  app.get('/healthcheck-api-sit/*', (req, res) => {
-    res.send('OK')
-  })
+// Catch-all route to serve index.html for any request that doesn't match a static file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
-  // Give nuxt middleware to express
-  app.use(nuxt.render)
-
-  // Listen the server
-  app.listen(port)
-  console.log(`Server listening on ${port}`)
-}
-
-start()
+// Listen the server
+app.listen(port)
+console.log(`Server listening on ${port}`)

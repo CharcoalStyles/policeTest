@@ -3,7 +3,7 @@ module.exports = {
   ssr: false,
 
   // Target
-  target: 'server',
+  target: 'static',
   telemetry: false,
 
   publicRuntimeConfig: {
@@ -49,6 +49,7 @@ module.exports = {
     '~/plugins/currency',
     '~/plugins/collect',
     '~/plugins/debounce',
+    '~/plugins/persist',
     '~/plugins/pluralise',
     '~/plugins/azure-loader',
     '~/plugins/azure-insights'
