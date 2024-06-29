@@ -20,42 +20,21 @@ The application is built using [Nuxt.js](https://nuxtjs.org) and is served throu
 
 ### Building the application
 
-The application has to be built before deployment. The following command builds the application, after which the application can be deployed:
+The application has to be built before deployment. The environment variables are embedded into this build, so if building manually, you need a `.env` file that contains the required environment variables for the environmant (non-prod or prod) that you are building for.
+
+The following command builds the application, after which the application can be deployed:
 
 ```bash
-$ yarn build
+$ yarn build-gen
 ```
-
-### Building the environment variables file
-
-The application uses environment variables to connect to the Azure file storage. When doing an automated build in a GitHub pipeline, the following command builds the environment variables file from the local environment variables:
-
-```bash
-$ yarn build-env-vars
-```
-
-This command will create a file called `envVars.js` in the root directory of the project.
-
-If you are building the application locally, you will need to manually create and update the `envVars.js` file. Here is an example of the file:
-
-```js
-module.exports = {
-  SMB_SHARE_NAME: process.env.SMB_SHARE_NAME || '{*SMB_SHARE_NAME*}',
-  FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL || '{*FILE_SERVICE_SAS_URL*}'
-}
-```
-
-_Note: The `{*SMB_SHARE_NAME*}` and `{*FILE_SERVICE_SAS_URL*}` placeholders must be replaced with the actual values._
 
 ### Deploying
 
 To deploy the application into Azure, zip up the following files and directories:
 
-* /_nuxt/
 * /node_modules/
+* /dist/
 * index.js
-* envVars.js
-* nuxt.config
 
 ### Running
 

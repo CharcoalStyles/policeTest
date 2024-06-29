@@ -5,6 +5,7 @@ import { process as processSkills } from '../utils/importers/skills'
 import { process as processCapabilities } from '../utils/importers/capabilities'
 
 export default ({ $config }, inject) => {
+  console.log('config', $config)
   if ($config.SMB_SHARE_NAME === undefined || $config.FILE_SERVICE_SAS_URL === undefined) {
     console.warn('azure loader disabled, using old static data')
     console.warn('This should only be used for development')
