@@ -8,7 +8,8 @@ module.exports = {
 
   publicRuntimeConfig: {
     SMB_SHARE_NAME: process.env.SMB_SHARE_NAME,
-    FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL
+    FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL,
+    AI_CONNECTION_STRING: process.env.AI_CONNECTION_STRING
   },
 
   // Global page headers
