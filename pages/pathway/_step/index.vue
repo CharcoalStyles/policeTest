@@ -66,6 +66,7 @@ export default {
         timeMs: new Date().getTime()
       })
     }
+    console.log(this.currentStep)
     this.$azureInsights.trackEvent({
       name: 'Pathway Step',
       step: this.currentStep.id
@@ -103,6 +104,20 @@ export default {
      * Redirect to next step
      */
     goToNextStep() {
+      if (this.currentStep.id === 'new-role') {
+        const answers = this.$store.state.pathway.answers['new-role'].value
+        const vals = this.currentStep.schema.field.options.map((o) => o.value)
+
+        const results = vals.reduce((acc, val) => {
+          acc[val] = answers.includes(val)
+          return acc
+        }, {})
+
+        this.$azureInsights.trackEvent({
+          name: 'Interests and Preferences',
+          ...results
+        })
+      }
       // No more steps
       if (this.isLastStep) {
         this.$azureInsights.stopTrackEvent('Career Pathway Flow')

@@ -1,23 +1,13 @@
 const path = require('path')
 const express = require('express')
 
-const { Nuxt } = require('nuxt')
-
-const config = require('./nuxt.config.js')
 const port = process.env.PORT || 3000
 
 const app = express()
-
-async function start() {
-  // Init Nuxt.js
-  const nuxt = new Nuxt({
-    ...config,
-    publicRuntimeConfig: {
-      ...config.publicRuntimeConfig,
-      SMB_SHARE_NAME: process.env.SMB_SHARE_NAME,
-      FILE_SERVICE_SAS_URL: process.env.FILE_SERVICE_SAS_URL
-    }
-  })
+// Add healthcheck endpoint
+app.get('/healthcheck-api-sit/*', (req, res) => {
+  res.send('OK')
+})
 
 app.use(express.static(path.join(__dirname, 'dist')))
 
