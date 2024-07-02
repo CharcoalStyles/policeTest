@@ -8,7 +8,10 @@
         </nsw-button>
       </template>
       <template #right>
-        <nsw-button :disabled="isChildStepDisabled(currentChildStep)" @click.native="goToNextStep">
+        <nsw-button
+          :disabled="isChildStepDisabled(currentChildStep)"
+          @click.native="goToNextStep"
+        >
           Next
         </nsw-button>
       </template>
@@ -43,14 +46,20 @@ export default {
      * Current child step based in url param id
      */
     currentChildStep() {
-      return this.getChildStepById(this.$route.params.step, this.$route.params.id)
+      return this.getChildStepById(
+        this.$route.params.step,
+        this.$route.params.id
+      )
     },
 
     /**
      * Current step index based on id
      */
     currentChildStepIndex() {
-      return this.getChildStepIndex(this.$route.params.step, this.$route.params.id)
+      return this.getChildStepIndex(
+        this.$route.params.step,
+        this.$route.params.id
+      )
     },
 
     /**
@@ -68,6 +77,11 @@ export default {
     }
   },
   created() {
+    this.$azureInsights.trackEvent({
+      name: 'Pathway Step',
+      step: this.currentStep.id,
+      stepChild: this.currentChildStep.id
+    })
     // 404 if the step id is invalid
     if (!this.currentStep || !this.currentChildStep) {
       return this.$nuxt.error({ statusCode: 404, message: 'Step not found' })
@@ -83,8 +97,13 @@ export default {
         this.$router.push(`/pathway/${this.currentStep.id}`)
       } else {
         // Redirect to next child step
-        const previousChildStep = this.getPreviousChildStepByCurrentIndex(this.currentStep.id, this.currentChildStepIndex)
-        this.$router.push(`/pathway/${this.currentStep.id}/${previousChildStep.id}`)
+        const previousChildStep = this.getPreviousChildStepByCurrentIndex(
+          this.currentStep.id,
+          this.currentChildStepIndex
+        )
+        this.$router.push(
+          `/pathway/${this.currentStep.id}/${previousChildStep.id}`
+        )
       }
     },
 
@@ -98,7 +117,10 @@ export default {
         this.$router.push(`/pathway/${nextStep.id}`)
       } else {
         // Redirect to next child step
-        const nextChildStep = this.getNextChildStepByCurrentIndex(this.currentStep.id, this.currentChildStepIndex)
+        const nextChildStep = this.getNextChildStepByCurrentIndex(
+          this.currentStep.id,
+          this.currentChildStepIndex
+        )
         this.$router.push(`/pathway/${this.currentStep.id}/${nextChildStep.id}`)
       }
     }

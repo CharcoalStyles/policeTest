@@ -464,7 +464,7 @@
             <!-- Role Table (level 4) -->
             <div class="block" :class="viewState === 4 ? '' : 'hidden'">
               <div
-                class="sticky w-fit left-0 flex flex-row mb-2 cursor-pointer"
+                class="ml-8 flex flex-row mb-2 cursor-pointer"
                 @click="handleBack()"
               >
                 <img
@@ -472,10 +472,10 @@
                   alt="Clipboard icon"
                   class="h-6"
                 />
-                <p class="text-xl text-nsw-brand-primary-blue">Back</p>
+                <p class="text-nsw-brand-primary-blue">Back</p>
               </div>
               <div
-                class="inline-flex flex-wrap p-2"
+                class="inline-flex flex-wrap pl-2"
                 :class="{ 'pointer-events-none': panning }"
               >
                 <role-function
@@ -840,8 +840,11 @@ export default {
       )
     },
     locationLabel() {
-      const numLocations = this.debouncedFilters.location.length
+      if (this.debouncedFilters.location.length === 0) {
+        return 'All'
+      }
 
+      const numLocations = this.debouncedFilters.location.length
       return `${numLocations} selected`
     }
   },
@@ -1092,18 +1095,18 @@ export default {
           this.viewState = this.lastViewState
           this.filter.jobFamily = ''
           this.filter.jobFunction = []
-          this.filter.command_BusUnit = []
+          // this.filter.command_BusUnit = []
           break
         case 2:
           this.viewState = this.lastViewState
           this.lastViewState = 1
           this.filter.jobFunction = []
-          this.filter.command_BusUnit = []
+          // this.filter.command_BusUnit = []
           break
         case 3:
           this.viewState = this.lastViewState
           this.lastViewState = 2
-          this.filter.command_BusUnit = []
+          // this.filter.command_BusUnit = []
           break
         default:
           break

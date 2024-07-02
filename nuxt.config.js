@@ -51,7 +51,8 @@ module.exports = {
     '~/plugins/debounce',
     '~/plugins/persist',
     '~/plugins/pluralise',
-    '~/plugins/azure-loader'
+    '~/plugins/azure-loader',
+    '~/plugins/azure-insights'
   ],
 
   // Auto import components
