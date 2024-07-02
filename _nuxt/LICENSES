@@ -1,3 +1,23 @@
+/*!
+ * Vue.js v2.7.16
+ * (c) 2014-2023 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
+
+
+/**
+  * vue-class-component v7.0.1
+  * (c) 2015-present Evan You
+  * @license MIT
+  */
+
+
 /* @license
 Papa Parse
 v5.4.1
@@ -10,6 +30,13 @@ License: MIT
   * (c) 2019 Randjelovic Igor
   * @license MIT
   */
+
+/*!
+ * NevWare21 - ts-async, 0.5.1
+ * https://github.com/nevware21/ts-async
+ * Copyright (c) NevWare21 and contributors. All rights reserved.
+ * Licensed under the MIT license.
+ */
 
 /*!
  * The buffer module from node.js, for the browser.
@@ -41,6 +68,8 @@ License: MIT
   * 
  */
 
+/*! https://github.com/nevware21/ts-utils v0.11.3 */
+
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 
@@ -68,23 +97,3 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-
-/*!
- * Vue.js v2.7.16
- * (c) 2014-2023 Evan You
- * Released under the MIT License.
- */
-
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
- */
-
-
-/**
-  * vue-class-component v7.0.1
-  * (c) 2015-present Evan You
-  * @license MIT
-  */
