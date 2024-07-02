@@ -32,11 +32,9 @@ $ yarn build-gen
 
 To deploy the application into Azure, zip up the following files and directories:
 
-* /.nuxt/
 * /node_modules/
 * /dist/
 * index.js
-* nuxt.config
 
 ### Running
 
