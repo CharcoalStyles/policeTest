@@ -865,7 +865,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$vssWidth, this.$vssHeight)
     if (this.$vssHeight < 800) {
       this.filterSlideout = false
     }

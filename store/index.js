@@ -161,11 +161,10 @@ const mutations = {
     state.pathway.steps[skillAndCapabilityStepIndex].steps = []
 
     // Add new
-    const role = state.roles.find((role) => role.id === payload.value)
     const steps = []
 
     // Generate dynamic skill child steps
-    role.skills.focus
+    payload.value.skills.focus
       .reduce((acc, skill) => {
         if (!acc.find((s) => s.code === skill.code)) {
           acc.push(skill)
@@ -197,7 +196,7 @@ const mutations = {
         }
       })
 
-    role.capabilities.focus
+    payload.value.capabilities.focus
       .reduce((acc, capability) => {
         if (!acc.find((c) => c.code === capability.code)) {
           acc.push(capability)
@@ -249,6 +248,10 @@ const mutations = {
 
   SET_QUESTIONS_COMPLETE(state) {
     state.pathway.completed = true
+  },
+
+  REMOVE_ANSWER(state, payload) {
+    Vue.delete(state.pathway.answers, payload.id)
   }
 }
 
@@ -293,11 +296,13 @@ const actions = {
     }
 
     if (payload.id === 'goal' && payload.value === 'no') {
-      commit('SET_ANSWER', {
-        id: 'goal-role',
-        value: null
+      commit('REMOVE_ANSWER', {
+        id: 'goal-role'
       })
     }
+  },
+  removeAnswer({ commit }, payload) {
+    commit('REMOVE_ANSWER', payload)
   },
   saveSkillAnswer({ commit }, payload) {
     commit('SET_SKILL_ANSWER', payload)

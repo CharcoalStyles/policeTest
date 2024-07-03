@@ -583,17 +583,13 @@ export default {
     },
     currentRole() {
       if (this.answers.hasOwnProperty('current-role')) {
-        return this.$store.getters.getRoleByCode(
-          this.answers['current-role'].value
-        )
+        return this.answers['current-role'].value
       }
       return null
     },
     goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
-        return this.$collect(this.roles)
-          .where('id', this.answers['goal-role'].value)
-          .first()
+        return this.answers['goal-role'].value
       }
       return false
     },

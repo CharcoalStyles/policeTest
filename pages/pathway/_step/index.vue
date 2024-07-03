@@ -66,7 +66,7 @@ export default {
         timeMs: new Date().getTime()
       })
     }
-    console.log(this.currentStep)
+
     this.$azureInsights.trackEvent({
       name: 'Pathway Step',
       step: this.currentStep.id
@@ -104,7 +104,10 @@ export default {
      * Redirect to next step
      */
     goToNextStep() {
-      if (this.currentStep.id === 'new-role') {
+      if (
+        this.currentStep.id === 'new-role' &&
+        this.$store.state.pathway.answers.hasOwnProperty('new-role')
+      ) {
         const answers = this.$store.state.pathway.answers['new-role'].value
         const vals = this.currentStep.schema.field.options.map((o) => o.value)
 
