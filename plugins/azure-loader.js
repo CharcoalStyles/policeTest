@@ -5,15 +5,14 @@ import { process as processSkills } from '../utils/importers/skills'
 import { process as processCapabilities } from '../utils/importers/capabilities'
 
 export default ({ $config }, inject) => {
-  console.log('config', $config)
-  if ($config.SMB_SHARE_NAME === undefined || $config.FILE_SERVICE_SAS_URL === undefined) {
+  if ($config.DEVELOPMENT_MODE) {
     console.warn('azure loader disabled, using old static data')
     console.warn('This should only be used for development')
 
     inject('azureLoader', {
-      getRoleUpdateDate: axGetRoleUpdateDate,
-      getSkillUpdateDate: axGetSkillUpdateDate,
-      getCapabilityUpdateDate: axGetCapabilityUpdateDate,
+      getRoleUpdateDate: () => Promise.resolve('local'),
+      getSkillUpdateDate: () => Promise.resolve('local'),
+      getCapabilityUpdateDate: () => Promise.resolve('local'),
       loadRoles: async () => {
         const response = await axios.get('/test-data/roles.csv')
         return parseRoles({
@@ -39,60 +38,72 @@ export default ({ $config }, inject) => {
     return
   }
 
-  const smbPath = $config.SMB_SHARE_NAME.split('\\')
-  const share = smbPath[3]
-  const dir = smbPath[4]
-
-  const sasUrl = $config.FILE_SERVICE_SAS_URL
-
   inject('azureLoader', {
     getRoleUpdateDate: async () => {
-      return await getLastModifiedDate('roles.csv', sasUrl, share, dir)
+      return await getLastModifiedDate('roles')
     },
     getSkillUpdateDate: async () => {
-      return await getLastModifiedDate('skills.csv', sasUrl, share, dir)
+      return await getLastModifiedDate('skills')
     },
     getCapabilityUpdateDate: async () => {
-      return await getLastModifiedDate('capabilities.csv', sasUrl, share, dir)
+      return await getLastModifiedDate('capabilities')
     },
     loadRoles: async () => {
-      const response = await getFile('roles.csv', sasUrl, share, dir)
+      const response = await getFile('roles')
       return parseRoles(response)
     },
     loadSkills: async () => {
-      const response = await getFile('skills.csv', sasUrl, share, dir)
+      const response = await getFile('skills')
       return parseSkills(response)
     },
     loadCapabilities: async () => {
-      const response = await getFile('capabilities.csv', sasUrl, share, dir)
+      const response = await getFile('capabilities')
       return parseCapabilities(response)
     }
   })
 }
 
-async function getLastModifiedDate(fileName, sasUrl, shareName, dir) {
-  const [url, sas] = sasUrl.split('?')
-  const finalUrl = `${url}${shareName}/${dir}/${fileName}?${sas}&comp=metadata`
-  const response = await axios.head(finalUrl)
-  if (response.status === 200) {
-    return response.headers['last-modified']
+async function getLastModifiedDate(fileName) {
+  try {
+    const response = await axios.get(`/api/${fileName}/metadata`)
+    if (response.status === 500) {
+      throw new Error('Azure loader not configured in API')
+    }
+    if (response.status === 200) {
+      return response['last-modified']
+    }
+  } catch (e) {
+    if (e.response.data) {
+      console.error(e.response.data)
+    } else {
+      console.error(e)
+    }
+    return 'error'
   }
-  return '2023-01-01'
 }
 
-async function getFile(fileName, sasUrl, shareName, dir) {
-  const [url, sas] = sasUrl.split('?')
-  const finalUrl = `${url}${shareName}/${dir}/${fileName}?${sas}`
-  const response = await axios.get(finalUrl)
-  if (response.status === 200) {
-    return {
-      file: response.data,
-      lastUpdated: response.headers['last-modified']
+async function getFile(fileName) {
+  try {
+    const response = await axios.get(`/api/${fileName}`)
+    if (response.status === 500) {
+      throw new Error('Azure loader not configured in API')
     }
-  }
-  return {
-    file: '',
-    lastUpdated: '2023-01-01'
+    if (response.status === 200) {
+      return {
+        file: response.data,
+        lastUpdated: response.headers['last-modified']
+      }
+    }
+  } catch (e) {
+    if (e.response.data) {
+      console.error(e.response.data)
+    } else {
+      console.error(e)
+    }
+    return {
+      file: '',
+      lastUpdated: 'error'
+    }
   }
 }
 
@@ -118,15 +129,4 @@ export function parseCapabilities({ file, lastUpdated }) {
     data: processed,
     lastUpdated
   }
-}
-
-export async function axGetRoleUpdateDate() {
-  return await Promise.resolve('2024-01-01')
-}
-export async function axGetSkillUpdateDate() {
-  return await Promise.resolve('2024-01-01')
-}
-
-export async function axGetCapabilityUpdateDate() {
-  return await Promise.resolve('2024-01-01')
 }

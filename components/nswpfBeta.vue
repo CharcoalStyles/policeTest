@@ -1,13 +1,13 @@
 <template>
   <div
-    class="flex flex-row gap-2 z-20 bg-white pl-2 p-2"
+    class="flex items-center flex-row gap-4 z-20 bg-white pl-2 p-2"
   >
     <div
-      class="bg-nsw-brand-primary-blue font-bold text-white w-12 text-center rounded"
+      class="bg-nsw-brand-primary-blue font-bold max-w-14 text-white text-center rounded px-2 py-1 flex-grow"
     >
       Beta
     </div>
-    <div>
+    <div class="flex-shrink text-sm md:text-base">
       <div class="text-nsw-brand-primary-blue">
         This is a new service - your
         <span class="underline cursor-pointer" @click="showModal"

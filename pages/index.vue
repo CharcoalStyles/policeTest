@@ -186,21 +186,29 @@
         </div>
       </div>
     </div>
-
-    <div class="container mb-16">
+    <div class="container mb-6 px-4">
+      <nswpf-beta />
+    </div>
+    <div class="container mb-16 px-4">
       <hr class="my-4" />
-      <div class="flex flex-row gap-4 lg:gap-0 justify-between">
-        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12">
-          <img src="/pcc.png" class="h-12 xl:h-16" />
-          <img src="/tcsc.svg" class="h-12 xl:h-16" />
+      <div class="flex flex-col sm:flex-row gap-4 lg:gap-0 justify-between">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-12 w-full sm:w-1/2">
+          <img
+            src="/pcc.png"
+            class="max-h-20 lg:max-h-12 object-scale-down"
+          />
+          <img
+            src="/tcsc.svg"
+            class="max-h-20 lg:max-h-12 object-fill"
+          />
         </div>
-        <div class="w-1/2">
+        <div class="w-full sm:w-1/2">
           <p class="text-xs text-nsw-brand-primary-blue pr-2">
             The NSWPF Career Pathfinder data is updated periodically from NSWPF
             role descriptions, NSWPF Job Family Model, pay grades/scales and the
-            NSWPF Public Sector Capability Framework. All care has been taken
-            to provide correct information, however if you identify an
-            inaccuracy, we welcome your feedback. #PCC-Careers.
+            NSWPF Public Sector Capability Framework. All care has been taken to
+            provide correct information, however if you identify an inaccuracy,
+            we welcome your feedback. #PCC-Careers.
           </p>
         </div>
       </div>
@@ -212,12 +220,16 @@
 import FeaturePanel from '@/components/home/FeaturePanel'
 import HeroSection from '@/components/home/HeroSection'
 import SectionContainer from '@/components/home/SectionContainer'
+import NswBetaBanner from '~/components/nsw/NswBetaBanner.vue'
+import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
   components: {
     FeaturePanel,
     HeroSection,
-    SectionContainer
+    SectionContainer,
+    NswBetaBanner,
+    NswpfBeta
   },
   data() {
     return {

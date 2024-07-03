@@ -129,7 +129,7 @@ export default {
     },
     maxWidth: {
       type: String,
-      default: '2xl'
+      default: 'xl'
     },
     closeable: {
       type: Boolean,

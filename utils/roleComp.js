@@ -8,9 +8,8 @@ export function progressionRoles(roles, currentRole, interests) {
       return true
     })
     .filter((role) => {
-      if (interests.length > 0) {
-        const currentAndInterests = [currentRole.jobFunction, ...interests]
-        return currentAndInterests.includes(role.jobFunction)
+      if (interests.length > 0 && interests.includes(role.jobFunction)) {
+        return true
       }
 
       return currentRole.jobFamily === role.jobFamily

@@ -8,8 +8,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "build-gen": "nuxt build && nuxt generate",
-    "server-start": "node index.js",
-    "build-env-vars": "node buildEnvVarsFile.js"
+    "server-start": "node index.js"
   },
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",
@@ -27,7 +26,8 @@
     "vue-multiselect": "^2.1.6",
     "vue-pinch-zoom": "^1.0.1",
     "vue-pluralize": "^0.0.2",
-    "vue-scrollto": "^2.20.0",   
+    "vue-screen-size": "1.0.1",
+    "vue-scrollto": "^2.20.0",
     "vue-simple-range-slider": "^0.1.10",
     "vue-slider-component": "^3.2.11",
     "vuex-persistedstate": "^3.1.3"

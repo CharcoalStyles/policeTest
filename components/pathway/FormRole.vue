@@ -217,11 +217,8 @@ export default {
     currentValue() {
       return this.$store.state.pathway.answers[this.step.id]?.value
     },
-    defaultNoRole() {
-      return this.getRoleByCode(99)
-    },
     defaultValue() {
-      return this.currentValue ? this.getRoleByCode(this.currentValue).name : ''
+      return this.currentValue ? this.currentValue.name : ''
     },
     isDisabled() {
       return (
@@ -355,7 +352,7 @@ export default {
       if (role && role.id) {
         this.$store.dispatch('saveQuestionAnswer', {
           id: this.step.id,
-          value: role.id
+          value: role
         })
 
         if (this.step.id === 'current-role') {
@@ -369,9 +366,8 @@ export default {
             value: role.grade.split(' ')[0] === 'Detective' ? 'yes' : 'no'
           })
 
-          this.$store.dispatch('saveQuestionAnswer', {
-            id: 'detective-roles',
-            value: ''
+          this.$store.dispatch('removeAnswer', {
+            id: 'detective-roles'
           })
 
           this.$store.dispatch('saveQuestionAnswer', {
@@ -391,23 +387,22 @@ export default {
     },
     clearRole() {
       this.$refs.autocomplete.value = ''
-      this.$store.dispatch('saveQuestionAnswer', {
-        id: this.step.id,
-        value: ''
+      this.$store.dispatch('removeAnswer', {
+        id: this.step.id
       })
 
       if (this.step.id === 'current-role') {
-        this.$store.dispatch('saveQuestionAnswer', {
+        this.$store.dispatch('removeAnswer', {
           id: 'isDetective',
           value: ''
         })
 
-        this.$store.dispatch('saveQuestionAnswer', {
+        this.$store.dispatch('removeAnswer', {
           id: 'isPolice',
           value: ''
         })
 
-        this.$store.dispatch('saveQuestionAnswer', {
+        this.$store.dispatch('removeAnswer', {
           id: 'detective-roles',
           value: ''
         })

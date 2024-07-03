@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col pb-8 border-b border-gray-300">
-    <div class="flex flex-row" v-if="skillsMatrix.length > 0">
-      <div class="w-1/2 p-4 border-r border-gray-300">
+  <div class="flex flex-col pb-8 border-b border-gray-300 w-full">
+    <div class="flex flex-row min-w[550px]" v-if="skillsMatrix.length > 0">
+      <div class="w-1/2 p-4 border-r border-gray-300 flex-grow">
         <p class="whitespace-no-wrap font-bold text-lg">Current role skills</p>
         <p class="text-sm">Based on the NSWPF Skills and Capability Set</p>
       </div>
-      <div class="w-1/2 p-4">
+      <div class="w-1/2 p-4 flex-grow">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Target role skills
         </p>
@@ -15,14 +15,15 @@
     <div
       v-for="(skill, index) in skillsMatrix"
       :key="`skill-${index}`"
-      class="flex flex-row"
+      class="flex flex-row min-w[550px]"
     >
-      <div class="border-r border-gray-300 w-1/2 px-4">
+      <div class="border-r border-gray-300 w-1/2 px-4 flex-grow">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
           :item="skill.current"
           :full-width="true"
+          :max-width="maxWidth"
           type="skill"
           instructions="selfAssessed"
           current-instructions
@@ -31,7 +32,7 @@
         />
       </div>
 
-      <div class="w-1/2 px-4">
+      <div class="w-1/2 px-4 flex-grow">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
@@ -44,14 +45,14 @@
         />
       </div>
     </div>
-    <div class="flex flex-row" v-if="capabilitiesMatrix.length > 0">
-      <div class="w-1/2 p-4 pt-8 border-r border-gray-300">
+    <div class="flex flex-row min-w[550px]" v-if="capabilitiesMatrix.length > 0">
+      <div class="w-1/2 p-4 pt-8 border-r border-gray-300 flex-grow">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Current role capabilities
         </p>
         <p class="text-sm">Based on the NSW Government Capability Framework</p>
       </div>
-      <div class="w-1/2 p-4  pt-8">
+      <div class="w-1/2 p-4  pt-8 flex-grow">
         <p class="flex items-center whitespace-no-wrap font-bold text-lg">
           Target role capabilities
         </p>
@@ -61,9 +62,9 @@
     <div
       v-for="(capability, index) in capabilitiesMatrix"
       :key="`capability-${index}`"
-      class="flex flex-row"
+      class="flex flex-row min-w[550px]"
     >
-      <div class="border-r border-gray-300 w-1/2 px-4">
+      <div class="border-r border-gray-300 w-1/2 px-4 flex-grow">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"
@@ -75,7 +76,7 @@
           @skillClicked="showCapabilityModal"
         />
       </div>
-      <div class="w-1/2 px-4">
+      <div class="w-1/2 px-4 flex-grow">
         <comparison-row
           :current-role="currentRole"
           :target-role="targetRole"

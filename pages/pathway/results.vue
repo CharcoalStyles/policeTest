@@ -286,7 +286,7 @@
               </div>
             </div>
           </div>
-          <div id="comparison" class="w-full py-6 lg:py-16">
+          <div id="comparison" class="w-full py-6 lg:py-16 overflow-hidden">
             <div class="mb-24">
               <h3 class="flex items-center mb-3 text-xl font-bold md:text-3xl">
                 <step-badge class="print:hidden">2</step-badge> Your skills and
@@ -299,9 +299,9 @@
               </p>
             </div>
 
-            <div class="flex flex-col border border-gray-300 rounded-lg">
-              <div class="flex flex-row">
-                <div class="border-r border-gray-300 w-1/2 px-4 py-4">
+            <div class="flex flex-col border border-gray-300 rounded-lg overflow-y-scroll">
+              <div class="flex flex-row min-w-[550px]">
+                <div class="border-r border-gray-300 w-1/2 px-4 py-4 flex-grow">
                   <div>
                     <role-selected
                       :roles="roles"
@@ -310,7 +310,7 @@
                     />
                   </div>
                 </div>
-                <div class="w-1/2 px-4 py-4">
+                <div class="w-1/2 px-4 py-4 flex-grow">
                   <div>
                     <role-selected
                       v-if="targetRole"
@@ -344,7 +344,7 @@
                 </div>
               </div>
 
-              <div class="border-t border-gray-300">
+              <div class="border-t border-gray-300 min-w-[550px]">
                 <results-comparison
                   :current-role="currentRole"
                   :target-role="targetRole"
@@ -583,17 +583,13 @@ export default {
     },
     currentRole() {
       if (this.answers.hasOwnProperty('current-role')) {
-        return this.$store.getters.getRoleByCode(
-          this.answers['current-role'].value
-        )
+        return this.answers['current-role'].value
       }
       return null
     },
     goalRole() {
       if (this.answers.hasOwnProperty('goal-role')) {
-        return this.$collect(this.roles)
-          .where('id', this.answers['goal-role'].value)
-          .first()
+        return this.answers['goal-role'].value
       }
       return false
     },
