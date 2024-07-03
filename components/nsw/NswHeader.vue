@@ -8,22 +8,20 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="xl:container bg-white py-5 px-4">
-      <header class="px-2 flex gap-10">
+    <div class="xl:container bg-white pt-4 md:pt-5 md:pb-2 px-4">
+      <header class="px-2 flex gap-6 md:gap-10">
         <img
           src="/police-force-logo.svg"
           alt="Logo for NSW Police Force"
           title="NSW Police Force"
-          height="76"
+          class="h-12 md:h-[76px]"
         />
-        <div class="">
-          <img
-            src="/logo.svg"
-            alt="Logo for NSW Government"
-            title="NSW Police Force"
-            height="76"
-          />
-        </div>
+        <img
+          src="/logo.svg"
+          alt="Logo for NSW Government"
+          title="NSW Police Force"
+          class="h-12 md:h-[76px]"
+        />
       </header>
       <div class="mt-4">
         <nswpf-beta v-if="betaBanner" />
