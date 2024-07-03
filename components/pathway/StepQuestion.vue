@@ -27,7 +27,7 @@
     </div>
     <div
       v-if="showNoRolePanel"
-      class="lg:w-1/2 flex lg:justify-end items-start"
+      class="-mt-72 lg:mt-0 lg:w-1/2 flex lg:justify-end items-start"
     >
       <div
         class="block p-4 md:p-8 bg-nsw-brand-primary-blue-light lg:w-2/3 rounded-lg max-w-lg"
