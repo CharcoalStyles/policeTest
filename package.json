@@ -7,8 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "build-gen": "nuxt build && nuxt generate",
-    "server-start": "node index.js"
+    "build-gen": "nuxt build && nuxt generate"
   },
   "dependencies": {
     "@fast-csv/parse": "^5.0.0",

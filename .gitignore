@@ -91,3 +91,8 @@ sw.*
 
 # build Env Vars
 envVars.js
+
+# deployer
+deployer/node_modules
+deployer/dist
+deployer/Archive.zip

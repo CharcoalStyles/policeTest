@@ -18,33 +18,33 @@ $ yarn server-start
 
 The application is built using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
 
+### Required Environmnet Variables
+
+The following environment variables are required to be present to be embedded into this build. If you're building manually, a `.env` file that contains the required environment variables for the environment (non-prod or prod) that you are building for is required and will be read by the build process.
+
+- `AI_CONNECTION_STRING`
+
 ### Building the application
 
-The application has to be built before deployment. There are multiple environment variables that need to be present to be embedded into this build. If you're building manually, a `.env` file that contains the required environment variables for the environment (non-prod or prod) that you are building for is required and will be read by the build process.
-
-The following command builds the application, after which the application can be deployed:
+The following command builds the application, which will be available in the `dist` directory.
 
 ```bash
 $ yarn build-gen
 ```
 
-### Deploying
+### Prepare the application for deployment
 
-To deploy the application into Azure, zip up the following files and directories:
+To prepare the application for deployment, you need to follow these steps:
 
-* /node_modules/
-* /dist/
-* index.js
+1. Copy the `dist` directory to the `deployer` directory
+2. In the `deployer` directory, run `yarn`
+3. Zip the contents of the `deployer` directory
+
+The resulting zip file will be used to deploy the application into Azure.
 
 ### Running
 
-When deployed the application will be served through the following command:
-
-```bash
-$ yarn server-start
-```
-
-Or by running `index.js`, which is what the above command does.
+When deployed the application will be served by running `index.js`.
 
 ## Content
 
