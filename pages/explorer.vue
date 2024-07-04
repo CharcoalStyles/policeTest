@@ -27,7 +27,7 @@
                   </button>
                 </div>
               </div>
-              <div class="px-6 pt-4 pb-2 flex flex-col gap-3">
+              <div class="px-6 pt-2 pb-2 flex flex-col gap-3">
                 <div>
                   <label class="mb-1">
                     <p class="pb-2 font-bold text-sm">Search by keyword</p>
@@ -41,18 +41,25 @@
                     :value="debouncedFilters.keyword"
                   />
                 </div>
-                <div
-                  class="flex flex-row gap-2 cursor-pointer"
-                  @click="() => (filterSlideout = !filterSlideout)"
-                >
-                  <img src="/icons/filter.svg" alt="Filter icon" />
-                  <p class="font-bold">
-                    Filters
-                  </p>
+                <div class="flex flex-row justify-between h-full">
+                  <div
+                    class="flex flex-row gap-2 cursor-pointer"
+                    @click="() => (filterSlideout = !filterSlideout)"
+                  >
+                    <img src="/icons/filter.svg" alt="Filter icon" />
+                    <p class="font-bold underline">Filters</p>
+                  </div>
+                  <div
+                    v-if="filterSlideout"
+                    class="flex flex-row gap-2 cursor-pointer"
+                    @click="() => (filterSlideout = !filterSlideout)"
+                  >
+                    <p class="font-bold underline">Close</p>
+                  </div>
                 </div>
                 <div class="overflow-hidden" :class="filterClass">
                   <div>
-                    <p class="pb-2 font-bold text-sm">Role Type</p>
+                    <p class="mb-1 font-bold text-sm">Role Type</p>
                     <div
                       class="flex flex-row w-full rounded-md text-sm"
                       role="group"
@@ -84,10 +91,10 @@
                     </div>
                   </div>
 
-                  <div class="flex gap-4 flex-row">
+                  <div class="flex mt-3 gap-4 flex-row">
                     <div class="w-1/2">
                       <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-2">Rank/Grade</label>
+                        <label class="text-sm font-bold mb-1">Rank/Grade</label>
                         <div
                           class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                           @click="showSelectorPopup('grade')"
@@ -103,7 +110,7 @@
 
                     <div class="w-1/2">
                       <div class="flex justify-between">
-                        <label class="text-sm font-bold mb-2">Salary</label>
+                        <label class="text-sm font-bold mb-1">Salary</label>
                         <div class="text-sm text-gray-700">
                           ${{ debouncedFilters.salary[0] / 1000 }}k - ${{
                             debouncedFilters.salary[1] / 1000
@@ -126,10 +133,10 @@
                     </div>
                   </div>
 
-                  <div class="flex gap-4 flex-row">
+                  <div class="flex mt-3 gap-4 flex-row">
                     <div class="w-1/2">
                       <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-2">Location</label>
+                        <label class="text-sm font-bold mb-1">Location</label>
                         <div
                           class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                           @click="showSelectorPopup('location')"
@@ -140,7 +147,7 @@
                     </div>
                     <div class="w-1/2">
                       <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-2">Skills</label>
+                        <label class="text-sm font-bold mb-1">Skills</label>
                         <div
                           class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
                           @click="showSelectorPopup('skills')"
@@ -155,9 +162,9 @@
                     </div>
                   </div>
 
-                  <div class="">
+                  <div class="mt-3">
                     <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-2">
+                      <label class="text-sm font-bold mb-1">
                         Work Area / Job Function
                       </label>
                       <div
@@ -173,9 +180,9 @@
                     </div>
                   </div>
 
-                  <div class="mb-2">
+                  <div class="mb-2 mt-3">
                     <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-2">
+                      <label class="text-sm font-bold mb-1">
                         Command / Unit
                       </label>
                       <div
@@ -189,6 +196,19 @@
                         }}
                       </div>
                     </div>
+                  </div>
+
+                  <div
+                    v-if="isLowHeight && filterSlideout"
+                    class="absolute inset-x-0 bottom-0 mx-6 mb-4"
+                  >
+                    <button
+                      type="button"
+                      class="py-3 rounded-md bg-nsw-brand-primary-blue text-white w-full"
+                      @click="() => (filterSlideout = !filterSlideout)"
+                    >
+                      Show {{ filteredRolesTotal }} roles
+                    </button>
                   </div>
                 </div>
               </div>
@@ -840,10 +860,6 @@ export default {
         (acc, roles) => {
           if (roles.roles.length > 20) {
             acc.xl.push(roles)
-            // } else if (roles.roles.length >= 20) {
-            //   acc.l.push(roles)
-            // } else if (roles.roles.length >= 5) {
-            //   acc.m.push(roles)
           } else {
             acc.s.push(roles)
           }
@@ -860,26 +876,22 @@ export default {
       const numLocations = this.debouncedFilters.location.length
       return `${numLocations} selected`
     },
+    isLowHeight() {
+      return this.$vssHeight < 1120
+    },
     filterClass() {
-      return this.filterSlideout ? 'h-fit' : 'h-0'
+      const open = this.isLowHeight ? 'min-h-[1000px]' : ''
+      return this.filterSlideout ? open : 'h-0'
     }
   },
   mounted() {
-    if (this.$vssHeight < 800) {
+    if (this.$vssHeight < 1120) {
       this.filterSlideout = false
     }
   },
   methods: {
     resetSlideout() {
       this.slideout = false
-      if (this.previousRoleId) {
-        const previousRoleDom = document.getElementsByClassName(
-          `role-${this.previousRoleId}`
-        )[0]
-        previousRoleDom.classList.add('border-nsw-grey-200')
-        previousRoleDom.classList.add('border-white')
-        previousRoleDom.classList.remove('border-black')
-      }
       this.previousRoleId = false
     },
     resetAllFilters() {
@@ -927,12 +939,9 @@ export default {
      * Load role and open modal
      */
     viewRole(role) {
-      this.loading = true
-      setTimeout(() => {
-        this.loading = false
-        this.selectedRole = role
-        this.slideout = true
-      }, 1000)
+      this.selectedRole = role
+      window.scrollTo(0, 0)
+      this.slideout = true
     },
     swornButtonSelected(buttonType) {
       if (buttonType === this.filter.sworn) {
