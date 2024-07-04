@@ -877,7 +877,7 @@ export default {
       return `${numLocations} selected`
     },
     isLowHeight() {
-      return this.$vssHeight < 1120
+      return this.$vssHeight < 950
     },
     filterClass() {
       const open = this.isLowHeight ? 'min-h-[1000px]' : ''
@@ -885,7 +885,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$vssHeight < 1120) {
+    if (this.$vssHeight < 950) {
       this.filterSlideout = false
     }
   },
