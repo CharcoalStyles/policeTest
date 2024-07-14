@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const axios = require('axios')
+const rateLimit = require('express-rate-limit')
 
 const port = process.env.PORT || 3000
 
@@ -8,10 +9,18 @@ const smbShareName = process.env.SMB_SHARE_NAME
 const fileServiceSasUrl = process.env.FILE_SERVICE_SAS_URL
 
 const app = express()
+
 // Add healthcheck endpoint
 app.get('/healthcheck-api-sit/*', (req, res) => {
   res.send('OK')
 })
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200 // limit each IP to 100 requests per windowMs
+})
+
+app.use(limiter)
 
 app.get('/api/:file/:action?', (req, res) => {
   if (smbShareName === undefined || fileServiceSasUrl === undefined) {
@@ -22,11 +31,31 @@ app.get('/api/:file/:action?', (req, res) => {
   const file = req.params.file
   const metadata = req.params.action === 'metadata'
 
+  if (file === undefined) {
+    res.status(500).send('File not specified')
+    return
+  }
+
   const smbPath = smbShareName.split('\\')
   const share = smbPath[3]
   const dir = smbPath[4]
   const [url, sas] = fileServiceSasUrl.split('?')
-  const finalUrl = `${url}${share}/${dir}/${file}.csv?${sas}`
+
+  let finalUrl = `${url}${share}/${dir}/`
+  switch (file.toLowerCase()) {
+    case 'skills':
+      finalUrl += `skills.csv?${sas}`
+      break
+    case 'capabilities':
+      finalUrl += `capabilities.csv?${sas}`
+      break
+    case 'roles':
+      finalUrl += `roles.csv?${sas}`
+      break
+    default:
+      res.status(500).send('Incorrect file specified')
+      return
+  }
 
   if (metadata) {
     axios.head(`${finalUrl}&comp=metadata`)
