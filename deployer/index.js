@@ -29,28 +29,37 @@ app.get('/api/:file/:action?', (req, res) => {
   const finalUrl = `${url}${share}/${dir}/${file}.csv?${sas}`
 
   if (metadata) {
-    const response = axios.head(`${finalUrl}&comp=metadata`)
-    if (response.status === 200) {
-      res.send(
-        JSON.stringify({
-          lastModified: response.headers['last-modified']
-        })
-      )
-    }
+    axios.head(`${finalUrl}&comp=metadata`)
+      .then(response => {
+        if (response.status === 200) {
+          res.send(
+            JSON.stringify({
+              lastModified: response.headers['last-modified']
+            })
+          )
+        }
+      })
+      .catch(error => {
+        logErrors(error)
+        res.status(500).send(error.message)
+      })
     return
   }
 
-  const response = axios.head(`${finalUrl}&comp=metadata`)
-  if (response.status === 200) {
-    res.set('Content-Type', 'application/json')
+  axios.get(`${finalUrl}`)
+    .then(response => {
+      if (response.status === 200) {
+        res.set('Content-Type', 'application/json')
 
-    res.send({
-      file: response.data,
-      lastUpdated: response.headers['last-modified']
+        res.send({
+          file: response.data,
+          lastUpdated: response.headers['last-modified']
+        })
+      }
+    }).catch(error => {
+      logErrors(error)
+      res.status(500).send(error.message)
     })
-  } else {
-    res.status(404).send(response.statusText)
-  }
 })
 
 app.use(express.static(path.join(__dirname, 'dist')))
@@ -63,3 +72,21 @@ app.get('*', (req, res) => {
 // Listen the server
 app.listen(port)
 console.log(`Server listening on ${port}`)
+
+const logErrors = error => {
+  if (error.response) {
+    // The request was made and the server responded with a status code
+    // that falls out of the range of 2xx
+    console.log('data', error.response.data)
+    console.log('status', error.response.status)
+    console.log('headers', error.response.headers)
+  } else if (error.request) {
+    // The request was made but no response was received
+    // `error.request` is an instance of XMLHttpRequest in the browser
+    // and an instance of http.ClientRequest in node.js
+    console.log('request', error.request)
+  } else {
+    // Something happened in setting up the request that triggered an Error
+    console.log('Error', error.message)
+  }
+}
