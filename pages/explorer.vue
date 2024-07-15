@@ -556,6 +556,11 @@
       :value="debouncedFilters[modalData.filterKey]"
       @close="modals.selector.generic = false"
       @reset="modalData.reset"
+      @userSelected="
+        (isFiltered) => {
+          filterByUser[modalData.filterKey] = isFiltered
+        }
+      "
     >
       {{ modalData.instructions }}
     </generic-selector>
@@ -653,6 +658,13 @@ export default {
         command_BusUnit: [],
         salary: [38000, 362000],
         sworn: 'other'
+      },
+      filterByUser: {
+        skills: false,
+        interests: false,
+        grade: false,
+        jobFunction: false,
+        command_BusUnit: false
       },
       filterTimeout: null,
       viewState: 1,
@@ -907,6 +919,13 @@ export default {
         salary: [38000, 362000],
         sworn: 'other'
       }
+      this.filterByUser = {
+        skills: false,
+        interests: false,
+        grade: false,
+        jobFunction: false,
+        command_BusUnit: false
+      }
       this.viewState = 1
     },
 
@@ -1123,19 +1142,25 @@ export default {
         case 1:
           this.viewState = this.lastViewState
           this.filter.jobFamily = ''
-          this.filter.jobFunction = []
+          if (!this.filterByUser.jobFunction) {
+            this.filter.jobFunction = []
+          }
           // this.filter.command_BusUnit = []
           break
         case 2:
           this.viewState = this.lastViewState
           this.lastViewState = 1
-          this.filter.jobFunction = []
+          if (!this.filterByUser.jobFunction) {
+            this.filter.jobFunction = []
+          }
           // this.filter.command_BusUnit = []
           break
         case 3:
           this.viewState = this.lastViewState
           this.lastViewState = 2
-          // this.filter.command_BusUnit = []
+          if (!this.filterByUser.command_BusUnit) {
+            this.filter.command_BusUnit = []
+          }
           break
         default:
           break
@@ -1152,6 +1177,15 @@ export default {
       }
     },
     bentoL2Select(jobFunction) {
+      if (this.filterByUser.jobFunction) {
+        if (this.filteredRoles.items.length < 30) {
+          this.viewState = 4
+        } else {
+          this.viewState = 3
+        }
+        return
+      }
+
       this.filter.jobFunction = [jobFunction]
       this.lastViewState = this.viewState
 
