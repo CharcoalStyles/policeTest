@@ -108,7 +108,6 @@ export function adjacentRoles(roles, currentRole) {
 
 export function skillRoles(roles, currentRole) {
   const filtered = roles
-    .filter((role) => role.jobFamily !== currentRole.jobFamily)
     .filter((role) => role.name !== 'Student Police Officer')
     .filter((role) => {
       // Salary logic

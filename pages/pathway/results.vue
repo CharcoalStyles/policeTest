@@ -299,7 +299,9 @@
               </p>
             </div>
 
-            <div class="flex flex-col border border-gray-300 rounded-lg overflow-y-scroll">
+            <div
+              class="flex flex-col border border-gray-300 rounded-lg overflow-y-scroll"
+            >
               <div class="flex flex-row min-w-[550px]">
                 <div class="border-r border-gray-300 w-1/2 px-4 py-4 flex-grow">
                   <div>
@@ -978,22 +980,53 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const matches = skillRoles(this.roles, this.currentRole).filter(
-        (role) => {
-          // filter out sworn roles
-          if (this.answers.hasOwnProperty('sworn')) {
-            switch (this.answers.sworn.value) {
-              case 'yes':
-                return role.jobFamily === 'Policing'
-              case 'no':
-                return role.jobFamily !== 'Policing'
-              default:
-                return true
+      const hasSwornAnswer = this.answers.hasOwnProperty('sworn')
+      let matches = null
+
+      if (
+        currentRole.jobFamily === 'Policing' &&
+        hasSwornAnswer &&
+        this.answers.hasOwnProperty('sworn') === 'yes'
+      ) {
+        matches = skillRoles(this.roles, this.currentRole).filter((role) => {
+          if (role.jobFamily !== 'Policing') {
+            return false
+          }
+
+          if (role.jobFunction === currentRole.jobFunction) {
+            return false
+          }
+
+          if (this.answers.hasOwnProperty('interests')) {
+            if (this.answers.interests.value.includes(role.jobFunction)) {
+              return false
             }
           }
           return true
-        }
-      )
+        })
+      } else {
+        matches = skillRoles(this.roles, this.currentRole)
+          .filter((role) => {
+            if (this.currentRole.jobFamily === 'Policing') {
+              return true
+            }
+            return role.jobFamily !== currentRole.jobFamily
+          })
+          .filter((role) => {
+            // filter out sworn roles
+            if (this.answers.hasOwnProperty('sworn')) {
+              switch (this.answers.sworn.value) {
+                case 'yes':
+                  return role.jobFamily === 'Policing'
+                case 'no':
+                  return role.jobFamily !== 'Policing'
+                default:
+                  return true
+              }
+            }
+            return true
+          })
+      }
 
       return this.rankAndSortRoles(currentRole, matches, 'skill').map(
         ({ role }) => role
