@@ -783,7 +783,7 @@ export default {
     },
 
     rankAndSortRoles(currentRole, compareRoles, type) {
-      // test logic for role volume mapping
+      // test logic for role volume
       // console.table(
       //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
       //     salary,
@@ -797,24 +797,24 @@ export default {
       return compareRoles
         .map((role) => {
           // Capability comparison
-          const sharingSkills = roleShareCapabilitiesRank(currentRole, role)
+          let roleRank = roleShareCapabilitiesRank(currentRole, role)
 
           // Grade logic
           if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
             const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
             if (gradeDelta === 0) {
-              sharingSkills.focusFocus += 1
+              roleRank += 1
             }
 
             if (gradeDelta === -1) {
               // next grade
-              sharingSkills.focusFocus += 0.5
+              roleRank += 0.5
             }
 
             if (gradeDelta > 0) {
               // next grade
-              sharingSkills.focusFocus -= 0.5
+              roleRank -= 0.5
             }
           }
 
@@ -823,10 +823,10 @@ export default {
             if (this.userInterests.includes(role.jobFunction.trim())) {
               switch (type) {
                 case 'progression':
-                  sharingSkills.focusFocus += 4
+                  roleRank += 4
                   break
                 case 'adjacent':
-                  sharingSkills.focusFocus += 9
+                  roleRank += 9
                   break
               }
             }
@@ -838,7 +838,7 @@ export default {
               const wantManager = this.answers.management.value === 'manager'
               const isManager = role.manager
               if (wantManager === isManager) {
-                sharingSkills.focusFocus += 1
+                roleRank += 1
               }
             }
           }
@@ -859,7 +859,7 @@ export default {
             if (minVolume > 900) {
               console.log(role.name, minVolume)
             }
-            sharingSkills.focusFocus += 1.5 * Math.pow(minVolume, 0.11)
+            roleRank += 1.5 * Math.pow(minVolume, 0.11)
           }
 
           // salary logic
@@ -867,13 +867,13 @@ export default {
             const diff = role.salary.max - currentRole.salary.max
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.1
+                roleRank -= (diff / 2000) * 0.1
                 break
               case 'adjacent':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.5
+                roleRank -= (diff / 2000) * 0.5
                 break
               case 'skill':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.05
+                roleRank -= (diff / 2000) * 0.05
             }
           }
 
@@ -881,29 +881,29 @@ export default {
           if (role.jobFamily === currentRole.jobFamily) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 2
+                roleRank += 2
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.05
+                roleRank += 0.05
                 break
             }
           }
           if (role.jobFunction === currentRole.jobFunction) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 2
+                roleRank += 2
                 break
               case 'adjacent':
                 if (this.userInterests.length === 0) {
-                  sharingSkills.focusFocus += 2
+                  roleRank += 2
                 }
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.05
+                roleRank += 0.05
                 break
             }
           }
@@ -912,24 +912,24 @@ export default {
           if (role.command_BusUnit !== currentRole.command_BusUnit) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 2.5
+                roleRank += 2.5
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.5
+                roleRank += 0.5
                 break
             }
           }
 
           return {
             role,
-            rank: sharingSkills
+            rank: roleRank
           }
         }, [])
         .sort((a, b) => {
-          return b.rank.focusFocus - a.rank.focusFocus
+          return b.rank - a.rank
         })
         .reduce(
           (acc, rankedRole, idx) => {
@@ -954,13 +954,13 @@ export default {
           { counted: 0, roles: [] }
         )
         .roles.reduce((acc, rankedRole) => {
-          const totalFocus = rankedRole.rank.focusFocus
+          const totalFocus = rankedRole.rank
 
           if (acc.length === 0) {
             acc.push([rankedRole])
           } else {
             const lastRank = acc[acc.length - 1]
-            if (lastRank[0].rank.focusFocus === totalFocus) {
+            if (lastRank[0].rank === totalFocus) {
               acc[acc.length - 1].push(rankedRole)
             } else {
               acc.push([rankedRole])
@@ -983,11 +983,11 @@ export default {
         }, [])
         .reduce((acc, rankedRole) => {
           if (
-            acc.find((x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus)
+            acc.find((x) => x[0].rank === rankedRole.rank)
           ) {
             acc[
               acc.findIndex(
-                (x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus
+                (x) => x[0].rank === rankedRole.rank
               )
             ].push(rankedRole)
           } else {

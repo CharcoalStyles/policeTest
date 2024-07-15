@@ -201,12 +201,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
 }
 
 export function roleShareCapabilitiesRank(firstRole, secondRole) {
-  const result = {
-    focusFocus: 0,
-    allFocus: 0,
-    focusAll: 0,
-    allAll: 0
-  }
+  let result = 0
 
   firstRole.capabilities.all.forEach((firstCap) => {
     secondRole.capabilities.all.forEach((secondCap) => {
@@ -218,35 +213,37 @@ export function roleShareCapabilitiesRank(firstRole, secondRole) {
           .map(({ code }) => code)
           .includes(secondCap.code)
 
-        let resultKey = 'focusFocus'
-
-        if (!firstFocus && secondFocus) {
-          resultKey = 'allFocus'
-        } else if (firstFocus && !secondFocus) {
-          resultKey = 'focusAll'
-        } else if (!firstFocus && !secondFocus) {
-          resultKey = 'allAll'
+        if (!(firstFocus && secondFocus)) {
+          return
         }
 
         const levelDelta = firstCap.level - secondCap.level
 
         if (levelDelta === 0) {
           // equal
-          result[resultKey] += 1
+          result += 0.5
+          return
         }
 
         if (levelDelta >= 1) {
           // FirstCap higher
-          result[resultKey] += 1.2
+          result += 0.6
           return
         }
 
         if (levelDelta === -1) {
           // FirstCap off by one
-          result[resultKey] += 0.3
+          result += 0.1
         }
       }
     })
+  })
+
+  // Remove 0.5 for capabilities that are only in the second role
+  secondRole.capabilities.all.forEach((secondCap) => {
+    if (!firstRole.capabilities.all.find((firstCap) => firstCap.code === secondCap.code)) {
+      result -= 0.5
+    }
   })
 
   return result
