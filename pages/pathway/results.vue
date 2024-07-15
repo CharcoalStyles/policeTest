@@ -783,6 +783,15 @@ export default {
     },
 
     rankAndSortRoles(currentRole, compareRoles, type) {
+      // test logic for role volume mapping
+      // console.table(
+      //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
+      //     salary,
+      //     'salary 1.5 * minVol^0.1': 1.5 * Math.pow(salary, 0.1),
+      //     'salary 1.5 * minVol^0.11': 1.5 * Math.pow(salary, 0.11)
+      //   }))
+      // )
+
       // type is type of reccomendation
       // 'progression', 'adjacent' or 'skill'
       return compareRoles
@@ -835,8 +844,22 @@ export default {
           }
           // role volume (number of positions)
           if (role.numPositions) {
-            const minVolume = role.numPositions.split(' ')[1]
-            sharingSkills.focusFocus += 1 + minVolume.length * 0.4
+            const minVolume = role.numPositions
+              .split(' ')
+              .reduce((acc, num) => {
+                const n = Number.parseInt(num)
+                if (Number.isNaN(n)) {
+                  return acc
+                }
+                if (n > acc) {
+                  return n
+                }
+                return acc
+              }, -1)
+            if (minVolume > 900) {
+              console.log(role.name, minVolume)
+            }
+            sharingSkills.focusFocus += 1.5 * Math.pow(minVolume, 0.11)
           }
 
           // salary logic
