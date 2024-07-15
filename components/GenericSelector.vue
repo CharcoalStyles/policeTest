@@ -17,7 +17,12 @@
           class="nsw-form-checkbox__input"
           type="checkbox"
           :value="datum.value"
-          @change="$emit('input', values)"
+          @change="
+            () => {
+              $emit('input', values)
+              $emit('userSelected', values.length > 0)
+            }
+          "
         />
         <label class="nsw-form-checkbox__label" :for="datum.value">{{
           datum.label
