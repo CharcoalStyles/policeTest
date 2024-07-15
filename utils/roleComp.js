@@ -8,13 +8,6 @@ export function progressionRoles(roles, currentRole, interests) {
       return true
     })
     .filter((role) => {
-      if (interests.length > 0 && interests.includes(role.jobFunction)) {
-        return true
-      }
-
-      return currentRole.jobFamily === role.jobFamily
-    })
-    .filter((role) => {
       // Only pick roles that are the next level up
       if (
         (currentRole.gradeId.type === 'policing' ||
