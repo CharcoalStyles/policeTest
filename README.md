@@ -1,28 +1,35 @@
 # NSW Police Career Pathway Tool
 
-## Essential development node commands
+## Local Development Set-up
 
-```bash
-# install dependencies
-$ yarn
+The development computer needs to have the following installed:
+* Git
+* [NodeJS v20](https://nodejs.org/en)
+* [Yarn v1](https://classic.yarnpkg.com/en/docs/install)
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+It is also highly recommended that you use [Visual Studio Code](https://code.visualstudio.com/) for development. It is what the project was coded in and is setup to work with the ESLint rules.
 
-# serve locally through express at localhost:3000
-$ yarn build
-$ yarn server-start
-```
+Once you have the above installed, you can clone the repository and run the following commands to get the project up and running:
+
+1.	`git clone https://github.police.nsw.gov.au/APS/career-pathway-tool ./nswpf-cp`
+2.	`cd nswpf-cp`
+3.	`yarn`
+
+To run a local development version of the application, create a new file called `.env` in the project directory. In this file, add the line `DEVELOPMENT_MODE=true`. This will set the application to load the data files from the static versions on the website, instead of the Azure File Storage. 
+
+After that is done, enter the following command in a terminal in the project directory `yarn dev`. This will start the development server, which can be accessed in a browser through the following [http://localhost:3000/](http://localhost:3000/).
 
 ## Build
 
-The application is built using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
+The application is built as a static site using [Nuxt.js](https://nuxtjs.org) and is served through [Express](https://expressjs.com).
 
 ### Required Environmnet Variables
 
 The following environment variables are required to be present to be embedded into this build. If you're building manually, a `.env` file that contains the required environment variables for the environment (non-prod or prod) that you are building for is required and will be read by the build process.
 
 - `AI_CONNECTION_STRING`
+
+Make sure to remove or comment out the `DEVELOPMENT_MODE` environment variable in the `.env` file before building.
 
 ### Building the application
 
