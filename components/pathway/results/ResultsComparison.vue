@@ -23,7 +23,7 @@
           :target-role="targetRole"
           :item="skill.current"
           :full-width="true"
-          :max-width="maxWidth"
+          :max-width="false"
           type="skill"
           instructions="selfAssessed"
           current-instructions

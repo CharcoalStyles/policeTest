@@ -856,9 +856,7 @@ export default {
                 }
                 return acc
               }, -1)
-            if (minVolume > 900) {
-              console.log(role.name, minVolume)
-            }
+
             roleRank += 1.5 * Math.pow(minVolume, 0.11)
           }
 

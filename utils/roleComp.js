@@ -128,7 +128,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
   return compareRoles
     .map((role) => {
       // Capability comparison
-      const sharingSkills = roleShareCapabilitiesRank(
+      let sharingSkills = roleShareCapabilitiesRank(
         currentRole,
         role
       )
@@ -138,29 +138,29 @@ export function rankAndSortRoles(currentRole, compareRoles) {
         const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
         if (gradeDelta === 0) {
-          sharingSkills.focusFocus += 1
+          sharingSkills += 1
         }
 
         if (gradeDelta === -1) {
           // next grade
-          sharingSkills.focusFocus += 0.5
+          sharingSkills += 0.5
         }
 
         if (gradeDelta > 0) {
           // next grade
-          sharingSkills.focusFocus -= 0.5
+          sharingSkills -= 0.5
         }
       }
 
       // command / unit
       if (currentRole.command_BusUnit !== role.command_BusUnit) {
-        sharingSkills.focusFocus += 2.5
+        sharingSkills += 2.5
       }
 
       // role volume (number of positions)
       if (role.numPositions) {
         const minVolume = role.numPositions.split(' ')[1]
-        sharingSkills.focusFocus += 1 + minVolume.length * 0.1
+        sharingSkills += 1 + minVolume.length * 0.1
       }
       return {
         role,
@@ -168,16 +168,16 @@ export function rankAndSortRoles(currentRole, compareRoles) {
       }
     }, [])
     .sort((a, b) => {
-      return b.rank.focusFocus - a.rank.focusFocus
+      return b.rank - a.rank
     })
     .reduce((acc, rankedRole) => {
-      const totalFocus = rankedRole.rank.focusFocus
+      const rank = rankedRole.rank
 
       if (acc.length === 0) {
         acc.push([rankedRole])
       } else {
         const lastRank = acc[acc.length - 1]
-        if (lastRank[0].rank.focusFocus === totalFocus) {
+        if (lastRank[0].rank === rank) {
           acc[acc.length - 1].push(rankedRole)
         } else {
           acc.push([rankedRole])
@@ -186,14 +186,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
       return acc
     }, [])
     .reduce((acc, rankedRoleGroup) => {
-      const reRanked = rankedRoleGroup.sort((a, b) => {
-        const aRank =
-          a.rank.focusAll + a.rank.allFocus * 0.6 + a.rank.allAll * 0.1
-        const bRank =
-          b.rank.focusAll + b.rank.allFocus * 0.6 + b.rank.allAll * 0.1
-        return bRank - aRank
-      })
-      reRanked.forEach((rankedRole) => {
+      rankedRoleGroup.forEach((rankedRole) => {
         acc.push(rankedRole)
       })
       return acc
