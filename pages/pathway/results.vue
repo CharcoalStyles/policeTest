@@ -861,17 +861,19 @@ export default {
           }
 
           // salary logic
-          if (role.salary.max > currentRole.salary.max) {
-            const diff = role.salary.max - currentRole.salary.max
-            switch (type) {
-              case 'progression':
-                roleRank -= (diff / 2000) * 0.1
-                break
-              case 'adjacent':
-                roleRank -= (diff / 2000) * 0.5
-                break
-              case 'skill':
-                roleRank -= (diff / 2000) * 0.05
+          if (role.jobFamily === 'Policing' && currentRole.jobFamily === 'Policing') {
+            if (role.salary.max > currentRole.salary.max) {
+              const diff = role.salary.max - currentRole.salary.max
+              switch (type) {
+                case 'progression':
+                  roleRank -= (diff / 2000) * 0.1
+                  break
+                case 'adjacent':
+                  roleRank -= (diff / 2000) * 0.5
+                  break
+                case 'skill':
+                  roleRank -= (diff / 2000) * 0.05
+              }
             }
           }
 
@@ -980,14 +982,10 @@ export default {
           return acc
         }, [])
         .reduce((acc, rankedRole) => {
-          if (
-            acc.find((x) => x[0].rank === rankedRole.rank)
-          ) {
-            acc[
-              acc.findIndex(
-                (x) => x[0].rank === rankedRole.rank
-              )
-            ].push(rankedRole)
+          if (acc.find((x) => x[0].rank === rankedRole.rank)) {
+            acc[acc.findIndex((x) => x[0].rank === rankedRole.rank)].push(
+              rankedRole
+            )
           } else {
             acc.push([rankedRole])
           }
