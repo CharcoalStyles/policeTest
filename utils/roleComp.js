@@ -8,13 +8,6 @@ export function progressionRoles(roles, currentRole, interests) {
       return true
     })
     .filter((role) => {
-      if (interests.length > 0 && interests.includes(role.jobFunction)) {
-        return true
-      }
-
-      return currentRole.jobFamily === role.jobFamily
-    })
-    .filter((role) => {
       // Only pick roles that are the next level up
       if (
         (currentRole.gradeId.type === 'policing' ||
@@ -108,7 +101,7 @@ export function adjacentRoles(roles, currentRole) {
 
 export function skillRoles(roles, currentRole) {
   const filtered = roles
-    .filter((role) => role.jobFamily !== currentRole.jobFamily)
+    .filter((role) => role.id !== currentRole.id)
     .filter((role) => role.name !== 'Student Police Officer')
     .filter((role) => {
       // Salary logic
@@ -135,7 +128,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
   return compareRoles
     .map((role) => {
       // Capability comparison
-      const sharingSkills = roleShareCapabilitiesRank(
+      let sharingSkills = roleShareCapabilitiesRank(
         currentRole,
         role
       )
@@ -145,29 +138,29 @@ export function rankAndSortRoles(currentRole, compareRoles) {
         const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
         if (gradeDelta === 0) {
-          sharingSkills.focusFocus += 1
+          sharingSkills += 1
         }
 
         if (gradeDelta === -1) {
           // next grade
-          sharingSkills.focusFocus += 0.5
+          sharingSkills += 0.5
         }
 
         if (gradeDelta > 0) {
           // next grade
-          sharingSkills.focusFocus -= 0.5
+          sharingSkills -= 0.5
         }
       }
 
       // command / unit
       if (currentRole.command_BusUnit !== role.command_BusUnit) {
-        sharingSkills.focusFocus += 2.5
+        sharingSkills += 2.5
       }
 
       // role volume (number of positions)
       if (role.numPositions) {
         const minVolume = role.numPositions.split(' ')[1]
-        sharingSkills.focusFocus += 1 + minVolume.length * 0.1
+        sharingSkills += 1 + minVolume.length * 0.1
       }
       return {
         role,
@@ -175,16 +168,16 @@ export function rankAndSortRoles(currentRole, compareRoles) {
       }
     }, [])
     .sort((a, b) => {
-      return b.rank.focusFocus - a.rank.focusFocus
+      return b.rank - a.rank
     })
     .reduce((acc, rankedRole) => {
-      const totalFocus = rankedRole.rank.focusFocus
+      const rank = rankedRole.rank
 
       if (acc.length === 0) {
         acc.push([rankedRole])
       } else {
         const lastRank = acc[acc.length - 1]
-        if (lastRank[0].rank.focusFocus === totalFocus) {
+        if (lastRank[0].rank === rank) {
           acc[acc.length - 1].push(rankedRole)
         } else {
           acc.push([rankedRole])
@@ -193,14 +186,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
       return acc
     }, [])
     .reduce((acc, rankedRoleGroup) => {
-      const reRanked = rankedRoleGroup.sort((a, b) => {
-        const aRank =
-          a.rank.focusAll + a.rank.allFocus * 0.6 + a.rank.allAll * 0.1
-        const bRank =
-          b.rank.focusAll + b.rank.allFocus * 0.6 + b.rank.allAll * 0.1
-        return bRank - aRank
-      })
-      reRanked.forEach((rankedRole) => {
+      rankedRoleGroup.forEach((rankedRole) => {
         acc.push(rankedRole)
       })
       return acc
@@ -208,12 +194,7 @@ export function rankAndSortRoles(currentRole, compareRoles) {
 }
 
 export function roleShareCapabilitiesRank(firstRole, secondRole) {
-  const result = {
-    focusFocus: 0,
-    allFocus: 0,
-    focusAll: 0,
-    allAll: 0
-  }
+  let result = 0
 
   firstRole.capabilities.all.forEach((firstCap) => {
     secondRole.capabilities.all.forEach((secondCap) => {
@@ -225,35 +206,37 @@ export function roleShareCapabilitiesRank(firstRole, secondRole) {
           .map(({ code }) => code)
           .includes(secondCap.code)
 
-        let resultKey = 'focusFocus'
-
-        if (!firstFocus && secondFocus) {
-          resultKey = 'allFocus'
-        } else if (firstFocus && !secondFocus) {
-          resultKey = 'focusAll'
-        } else if (!firstFocus && !secondFocus) {
-          resultKey = 'allAll'
+        if (!(firstFocus && secondFocus)) {
+          return
         }
 
         const levelDelta = firstCap.level - secondCap.level
 
         if (levelDelta === 0) {
           // equal
-          result[resultKey] += 1
+          result += 0.5
+          return
         }
 
         if (levelDelta >= 1) {
           // FirstCap higher
-          result[resultKey] += 1.2
+          result += 0.6
           return
         }
 
         if (levelDelta === -1) {
           // FirstCap off by one
-          result[resultKey] += 0.3
+          result += 0.1
         }
       }
     })
+  })
+
+  // Remove 0.5 for capabilities that are only in the second role
+  secondRole.capabilities.all.forEach((secondCap) => {
+    if (!firstRole.capabilities.all.find((firstCap) => firstCap.code === secondCap.code)) {
+      result -= 0.5
+    }
   })
 
   return result

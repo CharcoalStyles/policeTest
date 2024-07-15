@@ -248,7 +248,8 @@ export default {
     },
     progressionRoles() {
       const progRoles = progressionRoles(this.roles, this.role, [])
-      const prog = rankAndSortRoles(this.role, progRoles).map(
+      const p = rankAndSortRoles(this.role, progRoles)
+      const prog = p.map(
         ({ role }) => role
       )
       return prog

@@ -299,7 +299,9 @@
               </p>
             </div>
 
-            <div class="flex flex-col border border-gray-300 rounded-lg overflow-y-scroll">
+            <div
+              class="flex flex-col border border-gray-300 rounded-lg overflow-y-scroll"
+            >
               <div class="flex flex-row min-w-[550px]">
                 <div class="border-r border-gray-300 w-1/2 px-4 py-4 flex-grow">
                   <div>
@@ -781,29 +783,38 @@ export default {
     },
 
     rankAndSortRoles(currentRole, compareRoles, type) {
+      // test logic for role volume
+      // console.table(
+      //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
+      //     salary,
+      //     'salary 1.5 * minVol^0.1': 1.5 * Math.pow(salary, 0.1),
+      //     'salary 1.5 * minVol^0.11': 1.5 * Math.pow(salary, 0.11)
+      //   }))
+      // )
+
       // type is type of reccomendation
       // 'progression', 'adjacent' or 'skill'
       return compareRoles
         .map((role) => {
           // Capability comparison
-          const sharingSkills = roleShareCapabilitiesRank(currentRole, role)
+          let roleRank = roleShareCapabilitiesRank(currentRole, role)
 
           // Grade logic
           if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
             const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
 
             if (gradeDelta === 0) {
-              sharingSkills.focusFocus += 1
+              roleRank += 1
             }
 
             if (gradeDelta === -1) {
               // next grade
-              sharingSkills.focusFocus += 0.5
+              roleRank += 0.5
             }
 
             if (gradeDelta > 0) {
               // next grade
-              sharingSkills.focusFocus -= 0.5
+              roleRank -= 0.5
             }
           }
 
@@ -812,10 +823,10 @@ export default {
             if (this.userInterests.includes(role.jobFunction.trim())) {
               switch (type) {
                 case 'progression':
-                  sharingSkills.focusFocus += 4
+                  roleRank += 4
                   break
                 case 'adjacent':
-                  sharingSkills.focusFocus += 9
+                  roleRank += 9
                   break
               }
             }
@@ -827,28 +838,42 @@ export default {
               const wantManager = this.answers.management.value === 'manager'
               const isManager = role.manager
               if (wantManager === isManager) {
-                sharingSkills.focusFocus += 1
+                roleRank += 1
               }
             }
           }
           // role volume (number of positions)
           if (role.numPositions) {
-            const minVolume = role.numPositions.split(' ')[1]
-            sharingSkills.focusFocus += 1 + minVolume.length * 0.4
+            const minVolume = role.numPositions
+              .split(' ')
+              .reduce((acc, num) => {
+                const n = Number.parseInt(num)
+                if (Number.isNaN(n)) {
+                  return acc
+                }
+                if (n > acc) {
+                  return n
+                }
+                return acc
+              }, -1)
+
+            roleRank += 1.5 * Math.pow(minVolume, 0.11)
           }
 
           // salary logic
-          if (role.salary.max > currentRole.salary.max) {
-            const diff = role.salary.max - currentRole.salary.max
-            switch (type) {
-              case 'progression':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.1
-                break
-              case 'adjacent':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.5
-                break
-              case 'skill':
-                sharingSkills.focusFocus -= (diff / 2000) * 0.05
+          if (role.jobFamily === 'Policing' && currentRole.jobFamily === 'Policing') {
+            if (role.salary.max > currentRole.salary.max) {
+              const diff = role.salary.max - currentRole.salary.max
+              switch (type) {
+                case 'progression':
+                  roleRank -= (diff / 2000) * 0.1
+                  break
+                case 'adjacent':
+                  roleRank -= (diff / 2000) * 0.5
+                  break
+                case 'skill':
+                  roleRank -= (diff / 2000) * 0.05
+              }
             }
           }
 
@@ -856,29 +881,29 @@ export default {
           if (role.jobFamily === currentRole.jobFamily) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 2
+                roleRank += 2
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.05
+                roleRank += 0.05
                 break
             }
           }
           if (role.jobFunction === currentRole.jobFunction) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 2
+                roleRank += 2
                 break
               case 'adjacent':
                 if (this.userInterests.length === 0) {
-                  sharingSkills.focusFocus += 2
+                  roleRank += 2
                 }
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.05
+                roleRank += 0.05
                 break
             }
           }
@@ -887,24 +912,24 @@ export default {
           if (role.command_BusUnit !== currentRole.command_BusUnit) {
             switch (type) {
               case 'progression':
-                sharingSkills.focusFocus += 1
+                roleRank += 1
                 break
               case 'adjacent':
-                sharingSkills.focusFocus += 2.5
+                roleRank += 2.5
                 break
               case 'skill':
-                sharingSkills.focusFocus += 0.5
+                roleRank += 0.5
                 break
             }
           }
 
           return {
             role,
-            rank: sharingSkills
+            rank: roleRank
           }
         }, [])
         .sort((a, b) => {
-          return b.rank.focusFocus - a.rank.focusFocus
+          return b.rank - a.rank
         })
         .reduce(
           (acc, rankedRole, idx) => {
@@ -929,13 +954,13 @@ export default {
           { counted: 0, roles: [] }
         )
         .roles.reduce((acc, rankedRole) => {
-          const totalFocus = rankedRole.rank.focusFocus
+          const totalFocus = rankedRole.rank
 
           if (acc.length === 0) {
             acc.push([rankedRole])
           } else {
             const lastRank = acc[acc.length - 1]
-            if (lastRank[0].rank.focusFocus === totalFocus) {
+            if (lastRank[0].rank === totalFocus) {
               acc[acc.length - 1].push(rankedRole)
             } else {
               acc.push([rankedRole])
@@ -957,14 +982,10 @@ export default {
           return acc
         }, [])
         .reduce((acc, rankedRole) => {
-          if (
-            acc.find((x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus)
-          ) {
-            acc[
-              acc.findIndex(
-                (x) => x[0].rank.focusFocus === rankedRole.rank.focusFocus
-              )
-            ].push(rankedRole)
+          if (acc.find((x) => x[0].rank === rankedRole.rank)) {
+            acc[acc.findIndex((x) => x[0].rank === rankedRole.rank)].push(
+              rankedRole
+            )
           } else {
             acc.push([rankedRole])
           }
@@ -978,22 +999,53 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const matches = skillRoles(this.roles, this.currentRole).filter(
-        (role) => {
-          // filter out sworn roles
-          if (this.answers.hasOwnProperty('sworn')) {
-            switch (this.answers.sworn.value) {
-              case 'yes':
-                return role.jobFamily === 'Policing'
-              case 'no':
-                return role.jobFamily !== 'Policing'
-              default:
-                return true
+      const hasSwornAnswer = this.answers.hasOwnProperty('sworn')
+      let matches = null
+
+      if (
+        currentRole.jobFamily === 'Policing' &&
+        hasSwornAnswer &&
+        this.answers.hasOwnProperty('sworn') === 'yes'
+      ) {
+        matches = skillRoles(this.roles, this.currentRole).filter((role) => {
+          if (role.jobFamily !== 'Policing') {
+            return false
+          }
+
+          if (role.jobFunction === currentRole.jobFunction) {
+            return false
+          }
+
+          if (this.answers.hasOwnProperty('interests')) {
+            if (this.answers.interests.value.includes(role.jobFunction)) {
+              return false
             }
           }
           return true
-        }
-      )
+        })
+      } else {
+        matches = skillRoles(this.roles, this.currentRole)
+          .filter((role) => {
+            if (this.currentRole.jobFamily === 'Policing') {
+              return true
+            }
+            return role.jobFamily !== currentRole.jobFamily
+          })
+          .filter((role) => {
+            // filter out sworn roles
+            if (this.answers.hasOwnProperty('sworn')) {
+              switch (this.answers.sworn.value) {
+                case 'yes':
+                  return role.jobFamily === 'Policing'
+                case 'no':
+                  return role.jobFamily !== 'Policing'
+                default:
+                  return true
+              }
+            }
+            return true
+          })
+      }
 
       return this.rankAndSortRoles(currentRole, matches, 'skill').map(
         ({ role }) => role
