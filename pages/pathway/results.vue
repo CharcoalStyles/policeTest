@@ -953,7 +953,8 @@ export default {
           },
           { counted: 0, roles: [] }
         )
-        .roles.reduce((acc, rankedRole) => {
+        .roles
+        .reduce((acc, rankedRole) => {
           const totalFocus = rankedRole.rank
 
           if (acc.length === 0) {
@@ -968,21 +969,8 @@ export default {
           }
           return acc
         }, [])
-        .reduce((acc, rankedRoleGroup) => {
-          const reRanked = rankedRoleGroup.sort((a, b) => {
-            const aRank =
-              a.rank.focusAll + a.rank.allFocus * 0.6 + a.rank.allAll * 0.1
-            const bRank =
-              b.rank.focusAll + b.rank.allFocus * 0.6 + b.rank.allAll * 0.1
-            return bRank - aRank
-          })
-          reRanked.forEach((rankedRole) => {
-            acc.push(rankedRole)
-          })
-          return acc
-        }, [])
         .reduce((acc, rankedRole) => {
-          if (acc.find((x) => x[0].rank === rankedRole.rank)) {
+          if (acc.find((x) => x[0].rank === rankedRole[0].rank)) {
             acc[acc.findIndex((x) => x[0].rank === rankedRole.rank)].push(
               rankedRole
             )
@@ -991,11 +979,10 @@ export default {
           }
           return acc
         }, [])
-        .map((rankedRoleGroup) => {
+        .reduce((acc, rankedRoleGroup) => {
           shuffle(rankedRoleGroup)
-          return rankedRoleGroup
-        })
-        .flat()
+          return [...acc, ...rankedRoleGroup.flat()]
+        }, [])
     },
 
     skillRoles(currentRole) {
