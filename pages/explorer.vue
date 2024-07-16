@@ -1087,19 +1087,24 @@ export default {
             'Select job function that relates to a role to see how they match to others.'
 
           this.modalData.data = this.roles
-            .reduce((acc, role) => {
-              if (!acc.includes(role.jobFunction)) {
-                acc.push(role.jobFunction)
-              }
-              return acc
-            }, [])
-            .reduce((acc, jobFunction) => {
-              if (acc.includes(jobFunction)) {
+            .reduce(
+              (acc, role) => {
+                if (role.jobFamily === 'Policing') {
+                  if (acc[0].includes(role.jobFunction)) {
+                    return acc
+                  }
+                  acc[0].push(role.jobFunction)
+                  return acc
+                } else if (!acc[1].includes(role.jobFunction)) {
+                  acc[1].push(role.jobFunction)
+                }
                 return acc
-              }
-              return [...acc, jobFunction]
+              },
+              [[], []]
+            )
+            .reduce((acc, section) => {
+              return [...acc, ...section.sort((a, b) => a.localeCompare(b))]
             }, [])
-            .sort((a, b) => a.localeCompare(b))
             .map((l) => ({
               value: l,
               label: l
