@@ -55,16 +55,6 @@ export default {
   computed: {
     isRoleSelected() {
       return this.targetRole && this.role.id === this.targetRole.id
-    },
-    rankAsString() {
-      if (this.rank) {
-        return `(${this.rank.focusFocus.toFixed(
-          2
-        )}, ${this.rank.focusAll.toFixed(2)}, ${this.rank.allFocus.toFixed(
-          2
-        )}, ${this.rank.allAll.toFixed(2)})`
-      }
-      return ''
     }
   }
 }

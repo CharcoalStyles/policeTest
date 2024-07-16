@@ -247,8 +247,8 @@ export default {
       return this.$store.state.capabilities
     },
     progressionRoles() {
-      const progRoles = progressionRoles(this.roles, this.role, [])
-      const p = rankAndSortRoles(this.role, progRoles)
+      const progRoles = progressionRoles(this.roles, this.role)
+      const p = rankAndSortRoles(this.role, progRoles, 'progression')
       const prog = p.map(
         ({ role }) => role
       )
@@ -256,7 +256,7 @@ export default {
     },
     adjacentRoles() {
       const adjRoles = adjacentRoles(this.roles, this.role)
-      const adj = rankAndSortRoles(this.role, adjRoles).map(({ role }) => role)
+      const adj = rankAndSortRoles(this.role, adjRoles, 'adjacent').map(({ role }) => role)
       return adj
     },
     essentialRequirements() {
