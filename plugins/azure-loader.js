@@ -89,10 +89,7 @@ async function getFile(fileName) {
       throw new Error('Azure loader not configured in API')
     }
     if (response.status === 200) {
-      return {
-        file: response.data,
-        lastUpdated: response.headers['last-modified']
-      }
+      return response.data
     }
   } catch (e) {
     if (e.response.data) {
@@ -108,6 +105,7 @@ async function getFile(fileName) {
 }
 
 export function parseRoles({ file, lastUpdated }) {
+  console.log('parse roles type', typeof file, lastUpdated)
   const processed = processRoles(file)
   return {
     data: processed,
