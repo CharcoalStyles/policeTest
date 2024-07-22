@@ -218,6 +218,19 @@
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
+                <div class="flex items-center">
+                  <label class="mr-3 text-sm" for="sort">Sort by salary:</label>
+                  <div class="inline-block relative">
+                    <select
+                      id="sort"
+                      v-model="debouncedFilters.sortBy"
+                      class="nsw-form-select h-role-input py-0"
+                    >
+                      <option value="asc">Ascending</option>
+                      <option value="desc">Descending</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -235,9 +248,14 @@
               </h3>
               <transition-group name="list" tag="div">
                 <job-role
-                  v-for="role in group.roles.sort((a, b) =>
-                    a.salary.max < b.salary.max ? -1 : 1
-                  )"
+                  v-for="role in group.roles.sort((a, b) => {
+                    switch (debouncedFilters.sortBy) {
+                      case 'asc':
+                        return a.salary.max < b.salary.max ? -1 : 1
+                      case 'desc':
+                        return a.salary.max > b.salary.max ? -1 : 1
+                    }
+                  })"
                   :key="role.id"
                   :role="role"
                   @click.native="viewRole(role)"
@@ -664,7 +682,8 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sworn: 'other'
+        sworn: 'other',
+        sortBy: 'asc'
       },
       filterByUser: {
         skills: false,
