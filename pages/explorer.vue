@@ -58,157 +58,161 @@
                   </div>
                 </div>
                 <div class="overflow-hidden" :class="filterClass">
-                  <div>
-                    <p class="mb-1 font-bold text-sm">Role Type</p>
-                    <div
-                      class="flex flex-row w-full rounded-md text-sm"
-                      role="group"
-                    >
-                      <button
-                        type="button"
-                        class="py-4 w-1/3 py-2 rounded-s-md border border-nsw-brand-primary-blue"
-                        :class="swornButtonSelected('other')"
-                        @click="filter.sworn = 'other'"
-                      >
-                        All
-                      </button>
-                      <button
-                        type="button"
-                        class="py-4 w-1/3 py-2 border-t border-b border-nsw-brand-primary-blue"
-                        :class="swornButtonSelected('police')"
-                        @click="filter.sworn = 'police'"
-                      >
-                        Policing
-                      </button>
-                      <button
-                        type="button"
-                        class="py-4 w-1/3 py-2 rounded-e-md border border-nsw-brand-primary-blue"
-                        :class="swornButtonSelected('administrative')"
-                        @click="filter.sworn = 'administrative'"
-                      >
-                        Administrative
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="flex mt-3 gap-4 flex-row">
-                    <div class="w-1/2">
-                      <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-1">Rank/Grade</label>
-                        <div
-                          class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                          @click="showSelectorPopup('grade')"
-                        >
-                          {{
-                            debouncedFilters.grade.length === 0
-                              ? 'All'
-                              : `${debouncedFilters.grade.length} selected`
-                          }}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="w-1/2">
-                      <div class="flex justify-between">
-                        <label class="text-sm font-bold mb-1">Salary</label>
-                        <div class="text-sm text-gray-700">
-                          ${{ debouncedFilters.salary[0] / 1000 }}k - ${{
-                            debouncedFilters.salary[1] / 1000
-                          }}k
-                        </div>
-                      </div>
+                  <div :class="innerFilterClass">
+                    <div>
+                      <p class="mb-1 font-bold text-sm">Role Type</p>
                       <div
-                        class="flex items-center justify-center px-3 bg-nsw-grey-50 rounded h-role-input"
+                        class="flex flex-row w-full rounded-md text-sm"
+                        role="group"
                       >
-                        <div class="w-full flex justify-center">
-                          <div class="w-11/12">
-                            <input-range
-                              v-model="debouncedFilters.salary"
-                              :min="options.salary.min"
-                              :max="options.salary.max"
-                            />
+                        <button
+                          type="button"
+                          class="py-4 w-1/3 py-2 rounded-s-md border border-nsw-brand-primary-blue"
+                          :class="swornButtonSelected('other')"
+                          @click="filter.sworn = 'other'"
+                        >
+                          All
+                        </button>
+                        <button
+                          type="button"
+                          class="py-4 w-1/3 py-2 border-t border-b border-nsw-brand-primary-blue"
+                          :class="swornButtonSelected('police')"
+                          @click="filter.sworn = 'police'"
+                        >
+                          Policing
+                        </button>
+                        <button
+                          type="button"
+                          class="py-4 w-1/3 py-2 rounded-e-md border border-nsw-brand-primary-blue"
+                          :class="swornButtonSelected('administrative')"
+                          @click="filter.sworn = 'administrative'"
+                        >
+                          Administrative
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="flex mt-3 gap-4 flex-row">
+                      <div class="w-1/2">
+                        <div class="flex flex-col">
+                          <label class="text-sm font-bold mb-1"
+                            >Rank/Grade</label
+                          >
+                          <div
+                            class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                            @click="showSelectorPopup('grade')"
+                          >
+                            {{
+                              debouncedFilters.grade.length === 0
+                                ? 'All'
+                                : `${debouncedFilters.grade.length} selected`
+                            }}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="w-1/2">
+                        <div class="flex justify-between">
+                          <label class="text-sm font-bold mb-1">Salary</label>
+                          <div class="text-sm text-gray-700">
+                            ${{ debouncedFilters.salary[0] / 1000 }}k - ${{
+                              debouncedFilters.salary[1] / 1000
+                            }}k
+                          </div>
+                        </div>
+                        <div
+                          class="flex items-center justify-center px-3 bg-nsw-grey-50 rounded h-role-input"
+                        >
+                          <div class="w-full flex justify-center">
+                            <div class="w-11/12">
+                              <input-range
+                                v-model="debouncedFilters.salary"
+                                :min="options.salary.min"
+                                :max="options.salary.max"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="flex mt-3 gap-4 flex-row">
-                    <div class="w-1/2">
-                      <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-1">Location</label>
-                        <div
-                          class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                          @click="showSelectorPopup('location')"
-                        >
-                          {{ locationLabel }}
+                    <div class="flex mt-3 gap-4 flex-row">
+                      <div class="w-1/2">
+                        <div class="flex flex-col">
+                          <label class="text-sm font-bold mb-1">Location</label>
+                          <div
+                            class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                            @click="showSelectorPopup('location')"
+                          >
+                            {{ locationLabel }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-1/2">
+                        <div class="flex flex-col">
+                          <label class="text-sm font-bold mb-1">Skills</label>
+                          <div
+                            class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                            @click="showSelectorPopup('skills')"
+                          >
+                            {{
+                              debouncedFilters.skills.length === 0
+                                ? 'All'
+                                : `${debouncedFilters.skills.length} selected`
+                            }}
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="w-1/2">
+
+                    <div class="mt-3">
                       <div class="flex flex-col">
-                        <label class="text-sm font-bold mb-1">Skills</label>
+                        <label class="text-sm font-bold mb-1">
+                          Work Area / Job Function
+                        </label>
                         <div
                           class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                          @click="showSelectorPopup('skills')"
+                          @click="showSelectorPopup('jobFunction')"
                         >
                           {{
-                            debouncedFilters.skills.length === 0
+                            debouncedFilters.jobFunction.length === 0
                               ? 'All'
-                              : `${debouncedFilters.skills.length} selected`
+                              : `${debouncedFilters.jobFunction.length} selected`
                           }}
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="mt-3">
-                    <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-1">
-                        Work Area / Job Function
-                      </label>
-                      <div
-                        class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                        @click="showSelectorPopup('jobFunction')"
-                      >
-                        {{
-                          debouncedFilters.jobFunction.length === 0
-                            ? 'All'
-                            : `${debouncedFilters.jobFunction.length} selected`
-                        }}
+                    <div class="mb-2 mt-3">
+                      <div class="flex flex-col">
+                        <label class="text-sm font-bold mb-1">
+                          Command / Unit
+                        </label>
+                        <div
+                          class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
+                          @click="showSelectorPopup('command_BusUnit')"
+                        >
+                          {{
+                            debouncedFilters.command_BusUnit.length === 0
+                              ? 'All'
+                              : `${debouncedFilters.command_BusUnit.length} selected`
+                          }}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="mb-2 mt-3">
-                    <div class="flex flex-col">
-                      <label class="text-sm font-bold mb-1">
-                        Command / Unit
-                      </label>
-                      <div
-                        class="flex items-center rounded nsw-form-select cursor-pointer h-role-input"
-                        @click="showSelectorPopup('command_BusUnit')"
-                      >
-                        {{
-                          debouncedFilters.command_BusUnit.length === 0
-                            ? 'All'
-                            : `${debouncedFilters.command_BusUnit.length} selected`
-                        }}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    v-if="isLowHeight && filterSlideout"
-                    class="absolute inset-x-0 bottom-0 mx-6 mb-4"
-                  >
-                    <button
-                      type="button"
-                      class="py-3 rounded-md bg-nsw-brand-primary-blue text-white w-full"
-                      @click="() => (filterSlideout = !filterSlideout)"
+                    <div
+                      v-if="isLowHeight && filterSlideout"
+                      class="absolute inset-x-0 bottom-0 mx-6 mb-4"
                     >
-                      Show {{ filteredRolesTotal }} roles
-                    </button>
+                      <button
+                        type="button"
+                        class="py-3 rounded-md bg-nsw-brand-primary-blue text-white w-full"
+                        @click="() => (filterSlideout = !filterSlideout)"
+                      >
+                        Show {{ filteredRolesTotal }} roles
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -917,8 +921,15 @@ export default {
     isLowHeight() {
       return this.$vssHeight < 950
     },
+    isVeryLowHeight() {
+      return this.$vssHeight < 660
+    },
     filterClass() {
       const open = this.isLowHeight ? 'min-h-[1000px]' : ''
+      return this.filterSlideout ? open : 'h-0'
+    },
+    innerFilterClass() {
+      const open = this.isVeryLowHeight ? 'h-[200px] overflow-y-scroll' : ''
       return this.filterSlideout ? open : 'h-0'
     }
   },

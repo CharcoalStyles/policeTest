@@ -118,8 +118,8 @@ export default {
     scrollableContainerClass() {
       if (!this.fitContent) {
         return this.scrollable
-          ? 'h-modal-accessible lg:h-modal-accessible-lg'
-          : 'max-h-modal-accessible lg:max-h-modal-accessible-lg'
+          ? 'h-modal-accessible lg:h-modal-accessible-md'
+          : 'max-h-modal-accessible lg:max-h-modal-accessible-md'
       }
       return ''
     },
