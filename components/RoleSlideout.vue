@@ -14,7 +14,10 @@
         All roles
       </button>
     </div>
-    <div class="slideout-scroll px-6 py-8 flex-grow overflow-y-scroll">
+    <div
+      id="role-slideout"
+      class="slideout-scroll px-6 py-8 flex-grow overflow-y-scroll"
+    >
       <div class="mb-4">
         <h2 class="font-bold text-[32px] pr-3 leading-tight">
           {{ role.name }}
@@ -267,6 +270,12 @@ export default {
           .map((er) => er.trim())
       }
       return ''
+    }
+  },
+  watch: {
+    role() {
+      const scrollable = document.getElementById('role-slideout')
+      scrollable.scrollTop = 0
     }
   },
   methods: {
