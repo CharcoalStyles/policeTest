@@ -567,8 +567,8 @@
 
     <selector-with-various
       v-model="debouncedFilters[modalData.filterKey]"
-      :various-guide-text="modalData.variousGuideText"
-      :normal-guide-text="modalData.normalGuideText"
+      :various-guide-text="modalData.variousGuideText || ''"
+      :normal-guide-text="modalData.normalGuideText || ''"
       :data="modalData.data"
       :show="modals.selector.various"
       max-width="xl"
