@@ -11,7 +11,7 @@
     </p>
     <div>
       <p class="text-sm font-bold text-nsw-brand-primary-blue">
-        Tick Various to include roles available at multiple locations
+        {{ variousGuideText }}
       </p>
       <div
         v-for="datum in data.filter((d) => d.value === 'Various')"
@@ -33,7 +33,7 @@
 
     <div class="mt-4">
       <p class="text-sm font-bold text-nsw-brand-primary-blue">
-        Select from the list below for a specific location
+        {{ normalGuideText }}
       </p>
       <div
         v-for="datum in data.filter((d) => d.value !== 'Various')"
@@ -70,6 +70,14 @@ export default {
   },
   props: {
     title: {
+      type: String,
+      required: true
+    },
+    variousGuideText: {
+      type: String,
+      required: true
+    },
+    normalGuideText: {
       type: String,
       required: true
     },

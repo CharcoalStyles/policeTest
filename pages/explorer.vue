@@ -565,18 +565,25 @@
       {{ modalData.instructions }}
     </generic-selector>
 
-    <location-selector
+    <selector-with-various
       v-model="debouncedFilters[modalData.filterKey]"
+      :various-guide-text="modalData.variousGuideText"
+      :normal-guide-text="modalData.normalGuideText"
       :data="modalData.data"
-      :show="modals.selector.location"
+      :show="modals.selector.various"
       max-width="xl"
       :title="modalData.title"
       :value="debouncedFilters[modalData.filterKey]"
-      @close="modals.selector.location = false"
+      @close="modals.selector.various = false"
       @reset="modalData.reset"
+      @userSelected="
+        (isFiltered) => {
+          filterByUser[modalData.filterKey] = isFiltered
+        }
+      "
     >
       {{ modalData.instructions }}
-    </location-selector>
+    </selector-with-various>
 
     <modal-onboarding
       :show="modals.onboarding"
@@ -601,7 +608,7 @@ import ModalOnboarding from '@/components/ModalOnboarding'
 import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
-import LocationSelector from '~/components/LocationSelector.vue'
+import SelectorWithVarious from '~/components/SelectorWithVarious.vue'
 
 export default {
   layout: 'explore',
@@ -615,7 +622,7 @@ export default {
     ModalOnboarding,
     GenericSelector,
     NswpfBeta,
-    LocationSelector
+    SelectorWithVarious
   },
   mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
@@ -628,7 +635,7 @@ export default {
       modals: {
         selector: {
           generic: false,
-          location: false
+          various: false
         },
         onboarding: true
       },
@@ -987,8 +994,12 @@ export default {
           }
           break
         case 'location':
-          this.modals.selector.location = true
+          this.modals.selector.various = true
           this.modalData.title = 'Select Location'
+          this.modalData.variousGuideText =
+            'Tick Various to include roles available at multiple locations'
+          this.modalData.normalGuideText =
+            'Select from the list below for a specific location'
           this.modalData.instructions =
             'Select the locations you’re interested in.'
           this.modalData.data = this.roles
@@ -1115,8 +1126,12 @@ export default {
           }
           break
         case 'command_BusUnit':
-          this.modals.selector.generic = true
+          this.modals.selector.various = true
           this.modalData.title = 'Select Command / Business Unit'
+          this.modalData.variousGuideText =
+            'Tick Various to include roles available in multiple Commands / Business Units'
+          this.modalData.normalGuideText =
+            'Select from the list below for a specific Command / Business Unit'
           this.modalData.instructions =
             'Select the Command or Business Unit that relates to a role to see how they match to others.'
 

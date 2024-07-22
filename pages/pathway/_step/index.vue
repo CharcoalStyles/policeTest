@@ -62,14 +62,18 @@ export default {
       this.$azureInsights.startTrackEvent('Career Pathway Flow')
       this.$azureInsights.trackEvent({
         name: 'Pathway Start',
-        time: new Date().toISOString(),
-        timeMs: new Date().getTime()
+        properties: {
+          time: new Date().toISOString(),
+          timeMs: new Date().getTime()
+        }
       })
     }
 
     this.$azureInsights.trackEvent({
       name: 'Pathway Step',
-      step: this.currentStep.id
+      properties: {
+        step: this.currentStep.id
+      }
     })
     // 404 if the step id is invalid
     if (!this.currentStep) {
@@ -118,7 +122,9 @@ export default {
 
         this.$azureInsights.trackEvent({
           name: 'Interests and Preferences',
-          ...results
+          properties: {
+            results
+          }
         })
       }
       // No more steps
@@ -127,8 +133,10 @@ export default {
 
         this.$azureInsights.trackEvent({
           name: 'Pathway End',
-          time: new Date().toISOString(),
-          timeMs: new Date().getTime()
+          properties: {
+            time: new Date().toISOString(),
+            timeMs: new Date().getTime()
+          }
         })
 
         // Mark the questions as complete for middleware

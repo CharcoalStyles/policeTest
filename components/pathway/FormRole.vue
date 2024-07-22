@@ -358,8 +358,10 @@ export default {
         if (this.step.id === 'current-role') {
           this.$azureInsights.trackEvent({
             name: 'Current Role Selected',
-            role: role.name,
-            roleId: role.id
+            properties: {
+              role: role.name,
+              roleId: role.id
+            }
           })
           this.$store.dispatch('saveQuestionAnswer', {
             id: 'isDetective',
@@ -379,8 +381,10 @@ export default {
         if (this.step.id === 'goal-role') {
           this.$azureInsights.trackEvent({
             name: 'Goal Role Selected',
-            role: role.name,
-            roleId: role.id
+            properties: {
+              role: role.name,
+              roleId: role.id
+            }
           })
         }
       }
