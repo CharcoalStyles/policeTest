@@ -10,7 +10,7 @@
       <div>
         <input
           id="sworn"
-          v-model="filter.sworn"
+          v-model="sworn"
           value="yes"
           class="nsw-form-radio__input"
           type="radio"
@@ -24,7 +24,7 @@
 
         <input
           id="unsworn"
-          v-model="filter.sworn"
+          v-model="sworn"
           value="no"
           class="nsw-form-radio__input"
           type="radio"
@@ -205,8 +205,8 @@ export default {
     return {
       value: '',
       focussed: false,
+      sworn: '',
       filter: {
-        sworn: '',
         jobFamily: '',
         jobFunction: ''
       }
@@ -223,11 +223,11 @@ export default {
     isDisabled() {
       return (
         Boolean(this.currentValue) ||
-        (this.step.id === 'current-role' && this.filter.sworn === '')
+        (this.step.id === 'current-role' && this.sworn === '')
       )
     },
     searchPlaceholder() {
-      return this.step.id === 'current-role' && this.filter.sworn === ''
+      return this.step.id === 'current-role' && this.sworn === ''
         ? ''
         : 'Start typing'
     },
@@ -280,8 +280,8 @@ export default {
           return true
         })
         .filter((role) => {
-          if (this.step.id === 'current-role' && this.filter.sworn !== '') {
-            switch (this.filter.sworn) {
+          if (this.step.id === 'current-role' && this.sworn !== '') {
+            switch (this.sworn) {
               case 'yes':
                 return role.jobFamily === 'Policing'
               case 'no':
@@ -321,6 +321,11 @@ export default {
         this.step.id === 'goal-role' &&
         this.$store.state.pathway.answers.sworn.value !== 'yes'
       )
+    }
+  },
+  watch: {
+    sworn() {
+      this.clearRole()
     }
   },
   methods: {
@@ -376,6 +381,11 @@ export default {
             id: 'isPolice',
             value: role.jobFamily === 'Policing' ? 'yes' : 'no'
           })
+
+          this.$store.dispatch('saveQuestionAnswer', {
+            id: 'interests',
+            value: []
+          })
         }
 
         if (this.step.id === 'goal-role') {
@@ -397,18 +407,19 @@ export default {
 
       if (this.step.id === 'current-role') {
         this.$store.dispatch('removeAnswer', {
-          id: 'isDetective',
-          value: ''
+          id: 'isDetective'
         })
 
         this.$store.dispatch('removeAnswer', {
-          id: 'isPolice',
-          value: ''
+          id: 'isPolice'
         })
 
         this.$store.dispatch('removeAnswer', {
-          id: 'detective-roles',
-          value: ''
+          id: 'detective-roles'
+        })
+
+        this.$store.dispatch('removeAnswer', {
+          id: 'interests'
         })
       }
     },
