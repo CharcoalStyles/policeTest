@@ -861,7 +861,10 @@ export default {
           }
 
           // salary logic
-          if (role.jobFamily === 'Policing' && currentRole.jobFamily === 'Policing') {
+          if (
+            role.jobFamily === 'Policing' &&
+            currentRole.jobFamily === 'Policing'
+          ) {
             if (role.salary.max > currentRole.salary.max) {
               const diff = role.salary.max - currentRole.salary.max
               switch (type) {
@@ -953,8 +956,7 @@ export default {
           },
           { counted: 0, roles: [] }
         )
-        .roles
-        .reduce((acc, rankedRole) => {
+        .roles.reduce((acc, rankedRole) => {
           const totalFocus = rankedRole.rank
 
           if (acc.length === 0) {
@@ -995,6 +997,14 @@ export default {
         this.answers.hasOwnProperty('sworn') === 'yes'
       ) {
         matches = skillRoles(this.roles, this.currentRole).filter((role) => {
+          if (role.id === currentRole.id) {
+            return false
+          }
+
+          if (this.goalRole && this.goalRole.id === role.id) {
+            return false
+          }
+
           if (role.jobFamily !== 'Policing') {
             return false
           }
@@ -1008,6 +1018,20 @@ export default {
               return false
             }
           }
+
+          if (role.grade.split(' ')[0] === 'Detective') {
+            if (this.answers.hasOwnProperty('detective-roles')) {
+              switch (this.answers['detective-roles'].value) {
+                case 'no':
+                  return false
+                case 'yes':
+                default:
+                  return true
+              }
+            }
+            return true
+          }
+
           return true
         })
       } else {
