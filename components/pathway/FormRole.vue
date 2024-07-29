@@ -78,7 +78,7 @@
     </div>
     <autocomplete
       ref="autocomplete"
-      :search="search"
+      :search="preSearch"
       :get-result-value="getResultValue"
       :default-value="defaultValue"
       :placeholder="searchPlaceholder"
@@ -187,7 +187,13 @@ import { mapGetters } from 'vuex'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import InformationBadge from '@/components/InformationBadge'
 import { keywordSearch } from '@/utils/search'
+import { debounce } from 'vue-debounce'
 import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
+
+const debounceSearch = debounce((val, resolve) => {
+  console.log('search', val)
+  resolve(val)
+}, 1000)
 
 export default {
   components: {
@@ -329,6 +335,12 @@ export default {
     }
   },
   methods: {
+    preSearch(input) {
+      debounceSearch.cancel()
+      return new Promise((resolve) => {
+        debounceSearch(this.search(input), resolve)
+      })
+    },
     search(input) {
       this.value = input
 
