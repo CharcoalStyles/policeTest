@@ -34,7 +34,7 @@
           <div
             v-if="show"
             id="dialog"
-            class="bg-white shadow-xl transform transition-all w-modal-accessible flex flex-col focus:outline-none"
+            class="bg-white shadow-xl transform transition-all w-modal-accessible h-modal flex flex-col focus:outline-none"
             tabindex="-1"
             :class="[maxWidthClass, scrollableContainerClass]"
             aria-labelledby="modal-title"
@@ -118,8 +118,8 @@ export default {
     scrollableContainerClass() {
       if (!this.fitContent) {
         return this.scrollable
-          ? 'h-modal-accessible lg:h-modal-accessible-md'
-          : 'max-h-modal-accessible lg:max-h-modal-accessible-md'
+          ? 'h-modal lg:h-modal-accessible-md'
+          : 'max-h-modal lg:max-h-modal-accessible-md'
       }
       return ''
     },

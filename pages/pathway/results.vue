@@ -783,6 +783,7 @@ export default {
     },
 
     rankAndSortRoles(currentRole, compareRoles, type) {
+      console.group(type)
       // test logic for role volume
       // console.table(
       //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
@@ -794,10 +795,12 @@ export default {
 
       // type is type of reccomendation
       // 'progression', 'adjacent' or 'skill'
-      return compareRoles
+      const results = compareRoles
         .map((role) => {
+          const rrBreakdown = {}
           // Capability comparison
           let roleRank = roleShareCapabilitiesRank(currentRole, role)
+          rrBreakdown.capabilities = roleRank
 
           // Grade logic
           if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
@@ -805,16 +808,19 @@ export default {
 
             if (gradeDelta === 0) {
               roleRank += 1
+              rrBreakdown.gradeDelta = 1
             }
 
             if (gradeDelta === -1) {
               // next grade
               roleRank += 0.5
+              rrBreakdown.gradeDelta = 0.5
             }
 
             if (gradeDelta > 0) {
               // next grade
               roleRank -= 0.5
+              rrBreakdown.gradeDelta = -0.5
             }
           }
 
@@ -858,6 +864,7 @@ export default {
               }, -1)
 
             roleRank += 1.5 * Math.pow(minVolume, 0.11)
+            rrBreakdown.minVolume = 1.5 * Math.pow(minVolume, 0.11)
           }
 
           // salary logic
@@ -870,12 +877,15 @@ export default {
               switch (type) {
                 case 'progression':
                   roleRank -= (diff / 2000) * 0.1
+                  rrBreakdown.salaryDiff = (diff / 2000) * -0.1
                   break
                 case 'adjacent':
                   roleRank -= (diff / 2000) * 0.5
+                  rrBreakdown.salaryDiff = (diff / 2000) * -0.5
                   break
                 case 'skill':
                   roleRank -= (diff / 2000) * 0.05
+                  rrBreakdown.salaryDiff = (diff / 2000) * -0.05
               }
             }
           }
@@ -885,12 +895,15 @@ export default {
             switch (type) {
               case 'progression':
                 roleRank += 2
+                rrBreakdown.jobFamily = 2
                 break
               case 'adjacent':
                 roleRank += 1
+                rrBreakdown.jobFamily = 1
                 break
               case 'skill':
                 roleRank += 0.05
+                rrBreakdown.jobFamily = 0.05
                 break
             }
           }
@@ -898,15 +911,19 @@ export default {
             switch (type) {
               case 'progression':
                 roleRank += 2
+                rrBreakdown.jobFunction = 2
                 break
               case 'adjacent':
                 if (this.userInterests.length === 0) {
                   roleRank += 2
+                  rrBreakdown.jobFunction = 2
                 }
                 roleRank += 1
+                rrBreakdown.jobFunction = 1
                 break
               case 'skill':
                 roleRank += 0.05
+                rrBreakdown.jobFunction = 0.05
                 break
             }
           }
@@ -916,23 +933,36 @@ export default {
             switch (type) {
               case 'progression':
                 roleRank += 1
+                rrBreakdown.command_BusUnit = 1
                 break
               case 'adjacent':
                 roleRank += 2.5
+                rrBreakdown.command_BusUnit = 2.5
                 break
               case 'skill':
                 roleRank += 0.5
+                rrBreakdown.command_BusUnit = 0.5
                 break
             }
           }
 
           return {
             role,
-            rank: roleRank
+            rank: roleRank,
+            rrBreakdown
           }
         }, [])
         .sort((a, b) => {
           return b.rank - a.rank
+        })
+        .map(({ role, rank, rrBreakdown }, i) => {
+          if (i < 50) {
+            console.log(role.name, rank, rrBreakdown)
+          }
+          return {
+            role,
+            rank
+          }
         })
         .reduce(
           (acc, rankedRole, idx) => {
@@ -985,6 +1015,8 @@ export default {
           shuffle(rankedRoleGroup)
           return [...acc, ...rankedRoleGroup.flat()]
         }, [])
+      console.groupEnd()
+      return results
     },
 
     skillRoles(currentRole) {
