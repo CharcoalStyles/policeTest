@@ -34,7 +34,7 @@
                   </label>
                   <input
                     id="keywords"
-                    v-debounce:300ms.fireonempty="updateKeyword"
+                    v-debounce:1s.fireonempty="updateKeyword"
                     name="keywords"
                     class="nsw-form-input h-role-input"
                     placeholder="Search"
