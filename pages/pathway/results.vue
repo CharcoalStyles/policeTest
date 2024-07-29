@@ -783,7 +783,7 @@ export default {
     },
 
     rankAndSortRoles(currentRole, compareRoles, type) {
-      console.group(type)
+      // console.group(type)
       // test logic for role volume
       // console.table(
       //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
@@ -955,15 +955,15 @@ export default {
         .sort((a, b) => {
           return b.rank - a.rank
         })
-        .map(({ role, rank, rrBreakdown }, i) => {
-          if (i < 50) {
-            console.log(role.name, rank, rrBreakdown)
-          }
-          return {
-            role,
-            rank
-          }
-        })
+        // .map(({ role, rank, rrBreakdown }, i) => {
+        //   if (i < 50) {
+        //     console.log(role.name, rank, rrBreakdown)
+        //   }
+        //   return {
+        //     role,
+        //     rank
+        //   }
+        // })
         .reduce(
           (acc, rankedRole, idx) => {
             if (currentRole.jobFamily !== 'Policing') {
@@ -1015,7 +1015,7 @@ export default {
           shuffle(rankedRoleGroup)
           return [...acc, ...rankedRoleGroup.flat()]
         }, [])
-      console.groupEnd()
+      // console.groupEnd()
       return results
     },
 
