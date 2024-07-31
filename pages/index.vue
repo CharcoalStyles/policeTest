@@ -220,7 +220,6 @@
 import FeaturePanel from '@/components/home/FeaturePanel'
 import HeroSection from '@/components/home/HeroSection'
 import SectionContainer from '@/components/home/SectionContainer'
-import NswBetaBanner from '~/components/nsw/NswBetaBanner.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
@@ -228,30 +227,7 @@ export default {
     FeaturePanel,
     HeroSection,
     SectionContainer,
-    NswBetaBanner,
     NswpfBeta
-  },
-  data() {
-    return {
-      videoID: '357726193',
-      height: 500,
-      options: {
-        muted: true,
-        autoplay: true
-      },
-      playerReady: false
-    }
-  },
-  methods: {
-    onReady() {
-      this.playerReady = true
-    },
-    play() {
-      this.$refs.player.play()
-    },
-    pause() {
-      this.$refs.player.pause()
-    }
   }
 }
 </script>
