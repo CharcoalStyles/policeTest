@@ -33,10 +33,10 @@ export const keywordSearch = (area, keys, options) => {
 
                 const fullWords = words.filter(
                   (word) => word === value.toLowerCase()
-                ).length + value.length
-                const partialWords = (words.filter((word) =>
+                ).length
+                const partialWords = words.filter((word) =>
                   word.includes(value.toLowerCase())
-                ).length + value.length) / 2
+                ).length / 2
 
                 return (fullWords + partialWords) * weightValue
               })
