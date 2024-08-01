@@ -97,19 +97,21 @@
         }"
       >
         <div v-bind="rootProps">
-          <div class="relative">
-            <input
-              ref="role"
-              class="nsw-form-input roles-autosuggest placeholder-gray-700 disabled:text-black"
-              v-bind="inputProps"
-              :disabled="isDisabled"
-              v-on="inputListeners"
-              @focus="toggleFocus"
-              @blur="toggleFocus"
-            />
+          <div class="flex flex-row gap-2 w-full">
+            <div class="flex-grow">
+              <input
+                ref="role"
+                class="nsw-form-input roles-autosuggest placeholder-gray-700 disabled:text-black"
+                v-bind="inputProps"
+                :disabled="isDisabled"
+                v-on="inputListeners"
+                @focus="toggleFocus"
+                @blur="toggleFocus"
+              />
+            </div>
             <div
               v-if="currentValue"
-              class="absolute top-0 bottom-0 right-0 flex justify-center pointer-events-none"
+              class="top-0 bottom-0 right-0 flex justify-center pointer-events-none"
             >
               <button
                 class="px-4 pointer-events-auto border-2 border-nsw-brand-primary-blue my-1 mr-1 font-semibold rounded"
