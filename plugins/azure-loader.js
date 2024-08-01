@@ -105,7 +105,6 @@ async function getFile(fileName) {
 }
 
 export function parseRoles({ file, lastUpdated }) {
-  console.log('parse roles type', typeof file, lastUpdated)
   const processed = processRoles(file)
   return {
     data: processed,
