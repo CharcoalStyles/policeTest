@@ -795,7 +795,7 @@ export default {
 
       // type is type of reccomendation
       // 'progression', 'adjacent' or 'skill'
-      const results = compareRoles
+      const partialResults = compareRoles
         .map((role) => {
           const rrBreakdown = {}
           // Capability comparison
@@ -955,38 +955,29 @@ export default {
         .sort((a, b) => {
           return b.rank - a.rank
         })
-        // .map(({ role, rank, rrBreakdown }, i) => {
-        //   if (i < 50) {
-        //     console.log(role.name, rank, rrBreakdown)
-        //   }
-        //   return {
-        //     role,
-        //     rank
-        //   }
-        // })
-        .reduce(
-          (acc, rankedRole, idx) => {
-            if (currentRole.jobFamily !== 'Policing') {
-              acc.roles.push(rankedRole)
-              return acc
-            }
-            // if the current role is a Sergent / Senior Sergeant we want to have a minimum of 3 Inspectors
-            if (currentRole.gradeId.grade === 4) {
-              if (rankedRole.role.gradeId.grade === 5) {
-                acc.counted += 1
+      // .map(({ role, rank, rrBreakdown }, i) => {
+      //   if (i < 50) {
+      //     console.log(role.name, rank, rrBreakdown)
+      //   }
+      //   return {
+      //     role,
+      //     rank
+      //   }
+      // })
 
-                if (idx > 5 && acc.counted <= 3) {
-                  acc.roles = [rankedRole, ...acc.roles]
-                  return acc
-                }
-              }
-            }
-            acc.roles.push(rankedRole)
-            return acc
-          },
-          { counted: 0, roles: [] }
+      if (
+        type === 'progression' &&
+        currentRole.jobFamily === 'Policing' &&
+        currentRole.gradeId.grade === 4
+      ) {
+        const inspectorRoles = partialResults.filter(
+          (r) => r.role.gradeId.grade === 5 && r.rank > 0 && r.role.jobFamily === 'Policing'
         )
-        .roles.reduce((acc, rankedRole) => {
+        partialResults.unshift(...inspectorRoles.slice(0, 3))
+      }
+
+      const results = partialResults
+        .reduce((acc, rankedRole) => {
           const totalFocus = rankedRole.rank
 
           if (acc.length === 0) {
