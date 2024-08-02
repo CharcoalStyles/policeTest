@@ -572,11 +572,11 @@
     <generic-selector
       v-model="debouncedFilters[modalData.filterKey]"
       :data="modalData.data"
-      :show="modals.selector.generic"
+      :show="modals.selector === 'generic'"
       max-width="xl"
       :title="modalData.title"
       :value="debouncedFilters[modalData.filterKey]"
-      @close="modals.selector.generic = false"
+      @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
         (isFiltered) => {
@@ -592,11 +592,11 @@
       :various-guide-text="modalData.variousGuideText || ''"
       :normal-guide-text="modalData.normalGuideText || ''"
       :data="modalData.data"
-      :show="modals.selector.various"
+      :show="modals.selector === 'various'"
       max-width="xl"
       :title="modalData.title"
       :value="debouncedFilters[modalData.filterKey]"
-      @close="modals.selector.various = false"
+      @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
         (isFiltered) => {
@@ -606,6 +606,25 @@
     >
       {{ modalData.instructions }}
     </selector-with-various>
+
+    <selector-with-sections
+      v-model="debouncedFilters[modalData.filterKey]"
+      :groups="modalData.groups"
+      :data="modalData.data"
+      :show="modals.selector === 'sections'"
+      max-width="xl"
+      :title="modalData.title"
+      :value="debouncedFilters[modalData.filterKey]"
+      @close="modals.selector = ''"
+      @reset="modalData.reset"
+      @userSelected="
+        (isFiltered) => {
+          filterByUser[modalData.filterKey] = isFiltered
+        }
+      "
+    >
+      {{ modalData.instructions }}
+    </selector-with-sections>
 
     <modal-onboarding
       :show="modals.onboarding"
@@ -631,6 +650,7 @@ import { keywordSearch } from '@/utils/search'
 import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 import SelectorWithVarious from '~/components/SelectorWithVarious.vue'
+import SelectorWithSections from '~/components/SelectorWithSections.vue'
 
 export default {
   layout: 'explore',
@@ -644,7 +664,8 @@ export default {
     ModalOnboarding,
     GenericSelector,
     NswpfBeta,
-    SelectorWithVarious
+    SelectorWithVarious,
+    SelectorWithSections
   },
   mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
@@ -655,10 +676,7 @@ export default {
       selectedRole: false,
       previousRoleId: false,
       modals: {
-        selector: {
-          generic: false,
-          various: false
-        },
+        selector: '',
         onboarding: true
       },
       modalData: {
@@ -666,7 +684,8 @@ export default {
         filterKey: '',
         reset: () => {},
         title: '',
-        instructions: ''
+        instructions: '',
+        groups: []
       },
       zoom: 0.4,
       panning: false,
@@ -1008,23 +1027,72 @@ export default {
     showSelectorPopup(type) {
       switch (type) {
         case 'skills':
-          this.modals.selector.generic = true
-          this.modalData.title = 'Select Skills'
-          this.modalData.instructions =
-            'Select skills that relate to a role to see how they match to others.'
-          this.modalData.data = this.$store.state.skills
-            .map((s) => ({
-              value: s.code,
-              label: s.name
-            }))
-            .sort((a, b) => a.label.localeCompare(b.label))
-          this.modalData.filterKey = 'skills'
-          this.modalData.reset = () => {
-            this.debouncedFilters.skills = []
+          {
+            this.modals.selector = 'sections'
+            this.modalData.title = 'Select Skills'
+            this.modalData.instructions =
+              'Select skills that relate to a role to see how they match to others.'
+
+            const policeSkills = this.roles.reduce((acc, role) => {
+              if (role.jobFamily === 'Policing') {
+                role.skills.focus.forEach((s) => {
+                  if (acc.find((a) => a.code === s.code) === undefined) {
+                    acc.push(s)
+                  }
+                })
+              }
+              return acc
+            }, [])
+
+            const dividedSkills = this.$store.state.skills.reduce(
+              (acc, skill) => {
+                if (policeSkills.find((s) => s.code === skill.code)) {
+                  acc.police.push(skill)
+                } else {
+                  acc.other.push(skill)
+                }
+                return acc
+              },
+              { police: [], other: [] }
+            )
+
+            this.modalData.groups = [
+              {
+                title: 'Police',
+                start: 0,
+                end: dividedSkills.police.length
+              },
+              {
+                title: 'Other',
+                start: dividedSkills.police.length,
+                end: dividedSkills.police.length + dividedSkills.other.length
+              }
+            ]
+
+            this.modalData.data = [
+              ...dividedSkills.police
+                .map((s) => ({
+                  value: s.code,
+                  label: s.name
+                }))
+                .sort((a, b) => a.label.localeCompare(b.label)),
+              ...dividedSkills.other
+                .map((s) => ({
+                  value: s.code,
+                  label: s.name
+                }))
+                .sort((a, b) => a.label.localeCompare(b.label))
+            ]
+
+            this.modalData.filterKey = 'skills'
+
+            this.modalData.reset = () => {
+              this.debouncedFilters.skills = []
+            }
           }
           break
         case 'location':
-          this.modals.selector.various = true
+          this.modals.selector = 'various'
           this.modalData.title = 'Select Location'
           this.modalData.variousGuideText =
             'Tick Various to include roles available at multiple locations'
@@ -1053,7 +1121,7 @@ export default {
           }
           break
         case 'grade': {
-          this.modals.selector.generic = true
+          this.modals.selector = 'generic'
           this.modalData.title = 'Select Grade'
           this.modalData.instructions =
             'Select grade that relates to a role to see how they match to others.'
@@ -1122,41 +1190,63 @@ export default {
           break
         }
         case 'jobFunction':
-          this.modals.selector.generic = true
-          this.modalData.title = 'Select Job Function'
-          this.modalData.instructions =
-            'Select job function that relates to a role to see how they match to others.'
+          {
+            this.modals.selector = 'sections'
+            this.modalData.title = 'Select Job Function'
+            this.modalData.instructions =
+              'Select job function that relates to a role to see how they match to others.'
 
-          this.modalData.data = this.roles
-            .reduce(
+            const dividedFunctions = this.roles.reduce(
               (acc, role) => {
                 if (role.jobFamily === 'Policing') {
-                  if (acc[0].includes(role.jobFunction)) {
-                    return acc
+                  if (!acc.police.includes(role.jobFunction)) {
+                    acc.police.push(role.jobFunction)
                   }
-                  acc[0].push(role.jobFunction)
-                  return acc
-                } else if (!acc[1].includes(role.jobFunction)) {
-                  acc[1].push(role.jobFunction)
+                } else if (!acc.other.includes(role.jobFunction)) {
+                  acc.other.push(role.jobFunction)
                 }
                 return acc
               },
-              [[], []]
+              { police: [], other: [] }
             )
-            .reduce((acc, section) => {
-              return [...acc, ...section.sort((a, b) => a.localeCompare(b))]
-            }, [])
-            .map((l) => ({
-              value: l,
-              label: l
-            }))
-          this.modalData.filterKey = 'jobFunction'
-          this.modalData.reset = () => {
-            this.debouncedFilters.jobFunction = []
+
+            this.modalData.groups = [
+              {
+                title: 'Police',
+                start: 0,
+                end: dividedFunctions.police.length
+              },
+              {
+                title: 'Other',
+                start: dividedFunctions.police.length,
+                end:
+                  dividedFunctions.police.length + dividedFunctions.other.length
+              }
+            ]
+
+            this.modalData.data = [
+              ...dividedFunctions.police
+                .map((s) => ({
+                  value: s,
+                  label: s
+                }))
+                .sort((a, b) => a.label.localeCompare(b.label)),
+              ...dividedFunctions.other
+                .map((s) => ({
+                  value: s,
+                  label: s
+                }))
+                .sort((a, b) => a.label.localeCompare(b.label))
+            ]
+
+            this.modalData.filterKey = 'jobFunction'
+            this.modalData.reset = () => {
+              this.debouncedFilters.jobFunction = []
+            }
           }
           break
         case 'command_BusUnit':
-          this.modals.selector.various = true
+          this.modals.selector = 'various'
           this.modalData.title = 'Select Command / Business Unit'
           this.modalData.variousGuideText =
             'Tick Various to include roles available in multiple Commands / Business Units'
