@@ -193,7 +193,6 @@ import { debounce } from 'vue-debounce'
 import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
 
 const debounceSearch = debounce((val, resolve) => {
-  console.log('search', val)
   resolve(val)
 }, 1000)
 
