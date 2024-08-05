@@ -971,7 +971,10 @@ export default {
         currentRole.gradeId.grade === 4
       ) {
         const inspectorRoles = partialResults.filter(
-          (r) => r.role.gradeId.grade === 5 && r.rank > 0 && r.role.jobFamily === 'Policing'
+          (r) =>
+            r.role.gradeId.grade === 5 &&
+            r.rank > 0 &&
+            r.role.jobFamily === 'Policing'
         )
         partialResults.unshift(...inspectorRoles.slice(0, 3))
       }
@@ -1019,44 +1022,55 @@ export default {
         hasSwornAnswer &&
         this.answers.hasOwnProperty('sworn') === 'yes'
       ) {
-        matches = skillRoles(this.roles, this.currentRole).filter((role) => {
-          if (role.id === currentRole.id) {
-            return false
-          }
-
-          if (this.goalRole && this.goalRole.id === role.id) {
-            return false
-          }
-
-          if (role.jobFamily !== 'Policing') {
-            return false
-          }
-
-          if (role.jobFunction === currentRole.jobFunction) {
-            return false
-          }
-
-          if (this.answers.hasOwnProperty('interests')) {
-            if (this.answers.interests.value.includes(role.jobFunction)) {
+        matches = skillRoles(this.roles, this.currentRole)
+          .filter((role) => {
+            if (role.id === currentRole.id) {
               return false
             }
-          }
-
-          if (role.grade.split(' ')[0] === 'Detective') {
-            if (this.answers.hasOwnProperty('detective-roles')) {
-              switch (this.answers['detective-roles'].value) {
-                case 'no':
-                  return false
-                case 'yes':
-                default:
-                  return true
+            return true
+          })
+          .filter((role) => {
+            if (this.goalRole && this.goalRole.id === role.id) {
+              return false
+            }
+            return true
+          })
+          .filter((role) => {
+            if (role.jobFamily !== 'Policing') {
+              return false
+            }
+            return true
+          })
+          .filter((role) => {
+            if (role.jobFunction === currentRole.jobFunction) {
+              return false
+            }
+            return true
+          })
+          .filter((role) => {
+            if (this.answers.hasOwnProperty('interests')) {
+              if (this.answers.interests.value.includes(role.jobFunction)) {
+                return false
               }
             }
             return true
-          }
+          })
+          .filter((role) => {
+            if (role.grade.split(' ')[0] === 'Detective') {
+              if (this.answers.hasOwnProperty('detective-roles')) {
+                switch (this.answers['detective-roles'].value) {
+                  case 'no':
+                    return false
+                  case 'yes':
+                  default:
+                    return true
+                }
+              }
+              return true
+            }
 
-          return true
-        })
+            return true
+          })
       } else {
         matches = skillRoles(this.roles, this.currentRole)
           .filter((role) => {
@@ -1076,6 +1090,21 @@ export default {
                 default:
                   return true
               }
+            }
+            return true
+          })
+          .filter((role) => {
+            if (role.grade.split(' ')[0] === 'Detective') {
+              if (this.answers.hasOwnProperty('detective-roles')) {
+                switch (this.answers['detective-roles'].value) {
+                  case 'no':
+                    return false
+                  case 'yes':
+                  default:
+                    return true
+                }
+              }
+              return true
             }
             return true
           })
