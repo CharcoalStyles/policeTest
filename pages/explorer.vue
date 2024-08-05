@@ -1033,57 +1033,67 @@ export default {
             this.modalData.instructions =
               'Select skills that relate to a role to see how they match to others.'
 
-            const policeSkills = this.roles.reduce((acc, role) => {
-              if (role.jobFamily === 'Policing') {
-                role.skills.focus.forEach((s) => {
-                  if (acc.find((a) => a.code === s.code) === undefined) {
-                    acc.push(s)
-                  }
-                })
-              }
-              return acc
-            }, [])
-
-            const dividedSkills = this.$store.state.skills.reduce(
+            const groupedSkills = this.$store.state.skills.reduce(
               (acc, skill) => {
-                if (policeSkills.find((s) => s.code === skill.code)) {
-                  acc.police.push(skill)
-                } else {
-                  acc.other.push(skill)
+                if (
+                  Object.keys(acc).find((a) => a === skill.superCategory) ===
+                  undefined
+                ) {
+                  acc[skill.superCategory] = {
+                    title: skill.superName,
+                    roles: []
+                  }
                 }
+                acc[skill.superCategory].roles.push(skill)
                 return acc
               },
-              { police: [], other: [] }
+              {}
             )
 
-            this.modalData.groups = [
-              {
-                title: 'Police',
-                start: 0,
-                end: dividedSkills.police.length
+            const arrangedKeys = [
+              'PSCS',
+              ...Object.keys(groupedSkills)
+                .filter((k) => k !== 'PSCS')
+                .sort((a, b) => {
+                  return a.localeCompare(b)
+                })
+            ]
+
+            const allRoles = arrangedKeys.reduce(
+              (acc, key) => {
+                const lastLength = acc.roles.length
+
+                const roles = [
+                  ...acc.roles,
+                  ...groupedSkills[key].roles
+                    .map((s) => ({
+                      value: s.code,
+                      label: s.name
+                    }))
+                    .sort((a, b) => a.label.localeCompare(b.label))
+                ]
+
+                return {
+                  roles,
+                  groups: [
+                    ...acc.groups,
+                    {
+                      title: groupedSkills[key].title,
+                      start: lastLength,
+                      end: roles.length
+                    }
+                  ]
+                }
               },
               {
-                title: 'Other',
-                start: dividedSkills.police.length,
-                end: dividedSkills.police.length + dividedSkills.other.length
+                roles: [],
+                groups: []
               }
-            ]
+            )
 
-            this.modalData.data = [
-              ...dividedSkills.police
-                .map((s) => ({
-                  value: s.code,
-                  label: s.name
-                }))
-                .sort((a, b) => a.label.localeCompare(b.label)),
-              ...dividedSkills.other
-                .map((s) => ({
-                  value: s.code,
-                  label: s.name
-                }))
-                .sort((a, b) => a.label.localeCompare(b.label))
-            ]
+            this.modalData.groups = allRoles.groups
 
+            this.modalData.data = allRoles.roles
             this.modalData.filterKey = 'skills'
 
             this.modalData.reset = () => {

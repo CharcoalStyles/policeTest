@@ -38,6 +38,8 @@ export function process(data) {
       return false
     }
     skills.push({
+      superCategory: row.category_code,
+      superName: row.category,
       name: row.subcategory,
       code: row.subcategory_code,
       category: row.subcategory,
