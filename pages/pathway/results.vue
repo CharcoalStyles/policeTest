@@ -688,15 +688,14 @@ export default {
     },
 
     skillRoles(currentRole) {
-      const hasSwornAnswer = this.answers.hasOwnProperty('sworn')
       let matches = null
 
       // If the user's current role is a police role and they have opted
       // to only see other police roles
       if (
         currentRole.jobFamily === 'Policing' &&
-        hasSwornAnswer &&
-        this.answers.hasOwnProperty('sworn') === 'yes'
+        this.answers.hasOwnProperty('sworn') &&
+        this.answers.sworn.value === 'yes'
       ) {
         matches = skillRoles(
           this.roles,
