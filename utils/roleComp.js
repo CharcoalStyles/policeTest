@@ -1,12 +1,10 @@
 import { shuffle } from '~/utils/array'
 
 function commonFilters(roles, currentRole, goalRole, userInterests, answers) {
-  console.log('Common filters')
   return roles
     .filter((role) => {
       // remove current role from consideration
       if (role.id === currentRole.id) {
-        console.log('removing current role from consideration')
         return false
       }
       return true
@@ -14,7 +12,6 @@ function commonFilters(roles, currentRole, goalRole, userInterests, answers) {
     .filter((role) => {
       // if there is a goal role, remove it from consideration
       if (goalRole && role.id === goalRole.id) {
-        console.log('removing goal role from consideration')
         return false
       }
       return true
@@ -22,7 +19,6 @@ function commonFilters(roles, currentRole, goalRole, userInterests, answers) {
     .filter((role) => {
       // We'll never show the Student Police Officer role
       if (role.name === 'Student Police Officer') {
-        console.log('removing Student Police Officer from consideration')
         return false
       }
       return true
@@ -44,7 +40,6 @@ function commonFilters(roles, currentRole, goalRole, userInterests, answers) {
     .filter((role) => {
       if (answers && answers.hasOwnProperty('detective-roles')) {
         if (role.grade.split(' ')[0] === 'Detective') {
-          console.log('Detective roles', answers['detective-roles'].value)
           return answers['detective-roles'].value === 'yes'
         }
       }
@@ -59,14 +54,7 @@ export function progressionRoles(
   userInterests,
   answers
 ) {
-  console.log('Progression roles', answers)
   return commonFilters(roles, currentRole, goalRole, userInterests, answers)
-    .map((role, i) => {
-      if (i === 0) {
-        console.log('Start Rank/Salary Filter')
-      }
-      return role
-    })
     .filter((role) => {
       const currentRoleIsPolicingClerk =
         currentRole.gradeId.type === 'policing' ||
@@ -214,7 +202,6 @@ export function rankAndSortRoles(
   userInterests,
   answers
 ) {
-  console.log('Rank and sort roles - results')
   // console.group(type)
   // test logic for role volume
   // console.table(
