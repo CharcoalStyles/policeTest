@@ -135,7 +135,6 @@
                         </div>
                       </div>
                     </div>
-
                     <div class="flex mt-3 gap-4 flex-row">
                       <div class="w-1/2">
                         <div class="flex flex-col">
@@ -271,7 +270,14 @@
             <div class="mb-10">
               <transition-group name="list" tag="div">
                 <job-role
-                  v-for="role in filteredRoles"
+                  v-for="role in filteredRoles.sort((a, b) => {
+                    switch (debouncedFilters.sortBy) {
+                      case 'asc':
+                        return a.salary.max < b.salary.max ? -1 : 1
+                      case 'desc':
+                        return a.salary.max > b.salary.max ? -1 : 1
+                    }
+                  })"
                   :key="role.id"
                   :role="role"
                   @click.native="viewRole(role)"

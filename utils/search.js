@@ -9,12 +9,12 @@
 
 export const keywordSearch = (area, keys, options) => {
   return (searchValue) => {
-    const trimmedValue = searchValue.trim()
-    if (!trimmedValue) {
+    const trimmedSearchValue = searchValue.trim()
+    if (!trimmedSearchValue) {
       return area.map((item) => ({ item, rank: 0 }))
     }
 
-    const results = area.map((searchItem) => {
+    const results = area.map((searchItem, i) => {
       // Search by keyword
       const rank = keys
         .map(({ key, weight }) => {
@@ -31,28 +31,27 @@ export const keywordSearch = (area, keys, options) => {
             keyValues.push(searchItem[key])
           }
 
-          keyValues.forEach((value) => {
-            if (typeof value !== 'string') {
+          keyValues.forEach((keyValues) => {
+            if (typeof keyValues !== 'string') {
               return
             }
 
-            if (value.toLowerCase() === trimmedValue.toLowerCase()) {
+            if (keyValues.toLowerCase() === trimmedSearchValue.toLowerCase()) {
               rank += 10
             }
 
-            rank += trimmedValue
+            rank += trimmedSearchValue
               .split(' ')
-              .map((value) => {
-                const words = value.toLowerCase().split(' ')
+              .map((searchSegment) => {
+                const keyValuesWords = keyValues.toLowerCase().split(' ')
 
-                const fullWords = words.filter(
-                  (word) => word === value.toLowerCase()
-                ).length
-                const partialWords = words.filter((word) =>
-                  word.includes(value.toLowerCase())
-                ).length / 2
-
-                return (fullWords + partialWords) * weightValue
+                const fullWords = keyValuesWords.filter(
+                  (word) => word === searchSegment.toLowerCase()
+                )
+                const partialWords = keyValuesWords.filter((word) =>
+                  word.includes(searchSegment.toLowerCase())
+                )
+                return (fullWords.length + partialWords.length / 2) * weightValue
               })
               .reduce((a, b) => a + b, 0)
           })
