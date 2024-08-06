@@ -551,9 +551,9 @@ import {
   adjacentRoles,
   progressionRoles,
   skillRoles,
-  roleShareCapabilitiesRank
+  rankAndSortRoles
 } from '@/utils/roleComp'
-import { shuffle } from '~/utils/array'
+// import { shuffle } from '~/utils/array'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 
 export default {
@@ -654,387 +654,56 @@ export default {
     },
 
     progRoles(currentRole) {
-      let showDetective = true
-      if (this.answers.hasOwnProperty('detective-roles')) {
-        switch (this.answers['detective-roles'].value) {
-          case 'no':
-            showDetective = false
-            break
-          case 'yes':
-          default:
-            showDetective = true
-        }
-      }
-
       const filteredRoles = progressionRoles(
         this.roles,
         currentRole,
-        this.userInterests
+        this.goalRole,
+        this.userInterests,
+        this.answers
       )
-        .filter((role) => role.id !== currentRole.id)
-        .filter((role) => {
-          if (this.goalRole) {
-            return role.id !== this.goalRole.id
-          }
-          return true
-        })
-        .filter((role) => {
-          // filter out sworn roles
-          if (this.answers.hasOwnProperty('sworn')) {
-            switch (this.answers.sworn.value) {
-              case 'yes':
-                return role.jobFamily === 'Policing'
-              case 'no':
-                return role.jobFamily !== 'Policing'
-              default:
-                return true
-            }
-          }
-          return true
-        })
-        .filter((role) => {
-          // Filter out detective roles if not wanted; super edge case for this set, but gotta do it!
-          if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
-            return false
-          }
-          return true
-        })
 
-      const ranked = this.rankAndSortRoles(
+      const ranked = rankAndSortRoles(
         currentRole,
         filteredRoles,
-        'progression'
+        'progression',
+        this.userInterests,
+        this.answers
       )
 
       return ranked.map(({ role }) => role)
     },
 
     adjRoles(currentRole) {
-      let showDetective = true
-      if (this.answers.hasOwnProperty('detective-roles')) {
-        switch (this.answers['detective-roles'].value) {
-          case 'no':
-            showDetective = false
-            break
-          case 'yes':
-          default:
-            showDetective = true
-        }
-      }
-
       const filteredRoles = adjacentRoles(this.roles, currentRole)
-        .filter((role) => role.id !== currentRole.id)
-        .filter((role) => {
-          if (this.goalRole) {
-            return role.id !== this.goalRole.id
-          }
-          return true
-        })
-        .filter((role) => {
-          // filter out sworn roles
-          if (this.answers.hasOwnProperty('sworn')) {
-            switch (this.answers.sworn.value) {
-              case 'yes':
-                return role.jobFamily === 'Policing'
-              case 'no':
-                return role.jobFamily !== 'Policing'
-              default:
-                return true
-            }
-          }
-          return true
-        })
-        .filter((role) => {
-          // Filter out detective roles if not wanted
-          if (role.grade.split(' ')[0] === 'Detective' && !showDetective) {
-            return false
-          }
-          return true
-        })
 
-      const ranked = this.rankAndSortRoles(
+      const ranked = rankAndSortRoles(
         currentRole,
         filteredRoles,
-        'adjacent'
+        'adjacent',
+        this.userInterests,
+        this.answers
       )
 
       return ranked.map(({ role }) => role)
     },
 
-    isRoleSharingSkills(firstRole, secondRole) {
-      const results = firstRole.capabilities.focus.reduce((acc, item) => {
-        const sameCode = secondRole.capabilities.focus.find(
-          (otherItem) => item.code === otherItem.code
-        )
-
-        if (sameCode) {
-          const sameLevel = secondRole.capabilities.focus.find(
-            (otherItem) => item.level >= otherItem.level
-          )
-
-          if (sameLevel) {
-            acc.push(item)
-          }
-        }
-        return acc
-      }, [])
-
-      return results
-    },
-
-    rankAndSortRoles(currentRole, compareRoles, type) {
-      // console.group(type)
-      // test logic for role volume
-      // console.table(
-      //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
-      //     salary,
-      //     'salary 1.5 * minVol^0.1': 1.5 * Math.pow(salary, 0.1),
-      //     'salary 1.5 * minVol^0.11': 1.5 * Math.pow(salary, 0.11)
-      //   }))
-      // )
-
-      // type is type of reccomendation
-      // 'progression', 'adjacent' or 'skill'
-      const partialResults = compareRoles
-        .map((role) => {
-          const rrBreakdown = {}
-          // Capability comparison
-          let roleRank = roleShareCapabilitiesRank(currentRole, role)
-          rrBreakdown.capabilities = roleRank
-
-          // Grade logic
-          if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
-            const gradeDelta = currentRole.gradeId.grade - role.gradeId.grade
-
-            if (gradeDelta === 0) {
-              roleRank += 1
-              rrBreakdown.gradeDelta = 1
-            }
-
-            if (gradeDelta === -1) {
-              // next grade
-              roleRank += 0.5
-              rrBreakdown.gradeDelta = 0.5
-            }
-
-            if (gradeDelta > 0) {
-              // next grade
-              roleRank -= 0.5
-              rrBreakdown.gradeDelta = -0.5
-            }
-          }
-
-          // Interests comparison
-          if (this.userInterests.length > 0) {
-            if (this.userInterests.includes(role.jobFunction.trim())) {
-              switch (type) {
-                case 'progression':
-                  roleRank += 4
-                  break
-                case 'adjacent':
-                  roleRank += 9
-                  break
-              }
-            }
-          }
-
-          // Management preference
-          if (this.answers.hasOwnProperty('management')) {
-            if (this.answers.management.value !== 'either') {
-              const wantManager = this.answers.management.value === 'manager'
-              const isManager = role.manager
-              if (wantManager === isManager) {
-                roleRank += 1
-              }
-            }
-          }
-          // role volume (number of positions)
-          if (role.numPositions) {
-            const minVolume = role.numPositions
-              .split(' ')
-              .reduce((acc, num) => {
-                const n = Number.parseInt(num)
-                if (Number.isNaN(n)) {
-                  return acc
-                }
-                if (n > acc) {
-                  return n
-                }
-                return acc
-              }, -1)
-
-            roleRank += 1.5 * Math.pow(minVolume, 0.11)
-            rrBreakdown.minVolume = 1.5 * Math.pow(minVolume, 0.11)
-          }
-
-          // salary logic
-          if (
-            role.jobFamily === 'Policing' &&
-            currentRole.jobFamily === 'Policing'
-          ) {
-            if (role.salary.max > currentRole.salary.max) {
-              const diff = role.salary.max - currentRole.salary.max
-              switch (type) {
-                case 'progression':
-                  roleRank -= (diff / 2000) * 0.1
-                  rrBreakdown.salaryDiff = (diff / 2000) * -0.1
-                  break
-                case 'adjacent':
-                  roleRank -= (diff / 2000) * 0.5
-                  rrBreakdown.salaryDiff = (diff / 2000) * -0.5
-                  break
-                case 'skill':
-                  roleRank -= (diff / 2000) * 0.05
-                  rrBreakdown.salaryDiff = (diff / 2000) * -0.05
-              }
-            }
-          }
-
-          // bumps for Job Family and Job Function
-          if (role.jobFamily === currentRole.jobFamily) {
-            switch (type) {
-              case 'progression':
-                roleRank += 2
-                rrBreakdown.jobFamily = 2
-                break
-              case 'adjacent':
-                roleRank += 1
-                rrBreakdown.jobFamily = 1
-                break
-              case 'skill':
-                roleRank += 0.05
-                rrBreakdown.jobFamily = 0.05
-                break
-            }
-          }
-          if (role.jobFunction === currentRole.jobFunction) {
-            switch (type) {
-              case 'progression':
-                roleRank += 2
-                rrBreakdown.jobFunction = 2
-                break
-              case 'adjacent':
-                if (this.userInterests.length === 0) {
-                  roleRank += 2
-                  rrBreakdown.jobFunction = 2
-                }
-                roleRank += 1
-                rrBreakdown.jobFunction = 1
-                break
-              case 'skill':
-                roleRank += 0.05
-                rrBreakdown.jobFunction = 0.05
-                break
-            }
-          }
-
-          // bumps for command / unit
-          if (role.command_BusUnit !== currentRole.command_BusUnit) {
-            switch (type) {
-              case 'progression':
-                roleRank += 1
-                rrBreakdown.command_BusUnit = 1
-                break
-              case 'adjacent':
-                roleRank += 2.5
-                rrBreakdown.command_BusUnit = 2.5
-                break
-              case 'skill':
-                roleRank += 0.5
-                rrBreakdown.command_BusUnit = 0.5
-                break
-            }
-          }
-
-          return {
-            role,
-            rank: roleRank,
-            rrBreakdown
-          }
-        }, [])
-        .sort((a, b) => {
-          return b.rank - a.rank
-        })
-      // .map(({ role, rank, rrBreakdown }, i) => {
-      //   if (i < 50) {
-      //     console.log(role.name, rank, rrBreakdown)
-      //   }
-      //   return {
-      //     role,
-      //     rank
-      //   }
-      // })
-
-      if (
-        type === 'progression' &&
-        currentRole.jobFamily === 'Policing' &&
-        currentRole.gradeId.grade === 4
-      ) {
-        const inspectorRoles = partialResults.filter(
-          (r) =>
-            r.role.gradeId.grade === 5 &&
-            r.rank > 0 &&
-            r.role.jobFamily === 'Policing'
-        )
-        partialResults.unshift(...inspectorRoles.slice(0, 3))
-      }
-
-      const results = partialResults
-        .reduce((acc, rankedRole) => {
-          const totalFocus = rankedRole.rank
-
-          if (acc.length === 0) {
-            acc.push([rankedRole])
-          } else {
-            const lastRank = acc[acc.length - 1]
-            if (lastRank[0].rank === totalFocus) {
-              acc[acc.length - 1].push(rankedRole)
-            } else {
-              acc.push([rankedRole])
-            }
-          }
-          return acc
-        }, [])
-        .reduce((acc, rankedRole) => {
-          if (acc.find((x) => x[0].rank === rankedRole[0].rank)) {
-            acc[acc.findIndex((x) => x[0].rank === rankedRole.rank)].push(
-              rankedRole
-            )
-          } else {
-            acc.push([rankedRole])
-          }
-          return acc
-        }, [])
-        .reduce((acc, rankedRoleGroup) => {
-          shuffle(rankedRoleGroup)
-          return [...acc, ...rankedRoleGroup.flat()]
-        }, [])
-      // console.groupEnd()
-      return results
-    },
-
     skillRoles(currentRole) {
-      const hasSwornAnswer = this.answers.hasOwnProperty('sworn')
       let matches = null
 
+      // If the user's current role is a police role and they have opted
+      // to only see other police roles
       if (
         currentRole.jobFamily === 'Policing' &&
-        hasSwornAnswer &&
-        this.answers.hasOwnProperty('sworn') === 'yes'
+        this.answers.hasOwnProperty('sworn') &&
+        this.answers.sworn.value === 'yes'
       ) {
-        matches = skillRoles(this.roles, this.currentRole)
-          .filter((role) => {
-            if (role.id === currentRole.id) {
-              return false
-            }
-            return true
-          })
-          .filter((role) => {
-            if (this.goalRole && this.goalRole.id === role.id) {
-              return false
-            }
-            return true
-          })
+        matches = skillRoles(
+          this.roles,
+          this.currentRole,
+          this.goalRole,
+          this.userInterests,
+          this.answers
+        )
           .filter((role) => {
             if (role.jobFamily !== 'Policing') {
               return false
@@ -1047,72 +716,28 @@ export default {
             }
             return true
           })
-          .filter((role) => {
-            if (this.answers.hasOwnProperty('interests')) {
-              if (this.answers.interests.value.includes(role.jobFunction)) {
-                return false
-              }
-            }
-            return true
-          })
-          .filter((role) => {
-            if (role.grade.split(' ')[0] === 'Detective') {
-              if (this.answers.hasOwnProperty('detective-roles')) {
-                switch (this.answers['detective-roles'].value) {
-                  case 'no':
-                    return false
-                  case 'yes':
-                  default:
-                    return true
-                }
-              }
-              return true
-            }
-
-            return true
-          })
       } else {
-        matches = skillRoles(this.roles, this.currentRole)
-          .filter((role) => {
-            if (this.currentRole.jobFamily === 'Policing') {
-              return true
-            }
-            return role.jobFamily !== currentRole.jobFamily
-          })
-          .filter((role) => {
-            // filter out sworn roles
-            if (this.answers.hasOwnProperty('sworn')) {
-              switch (this.answers.sworn.value) {
-                case 'yes':
-                  return role.jobFamily === 'Policing'
-                case 'no':
-                  return role.jobFamily !== 'Policing'
-                default:
-                  return true
-              }
-            }
+        matches = skillRoles(
+          this.roles,
+          this.currentRole,
+          this.goalRole,
+          this.userInterests,
+          this.answers
+        ).filter((role) => {
+          if (this.currentRole.jobFamily === 'Policing') {
             return true
-          })
-          .filter((role) => {
-            if (role.grade.split(' ')[0] === 'Detective') {
-              if (this.answers.hasOwnProperty('detective-roles')) {
-                switch (this.answers['detective-roles'].value) {
-                  case 'no':
-                    return false
-                  case 'yes':
-                  default:
-                    return true
-                }
-              }
-              return true
-            }
-            return true
-          })
+          }
+          return role.jobFamily !== currentRole.jobFamily
+        })
       }
 
-      return this.rankAndSortRoles(currentRole, matches, 'skill').map(
-        ({ role }) => role
-      )
+      return rankAndSortRoles(
+        currentRole,
+        matches,
+        'skill',
+        this.userInterests,
+        this.answers
+      ).map(({ role }) => role)
     }
   }
 }

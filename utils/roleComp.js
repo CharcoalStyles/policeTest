@@ -1,8 +1,21 @@
 import { shuffle } from '~/utils/array'
 
-export function progressionRoles(roles, currentRole) {
-  const filteredRoles = roles
-    .filter((role) => role.id !== currentRole.id)
+function commonFilters(roles, currentRole, goalRole, userInterests, answers) {
+  return roles
+    .filter((role) => {
+      // remove current role from consideration
+      if (role.id === currentRole.id) {
+        return false
+      }
+      return true
+    })
+    .filter((role) => {
+      // if there is a goal role, remove it from consideration
+      if (goalRole && role.id === goalRole.id) {
+        return false
+      }
+      return true
+    })
     .filter((role) => {
       // We'll never show the Student Police Officer role
       if (role.name === 'Student Police Officer') {
@@ -11,13 +24,50 @@ export function progressionRoles(roles, currentRole) {
       return true
     })
     .filter((role) => {
-      // Only pick roles that are the next level up
+      // filter out sworn roles
+      if (answers && answers.hasOwnProperty('sworn')) {
+        switch (answers.sworn.value) {
+          case 'yes':
+            return role.jobFamily === 'Policing'
+          case 'no':
+            return role.jobFamily !== 'Policing'
+          default:
+            return true
+        }
+      }
+      return true
+    })
+    .filter((role) => {
+      if (answers && answers.hasOwnProperty('detective-roles')) {
+        if (role.grade.split(' ')[0] === 'Detective') {
+          return answers['detective-roles'].value === 'yes'
+        }
+      }
+      return true
+    })
+}
+
+export function progressionRoles(
+  roles,
+  currentRole,
+  goalRole,
+  userInterests,
+  answers
+) {
+  return commonFilters(roles, currentRole, goalRole, userInterests, answers)
+    .filter((role) => {
+      const currentRoleIsPolicingClerk =
+        currentRole.gradeId.type === 'policing' ||
+        currentRole.gradeId.type === 'clerk'
+      const thisRoleIsPolicingClerk =
+        role.gradeId.type === 'policing' || role.gradeId.type === 'clerk'
+      const bothRolesHaveValidGrade =
+        role.gradeId.grade !== -1 && currentRole.gradeId.grade !== -1
+
       if (
-        (currentRole.gradeId.type === 'policing' ||
-          currentRole.gradeId.type === 'clerk') &&
-        (role.gradeId.type === 'policing' || role.gradeId.type === 'clerk') &&
-        role.gradeId.grade !== -1 &&
-        currentRole.gradeId.grade !== -1
+        currentRoleIsPolicingClerk &&
+        thisRoleIsPolicingClerk &&
+        bothRolesHaveValidGrade
       ) {
         const nextRoleJump = 2
 
@@ -51,12 +101,22 @@ export function progressionRoles(roles, currentRole) {
         return true
       }
     })
-
-  return filteredRoles
 }
 
-export function adjacentRoles(roles, currentRole) {
-  const filteredRoles = roles
+export function adjacentRoles(
+  roles,
+  currentRole,
+  goalRole,
+  userInterests,
+  answers
+) {
+  const filteredRoles = commonFilters(
+    roles,
+    currentRole,
+    goalRole,
+    userInterests,
+    answers
+  )
     .filter((role) => role.id !== currentRole.id)
     .filter((role) => {
       // Filter out roles not in current Job Family, if in Policing
@@ -73,11 +133,8 @@ export function adjacentRoles(roles, currentRole) {
       return true
     })
     .filter((role) => {
-      // Only pick roles that are the next level up for roles where whe have that numerical ranking
-      if (
-        currentRole.gradeId.type === 'policing' ||
-        currentRole.gradeId.type === 'clerk'
-      ) {
+      // Only pick roles that are the same level for roles where we have that numerical ranking
+      if (currentRole.gradeId.type === 'policing') {
         return role.gradeId.grade === currentRole.gradeId.grade
       }
     })
@@ -103,37 +160,49 @@ export function adjacentRoles(roles, currentRole) {
   return filteredRoles
 }
 
-export function skillRoles(roles, currentRole) {
-  const filtered = roles
-    .filter((role) => role.id !== currentRole.id)
-    .filter((role) => role.name !== 'Student Police Officer')
-    .filter((role) => {
-      // Salary logic
+export function skillRoles(
+  roles,
+  currentRole,
+  goalRole,
+  userInterests,
+  answers
+) {
+  const filteredRoles = commonFilters(
+    roles,
+    currentRole,
+    goalRole,
+    userInterests,
+    answers
+  ).filter((role) => {
+    // Salary logic
 
-      // If min salary is >5% less than current role's salary, then it's a no-go
-      if (role.salary.min < currentRole.salary.min * 0.95) {
-        return false
-      }
-
-      if (
-        Math.abs(role.salary.min - currentRole.salary.min) < 20000 &&
-        Math.abs(role.salary.max - currentRole.salary.max) < 20000
-      ) {
-        return true
-      }
+    // If min salary is >5% less than current role's salary, then it's a no-go
+    if (role.salary.min < currentRole.salary.min * 0.95) {
       return false
-    })
-  return filtered
+    }
+
+    if (
+      Math.abs(role.salary.min - currentRole.salary.min) < 20000 &&
+      Math.abs(role.salary.max - currentRole.salary.max) < 20000
+    ) {
+      return true
+    }
+    return false
+  })
+  return filteredRoles
 }
 
+/// type is type of reccomendation
+/// 'progression', 'adjacent' or 'skill'
+/// userInterests and answers are optional
 export function rankAndSortRoles(
   currentRole,
   compareRoles,
-  type
+  type,
+  userInterests,
+  answers
 ) {
-  // type is type of reccomendation
-  // 'progression' or 'adjacent'
-
+  // console.group(type)
   // test logic for role volume
   // console.table(
   //   [10, 25, 50, 100, 250, 1000, 6000].map((salary) => ({
@@ -143,12 +212,12 @@ export function rankAndSortRoles(
   //   }))
   // )
 
-  // type is type of reccomendation
-  // 'progression', 'adjacent' or 'skill'
-  return compareRoles
+  const partialResults = compareRoles
     .map((role) => {
+      const rrBreakdown = {}
       // Capability comparison
       let roleRank = roleShareCapabilitiesRank(currentRole, role)
+      rrBreakdown.capabilities = roleRank
 
       // Grade logic
       if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
@@ -156,19 +225,46 @@ export function rankAndSortRoles(
 
         if (gradeDelta === 0) {
           roleRank += 1
+          rrBreakdown.gradeDelta = 1
         }
 
         if (gradeDelta === -1) {
           // next grade
           roleRank += 0.5
+          rrBreakdown.gradeDelta = 0.5
         }
 
         if (gradeDelta > 0) {
           // next grade
           roleRank -= 0.5
+          rrBreakdown.gradeDelta = -0.5
         }
       }
 
+      // Interests comparison
+      if (userInterests && userInterests.length > 0) {
+        if (userInterests.includes(role.jobFunction.trim())) {
+          switch (type) {
+            case 'progression':
+              roleRank += 4
+              break
+            case 'adjacent':
+              roleRank += 9
+              break
+          }
+        }
+      }
+
+      // Management preference
+      if (answers && answers.hasOwnProperty('management')) {
+        if (answers.management.value !== 'either') {
+          const wantManager = answers.management.value === 'manager'
+          const isManager = role.manager
+          if (wantManager === isManager) {
+            roleRank += 1
+          }
+        }
+      }
       // role volume (number of positions)
       if (role.numPositions) {
         const minVolume = role.numPositions.split(' ').reduce((acc, num) => {
@@ -183,6 +279,7 @@ export function rankAndSortRoles(
         }, -1)
 
         roleRank += 1.5 * Math.pow(minVolume, 0.11)
+        rrBreakdown.minVolume = 1.5 * Math.pow(minVolume, 0.11)
       }
 
       // salary logic
@@ -195,10 +292,15 @@ export function rankAndSortRoles(
           switch (type) {
             case 'progression':
               roleRank -= (diff / 2000) * 0.1
+              rrBreakdown.salaryDiff = (diff / 2000) * -0.1
               break
             case 'adjacent':
               roleRank -= (diff / 2000) * 0.5
+              rrBreakdown.salaryDiff = (diff / 2000) * -0.5
               break
+            case 'skill':
+              roleRank -= (diff / 2000) * 0.05
+              rrBreakdown.salaryDiff = (diff / 2000) * -0.05
           }
         }
       }
@@ -208,9 +310,15 @@ export function rankAndSortRoles(
         switch (type) {
           case 'progression':
             roleRank += 2
+            rrBreakdown.jobFamily = 2
             break
           case 'adjacent':
             roleRank += 1
+            rrBreakdown.jobFamily = 1
+            break
+          case 'skill':
+            roleRank += 0.05
+            rrBreakdown.jobFamily = 0.05
             break
         }
       }
@@ -218,9 +326,19 @@ export function rankAndSortRoles(
         switch (type) {
           case 'progression':
             roleRank += 2
+            rrBreakdown.jobFunction = 2
             break
           case 'adjacent':
+            if (userInterests && userInterests.length === 0) {
+              roleRank += 2
+              rrBreakdown.jobFunction = 2
+            }
             roleRank += 1
+            rrBreakdown.jobFunction = 1
+            break
+          case 'skill':
+            roleRank += 0.05
+            rrBreakdown.jobFunction = 0.05
             break
         }
       }
@@ -230,44 +348,53 @@ export function rankAndSortRoles(
         switch (type) {
           case 'progression':
             roleRank += 1
+            rrBreakdown.command_BusUnit = 1
             break
           case 'adjacent':
             roleRank += 2.5
+            rrBreakdown.command_BusUnit = 2.5
+            break
+          case 'skill':
+            roleRank += 0.5
+            rrBreakdown.command_BusUnit = 0.5
             break
         }
       }
 
       return {
         role,
-        rank: roleRank
+        rank: roleRank,
+        rrBreakdown
       }
     }, [])
     .sort((a, b) => {
       return b.rank - a.rank
     })
-    .reduce(
-      (acc, rankedRole, idx) => {
-        if (currentRole.jobFamily !== 'Policing') {
-          acc.roles.push(rankedRole)
-          return acc
-        }
-        // if the current role is a Sergent / Senior Sergeant we want to have a minimum of 3 Inspectors
-        if (currentRole.gradeId.grade === 4) {
-          if (rankedRole.role.gradeId.grade === 5) {
-            acc.counted += 1
+  // .map(({ role, rank, rrBreakdown }, i) => {
+  //   if (i < 50) {
+  //     console.log(role.name, rank, rrBreakdown)
+  //   }
+  //   return {
+  //     role,
+  //     rank
+  //   }
+  // })
 
-            if (idx > 5 && acc.counted <= 3) {
-              acc.roles = [rankedRole, ...acc.roles]
-              return acc
-            }
-          }
-        }
-        acc.roles.push(rankedRole)
-        return acc
-      },
-      { counted: 0, roles: [] }
+  if (
+    type === 'progression' &&
+    currentRole.jobFamily === 'Policing' &&
+    currentRole.gradeId.grade === 4
+  ) {
+    const inspectorRoles = partialResults.filter(
+      (r) =>
+        r.role.gradeId.grade === 5 &&
+        r.rank > 0 &&
+        r.role.jobFamily === 'Policing'
     )
-    .roles
+    partialResults.unshift(...inspectorRoles.slice(0, 3))
+  }
+
+  const results = partialResults
     .reduce((acc, rankedRole) => {
       const totalFocus = rankedRole.rank
 
@@ -297,6 +424,8 @@ export function rankAndSortRoles(
       shuffle(rankedRoleGroup)
       return [...acc, ...rankedRoleGroup.flat()]
     }, [])
+  // console.groupEnd()
+  return results
 }
 
 export function roleShareCapabilitiesRank(firstRole, secondRole) {
