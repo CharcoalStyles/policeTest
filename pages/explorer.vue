@@ -28,18 +28,25 @@
                 </div>
               </div>
               <div class="px-6 pt-2 pb-2 flex flex-col gap-3">
-                <div>
+                <div class="relative">
                   <label class="mb-1">
                     <p class="pb-2 font-bold text-sm">Search by keyword</p>
                   </label>
-                  <input
-                    id="keywords"
-                    v-debounce:1s.fireonempty="updateKeyword"
-                    name="keywords"
-                    class="nsw-form-input h-role-input"
-                    placeholder="Search"
-                    :value="debouncedFilters.keyword"
-                  />
+                  <div class="flex items-center">
+                    <input
+                      id="keywords"
+                      v-debounce:1s.fireonempty="updateKeyword"
+                      name="keywords"
+                      class="nsw-form-input h-role-input pr-10 w-full"
+                      placeholder="Search"
+                      :value="filter.keyword"
+                    />
+                    <img
+                      v-if="searching"
+                      class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
+                      src="/loader.svg"
+                    />
+                  </div>
                 </div>
                 <div class="flex flex-row justify-between h-full">
                   <div
@@ -226,7 +233,7 @@
                   <div class="inline-block relative">
                     <select
                       id="sort"
-                      v-model="debouncedFilters.sortBy"
+                      v-model="sortBy"
                       class="nsw-form-select h-role-input py-0"
                     >
                       <option value="asc">Ascending</option>
@@ -237,8 +244,16 @@
               </div>
             </div>
           </div>
+          <div v-if="searching">
+            <p class="text-center">
+              <img
+                src="/loader.svg"
+                class="w-16 h-16 animate-spin [animation-duration:_2s]"
+              />
+            </p>
+          </div>
           <div
-            v-if="filter.keyword.length === 0"
+            v-else-if="debouncedFilters.keyword.length === 0"
             class="p-4 flex-grow overflow-y-scroll"
           >
             <div
@@ -252,7 +267,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in group.roles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
+                    switch (sortBy) {
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
                       case 'desc':
@@ -271,7 +286,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in filteredRoles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
+                    switch (sortBy) {
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
                       case 'desc':
@@ -711,9 +726,9 @@ export default {
         jobFunction: [],
         command_BusUnit: [],
         salary: [38000, 362000],
-        sworn: 'other',
-        sortBy: 'asc'
+        sworn: 'other'
       },
+      sortBy: 'asc',
       filterByUser: {
         skills: false,
         interests: false,
@@ -722,6 +737,8 @@ export default {
         command_BusUnit: false
       },
       filterTimeout: null,
+      searching: false,
+      searchResults: undefined,
       viewState: 1,
       lastViewState: 1,
       boxStyle:
@@ -750,17 +767,9 @@ export default {
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      const keyword = keywordSearch(this.roles, [
-        { key: 'name', weight: 2 },
-        { key: 'alias' },
-        { key: 'command_BusUnit' },
-        { key: 'jobFunction' },
-        { key: 'grade', weight: 1.5 }
-      ])
-
-      const keywordResult = keyword(this.debouncedFilters.keyword)
-      // Filter by salary and skills
-      return collect(keywordResult.map((r) => r.item))
+      const results = collect(
+        this.searchResults === undefined ? this.roles : this.searchResults
+      )
         .filter((role) => !role.genericRole)
         .filter((role) => {
           switch (this.debouncedFilters.sworn) {
@@ -815,6 +824,9 @@ export default {
           }
           return true
         })
+
+      this.stopSearching()
+      return results
     },
 
     /**
@@ -999,7 +1011,40 @@ export default {
      * Update keyword value on debounce
      */
     updateKeyword(value) {
-      this.debouncedFilters.keyword = value
+      console.log('updateKeyword', value)
+      if (value === this.debouncedFilters.keyword) {
+        console.log('same')
+        return
+      }
+      // this.filter.keyword = value
+      this.searching = true
+
+      if (value.length === 0 && !this.searching) {
+        console.log('clearing')
+        this.debouncedFilters.keyword = ''
+        this.searchResults = undefined
+      } else {
+        console.log('searching')
+        this.filter.keyword = value
+        // add a delay to allow the user to see the loading spinner
+        setTimeout(() => {
+          this.debouncedFilters.keyword = value
+          const keyword = keywordSearch(this.roles, [
+            { key: 'name', weight: 2 },
+            { key: 'alias' },
+            { key: 'command_BusUnit' },
+            { key: 'jobFunction' },
+            { key: 'grade', weight: 1.5 }
+          ])
+
+          this.searchResults = keyword(value).map((r) => r.item)
+        }, 300)
+      }
+    },
+
+    stopSearching() {
+      console.log('stop searching')
+      this.searching = false
     },
 
     demoExplorerAnimation() {
