@@ -28,18 +28,25 @@
                 </div>
               </div>
               <div class="px-6 pt-2 pb-2 flex flex-col gap-3">
-                <div>
+                <div class="relative">
                   <label class="mb-1">
                     <p class="pb-2 font-bold text-sm">Search by keyword</p>
                   </label>
-                  <input
-                    id="keywords"
-                    v-debounce:1s.fireonempty="updateKeyword"
-                    name="keywords"
-                    class="nsw-form-input h-role-input"
-                    placeholder="Search"
-                    :value="debouncedFilters.keyword"
-                  />
+                  <div class="flex items-center">
+                    <input
+                      id="keywords"
+                      v-debounce:1s.fireonempty="updateKeyword"
+                      name="keywords"
+                      class="nsw-form-input h-role-input pr-10 w-full"
+                      placeholder="Search"
+                      :value="filter.keyword"
+                    />
+                    <img
+                      v-if="searching"
+                      class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
+                      src="/loader.svg"
+                    />
+                  </div>
                 </div>
                 <div class="flex flex-row justify-between h-full">
                   <div
@@ -103,9 +110,9 @@
                             @click="showSelectorPopup('grade')"
                           >
                             {{
-                              debouncedFilters.grade.length === 0
+                              filter.grade.length === 0
                                 ? 'All'
-                                : `${debouncedFilters.grade.length} selected`
+                                : `${filter.grade.length} selected`
                             }}
                           </div>
                         </div>
@@ -115,9 +122,9 @@
                         <div class="flex justify-between">
                           <label class="text-sm font-bold mb-1">Salary</label>
                           <div class="text-sm text-gray-700">
-                            ${{ debouncedFilters.salary[0] / 1000 }}k - ${{
-                              debouncedFilters.salary[1] / 1000
-                            }}k
+                            ${{ salaryLabelData[0] / 1000 }}k - ${{
+                              salaryLabelData[1] / 1000
+                            }}
                           </div>
                         </div>
                         <div
@@ -126,7 +133,9 @@
                           <div class="w-full flex justify-center">
                             <div class="w-11/12">
                               <input-range
-                                v-model="debouncedFilters.salary"
+                                :value="filter.salary"
+                                @change="updateSalaryFilter"
+                                :debounce-events="['input', 'change']"
                                 :min="options.salary.min"
                                 :max="options.salary.max"
                               />
@@ -155,9 +164,9 @@
                             @click="showSelectorPopup('skills')"
                           >
                             {{
-                              debouncedFilters.skills.length === 0
+                              filter.skills.length === 0
                                 ? 'All'
-                                : `${debouncedFilters.skills.length} selected`
+                                : `${filter.skills.length} selected`
                             }}
                           </div>
                         </div>
@@ -174,9 +183,9 @@
                           @click="showSelectorPopup('jobFunction')"
                         >
                           {{
-                            debouncedFilters.jobFunction.length === 0
+                            filter.jobFunction.length === 0
                               ? 'All'
-                              : `${debouncedFilters.jobFunction.length} selected`
+                              : `${filter.jobFunction.length} selected`
                           }}
                         </div>
                       </div>
@@ -192,9 +201,9 @@
                           @click="showSelectorPopup('command_BusUnit')"
                         >
                           {{
-                            debouncedFilters.command_BusUnit.length === 0
+                            filter.command_BusUnit.length === 0
                               ? 'All'
-                              : `${debouncedFilters.command_BusUnit.length} selected`
+                              : `${filter.command_BusUnit.length} selected`
                           }}
                         </div>
                       </div>
@@ -226,7 +235,7 @@
                   <div class="inline-block relative">
                     <select
                       id="sort"
-                      v-model="debouncedFilters.sortBy"
+                      v-model="sortBy"
                       class="nsw-form-select h-role-input py-0"
                     >
                       <option value="asc">Ascending</option>
@@ -237,8 +246,16 @@
               </div>
             </div>
           </div>
+          <div v-if="searching">
+            <p class="text-center">
+              <img
+                src="/loader.svg"
+                class="w-16 h-16 animate-spin [animation-duration:_2s]"
+              />
+            </p>
+          </div>
           <div
-            v-if="filter.keyword.length === 0"
+            v-else-if="filter.keyword.length === 0"
             class="p-4 flex-grow overflow-y-scroll"
           >
             <div
@@ -252,7 +269,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in group.roles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
+                    switch (sortBy) {
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
                       case 'desc':
@@ -271,7 +288,7 @@
               <transition-group name="list" tag="div">
                 <job-role
                   v-for="role in filteredRoles.sort((a, b) => {
-                    switch (debouncedFilters.sortBy) {
+                    switch (sortBy) {
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
                       case 'desc':
@@ -576,12 +593,12 @@
     </main>
 
     <generic-selector
-      v-model="debouncedFilters[modalData.filterKey]"
+      v-model="filter[modalData.filterKey]"
       :data="modalData.data"
       :show="modals.selector === 'generic'"
       max-width="xl"
       :title="modalData.title"
-      :value="debouncedFilters[modalData.filterKey]"
+      :value="filter[modalData.filterKey]"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -594,14 +611,14 @@
     </generic-selector>
 
     <selector-with-various
-      v-model="debouncedFilters[modalData.filterKey]"
+      v-model="filter[modalData.filterKey]"
       :various-guide-text="modalData.variousGuideText || ''"
       :normal-guide-text="modalData.normalGuideText || ''"
       :data="modalData.data"
       :show="modals.selector === 'various'"
       max-width="xl"
       :title="modalData.title"
-      :value="debouncedFilters[modalData.filterKey]"
+      :value="filter[modalData.filterKey]"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -614,13 +631,13 @@
     </selector-with-various>
 
     <selector-with-sections
-      v-model="debouncedFilters[modalData.filterKey]"
+      v-model="filter[modalData.filterKey]"
       :groups="modalData.groups"
       :data="modalData.data"
       :show="modals.selector === 'sections'"
       max-width="xl"
       :title="modalData.title"
-      :value="debouncedFilters[modalData.filterKey]"
+      :value="filter[modalData.filterKey]"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -653,10 +670,15 @@ import PageLoading from '@/components/PageLoading'
 import NswButton from '@/components/nsw/NswButton'
 import ModalOnboarding from '@/components/ModalOnboarding'
 import { keywordSearch } from '@/utils/search'
+import { debounce } from 'vue-debounce'
 import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 import SelectorWithVarious from '~/components/SelectorWithVarious.vue'
 import SelectorWithSections from '~/components/SelectorWithSections.vue'
+
+const filterDebounce = debounce(({ fn, val }) => {
+  fn(val)
+}, '400ms')
 
 export default {
   layout: 'explore',
@@ -698,7 +720,7 @@ export default {
       options: {
         salary: {
           min: 38000,
-          max: 362000
+          max: 288000
         }
       },
       filter: {
@@ -710,10 +732,11 @@ export default {
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
-        salary: [38000, 362000],
-        sworn: 'other',
-        sortBy: 'asc'
+        salary: [38000, 288000],
+        sworn: 'other'
       },
+      salaryLabelData: [38000, 288000],
+      sortBy: 'asc',
       filterByUser: {
         skills: false,
         interests: false,
@@ -722,6 +745,8 @@ export default {
         command_BusUnit: false
       },
       filterTimeout: null,
+      searching: false,
+      searchResults: undefined,
       viewState: 1,
       lastViewState: 1,
       boxStyle:
@@ -732,89 +757,112 @@ export default {
     roles() {
       return this.$store.state.roles
     },
-    debouncedFilters: {
-      get() {
-        return this.filter
-      },
-      set(val) {
-        if (this.filterTimeout) {
-          clearTimeout(this.filterTimeout)
-        }
-        this.filterTimeout = setTimeout(() => {
-          this.filter = val
-        }, 300)
-      }
-    },
 
     /**
      * Filter roles based on filtering form values
      */
     filteredRoles() {
-      const keyword = keywordSearch(this.roles, [
-        { key: 'name', weight: 2 },
-        { key: 'alias' },
-        { key: 'command_BusUnit' },
-        { key: 'jobFunction' },
-        { key: 'grade', weight: 1.5 }
-      ])
-
-      const keywordResult = keyword(this.debouncedFilters.keyword)
-      // Filter by salary and skills
-      return collect(keywordResult.map((r) => r.item))
-        .filter((role) => !role.genericRole)
-        .filter((role) => {
-          switch (this.debouncedFilters.sworn) {
-            case 'other':
-              return true
-            case 'police':
-              return role.jobFamily === 'Policing'
-            case 'administrative':
-              return role.jobFamily !== 'Policing'
-            default:
-              return false
+      const filters = [
+        // Filter out generic roles
+        {
+          name: 'Generic Roles',
+          preFilter: () => true,
+          filter: (role) => !role.genericRole
+        },
+        // Filter by the police/admin selection
+        {
+          name: 'Police / Administrative',
+          preFilter: () => this.filter.sworn !== 'other',
+          filter: (role) => {
+            switch (this.filter.sworn) {
+              case 'other':
+                return true
+              case 'police':
+                return role.jobFamily === 'Policing'
+              case 'administrative':
+                return role.jobFamily !== 'Policing'
+              default:
+                return false
+            }
           }
-        })
-        .filter((role) => {
-          if (this.filter.jobFamily) {
-            return role.jobFamily === this.filter.jobFamily
+        },
+        // Filter by job family selection
+        {
+          name: 'Job Family',
+          preFilter: () => this.filter.jobFamily.length > 0,
+          filter: (role) => {
+            return this.filter.jobFamily.includes(role.jobFamily)
           }
-          return true
-        })
-        .filter((role) => {
-          if (this.filter.jobFunction.length > 0) {
+        },
+        // Filter by job function selection
+        {
+          name: 'Jub Function',
+          preFilter: () => this.filter.jobFunction.length > 0,
+          filter: (role) => {
             return this.filter.jobFunction.includes(role.jobFunction)
           }
-          return true
-        })
-        .filter((role) => {
-          if (this.filter.command_BusUnit.length > 0) {
+        },
+        // Filter by command / bus unit selection
+        {
+          name: 'Command / Business Unit',
+          preFilter: () => this.filter.command_BusUnit.length > 0,
+          filter: (role) => {
             return this.filter.command_BusUnit.includes(role.command_BusUnit)
           }
-          return true
-        })
-        .where('salary.min', '>=', this.debouncedFilters.salary[0])
-        .where('salary.max', '<=', this.debouncedFilters.salary[1])
-        .filter((role) => {
-          if (this.filter.skills.length > 0 && role.skills.focus) {
-            return collect(role.skills.focus)
-              .whereIn('code', this.debouncedFilters.skills)
-              .count()
+        },
+        // Filter by salary selection
+        {
+          name: 'Salary',
+          preFilter: () =>
+            this.filter.salary[0] !== 38000 || this.filter.salary[1] !== 288000,
+          filter: (role) => {
+            return (
+              role.salary.min >= this.filter.salary[0] &&
+              role.salary.min <= this.filter.salary[1]
+            )
           }
-          return true
-        })
-        .filter((role) => {
-          if (this.filter.location.length === 0) {
-            return true
+        },
+        // Filter by skills selection
+        {
+          name: 'Skills',
+          preFilter: () => this.filter.skills.length > 0,
+          filter: (role) => {
+            return role.skills.focus.reduce((acc, skill) => {
+              if (this.filter.skills.includes(skill.code)) {
+                return true
+              }
+              return acc
+            }, false)
           }
-
-          return this.filter.location.includes(role.location.trim())
-        })
-        .filter((role) => {
-          if (this.filter.grade.length > 0 && role.grade) {
+        },
+        // Filter by location selection
+        {
+          name: 'Location',
+          preFilter: () => this.filter.location.length > 0,
+          filter: (role) => {
+            return this.filter.location.includes(role.location.trim())
+          }
+        },
+        // Filter by grade selection
+        {
+          name: 'Grade',
+          preFilter: () => this.filter.grade.length > 0,
+          filter: (role) => {
             return this.filter.grade.includes(role.grade)
           }
-          return true
-        })
+        }
+      ]
+
+      const results = filters.reduce((acc, filter) => {
+        const doThisFilter = filter.preFilter()
+        if (doThisFilter) {
+          return acc.filter(filter.filter)
+        }
+        return acc
+      }, collect(this.searchResults === undefined ? this.roles : this.searchResults))
+
+      this.stopSearching()
+      return results
     },
 
     /**
@@ -936,11 +984,11 @@ export default {
       )
     },
     locationLabel() {
-      if (this.debouncedFilters.location.length === 0) {
+      if (this.filter.location.length === 0) {
         return 'All'
       }
 
-      const numLocations = this.debouncedFilters.location.length
+      const numLocations = this.filter.location.length
       return `${numLocations} selected`
     },
     isLowHeight() {
@@ -978,7 +1026,7 @@ export default {
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
-        salary: [38000, 362000],
+        salary: [38000, 287000],
         sworn: 'other'
       }
       this.filterByUser = {
@@ -992,14 +1040,81 @@ export default {
     },
 
     resetSkillsFilter() {
-      this.debouncedFilters.skills = []
+      this.filter.skills = []
     },
 
     /**
      * Update keyword value on debounce
      */
     updateKeyword(value) {
-      this.debouncedFilters.keyword = value
+      if (value === this.filter.keyword) {
+        return
+      }
+      // this.filter.keyword = value
+      this.searching = true
+
+      if (value.length === 0 && !this.searching) {
+        this.filter.keyword = ''
+        this.searchResults = undefined
+      } else {
+        this.filter.keyword = value
+        // add a delay to allow the user to see the loading spinner
+        setTimeout(() => {
+          this.filter.keyword = value
+          const keyword = keywordSearch(this.roles, [
+            { key: 'name', weight: 2 },
+            { key: 'alias' },
+            { key: 'command_BusUnit' },
+            { key: 'jobFunction' },
+            { key: 'grade', weight: 1.5 }
+          ])
+
+          this.searchResults = keyword(value).map((r) => r.item)
+        }, 300)
+      }
+    },
+
+    updateSkillFilter(value) {
+      this.filter.skill = value
+    },
+
+    updateInterestFilter(value) {
+      this.filter.interest = value
+    },
+
+    updateGradeFilter(value) {
+      this.filter.grade = value
+    },
+
+    updateLocationFilter(value) {
+      this.filter.location = value
+    },
+
+    updateJobFamilyFilter(value) {
+      this.filter.jobFamily = value
+    },
+
+    updateJobFunctionFilter(value) {
+      this.filter.jobFunction = value
+    },
+
+    updateCommandBusUnitFilter(value) {
+      this.filter.command_BusUnit = value
+    },
+
+    updateSalaryFilter(value) {
+      this.salaryLabelData = value
+      const fn = (val) => (this.filter.salary = val)
+      filterDebounce({ fn, val: value })
+      // this.filter.salary = value
+    },
+
+    updateSwornFilter(value) {
+      this.filter.sworn = value
+    },
+
+    stopSearching() {
+      this.searching = false
     },
 
     demoExplorerAnimation() {
@@ -1010,10 +1125,9 @@ export default {
      * Add/remove interest from filter
      */
     toggleInterest(interest) {
-      this.debouncedFilters.interests =
-        this.debouncedFilters.interests.includes(interest)
-          ? this.debouncedFilters.interests.filter((i) => i !== interest)
-          : [...this.debouncedFilters.interests, interest]
+      this.filter.interests = this.filter.interests.includes(interest)
+        ? this.filter.interests.filter((i) => i !== interest)
+        : [...this.filter.interests, interest]
     },
 
     /**
@@ -1103,7 +1217,7 @@ export default {
             this.modalData.filterKey = 'skills'
 
             this.modalData.reset = () => {
-              this.debouncedFilters.skills = []
+              this.filter.skills = []
             }
           }
           break
@@ -1133,7 +1247,7 @@ export default {
             }))
           this.modalData.filterKey = 'location'
           this.modalData.reset = () => {
-            this.debouncedFilters.location = []
+            this.filter.location = []
           }
           break
         case 'grade': {
@@ -1201,7 +1315,7 @@ export default {
           }))
           this.modalData.filterKey = 'grade'
           this.modalData.reset = () => {
-            this.debouncedFilters.grade = []
+            this.filter.grade = []
           }
           break
         }
@@ -1257,7 +1371,7 @@ export default {
 
             this.modalData.filterKey = 'jobFunction'
             this.modalData.reset = () => {
-              this.debouncedFilters.jobFunction = []
+              this.filter.jobFunction = []
             }
           }
           break
@@ -1286,7 +1400,7 @@ export default {
 
           this.modalData.filterKey = 'command_BusUnit'
           this.modalData.reset = () => {
-            this.debouncedFilters.command_BusUnit = []
+            this.filter.command_BusUnit = []
           }
           break
         default:
