@@ -13,7 +13,7 @@
     :dot-size="17"
     :tooltip="'none'"
     :height="2"
-    @change="updateValue"
+    @change="$emit('change', range)"
   />
 </template>
 
@@ -62,22 +62,6 @@ export default {
     this.dotStyle = {
       backgroundColor: '#002664',
       boxShadow: 'none'
-    }
-  },
-  methods: {
-    updateValue() {
-      // Force maximum range as component doesn't allow it
-      if (this.range[0] > 180000) {
-        this.range[0] = 180000
-        this.$refs.slider.setValue(this.range)
-      }
-      // Force minimum range as component doesn't allow it
-      if (this.range[1] < 80000) {
-        this.range[1] = 80000
-        this.$refs.slider.setValue(this.range)
-      }
-
-      this.$emit('input', this.range)
     }
   }
 }
