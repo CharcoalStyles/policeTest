@@ -131,6 +131,10 @@ const mutations = {
     state.dataUpdated.capabilities = data.lastUpdated
   },
 
+  SET_SALARY_STATS(state, data) {
+    state.salaryStats = data
+  },
+
   SET_ANSWER(state, payload) {
     Vue.set(state.pathway.answers, payload.id, {
       ...state.pathway.answers[payload.id],
@@ -263,6 +267,31 @@ const actions = {
     }
     const roles = await this.$azureLoader.loadRoles()
     commit('SET_ROLES', roles)
+    const salaryMinRange = roles.data.reduce(
+      (acc, role) => {
+        if (role.salary.min) {
+          acc.minRange.min = Math.min(acc.minRange.min, role.salary.min)
+          acc.minRange.max = Math.max(acc.minRange.max, role.salary.min)
+        }
+        if (role.salary.max) {
+          acc.maxRange.min = Math.min(acc.maxRange.min, role.salary.max)
+          acc.maxRange.max = Math.max(acc.maxRange.max, role.salary.max)
+        }
+        return acc
+      },
+      {
+        minRange: {
+          min: 1000000,
+          max: 0
+        },
+        maxRange: {
+          min: 1000000,
+          max: 0
+        }
+      }
+    )
+
+    commit('SET_SALARY_STATS', salaryMinRange)
   },
   async loadSkills({ commit, state }) {
     const lastUpdated = await this.$azureLoader.getSkillUpdateDate()
@@ -274,7 +303,10 @@ const actions = {
   },
   async loadCapabilities({ commit, state }) {
     const lastUpdated = await this.$azureLoader.getCapabilityUpdateDate()
-    if (state.dataUpdated.capabilities && state.dataUpdated.capabilities === lastUpdated) {
+    if (
+      state.dataUpdated.capabilities &&
+      state.dataUpdated.capabilities === lastUpdated
+    ) {
       return
     }
     const capabilities = await this.$azureLoader.loadCapabilities()
