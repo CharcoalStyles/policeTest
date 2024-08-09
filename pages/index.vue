@@ -189,6 +189,8 @@
     </div>
     <div class="container mb-6 px-4">
       <nswpf-beta />
+
+      <img class="w-0 animate-spin [animation-duration:_2s]" src="/loader.svg" />
     </div>
     <div class="container mb-16 px-4">
       <hr class="my-4" />
