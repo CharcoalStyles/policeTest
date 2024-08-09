@@ -287,7 +287,7 @@
             <div class="mb-10">
               <transition-group name="list" tag="div">
                 <job-role
-                  v-for="role in filteredRoles.sort((a, b) => {
+                  v-for="role in filteredRoles.sort((a, b) => 
                     switch (sortBy) {
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
