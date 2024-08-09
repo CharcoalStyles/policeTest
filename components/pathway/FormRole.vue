@@ -98,7 +98,7 @@
       >
         <div v-bind="rootProps">
           <div class="flex flex-row gap-2 w-full">
-            <div class="flex-grow">
+            <div class="flex-grow flex items-center">
               <input
                 ref="role"
                 class="nsw-form-input roles-autosuggest placeholder-gray-700 disabled:text-black"
@@ -107,6 +107,11 @@
                 v-on="inputListeners"
                 @focus="toggleFocus"
                 @blur="toggleFocus"
+              />
+              <img
+                v-if="searching"
+                class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
+                src="/loader.svg"
               />
             </div>
             <div
@@ -337,9 +342,13 @@ export default {
   },
   methods: {
     preSearch(input) {
+      this.searching = true
       debounceSearch.cancel()
       return new Promise((resolve) => {
-        debounceSearch(this.search(input), resolve)
+        debounceSearch(this.search(input), (val) => {
+          this.searching = false
+          resolve(val)
+        })
       })
     },
     search(input) {
