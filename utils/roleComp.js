@@ -392,7 +392,7 @@ export function rankAndSortRoles(
         r.rank > 0 &&
         r.role.jobFamily === 'Policing'
     )
-    partialResults.unshift(...inspectorRoles.slice(0, 3))
+    partialResults.filter((role) => role.jobFamily === 'Policing' && role.gradeId.grade === 4).unshift(...inspectorRoles.slice(0, 3))
   }
 
   const results = partialResults
