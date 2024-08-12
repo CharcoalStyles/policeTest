@@ -137,6 +137,7 @@ export function adjacentRoles(
       if (currentRole.gradeId.type === 'policing') {
         return role.gradeId.grade === currentRole.gradeId.grade
       }
+      return true
     })
     .filter((role) => {
       if (currentRole.jobFamily === 'Policing') {

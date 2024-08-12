@@ -225,21 +225,27 @@
                 </div>
               </div>
               <div
-                class="px-6 py-4 flex items-center justify-between bg-nsw-grey-50 border-gray-300 border-b"
+                class="px-6 py-4 flex gap-1 items-center justify-between bg-nsw-grey-50 border-gray-300 border-b"
               >
                 <div class="font-bold text-base">
                   {{ filteredRolesTotal }} results
                 </div>
                 <div class="flex items-center">
-                  <label class="mr-3 text-sm" for="sort">Sort by salary:</label>
+                  <label class="mr-3 text-sm" for="sort">Sort by:</label>
                   <div class="inline-block relative">
                     <select
                       id="sort"
                       v-model="sortBy"
                       class="nsw-form-select h-role-input py-0"
                     >
-                      <option value="asc">Ascending</option>
-                      <option value="desc">Descending</option>
+                      <option
+                        v-if="this.searchResults !== undefined"
+                        value="search"
+                      >
+                        Search results
+                      </option>
+                      <option value="asc">Salary Ascending</option>
+                      <option value="desc">Salary Descending</option>
                     </select>
                   </div>
                 </div>
@@ -270,6 +276,8 @@
                 <job-role
                   v-for="role in group.roles.sort((a, b) => {
                     switch (sortBy) {
+                      case 'search':
+                        return 0
                       case 'asc':
                         return a.salary.max < b.salary.max ? -1 : 1
                       case 'desc':
@@ -853,13 +861,19 @@ export default {
         }
       ]
 
+      let rolesToSearch = this.roles
+
+      if (this.searchResults !== undefined) {
+        rolesToSearch = this.searchResults
+      }
+
       const results = filters.reduce((acc, filter) => {
         const doThisFilter = filter.preFilter()
         if (doThisFilter) {
           return acc.filter(filter.filter)
         }
         return acc
-      }, collect(this.searchResults === undefined ? this.roles : this.searchResults))
+      }, collect(rolesToSearch))
 
       this.stopSearching()
       return results
@@ -1017,6 +1031,7 @@ export default {
       this.previousRoleId = false
     },
     resetAllFilters() {
+      this.searchResults = undefined
       this.filter = {
         keyword: '',
         skills: [],
@@ -1053,9 +1068,11 @@ export default {
       // this.filter.keyword = value
       this.searching = true
 
-      if (value.length === 0 && !this.searching) {
+      if (value.length === 0) {
         this.filter.keyword = ''
+        this.sortBy = 'asc'
         this.searchResults = undefined
+        this.searching = false
       } else {
         this.filter.keyword = value
         // add a delay to allow the user to see the loading spinner
@@ -1070,6 +1087,7 @@ export default {
           ])
 
           this.searchResults = keyword(value).map((r) => r.item)
+          this.sortBy = 'search'
         }, 300)
       }
     },
