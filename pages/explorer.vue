@@ -853,13 +853,19 @@ export default {
         }
       ]
 
+      let rolesToSearch = this.roles
+
+      if (this.searchResults !== undefined) {
+        rolesToSearch = this.searchResults
+      }
+
       const results = filters.reduce((acc, filter) => {
         const doThisFilter = filter.preFilter()
         if (doThisFilter) {
           return acc.filter(filter.filter)
         }
         return acc
-      }, collect(this.searchResults === undefined ? this.roles : this.searchResults))
+      }, collect(rolesToSearch))
 
       this.stopSearching()
       return results
@@ -1017,6 +1023,7 @@ export default {
       this.previousRoleId = false
     },
     resetAllFilters() {
+      this.searchResults = undefined
       this.filter = {
         keyword: '',
         skills: [],
