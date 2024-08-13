@@ -134,7 +134,7 @@ export function adjacentRoles(
     })
     .filter((role) => {
       // Only pick roles that are the same level for roles where we have that numerical ranking
-      if (currentRole.gradeId.type === 'policing') {
+      if (currentRole.gradeId.type === 'policing' || currentRole.gradeId.type === 'clerk') {
         return role.gradeId.grade === currentRole.gradeId.grade
       }
       return true
@@ -217,8 +217,9 @@ export function rankAndSortRoles(
     .map((role) => {
       const rrBreakdown = {}
       // Capability comparison
-      let roleRank = roleShareCapabilitiesRank(currentRole, role)
-      rrBreakdown.capabilities = roleRank
+      const { result, breakdown } = roleShareCapabilitiesRank(currentRole, role)
+      let roleRank = result
+      rrBreakdown.capabilities = breakdown
 
       // Grade logic
       if (currentRole.gradeId.grade !== -1 && role.gradeId.grade !== -1) {
@@ -247,10 +248,12 @@ export function rankAndSortRoles(
         if (userInterests.includes(role.jobFunction.trim())) {
           switch (type) {
             case 'progression':
-              roleRank += 4
+              roleRank += 5.5
+              rrBreakdown.Interests = 5.5
               break
             case 'adjacent':
-              roleRank += 9
+              roleRank += 7
+              rrBreakdown.Interests = 7
               break
           }
         }
@@ -279,87 +282,87 @@ export function rankAndSortRoles(
           return acc
         }, -1)
 
-        roleRank += 1.5 * Math.pow(minVolume, 0.11)
-        rrBreakdown.minVolume = 1.5 * Math.pow(minVolume, 0.11)
+        const rankAdj = 1.5 * Math.pow(minVolume, 0.11)
+
+        roleRank += rankAdj
+        rrBreakdown.positions = rankAdj
       }
 
       // salary logic
-      if (
-        role.jobFamily === 'Policing' &&
-        currentRole.jobFamily === 'Policing'
-      ) {
+      if (role.jobFamily !== 'Policing') {
         if (role.salary.max > currentRole.salary.max) {
           const diff = role.salary.max - currentRole.salary.max
+          let rankAdj = 0
           switch (type) {
             case 'progression':
-              roleRank -= (diff / 2000) * 0.1
-              rrBreakdown.salaryDiff = (diff / 2000) * -0.1
+              rankAdj = (diff / 2000) * -0.1
               break
             case 'adjacent':
-              roleRank -= (diff / 2000) * 0.5
-              rrBreakdown.salaryDiff = (diff / 2000) * -0.5
+              rankAdj = (diff / 2000) * -0.5
               break
             case 'skill':
-              roleRank -= (diff / 2000) * 0.05
-              rrBreakdown.salaryDiff = (diff / 2000) * -0.05
+              rankAdj = (diff / 2000) * -0.05
           }
+          roleRank += rankAdj
+          rrBreakdown.salaryDiff = rankAdj
         }
       }
 
       // bumps for Job Family and Job Function
       if (role.jobFamily === currentRole.jobFamily) {
+        let rankAdj = 0
         switch (type) {
           case 'progression':
-            roleRank += 2
-            rrBreakdown.jobFamily = 2
+            rankAdj = 2
             break
           case 'adjacent':
-            roleRank += 1
-            rrBreakdown.jobFamily = 1
+            rankAdj = 1
             break
           case 'skill':
-            roleRank += 0.05
-            rrBreakdown.jobFamily = 0.05
+            rankAdj = 0.05
             break
         }
+        roleRank += rankAdj
+        rrBreakdown.jobFamily = rankAdj
       }
+
       if (role.jobFunction === currentRole.jobFunction) {
+        let rankAdj = 0
         switch (type) {
           case 'progression':
-            roleRank += 2
-            rrBreakdown.jobFunction = 2
+            rankAdj = 2
             break
           case 'adjacent':
-            if (userInterests && userInterests.length === 0) {
-              roleRank += 2
-              rrBreakdown.jobFunction = 2
+            if (userInterests.length > 0) {
+              rankAdj = 1.5
+            } else {
+              rankAdj = 2
             }
-            roleRank += 1
-            rrBreakdown.jobFunction = 1
             break
           case 'skill':
-            roleRank += 0.05
-            rrBreakdown.jobFunction = 0.05
+            rankAdj = 0.05
             break
         }
+        roleRank += rankAdj
+        rrBreakdown.jobFunction = rankAdj
       }
 
       // bumps for command / unit
-      if (role.command_BusUnit !== currentRole.command_BusUnit) {
+      if (role.command_BusUnit === currentRole.command_BusUnit) {
+        let rankAdj = 0
         switch (type) {
           case 'progression':
-            roleRank += 1
-            rrBreakdown.command_BusUnit = 1
+            rankAdj = 1
             break
           case 'adjacent':
-            roleRank += 2.5
-            rrBreakdown.command_BusUnit = 2.5
+            rankAdj = 1.5
             break
           case 'skill':
-            roleRank += 0.5
-            rrBreakdown.command_BusUnit = 0.5
+            rankAdj = 0.5
             break
         }
+        roleRank += rankAdj
+        rrBreakdown.command_BusUnit = rankAdj
       }
 
       return {
@@ -381,6 +384,8 @@ export function rankAndSortRoles(
   //   }
   // })
 
+  const showLogs = ['careerpathfinderdev', 'localhost'].includes(window.location.hostname.split('.')[0])
+
   if (
     type === 'progression' &&
     currentRole.jobFamily === 'Policing' &&
@@ -392,8 +397,16 @@ export function rankAndSortRoles(
         r.rank > 0 &&
         r.role.jobFamily === 'Policing'
     )
-    partialResults.filter((role) => role.jobFamily === 'Policing' && role.gradeId.grade === 4).unshift(...inspectorRoles.slice(0, 3))
+
+    inspectorRoles.forEach((role) => {
+      partialResults.splice(partialResults.findIndex((r) => r.role.id === role.role.id), 1)
+    })
+    showLogs && console.log('Inspector Roles', inspectorRoles.slice(0, 10).map(({ role, rank, rrBreakdown }) => ({ role: role.name, rank, rrBreakdown, minV: role.numPositions })))
+
+    partialResults.unshift(...inspectorRoles.slice(0, 3))
   }
+
+  showLogs && console.log(`${type} Roles`, currentRole, partialResults.slice(0, 20).map(({ role, rank, rrBreakdown }) => ({ roleName: role.name, rank, rrBreakdown, minV: role.numPositions, role })))
 
   const results = partialResults
     .reduce((acc, rankedRole) => {
@@ -432,8 +445,9 @@ export function rankAndSortRoles(
 export function roleShareCapabilitiesRank(firstRole, secondRole) {
   let result = 0
 
-  firstRole.capabilities.all.forEach((firstCap) => {
-    secondRole.capabilities.all.forEach((secondCap) => {
+  const breakdown = {}
+  firstRole.capabilities.focus.forEach((firstCap) => {
+    secondRole.capabilities.focus.forEach((secondCap) => {
       if (firstCap.code === secondCap.code) {
         const firstFocus = firstRole.capabilities.focus
           .map(({ code }) => code)
@@ -447,37 +461,39 @@ export function roleShareCapabilitiesRank(firstRole, secondRole) {
         }
 
         const levelDelta = firstCap.level - secondCap.level
+        let rankAdj = 0
 
         if (levelDelta === 0) {
           // equal
-          result += 0.5
+          rankAdj += 0.5
           return
         }
 
         if (levelDelta >= 1) {
           // FirstCap higher
-          result += 0.6
+          rankAdj += 0.6
           return
         }
 
         if (levelDelta === -1) {
           // FirstCap off by one
-          result += 0.1
+          rankAdj += 0.1
         }
+
+        breakdown[firstCap.code] = rankAdj
+        result += rankAdj
       }
     })
   })
 
-  // Remove 0.5 for capabilities that are only in the second role
-  secondRole.capabilities.all.forEach((secondCap) => {
-    if (
-      !firstRole.capabilities.all.find(
-        (firstCap) => firstCap.code === secondCap.code
-      )
-    ) {
+  secondRole.capabilities.focus.forEach((cap) => {
+    if (!firstRole.capabilities.focus.find(
+      (firstCap) => firstCap.code === cap.code
+    )) {
       result -= 0.5
+      breakdown[cap.code] = -0.5
     }
   })
 
-  return result
+  return { result, breakdown }
 }

@@ -674,7 +674,13 @@ export default {
     },
 
     adjRoles(currentRole) {
-      const filteredRoles = adjacentRoles(this.roles, currentRole)
+      const filteredRoles = adjacentRoles(
+        this.roles,
+        currentRole,
+        this.goalRole,
+        this.userInterests,
+        this.answers
+      )
 
       const ranked = rankAndSortRoles(
         currentRole,
