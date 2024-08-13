@@ -146,35 +146,43 @@ export function process(data) {
           type,
           grade
         }
-      default:
+      default: {
         type = 'clerk'
+        const clerkTypeCheck = gradeData.split(' ')[1]
 
-        switch (gradeData.replace('Clerk', '')[1]) {
-          case '1/2':
+        if (!clerkTypeCheck) {
+          return {
+            type,
+            grade
+          }
+        }
+
+        switch (Number.parseInt(clerkTypeCheck.split('/')[0])) {
+          case 1:
             grade = 1
             break
-          case '3/4':
-          case '3':
+          case 3:
             grade = 2
             break
-          case '5/6':
-          case '5':
+          case 5:
             grade = 3
             break
-          case '7/8':
+          case 7:
             grade = 4
             break
-          case '9/10':
+          case 9:
             grade = 5
             break
-          case '11/12':
+          case 11:
             grade = 6
             break
         }
+
         return {
           type,
           grade
         }
+      }
     }
   }
 
