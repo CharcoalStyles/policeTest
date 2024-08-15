@@ -1064,7 +1064,7 @@ export default {
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
-        salary: [38000, 287000],
+        salary: [this.options.salary.min, this.options.salary.max],
         sworn: 'other'
       }
       this.filterByUser = {
@@ -1430,26 +1430,22 @@ export default {
       }
     },
     handleBack() {
+      let lastViewState = this.lastViewState
       switch (this.lastViewState) {
         case 1:
-          this.viewState = this.lastViewState
           this.filter.jobFamily = ''
-          if (!this.filterByUser.jobFunction) {
-            this.filter.jobFunction = []
-          }
-          // this.filter.command_BusUnit = []
+          // if (!this.filterByUser.jobFunction) {
+          //   this.filter.jobFunction = []
+          // }
           break
         case 2:
-          this.viewState = this.lastViewState
-          this.lastViewState = 1
+          lastViewState = 1
           if (!this.filterByUser.jobFunction) {
             this.filter.jobFunction = []
           }
-          // this.filter.command_BusUnit = []
           break
         case 3:
-          this.viewState = this.lastViewState
-          this.lastViewState = 2
+          lastViewState = 2
           if (!this.filterByUser.command_BusUnit) {
             this.filter.command_BusUnit = []
           }
@@ -1457,42 +1453,58 @@ export default {
         default:
           break
       }
+      this.filterRoles()
+      setTimeout(() => {
+        this.viewState = this.lastViewState
+        this.lastViewState = lastViewState
+      }, 150)
     },
     bentoL1Select(jobFamily) {
       this.filter.jobFamily = jobFamily
+      this.filterRoles()
       this.lastViewState = this.viewState
 
-      if (this.filteredRoles.items.length < 30) {
-        this.viewState = 4
-      } else {
-        this.viewState = 2
-      }
+      setTimeout(() => {
+        if (this.filteredRoles.items.length < 30) {
+          this.viewState = 4
+        } else {
+          this.viewState = 2
+        }
+      }, 150)
     },
     bentoL2Select(jobFunction) {
       if (this.filterByUser.jobFunction) {
+        setTimeout(() => {
+          if (this.filteredRoles.items.length < 30) {
+            this.viewState = 4
+          } else {
+            this.viewState = 3
+          }
+        }, 150)
+        return
+      }
+
+      this.filter.jobFunction = [jobFunction]
+      this.filterRoles()
+      this.lastViewState = this.viewState
+
+      setTimeout(() => {
         if (this.filteredRoles.items.length < 30) {
           this.viewState = 4
         } else {
           this.viewState = 3
         }
-        return
-      }
-
-      this.filter.jobFunction = [jobFunction]
-      this.lastViewState = this.viewState
-
-      if (this.filteredRoles.items.length < 30) {
-        this.viewState = 4
-      } else {
-        this.viewState = 3
-      }
+      }, 150)
       // this.viewState = 4
     },
     bentoL3Select(jobCommand) {
       this.filter.command_BusUnit = [jobCommand]
       this.lastViewState = this.viewState
+      this.filterRoles()
 
-      this.viewState = 4
+      setTimeout(() => {
+        this.viewState = 4
+      }, 150)
     }
   }
 }
