@@ -333,7 +333,7 @@ export function rankAndSortRoles(
             rankAdj = 2
             break
           case 'adjacent':
-            if (userInterests.length > 0) {
+            if (userInterests && userInterests.length > 0) {
               rankAdj = 1.5
             } else {
               rankAdj = 2

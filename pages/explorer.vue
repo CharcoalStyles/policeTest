@@ -41,10 +41,9 @@
                       placeholder="Search"
                       :value="filter.keyword"
                     />
-                    <img
-                      v-if="searching"
-                      class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
-                      src="/loader.svg"
+                    <loading-spinner
+                      :show="searching"
+                      class="absolute right-2"
                     />
                   </div>
                 </div>
@@ -266,18 +265,7 @@
             </div>
           </div>
           <div
-            v-if="searching"
-            class="w-full h-full flex items-center justify-center"
-          >
-            <p class="text-center">
-              <img
-                src="/loader.svg"
-                class="w-32 h-32 animate-spin [animation-duration:_2s]"
-              />
-            </p>
-          </div>
-          <div
-            v-else-if="filter.keyword.length === 0"
+            v-if="filter.keyword.length === 0"
             class="p-4 flex-grow overflow-y-scroll"
           >
             <div
@@ -703,6 +691,7 @@ import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 import SelectorWithVarious from '~/components/SelectorWithVarious.vue'
 import SelectorWithSections from '~/components/SelectorWithSections.vue'
+import LoadingSpinner from '~/components/LoadingSpinner.vue'
 
 const filterDebounce = debounce(({ fn, val }) => {
   fn(val)
@@ -721,7 +710,8 @@ export default {
     GenericSelector,
     NswpfBeta,
     SelectorWithVarious,
-    SelectorWithSections
+    SelectorWithSections,
+    LoadingSpinner
   },
   mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
@@ -1064,7 +1054,7 @@ export default {
         jobFamily: '',
         jobFunction: [],
         command_BusUnit: [],
-        salary: [38000, 287000],
+        salary: [this.options.salary.min, this.options.salary.max],
         sworn: 'other'
       }
       this.filterByUser = {
@@ -1430,26 +1420,22 @@ export default {
       }
     },
     handleBack() {
+      let lastViewState = this.lastViewState
       switch (this.lastViewState) {
         case 1:
-          this.viewState = this.lastViewState
           this.filter.jobFamily = ''
-          if (!this.filterByUser.jobFunction) {
-            this.filter.jobFunction = []
-          }
-          // this.filter.command_BusUnit = []
+          // if (!this.filterByUser.jobFunction) {
+          //   this.filter.jobFunction = []
+          // }
           break
         case 2:
-          this.viewState = this.lastViewState
-          this.lastViewState = 1
+          lastViewState = 1
           if (!this.filterByUser.jobFunction) {
             this.filter.jobFunction = []
           }
-          // this.filter.command_BusUnit = []
           break
         case 3:
-          this.viewState = this.lastViewState
-          this.lastViewState = 2
+          lastViewState = 2
           if (!this.filterByUser.command_BusUnit) {
             this.filter.command_BusUnit = []
           }
@@ -1457,42 +1443,58 @@ export default {
         default:
           break
       }
+      this.filterRoles()
+      setTimeout(() => {
+        this.viewState = this.lastViewState
+        this.lastViewState = lastViewState
+      }, 150)
     },
     bentoL1Select(jobFamily) {
       this.filter.jobFamily = jobFamily
+      this.filterRoles()
       this.lastViewState = this.viewState
 
-      if (this.filteredRoles.items.length < 30) {
-        this.viewState = 4
-      } else {
-        this.viewState = 2
-      }
+      setTimeout(() => {
+        if (this.filteredRoles.items.length < 30) {
+          this.viewState = 4
+        } else {
+          this.viewState = 2
+        }
+      }, 150)
     },
     bentoL2Select(jobFunction) {
       if (this.filterByUser.jobFunction) {
+        setTimeout(() => {
+          if (this.filteredRoles.items.length < 30) {
+            this.viewState = 4
+          } else {
+            this.viewState = 3
+          }
+        }, 150)
+        return
+      }
+
+      this.filter.jobFunction = [jobFunction]
+      this.filterRoles()
+      this.lastViewState = this.viewState
+
+      setTimeout(() => {
         if (this.filteredRoles.items.length < 30) {
           this.viewState = 4
         } else {
           this.viewState = 3
         }
-        return
-      }
-
-      this.filter.jobFunction = [jobFunction]
-      this.lastViewState = this.viewState
-
-      if (this.filteredRoles.items.length < 30) {
-        this.viewState = 4
-      } else {
-        this.viewState = 3
-      }
+      }, 150)
       // this.viewState = 4
     },
     bentoL3Select(jobCommand) {
       this.filter.command_BusUnit = [jobCommand]
       this.lastViewState = this.viewState
+      this.filterRoles()
 
-      this.viewState = 4
+      setTimeout(() => {
+        this.viewState = 4
+      }, 150)
     }
   }
 }
