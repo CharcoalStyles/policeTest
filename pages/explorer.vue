@@ -76,7 +76,9 @@
                           type="button"
                           class="py-4 w-1/3 py-2 rounded-s-md border border-nsw-brand-primary-blue"
                           :class="swornButtonSelected('other')"
-                          @click="filter.sworn = 'other'"
+                          @click="
+                            () => updateFilter({ key: 'sworn', value: 'other' })
+                          "
                         >
                           All
                         </button>
@@ -84,7 +86,10 @@
                           type="button"
                           class="py-4 w-1/3 py-2 border-t border-b border-nsw-brand-primary-blue"
                           :class="swornButtonSelected('police')"
-                          @click="filter.sworn = 'police'"
+                          @click="
+                            () =>
+                              updateFilter({ key: 'sworn', value: 'police' })
+                          "
                         >
                           Policing
                         </button>
@@ -92,7 +97,13 @@
                           type="button"
                           class="py-4 w-1/3 py-2 rounded-e-md border border-nsw-brand-primary-blue"
                           :class="swornButtonSelected('administrative')"
-                          @click="filter.sworn = 'administrative'"
+                          @click="
+                            () =>
+                              updateFilter({
+                                key: 'sworn',
+                                value: 'administrative'
+                              })
+                          "
                         >
                           Administrative
                         </button>
@@ -134,10 +145,12 @@
                             <div class="w-11/12">
                               <input-range
                                 :value="filter.salary"
-                                @change="updateSalaryFilter"
-                                :debounce-events="['input', 'change']"
                                 :min="options.salary.min"
                                 :max="options.salary.max"
+                                @change="
+                                  (value) =>
+                                    updateFilter({ key: 'salary', value })
+                                "
                               />
                             </div>
                           </div>
@@ -252,11 +265,14 @@
               </div>
             </div>
           </div>
-          <div v-if="searching">
+          <div
+            v-if="searching"
+            class="w-full h-full flex items-center justify-center"
+          >
             <p class="text-center">
               <img
                 src="/loader.svg"
-                class="w-16 h-16 animate-spin [animation-duration:_2s]"
+                class="w-32 h-32 animate-spin [animation-duration:_2s]"
               />
             </p>
           </div>
@@ -601,12 +617,13 @@
     </main>
 
     <generic-selector
-      v-model="filter[modalData.filterKey]"
       :data="modalData.data"
+      :show-loader="searching"
       :show="modals.selector === 'generic'"
       max-width="xl"
       :title="modalData.title"
       :value="filter[modalData.filterKey]"
+      @change="(value) => updateFilter({ key: modalData.filterKey, value })"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -619,14 +636,15 @@
     </generic-selector>
 
     <selector-with-various
-      v-model="filter[modalData.filterKey]"
       :various-guide-text="modalData.variousGuideText || ''"
       :normal-guide-text="modalData.normalGuideText || ''"
       :data="modalData.data"
+      :show-loader="searching"
       :show="modals.selector === 'various'"
       max-width="xl"
       :title="modalData.title"
       :value="filter[modalData.filterKey]"
+      @change="(value) => updateFilter({ key: modalData.filterKey, value })"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -639,13 +657,14 @@
     </selector-with-various>
 
     <selector-with-sections
-      v-model="filter[modalData.filterKey]"
       :groups="modalData.groups"
       :data="modalData.data"
+      :show-loader="searching"
       :show="modals.selector === 'sections'"
       max-width="xl"
       :title="modalData.title"
       :value="filter[modalData.filterKey]"
+      @change="(value) => updateFilter({ key: modalData.filterKey, value })"
       @close="modals.selector = ''"
       @reset="modalData.reset"
       @userSelected="
@@ -659,6 +678,7 @@
 
     <modal-onboarding
       :show="modals.onboarding"
+      :show-loader="searching"
       max-width="xl"
       @close="demoExplorerAnimation"
     />
@@ -757,6 +777,7 @@ export default {
       searchResults: undefined,
       viewState: 1,
       lastViewState: 1,
+      filteredRoles: collect([]),
       boxStyle:
         'cursor-pointer rounded-2xl flex flex-col justify-center items-center border-4 border-nsw-brand-primary-blue-light hover:border-nsw-brand-primary-blue-2 transition-color duration-500'
     }
@@ -765,120 +786,6 @@ export default {
     roles() {
       return this.$store.state.roles
     },
-
-    /**
-     * Filter roles based on filtering form values
-     */
-    filteredRoles() {
-      const filters = [
-        // Filter out generic roles
-        {
-          name: 'Generic Roles',
-          preFilter: () => true,
-          filter: (role) => !role.genericRole
-        },
-        // Filter by the police/admin selection
-        {
-          name: 'Police / Administrative',
-          preFilter: () => this.filter.sworn !== 'other',
-          filter: (role) => {
-            switch (this.filter.sworn) {
-              case 'other':
-                return true
-              case 'police':
-                return role.jobFamily === 'Policing'
-              case 'administrative':
-                return role.jobFamily !== 'Policing'
-              default:
-                return false
-            }
-          }
-        },
-        // Filter by job family selection
-        {
-          name: 'Job Family',
-          preFilter: () => this.filter.jobFamily.length > 0,
-          filter: (role) => {
-            return this.filter.jobFamily.includes(role.jobFamily)
-          }
-        },
-        // Filter by job function selection
-        {
-          name: 'Jub Function',
-          preFilter: () => this.filter.jobFunction.length > 0,
-          filter: (role) => {
-            return this.filter.jobFunction.includes(role.jobFunction)
-          }
-        },
-        // Filter by command / bus unit selection
-        {
-          name: 'Command / Business Unit',
-          preFilter: () => this.filter.command_BusUnit.length > 0,
-          filter: (role) => {
-            return this.filter.command_BusUnit.includes(role.command_BusUnit)
-          }
-        },
-        // Filter by salary selection
-        {
-          name: 'Salary',
-          preFilter: () =>
-            this.filter.salary[0] !== 38000 || this.filter.salary[1] !== 288000,
-          filter: (role) => {
-            return (
-              role.salary.min >= this.filter.salary[0] &&
-              role.salary.min <= this.filter.salary[1]
-            )
-          }
-        },
-        // Filter by skills selection
-        {
-          name: 'Skills',
-          preFilter: () => this.filter.skills.length > 0,
-          filter: (role) => {
-            return role.skills.focus.reduce((acc, skill) => {
-              if (this.filter.skills.includes(skill.code)) {
-                return true
-              }
-              return acc
-            }, false)
-          }
-        },
-        // Filter by location selection
-        {
-          name: 'Location',
-          preFilter: () => this.filter.location.length > 0,
-          filter: (role) => {
-            return this.filter.location.includes(role.location.trim())
-          }
-        },
-        // Filter by grade selection
-        {
-          name: 'Grade',
-          preFilter: () => this.filter.grade.length > 0,
-          filter: (role) => {
-            return this.filter.grade.includes(role.grade)
-          }
-        }
-      ]
-
-      let rolesToSearch = this.roles
-
-      if (this.searchResults !== undefined) {
-        rolesToSearch = this.searchResults
-      }
-
-      const results = filters.reduce((acc, filter) => {
-        const doThisFilter = filter.preFilter()
-        if (doThisFilter) {
-          return acc.filter(filter.filter)
-        }
-        return acc
-      }, collect(rolesToSearch))
-
-      this.stopSearching()
-      return results
-    },
-
     /**
      * Count total number of filtered roles
      */
@@ -1024,8 +931,124 @@ export default {
     if (this.$vssHeight < 950) {
       this.filterSlideout = false
     }
+    setTimeout(() => {
+      this.filterRoles()
+    }, 100)
   },
   methods: {
+    filterRoles() {
+      const filters = [
+        // Filter out generic roles
+        {
+          name: 'Generic Roles',
+          preFilter: () => true,
+          filter: (role) => !role.genericRole
+        },
+        // Filter by the police/admin selection
+        {
+          name: 'Police / Administrative',
+          preFilter: () => this.filter.sworn !== 'other',
+          filter: (role) => {
+            switch (this.filter.sworn) {
+              case 'other':
+                return true
+              case 'police':
+                return role.jobFamily === 'Policing'
+              case 'administrative':
+                return role.jobFamily !== 'Policing'
+              default:
+                return false
+            }
+          }
+        },
+        // Filter by job family selection
+        {
+          name: 'Job Family',
+          preFilter: () => this.filter.jobFamily.length > 0,
+          filter: (role) => {
+            return this.filter.jobFamily.includes(role.jobFamily)
+          }
+        },
+        // Filter by job function selection
+        {
+          name: 'Jub Function',
+          preFilter: () => this.filter.jobFunction.length > 0,
+          filter: (role) => {
+            return this.filter.jobFunction.includes(role.jobFunction)
+          }
+        },
+        // Filter by command / bus unit selection
+        {
+          name: 'Command / Business Unit',
+          preFilter: () => this.filter.command_BusUnit.length > 0,
+          filter: (role) => {
+            return this.filter.command_BusUnit.includes(role.command_BusUnit)
+          }
+        },
+        // Filter by salary selection
+        {
+          name: 'Salary',
+          preFilter: () =>
+            this.filter.salary[0] !== 38000 || this.filter.salary[1] !== 288000,
+          filter: (role) => {
+            return (
+              role.salary.min >= this.filter.salary[0] &&
+              role.salary.min <= this.filter.salary[1]
+            )
+          }
+        },
+        // Filter by skills selection
+        {
+          name: 'Skills',
+          preFilter: () => this.filter.skills.length > 0,
+          filter: (role) => {
+            return role.skills.focus.reduce((acc, skill) => {
+              if (this.filter.skills.includes(skill.code)) {
+                return true
+              }
+              return acc
+            }, false)
+          }
+        },
+        // Filter by location selection
+        {
+          name: 'Location',
+          preFilter: () => this.filter.location.length > 0,
+          filter: (role) => {
+            return this.filter.location.includes(role.location.trim())
+          }
+        },
+        // Filter by grade selection
+        {
+          name: 'Grade',
+          preFilter: () => this.filter.grade.length > 0,
+          filter: (role) => {
+            return this.filter.grade.includes(role.grade)
+          }
+        }
+      ]
+
+      this.startSearching()
+
+      setTimeout(() => {
+        let rolesToSearch = this.$store.state.roles
+        if (this.searchResults !== undefined) {
+          rolesToSearch = this.searchResults
+        }
+
+        const results = filters.reduce((acc, filter) => {
+          const doThisFilter = filter.preFilter()
+          if (doThisFilter) {
+            return acc.filter(filter.filter)
+          }
+          return acc
+        }, collect(rolesToSearch))
+
+        this.stopSearching()
+        this.filteredRoles = collect(results)
+      }, 100)
+    },
+
     resetSlideout() {
       this.slideout = false
       this.previousRoleId = false
@@ -1052,6 +1075,7 @@ export default {
         command_BusUnit: false
       }
       this.viewState = 1
+      this.filterRoles()
     },
 
     resetSkillsFilter() {
@@ -1062,17 +1086,22 @@ export default {
      * Update keyword value on debounce
      */
     updateKeyword(value) {
+      this.startSearching()
       if (value === this.filter.keyword) {
         return
       }
       // this.filter.keyword = value
-      this.searching = true
 
       if (value.length === 0) {
-        this.filter.keyword = ''
-        this.sortBy = 'asc'
-        this.searchResults = undefined
-        this.searching = false
+        this.filter.keyword = value
+        setTimeout(() => {
+          this.filter.keyword = ''
+          this.sortBy = 'asc'
+          this.searchResults = undefined
+          this.searching = false
+
+          this.filterRoles()
+        }, 100)
       } else {
         this.filter.keyword = value
         // add a delay to allow the user to see the loading spinner
@@ -1088,47 +1117,22 @@ export default {
 
           this.searchResults = keyword(value).map((r) => r.item)
           this.sortBy = 'search'
+
+          this.filterRoles()
         }, 300)
       }
     },
 
-    updateSkillFilter(value) {
-      this.filter.skill = value
-    },
-
-    updateInterestFilter(value) {
-      this.filter.interest = value
-    },
-
-    updateGradeFilter(value) {
-      this.filter.grade = value
-    },
-
-    updateLocationFilter(value) {
-      this.filter.location = value
-    },
-
-    updateJobFamilyFilter(value) {
-      this.filter.jobFamily = value
-    },
-
-    updateJobFunctionFilter(value) {
-      this.filter.jobFunction = value
-    },
-
-    updateCommandBusUnitFilter(value) {
-      this.filter.command_BusUnit = value
-    },
-
-    updateSalaryFilter(value) {
-      this.salaryLabelData = value
-      const fn = (val) => (this.filter.salary = val)
+    updateFilter({ key, value }) {
+      const fn = (val) => {
+        this.filter[key] = val
+        this.filterRoles()
+      }
       filterDebounce({ fn, val: value })
-      // this.filter.salary = value
     },
 
-    updateSwornFilter(value) {
-      this.filter.sworn = value
+    startSearching() {
+      this.searching = true
     },
 
     stopSearching() {

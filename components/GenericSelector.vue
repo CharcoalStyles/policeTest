@@ -10,23 +10,41 @@
       <slot />
     </p>
     <div>
-      <div v-for="datum in data" :key="datum.value">
-        <input
-          :id="datum.value"
-          v-model="values"
-          class="nsw-form-checkbox__input"
-          type="checkbox"
-          :value="datum.value"
-          @change="
-            () => {
-              $emit('input', values)
-              $emit('userSelected', values.length > 0)
-            }
-          "
+      <div>
+        <div v-for="datum in data" :key="datum.value">
+          <input
+            :id="datum.value"
+            v-model="values"
+            class="nsw-form-checkbox__input"
+            :disabled="showLoader"
+            type="checkbox"
+            :value="datum.value"
+            @change="
+              () => {
+                $emit('change', values)
+                $emit('userSelected', values.length > 0)
+              }
+            "
+          />
+          <label class="nsw-form-checkbox__label" :for="datum.value">{{
+            datum.label
+          }}</label>
+        </div>
+      </div>
+      <div
+        v-if="showLoader"
+        class="absolute inset-0 bg-slate-500 opacity-50"
+      ></div>
+
+      <div
+        v-if="showLoader"
+        class="absolute inset-0 bg-transparent flex items-center justify-center"
+      >
+        <img
+          src="/loader.svg"
+          alt="Loading..."
+          class="w-32 h-32 bg-transparent animate-spin [animation-duration:_2s] pointer-events-none"
         />
-        <label class="nsw-form-checkbox__label" :for="datum.value">{{
-          datum.label
-        }}</label>
       </div>
     </div>
     <template #footer>
@@ -69,6 +87,10 @@ export default {
     value: {
       type: Array,
       default: () => []
+    },
+    showLoader: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -86,8 +108,7 @@ export default {
   },
   methods: {
     reset() {
-      // this.values = []
-      this.$emit('reset')
+      this.$emit('change', [])
     }
   }
 }
