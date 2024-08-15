@@ -41,10 +41,9 @@
                       placeholder="Search"
                       :value="filter.keyword"
                     />
-                    <img
-                      v-if="searching"
-                      class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
-                      src="/loader.svg"
+                    <loading-spinner
+                      :show="searching"
+                      class="absolute right-2"
                     />
                   </div>
                 </div>
@@ -266,18 +265,7 @@
             </div>
           </div>
           <div
-            v-if="searching"
-            class="w-full h-full flex items-center justify-center"
-          >
-            <p class="text-center">
-              <img
-                src="/loader.svg"
-                class="w-32 h-32 animate-spin [animation-duration:_2s]"
-              />
-            </p>
-          </div>
-          <div
-            v-else-if="filter.keyword.length === 0"
+            v-if="filter.keyword.length === 0"
             class="p-4 flex-grow overflow-y-scroll"
           >
             <div
@@ -703,6 +691,7 @@ import GenericSelector from '~/components/GenericSelector.vue'
 import NswpfBeta from '~/components/nswpfBeta.vue'
 import SelectorWithVarious from '~/components/SelectorWithVarious.vue'
 import SelectorWithSections from '~/components/SelectorWithSections.vue'
+import LoadingSpinner from '~/components/LoadingSpinner.vue'
 
 const filterDebounce = debounce(({ fn, val }) => {
   fn(val)
@@ -721,7 +710,8 @@ export default {
     GenericSelector,
     NswpfBeta,
     SelectorWithVarious,
-    SelectorWithSections
+    SelectorWithSections,
+    LoadingSpinner
   },
   mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
