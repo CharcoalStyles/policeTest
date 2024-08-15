@@ -20,7 +20,7 @@
       title="Explore roles and make a personalised career plan"
       :cols="2"
     >
-      <div class="hover:cursor-pointer" @click="clickAction()">
+      <nuxt-link to="/explorer">
         <feature-panel
           image="/images/rescueDrone.png"
           alt="Role Explorer"
@@ -29,10 +29,9 @@
           <div class="mb-6 w-5/6">
             Browse the various roles and careers that exist within the NSWPF.
           </div>
-          <img v-if="!loading" src="/arrow.svg" />
-          <img v-else class="w-11 animate-spin [animation-duration:_2s]" src="/loader.svg" />
+          <img src="/arrow.svg" />
         </feature-panel>
-      </div>
+      </nuxt-link>
       <nuxt-link to="/pathway">
         <feature-panel
           image="/images/meeting.png"
@@ -189,8 +188,6 @@
     </div>
     <div class="container mb-6 px-4">
       <nswpf-beta />
-
-      <img class="w-0 animate-spin [animation-duration:_2s]" src="/loader.svg" />
     </div>
     <div class="container mb-16 px-4">
       <hr class="my-4" />
@@ -225,15 +222,6 @@ export default {
     HeroSection,
     SectionContainer,
     NswpfBeta
-  },
-  data() {
-    return { loading: false }
-  },
-  methods: {
-    clickAction() {
-      this.loading = true
-      this.$router.push('/explorer')
-    }
   }
 }
 </script>

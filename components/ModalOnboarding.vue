@@ -1,7 +1,14 @@
 <template>
-  <base-modal :show="show" :max-width="maxWidth" title="Role Explorer" :closeable="true" :scrollable="false" @close="$emit('close')">
+  <base-modal
+    :show="show"
+    :max-width="maxWidth"
+    title="Role Explorer"
+    :closeable="true"
+    :scrollable="false"
+    @close="$emit('close')"
+  >
     <div class="flex flex-col items-center justify-center">
-      <img :src="panelImage" :alt="currentPanel.alt" class="mb-6">
+      <img :src="panelImage" :alt="currentPanel.alt" class="mb-6" />
       <h2 class="font-bold text-lg mb-2">
         {{ currentPanel.title }}
       </h2>
@@ -12,7 +19,11 @@
     <template #footer>
       <div>
         <transition name="fade">
-          <nsw-button v-if="!isFirstPanel" action="secondary" @click.native="pagePanelPrevious">
+          <nsw-button
+            v-if="!isFirstPanel"
+            action="secondary"
+            @click.native="pagePanelPrevious"
+          >
             Back
           </nsw-button>
         </transition>
@@ -23,6 +34,23 @@
         </nsw-button>
       </div>
     </template>
+
+    <div
+      v-if="showLoader"
+      class="absolute inset-0 bg-gray-200 opacity-90"
+    ></div>
+
+    <div
+      v-if="showLoader"
+      class="absolute inset-0 bg-transparent flex flex-col items-center justify-center"
+    >
+      <img
+        src="/loader.svg"
+        alt="Loading..."
+        class="w-16 h-16 bg-transparent animate-spin [animation-duration:_2s] pointer-events-none"
+      />
+      <p class="text-2xl text-nsw-brand-primary-blue-2 font-bold">Loading roles</p>
+    </div>
   </base-modal>
 </template>
 
@@ -41,6 +69,10 @@ export default {
     maxWidth: {
       type: String,
       default: '2xl'
+    },
+    showLoader: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

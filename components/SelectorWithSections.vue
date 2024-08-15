@@ -9,27 +9,42 @@
     <p class="block mb-6">
       <slot />
     </p>
-    <div v-for="group in groups" :key="group.title" class="mb-4">
-      <p class="text-lg font-bold text-nsw-brand-primary-blue">
-        {{ group.title }}
-      </p>
-      <div
-        v-for="datum in data.slice(group.start, group.end)"
-        :key="datum.value"
+    <div>
+      <div v-for="group in groups" :key="group.title" class="mb-4">
+        <p class="text-lg font-bold text-nsw-brand-primary-blue">
+          {{ group.title }}
+        </p>
+        <div
+          v-for="datum in data.slice(group.start, group.end)"
+          :key="datum.value"
+        >
+          <input
+            :id="datum.value"
+            v-model="values"
+            :disabled="showLoader"
+            class="nsw-form-checkbox__input"
+            type="checkbox"
+            :value="datum.value"
+            @change="$emit('change', values)"
+          />
+          <label class="nsw-form-checkbox__label" :for="datum.value">{{
+            datum.label
+          }}</label>
+        </div>
+      </div>
+      <div v-if="showLoader" class="absolute inset-0 bg-slate-500 opacity-50"></div>
+
+      <div v-if="showLoader"
+        class="absolute inset-0 bg-transparent flex items-center justify-center"
       >
-        <input
-          :id="datum.value"
-          v-model="values"
-          class="nsw-form-checkbox__input"
-          type="checkbox"
-          :value="datum.value"
-          @change="$emit('input', values)"
+        <img
+          src="/loader.svg"
+          alt="Loading..."
+          class="w-32 h-32 bg-transparent animate-spin [animation-duration:_2s] pointer-events-none"
         />
-        <label class="nsw-form-checkbox__label" :for="datum.value">{{
-          datum.label
-        }}</label>
       </div>
     </div>
+
     <template #footer>
       <nsw-button action="secondary" @click.native="reset()">
         Reset
@@ -74,6 +89,10 @@ export default {
     value: {
       type: Array,
       default: () => []
+    },
+    showLoader: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -91,8 +110,7 @@ export default {
   },
   methods: {
     reset() {
-      // this.values = []
-      this.$emit('reset')
+      this.$emit('change', [])
     }
   }
 }
