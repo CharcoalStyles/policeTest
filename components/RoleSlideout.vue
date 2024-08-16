@@ -310,6 +310,14 @@ export default {
     },
     getSkills(skills) {
       return skills.map(({ code, level }) => {
+        if (code === '') {
+          console.log('empty skill')
+          return {
+            code,
+            level,
+            name: 'No Skill'
+          }
+        }
         const skill = this.skills.find((c) => c.code === code)
 
         return {
@@ -317,7 +325,7 @@ export default {
           level,
           name: skill.category
         }
-      })
+      }).filter((skill) => skill.name !== 'No Skill')
     },
     getCapabilities(capabilities) {
       return capabilities.map(({ code, level }) => {
