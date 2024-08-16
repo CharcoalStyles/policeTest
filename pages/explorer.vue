@@ -43,7 +43,7 @@
                     />
                     <loading-spinner
                       :show="searching"
-                      class="absolute right-2"
+                      class="absolute right-2 delay-1000"
                     />
                   </div>
                 </div>

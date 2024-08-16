@@ -32,7 +32,7 @@
         </div>
       </div>
       <div
-        class="absolute inset-0 bg-slate-500 transition-all delay-500"
+        class="absolute inset-0 bg-slate-500 transition-all delay-1000"
         :class="{
           'opacity-0': !showLoader,
           'opacity-50': showLoader,
@@ -44,7 +44,7 @@
       <loading-spinner
         :show="showLoader"
         size="large"
-        class="absolute m-auto left-0 right-0 top-0 bottom-0 z-40"
+        class="absolute m-auto delay-1000 left-0 right-0 top-0 bottom-0 z-40"
       />
     </div>
     <template #footer>

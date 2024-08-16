@@ -117,18 +117,10 @@ export function adjacentRoles(
     userInterests,
     answers
   )
-    .filter((role) => role.id !== currentRole.id)
     .filter((role) => {
       // Filter out roles not in current Job Family, if in Policing
       if (currentRole.jobFamily === 'Policing') {
         return role.jobFamily === currentRole.jobFamily
-      }
-      return true
-    })
-    .filter((role) => {
-      // We'll never show the Student Police Officer role
-      if (role.name === 'Student Police Officer') {
-        return false
       }
       return true
     })
