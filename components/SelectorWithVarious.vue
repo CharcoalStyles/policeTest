@@ -33,20 +33,20 @@
         </div>
       </div>
       <div
-        v-if="showLoader"
-        class="absolute inset-0 bg-slate-500 opacity-50"
+        class="absolute inset-0 bg-slate-500 transition-all delay-1000"
+        :class="{
+          'opacity-0': !showLoader,
+          'opacity-50': showLoader,
+          'z-0': showLoader,
+          '-z-50': !showLoader
+        }"
       ></div>
 
-      <div
-        v-if="showLoader"
-        class="absolute inset-0 bg-transparent flex items-center justify-center"
-      >
-        <img
-          src="/loader.svg"
-          alt="Loading..."
-          class="w-32 h-32 bg-transparent animate-spin [animation-duration:_2s] pointer-events-none"
-        />
-      </div>
+      <loading-spinner
+        :show="showLoader"
+        size="large"
+        class="absolute m-auto delay-1000 left-0 right-0 top-0 bottom-0 z-40"
+      />
     </div>
 
     <div class="mt-4">
@@ -82,10 +82,12 @@
 
 <script>
 import BaseModal from '@/components/BaseModal'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default {
   components: {
-    BaseModal
+    BaseModal,
+    LoadingSpinner
   },
   props: {
     title: {

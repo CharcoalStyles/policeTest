@@ -108,11 +108,7 @@
                 @focus="toggleFocus"
                 @blur="toggleFocus"
               />
-              <img
-                v-if="searching"
-                class="w-8 h-8 animate-spin [animation-duration:_2s] absolute right-2 pointer-events-none"
-                src="/loader.svg"
-              />
+              <loading-spinner :show="searching" class="absolute right-2" />
             </div>
             <div
               v-if="currentValue"
@@ -196,6 +192,7 @@ import InformationBadge from '@/components/InformationBadge'
 import { keywordSearch } from '@/utils/search'
 import { debounce } from 'vue-debounce'
 import EssentialRequirementsIcon from '../EssentialRequirementsIcon.vue'
+import LoadingSpinner from '../LoadingSpinner.vue'
 
 const debounceSearch = debounce((val, resolve) => {
   resolve(val)
@@ -205,7 +202,8 @@ export default {
   components: {
     Autocomplete,
     InformationBadge,
-    EssentialRequirementsIcon
+    EssentialRequirementsIcon,
+    LoadingSpinner
   },
   props: {
     step: {
