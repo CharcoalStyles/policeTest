@@ -134,7 +134,7 @@
                           <div class="text-sm text-gray-700">
                             ${{ salaryLabelData[0] / 1000 }}k - ${{
                               salaryLabelData[1] / 1000
-                            }}
+                            }}k
                           </div>
                         </div>
                         <div
@@ -147,8 +147,10 @@
                                 :min="options.salary.min"
                                 :max="options.salary.max"
                                 @change="
-                                  (value) =>
-                                    updateFilter({ key: 'salary', value })
+                                  (value) => {
+                                    salaryLabelData = [value[0], value[1]];
+                                    updateFilter({ key: 'salary', value });
+                                  }
                                 "
                               />
                             </div>
@@ -1065,6 +1067,7 @@ export default {
         command_BusUnit: false
       }
       this.viewState = 1
+      this.salaryLabelData = [this.options.salary.min, this.options.salary.max]
       this.filterRoles()
     },
 
