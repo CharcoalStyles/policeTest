@@ -53,6 +53,15 @@ The resulting zip file will be used to deploy the application into Azure.
 
 When deployed the application will be served by running `index.js`.
 
+The server that runs the application has a built in rate limiter. This is to prevent the application from being overwhelmed by requests.
+
+This rate limiter is configured using the following environment variables:
+
+- `RATE_LIMIT_WINDOW_MS`
+- `RATE_LIMIT_MAX`
+
+These environment variables are accessed by the server at runtime.
+
 ## Content
 
 The content for the application is handled through a connection to the Azure file storage. The application will use the following environment variables to connect to the file storage:
