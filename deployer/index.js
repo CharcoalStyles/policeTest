@@ -15,14 +15,17 @@ app.get('/healthcheck-api-sit/*', (req, res) => {
   res.send('OK')
 })
 
+// Because of how Azure App Service works, only one IP accesses the server
+// We still want to rate limit, but it hast to be more lenient
 const limiter = rateLimit({
-  windowMs: 5 * 60 * 1000, // 5 minutes
-  max: 200 // limit each IP to 200 requests per windowMs
+  windowMs: 60 * 1000, // 1 minute
+  max: 10000 // limit each IP to 10000 requests per windowMs
 })
 
 app.use(limiter)
 
 app.get('/api/:file/:action?', (req, res) => {
+  req.
   if (smbShareName === undefined || fileServiceSasUrl === undefined) {
     res.status(500).send('Azure File Service environment variables not set')
     return
