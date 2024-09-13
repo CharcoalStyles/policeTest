@@ -8,6 +8,9 @@ const port = process.env.PORT || 3000
 const smbShareName = process.env.SMB_SHARE_NAME
 const fileServiceSasUrl = process.env.FILE_SERVICE_SAS_URL
 
+const rateLimitWindowMs = process.env.RATE_LIMIT_WINDOW_MS || 60 * 1000
+const rateLimitMax = process.env.RATE_LIMIT_MAX || 10000
+
 const app = express()
 
 // Add healthcheck endpoint
@@ -15,11 +18,9 @@ app.get('/healthcheck-api-sit/*', (req, res) => {
   res.send('OK')
 })
 
-// Because of how Azure App Service works, only one IP accesses the server
-// We still want to rate limit, but it hast to be more lenient
 const limiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 10000 // limit each IP to 10000 requests per windowMs
+  max: rateLimitMax, 
+  windowMs: rateLimitWindowMs
 })
 
 app.use(limiter)
