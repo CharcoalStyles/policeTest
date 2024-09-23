@@ -35,7 +35,8 @@
                   <div class="flex items-center">
                     <input
                       id="keywords"
-                      v-debounce:1s.fireonempty="updateKeyword"
+                      v-debounce:1s="updateKeyword"
+                      :disabled="searching"
                       name="keywords"
                       class="nsw-form-input h-role-input pr-10 w-full"
                       placeholder="Search"
@@ -148,8 +149,8 @@
                                 :max="options.salary.max"
                                 @change="
                                   (value) => {
-                                    salaryLabelData = [value[0], value[1]];
-                                    updateFilter({ key: 'salary', value });
+                                    salaryLabelData = [value[0], value[1]]
+                                    updateFilter({ key: 'salary', value })
                                   }
                                 "
                               />
@@ -1083,37 +1084,38 @@ export default {
       if (value === this.filter.keyword) {
         return
       }
+      this.filter.keyword = value
       // this.filter.keyword = value
 
-      if (value.length === 0) {
-        this.filter.keyword = value
-        setTimeout(() => {
-          this.filter.keyword = ''
-          this.sortBy = 'asc'
-          this.searchResults = undefined
-          this.searching = false
+      setTimeout(() => {
+        if (value.length === 0) {
+          setTimeout(() => {
+            this.filter.keyword = ''
+            this.sortBy = 'asc'
+            this.searchResults = undefined
+            this.searching = false
 
-          this.filterRoles()
-        }, 100)
-      } else {
-        this.filter.keyword = value
-        // add a delay to allow the user to see the loading spinner
-        setTimeout(() => {
-          this.filter.keyword = value
-          const keyword = keywordSearch(this.roles, [
-            { key: 'name', weight: 2 },
-            { key: 'alias' },
-            { key: 'command_BusUnit' },
-            { key: 'jobFunction' },
-            { key: 'grade', weight: 1.5 }
-          ])
+            this.filterRoles()
+          }, 100)
+        } else {
+          // add a delay to allow the user to see the loading spinner
+          setTimeout(() => {
+            this.filter.keyword = value
+            const keyword = keywordSearch(this.roles, [
+              { key: 'name', weight: 2 },
+              { key: 'alias' },
+              { key: 'command_BusUnit' },
+              { key: 'jobFunction' },
+              { key: 'grade', weight: 1.5 }
+            ])
 
-          this.searchResults = keyword(value).map((r) => r.item)
-          this.sortBy = 'search'
+            this.searchResults = keyword(value).map((r) => r.item)
+            this.sortBy = 'search'
 
-          this.filterRoles()
-        }, 300)
-      }
+            this.filterRoles()
+          }, 300)
+        }
+      }, 10)
     },
 
     updateFilter({ key, value }) {
